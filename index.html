@@ -170,6 +170,9 @@ nav .container{display:flex;align-items:center;justify-content:space-between}
 .pricing-card .plan-cta.cta-primary:hover{box-shadow:0 8px 32px rgba(102,126,234,.4);transform:translateY(-1px)}
 .pricing-card .plan-cta.cta-outline{border:1px solid var(--border-glass);color:var(--text-primary);background:transparent}
 .pricing-card .plan-cta.cta-outline:hover{border-color:var(--accent-start);background:rgba(102,126,234,.06)}
+.pricing-card .plan-cta.cta-gradient-border{border:none;background:transparent;position:relative;z-index:1;color:var(--text-primary)}
+.pricing-card .plan-cta.cta-gradient-border::before{content:'';position:absolute;inset:0;border-radius:var(--radius-sm);padding:2px;background:linear-gradient(135deg,#a78bfa,#ec4899);-webkit-mask:linear-gradient(#fff 0 0) content-box,linear-gradient(#fff 0 0);-webkit-mask-composite:xor;mask-composite:exclude;z-index:-1}
+.pricing-card .plan-cta.cta-gradient-border:hover{background:rgba(167,139,250,.08)}
 .networks{padding:40px 0 60px;text-align:center}
 .networks h3{font-size:1rem;text-transform:uppercase;letter-spacing:.12em;color:var(--text-muted);font-weight:600;margin-bottom:24px}
 .network-badges{display:flex;gap:16px;justify-content:center;flex-wrap:wrap}
@@ -302,7 +305,7 @@ footer .footer-copy{color:var(--text-muted);font-size:.8rem;margin-top:16px}
         <li><span class="check blue">✓</span> Drag & drop element order</li>
         <li><span class="check blue">✓</span> Priority support</li>
       </ul>
-      <a href="https://wordpress.org/plugins/myfeeds/" class="plan-cta cta-outline">Start 3-Day Free Trial</a>
+      <a href="https://wordpress.org/plugins/myfeeds/" class="plan-cta cta-gradient-border">Start 3-Day Free Trial</a>
     </div>
   </div>
   <p style="text-align:center;color:var(--text-muted);font-size:.85rem;margin-top:32px;max-width:480px;margin-left:auto;margin-right:auto;line-height:1.5">All buttons lead to the WordPress.org plugin page. Install the free plugin first — you can upgrade to Pro or Premium directly from your WordPress dashboard.</p>
