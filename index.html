@@ -90,8 +90,7 @@ nav .container{display:flex;align-items:center;justify-content:space-between}
 .card-info .old-price{font-size:.85rem;color:var(--text-muted);text-decoration:line-through}
 .card-info .shop{font-size:.7rem;color:var(--text-muted);margin-top:8px;text-transform:uppercase;letter-spacing:.06em}
 .carousel-preview{position:relative;overflow:hidden;border-radius:var(--radius);border:1px solid var(--border-glass);padding:32px 0}
-.carousel-track{display:flex;gap:20px;padding:0 32px;animation:scroll-left 25s linear infinite}
-@keyframes scroll-left{0%{transform:translateX(0)}100%{transform:translateX(-50%)}}
+.carousel-track{display:flex;gap:20px;padding:0 32px}
 .carousel-card{flex:0 0 220px;background:var(--bg-glass);border:1px solid var(--border-glass);border-radius:var(--radius-sm);overflow:hidden;position:relative}
 .carousel-card .cc-img{height:140px;display:flex;align-items:center;justify-content:center}
 .carousel-card .cc-img .cc-shape{width:60px;height:75px;border-radius:10px}
@@ -109,7 +108,9 @@ nav .container{display:flex;align-items:center;justify-content:space-between}
 .carousel-card .cc-price{font-size:.95rem;font-weight:700;color:var(--text-primary)}
 .carousel-card .cc-price.sale{color:var(--accent-pink)}
 .carousel-card .cc-old{font-size:.75rem;color:var(--text-muted);text-decoration:line-through}
-.carousel-arrows{position:absolute;top:50%;transform:translateY(-50%);width:36px;height:36px;border-radius:50%;background:var(--gradient-brand);display:flex;align-items:center;justify-content:center;color:#fff;font-size:1.1rem;z-index:3;box-shadow:0 4px 20px rgba(102,126,234,.4)}
+.carousel-arrows{position:absolute;top:50%;transform:translateY(-50%);width:44px;height:44px;border-radius:50%;background:var(--gradient-brand);display:flex;align-items:center;justify-content:center;color:#fff;z-index:3;box-shadow:0 4px 20px rgba(102,126,234,.4);cursor:pointer;border:none;transition:transform .2s,box-shadow .2s}
+.carousel-arrows:hover{transform:translateY(-50%) scale(1.1);box-shadow:0 6px 28px rgba(102,126,234,.55)}
+.carousel-arrows svg{width:20px;height:20px;stroke:#fff;stroke-width:2.5;fill:none;stroke-linecap:round;stroke-linejoin:round}
 .carousel-arrows.left{left:12px}
 .carousel-arrows.right{right:12px}
 .layout-labels{display:flex;gap:12px;justify-content:center;margin-bottom:24px}
@@ -215,8 +216,8 @@ footer .footer-copy{color:var(--text-muted);font-size:.8rem;margin-top:16px}
   </div>
   <div class="showcase-view" id="view-carousel">
     <div class="carousel-preview">
-      <div class="carousel-arrows left">‹</div>
-      <div class="carousel-arrows right">›</div>
+      <button class="carousel-arrows left" id="carousel-prev"><svg viewBox="0 0 24 24"><polyline points="15 18 9 12 15 6"/></svg></button>
+      <button class="carousel-arrows right" id="carousel-next"><svg viewBox="0 0 24 24"><polyline points="9 6 15 12 9 18"/></svg></button>
       <div class="carousel-track">
         <div class="carousel-card"><div class="cc-img"><div class="cc-shape"></div></div><div class="cc-info"><div class="cc-brand">Brand A</div><div class="cc-name">Premium Hoodie — L</div><div class="cc-price-row"><span class="cc-price">275.00 €</span></div></div></div>
         <div class="carousel-card"><div class="cc-badge">-15%</div><div class="cc-img"><div class="cc-shape"></div></div><div class="cc-info"><div class="cc-brand">Brand B</div><div class="cc-name">Classic Cap Navy</div><div class="cc-price-row"><span class="cc-old">23.50 €</span><span class="cc-price sale">19.95 €</span></div></div></div>
@@ -320,6 +321,7 @@ footer .footer-copy{color:var(--text-muted);font-size:.8rem;margin-top:16px}
   <div class="footer-copy">© 2026 MyFeeds. All rights reserved.</div>
 </div></footer>
 <script>
+// Layout toggle
 document.querySelectorAll('.layout-label').forEach(function(label){
   label.addEventListener('click',function(){
     document.querySelectorAll('.layout-label').forEach(function(l){l.classList.remove('active')});
@@ -328,6 +330,71 @@ document.querySelectorAll('.layout-label').forEach(function(label){
     document.getElementById('view-'+label.dataset.view).classList.add('active');
   });
 });
+
+// Carousel auto-scroll with arrow controls
+(function(){
+  var track = document.querySelector('.carousel-track');
+  if (!track) return;
+  var cardWidth = 240; // 220px card + 20px gap
+  var pos = 0;
+  var totalCards = track.children.length;
+  var halfWidth = (totalCards / 2) * cardWidth;
+  var speed = 0.5; // pixels per frame
+  var autoScroll;
+
+  function animate() {
+    pos += speed;
+    if (pos >= halfWidth) pos -= halfWidth;
+    if (pos < 0) pos += halfWidth;
+    track.style.transform = 'translateX(' + (-pos) + 'px)';
+    autoScroll = requestAnimationFrame(animate);
+  }
+  autoScroll = requestAnimationFrame(animate);
+
+  var prevBtn = document.getElementById('carousel-prev');
+  var nextBtn = document.getElementById('carousel-next');
+
+  var scrollTarget = null;
+  var scrollStart = null;
+  var scrollDuration = 400;
+  var scrollFrom = 0;
+
+  function smoothJump(delta) {
+    scrollFrom = pos;
+    scrollTarget = pos + delta;
+    scrollStart = performance.now();
+  }
+
+  function easeOut(t) {
+    return 1 - Math.pow(1 - t, 3);
+  }
+
+  // Override animate to handle smooth jumps
+  cancelAnimationFrame(autoScroll);
+  function animateSmooth(now) {
+    if (scrollTarget !== null && scrollStart !== null) {
+      var elapsed = now - scrollStart;
+      var progress = Math.min(elapsed / scrollDuration, 1);
+      pos = scrollFrom + (scrollTarget - scrollFrom) * easeOut(progress);
+      if (progress >= 1) {
+        pos = scrollTarget;
+        if (pos >= halfWidth) pos -= halfWidth;
+        if (pos < 0) pos += halfWidth;
+        scrollTarget = null;
+        scrollStart = null;
+      }
+    } else {
+      pos += speed;
+      if (pos >= halfWidth) pos -= halfWidth;
+    }
+    track.style.transform = 'translateX(' + (-pos) + 'px)';
+    requestAnimationFrame(animateSmooth);
+  }
+  requestAnimationFrame(animateSmooth);
+
+  if (nextBtn) nextBtn.addEventListener('click', function(){ smoothJump(cardWidth); });
+  if (prevBtn) prevBtn.addEventListener('click', function(){ smoothJump(-cardWidth); });
+})();
 </script>
 </body>
 </html>
