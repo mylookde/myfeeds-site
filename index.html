@@ -53,7 +53,7 @@ nav .container{display:flex;align-items:center;justify-content:space-between}
 .btn-primary:hover{transform:translateY(-2px);box-shadow:0 8px 32px rgba(102,126,234,.45)}
 .btn-outline{background:transparent;color:var(--text-primary);border:1px solid var(--border-glass)}
 .btn-outline:hover{border-color:var(--accent-start);background:rgba(102,126,234,.08)}
-.hero{padding:160px 0 100px;text-align:center}
+.hero{padding:160px 0 60px;text-align:center}
 .hero-logo{width:100px;height:100px;border-radius:24px;margin:0 auto 32px;animation:logoEntry 1s cubic-bezier(.16,1,.3,1) both}
 @keyframes logoEntry{from{opacity:0;transform:scale(.7) translateY(20px)}to{opacity:1;transform:scale(1) translateY(0)}}
 .hero-badge{display:inline-flex;align-items:center;gap:8px;padding:6px 16px;border-radius:999px;background:var(--bg-glass);border:1px solid var(--border-glass);font-size:.8rem;color:var(--text-secondary);margin-bottom:24px;animation:fadeUp .8s .2s both}
@@ -64,7 +64,7 @@ nav .container{display:flex;align-items:center;justify-content:space-between}
 .hero p{font-size:clamp(1rem,2vw,1.25rem);color:var(--text-secondary);max-width:620px;margin:0 auto 40px;line-height:1.6;animation:fadeUp .8s .4s both}
 .hero-actions{display:flex;gap:16px;justify-content:center;flex-wrap:wrap;animation:fadeUp .8s .5s both}
 @keyframes fadeUp{from{opacity:0;transform:translateY(24px)}to{opacity:1;transform:translateY(0)}}
-.showcase{padding:80px 0 60px}
+.showcase{padding:40px 0 20px}
 .showcase h2{text-align:center;font-size:2rem;font-weight:700;margin-bottom:12px;letter-spacing:-.03em}
 .showcase .subtitle{text-align:center;color:var(--text-secondary);margin-bottom:48px;font-size:1.05rem}
 .product-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:20px}
@@ -117,8 +117,8 @@ nav .container{display:flex;align-items:center;justify-content:space-between}
 .layout-label:hover:not(.active){border-color:rgba(102,126,234,.3)}
 .showcase-view{display:none}
 .showcase-view.active{display:block}
-.features{padding:100px 0}
-.section-header{text-align:center;margin-bottom:60px}
+.features{padding:60px 0}
+.section-header{text-align:center;margin-bottom:40px}
 .section-header h2{font-size:2.2rem;font-weight:700;letter-spacing:-.03em;margin-bottom:12px}
 .section-header p{color:var(--text-secondary);font-size:1.05rem;max-width:540px;margin:0 auto}
 .feature-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:24px}
@@ -135,7 +135,7 @@ nav .container{display:flex;align-items:center;justify-content:space-between}
 .feature-header .emoji.yellow{background:rgba(251,191,36,.15)}
 .feature-header h3{font-size:1.15rem;font-weight:700}
 .feature-card p{color:var(--text-secondary);font-size:.9rem;line-height:1.55}
-.pricing{padding:100px 0}
+.pricing{padding:60px 0}
 .pricing-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:24px;align-items:start}
 @media(max-width:768px){.pricing-grid{grid-template-columns:1fr;max-width:420px;margin:0 auto}}
 .pricing-card{background:var(--bg-glass);border:1px solid var(--border-glass);border-radius:var(--radius);padding:36px 32px;position:relative;transition:all .3s}
@@ -160,7 +160,7 @@ nav .container{display:flex;align-items:center;justify-content:space-between}
 .pricing-card .plan-cta.cta-primary:hover{box-shadow:0 8px 32px rgba(102,126,234,.4);transform:translateY(-1px)}
 .pricing-card .plan-cta.cta-outline{border:1px solid var(--border-glass);color:var(--text-primary);background:transparent}
 .pricing-card .plan-cta.cta-outline:hover{border-color:var(--accent-start);background:rgba(102,126,234,.06)}
-.networks{padding:60px 0 100px;text-align:center}
+.networks{padding:40px 0 60px;text-align:center}
 .networks h3{font-size:1rem;text-transform:uppercase;letter-spacing:.12em;color:var(--text-muted);font-weight:600;margin-bottom:24px}
 .network-badges{display:flex;gap:16px;justify-content:center;flex-wrap:wrap}
 .network-badge{padding:10px 24px;border-radius:var(--radius-sm);background:var(--bg-glass);border:1px solid var(--border-glass);font-size:.9rem;font-weight:600;color:var(--text-secondary)}
@@ -172,8 +172,8 @@ footer .footer-links{display:flex;gap:24px;justify-content:center;margin:16px 0}
 footer .footer-links a{color:var(--text-secondary);text-decoration:none;font-size:.85rem;transition:color .2s}
 footer .footer-links a:hover{color:var(--text-primary)}
 footer .footer-copy{color:var(--text-muted);font-size:.8rem;margin-top:16px}
-.reveal{opacity:0;transform:translateY(30px);transition:opacity .7s,transform .7s cubic-bezier(.16,1,.3,1)}
-.reveal.visible{opacity:1;transform:translateY(0)}
+.reveal{opacity:1;transform:translateY(0);transition:opacity .7s,transform .7s cubic-bezier(.16,1,.3,1)}
+.reveal.pending{opacity:0;transform:translateY(30px)}
 </style>
 </head>
 <body>
@@ -320,7 +320,8 @@ footer .footer-copy{color:var(--text-muted);font-size:.8rem;margin-top:16px}
 </div></footer>
 <script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
 const reveals=document.querySelectorAll('.reveal');
-const observer=new IntersectionObserver(e=>{e.forEach(el=>{if(el.isIntersecting){el.target.classList.add('visible');observer.unobserve(el.target)}})},{threshold:.1});
+reveals.forEach(el=>el.classList.add('pending'));
+const observer=new IntersectionObserver(e=>{e.forEach(el=>{if(el.isIntersecting){el.target.classList.remove('pending');observer.unobserve(el.target)}})},{threshold:.1});
 reveals.forEach(el=>observer.observe(el));
 document.querySelectorAll('.layout-label').forEach(label=>{
   label.addEventListener('click',()=>{
