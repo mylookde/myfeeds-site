@@ -1,0 +1,428 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>MyFeeds – Affiliate Product Feeds for WordPress</title>
+<meta name="description" content="Import and manage affiliate product feeds from AWIN and other networks. Smart mapping, Gutenberg Product Picker, and beautiful product cards for your WordPress blog.">
+<link rel="icon" type="image/png" href="favicon.png">
+<link rel="icon" type="image/x-icon" href="favicon.ico">
+<link rel="apple-touch-icon" href="apple-touch-icon.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+*,*::before,*::after{margin:0;padding:0;box-sizing:border-box}
+:root {
+  --bg-deep: #0a0a12;
+  --bg-surface: #12121e;
+  --bg-card: rgba(255,255,255,0.04);
+  --bg-glass: rgba(255,255,255,0.06);
+  --border-glass: rgba(255,255,255,0.08);
+  --text-primary: #f0eef6;
+  --text-secondary: rgba(240,238,246,0.6);
+  --text-muted: rgba(240,238,246,0.35);
+  --accent-start: #667eea;
+  --accent-end: #764ba2;
+  --accent-orange: #f59e42;
+  --accent-green: #34d399;
+  --accent-pink: #ec4899;
+  --gradient-brand: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  --radius: 16px;
+  --radius-sm: 10px;
+}
+html{scroll-behavior:smooth;background:var(--bg-deep);color:var(--text-primary);font-family:'Outfit',sans-serif}
+body{overflow-x:hidden;min-height:100vh;background:var(--bg-deep)}
+.ambient{position:fixed;inset:0;z-index:0;pointer-events:none;overflow:hidden}
+.ambient .orb{position:absolute;border-radius:50%;filter:blur(120px);opacity:.25;animation:float 20s ease-in-out infinite}
+.ambient .orb:nth-child(1){width:600px;height:600px;background:#667eea;top:-10%;left:-10%}
+.ambient .orb:nth-child(2){width:500px;height:500px;background:#764ba2;bottom:-10%;right:-10%;animation-delay:-7s}
+.ambient .orb:nth-child(3){width:350px;height:350px;background:#f59e42;top:40%;left:50%;animation-delay:-14s;opacity:.12}
+@keyframes float{0%,100%{transform:translate(0,0) scale(1)}33%{transform:translate(30px,-40px) scale(1.05)}66%{transform:translate(-20px,30px) scale(.95)}}
+body::after{content:'';position:fixed;inset:0;z-index:1;pointer-events:none;opacity:.03;background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E")}
+.container{max-width:1200px;margin:0 auto;padding:0 24px;position:relative;z-index:2}
+nav{position:fixed;top:0;left:0;right:0;z-index:100;padding:16px 0;backdrop-filter:blur(20px);background:rgba(10,10,18,0.7);border-bottom:1px solid var(--border-glass)}
+nav .container{display:flex;align-items:center;justify-content:space-between}
+.nav-logo{display:flex;align-items:center;gap:12px;text-decoration:none;color:var(--text-primary)}
+.nav-logo img{width:36px;height:36px;border-radius:8px}
+.nav-logo span{font-weight:700;font-size:1.15rem;letter-spacing:-.02em}
+.nav-links{display:flex;gap:32px;align-items:center}
+.nav-links a{color:var(--text-secondary);text-decoration:none;font-size:.9rem;font-weight:500;transition:color .2s}
+.nav-links a:hover{color:var(--text-primary)}
+.hamburger{display:none;background:none;border:none;cursor:pointer;padding:8px}
+.hamburger svg{width:24px;height:24px;stroke:var(--text-primary);stroke-width:2;fill:none}
+@media(max-width:768px){
+.nav-links{display:none;position:absolute;top:100%;left:0;right:0;background:rgba(10,10,18,0.95);backdrop-filter:blur(20px);flex-direction:column;padding:20px 24px;gap:16px;border-bottom:1px solid var(--border-glass)}
+.nav-links.open{display:flex}
+.nav-links .btn-primary{width:100%;justify-content:center}
+.hamburger{display:block}
+}
+.btn{display:inline-flex;align-items:center;gap:8px;padding:10px 24px;border-radius:var(--radius-sm);font-weight:600;font-size:.9rem;text-decoration:none;transition:all .25s;border:none;cursor:pointer;font-family:inherit}
+.btn-primary{background:var(--gradient-brand);color:#fff;box-shadow:0 4px 24px rgba(102,126,234,.3)}
+.btn-primary:hover{transform:translateY(-2px);box-shadow:0 8px 32px rgba(102,126,234,.45)}
+.btn-outline{background:transparent;color:var(--text-primary);border:1px solid var(--border-glass)}
+.btn-outline:hover{border-color:var(--accent-start);background:rgba(102,126,234,.08)}
+.hero{padding:160px 0 80px;text-align:center}
+.hero-logo{width:100px;height:100px;border-radius:24px;margin:0 auto 32px;animation:logoEntry 1s cubic-bezier(.16,1,.3,1) both}
+@keyframes logoEntry{from{opacity:0;transform:scale(.7) translateY(20px)}to{opacity:1;transform:scale(1) translateY(0)}}
+.hero-badge{display:inline-flex;align-items:center;gap:8px;padding:6px 16px;border-radius:999px;background:var(--bg-glass);border:1px solid var(--border-glass);font-size:.8rem;color:var(--text-secondary);margin-bottom:24px;animation:fadeUp .8s .2s both}
+.hero-badge .dot{width:6px;height:6px;border-radius:50%;background:var(--accent-green);animation:pulse-dot 2s infinite}
+@keyframes pulse-dot{0%,100%{opacity:1}50%{opacity:.4}}
+.hero h1{font-size:clamp(2.5rem,6vw,4.5rem);font-weight:800;letter-spacing:-.04em;line-height:1.05;margin-bottom:20px;animation:fadeUp .8s .3s both}
+.hero h1 .gradient-text{background:var(--gradient-brand);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text}
+.hero p{font-size:clamp(1rem,2vw,1.25rem);color:var(--text-secondary);max-width:620px;margin:0 auto 40px;line-height:1.6;animation:fadeUp .8s .4s both}
+.hero-actions{display:flex;gap:16px;justify-content:center;flex-wrap:wrap;animation:fadeUp .8s .5s both}
+@keyframes revealUp{from{opacity:0;transform:translateY(30px)}to{opacity:1;transform:translateY(0)}}
+@keyframes fadeUp{from{opacity:0;transform:translateY(24px)}to{opacity:1;transform:translateY(0)}}
+.showcase{padding:40px 0 20px}
+.showcase h2{text-align:center;font-size:2rem;font-weight:700;margin-bottom:12px;letter-spacing:-.03em}
+.showcase .subtitle{text-align:center;color:var(--text-secondary);margin-bottom:48px;font-size:1.05rem}
+.product-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:20px}
+@media(max-width:768px){.product-grid{grid-template-columns:repeat(2,1fr)}}
+@media(max-width:480px){.product-grid{grid-template-columns:repeat(2,1fr);gap:12px}}
+.product-card{background:var(--bg-glass);border:1px solid var(--border-glass);border-radius:var(--radius);overflow:hidden;transition:all .35s cubic-bezier(.16,1,.3,1)}
+.product-card:hover{transform:translateY(-6px);border-color:rgba(102,126,234,.3);box-shadow:0 20px 60px rgba(102,126,234,.12)}
+.product-card .card-image{height:200px;display:flex;align-items:center;justify-content:center;position:relative;overflow:hidden}
+.product-card .card-image .shape{width:80px;height:100px;border-radius:12px;position:relative}
+.product-card:nth-child(1) .shape{background:linear-gradient(135deg,#667eea,#764ba2)}
+.product-card:nth-child(2) .shape{background:linear-gradient(135deg,#f59e42,#ec4899)}
+.product-card:nth-child(3) .shape{background:linear-gradient(135deg,#34d399,#3b82f6)}
+.product-card:nth-child(4) .shape{background:linear-gradient(135deg,#a78bfa,#f472b6)}
+.product-card .card-image .shape::after{content:'';position:absolute;inset:8px;border-radius:8px;background:rgba(255,255,255,.12);backdrop-filter:blur(4px)}
+.product-card .card-image .badge-tag{position:absolute;top:12px;left:12px;background:var(--accent-pink);color:#fff;font-size:.7rem;font-weight:700;padding:4px 10px;border-radius:6px}
+.card-info{padding:16px}
+.card-info .brand{font-size:.75rem;color:var(--text-muted);text-transform:uppercase;letter-spacing:.08em;margin-bottom:4px}
+.card-info .name{font-size:.9rem;font-weight:500;color:var(--text-primary);margin-bottom:8px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.card-info .price-row{display:flex;align-items:baseline;gap:8px}
+.card-info .price{font-size:1.1rem;font-weight:700;color:var(--text-primary)}
+.card-info .price.sale{color:var(--accent-pink)}
+.card-info .old-price{font-size:.85rem;color:var(--text-muted);text-decoration:line-through}
+.card-info .shop{font-size:.7rem;color:var(--text-muted);margin-top:8px;text-transform:uppercase;letter-spacing:.06em}
+.carousel-preview{position:relative;overflow:hidden;border-radius:var(--radius);border:1px solid var(--border-glass);padding:32px 0}
+.carousel-track{display:flex;gap:20px;padding:0 32px}
+.carousel-card{flex:0 0 220px;background:var(--bg-glass);border:1px solid var(--border-glass);border-radius:var(--radius-sm);overflow:hidden;position:relative}
+.carousel-card .cc-img{height:140px;display:flex;align-items:center;justify-content:center}
+.carousel-card .cc-img .cc-shape{width:60px;height:75px;border-radius:10px}
+.carousel-card:nth-child(1) .cc-shape,.carousel-card:nth-child(7) .cc-shape{background:linear-gradient(135deg,#667eea,#764ba2)}
+.carousel-card:nth-child(2) .cc-shape,.carousel-card:nth-child(8) .cc-shape{background:linear-gradient(135deg,#f59e42,#ec4899)}
+.carousel-card:nth-child(3) .cc-shape,.carousel-card:nth-child(9) .cc-shape{background:linear-gradient(135deg,#34d399,#667eea)}
+.carousel-card:nth-child(4) .cc-shape,.carousel-card:nth-child(10) .cc-shape{background:linear-gradient(135deg,#a78bfa,#f472b6)}
+.carousel-card:nth-child(5) .cc-shape,.carousel-card:nth-child(11) .cc-shape{background:linear-gradient(135deg,#fbbf24,#f97316)}
+.carousel-card:nth-child(6) .cc-shape,.carousel-card:nth-child(12) .cc-shape{background:linear-gradient(135deg,#6ee7b7,#3b82f6)}
+.carousel-card .cc-badge{position:absolute;top:10px;left:10px;background:var(--accent-pink);color:#fff;font-size:.65rem;font-weight:700;padding:3px 8px;border-radius:5px;z-index:2}
+.carousel-card .cc-info{padding:12px}
+.carousel-card .cc-brand{font-size:.65rem;color:var(--text-muted);text-transform:uppercase;letter-spacing:.06em}
+.carousel-card .cc-name{font-size:.8rem;font-weight:500;color:var(--text-secondary);margin:2px 0 6px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.carousel-card .cc-price-row{display:flex;align-items:baseline;gap:6px}
+.carousel-card .cc-price{font-size:.95rem;font-weight:700;color:var(--text-primary)}
+.carousel-card .cc-price.sale{color:var(--accent-pink)}
+.carousel-card .cc-old{font-size:.75rem;color:var(--text-muted);text-decoration:line-through}
+.carousel-arrows{position:absolute;top:50%;transform:translateY(-50%);width:44px;height:44px;border-radius:50%;background:var(--gradient-brand);display:flex;align-items:center;justify-content:center;color:#fff;z-index:3;box-shadow:0 4px 20px rgba(102,126,234,.4);cursor:pointer;border:none;transition:transform .2s,box-shadow .2s}
+.carousel-arrows:hover{transform:translateY(-50%) scale(1.1);box-shadow:0 6px 28px rgba(102,126,234,.55)}
+.carousel-arrows svg{width:20px;height:20px;stroke:#fff;stroke-width:2.5;fill:none;stroke-linecap:round;stroke-linejoin:round}
+.carousel-arrows.left{left:12px}
+.carousel-arrows.right{right:12px}
+.layout-labels{display:flex;gap:12px;justify-content:center;margin-bottom:24px}
+.layout-label{padding:8px 20px;border-radius:999px;font-size:.85rem;font-weight:600;border:1px solid var(--border-glass);color:var(--text-secondary);background:var(--bg-glass);cursor:pointer;transition:all .25s;user-select:none}
+.layout-label.active{background:var(--gradient-brand);color:#fff;border-color:transparent}
+.layout-label:hover:not(.active){border-color:rgba(102,126,234,.3)}
+.showcase-view{display:none}
+.showcase-view.active{display:block}
+.features{padding:60px 0}
+.section-header{text-align:center;margin-bottom:40px}
+.section-header h2{font-size:2.2rem;font-weight:700;letter-spacing:-.03em;margin-bottom:12px}
+.section-header p{color:var(--text-secondary);font-size:1.05rem;max-width:540px;margin:0 auto}
+.feature-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:24px}
+@media(max-width:768px){.feature-grid{grid-template-columns:1fr}}
+.feature-card{background:var(--bg-glass);border:1px solid var(--border-glass);border-radius:var(--radius);padding:32px;transition:all .3s}
+.feature-card:hover{border-color:rgba(102,126,234,.25);transform:translateY(-4px)}
+.feature-header{display:flex;align-items:center;gap:12px;margin-bottom:12px}
+.feature-header .emoji{font-size:1.1rem;width:36px;height:36px;border-radius:10px;display:flex;align-items:center;justify-content:center;flex-shrink:0}
+.feature-header .emoji.purple{background:rgba(102,126,234,.15)}
+.feature-header .emoji.orange{background:rgba(245,158,66,.15)}
+.feature-header .emoji.green{background:rgba(52,211,153,.15)}
+.feature-header .emoji.pink{background:rgba(236,72,153,.15)}
+.feature-header .emoji.blue{background:rgba(59,130,246,.15)}
+.feature-header .emoji.yellow{background:rgba(251,191,36,.15)}
+.feature-header h3{font-size:1.15rem;font-weight:700}
+.feature-card p{color:var(--text-secondary);font-size:.9rem;line-height:1.55}
+.pricing{padding:60px 0}
+.pricing-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:24px;align-items:start}
+@media(max-width:768px){.pricing-grid{grid-template-columns:1fr;max-width:420px;margin:0 auto}}
+.pricing-card{background:var(--bg-glass);border:1px solid var(--border-glass);border-radius:var(--radius);padding:36px 32px;position:relative;transition:all .3s}
+.pricing-card:hover{transform:translateY(-4px)}
+.pricing-card.featured{border-color:rgba(102,126,234,.4);background:linear-gradient(180deg,rgba(102,126,234,.08) 0%,rgba(118,75,162,.04) 100%)}
+.pricing-card .card-badge{position:absolute;top:-13px;left:50%;transform:translateX(-50%);color:#fff;font-size:.65rem;font-weight:700;padding:5px 16px;border-radius:999px;letter-spacing:.08em;white-space:nowrap}
+.pricing-card .card-badge.popular{background:var(--gradient-brand)}
+.pricing-card .card-badge.value{background:linear-gradient(135deg,#a78bfa,#ec4899)}
+.pricing-card .plan-name{font-size:.85rem;text-transform:uppercase;letter-spacing:.1em;color:var(--text-muted);font-weight:600;margin-bottom:4px}
+.pricing-card .plan-desc-sub{color:var(--text-secondary);font-size:.85rem;margin-bottom:16px}
+.pricing-card .plan-price{font-size:2.8rem;font-weight:800;letter-spacing:-.03em;margin-bottom:4px}
+.pricing-card .plan-price .currency{font-size:1.6rem;vertical-align:super;margin-right:2px}
+.pricing-card .plan-price .period{font-size:.9rem;font-weight:400;color:var(--text-muted)}
+.pricing-card .plan-includes{font-size:.75rem;text-transform:uppercase;letter-spacing:.1em;color:var(--accent-start);font-weight:600;margin:24px 0 12px}
+.pricing-card .plan-features{list-style:none;margin-bottom:32px}
+.pricing-card .plan-features li{padding:8px 0;font-size:.9rem;color:var(--text-secondary);display:flex;align-items:flex-start;gap:10px;border-bottom:1px solid rgba(255,255,255,.04)}
+.pricing-card .plan-features li:last-child{border:none}
+.pricing-card .plan-features li .check{color:var(--accent-green);font-weight:700;flex-shrink:0}
+.pricing-card .plan-features li .check.blue{color:var(--accent-start)}
+.pricing-card .plan-cta{display:block;width:100%;text-align:center;padding:14px;border-radius:var(--radius-sm);font-weight:600;font-size:.95rem;text-decoration:none;transition:all .25s}
+.pricing-card .plan-cta.cta-primary{background:var(--gradient-brand);color:#fff}
+.pricing-card .plan-cta.cta-primary:hover{box-shadow:0 8px 32px rgba(102,126,234,.4);transform:translateY(-1px)}
+.pricing-card .plan-cta.cta-outline{border:1px solid var(--border-glass);color:var(--text-primary);background:transparent}
+.pricing-card .plan-cta.cta-outline:hover{border-color:var(--accent-start);background:rgba(102,126,234,.06)}
+.pricing-card .plan-cta.cta-gradient-border{border:none;background:transparent;position:relative;z-index:1;color:var(--text-primary)}
+.pricing-card .plan-cta.cta-gradient-border::before{content:'';position:absolute;inset:0;border-radius:var(--radius-sm);padding:2px;background:linear-gradient(135deg,#a78bfa,#ec4899);-webkit-mask:linear-gradient(#fff 0 0) content-box,linear-gradient(#fff 0 0);-webkit-mask-composite:xor;mask-composite:exclude;z-index:-1}
+.pricing-card .plan-cta.cta-gradient-border:hover{background:rgba(167,139,250,.08)}
+.networks{padding:40px 0 60px;text-align:center}
+.networks h3{font-size:1rem;text-transform:uppercase;letter-spacing:.12em;color:var(--text-muted);font-weight:600;margin-bottom:24px}
+.network-badges{display:flex;gap:16px;justify-content:center;flex-wrap:wrap}
+.network-badge{padding:10px 24px;border-radius:var(--radius-sm);background:var(--bg-glass);border:1px solid var(--border-glass);font-size:.9rem;font-weight:600;color:var(--text-secondary)}
+.network-badge.active{border-color:rgba(102,126,234,.3);color:var(--text-primary)}
+.network-badge.soon{opacity:.35}
+footer{border-top:1px solid var(--border-glass);padding:48px 0;text-align:center}
+footer .footer-brand{font-size:1.2rem;font-weight:700;margin-bottom:8px}
+footer .footer-links{display:flex;gap:24px;justify-content:center;margin:16px 0}
+footer .footer-links a{color:var(--text-secondary);text-decoration:none;font-size:.85rem;transition:color .2s}
+footer .footer-links a:hover{color:var(--text-primary)}
+footer .footer-copy{color:var(--text-muted);font-size:.8rem;margin-top:16px}
+.reveal{animation:revealUp .8s ease both}.showcase{animation-delay:.1s}.features{animation-delay:.15s}.pricing{animation-delay:.2s}.networks{animation-delay:.25s}
+
+</style>
+</head>
+<body>
+<div class="ambient"><div class="orb"></div><div class="orb"></div><div class="orb"></div></div>
+<nav><div class="container">
+  <a href="#" class="nav-logo"><img src="logo.png" alt="MyFeeds"><span>MyFeeds</span></a>
+  <button class="hamburger" id="hamburger-btn"><svg viewBox="0 0 24 24"><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="18" x2="21" y2="18"/></svg></button>
+    <div class="nav-links">
+    <a href="#features">Features</a>
+    <a href="#pricing">Pricing</a>
+    <a href="https://wordpress.org/plugins/myfeeds/" class="btn btn-primary" style="padding:8px 20px;font-size:.85rem">Get Started</a>
+  </div>
+</div></nav>
+<section class="hero"><div class="container">
+  
+  <div class="hero-badge"><span class="dot"></span> Now available for WordPress</div>
+  <h1>Affiliate Product Feeds,<br><span class="gradient-text">Beautifully Managed.</span></h1>
+  <p>Import product feeds from AWIN and other affiliate networks into WordPress. Smart auto-mapping, a powerful Gutenberg Product Picker, and stunning product cards — all running locally on your server.</p>
+  <div class="hero-actions">
+    <a href="https://wordpress.org/plugins/myfeeds/" class="btn btn-primary">Download Free Plugin →</a>
+    <a href="#features" class="btn btn-outline">See Features</a>
+  </div>
+</div></section>
+<section class="showcase reveal"><div class="container">
+  <h2>Two ways to showcase products</h2>
+  <p class="subtitle">Beautiful product cards that integrate seamlessly with the Gutenberg editor.</p>
+  <div class="layout-labels">
+    <span class="layout-label active" data-view="grid">Grid Layout</span>
+    <span class="layout-label" data-view="carousel">Carousel</span>
+  </div>
+  <div class="showcase-view active" id="view-grid">
+    <div class="product-grid">
+      <div class="product-card"><div class="card-image"><div class="shape"></div><span class="badge-tag">-25%</span></div><div class="card-info"><div class="brand">Brand A</div><div class="name">Premium Essential Tee — M</div><div class="price-row"><span class="old-price">39.90 €</span><span class="price sale">29.90 €</span></div><div class="shop">FASHION STORE</div></div></div>
+      <div class="product-card"><div class="card-image"><div class="shape"></div></div><div class="card-info"><div class="brand">Brand B</div><div class="name">Signature Eau de Parfum</div><div class="price-row"><span class="price">120.00 €</span></div><div class="shop">BEAUTY SHOP</div></div></div>
+      <div class="product-card"><div class="card-image"><div class="shape"></div><span class="badge-tag">-50%</span></div><div class="card-info"><div class="brand">Brand C</div><div class="name">Court Classic White Sneaker</div><div class="price-row"><span class="old-price">93.95 €</span><span class="price sale">46.95 €</span></div><div class="shop">SNEAKER STORE</div></div></div>
+      <div class="product-card"><div class="card-image"><div class="shape"></div></div><div class="card-info"><div class="brand">Brand D</div><div class="name">Base Coat Nail Care S.O.S.</div><div class="price-row"><span class="price">16.95 €</span></div><div class="shop">BEAUTY SHOP</div></div></div>
+    </div>
+  </div>
+  <div class="showcase-view" id="view-carousel">
+    <div class="carousel-preview">
+      <button class="carousel-arrows left" id="carousel-prev"><svg viewBox="0 0 24 24"><polyline points="15 18 9 12 15 6"/></svg></button>
+      <button class="carousel-arrows right" id="carousel-next"><svg viewBox="0 0 24 24"><polyline points="9 6 15 12 9 18"/></svg></button>
+      <div class="carousel-track">
+        <div class="carousel-card"><div class="cc-img"><div class="cc-shape"></div></div><div class="cc-info"><div class="cc-brand">Brand A</div><div class="cc-name">Premium Hoodie — L</div><div class="cc-price-row"><span class="cc-price">275.00 €</span></div></div></div>
+        <div class="carousel-card"><div class="cc-badge">-15%</div><div class="cc-img"><div class="cc-shape"></div></div><div class="cc-info"><div class="cc-brand">Brand B</div><div class="cc-name">Classic Cap Navy</div><div class="cc-price-row"><span class="cc-old">23.50 €</span><span class="cc-price sale">19.95 €</span></div></div></div>
+        <div class="carousel-card"><div class="cc-img"><div class="cc-shape"></div></div><div class="cc-info"><div class="cc-brand">Brand C</div><div class="cc-name">Minimal Watch Silver</div><div class="cc-price-row"><span class="cc-price">149.00 €</span></div></div></div>
+        <div class="carousel-card"><div class="cc-badge">-30%</div><div class="cc-img"><div class="cc-shape"></div></div><div class="cc-info"><div class="cc-brand">Brand D</div><div class="cc-name">Leather Belt Brown</div><div class="cc-price-row"><span class="cc-old">85.00 €</span><span class="cc-price sale">59.90 €</span></div></div></div>
+        <div class="carousel-card"><div class="cc-img"><div class="cc-shape"></div></div><div class="cc-info"><div class="cc-brand">Brand E</div><div class="cc-name">Summer Dress Floral</div><div class="cc-price-row"><span class="cc-price">89.00 €</span></div></div></div>
+        <div class="carousel-card"><div class="cc-img"><div class="cc-shape"></div></div><div class="cc-info"><div class="cc-brand">Brand F</div><div class="cc-name">Running Sneaker V2</div><div class="cc-price-row"><span class="cc-price">129.95 €</span></div></div></div>
+        <div class="carousel-card"><div class="cc-img"><div class="cc-shape"></div></div><div class="cc-info"><div class="cc-brand">Brand A</div><div class="cc-name">Premium Hoodie — L</div><div class="cc-price-row"><span class="cc-price">275.00 €</span></div></div></div>
+        <div class="carousel-card"><div class="cc-badge">-15%</div><div class="cc-img"><div class="cc-shape"></div></div><div class="cc-info"><div class="cc-brand">Brand B</div><div class="cc-name">Classic Cap Navy</div><div class="cc-price-row"><span class="cc-old">23.50 €</span><span class="cc-price sale">19.95 €</span></div></div></div>
+        <div class="carousel-card"><div class="cc-img"><div class="cc-shape"></div></div><div class="cc-info"><div class="cc-brand">Brand C</div><div class="cc-name">Minimal Watch Silver</div><div class="cc-price-row"><span class="cc-price">149.00 €</span></div></div></div>
+        <div class="carousel-card"><div class="cc-badge">-30%</div><div class="cc-img"><div class="cc-shape"></div></div><div class="cc-info"><div class="cc-brand">Brand D</div><div class="cc-name">Leather Belt Brown</div><div class="cc-price-row"><span class="cc-old">85.00 €</span><span class="cc-price sale">59.90 €</span></div></div></div>
+        <div class="carousel-card"><div class="cc-img"><div class="cc-shape"></div></div><div class="cc-info"><div class="cc-brand">Brand E</div><div class="cc-name">Summer Dress Floral</div><div class="cc-price-row"><span class="cc-price">89.00 €</span></div></div></div>
+        <div class="carousel-card"><div class="cc-img"><div class="cc-shape"></div></div><div class="cc-info"><div class="cc-brand">Brand F</div><div class="cc-name">Running Sneaker V2</div><div class="cc-price-row"><span class="cc-price">129.95 €</span></div></div></div>
+      </div>
+    </div>
+  </div>
+</div></section>
+<section class="features reveal" id="features"><div class="container">
+  <div class="section-header"><h2>Everything you need to monetize your blog</h2><p>From feed import to frontend display — MyFeeds handles the entire affiliate product workflow.</p></div>
+  <div class="feature-grid">
+    <div class="feature-card"><div class="feature-header"><span class="emoji purple">🧠</span><h3>Smart Auto-Mapping</h3></div><p>Automatically detects and maps all product fields from any CSV, XML, or JSON feed. No manual configuration needed.</p></div>
+    <div class="feature-card"><div class="feature-header"><span class="emoji orange">🔍</span><h3>FULLTEXT Search Engine</h3></div><p>Blazing fast product search with synonym expansion, smart deduplication, and gender-aware filtering.</p></div>
+    <div class="feature-card"><div class="feature-header"><span class="emoji green">📦</span><h3>Gutenberg Product Picker</h3></div><p>Search, select, and insert affiliate products directly in the WordPress block editor. Grid or carousel layout.</p></div>
+    <div class="feature-card"><div class="feature-header"><span class="emoji pink">🎨</span><h3>Card Design Editor</h3></div><p>Customize every aspect of your product cards — colors, fonts, borders, shadows, hover effects — with live preview.</p></div>
+    <div class="feature-card"><div class="feature-header"><span class="emoji blue">⚡</span><h3>Background Import</h3></div><p>Import thousands of products without timeouts. Everything runs in the background — safely resumable if interrupted.</p></div>
+    <div class="feature-card"><div class="feature-header"><span class="emoji yellow">🔄</span><h3>Auto-Sync</h3></div><p>Daily Quick Sync updates active products. Weekly Full Import refreshes everything. Prices always current, zero manual work.</p></div>
+  </div>
+</div></section>
+<section class="pricing reveal" id="pricing"><div class="container">
+  <div class="section-header"><h2>Choose your plan</h2><p>Start free, upgrade when you grow. No credit card required.</p></div>
+  <div class="pricing-grid">
+    <div class="pricing-card">
+      <div class="plan-name">Free</div>
+      <div class="plan-desc-sub">Try it out, no card required</div>
+      <div class="plan-price"><span class="currency">$</span>0 <span class="period">/mo</span></div>
+      <div class="plan-includes">Includes</div>
+      <ul class="plan-features">
+        <li><span class="check">✓</span> 1 feed</li>
+        <li><span class="check">✓</span> 3 products in posts</li>
+        <li><span class="check">✓</span> Grid layout</li>
+        <li><span class="check">✓</span> Smart search</li>
+        <li><span class="check">✓</span> Manual sync</li>
+      </ul>
+      <a href="https://wordpress.org/plugins/myfeeds/" class="plan-cta cta-outline">Download Free</a>
+    </div>
+    <div class="pricing-card featured">
+      <div class="card-badge popular">MOST POPULAR</div>
+      <div class="plan-name">Pro</div>
+      <div class="plan-desc-sub">For serious affiliate bloggers</div>
+      <div class="plan-price"><span class="currency">$</span>19 <span class="period">/mo</span></div>
+      <div class="plan-includes">Everything in Free, plus</div>
+      <ul class="plan-features">
+        <li><span class="check blue">✓</span> Up to 5 feeds</li>
+        <li><span class="check blue">✓</span> Unlimited products</li>
+        <li><span class="check blue">✓</span> Carousel layout</li>
+        <li><span class="check blue">✓</span> Daily auto-sync</li>
+        <li><span class="check blue">✓</span> Quick sync</li>
+        <li><span class="check blue">✓</span> Email support</li>
+      </ul>
+      <a href="https://wordpress.org/plugins/myfeeds/" class="plan-cta cta-primary">Start 3-Day Free Trial</a>
+    </div>
+    <div class="pricing-card">
+      <div class="card-badge value">BEST VALUE</div>
+      <div class="plan-name">Premium</div>
+      <div class="plan-desc-sub">Full creative control</div>
+      <div class="plan-price"><span class="currency">$</span>39 <span class="period">/mo</span></div>
+      <div class="plan-includes">Everything in Pro, plus</div>
+      <ul class="plan-features">
+        <li><span class="check blue">✓</span> Unlimited feeds</li>
+        <li><span class="check blue">✓</span> Card design editor</li>
+        <li><span class="check blue">✓</span> Google Fonts</li>
+        <li><span class="check blue">✓</span> Custom font upload</li>
+        <li><span class="check blue">✓</span> Drag & drop element order</li>
+        <li><span class="check blue">✓</span> Priority support</li>
+      </ul>
+      <a href="https://wordpress.org/plugins/myfeeds/" class="plan-cta cta-gradient-border">Start 3-Day Free Trial</a>
+    </div>
+  </div>
+  <p style="text-align:center;color:var(--text-muted);font-size:.85rem;margin-top:32px;max-width:480px;margin-left:auto;margin-right:auto;line-height:1.5">All buttons lead to the WordPress.org plugin page. Install the free plugin first — you can upgrade to Pro or Premium directly from your WordPress dashboard.</p>
+</div></section>
+<section class="networks reveal"><div class="container">
+  <h3>Supported Networks</h3>
+  <div class="network-badges">
+    <span class="network-badge active">AWIN</span>
+    <span class="network-badge active">Webgains</span>
+    <span class="network-badge active">TradeDoubler</span>
+    <span class="network-badge active">Rakuten</span>
+    <span class="network-badge active">Admitad</span>
+    <span class="network-badge soon">Amazon (coming soon)</span>
+    <span class="network-badge soon">eBay (coming soon)</span>
+  </div>
+</div></section>
+<footer><div class="container">
+  <div class="footer-brand">MyFeeds</div>
+  <p style="color:var(--text-secondary);font-size:.9rem">Affiliate Product Feeds for WordPress</p>
+  <div class="footer-links">
+    <a href="#pricing">Pricing</a>
+    <a href="#features">Features</a>
+    <a href="imprint.html">Imprint</a>
+    <a href="privacy.html">Privacy Policy</a>
+    <a href="terms.html">Terms of Service</a>
+    <a href="refund.html">Refund Policy</a>
+  </div>
+  <div class="footer-copy">© 2026 MyFeeds. All rights reserved.</div>
+</div></footer>
+<script>
+// Hamburger menu
+var hamburger = document.getElementById('hamburger-btn');
+var navLinks = document.querySelector('.nav-links');
+if (hamburger) {
+  hamburger.addEventListener('click', function(){
+    navLinks.classList.toggle('open');
+  });
+  document.addEventListener('click', function(e){
+    if (!hamburger.contains(e.target) && !navLinks.contains(e.target)) {
+      navLinks.classList.remove('open');
+    }
+  });
+}
+
+// Layout toggle
+document.querySelectorAll('.layout-label').forEach(function(label){
+  label.addEventListener('click',function(){
+    document.querySelectorAll('.layout-label').forEach(function(l){l.classList.remove('active')});
+    label.classList.add('active');
+    document.querySelectorAll('.showcase-view').forEach(function(v){v.classList.remove('active')});
+    document.getElementById('view-'+label.dataset.view).classList.add('active');
+  });
+});
+
+// Carousel auto-scroll with arrow controls
+(function(){
+  var track = document.querySelector('.carousel-track');
+  if (!track) return;
+  var cardWidth = 240; // 220px card + 20px gap
+  var pos = 0;
+  var totalCards = track.children.length;
+  var halfWidth = (totalCards / 2) * cardWidth;
+  var speed = 0.5; // pixels per frame
+  var autoScroll;
+
+  function animate() {
+    pos += speed;
+    if (pos >= halfWidth) pos -= halfWidth;
+    if (pos < 0) pos += halfWidth;
+    track.style.transform = 'translateX(' + (-pos) + 'px)';
+    autoScroll = requestAnimationFrame(animate);
+  }
+  autoScroll = requestAnimationFrame(animate);
+
+  var prevBtn = document.getElementById('carousel-prev');
+  var nextBtn = document.getElementById('carousel-next');
+
+  var scrollTarget = null;
+  var scrollStart = null;
+  var scrollDuration = 400;
+  var scrollFrom = 0;
+
+  function smoothJump(delta) {
+    scrollFrom = pos;
+    scrollTarget = pos + delta;
+    scrollStart = performance.now();
+  }
+
+  function easeOut(t) {
+    return 1 - Math.pow(1 - t, 3);
+  }
+
+  // Override animate to handle smooth jumps
+  cancelAnimationFrame(autoScroll);
+  function animateSmooth(now) {
+    if (scrollTarget !== null && scrollStart !== null) {
+      var elapsed = now - scrollStart;
+      var progress = Math.min(elapsed / scrollDuration, 1);
+      pos = scrollFrom + (scrollTarget - scrollFrom) * easeOut(progress);
+      if (progress >= 1) {
+        pos = scrollTarget;
+        if (pos >= halfWidth) pos -= halfWidth;
+        if (pos < 0) pos += halfWidth;
+        scrollTarget = null;
+        scrollStart = null;
+      }
+    } else {
+      pos += speed;
+      if (pos >= halfWidth) pos -= halfWidth;
+    }
+    track.style.transform = 'translateX(' + (-pos) + 'px)';
+    requestAnimationFrame(animateSmooth);
+  }
+  requestAnimationFrame(animateSmooth);
+
+  if (nextBtn) nextBtn.addEventListener('click', function(){ smoothJump(cardWidth); });
+  if (prevBtn) prevBtn.addEventListener('click', function(){ smoothJump(-cardWidth); });
+})();
+</script>
+</body>
+</html>
