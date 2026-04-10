@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Terms of Service – MyFeeds</title>
+<link rel="icon" type="image/png" href="favicon.png">
+<link rel="icon" type="image/x-icon" href="favicon.ico">
+<link rel="apple-touch-icon" href="apple-touch-icon.png">
+<style>
+@font-face{font-family:'Outfit';font-style:normal;font-weight:300 800;font-display:swap;src:url(fonts/outfit-variable.woff2) format('woff2')}
+</style>
+<style>
+*,*::before,*::after{margin:0;padding:0;box-sizing:border-box}
+:root{--bg-deep:#0a0a12;--bg-glass:rgba(255,255,255,0.06);--border-glass:rgba(255,255,255,0.08);--text-primary:#f0eef6;--text-secondary:rgba(240,238,246,0.6);--text-muted:rgba(240,238,246,0.35);--accent-start:#667eea;--gradient-brand:linear-gradient(135deg,#667eea 0%,#764ba2 100%);--radius:16px;--radius-sm:10px}
+html{scroll-behavior:smooth;background:var(--bg-deep);color:var(--text-primary);font-family:'Outfit',sans-serif}
+body{overflow-x:hidden;min-height:100vh;background:var(--bg-deep)}
+.ambient{position:fixed;inset:0;z-index:0;pointer-events:none;overflow:hidden}
+.ambient .orb{position:absolute;border-radius:50%;filter:blur(120px);opacity:.18;animation:float 20s ease-in-out infinite}
+.ambient .orb:nth-child(1){width:500px;height:500px;background:#667eea;top:-10%;left:-10%}
+.ambient .orb:nth-child(2){width:400px;height:400px;background:#764ba2;bottom:-10%;right:-10%;animation-delay:-7s}
+@keyframes float{0%,100%{transform:translate(0,0) scale(1)}33%{transform:translate(30px,-40px) scale(1.05)}66%{transform:translate(-20px,30px) scale(.95)}}
+body::after{content:'';position:fixed;inset:0;z-index:1;pointer-events:none;opacity:.03;background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E")}
+nav{position:fixed;top:0;left:0;right:0;z-index:100;padding:16px 0;backdrop-filter:blur(20px);background:rgba(10,10,18,0.7);border-bottom:1px solid var(--border-glass)}
+nav .container{display:flex;align-items:center;justify-content:space-between;max-width:1200px}
+.nav-logo{display:flex;align-items:center;gap:12px;text-decoration:none;color:var(--text-primary)}
+.nav-logo img{width:36px;height:36px;border-radius:8px}
+.nav-logo span{font-weight:700;font-size:1.15rem;letter-spacing:-.02em}
+.nav-links{display:flex;gap:32px;align-items:center}
+.nav-links a{color:var(--text-secondary);text-decoration:none;font-size:.9rem;font-weight:500;transition:color .2s}
+.nav-links a:hover{color:var(--text-primary)}
+.btn-primary{display:inline-flex;align-items:center;padding:8px 20px;border-radius:var(--radius-sm);font-weight:600;font-size:.85rem;text-decoration:none;background:var(--gradient-brand);color:#fff;box-shadow:0 4px 24px rgba(102,126,234,.3);transition:all .25s}
+.btn-primary:hover{transform:translateY(-2px);box-shadow:0 8px 32px rgba(102,126,234,.45)}
+.hamburger{display:none;background:none;border:none;cursor:pointer;padding:8px}
+.hamburger svg{width:24px;height:24px;stroke:var(--text-primary);stroke-width:2;fill:none}
+@media(max-width:768px){.nav-links{display:none;position:absolute;top:100%;left:0;right:0;background:rgba(10,10,18,0.95);backdrop-filter:blur(20px);flex-direction:column;padding:20px 24px;gap:16px;border-bottom:1px solid var(--border-glass)}.nav-links.open{display:flex}.hamburger{display:block}}
+.container{max-width:900px;margin:0 auto;padding:0 24px;position:relative;z-index:2}
+.legal-page{padding:120px 0 80px}
+.legal-page h1{font-size:2rem;font-weight:700;margin-bottom:8px;letter-spacing:-.03em}
+.legal-page .last-updated{color:var(--text-muted);font-size:.85rem;margin-bottom:40px}
+.legal-page h2{font-size:1.25rem;font-weight:600;margin:36px 0 12px;color:var(--text-primary)}
+.legal-page p,.legal-page li{color:var(--text-secondary);font-size:.95rem;line-height:1.7;margin-bottom:12px}
+.legal-page ul,.legal-page ol{padding-left:24px;margin-bottom:16px}
+.legal-page li{margin-bottom:6px}
+.legal-page a{color:var(--accent-start);text-decoration:none}
+.legal-page a:hover{text-decoration:underline}
+footer{border-top:1px solid var(--border-glass);padding:48px 0;text-align:center}
+footer .container{max-width:1200px}
+footer .footer-brand{font-size:1.2rem;font-weight:700;margin-bottom:8px}
+footer .footer-links{display:flex;gap:24px;justify-content:center;flex-wrap:wrap;margin:16px 0}
+footer .footer-links a{color:var(--text-secondary);text-decoration:none;font-size:.85rem;transition:color .2s}
+footer .footer-links a:hover{color:var(--text-primary)}
+footer .footer-copy{color:var(--text-muted);font-size:.8rem;margin-top:16px}
+</style>
+</head>
+<body>
+<div class="ambient"><div class="orb"></div><div class="orb"></div></div>
+<nav><div class="container" style="max-width:1200px">
+  <a href="/" class="nav-logo"><img src="logo.png" alt="MyFeeds"><span>MyFeeds</span></a>
+  <button class="hamburger" id="hamburger-btn"><svg viewBox="0 0 24 24"><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="18" x2="21" y2="18"/></svg></button>
+  <div class="nav-links">
+    <a href="/#features">Features</a>
+    <a href="/#pricing">Pricing</a>
+    <a href="https://wordpress.org/plugins/myfeeds/" class="btn-primary">Get Started</a>
+  </div>
+</div></nav>
+
+<div class="container">
+<div class="legal-page">
+
+<h1>Terms of Service</h1>
+<p class="last-updated">Last updated: April 9, 2026</p>
+
+<h2>1. Scope and Provider</h2>
+<p>These Terms of Service ("Terms") govern the use of the MyFeeds WordPress plugin and the website myfeeds.site ("Service"), operated by Marlon Weber, Kirchheimer Allee 13, 85586 Poing, Germany ("Provider", "we", "us").</p>
+<p>By installing the MyFeeds plugin or purchasing a subscription, you ("User", "you") agree to these Terms. If you do not agree, do not use the Service.</p>
+
+<h2>2. Description of Service</h2>
+<p>MyFeeds is a WordPress plugin that imports affiliate product feeds from external networks and stores them locally in the user's WordPress database. The plugin provides a Gutenberg block for displaying products in blog posts and pages. MyFeeds is offered in three tiers: Free, Pro ($19/month), and Premium ($39/month).</p>
+
+<h2>3. Account and Registration</h2>
+<p>Paid plans require a Freemius account, which is created automatically when you purchase a subscription through the in-plugin checkout. You are responsible for maintaining the confidentiality of your account credentials and for all activities that occur under your account.</p>
+
+<h2>4. Free Plan</h2>
+<p>The free version of MyFeeds is licensed under the GNU General Public License v2 or later (GPLv2+). You may use, modify, and redistribute it in accordance with the GPLv2+ license. The free plan includes limited features as described on the pricing page.</p>
+
+<h2>5. Paid Subscriptions</h2>
+<p>Pro and Premium plans are billed monthly through Freemius. Subscriptions renew automatically each month unless cancelled. You may cancel your subscription at any time from the Manage Plan page inside the plugin or through your Freemius account. Cancellation takes effect at the end of the current billing period.</p>
+<p>We reserve the right to change subscription prices. Existing subscribers will be notified at least 30 days before any price change takes effect. You may cancel before the new price applies.</p>
+
+<h2>6. Free Trial</h2>
+<p>Paid plans may include a 3-day free trial. A valid payment method is required to start the trial. If you do not cancel before the trial ends, your subscription will automatically convert to a paid plan at the applicable rate.</p>
+
+<h2>7. Right of Withdrawal (EU Consumers)</h2>
+<p>If you are a consumer within the European Union, you have the right to withdraw from the contract within 14 days of purchase without giving any reason. To exercise this right, contact us at <a href="mailto:support@myfeeds.site">support@myfeeds.site</a> with a clear statement of your decision to withdraw. See our <a href="refund.html">Refund Policy</a> for details.</p>
+<p>By downloading and using the digital product during the withdrawal period, you acknowledge that you may lose your right of withdrawal once the digital content has been fully provided, in accordance with Art. 16(m) of Directive 2011/83/EU, provided you gave your prior express consent.</p>
+
+<h2>8. Plan Changes and Downgrades</h2>
+<p>You may upgrade or downgrade your plan at any time from within the plugin. When downgrading, your data remains intact. If you exceed the lower plan's limits (e.g., number of feeds), you will be asked to choose which feeds to keep active. Inactive feeds stop syncing but their products remain visible on your site.</p>
+
+<h2>9. Intellectual Property</h2>
+<p>The free version of MyFeeds is released under GPLv2+. Premium features, design assets, and proprietary code included in Pro and Premium plans remain the intellectual property of the Provider and are licensed, not sold. You may not redistribute, resell, or sublicense Pro or Premium versions of the plugin.</p>
+
+<h2>10. User Obligations</h2>
+<p>You agree to use MyFeeds only for lawful purposes and in compliance with applicable laws, including affiliate network terms of service. You are solely responsible for ensuring that your use of affiliate product data complies with the terms of the respective affiliate network (e.g., AWIN, Webgains). We do not review, endorse, or guarantee the accuracy of imported product data.</p>
+
+<h2>11. Limitation of Liability</h2>
+<p>The Service is provided "as is" without warranties of any kind, express or implied. To the maximum extent permitted by applicable law:</p>
+<ul>
+  <li>We are not liable for any indirect, incidental, special, or consequential damages arising from the use or inability to use the Service.</li>
+  <li>Our total liability for any claim related to the Service shall not exceed the amount you paid us in the 12 months preceding the claim.</li>
+  <li>We are not liable for data loss, lost profits, or business interruption caused by the plugin, including import failures, data corruption, or incompatibilities with other plugins or themes.</li>
+</ul>
+<p>This limitation does not apply to liability for intentional misconduct or gross negligence, or to mandatory statutory liability under German law (e.g., § 309 Nr. 7 BGB).</p>
+
+<h2>12. Availability</h2>
+<p>We strive to keep the Service available and functional, but do not guarantee uninterrupted availability. The plugin runs entirely on your own WordPress server — we do not control your hosting environment, server performance, or third-party dependencies.</p>
+
+<h2>13. Termination</h2>
+<p>You may stop using MyFeeds at any time by deactivating and deleting the plugin. We may terminate or suspend access to paid features if you violate these Terms, subject to reasonable notice where possible.</p>
+
+<h2>14. Changes to These Terms</h2>
+<p>We may update these Terms from time to time. Changes will be posted on this page with an updated "Last updated" date. Continued use of the Service after changes constitutes acceptance of the new Terms.</p>
+
+<h2>15. Governing Law and Jurisdiction</h2>
+<p>These Terms are governed by the laws of the Federal Republic of Germany. If you are a consumer within the EU, you also retain the protection of the mandatory provisions of the law of your country of residence. The place of jurisdiction for merchants is Munich, Germany. For consumers, the statutory provisions apply.</p>
+
+<h2>16. Severability</h2>
+<p>If any provision of these Terms is held to be invalid or unenforceable, the remaining provisions shall continue in full force and effect.</p>
+
+<h2>17. Contact</h2>
+<p>For questions about these Terms, contact us at <a href="mailto:support@myfeeds.site">support@myfeeds.site</a>.</p>
+
+</div>
+</div>
+
+<footer><div class="container" style="max-width:1200px">
+  <div class="footer-brand">MyFeeds</div>
+  <p style="color:var(--text-secondary);font-size:.9rem">Affiliate Product Feeds for WordPress</p>
+  <div class="footer-links">
+    <a href="/#pricing">Pricing</a>
+    <a href="/#features">Features</a>
+    <a href="imprint.html">Imprint</a>
+    <a href="privacy.html">Privacy Policy</a>
+    <a href="terms.html">Terms of Service</a>
+    <a href="refund.html">Refund Policy</a>
+  </div>
+  <div class="footer-copy">© 2026 MyFeeds. All rights reserved.</div>
+</div></footer>
+<script>var h=document.getElementById('hamburger-btn'),n=document.querySelector('.nav-links');if(h){h.addEventListener('click',function(){n.classList.toggle('open')});document.addEventListener('click',function(e){if(!h.contains(e.target)&&!n.contains(e.target))n.classList.remove('open')})}</script>
+</body>
+</html>
