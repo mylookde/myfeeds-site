@@ -146,7 +146,14 @@ nav .container{display:flex;align-items:center;justify-content:space-between}
 .feature-header .emoji.yellow{background:rgba(251,191,36,.15)}
 .feature-header h3{font-size:1.15rem;font-weight:700}
 .feature-card p{color:var(--text-secondary);font-size:.9rem;line-height:1.55}
+
+/* ─── Pricing ─── */
 .pricing{padding:60px 0}
+.pricing-toggle{display:inline-flex;align-items:center;border-radius:999px;background:var(--bg-glass);border:1px solid var(--border-glass);padding:4px;margin:0 auto 36px;position:relative;left:50%;transform:translateX(-50%)}
+.pricing-toggle .toggle-tab{padding:10px 24px;border-radius:999px;font-size:.9rem;font-weight:600;color:var(--text-muted);cursor:pointer;transition:all .3s;white-space:nowrap;user-select:none}
+.pricing-toggle .toggle-tab.active{background:var(--gradient-brand);color:#fff;box-shadow:0 2px 12px rgba(102,126,234,.35)}
+.pricing-toggle .toggle-tab .save-text{color:var(--accent-green);font-weight:700}
+
 .pricing-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:24px;align-items:start}
 @media(max-width:768px){.pricing-grid{grid-template-columns:1fr;max-width:420px;margin:0 auto}}
 .pricing-card{background:var(--bg-glass);border:1px solid var(--border-glass);border-radius:var(--radius);padding:36px 32px;position:relative;transition:all .3s}
@@ -160,6 +167,7 @@ nav .container{display:flex;align-items:center;justify-content:space-between}
 .pricing-card .plan-price{font-size:2.8rem;font-weight:800;letter-spacing:-.03em;margin-bottom:4px}
 .pricing-card .plan-price .currency{font-size:1.6rem;vertical-align:super;margin-right:2px}
 .pricing-card .plan-price .period{font-size:.9rem;font-weight:400;color:var(--text-muted)}
+.pricing-card .plan-price .monthly-equiv{display:block;font-size:.8rem;font-weight:400;color:var(--text-muted);margin-top:2px}
 .pricing-card .plan-includes{font-size:.75rem;text-transform:uppercase;letter-spacing:.1em;color:var(--accent-start);font-weight:600;margin:24px 0 12px}
 .pricing-card .plan-features{list-style:none;margin-bottom:32px}
 .pricing-card .plan-features li{padding:8px 0;font-size:.9rem;color:var(--text-secondary);display:flex;align-items:flex-start;gap:10px;border-bottom:1px solid rgba(255,255,255,.04)}
@@ -174,6 +182,7 @@ nav .container{display:flex;align-items:center;justify-content:space-between}
 .pricing-card .plan-cta.cta-gradient-border{border:none;background:transparent;position:relative;z-index:1;color:var(--text-primary)}
 .pricing-card .plan-cta.cta-gradient-border::before{content:'';position:absolute;inset:0;border-radius:var(--radius-sm);padding:2px;background:linear-gradient(135deg,#a78bfa,#ec4899);-webkit-mask:linear-gradient(#fff 0 0) content-box,linear-gradient(#fff 0 0);-webkit-mask-composite:xor;mask-composite:exclude;z-index:-1}
 .pricing-card .plan-cta.cta-gradient-border:hover{background:rgba(167,139,250,.08)}
+
 .networks{padding:40px 0 60px;text-align:center}
 .networks h3{font-size:1rem;text-transform:uppercase;letter-spacing:.12em;color:var(--text-muted);font-weight:600;margin-bottom:24px}
 .network-badges{display:flex;gap:16px;justify-content:center;flex-wrap:wrap}
@@ -182,7 +191,7 @@ nav .container{display:flex;align-items:center;justify-content:space-between}
 .network-badge.soon{opacity:.35}
 footer{border-top:1px solid var(--border-glass);padding:48px 0;text-align:center}
 footer .footer-brand{font-size:1.2rem;font-weight:700;margin-bottom:8px}
-footer .footer-links{display:flex;gap:24px;justify-content:center;margin:16px 0;flex-wrap:wrap}
+footer .footer-links{display:flex;gap:24px;justify-content:center;flex-wrap:wrap;margin:16px 0}
 footer .footer-links a{color:var(--text-secondary);text-decoration:none;font-size:.85rem;transition:color .2s}
 footer .footer-links a:hover{color:var(--text-primary)}
 @media(max-width:480px){footer .footer-links{display:grid;grid-template-columns:1fr 1fr;gap:12px 24px;justify-items:center}}
@@ -261,6 +270,12 @@ footer .footer-copy{color:var(--text-muted);font-size:.8rem;margin-top:16px}
 </div></section>
 <section class="pricing reveal" id="pricing"><div class="container">
   <div class="section-header"><h2>Choose your plan</h2><p>Start free, upgrade when you grow. No credit card required.</p></div>
+  
+  <div class="pricing-toggle" id="pricing-toggle">
+    <span class="toggle-tab" id="tab-monthly">Monthly</span>
+    <span class="toggle-tab active" id="tab-yearly">Annual — <span class="save-text">Save 27%</span></span>
+  </div>
+
   <div class="pricing-grid">
     <div class="pricing-card">
       <div class="plan-name">Free</div>
@@ -280,7 +295,10 @@ footer .footer-copy{color:var(--text-muted);font-size:.8rem;margin-top:16px}
       <div class="card-badge popular">MOST POPULAR</div>
       <div class="plan-name">Pro</div>
       <div class="plan-desc-sub">For serious affiliate bloggers</div>
-      <div class="plan-price"><span class="currency">$</span>19 <span class="period">/mo</span></div>
+      <div class="plan-price" id="price-pro">
+        <span class="currency">$</span><span class="price-amount">79</span> <span class="period">/year</span>
+        <span class="monthly-equiv">≈ $6.58/mo</span>
+      </div>
       <div class="plan-includes">Everything in Free, plus</div>
       <ul class="plan-features">
         <li><span class="check blue">✓</span> Up to 5 feeds</li>
@@ -290,13 +308,16 @@ footer .footer-copy{color:var(--text-muted);font-size:.8rem;margin-top:16px}
         <li><span class="check blue">✓</span> Quick sync</li>
         <li><span class="check blue">✓</span> Email support</li>
       </ul>
-      <a href="https://wordpress.org/plugins/myfeeds/" class="plan-cta cta-primary">Start 3-Day Free Trial</a>
+      <a href="https://wordpress.org/plugins/myfeeds/" class="plan-cta cta-primary">Start 7-Day Free Trial</a>
     </div>
     <div class="pricing-card">
       <div class="card-badge value">BEST VALUE</div>
       <div class="plan-name">Premium</div>
       <div class="plan-desc-sub">Full creative control</div>
-      <div class="plan-price"><span class="currency">$</span>39 <span class="period">/mo</span></div>
+      <div class="plan-price" id="price-premium">
+        <span class="currency">$</span><span class="price-amount">149</span> <span class="period">/year</span>
+        <span class="monthly-equiv">≈ $12.42/mo</span>
+      </div>
       <div class="plan-includes">Everything in Pro, plus</div>
       <ul class="plan-features">
         <li><span class="check blue">✓</span> Unlimited feeds</li>
@@ -306,7 +327,7 @@ footer .footer-copy{color:var(--text-muted);font-size:.8rem;margin-top:16px}
         <li><span class="check blue">✓</span> Drag & drop element order</li>
         <li><span class="check blue">✓</span> Priority support</li>
       </ul>
-      <a href="https://wordpress.org/plugins/myfeeds/" class="plan-cta cta-gradient-border">Start 3-Day Free Trial</a>
+      <a href="https://wordpress.org/plugins/myfeeds/" class="plan-cta cta-gradient-border">Start 7-Day Free Trial</a>
     </div>
   </div>
   <p style="text-align:center;color:var(--text-muted);font-size:.85rem;margin-top:32px;max-width:480px;margin-left:auto;margin-right:auto;line-height:1.5">All buttons lead to the WordPress.org plugin page. Install the free plugin first — you can upgrade to Pro or Premium directly from your WordPress dashboard.</p>
@@ -359,15 +380,40 @@ document.querySelectorAll('.layout-label').forEach(function(label){
   });
 });
 
+// Pricing toggle (pill tabs)
+(function(){
+  var tabMonthly = document.getElementById('tab-monthly');
+  var tabYearly = document.getElementById('tab-yearly');
+  var pricePro = document.getElementById('price-pro');
+  var pricePremium = document.getElementById('price-premium');
+
+  function setMonthly() {
+    tabMonthly.classList.add('active');
+    tabYearly.classList.remove('active');
+    pricePro.innerHTML = '<span class="currency">$</span><span class="price-amount">9</span> <span class="period">/mo</span>';
+    pricePremium.innerHTML = '<span class="currency">$</span><span class="price-amount">17</span> <span class="period">/mo</span>';
+  }
+
+  function setYearly() {
+    tabYearly.classList.add('active');
+    tabMonthly.classList.remove('active');
+    pricePro.innerHTML = '<span class="currency">$</span><span class="price-amount">79</span> <span class="period">/year</span><span class="monthly-equiv">\u2248 $6.58/mo</span>';
+    pricePremium.innerHTML = '<span class="currency">$</span><span class="price-amount">149</span> <span class="period">/year</span><span class="monthly-equiv">\u2248 $12.42/mo</span>';
+  }
+
+  tabMonthly.addEventListener('click', setMonthly);
+  tabYearly.addEventListener('click', setYearly);
+})();
+
 // Carousel auto-scroll with arrow controls
 (function(){
   var track = document.querySelector('.carousel-track');
   if (!track) return;
-  var cardWidth = 240; // 220px card + 20px gap
+  var cardWidth = 240;
   var pos = 0;
   var totalCards = track.children.length;
   var halfWidth = (totalCards / 2) * cardWidth;
-  var speed = 0.5; // pixels per frame
+  var speed = 0.5;
 
   var scrollTarget = null;
   var scrollStart = null;
