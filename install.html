@@ -81,14 +81,14 @@ footer .footer-copy{color:var(--text-muted);font-size:.8rem;margin-top:16px}
 <div class="install-page">
 
 <h1>Installation Guide</h1>
-<p class="subtitle">Get MyFeeds up and running on your WordPress site in under 3 minutes. No developer knowledge required.</p>
+<p class="subtitle">Your download is starting automatically. While you wait, here's how to install MyFeeds in under 3 minutes — no developer knowledge required.</p>
 
 <div class="download-box">
   <div class="download-info">
     <strong>MyFeeds Free Plugin</strong>
-    <span>Version 1.0.0 · WordPress 5.8+ · PHP 7.4+</span>
+    <span id="download-status">Download starting… check your Downloads folder.</span>
   </div>
-  <a href="https://fast-api.freemius.com/v1/developers/25947/stores/9976/plugins/21336/tags/118216.zip?is_premium=false" class="btn-primary">Download ZIP</a>
+  <a href="https://fast-api.freemius.com/v1/developers/25947/stores/9976/plugins/21336/tags/118216.zip?is_premium=false" class="btn-primary" id="manual-download">Download again</a>
 </div>
 
 <div class="step">
@@ -162,6 +162,30 @@ footer .footer-copy{color:var(--text-muted);font-size:.8rem;margin-top:16px}
   </div>
   <div class="footer-copy">© 2026 MyFeeds. All rights reserved.</div>
 </div></footer>
-<script>var h=document.getElementById('hamburger-btn'),n=document.querySelector('.nav-links');if(h){h.addEventListener('click',function(){n.classList.toggle('open')});document.addEventListener('click',function(e){if(!h.contains(e.target)&&!n.contains(e.target))n.classList.remove('open')})}</script>
+<script>
+var h=document.getElementById('hamburger-btn'),n=document.querySelector('.nav-links');
+if(h){h.addEventListener('click',function(){n.classList.toggle('open')});document.addEventListener('click',function(e){if(!h.contains(e.target)&&!n.contains(e.target))n.classList.remove('open')})}
+
+// Auto-trigger download on page load
+(function(){
+  var downloadUrl = 'https://fast-api.freemius.com/v1/developers/25947/stores/9976/plugins/21336/tags/118216.zip?is_premium=false';
+  var statusEl = document.getElementById('download-status');
+
+  // Trigger the download via hidden iframe (most reliable cross-browser method)
+  window.addEventListener('load', function(){
+    setTimeout(function(){
+      var iframe = document.createElement('iframe');
+      iframe.style.display = 'none';
+      iframe.src = downloadUrl;
+      document.body.appendChild(iframe);
+
+      // Update status after a short delay
+      setTimeout(function(){
+        if(statusEl) statusEl.textContent = 'Download started. Didn\u2019t work? Click the button \u2192';
+      }, 2000);
+    }, 500);
+  });
+})();
+</script>
 </body>
 </html>
