@@ -81,14 +81,14 @@ footer .footer-copy{color:var(--text-muted);font-size:.8rem;margin-top:16px}
 <div class="install-page">
 
 <h1>Installation Guide</h1>
-<p class="subtitle">Your download should start automatically. While you wait, here's how to install MyFeeds in under 3 minutes — no developer knowledge required.</p>
+<p class="subtitle">Get MyFeeds up and running on your WordPress site in under 3 minutes. Download the plugin below, then follow the steps.</p>
 
 <div class="download-box">
   <div class="download-info">
     <strong>MyFeeds Free Plugin</strong>
-    <span id="download-status">Download started — check your Downloads folder.</span>
+    <span>Version 1.0.0 · WordPress 5.8+ · PHP 7.4+</span>
   </div>
-  <a href="https://fast-api.freemius.com/v1/developers/25947/stores/9976/plugins/21336/tags/118216.zip?is_premium=false" class="btn-primary" id="manual-download" download="myfeeds.zip">Download again</a>
+  <a href="https://fast-api.freemius.com/v1/developers/25947/stores/9976/plugins/21336/tags/118216.zip?is_premium=false" class="btn-primary" download="myfeeds.zip">Download Free Plugin</a>
 </div>
 
 <div class="step">
@@ -165,30 +165,6 @@ footer .footer-copy{color:var(--text-muted);font-size:.8rem;margin-top:16px}
 <script>
 var h=document.getElementById('hamburger-btn'),n=document.querySelector('.nav-links');
 if(h){h.addEventListener('click',function(){n.classList.toggle('open')});document.addEventListener('click',function(e){if(!h.contains(e.target)&&!n.contains(e.target))n.classList.remove('open')})}
-
-// Fallback: If user lands on this page directly (not from clicking Download button on index),
-// trigger the download anyway so they get the file.
-(function(){
-  // Detect if user came from index via download button (sessionStorage flag) OR direct visit
-  var downloadUrl = 'https://fast-api.freemius.com/v1/developers/25947/stores/9976/plugins/21336/tags/118216.zip?is_premium=false';
-  var statusEl = document.getElementById('download-status');
-  var fromIndex = document.referrer && document.referrer.indexOf(window.location.host) !== -1;
-
-  if (!fromIndex) {
-    // User landed here directly — trigger download via hidden link
-    window.addEventListener('load', function(){
-      setTimeout(function(){
-        var link = document.createElement('a');
-        link.href = downloadUrl;
-        link.setAttribute('download', 'myfeeds.zip');
-        link.style.display = 'none';
-        document.body.appendChild(link);
-        link.click();
-        document.body.removeChild(link);
-      }, 500);
-    });
-  }
-})();
 </script>
 </body>
 </html>
