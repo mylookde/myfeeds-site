@@ -81,14 +81,14 @@ footer .footer-copy{color:var(--text-muted);font-size:.8rem;margin-top:16px}
 <div class="install-page">
 
 <h1>Installation Guide</h1>
-<p class="subtitle">Your download is starting automatically. While you wait, here's how to install MyFeeds in under 3 minutes — no developer knowledge required.</p>
+<p class="subtitle">Your download should start automatically. While you wait, here's how to install MyFeeds in under 3 minutes — no developer knowledge required.</p>
 
 <div class="download-box">
   <div class="download-info">
     <strong>MyFeeds Free Plugin</strong>
-    <span id="download-status">Download starting… check your Downloads folder.</span>
+    <span id="download-status">Download started — check your Downloads folder.</span>
   </div>
-  <a href="https://fast-api.freemius.com/v1/developers/25947/stores/9976/plugins/21336/tags/118216.zip?is_premium=false" class="btn-primary" id="manual-download">Download again</a>
+  <a href="https://fast-api.freemius.com/v1/developers/25947/stores/9976/plugins/21336/tags/118216.zip?is_premium=false" class="btn-primary" id="manual-download" download="myfeeds.zip">Download again</a>
 </div>
 
 <div class="step">
@@ -166,25 +166,28 @@ footer .footer-copy{color:var(--text-muted);font-size:.8rem;margin-top:16px}
 var h=document.getElementById('hamburger-btn'),n=document.querySelector('.nav-links');
 if(h){h.addEventListener('click',function(){n.classList.toggle('open')});document.addEventListener('click',function(e){if(!h.contains(e.target)&&!n.contains(e.target))n.classList.remove('open')})}
 
-// Auto-trigger download on page load
+// Fallback: If user lands on this page directly (not from clicking Download button on index),
+// trigger the download anyway so they get the file.
 (function(){
+  // Detect if user came from index via download button (sessionStorage flag) OR direct visit
   var downloadUrl = 'https://fast-api.freemius.com/v1/developers/25947/stores/9976/plugins/21336/tags/118216.zip?is_premium=false';
   var statusEl = document.getElementById('download-status');
+  var fromIndex = document.referrer && document.referrer.indexOf(window.location.host) !== -1;
 
-  // Trigger the download via hidden iframe (most reliable cross-browser method)
-  window.addEventListener('load', function(){
-    setTimeout(function(){
-      var iframe = document.createElement('iframe');
-      iframe.style.display = 'none';
-      iframe.src = downloadUrl;
-      document.body.appendChild(iframe);
-
-      // Update status after a short delay
+  if (!fromIndex) {
+    // User landed here directly — trigger download via hidden link
+    window.addEventListener('load', function(){
       setTimeout(function(){
-        if(statusEl) statusEl.textContent = 'Download started. Didn\u2019t work? Click the button \u2192';
-      }, 2000);
-    }, 500);
-  });
+        var link = document.createElement('a');
+        link.href = downloadUrl;
+        link.setAttribute('download', 'myfeeds.zip');
+        link.style.display = 'none';
+        document.body.appendChild(link);
+        link.click();
+        document.body.removeChild(link);
+      }, 500);
+    });
+  }
 })();
 </script>
 </body>
