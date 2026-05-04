@@ -296,8 +296,7 @@ footer .footer-copy{color:var(--text-muted);font-size:.8rem;margin-top:16px}
       <div class="plan-name">Pro</div>
       <div class="plan-desc-sub">For serious affiliate bloggers</div>
       <div class="plan-price" id="price-pro">
-        <span class="currency">$</span><span class="price-amount">79</span> <span class="period">/year</span>
-        <span class="monthly-equiv">≈ $6.58/mo</span>
+        <span class="currency">$</span><span class="price-amount">6.58</span> <span class="period">/mo</span>
       </div>
       <div class="plan-includes">Everything in Free, plus</div>
       <ul class="plan-features">
@@ -315,8 +314,7 @@ footer .footer-copy{color:var(--text-muted);font-size:.8rem;margin-top:16px}
       <div class="plan-name">Premium</div>
       <div class="plan-desc-sub">Full creative control</div>
       <div class="plan-price" id="price-premium">
-        <span class="currency">$</span><span class="price-amount">149</span> <span class="period">/year</span>
-        <span class="monthly-equiv">≈ $12.42/mo</span>
+        <span class="currency">$</span><span class="price-amount">12.42</span> <span class="period">/mo</span>
       </div>
       <div class="plan-includes">Everything in Pro, plus</div>
       <ul class="plan-features">
@@ -399,8 +397,8 @@ document.querySelectorAll('.layout-label').forEach(function(label){
   function setYearly() {
     tabYearly.classList.add('active');
     tabMonthly.classList.remove('active');
-    pricePro.innerHTML = '<span class="currency">$</span><span class="price-amount">79</span> <span class="period">/year</span><span class="monthly-equiv">\u2248 $6.58/mo</span>';
-    pricePremium.innerHTML = '<span class="currency">$</span><span class="price-amount">149</span> <span class="period">/year</span><span class="monthly-equiv">\u2248 $12.42/mo</span>';
+    pricePro.innerHTML = '<span class="currency">$</span><span class="price-amount">6.58</span> <span class="period">/mo</span>';
+    pricePremium.innerHTML = '<span class="currency">$</span><span class="price-amount">12.42</span> <span class="period">/mo</span>';
   }
 
   tabMonthly.addEventListener('click', setMonthly);
