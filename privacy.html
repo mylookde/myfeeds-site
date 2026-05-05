@@ -83,7 +83,7 @@ footer .footer-copy{color:var(--text-muted);font-size:.8rem;margin-top:16px}
 <div class="legal-page">
 
 <h1>Privacy Policy</h1>
-<p class="last-updated">Last updated: April 9, 2026</p>
+<p class="last-updated">Last updated: May 5, 2026</p>
 
 <h2>1. Data Controller</h2>
 <div class="info-box">
@@ -101,11 +101,13 @@ footer .footer-copy{color:var(--text-muted);font-size:.8rem;margin-top:16px}
 <h3>3.1 Hosting</h3>
 <p>This website is hosted on GitHub Pages, a service provided by GitHub, Inc. (a subsidiary of Microsoft Corporation). When you visit this website, GitHub may collect and process your IP address and other technical data in server log files. This is necessary for the delivery of the website and constitutes a legitimate interest pursuant to Art. 6(1)(f) GDPR. For more information, see <a href="https://docs.github.com/en/site-policy/privacy-policies/github-general-privacy-statement" target="_blank" rel="noopener">GitHub's Privacy Statement</a>.</p>
 
-<h3>3.2 Fonts</h3>
-<p>This website uses self-hosted fonts. No connection to external font services (such as Google Fonts) is made. All font files are served directly from our own server.</p>
+<h3>3.2 Web Fonts (Google Fonts)</h3>
+<p>This website loads the "Outfit" font family from <strong>Google Fonts</strong>, a service provided by Google Ireland Limited (Gordon House, Barrow Street, Dublin 4, Ireland). When you visit a page on this website, your browser establishes a connection to Google's servers (<code>fonts.googleapis.com</code> and <code>fonts.gstatic.com</code>) to download the font files. As part of that request, your IP address, browser User-Agent string, and the URL of the page you visited are transmitted to Google. Google may log this request.</p>
+<p>Google may transfer this data to servers located outside the European Economic Area, including the United States. Google is certified under the <a href="https://www.dataprivacyframework.gov/" target="_blank" rel="noopener">EU-U.S. Data Privacy Framework</a>, which provides a basis for such transfers under Art. 45 GDPR.</p>
+<p>Legal basis: Art. 6(1)(f) GDPR (legitimate interest in a coherent visual presentation across browsers and devices). For more information, see <a href="https://policies.google.com/privacy" target="_blank" rel="noopener">Google's Privacy Policy</a> and the <a href="https://developers.google.com/fonts/faq/privacy" target="_blank" rel="noopener">Google Fonts privacy FAQ</a>.</p>
 
-<h3>3.3 No Cookies, No Tracking</h3>
-<p>This website does not set cookies, does not use analytics tools, and does not track your behavior. We do not use any advertising or remarketing services on this website.</p>
+<h3>3.3 No Cookies, No Analytics</h3>
+<p>This website does not set first-party cookies, does not use Google Analytics or any other analytics tool, and does not run any advertising or remarketing pixels. We do not track your behaviour across pages or sessions.</p>
 
 <h2>4. MyFeeds WordPress Plugin</h2>
 
@@ -125,6 +127,32 @@ footer .footer-copy{color:var(--text-muted);font-size:.8rem;margin-top:16px}
 
 <h3>4.3 External Feed Downloads</h3>
 <p>The plugin downloads product feeds from affiliate network URLs that the user configures. These downloads are server-to-server requests from the user's WordPress server to the affiliate network (e.g., AWIN). No user or visitor data from the WordPress site is transmitted to affiliate networks through the plugin.</p>
+
+<h3>4.4 Premium Click Analytics (Pro &amp; Premium plans)</h3>
+<p>Premium customers can enable a server-side click tracker that records which affiliate cards visitors click. When enabled by the WordPress site owner, the plugin stores the following row per click in the site's own database (no external transfer):</p>
+<ul>
+  <li>Post ID, product ID, feed ID, network slug, brand</li>
+  <li>Timestamp of the click</li>
+  <li>An HMAC-SHA-256 hash of the visitor's IP address (the raw IP is never stored)</li>
+  <li>An HMAC-SHA-256 hash of the visitor's browser User-Agent (the raw User-Agent is never stored)</li>
+  <li>The host portion of the referring URL (e.g., <code>example.com</code>) — never the full URL or query parameters</li>
+  <li>A flag marking whether the click came from a logged-in editor (so the site owner can exclude their own clicks from reports)</li>
+</ul>
+<p>Detailed click rows are deleted automatically after the retention window the site owner configures (default: 365 days, minimum 30 days). Aggregated daily totals are kept indefinitely for historical reporting.</p>
+<p>If you operate a WordPress site with this plugin and enable click analytics, you are the data controller for these rows. You must disclose this processing in your own privacy policy. The plugin ships with a ready-to-paste snippet at <em>Tools → Privacy → Policy guide</em> in your WordPress admin.</p>
+<p>Legal basis (for the WordPress site owner toward their visitors): Art. 6(1)(f) GDPR (legitimate interest in measuring affiliate-link performance) or Art. 6(1)(a) GDPR (consent), depending on jurisdiction and any cookie banner in use.</p>
+
+<h3>4.5 Optional Google Analytics 4 Bridge (Premium)</h3>
+<p>Premium customers can optionally route the same click events to <strong>Google Analytics 4</strong> by entering their own GA4 Measurement ID in the plugin settings. This feature is OFF by default and is only activated by the site owner pasting an ID. When activated, the plugin:</p>
+<ul>
+  <li>Loads Google's <code>gtag.js</code> tracking library from <code>https://www.googletagmanager.com/gtag/js</code> on the front-end of the site</li>
+  <li>Sends a "select_item" e-commerce event to the GA4 property each time a visitor clicks an affiliate card</li>
+  <li>Includes the post title, product title, brand, and affiliate network slug in the event payload (no IP, no User-Agent, no email, no name)</li>
+  <li>Skips the event entirely for logged-in editors and devices marked as internal</li>
+</ul>
+<p>Google Analytics 4 is operated by Google Ireland Limited; data may be transferred to Google LLC in the United States. Google is certified under the EU-U.S. Data Privacy Framework. Refer to <a href="https://policies.google.com/privacy" target="_blank" rel="noopener">Google's Privacy Policy</a> for details on Google's processing.</p>
+<p>If you operate a WordPress site and enable this bridge, you are responsible for obtaining valid consent from your visitors before <code>gtag.js</code> loads (typically via a cookie/consent banner). The plugin exposes a filter (<code>myfeeds_ga4_should_emit</code>) so a developer can gate the bridge behind any consent management platform. Legal basis (for the WordPress site owner toward their visitors): Art. 6(1)(a) GDPR (consent), to be obtained before activation on a per-visitor basis.</p>
+<p>The MyFeeds website itself (myfeeds.site) does <strong>not</strong> use Google Analytics 4.</p>
 
 <h2>5. Contact Form</h2>
 <p>If you contact us via email at support@myfeeds.site, we process your email address, name (if provided), and message content to respond to your inquiry. Legal basis: Art. 6(1)(b) GDPR (pre-contractual measures) or Art. 6(1)(f) GDPR (legitimate interest in responding to inquiries). We delete your inquiry data after your request has been fully processed, unless legal retention obligations apply.</p>
