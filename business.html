@@ -113,6 +113,7 @@ nav .container{display:flex;align-items:center;justify-content:space-between}
 .demo-eyebrow{font-size:.75rem;text-transform:uppercase;letter-spacing:.18em;color:#a78bfa;font-weight:700;text-align:center;margin-bottom:12px}
 .demo h2{text-align:center;font-size:2rem;font-weight:700;letter-spacing:-.03em;margin-bottom:14px}
 .demo .demo-subtitle{text-align:center;color:var(--text-secondary);max-width:640px;margin:0 auto 48px;font-size:1.02rem;line-height:1.55}
+.demo-disclaimer{text-align:center;color:var(--text-muted);font-size:.8rem;font-style:italic;margin:18px auto 0;line-height:1.5;max-width:680px}
 
 /* Demo 1: Storefront Design Editor */
 .storefront-demo{display:grid;grid-template-columns:300px 1fr;gap:24px;background:var(--bg-glass);border:1px solid var(--border-glass);border-radius:var(--radius);padding:24px;align-items:stretch}
@@ -135,17 +136,13 @@ nav .container{display:flex;align-items:center;justify-content:space-between}
 
 .storefront-preview{background:#fafafa;border-radius:var(--radius-sm);overflow:hidden;min-height:520px;display:flex;flex-direction:column;color:#1a1a2e;font-family:'Outfit',sans-serif;transition:background .3s}
 .sf-header{padding:14px 20px;background:#fff;border-bottom:1px solid #eee;display:flex;align-items:center;justify-content:space-between}
-.sf-header .sf-shop-name{font-weight:700;font-size:1rem;color:var(--sf-accent,#667eea)}
+.sf-header .sf-shop-name{font-weight:700;font-size:1rem;color:#1a1a2e}
 .sf-header .sf-nav{display:flex;gap:18px;font-size:.78rem;color:#666}
 .sf-body{display:flex;flex:1;gap:14px;padding:16px}
-.sf-body.filter-top{flex-direction:column}
-.sf-filters{background:#fff;border:1px solid #eee;border-radius:8px;padding:14px;font-size:.78rem}
-.sf-body:not(.filter-top) .sf-filters{width:160px;flex-shrink:0}
-.sf-body.filter-top .sf-filters{width:auto;display:flex;gap:10px;align-items:center;padding:10px 14px}
+.sf-body.filter-right{flex-direction:row-reverse}
+.sf-filters{background:#fff;border:1px solid #eee;border-radius:8px;padding:14px;font-size:.78rem;width:160px;flex-shrink:0}
 .sf-filters .sf-filter-title{font-weight:700;color:#1a1a2e;font-size:.7rem;text-transform:uppercase;letter-spacing:.1em;margin-bottom:8px}
-.sf-body.filter-top .sf-filters .sf-filter-title{margin-bottom:0;margin-right:8px}
 .sf-filter-row{display:flex;align-items:center;gap:6px;margin-bottom:6px;color:#666}
-.sf-body.filter-top .sf-filter-row{margin-bottom:0}
 .sf-filter-row .sf-pill{padding:3px 8px;background:#f0f0f5;border-radius:999px;font-size:.7rem}
 .sf-products{display:grid;flex:1;gap:10px}
 .sf-products.cols-3{grid-template-columns:repeat(3,1fr)}
@@ -180,7 +177,15 @@ nav .container{display:flex;align-items:center;justify-content:space-between}
 .dash-chart .chart-legend{display:flex;gap:14px;font-size:.78rem;color:var(--text-muted)}
 .dash-chart .chart-legend span{display:inline-flex;align-items:center;gap:6px}
 .dash-chart .chart-legend .swatch{width:10px;height:10px;border-radius:50%}
-.dash-chart svg{display:block;width:100%;height:200px}
+.chart-stage{position:relative}
+.dash-chart svg{display:block;width:100%;height:200px;cursor:crosshair}
+.chart-tooltip{position:absolute;pointer-events:none;background:rgba(10,10,18,0.96);border:1px solid rgba(255,255,255,0.1);border-radius:10px;padding:10px 14px;font-size:.78rem;color:var(--text-primary);box-shadow:0 8px 24px rgba(0,0,0,0.4);opacity:0;transition:opacity .15s;transform:translate(-50%,-100%);margin-top:-12px;white-space:nowrap;z-index:10}
+.chart-tooltip.visible{opacity:1}
+.chart-tooltip .tt-head{font-weight:700;font-size:.82rem;margin-bottom:6px;color:var(--text-primary)}
+.chart-tooltip .tt-row{display:flex;align-items:center;gap:8px;margin-top:3px}
+.chart-tooltip .tt-row .tt-dot{width:8px;height:8px;border-radius:50%;flex-shrink:0}
+.chart-tooltip .tt-row .tt-label{color:var(--text-muted);font-size:.74rem;min-width:80px}
+.chart-tooltip .tt-row strong{color:var(--text-primary);font-variant-numeric:tabular-nums;font-weight:600}
 .dash-bottom{display:grid;grid-template-columns:1.4fr 1fr;gap:20px}
 @media(max-width:768px){.dash-bottom{grid-template-columns:1fr}}
 .perf-list,.insights{background:rgba(0,0,0,0.25);border:1px solid var(--border-glass);border-radius:var(--radius-sm);padding:18px}
@@ -202,7 +207,7 @@ nav .container{display:flex;align-items:center;justify-content:space-between}
 .card-demo{display:grid;grid-template-columns:300px 1fr;gap:24px;background:var(--bg-glass);border:1px solid var(--border-glass);border-radius:var(--radius);padding:24px;align-items:center}
 @media(max-width:900px){.card-demo{grid-template-columns:1fr}}
 .card-preview-stage{display:flex;justify-content:center;padding:30px 20px;background:rgba(0,0,0,0.2);border-radius:var(--radius-sm);min-height:380px;align-items:center}
-.demo-product-card{width:240px;background:var(--cd-bg,#1a1a2e);border:var(--cd-border-w,1px) solid var(--cd-border,#2e2e44);border-radius:var(--cd-radius,12px);overflow:hidden;box-shadow:var(--cd-shadow,0 4px 16px rgba(0,0,0,0.2));transition:all .25s;font-family:'Outfit',sans-serif}
+.demo-product-card{width:240px;background:var(--cd-bg,#ffffff);border:var(--cd-border-w,1px) solid var(--cd-border,#e5e5ee);border-radius:var(--cd-radius,12px);overflow:hidden;box-shadow:var(--cd-shadow,0 4px 24px rgba(0,0,0,0.08));transition:all .25s;font-family:'Outfit',sans-serif}
 .demo-product-card .dpc-img{height:180px;display:flex;align-items:center;justify-content:center;position:relative;background:linear-gradient(135deg,rgba(102,126,234,.1),rgba(167,139,250,.05))}
 .demo-product-card .dpc-shape{width:80px;height:100px;border-radius:10px;background:linear-gradient(135deg,#a78bfa,#ec4899);position:relative}
 .demo-product-card .dpc-shape::after{content:'';position:absolute;inset:8px;border-radius:6px;background:rgba(255,255,255,.18)}
@@ -210,7 +215,7 @@ nav .container{display:flex;align-items:center;justify-content:space-between}
 .demo-product-card .dpc-info{padding:14px}
 .demo-product-card .dpc-brand{font-size:.7rem;color:#888;text-transform:uppercase;letter-spacing:.08em;margin-bottom:4px}
 .demo-product-card .dpc-brand.hidden{display:none}
-.demo-product-card .dpc-name{font-size:.92rem;font-weight:500;color:var(--cd-text,#f0eef6);margin-bottom:8px}
+.demo-product-card .dpc-name{font-size:.92rem;font-weight:500;color:var(--cd-text,#1a1a2e);margin-bottom:8px}
 .demo-product-card .dpc-price-row{display:flex;align-items:baseline;gap:8px}
 .demo-product-card .dpc-old{font-size:.78rem;color:#888;text-decoration:line-through}
 .demo-product-card .dpc-old.hidden{display:none}
@@ -316,7 +321,7 @@ footer .footer-copy{color:var(--text-muted);font-size:.8rem;margin-top:16px}
 
   <div class="storefront-demo">
     <div class="editor-panel">
-      <h4>Brand color</h4>
+      <h4>Price color</h4>
       <div class="editor-group">
         <div class="color-row" id="sf-colors">
           <div class="color-swatch active" data-color="#667eea" style="background:#667eea"></div>
@@ -331,10 +336,10 @@ footer .footer-copy{color:var(--text-muted);font-size:.8rem;margin-top:16px}
         <h4>Background</h4>
         <div class="color-row" id="sf-bgs">
           <div class="color-swatch active" data-bg="#fafafa" style="background:#fafafa"></div>
-          <div class="color-swatch" data-bg="#ffffff" style="background:#fff;border-color:#ddd"></div>
-          <div class="color-swatch" data-bg="#f5f3ff" style="background:#f5f3ff"></div>
-          <div class="color-swatch" data-bg="#fff7ed" style="background:#fff7ed"></div>
-          <div class="color-swatch" data-bg="#0f172a" style="background:#0f172a"></div>
+          <div class="color-swatch" data-bg="#fef3c7" style="background:#fef3c7"></div>
+          <div class="color-swatch" data-bg="#fce7f3" style="background:#fce7f3"></div>
+          <div class="color-swatch" data-bg="#dbeafe" style="background:#dbeafe"></div>
+          <div class="color-swatch" data-bg="#dcfce7" style="background:#dcfce7"></div>
         </div>
       </div>
 
@@ -349,8 +354,8 @@ footer .footer-copy{color:var(--text-muted);font-size:.8rem;margin-top:16px}
       <div class="editor-group">
         <h4>Filter position</h4>
         <div class="editor-toggle" id="sf-filter-pos">
-          <button class="active" data-pos="left">Sidebar</button>
-          <button data-pos="top">Top bar</button>
+          <button class="active" data-pos="left">Left</button>
+          <button data-pos="right">Right</button>
         </div>
       </div>
 
@@ -386,6 +391,7 @@ footer .footer-copy{color:var(--text-muted);font-size:.8rem;margin-top:16px}
       </div>
     </div>
   </div>
+  <p class="demo-disclaimer">Simplified visualisation — the live plugin offers more controls and may differ in detail from what you see here.</p>
 </div></section>
 
 <section class="demo reveal" id="demo-analytics"><div class="container">
@@ -425,28 +431,34 @@ footer .footer-copy{color:var(--text-muted);font-size:.8rem;margin-top:16px}
           <span><span class="swatch" style="background:#34d399"></span>Conversions</span>
         </div>
       </div>
-      <svg viewBox="0 0 800 200" preserveAspectRatio="none">
-        <defs>
-          <linearGradient id="clickFill" x1="0" x2="0" y1="0" y2="1">
-            <stop offset="0%" stop-color="#667eea" stop-opacity="0.35"/>
-            <stop offset="100%" stop-color="#667eea" stop-opacity="0"/>
-          </linearGradient>
-        </defs>
-        <!-- Horizontal grid lines -->
-        <line x1="0" y1="40" x2="800" y2="40" stroke="rgba(255,255,255,0.05)" stroke-width="1"/>
-        <line x1="0" y1="80" x2="800" y2="80" stroke="rgba(255,255,255,0.05)" stroke-width="1"/>
-        <line x1="0" y1="120" x2="800" y2="120" stroke="rgba(255,255,255,0.05)" stroke-width="1"/>
-        <line x1="0" y1="160" x2="800" y2="160" stroke="rgba(255,255,255,0.05)" stroke-width="1"/>
-        <!-- Clicks area -->
-        <path d="M0,140 L27,135 L54,128 L81,132 L108,118 L135,110 L162,115 L189,98 L216,92 L243,88 L270,78 L297,82 L324,72 L351,68 L378,75 L405,62 L432,55 L459,60 L486,48 L513,52 L540,42 L567,38 L594,45 L621,32 L648,28 L675,35 L702,22 L729,18 L756,24 L783,12 L800,10 L800,200 L0,200 Z"
-              fill="url(#clickFill)"/>
-        <!-- Clicks line -->
-        <path d="M0,140 L27,135 L54,128 L81,132 L108,118 L135,110 L162,115 L189,98 L216,92 L243,88 L270,78 L297,82 L324,72 L351,68 L378,75 L405,62 L432,55 L459,60 L486,48 L513,52 L540,42 L567,38 L594,45 L621,32 L648,28 L675,35 L702,22 L729,18 L756,24 L783,12 L800,10"
-              fill="none" stroke="#667eea" stroke-width="2"/>
-        <!-- Conversions line -->
-        <path d="M0,180 L27,178 L54,175 L81,176 L108,170 L135,168 L162,172 L189,162 L216,160 L243,158 L270,150 L297,154 L324,148 L351,145 L378,150 L405,140 L432,136 L459,140 L486,130 L513,134 L540,128 L567,124 L594,128 L621,118 L648,114 L675,120 L702,108 L729,104 L756,108 L783,98 L800,95"
-              fill="none" stroke="#34d399" stroke-width="2"/>
-      </svg>
+      <div class="chart-stage">
+        <svg viewBox="0 0 800 200" preserveAspectRatio="none" id="dash-svg">
+          <defs>
+            <linearGradient id="clickFill" x1="0" x2="0" y1="0" y2="1">
+              <stop offset="0%" stop-color="#667eea" stop-opacity="0.35"/>
+              <stop offset="100%" stop-color="#667eea" stop-opacity="0"/>
+            </linearGradient>
+          </defs>
+          <line x1="0" y1="40" x2="800" y2="40" stroke="rgba(255,255,255,0.05)" stroke-width="1"/>
+          <line x1="0" y1="80" x2="800" y2="80" stroke="rgba(255,255,255,0.05)" stroke-width="1"/>
+          <line x1="0" y1="120" x2="800" y2="120" stroke="rgba(255,255,255,0.05)" stroke-width="1"/>
+          <line x1="0" y1="160" x2="800" y2="160" stroke="rgba(255,255,255,0.05)" stroke-width="1"/>
+          <path id="click-area" fill="url(#clickFill)"/>
+          <path id="click-line" fill="none" stroke="#667eea" stroke-width="2"/>
+          <path id="conv-line" fill="none" stroke="#34d399" stroke-width="2"/>
+          <g id="hover-marker" style="opacity:0;pointer-events:none;transition:opacity .15s">
+            <line id="hover-line" x1="0" y1="0" x2="0" y2="200" stroke="rgba(255,255,255,0.25)" stroke-width="1" stroke-dasharray="4 4"/>
+            <circle id="hover-dot-click" cx="0" cy="0" r="5" fill="#667eea" stroke="#fff" stroke-width="2"/>
+            <circle id="hover-dot-conv" cx="0" cy="0" r="5" fill="#34d399" stroke="#fff" stroke-width="2"/>
+          </g>
+        </svg>
+        <div class="chart-tooltip" id="chart-tooltip">
+          <div class="tt-head" id="tt-head">Day 1</div>
+          <div class="tt-row"><span class="tt-dot" style="background:#667eea"></span><span class="tt-label">Clicks</span><strong id="tt-clicks">0</strong></div>
+          <div class="tt-row"><span class="tt-dot" style="background:#34d399"></span><span class="tt-label">Conversions</span><strong id="tt-conv">0</strong></div>
+          <div class="tt-row"><span class="tt-dot" style="background:#fbbf24"></span><span class="tt-label">Earnings</span><strong id="tt-rev">$0</strong></div>
+        </div>
+      </div>
     </div>
 
     <div class="dash-bottom">
@@ -479,6 +491,7 @@ footer .footer-copy{color:var(--text-muted);font-size:.8rem;margin-top:16px}
       </div>
     </div>
   </div>
+  <p class="demo-disclaimer">Simplified visualisation with sample numbers — the live dashboard runs on your real click + conversion data and shows more dimensions.</p>
 </div></section>
 
 <section class="demo reveal" id="demo-cards"><div class="container">
@@ -496,14 +509,6 @@ footer .footer-copy{color:var(--text-muted);font-size:.8rem;margin-top:16px}
           <div class="color-swatch" data-accent="#34d399" style="background:#34d399"></div>
           <div class="color-swatch" data-accent="#f59e42" style="background:#f59e42"></div>
           <div class="color-swatch" data-accent="#fbbf24" style="background:#fbbf24"></div>
-        </div>
-      </div>
-
-      <div class="editor-group">
-        <h4>Card theme</h4>
-        <div class="editor-toggle" id="cd-theme">
-          <button class="active" data-theme="dark">Dark</button>
-          <button data-theme="light">Light</button>
         </div>
       </div>
 
@@ -554,12 +559,13 @@ footer .footer-copy{color:var(--text-muted);font-size:.8rem;margin-top:16px}
       </div>
     </div>
   </div>
+  <p class="demo-disclaimer">Simplified visualisation — the live editor exposes more options and may differ in detail from what you see here.</p>
 </div></section>
 
 <section class="cta-section"><div class="container">
   <div class="cta-card">
     <h2>Ready to run your own affiliate shop?</h2>
-    <p>Business is $129/month or $1099/year, with a 7-day free trial. No credit card required to start, cancel any time from your Freemius dashboard.</p>
+    <p>Start with a 7-day free trial. No credit card required to start, cancel any time from your Freemius dashboard.</p>
     <a href="https://checkout.freemius.com/plugin/21336/plan/48994/?trial=paid" class="btn btn-primary">Start 7-Day Free Trial</a>
     <div class="cta-price">or <a href="index.html#pricing" style="color:var(--accent-start);text-decoration:none">compare all plans</a></div>
   </div>
@@ -637,11 +643,7 @@ footer .footer-copy{color:var(--text-muted);font-size:.8rem;margin-top:16px}
   document.querySelectorAll('#sf-filter-pos button').forEach(function(btn){
     btn.addEventListener('click', function(){
       activate(document.getElementById('sf-filter-pos'), btn);
-      if (btn.dataset.pos === 'top') {
-        body.classList.add('filter-top');
-      } else {
-        body.classList.remove('filter-top');
-      }
+      body.classList.toggle('filter-right', btn.dataset.pos === 'right');
     });
   });
 
@@ -673,21 +675,6 @@ footer .footer-copy{color:var(--text-muted);font-size:.8rem;margin-top:16px}
     });
   });
 
-  document.querySelectorAll('#cd-theme button').forEach(function(btn){
-    btn.addEventListener('click', function(){
-      activate(document.getElementById('cd-theme'), btn);
-      if (btn.dataset.theme === 'light') {
-        card.style.setProperty('--cd-bg', '#ffffff');
-        card.style.setProperty('--cd-text', '#1a1a2e');
-        card.style.setProperty('--cd-border', '#e5e5ee');
-      } else {
-        card.style.setProperty('--cd-bg', '#1a1a2e');
-        card.style.setProperty('--cd-text', '#f0eef6');
-        card.style.setProperty('--cd-border', '#2e2e44');
-      }
-    });
-  });
-
   var cdR = document.getElementById('cd-radius');
   var cdRv = document.getElementById('cd-radius-value');
   cdR.addEventListener('input', function(){
@@ -708,6 +695,95 @@ footer .footer-copy{color:var(--text-muted);font-size:.8rem;margin-top:16px}
   document.getElementById('cd-show-strike').addEventListener('change', function(e){
     document.getElementById('cd-strike').classList.toggle('hidden', !e.target.checked);
   });
+})();
+
+// ─── Demo 2: Analytics chart render + hover ───
+(function(){
+  var svg = document.getElementById('dash-svg');
+  if (!svg) return;
+
+  // Sample 30-day data — plausible affiliate progression
+  var data = [
+    {clicks:612, conv:11, rev:48},  {clicks:631, conv:12, rev:52},
+    {clicks:665, conv:13, rev:55},  {clicks:648, conv:12, rev:51},
+    {clicks:712, conv:14, rev:58},  {clicks:738, conv:15, rev:62},
+    {clicks:721, conv:14, rev:59},  {clicks:778, conv:16, rev:68},
+    {clicks:805, conv:17, rev:72},  {clicks:824, conv:18, rev:76},
+    {clicks:858, conv:18, rev:78},  {clicks:842, conv:17, rev:71},
+    {clicks:891, conv:19, rev:82},  {clicks:908, conv:20, rev:85},
+    {clicks:878, conv:19, rev:79},  {clicks:932, conv:21, rev:88},
+    {clicks:965, conv:22, rev:92},  {clicks:951, conv:21, rev:86},
+    {clicks:1002, conv:23, rev:97}, {clicks:985, conv:22, rev:93},
+    {clicks:1025, conv:24, rev:102},{clicks:1048, conv:24, rev:106},
+    {clicks:1018, conv:23, rev:99}, {clicks:1075, conv:25, rev:112},
+    {clicks:1098, conv:26, rev:118},{clicks:1062, conv:25, rev:108},
+    {clicks:1122, conv:27, rev:124},{clicks:1148, conv:27, rev:128},
+    {clicks:1119, conv:26, rev:120},{clicks:1175, conv:28, rev:135}
+  ];
+
+  var W = 800, H = 200;
+  var padTop = 10, padBottom = 20;
+  var maxClicks = 1200, maxConv = 32;
+
+  function xAt(i){ return (i / (data.length - 1)) * W; }
+  function clickY(c){ return H - padBottom - (c / maxClicks) * (H - padTop - padBottom); }
+  function convY(c){ return H - padBottom - (c / maxConv) * (H - padTop - padBottom); }
+
+  // Build click area + line path
+  var clickPts = data.map(function(d, i){ return xAt(i) + ',' + clickY(d.clicks); });
+  var convPts  = data.map(function(d, i){ return xAt(i) + ',' + convY(d.conv); });
+
+  document.getElementById('click-line').setAttribute('d', 'M' + clickPts.join(' L'));
+  document.getElementById('click-area').setAttribute('d', 'M' + clickPts.join(' L') + ' L' + W + ',' + H + ' L0,' + H + ' Z');
+  document.getElementById('conv-line').setAttribute('d', 'M' + convPts.join(' L'));
+
+  var marker = document.getElementById('hover-marker');
+  var hLine = document.getElementById('hover-line');
+  var dotC = document.getElementById('hover-dot-click');
+  var dotV = document.getElementById('hover-dot-conv');
+  var tooltip = document.getElementById('chart-tooltip');
+  var ttHead = document.getElementById('tt-head');
+  var ttClicks = document.getElementById('tt-clicks');
+  var ttConv = document.getElementById('tt-conv');
+  var ttRev = document.getElementById('tt-rev');
+
+  function format(n){ return n.toLocaleString('en-US'); }
+
+  function showAt(idx, screenX) {
+    var d = data[idx];
+    var x = xAt(idx);
+    var cy = clickY(d.clicks);
+    var vy = convY(d.conv);
+
+    hLine.setAttribute('x1', x);
+    hLine.setAttribute('x2', x);
+    dotC.setAttribute('cx', x); dotC.setAttribute('cy', cy);
+    dotV.setAttribute('cx', x); dotV.setAttribute('cy', vy);
+    marker.style.opacity = '1';
+
+    ttHead.textContent = 'Day ' + (idx + 1);
+    ttClicks.textContent = format(d.clicks);
+    ttConv.textContent = format(d.conv);
+    ttRev.textContent = '$' + format(d.rev);
+
+    tooltip.style.left = screenX + 'px';
+    tooltip.classList.add('visible');
+  }
+
+  function hide() {
+    marker.style.opacity = '0';
+    tooltip.classList.remove('visible');
+  }
+
+  svg.addEventListener('mousemove', function(e){
+    var rect = svg.getBoundingClientRect();
+    var localX = e.clientX - rect.left;
+    var pct = Math.max(0, Math.min(1, localX / rect.width));
+    var idx = Math.round(pct * (data.length - 1));
+    var screenX = (xAt(idx) / W) * rect.width;
+    showAt(idx, screenX);
+  });
+  svg.addEventListener('mouseleave', hide);
 })();
 </script>
 </body>
