@@ -129,8 +129,8 @@ footer .footer-copy{color:var(--text-muted);font-size:.8rem;margin-top:16px}
 <h3>4.3 External Feed Downloads</h3>
 <p>The plugin downloads product feeds from affiliate network URLs that the user configures. These downloads are server-to-server requests from the user's WordPress server to the affiliate network (e.g., AWIN). No user or visitor data from the WordPress site is transmitted to affiliate networks through the plugin.</p>
 
-<h3>4.4 Premium Click Analytics (Pro &amp; Premium plans)</h3>
-<p>Premium customers can enable a server-side click tracker that records which affiliate cards visitors click. When enabled by the WordPress site owner, the plugin stores the following row per click in the site's own database (no external transfer):</p>
+<h3>4.4 Click Analytics (Pro &amp; Business plans)</h3>
+<p>Paid customers can enable a server-side click tracker that records which affiliate cards visitors click. When enabled by the WordPress site owner, the plugin stores the following row per click in the site's own database (no external transfer):</p>
 <ul>
   <li>Post ID, product ID, feed ID, network slug, brand</li>
   <li>Timestamp of the click</li>
@@ -143,8 +143,8 @@ footer .footer-copy{color:var(--text-muted);font-size:.8rem;margin-top:16px}
 <p>If you operate a WordPress site with this plugin and enable click analytics, you are the data controller for these rows. You must disclose this processing in your own privacy policy. The plugin ships with a ready-to-paste snippet at <em>Tools → Privacy → Policy guide</em> in your WordPress admin.</p>
 <p>Legal basis (for the WordPress site owner toward their visitors): Art. 6(1)(f) GDPR (legitimate interest in measuring affiliate-link performance) or Art. 6(1)(a) GDPR (consent), depending on jurisdiction and any cookie banner in use.</p>
 
-<h3>4.5 Optional Google Analytics 4 Bridge (Premium)</h3>
-<p>Premium customers can optionally route the same click events to <strong>Google Analytics 4</strong> by entering their own GA4 Measurement ID in the plugin settings. This feature is OFF by default and is only activated by the site owner pasting an ID. When activated, the plugin:</p>
+<h3>4.5 Optional Google Analytics 4 Bridge (Pro &amp; Business)</h3>
+<p>Paid customers can optionally route the same click events to <strong>Google Analytics 4</strong> by entering their own GA4 Measurement ID in the plugin settings. This feature is OFF by default and is only activated by the site owner pasting an ID. When activated, the plugin:</p>
 <ul>
   <li>Loads Google's <code>gtag.js</code> tracking library from <code>https://www.googletagmanager.com/gtag/js</code> on the front-end of the site</li>
   <li>Sends a "select_item" e-commerce event to the GA4 property each time a visitor clicks an affiliate card</li>
