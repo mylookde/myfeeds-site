@@ -17,7 +17,7 @@
 <meta name="twitter:title" content="MyFeeds – Affiliate Product Feeds for WordPress">
 <meta name="twitter:description" content="Import and manage affiliate product feeds from AWIN and other networks. Smart mapping, Gutenberg Product Picker, and beautiful product cards for your WordPress blog.">
 <meta name="twitter:image" content="https://myfeeds.site/logo.png">
-<script type="application/ld+json">{"@context":"https://schema.org","@graph":[{"@type":"Organization","@id":"https://myfeeds.site/#organization","name":"MyFeeds","url":"https://myfeeds.site/","logo":{"@type":"ImageObject","url":"https://myfeeds.site/logo.png"}},{"@type":"WebSite","@id":"https://myfeeds.site/#website","url":"https://myfeeds.site/","name":"MyFeeds","publisher":{"@id":"https://myfeeds.site/#organization"}},{"@type":"SoftwareApplication","name":"MyFeeds","url":"https://myfeeds.site/","image":"https://myfeeds.site/logo.png","operatingSystem":"WordPress","applicationCategory":"BusinessApplication","description":"Import and manage affiliate product feeds from AWIN and other networks. Smart mapping, Gutenberg Product Picker, and beautiful product cards for your WordPress blog.","publisher":{"@id":"https://myfeeds.site/#organization"},"offers":[{"@type":"Offer","name":"Free","price":"0","priceCurrency":"USD","url":"https://myfeeds.site/install.html"},{"@type":"Offer","name":"Pro Monthly","price":"9","priceCurrency":"USD","url":"https://myfeeds.site/#pricing"},{"@type":"Offer","name":"Pro Annual","price":"79","priceCurrency":"USD","url":"https://myfeeds.site/#pricing"},{"@type":"Offer","name":"Premium Monthly","price":"17","priceCurrency":"USD","url":"https://myfeeds.site/#pricing"},{"@type":"Offer","name":"Premium Annual","price":"149","priceCurrency":"USD","url":"https://myfeeds.site/#pricing"}]}]}</script>
+<script type="application/ld+json">{"@context":"https://schema.org","@graph":[{"@type":"Organization","@id":"https://myfeeds.site/#organization","name":"MyFeeds","url":"https://myfeeds.site/","logo":{"@type":"ImageObject","url":"https://myfeeds.site/logo.png"}},{"@type":"WebSite","@id":"https://myfeeds.site/#website","url":"https://myfeeds.site/","name":"MyFeeds","publisher":{"@id":"https://myfeeds.site/#organization"}},{"@type":"SoftwareApplication","name":"MyFeeds","url":"https://myfeeds.site/","image":"https://myfeeds.site/logo.png","operatingSystem":"WordPress","applicationCategory":"BusinessApplication","description":"Import and manage affiliate product feeds from AWIN and other networks. Smart mapping, Gutenberg Product Picker, and beautiful product cards for your WordPress blog.","publisher":{"@id":"https://myfeeds.site/#organization"},"offers":[{"@type":"Offer","name":"Free","price":"0","priceCurrency":"USD","url":"https://myfeeds.site/install.html"},{"@type":"Offer","name":"Pro Monthly","price":"29","priceCurrency":"USD","url":"https://myfeeds.site/#pricing"},{"@type":"Offer","name":"Pro Annual","price":"249","priceCurrency":"USD","url":"https://myfeeds.site/#pricing"},{"@type":"Offer","name":"Business Monthly","price":"129","priceCurrency":"USD","url":"https://myfeeds.site/#pricing"},{"@type":"Offer","name":"Business Annual","price":"1099","priceCurrency":"USD","url":"https://myfeeds.site/#pricing"}]}]}</script>
 <link rel="icon" type="image/png" href="favicon.png">
 <link rel="icon" type="image/x-icon" href="favicon.ico">
 <link rel="apple-touch-icon" href="apple-touch-icon.png">
@@ -181,6 +181,8 @@ nav .container{display:flex;align-items:center;justify-content:space-between}
 .pricing-card .plan-price .currency{font-size:1.6rem;vertical-align:super;margin-right:2px}
 .pricing-card .plan-price .period{font-size:.9rem;font-weight:400;color:var(--text-muted)}
 .pricing-card .plan-price .monthly-equiv{display:block;font-size:.8rem;font-weight:400;color:var(--text-muted);margin-top:2px}
+.pricing-card .plan-original-price{display:block;margin-top:6px;font-size:1rem;font-weight:500;color:#34d399;line-height:1.2}
+.pricing-card .plan-original-price s{text-decoration:line-through;text-decoration-thickness:1px}
 .pricing-card .plan-includes{font-size:.75rem;text-transform:uppercase;letter-spacing:.1em;color:var(--accent-start);font-weight:600;margin:24px 0 12px}
 .pricing-card .plan-features{list-style:none;margin-bottom:32px}
 .pricing-card .plan-features li{padding:8px 0;font-size:.9rem;color:var(--text-secondary);display:flex;align-items:flex-start;gap:10px;border-bottom:1px solid rgba(255,255,255,.04)}
@@ -279,14 +281,18 @@ footer .footer-copy{color:var(--text-muted);font-size:.8rem;margin-top:16px}
     <div class="feature-card"><div class="feature-header"><span class="emoji pink">🎨</span><h3>Card Design Editor</h3></div><p>Customize every aspect of your product cards — colors, fonts, borders, shadows, hover effects — with live preview.</p></div>
     <div class="feature-card"><div class="feature-header"><span class="emoji blue">⚡</span><h3>Background Import</h3></div><p>Import thousands of products without timeouts. Everything runs in the background — safely resumable if interrupted.</p></div>
     <div class="feature-card"><div class="feature-header"><span class="emoji yellow">🔄</span><h3>Auto-Sync</h3></div><p>Daily Quick Sync updates active products. Weekly Full Import refreshes everything. Prices always current, zero manual work.</p></div>
+    <div class="feature-card"><div class="feature-header"><span class="emoji purple">📊</span><h3>Smart Analytics Dashboard</h3></div><p>Click tracking, conversion sync from AWIN and friends, dead-product detection, and earnings insights — all in one place.</p></div>
+    <div class="feature-card"><div class="feature-header"><span class="emoji green">🛍️</span><h3>Your Own Affiliate Shop</h3></div><p>Business tier: build a full storefront on your blog. Smart categories, design editor, filters, and one-click product assignment from any post.</p></div>
+    <div class="feature-card"><div class="feature-header"><span class="emoji blue">🚀</span><h3>SEO Engine</h3></div><p>Business tier: auto-generated JSON-LD schemas, sitemaps, bulk meta tools — your storefront ranks like a real shop.</p></div>
   </div>
+  <p style="text-align:center;margin-top:32px"><a href="business.html" style="color:var(--accent-start);text-decoration:none;font-weight:500">See all Business tools in action →</a></p>
 </div></section>
 <section class="pricing reveal" id="pricing"><div class="container">
   <div class="section-header"><h2>Choose your plan</h2><p>Start free, upgrade when you grow. No credit card required for the free version.</p></div>
   
   <div class="pricing-toggle" id="pricing-toggle">
     <span class="toggle-tab" id="tab-monthly">Monthly</span>
-    <span class="toggle-tab active" id="tab-yearly">Annual — <span class="save-text">Save 27%</span></span>
+    <span class="toggle-tab active" id="tab-yearly">Annual — <span class="save-text">Save up to 29%</span></span>
   </div>
 
   <div class="pricing-grid">
@@ -297,10 +303,11 @@ footer .footer-copy{color:var(--text-muted);font-size:.8rem;margin-top:16px}
       <div class="plan-includes">Includes</div>
       <ul class="plan-features">
         <li><span class="check">✓</span> 1 feed</li>
-        <li><span class="check">✓</span> 3 products in posts</li>
         <li><span class="check">✓</span> Grid layout</li>
         <li><span class="check">✓</span> Smart search</li>
         <li><span class="check">✓</span> Manual sync</li>
+        <li><span class="check">✓</span> Nightly auto-sync</li>
+        <li><span class="check">✓</span> Multi-network support</li>
       </ul>
       <a href="install.html" class="plan-cta cta-outline">Download Free</a>
     </div>
@@ -309,40 +316,47 @@ footer .footer-copy{color:var(--text-muted);font-size:.8rem;margin-top:16px}
       <div class="plan-name">Pro</div>
       <div class="plan-desc-sub">For serious affiliate bloggers</div>
       <div class="plan-price" id="price-pro">
-        <span class="currency">$</span><span class="price-amount">6.58</span> <span class="period">/mo</span>
+        <span class="currency">$</span><span class="price-amount">249</span> <span class="period">/year</span>
+        <span class="plan-original-price"><s>$349/year</s></span>
       </div>
       <div class="plan-includes">Everything in Free, plus</div>
       <ul class="plan-features">
-        <li><span class="check blue">✓</span> Up to 5 feeds</li>
-        <li><span class="check blue">✓</span> Unlimited products</li>
-        <li><span class="check blue">✓</span> Carousel layout</li>
-        <li><span class="check blue">✓</span> Daily auto-sync</li>
-        <li><span class="check blue">✓</span> Quick sync</li>
-        <li><span class="check blue">✓</span> Email support</li>
+        <li><span class="check blue">✓</span> Unlimited feeds</li>
+        <li><span class="check blue">✓</span> Grid + Carousel layouts</li>
+        <li><span class="check blue">✓</span> Auto product sync (daily + on-demand)</li>
+        <li><span class="check blue">✓</span> Card design editor</li>
+        <li><span class="check blue">✓</span> Google Fonts + custom font upload</li>
+        <li><span class="check blue">✓</span> Smart Analytics Dashboard</li>
+        <li><span class="check blue">✓</span> Detect dead products + edit</li>
+        <li><span class="check blue">✓</span> Affiliate Conversion Sync</li>
+        <li><span class="check blue">✓</span> Support</li>
       </ul>
       <a href="https://checkout.freemius.com/plugin/21336/plan/35610/?trial=paid" class="plan-cta cta-primary">Start 7-Day Free Trial</a>
     </div>
     <div class="pricing-card">
       <div class="card-badge value">BEST VALUE</div>
-      <div class="plan-name">Premium</div>
-      <div class="plan-desc-sub">Full creative control</div>
-      <div class="plan-price" id="price-premium">
-        <span class="currency">$</span><span class="price-amount">12.42</span> <span class="period">/mo</span>
+      <div class="plan-name">Business</div>
+      <div class="plan-desc-sub">Your own affiliate shop</div>
+      <div class="plan-price" id="price-business">
+        <span class="currency">$</span><span class="price-amount">1099</span> <span class="period">/year</span>
+        <span class="plan-original-price"><s>$1549/year</s></span>
       </div>
       <div class="plan-includes">Everything in Pro, plus</div>
       <ul class="plan-features">
-        <li><span class="check blue">✓</span> Unlimited feeds</li>
-        <li><span class="check blue">✓</span> Analytics dashboard</li>
-        <li><span class="check blue">✓</span> Card design editor</li>
-        <li><span class="check blue">✓</span> Google Fonts</li>
-        <li><span class="check blue">✓</span> Custom font upload</li>
-        <li><span class="check blue">✓</span> Drag & drop element order</li>
+        <li><span class="check blue">✓</span> Full Shop system + storefront</li>
+        <li><span class="check blue">✓</span> Storefront design editor</li>
+        <li><span class="check blue">✓</span> Smart categories</li>
+        <li><span class="check blue">✓</span> SEO engine + Bulk SEO tools</li>
+        <li><span class="check blue">✓</span> Auto-sitemap</li>
+        <li><span class="check blue">✓</span> Add products to shop from any post</li>
+        <li><span class="check blue">✓</span> Auto-cleanup of dead products</li>
         <li><span class="check blue">✓</span> Priority support</li>
       </ul>
-      <a href="https://checkout.freemius.com/plugin/21336/plan/45293/?trial=paid" class="plan-cta cta-gradient-border">Start 7-Day Free Trial</a>
+      <a href="business.html" style="display:block;text-align:center;margin-bottom:10px;color:var(--accent-start);text-decoration:none;font-size:.85rem;font-weight:500">Explore the Business tools →</a>
+      <a href="https://checkout.freemius.com/plugin/21336/plan/48994/?trial=paid" class="plan-cta cta-gradient-border">Start 7-Day Free Trial</a>
     </div>
   </div>
-  <p style="text-align:center;color:var(--text-muted);font-size:.85rem;margin-top:32px;max-width:540px;margin-left:auto;margin-right:auto;line-height:1.5">Download the free plugin to get started. You can upgrade to Pro or Premium anytime — directly from your WordPress dashboard or by starting a 7-day free trial above. Need help? See our <a href="install.html" style="color:var(--accent-start);text-decoration:none">installation guide</a>.</p>
+  <p style="text-align:center;color:var(--text-muted);font-size:.85rem;margin-top:32px;max-width:540px;margin-left:auto;margin-right:auto;line-height:1.5">Download the free plugin to get started. You can upgrade to Pro or Business anytime — directly from your WordPress dashboard or by starting a 7-day free trial above. Need help? See our <a href="install.html" style="color:var(--accent-start);text-decoration:none">installation guide</a>.</p>
 </div></section>
 <section class="networks reveal"><div class="container">
   <h3>Supported Networks</h3>
@@ -398,20 +412,20 @@ document.querySelectorAll('.layout-label').forEach(function(label){
   var tabMonthly = document.getElementById('tab-monthly');
   var tabYearly = document.getElementById('tab-yearly');
   var pricePro = document.getElementById('price-pro');
-  var pricePremium = document.getElementById('price-premium');
+  var priceBusiness = document.getElementById('price-business');
 
   function setMonthly() {
     tabMonthly.classList.add('active');
     tabYearly.classList.remove('active');
-    pricePro.innerHTML = '<span class="currency">$</span><span class="price-amount">9</span> <span class="period">/mo</span>';
-    pricePremium.innerHTML = '<span class="currency">$</span><span class="price-amount">17</span> <span class="period">/mo</span>';
+    pricePro.innerHTML = '<span class="currency">$</span><span class="price-amount">29</span> <span class="period">/mo</span>';
+    priceBusiness.innerHTML = '<span class="currency">$</span><span class="price-amount">129</span> <span class="period">/mo</span>';
   }
 
   function setYearly() {
     tabYearly.classList.add('active');
     tabMonthly.classList.remove('active');
-    pricePro.innerHTML = '<span class="currency">$</span><span class="price-amount">6.58</span> <span class="period">/mo</span>';
-    pricePremium.innerHTML = '<span class="currency">$</span><span class="price-amount">12.42</span> <span class="period">/mo</span>';
+    pricePro.innerHTML = '<span class="currency">$</span><span class="price-amount">249</span> <span class="period">/year</span><span class="plan-original-price"><s>$349/year</s></span>';
+    priceBusiness.innerHTML = '<span class="currency">$</span><span class="price-amount">1099</span> <span class="period">/year</span><span class="plan-original-price"><s>$1549/year</s></span>';
   }
 
   tabMonthly.addEventListener('click', setMonthly);
