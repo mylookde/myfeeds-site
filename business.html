@@ -151,11 +151,11 @@ nav .container{display:flex;align-items:center;justify-content:space-between}
 .sf-pill .sf-color-dot{width:8px;height:8px;border-radius:50%;border:1px solid rgba(0,0,0,.12);flex-shrink:0}
 .sf-pill.active .sf-color-dot{border-color:rgba(255,255,255,.3)}
 .sf-filter-row .sf-pill{padding:3px 8px;background:#f0f0f5;border-radius:999px;font-size:.7rem}
-.sf-products{display:grid;flex:1;gap:10px}
+.sf-products{display:grid;flex:1;gap:10px;align-content:start;grid-auto-rows:max-content}
 .sf-products.cols-3{grid-template-columns:repeat(3,1fr)}
 .sf-products.cols-4{grid-template-columns:repeat(4,1fr)}
-.sf-tile{background:#fff;border:1px solid #eee;border-radius:var(--sf-radius,10px);overflow:hidden;display:flex;flex-direction:column;font-size:.75rem;transition:border-radius .25s,opacity .2s}
-.sf-tile .sf-tile-img{flex:1;min-height:110px;display:flex;align-items:center;justify-content:center;background:linear-gradient(135deg,rgba(0,0,0,0.02),rgba(0,0,0,0))}
+.sf-tile{background:#fff;border:1px solid #eee;border-radius:var(--sf-radius,10px);overflow:hidden;display:flex;flex-direction:column;font-size:.75rem;transition:border-radius .25s,opacity .2s;aspect-ratio:4/5}
+.sf-tile .sf-tile-img{flex:1;display:flex;align-items:center;justify-content:center;background:linear-gradient(135deg,rgba(0,0,0,0.02),rgba(0,0,0,0))}
 .sf-tile .sf-tile-img .sf-shape{width:55%;aspect-ratio:0.82;border-radius:8px;max-width:96px}
 .sf-tile:nth-child(1) .sf-shape{background:linear-gradient(135deg,#667eea,#764ba2)}
 .sf-tile:nth-child(2) .sf-shape{background:linear-gradient(135deg,#f59e42,#ec4899)}
@@ -214,10 +214,13 @@ nav .container{display:flex;align-items:center;justify-content:space-between}
 .card-demo{display:grid;grid-template-columns:300px 1fr;gap:24px;background:var(--bg-glass);border:1px solid var(--border-glass);border-radius:var(--radius);padding:24px;align-items:center}
 @media(max-width:900px){.card-demo{grid-template-columns:1fr}}
 .card-preview-stage{display:flex;justify-content:center;padding:30px 20px;background:rgba(0,0,0,0.2);border-radius:var(--radius-sm);min-height:380px;align-items:center}
-.demo-product-card{width:240px;background:var(--cd-bg,#ffffff);border:var(--cd-border-w,1px) solid var(--cd-border,#e5e5ee);border-radius:var(--cd-radius,12px);overflow:hidden;box-shadow:var(--cd-shadow,0 4px 24px rgba(0,0,0,0.08));transition:all .25s;font-family:'Outfit',sans-serif}
-.demo-product-card .dpc-img{height:180px;display:flex;align-items:center;justify-content:center;position:relative;background:linear-gradient(135deg,rgba(102,126,234,.1),rgba(167,139,250,.05))}
-.demo-product-card .dpc-shape{width:80px;height:100px;border-radius:10px;background:linear-gradient(135deg,#a78bfa,#ec4899);position:relative}
+.demo-product-card{width:240px;background:var(--cd-bg,#ffffff);border:1px solid var(--cd-border,#e5e5ee);border-radius:var(--cd-radius,12px);overflow:hidden;box-shadow:var(--cd-shadow,0 4px 24px rgba(0,0,0,0.08));transition:all .25s;font-family:'Outfit',sans-serif}
+.demo-product-card .dpc-img{height:180px;display:flex;align-items:center;justify-content:center;position:relative;background:linear-gradient(135deg,rgba(102,126,234,.1),rgba(167,139,250,.05));transition:background .25s,padding .25s}
+.demo-product-card.image-full .dpc-img{background:#f5f3ff}
+.demo-product-card .dpc-shape{width:80px;height:100px;border-radius:10px;background:linear-gradient(135deg,#a78bfa,#ec4899);position:relative;transition:width .25s,height .25s}
+.demo-product-card.image-full .dpc-shape{width:140px;height:160px;border-radius:0}
 .demo-product-card .dpc-shape::after{content:'';position:absolute;inset:8px;border-radius:6px;background:rgba(255,255,255,.18)}
+.demo-product-card.image-full .dpc-shape::after{inset:14px}
 .demo-product-card .dpc-badge{position:absolute;top:12px;left:12px;background:var(--cd-accent,#ec4899);color:#fff;font-size:.65rem;font-weight:700;padding:4px 10px;border-radius:6px}
 .demo-product-card .dpc-info{padding:14px}
 .demo-product-card .dpc-brand{font-size:.7rem;color:#888;text-transform:uppercase;letter-spacing:.08em;margin-bottom:4px}
@@ -544,11 +547,10 @@ footer .footer-copy{color:var(--text-muted);font-size:.8rem;margin-top:16px}
       </div>
 
       <div class="editor-group">
-        <h4>Border width</h4>
-        <div class="editor-toggle" id="cd-border">
-          <button data-w="0">None</button>
-          <button class="active" data-w="1">Thin</button>
-          <button data-w="2">Thick</button>
+        <h4>Image</h4>
+        <div class="editor-toggle" id="cd-image">
+          <button class="active" data-image="boxed">Boxed</button>
+          <button data-image="full">Full sized</button>
         </div>
       </div>
 
@@ -723,10 +725,11 @@ footer .footer-copy{color:var(--text-muted);font-size:.8rem;margin-top:16px}
     cdRv.textContent = cdR.value + 'px';
   });
 
-  document.querySelectorAll('#cd-border button').forEach(function(btn){
+  document.querySelectorAll('#cd-image button').forEach(function(btn){
     btn.addEventListener('click', function(){
-      activate(document.getElementById('cd-border'), btn);
-      card.style.setProperty('--cd-border-w', btn.dataset.w + 'px');
+      activate(document.getElementById('cd-image'), btn);
+      card.classList.remove('image-boxed','image-full');
+      card.classList.add('image-' + btn.dataset.image);
     });
   });
 
