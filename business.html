@@ -141,22 +141,29 @@ nav .container{display:flex;align-items:center;justify-content:space-between}
 .sf-body{display:flex;flex:1;gap:14px;padding:16px}
 .sf-body.filter-right{flex-direction:row-reverse}
 .sf-filters{background:#fff;border:1px solid #eee;border-radius:8px;padding:14px;font-size:.78rem;width:160px;flex-shrink:0}
-.sf-filters .sf-filter-title{font-weight:700;color:#1a1a2e;font-size:.7rem;text-transform:uppercase;letter-spacing:.1em;margin-bottom:8px}
-.sf-filter-row{display:flex;align-items:center;gap:6px;margin-bottom:6px;color:#666}
+.sf-filters .sf-filter-title{font-weight:700;color:#1a1a2e;font-size:.65rem;text-transform:uppercase;letter-spacing:.1em;margin-bottom:8px}
+.sf-filter-group{margin-bottom:14px}
+.sf-filter-group:last-child{margin-bottom:0}
+.sf-filter-pills{display:flex;flex-wrap:wrap;gap:5px}
+.sf-pill{padding:4px 9px;background:#f0f0f5;border:1px solid transparent;border-radius:999px;font-size:.68rem;cursor:pointer;transition:all .15s;color:#666;font-family:inherit;line-height:1.4;display:inline-flex;align-items:center;gap:5px}
+.sf-pill:hover{background:#e5e5ee;color:#1a1a2e}
+.sf-pill.active{background:#1a1a2e;color:#fff;border-color:#1a1a2e}
+.sf-pill .sf-color-dot{width:8px;height:8px;border-radius:50%;border:1px solid rgba(0,0,0,.12);flex-shrink:0}
+.sf-pill.active .sf-color-dot{border-color:rgba(255,255,255,.3)}
 .sf-filter-row .sf-pill{padding:3px 8px;background:#f0f0f5;border-radius:999px;font-size:.7rem}
 .sf-products{display:grid;flex:1;gap:10px}
 .sf-products.cols-3{grid-template-columns:repeat(3,1fr)}
 .sf-products.cols-4{grid-template-columns:repeat(4,1fr)}
-.sf-tile{background:#fff;border:1px solid #eee;border-radius:var(--sf-radius,10px);overflow:hidden;display:flex;flex-direction:column;font-size:.75rem;transition:border-radius .25s}
-.sf-tile .sf-tile-img{height:80px;display:flex;align-items:center;justify-content:center}
-.sf-tile .sf-tile-img .sf-shape{width:40px;height:48px;border-radius:6px}
+.sf-tile{background:#fff;border:1px solid #eee;border-radius:var(--sf-radius,10px);overflow:hidden;display:flex;flex-direction:column;font-size:.75rem;transition:border-radius .25s,opacity .2s}
+.sf-tile .sf-tile-img{flex:1;min-height:110px;display:flex;align-items:center;justify-content:center;background:linear-gradient(135deg,rgba(0,0,0,0.02),rgba(0,0,0,0))}
+.sf-tile .sf-tile-img .sf-shape{width:55%;aspect-ratio:0.82;border-radius:8px;max-width:96px}
 .sf-tile:nth-child(1) .sf-shape{background:linear-gradient(135deg,#667eea,#764ba2)}
 .sf-tile:nth-child(2) .sf-shape{background:linear-gradient(135deg,#f59e42,#ec4899)}
 .sf-tile:nth-child(3) .sf-shape{background:linear-gradient(135deg,#34d399,#3b82f6)}
 .sf-tile:nth-child(4) .sf-shape{background:linear-gradient(135deg,#a78bfa,#f472b6)}
 .sf-tile:nth-child(5) .sf-shape{background:linear-gradient(135deg,#fbbf24,#f97316)}
 .sf-tile:nth-child(6) .sf-shape{background:linear-gradient(135deg,#6ee7b7,#3b82f6)}
-.sf-tile .sf-tile-info{padding:8px 10px;border-top:1px solid #f0f0f5}
+.sf-tile .sf-tile-info{padding:10px 12px;border-top:1px solid #f0f0f5;flex-shrink:0}
 .sf-tile .sf-tile-brand{font-size:.6rem;color:#888;text-transform:uppercase;letter-spacing:.05em}
 .sf-tile .sf-tile-name{font-size:.72rem;font-weight:500;color:#1a1a2e;margin:2px 0;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
 .sf-tile .sf-tile-price{font-size:.78rem;font-weight:700;color:var(--sf-accent,#667eea)}
@@ -375,18 +382,34 @@ footer .footer-copy{color:var(--text-muted);font-size:.8rem;margin-top:16px}
       </div>
       <div class="sf-body" id="sf-body">
         <div class="sf-filters" id="sf-filters">
-          <div class="sf-filter-title">Filters</div>
-          <div class="sf-filter-row"><span class="sf-pill">Black</span></div>
-          <div class="sf-filter-row"><span class="sf-pill">Under 50€</span></div>
-          <div class="sf-filter-row"><span class="sf-pill">Sale only</span></div>
+          <div class="sf-filter-group">
+            <div class="sf-filter-title">Brand</div>
+            <div class="sf-filter-pills">
+              <button class="sf-pill" data-filter="brand" data-value="A">Brand A</button>
+              <button class="sf-pill" data-filter="brand" data-value="B">Brand B</button>
+              <button class="sf-pill" data-filter="brand" data-value="C">Brand C</button>
+              <button class="sf-pill" data-filter="brand" data-value="D">Brand D</button>
+              <button class="sf-pill" data-filter="brand" data-value="E">Brand E</button>
+              <button class="sf-pill" data-filter="brand" data-value="F">Brand F</button>
+            </div>
+          </div>
+          <div class="sf-filter-group">
+            <div class="sf-filter-title">Color</div>
+            <div class="sf-filter-pills">
+              <button class="sf-pill" data-filter="color" data-value="purple"><span class="sf-color-dot" style="background:#667eea"></span>Purple</button>
+              <button class="sf-pill" data-filter="color" data-value="pink"><span class="sf-color-dot" style="background:#ec4899"></span>Pink</button>
+              <button class="sf-pill" data-filter="color" data-value="green"><span class="sf-color-dot" style="background:#34d399"></span>Green</button>
+              <button class="sf-pill" data-filter="color" data-value="yellow"><span class="sf-color-dot" style="background:#fbbf24"></span>Yellow</button>
+            </div>
+          </div>
         </div>
         <div class="sf-products cols-3" id="sf-products">
-          <div class="sf-tile"><div class="sf-tile-img"><div class="sf-shape"></div></div><div class="sf-tile-info"><div class="sf-tile-brand">Brand A</div><div class="sf-tile-name">Premium Tee</div><div class="sf-tile-price">29.90 €</div></div></div>
-          <div class="sf-tile"><div class="sf-tile-img"><div class="sf-shape"></div></div><div class="sf-tile-info"><div class="sf-tile-brand">Brand B</div><div class="sf-tile-name">Signature Perfume</div><div class="sf-tile-price">120.00 €</div></div></div>
-          <div class="sf-tile"><div class="sf-tile-img"><div class="sf-shape"></div></div><div class="sf-tile-info"><div class="sf-tile-brand">Brand C</div><div class="sf-tile-name">Court Sneaker</div><div class="sf-tile-price">46.95 €</div></div></div>
-          <div class="sf-tile"><div class="sf-tile-img"><div class="sf-shape"></div></div><div class="sf-tile-info"><div class="sf-tile-brand">Brand D</div><div class="sf-tile-name">Base Coat Set</div><div class="sf-tile-price">16.95 €</div></div></div>
-          <div class="sf-tile"><div class="sf-tile-img"><div class="sf-shape"></div></div><div class="sf-tile-info"><div class="sf-tile-brand">Brand E</div><div class="sf-tile-name">Summer Dress</div><div class="sf-tile-price">89.00 €</div></div></div>
-          <div class="sf-tile"><div class="sf-tile-img"><div class="sf-shape"></div></div><div class="sf-tile-info"><div class="sf-tile-brand">Brand F</div><div class="sf-tile-name">Leather Belt</div><div class="sf-tile-price">59.90 €</div></div></div>
+          <div class="sf-tile" data-brand="A" data-color="purple"><div class="sf-tile-img"><div class="sf-shape"></div></div><div class="sf-tile-info"><div class="sf-tile-brand">Brand A</div><div class="sf-tile-name">Premium Tee</div><div class="sf-tile-price">29.90 €</div></div></div>
+          <div class="sf-tile" data-brand="B" data-color="pink"><div class="sf-tile-img"><div class="sf-shape"></div></div><div class="sf-tile-info"><div class="sf-tile-brand">Brand B</div><div class="sf-tile-name">Signature Perfume</div><div class="sf-tile-price">120.00 €</div></div></div>
+          <div class="sf-tile" data-brand="C" data-color="green"><div class="sf-tile-img"><div class="sf-shape"></div></div><div class="sf-tile-info"><div class="sf-tile-brand">Brand C</div><div class="sf-tile-name">Court Sneaker</div><div class="sf-tile-price">46.95 €</div></div></div>
+          <div class="sf-tile" data-brand="D" data-color="pink"><div class="sf-tile-img"><div class="sf-shape"></div></div><div class="sf-tile-info"><div class="sf-tile-brand">Brand D</div><div class="sf-tile-name">Base Coat Set</div><div class="sf-tile-price">16.95 €</div></div></div>
+          <div class="sf-tile" data-brand="E" data-color="yellow"><div class="sf-tile-img"><div class="sf-shape"></div></div><div class="sf-tile-info"><div class="sf-tile-brand">Brand E</div><div class="sf-tile-name">Summer Dress</div><div class="sf-tile-price">89.00 €</div></div></div>
+          <div class="sf-tile" data-brand="F" data-color="green"><div class="sf-tile-img"><div class="sf-shape"></div></div><div class="sf-tile-info"><div class="sf-tile-brand">Brand F</div><div class="sf-tile-name">Leather Belt</div><div class="sf-tile-price">59.90 €</div></div></div>
         </div>
       </div>
     </div>
@@ -653,6 +676,24 @@ footer .footer-copy{color:var(--text-muted);font-size:.8rem;margin-top:16px}
   rSlider.addEventListener('input', function(){
     preview.style.setProperty('--sf-radius', rSlider.value + 'px');
     rValue.textContent = rSlider.value + 'px';
+  });
+
+  // Filter pills — multi-select, OR within group, AND between groups
+  var tiles = document.querySelectorAll('#sf-products .sf-tile');
+  function applyFilters() {
+    var activeBrands = Array.prototype.slice.call(document.querySelectorAll('.sf-pill.active[data-filter="brand"]')).map(function(p){ return p.dataset.value; });
+    var activeColors = Array.prototype.slice.call(document.querySelectorAll('.sf-pill.active[data-filter="color"]')).map(function(p){ return p.dataset.value; });
+    tiles.forEach(function(tile){
+      var brandOk = activeBrands.length === 0 || activeBrands.indexOf(tile.dataset.brand) !== -1;
+      var colorOk = activeColors.length === 0 || activeColors.indexOf(tile.dataset.color) !== -1;
+      tile.style.display = (brandOk && colorOk) ? '' : 'none';
+    });
+  }
+  document.querySelectorAll('.sf-pill[data-filter]').forEach(function(pill){
+    pill.addEventListener('click', function(){
+      pill.classList.toggle('active');
+      applyFilters();
+    });
   });
 })();
 
