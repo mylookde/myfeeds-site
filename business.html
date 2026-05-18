@@ -143,7 +143,12 @@ nav .container{display:flex;align-items:center;justify-content:space-between}
 @media(max-width:640px){
     .sf-body,.sf-body.filter-right{flex-direction:column;gap:12px;padding:12px}
     .sf-filters{width:100% !important}
-    .sf-products.cols-3,.sf-products.cols-4{grid-template-columns:repeat(2,1fr)}
+    .sf-products.cols-3,.sf-products.cols-4{grid-template-columns:repeat(2,1fr);gap:8px}
+    .sf-tile{aspect-ratio:5/6}
+    .sf-tile .sf-tile-img .sf-shape{width:40%;max-width:60px;aspect-ratio:0.95}
+    .sf-tile .sf-tile-info{padding:8px 10px}
+    .sf-tile .sf-tile-name{font-size:.7rem}
+    .sf-tile .sf-tile-price{font-size:.74rem}
 }
 .sf-filters{background:#fff;border:1px solid #eee;border-radius:8px;padding:14px;font-size:.78rem;width:160px;flex-shrink:0}
 .sf-filters .sf-filter-title{font-weight:700;color:#1a1a2e;font-size:.65rem;text-transform:uppercase;letter-spacing:.1em;margin-bottom:8px}
