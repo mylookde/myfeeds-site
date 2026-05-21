@@ -215,33 +215,31 @@ footer .footer-copy{color:var(--text-muted);font-size:.8rem;margin-top:16px}
 .reveal{animation:revealUp .8s ease both}.showcase{animation-delay:.1s}.features{animation-delay:.15s}.pricing{animation-delay:.2s}.networks{animation-delay:.25s}
 
 /* ─── Hero Trust Strip ─── */
-.hero-trust{margin-top:32px;display:flex;justify-content:center;align-items:center;gap:14px;flex-wrap:wrap;animation:fadeUp .8s .65s both;font-size:.85rem;color:var(--text-muted)}
-.hero-trust .trust-item{display:inline-flex;align-items:center;gap:6px;color:var(--text-secondary)}
-.hero-trust .trust-link{text-decoration:none;transition:color .2s}
-.hero-trust .trust-link:hover{color:var(--accent-start)}
-.hero-trust .trust-divider{opacity:.4}
-@media(max-width:480px){.hero-trust{font-size:.78rem;gap:10px}}
+.hero-trust{margin-top:36px;display:flex;justify-content:center;animation:fadeUp .8s .65s both}
+.hero-trust .trust-item{font-size:.95rem;color:var(--text-primary);padding:10px 24px;border-radius:999px;background:linear-gradient(135deg,rgba(102,126,234,.14) 0%,rgba(118,75,162,.08) 100%);border:1px solid rgba(102,126,234,.25);font-weight:500;letter-spacing:.01em}
+@media(max-width:480px){.hero-trust .trust-item{font-size:.85rem;padding:9px 20px}}
 
 /* ─── Comparison Table ─── */
 .comparison{padding:60px 0}
 .comparison-table{max-width:980px;margin:0 auto;border-radius:var(--radius);overflow:hidden;border:1px solid var(--border-glass);background:var(--bg-glass)}
 .comparison-row{display:grid;grid-template-columns:1.2fr 1.4fr 1.4fr;border-bottom:1px solid var(--border-glass)}
 .comparison-row:last-child{border-bottom:none}
-.comparison-row.comparison-head .comparison-cell{padding:18px 24px;font-weight:700;font-size:.78rem;text-transform:uppercase;letter-spacing:.1em;color:var(--text-muted)}
-.comparison-row.comparison-head .comparison-cell.highlight{color:var(--text-primary)}
-.comparison-cell{padding:18px 24px;font-size:.92rem;color:var(--text-secondary);line-height:1.5;border-right:1px solid var(--border-glass);display:flex;align-items:center}
+.comparison-row.comparison-head .comparison-cell{padding:18px 24px;font-weight:700;font-size:.78rem;text-transform:uppercase;letter-spacing:.1em;color:rgba(240,238,246,0.5)}
+.comparison-row.comparison-head .comparison-cell.highlight{color:var(--accent-green);text-shadow:0 0 12px rgba(52,211,153,.35)}
+.comparison-cell{padding:18px 24px;font-size:.92rem;line-height:1.5;border-right:1px solid var(--border-glass);display:flex;align-items:center}
 .comparison-cell:last-child{border-right:none}
 .comparison-cell.label{color:var(--text-primary);font-weight:600;background:rgba(255,255,255,.02);font-size:.9rem}
-.comparison-cell.muted{color:var(--text-muted)}
-.comparison-cell.highlight{background:linear-gradient(135deg,rgba(102,126,234,.1) 0%,rgba(118,75,162,.05) 100%);color:var(--text-primary)}
+.comparison-cell.muted{color:rgba(240,238,246,0.55);font-weight:400}
+.comparison-cell.highlight{background:linear-gradient(135deg,rgba(102,126,234,.22) 0%,rgba(118,75,162,.14) 100%);color:var(--text-primary);font-weight:500;position:relative}
+.comparison-row:not(.comparison-head) .comparison-cell.highlight{box-shadow:inset 2px 0 0 var(--accent-green)}
+.check-icon{color:var(--accent-green);font-weight:700;font-size:1.1rem;margin-right:12px;flex-shrink:0;line-height:1;filter:drop-shadow(0 0 8px rgba(52,211,153,.7))}
 @media(max-width:768px){
   .comparison-row{grid-template-columns:1fr}
-  .comparison-cell{border-right:none;border-bottom:1px solid var(--border-glass);padding:14px 20px;flex-direction:column;align-items:flex-start;gap:6px}
+  .comparison-cell{border-right:none;border-bottom:1px solid var(--border-glass);padding:14px 20px;flex-direction:row;align-items:flex-start;gap:6px}
   .comparison-cell:last-child{border-bottom:none}
   .comparison-row.comparison-head{display:none}
-  .comparison-cell.label{font-size:.75rem;text-transform:uppercase;letter-spacing:.06em;color:var(--text-muted);font-weight:700;background:transparent;padding-bottom:4px}
-  .comparison-cell.muted::before{content:'Other plugins';font-size:.7rem;text-transform:uppercase;letter-spacing:.08em;font-weight:700;color:var(--text-muted);opacity:.7}
-  .comparison-cell.highlight::before{content:'MyFeeds';font-size:.7rem;text-transform:uppercase;letter-spacing:.08em;font-weight:700;color:var(--accent-start)}
+  .comparison-row:not(.comparison-head) .comparison-cell.highlight{box-shadow:inset 0 2px 0 var(--accent-green)}
+  .comparison-cell.label{font-size:.75rem;text-transform:uppercase;letter-spacing:.06em;color:var(--text-muted);font-weight:700;background:transparent;padding-bottom:4px;flex-direction:column}
 }
 
 /* ─── FAQ ─── */
@@ -280,11 +278,7 @@ footer .footer-copy{color:var(--text-muted);font-size:.8rem;margin-top:16px}
     <a href="#features" class="btn btn-outline">See what changes</a>
   </div>
   <div class="hero-trust">
-    <a href="https://wordpress.org/plugins/myfeeds-affiliate-feed-manager/" class="trust-item trust-link">Free on WordPress.org</a>
-    <span class="trust-divider">·</span>
-    <span class="trust-item">Built by an affiliate blogger</span>
-    <span class="trust-divider">·</span>
-    <span class="trust-item">Self-hosted</span>
+    <span class="trust-item">From bloggers, for bloggers.</span>
   </div>
 </div></section>
 <section class="showcase reveal"><div class="container">
@@ -325,7 +319,7 @@ footer .footer-copy{color:var(--text-muted);font-size:.8rem;margin-top:16px}
   <p class="showcase-disclaimer">Simplified visualisation — the real cards may differ in detail from what you see here.</p>
 </div></section>
 <section class="comparison reveal" id="comparison"><div class="container">
-  <div class="section-header"><h2>How MyFeeds is different</h2><p>Most affiliate plugins manage individual links. MyFeeds keeps your whole catalogue in sync.</p></div>
+  <div class="section-header"><h2>Built different.</h2><p>You stop maintaining your affiliate posts. They stay fresh anyway.</p></div>
   <div class="comparison-table">
     <div class="comparison-row comparison-head">
       <div class="comparison-cell">&nbsp;</div>
@@ -335,32 +329,32 @@ footer .footer-copy{color:var(--text-muted);font-size:.8rem;margin-top:16px}
     <div class="comparison-row">
       <div class="comparison-cell label">Products in your posts</div>
       <div class="comparison-cell muted">One link or button at a time, pasted manually</div>
-      <div class="comparison-cell highlight">Searchable catalogue inside the editor, picked in seconds</div>
+      <div class="comparison-cell highlight"><span class="check-icon">✓</span>Searchable catalogue inside the editor, picked in seconds</div>
     </div>
     <div class="comparison-row">
       <div class="comparison-cell label">Price + stock updates</div>
       <div class="comparison-cell muted">You edit each post when something changes</div>
-      <div class="comparison-cell highlight">Nightly sync updates every card on every post</div>
+      <div class="comparison-cell highlight"><span class="check-icon">✓</span>Nightly sync updates every card on every post</div>
     </div>
     <div class="comparison-row">
       <div class="comparison-cell label">Dead products</div>
       <div class="comparison-cell muted">Posts quietly link to 404s until you notice</div>
-      <div class="comparison-cell highlight">Plugin flags them and shows which posts need a swap</div>
+      <div class="comparison-cell highlight"><span class="check-icon">✓</span>Plugin flags them and shows which posts need a swap</div>
     </div>
     <div class="comparison-row">
       <div class="comparison-cell label">Affiliate networks</div>
       <div class="comparison-cell muted">One integration per plugin, you stack two or three</div>
-      <div class="comparison-cell highlight">Any network's product feed, one plugin</div>
+      <div class="comparison-cell highlight"><span class="check-icon">✓</span>Any network's product feed, one plugin</div>
     </div>
     <div class="comparison-row">
       <div class="comparison-cell label">Where your data lives</div>
       <div class="comparison-cell muted">Often proxied through a third-party server</div>
-      <div class="comparison-cell highlight">Your own WordPress database, fully self-hosted</div>
+      <div class="comparison-cell highlight"><span class="check-icon">✓</span>Your own WordPress database, fully self-hosted</div>
     </div>
     <div class="comparison-row">
       <div class="comparison-cell label">Conversions and analytics</div>
       <div class="comparison-cell muted">Network dashboards, one tab per network</div>
-      <div class="comparison-cell highlight">Clicks and commissions from every network in one place</div>
+      <div class="comparison-cell highlight"><span class="check-icon">✓</span>Clicks and commissions from every network in one place</div>
     </div>
   </div>
 </div></section>
@@ -564,6 +558,20 @@ document.querySelectorAll('.layout-label').forEach(function(label){
 
   tabMonthly.addEventListener('click', setMonthly);
   tabYearly.addEventListener('click', setYearly);
+})();
+
+// FAQ accordion — single-open behaviour
+(function(){
+  var faqItems = document.querySelectorAll('.faq details');
+  faqItems.forEach(function(item){
+    item.addEventListener('toggle', function(){
+      if (item.open) {
+        faqItems.forEach(function(other){
+          if (other !== item && other.open) other.open = false;
+        });
+      }
+    });
+  });
 })();
 
 // Carousel auto-scroll with arrow controls
