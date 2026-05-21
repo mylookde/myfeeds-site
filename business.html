@@ -259,6 +259,20 @@ footer .footer-links a:hover{color:var(--text-primary)}
 footer .footer-copy{color:var(--text-muted);font-size:.8rem;margin-top:16px}
 
 .reveal{animation:revealUp .8s ease both}
+
+/* ─── FAQ ─── */
+.faq{padding:60px 0}
+.faq .section-header{text-align:center;margin-bottom:40px}
+.faq .section-header h2{font-size:2.2rem;font-weight:700;letter-spacing:-.03em;margin-bottom:12px}
+.faq .section-header p{color:var(--text-secondary);font-size:1.05rem;max-width:540px;margin:0 auto}
+.faq-grid{display:grid;gap:12px;max-width:780px;margin:0 auto}
+.faq details{background:var(--bg-glass);border:1px solid var(--border-glass);border-radius:var(--radius-sm);transition:border-color .2s}
+.faq details[open]{border-color:rgba(102,126,234,.25)}
+.faq summary{padding:18px 22px;cursor:pointer;font-weight:600;font-size:1rem;color:var(--text-primary);list-style:none;display:flex;justify-content:space-between;align-items:center;gap:16px}
+.faq summary::-webkit-details-marker{display:none}
+.faq summary::after{content:'+';font-size:1.5rem;font-weight:300;color:var(--text-muted);transition:transform .25s;line-height:1}
+.faq details[open] summary::after{content:'−'}
+.faq details p{padding:0 22px 20px;color:var(--text-secondary);line-height:1.6;font-size:.92rem;margin:0}
 </style>
 </head>
 <body>
@@ -269,9 +283,10 @@ footer .footer-copy{color:var(--text-muted);font-size:.8rem;margin-top:16px}
   <button class="hamburger" id="hamburger-btn"><svg viewBox="0 0 24 24"><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="18" x2="21" y2="18"/></svg></button>
   <div class="nav-links">
     <a href="index.html#features">Features</a>
-    <a href="business.html" class="current">Business</a>
     <a href="index.html#pricing">Pricing</a>
-    <a href="https://checkout.freemius.com/plugin/21336/plan/48994/?trial=paid" class="btn btn-primary" style="padding:8px 20px;font-size:.85rem">Try Business</a>
+    <a href="#faq">FAQ</a>
+    <a href="business.html" class="current">Business</a>
+    <a href="https://wordpress.org/plugins/myfeeds-affiliate-feed-manager/" class="btn btn-primary" style="padding:8px 20px;font-size:.85rem">Get Started</a>
   </div>
 </div></nav>
 
@@ -597,6 +612,44 @@ footer .footer-copy{color:var(--text-muted);font-size:.8rem;margin-top:16px}
   <p class="demo-disclaimer">Simplified visualisation — the live editor exposes more options and may differ in detail from what you see here.</p>
 </div></section>
 
+<section class="faq reveal" id="faq"><div class="container">
+  <div class="section-header"><h2>Business questions</h2><p>The shop-specific bits before you start the trial.</p></div>
+  <div class="faq-grid">
+    <details>
+      <summary>What's the storefront exactly?</summary>
+      <p>A real shop page on your domain. Your products show up in a categorised, filterable, searchable layout — sorting by price, by popularity, by sale. Visitors browse the way they would on any retailer's site, but every checkout goes through your affiliate link.</p>
+    </details>
+    <details>
+      <summary>Do I have to manually sort products into categories?</summary>
+      <p>The smart category mapper suggests products based on keywords, brand and feed source. You confirm the matches, refine the rules, and from there new feed imports drop into the right categories on their own.</p>
+    </details>
+    <details>
+      <summary>What happens with SEO?</summary>
+      <p>Every category page gets structured data (CollectionPage, BreadcrumbList, ItemList with Product offers), a clean canonical URL, your own title and meta description templates with per-category overrides, and a sitemap that hands the storefront to Google like a real shop.</p>
+    </details>
+    <details>
+      <summary>Does the shop affect my blog?</summary>
+      <p>No. The shop lives on its own URL (you pick the slug). Your blog posts stay untouched. The product picker that powers your posts in the editor is the same one that fills the shop — one catalogue, two surfaces.</p>
+    </details>
+    <details>
+      <summary>Can I design the storefront myself?</summary>
+      <p>The shop design editor exposes colours, typography, tile density, hover behaviour, badge placement, sidebar position, pagination mode (pages, load-more, infinite scroll). Live preview, no code.</p>
+    </details>
+    <details>
+      <summary>What kind of products can I sell?</summary>
+      <p>Anything your affiliate networks expose in their feeds — fashion, tech, home, beauty, garden, hobbies. The plugin doesn't care about the niche. If your network gives you a feed URL, you can stand up a shop.</p>
+    </details>
+    <details>
+      <summary>How long is the Business trial?</summary>
+      <p>14 days, full access to the shop, design editor, SEO engine, smart categories. Cancel inside the dashboard whenever. Your existing free-plan setup and the posts you've built stay intact.</p>
+    </details>
+    <details>
+      <summary>What happens to my data if I cancel?</summary>
+      <p>The Business storefront stops being publicly accessible. Your products, your feed, your posts and the free-plan picker keep working. Re-subscribing brings the shop back the way you left it.</p>
+    </details>
+  </div>
+</div></section>
+
 <section class="cta-section"><div class="container">
   <div class="cta-card">
     <h2>Your feed is already there. Turn it into a shop.</h2>
@@ -631,6 +684,20 @@ footer .footer-copy{color:var(--text-muted);font-size:.8rem;margin-top:16px}
     if (!hamburger.contains(e.target) && !navLinks.contains(e.target)) {
       navLinks.classList.remove('open');
     }
+  });
+})();
+
+// FAQ accordion — single-open
+(function(){
+  var faqItems = document.querySelectorAll('.faq details');
+  faqItems.forEach(function(item){
+    item.addEventListener('toggle', function(){
+      if (item.open) {
+        faqItems.forEach(function(other){
+          if (other !== item && other.open) other.open = false;
+        });
+      }
+    });
   });
 })();
 
