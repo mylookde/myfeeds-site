@@ -215,9 +215,13 @@ footer .footer-copy{color:var(--text-muted);font-size:.8rem;margin-top:16px}
 .reveal{animation:revealUp .8s ease both}.showcase{animation-delay:.1s}.features{animation-delay:.15s}.pricing{animation-delay:.2s}.networks{animation-delay:.25s}
 
 /* ─── Hero Trust Strip ─── */
+.hero-stat{font-size:.95rem;color:var(--text-secondary);margin:0 0 28px;letter-spacing:.01em;animation:fadeUp .8s .45s both}
+.hero-stat strong{color:var(--text-primary);font-weight:600}
 .hero-trust{margin-top:20px;display:flex;justify-content:center;animation:fadeUp .8s .65s both}
 .hero-trust .trust-item{font-size:.95rem;color:var(--text-primary);padding:10px 24px;border-radius:999px;background:linear-gradient(135deg,rgba(102,126,234,.14) 0%,rgba(118,75,162,.08) 100%);border:1px solid rgba(102,126,234,.25);font-weight:500;letter-spacing:.01em}
+.hero-trust .trust-item.wporg-badge{background:linear-gradient(135deg,rgba(52,211,153,.14) 0%,rgba(102,126,234,.08) 100%);border-color:rgba(52,211,153,.3)}
 @media(max-width:480px){.hero-trust .trust-item{font-size:.85rem;padding:9px 20px}}
+.refund-badge{display:block;text-align:center;font-size:.75rem;color:var(--text-muted);margin-top:10px;letter-spacing:.01em}
 
 /* ─── Demo Video ─── */
 .demo{padding:40px 0 40px}
@@ -265,6 +269,8 @@ footer .footer-copy{color:var(--text-muted);font-size:.8rem;margin-top:16px}
 .faq details p{padding:0 22px 20px;color:var(--text-secondary);line-height:1.6;font-size:.92rem;margin:0}
 
 </style>
+<!-- Plausible Analytics (lightweight, no cookies, GDPR-safe). Activate at plausible.io with domain "myfeeds.site". 30-day free trial; if it goes paid, swap for GoatCounter or Umami. -->
+<script defer data-domain="myfeeds.site" src="https://plausible.io/js/script.js"></script>
 </head>
 <body>
 <div class="ambient"><div class="orb"></div><div class="orb"></div><div class="orb"></div></div>
@@ -284,12 +290,14 @@ footer .footer-copy{color:var(--text-muted);font-size:.8rem;margin-top:16px}
   <div class="hero-badge"><span class="dot"></span> Now available for WordPress</div>
   <h1>Stop pasting affiliate<br>links by hand.<br><span class="gradient-text">Start publishing.</span></h1>
   <p>Pick products from your affiliate feed inside the WordPress block editor. Drop them into any post as polished, always-current product cards. No copy-paste, no dead links, no manual updates.</p>
+  <p class="hero-stat"><strong>Setup in 5 minutes.</strong></p>
   <div class="hero-actions">
-    <a href="https://wordpress.org/plugins/myfeeds-affiliate-feed-manager/" class="btn btn-primary">Get the Free Plugin →</a>
+    <a href="https://wordpress.org/plugins/myfeeds-affiliate-feed-manager/" class="btn btn-primary">Add live product cards to my posts →</a>
     <a href="#features" class="btn btn-outline">See what changes</a>
   </div>
   <div class="hero-trust">
-    <span class="trust-item">From bloggers, for bloggers.</span>
+    <span class="trust-item" id="trust-default">From bloggers, for bloggers.</span>
+    <span class="trust-item wporg-badge" id="wporg-badge" hidden></span>
   </div>
 </div></section>
 <section class="demo reveal"><div class="container">
@@ -414,7 +422,7 @@ footer .footer-copy{color:var(--text-muted);font-size:.8rem;margin-top:16px}
         <li><span class="check">✓</span> Nightly auto-sync</li>
         <li><span class="check">✓</span> Multi-network support</li>
       </ul>
-      <a href="https://wordpress.org/plugins/myfeeds-affiliate-feed-manager/" class="plan-cta cta-outline">Get the Free Plugin</a>
+      <a href="https://wordpress.org/plugins/myfeeds-affiliate-feed-manager/" class="plan-cta cta-outline">Add live product cards to my posts</a>
     </div>
     <div class="pricing-card featured">
       <div class="card-badge popular">MOST POPULAR</div>
@@ -435,7 +443,8 @@ footer .footer-copy{color:var(--text-muted);font-size:.8rem;margin-top:16px}
         <li><span class="check blue">✓</span> Affiliate Conversion Sync</li>
         <li><span class="check blue">✓</span> Support</li>
       </ul>
-      <a href="https://checkout.freemius.com/plugin/21336/plan/35610/?trial=paid" class="plan-cta cta-primary">Start 7-Day Free Trial</a>
+      <a href="https://checkout.freemius.com/plugin/21336/plan/35610/?trial=paid" class="plan-cta cta-primary">Try every Pro feature free for 7 days</a>
+      <p class="refund-badge">30-day refund · Cancel from your dashboard</p>
     </div>
     <div class="pricing-card">
       <div class="card-badge value">BEST VALUE</div>
@@ -456,7 +465,8 @@ footer .footer-copy{color:var(--text-muted);font-size:.8rem;margin-top:16px}
         <li><span class="check blue">✓</span> Priority support</li>
       </ul>
       <a href="business.html" style="display:block;text-align:center;margin-bottom:10px;color:var(--accent-start);text-decoration:none;font-size:.85rem;font-weight:500">See the storefront in action →</a>
-      <a href="https://checkout.freemius.com/plugin/21336/plan/48994/?trial=paid" class="plan-cta cta-gradient-border">Start 14-Day Free Trial</a>
+      <a href="https://checkout.freemius.com/plugin/21336/plan/48994/?trial=paid" class="plan-cta cta-gradient-border">Open my shop for 14 days, free</a>
+      <p class="refund-badge">30-day refund · Cancel from your dashboard</p>
     </div>
   </div>
   <p style="text-align:center;color:var(--text-muted);font-size:.78rem;font-style:italic;margin-top:28px;line-height:1.5">Prices in USD, exclusive of VAT. EU customers see local tax at checkout.</p>
@@ -643,6 +653,30 @@ document.querySelectorAll('.layout-label').forEach(function(label){
   var prevBtn = document.getElementById('carousel-prev');
   if (nextBtn) nextBtn.addEventListener('click', function(){ smoothJump(cardWidth); });
   if (prevBtn) prevBtn.addEventListener('click', function(){ smoothJump(-cardWidth); });
+})();
+
+// wp.org trust badge - renders only when data is meaningful, otherwise stays hidden
+(function(){
+  var badge = document.getElementById('wporg-badge');
+  var defaultPill = document.getElementById('trust-default');
+  if (!badge) return;
+  fetch('https://api.wordpress.org/plugins/info/1.0/myfeeds-affiliate-feed-manager.json')
+    .then(function(r){ return r.ok ? r.json() : null; })
+    .then(function(data){
+      if (!data) return;
+      var parts = [];
+      var rating5 = (typeof data.rating === 'number' && data.num_ratings >= 1)
+        ? (data.rating / 20).toFixed(1) : null;
+      if (rating5) parts.push('★ ' + rating5 + ' on WordPress.org');
+      if (typeof data.active_installs === 'number' && data.active_installs >= 10) {
+        parts.push(data.active_installs.toLocaleString() + '+ active installs');
+      }
+      if (parts.length === 0) return;
+      badge.textContent = parts.join(' · ');
+      badge.hidden = false;
+      if (defaultPill) defaultPill.hidden = true;
+    })
+    .catch(function(){});
 })();
 </script>
 </body>
