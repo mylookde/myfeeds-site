@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Just launched MyFeeds on WordPress.org — the story behind why I built it</title>
+<meta name="description" content="After 3 months of building, MyFeeds is live on the WordPress plugin directory. The story behind why I built it, what it does, and where I'm at right now.">
+<link rel="canonical" href="https://myfeeds.site/launch.html">
+<meta property="og:type" content="article">
+<meta property="og:site_name" content="MyFeeds">
+<meta property="og:title" content="Just launched MyFeeds on WordPress.org">
+<meta property="og:description" content="After 3 months of building, MyFeeds is live on the WordPress plugin directory. A plugin that keeps affiliate product cards current automatically, built because my own posts kept rotting.">
+<meta property="og:image" content="https://myfeeds.site/logo.png">
+<meta property="og:url" content="https://myfeeds.site/launch.html">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Just launched MyFeeds on WordPress.org">
+<meta name="twitter:description" content="After 3 months of building, MyFeeds is live on the WordPress plugin directory.">
+<meta name="twitter:image" content="https://myfeeds.site/logo.png">
+<link rel="icon" type="image/png" href="favicon.png">
+<link rel="icon" type="image/x-icon" href="favicon.ico">
+<link rel="apple-touch-icon" href="apple-touch-icon.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+:root{
+  --bg-deep:#0a0a12;
+  --bg-glass:rgba(255,255,255,0.06);
+  --border-glass:rgba(255,255,255,0.08);
+  --text-primary:#fff;
+  --text-secondary:rgba(255,255,255,0.7);
+  --text-muted:rgba(255,255,255,0.45);
+  --accent-start:#667eea;
+  --accent-end:#764ba2;
+  --gradient-brand:linear-gradient(135deg,#667eea 0%,#764ba2 100%);
+  --accent-green:#34d399;
+  --radius:16px;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth;background:var(--bg-deep);color:var(--text-primary);font-family:'Outfit',sans-serif}
+body{overflow-x:hidden;min-height:100vh;background:var(--bg-deep);line-height:1.6}
+.ambient{position:fixed;inset:0;z-index:0;pointer-events:none;overflow:hidden}
+.ambient .orb{position:absolute;border-radius:50%;filter:blur(120px);opacity:.18}
+.orb-1{width:500px;height:500px;background:#667eea;top:-200px;left:-200px}
+.orb-2{width:400px;height:400px;background:#764ba2;bottom:-100px;right:-100px}
+nav{position:fixed;top:0;left:0;right:0;z-index:100;padding:16px 0;backdrop-filter:blur(20px);background:rgba(10,10,18,0.7);border-bottom:1px solid var(--border-glass)}
+.nav-container{max-width:1200px;margin:0 auto;padding:0 24px;display:flex;align-items:center;justify-content:space-between}
+.nav-logo{display:flex;align-items:center;gap:10px;text-decoration:none;color:var(--text-primary);font-weight:600;font-size:1.05rem}
+.nav-logo img{width:32px;height:32px;border-radius:8px}
+.nav-back{color:var(--text-secondary);text-decoration:none;font-size:.9rem;transition:color .2s}
+.nav-back:hover{color:var(--text-primary)}
+article{position:relative;z-index:1;max-width:680px;margin:0 auto;padding:120px 24px 80px}
+.article-header{margin-bottom:48px}
+.article-eyebrow{display:inline-flex;align-items:center;gap:8px;padding:6px 14px;border-radius:999px;background:linear-gradient(135deg,rgba(52,211,153,.14) 0%,rgba(102,126,234,.08) 100%);border:1px solid rgba(52,211,153,.3);font-size:.78rem;color:var(--text-secondary);margin-bottom:24px;font-weight:500}
+.article-eyebrow .dot{width:6px;height:6px;border-radius:50%;background:var(--accent-green);animation:pulse 2s infinite}
+@keyframes pulse{0%,100%{opacity:1;transform:scale(1)}50%{opacity:.5;transform:scale(1.3)}}
+h1{font-size:clamp(2rem,4vw,2.8rem);font-weight:800;letter-spacing:-.03em;line-height:1.15;margin-bottom:16px}
+.article-meta{color:var(--text-muted);font-size:.9rem}
+.article-body p{margin-bottom:24px;color:var(--text-secondary);font-size:1.05rem;line-height:1.75}
+.article-body p:first-of-type{font-size:1.18rem;color:var(--text-primary);font-weight:500}
+.article-body ul{margin:0 0 28px 0;padding-left:0;list-style:none;background:var(--bg-glass);border:1px solid var(--border-glass);border-radius:var(--radius);padding:8px 24px}
+.article-body ul li{padding:14px 0;color:var(--text-secondary);font-size:.98rem;border-bottom:1px solid var(--border-glass);display:flex;gap:12px;align-items:flex-start}
+.article-body ul li:last-child{border-bottom:none}
+.article-body ul li::before{content:'';display:block;width:6px;height:6px;border-radius:50%;background:var(--accent-start);margin-top:10px;flex-shrink:0}
+.article-body strong{color:var(--text-primary);font-weight:600}
+.cta-block{margin-top:56px;padding:32px;background:var(--bg-glass);border:1px solid var(--border-glass);border-radius:var(--radius)}
+.cta-block h3{font-size:1.05rem;font-weight:600;margin-bottom:18px;color:var(--text-primary);text-transform:uppercase;letter-spacing:.08em}
+.cta-block a{display:flex;align-items:center;gap:8px;color:var(--accent-start);text-decoration:none;padding:14px 0;font-weight:500;font-size:1rem;transition:all .2s}
+.cta-block a:hover{gap:14px;color:#a78bfa}
+.cta-block a + a{border-top:1px solid var(--border-glass)}
+footer{position:relative;z-index:1;padding:40px 24px;text-align:center;color:var(--text-muted);font-size:.85rem;border-top:1px solid var(--border-glass)}
+@media(max-width:600px){article{padding:100px 20px 60px}h1{font-size:1.8rem}}
+</style>
+<!-- GoatCounter Analytics (privacy-friendly, no cookies, GDPR-safe, free) -->
+<script data-goatcounter="https://myfeeds.goatcounter.com/count" async src="//gc.zgo.at/count.js"></script>
+</head>
+<body>
+<div class="ambient">
+  <div class="orb orb-1"></div>
+  <div class="orb orb-2"></div>
+</div>
+<nav>
+  <div class="nav-container">
+    <a href="/" class="nav-logo"><img src="logo.png" alt="MyFeeds"><span>MyFeeds</span></a>
+    <a href="/" class="nav-back">← Back to site</a>
+  </div>
+</nav>
+<article>
+  <header class="article-header">
+    <div class="article-eyebrow"><span class="dot"></span> Now available for WordPress</div>
+    <h1>Just launched MyFeeds on WordPress.org</h1>
+    <p class="article-meta">May 25, 2026 · by Marlon</p>
+  </header>
+  <div class="article-body">
+    <p>After 3 months of building, MyFeeds is live on the WordPress plugin directory.</p>
+
+    <p><strong>Why I built it.</strong> I run a fashion affiliate blog and got tired of watching my old posts decay. Every roundup I published in 2023 had products that quietly went out of stock, prices that drifted, and merchants that pulled their feeds. Two months ago I checked my best post from last year and 14 of 22 product links were dead. I had been earning fewer clicks for months without knowing why.</p>
+
+    <p>The plugins I tried all assumed I'd go back and manually check every post every few months. That works at 10 posts. It stops working at 50.</p>
+
+    <p>So I built MyFeeds. You connect your affiliate network's feed URL once. Every product the network sells becomes searchable inside the WordPress block editor. You pick the products you want and drop them as cards in your post. The plugin re-syncs every night. Prices stay current. Sold-out products get flagged. When a product disappears, you get a list of every post that still links to it.</p>
+
+    <p><strong>What's available right now:</strong></p>
+    <ul>
+      <li><strong>Free</strong> on WordPress.org &mdash; 1 feed, smart search, nightly sync, works with 10 affiliate networks out of the box</li>
+      <li><strong>Pro</strong> at $29/mo &mdash; unlimited feeds, card design editor, conversion analytics, automatic dead-product detection</li>
+      <li><strong>Business</strong> at $129/mo &mdash; full affiliate storefront on your WordPress domain</li>
+    </ul>
+
+    <p><strong>Where I'm at:</strong> 0 paying customers, plugin just went live, building in public from here.</p>
+
+    <p><strong>What's next:</strong> direct outreach to other affiliate bloggers, Product Hunt launch in the coming weeks, and 100 paying users by end of year (ambitious, I know).</p>
+
+    <p><strong>What I'd love:</strong> feedback from anyone who runs affiliate posts and has felt this same pain. Honest reactions are gold right now.</p>
+  </div>
+  <div class="cta-block">
+    <h3>Take it for a spin</h3>
+    <a href="https://wordpress.org/plugins/myfeeds-affiliate-feed-manager/" target="_blank" rel="noopener">Get MyFeeds free on WordPress.org →</a>
+    <a href="/">See features, pricing and a 30-second demo →</a>
+  </div>
+</article>
+<footer>
+  MyFeeds · Affiliate product feeds for WordPress · © 2026
+</footer>
+</body>
+</html>
