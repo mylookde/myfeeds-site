@@ -219,6 +219,17 @@ footer .footer-copy{color:var(--text-muted);font-size:.8rem;margin-top:16px}
 .hero-trust .trust-item{font-size:.95rem;color:var(--text-primary);padding:10px 24px;border-radius:999px;background:linear-gradient(135deg,rgba(102,126,234,.14) 0%,rgba(118,75,162,.08) 100%);border:1px solid rgba(102,126,234,.25);font-weight:500;letter-spacing:.01em}
 @media(max-width:480px){.hero-trust .trust-item{font-size:.85rem;padding:9px 20px}}
 
+/* ─── Demo Video ─── */
+.demo{padding:64px 0 40px}
+.demo h2{text-align:center;font-size:2rem;font-weight:700;margin-bottom:12px;letter-spacing:-.03em}
+.demo .subtitle{text-align:center;color:var(--text-secondary);margin:0 auto 40px;font-size:1.05rem;max-width:620px;line-height:1.5}
+.demo-frame{max-width:1080px;margin:0 auto;position:relative;border-radius:var(--radius);overflow:hidden;border:1px solid var(--border-glass);background:var(--bg-glass);box-shadow:0 30px 80px rgba(102,126,234,.18),0 10px 30px rgba(0,0,0,.4)}
+.demo-frame::before{content:'';position:absolute;inset:-1px;border-radius:var(--radius);padding:1px;background:linear-gradient(135deg,rgba(102,126,234,.45),rgba(118,75,162,.15) 40%,transparent 70%);-webkit-mask:linear-gradient(#000 0 0) content-box,linear-gradient(#000 0 0);-webkit-mask-composite:xor;mask-composite:exclude;pointer-events:none}
+.demo-frame video{display:block;width:100%;height:auto}
+.demo-note{text-align:center;color:var(--text-secondary);font-size:.95rem;font-style:italic;margin:24px auto 0;max-width:640px;line-height:1.5}
+.demo-note a{color:#a78bfa;text-decoration:none;font-weight:600;border-bottom:1px solid rgba(167,139,250,.3);transition:border-color .2s}
+.demo-note a:hover{border-bottom-color:#a78bfa}
+
 /* ─── Comparison Table ─── */
 .comparison{padding:60px 0}
 .comparison-table{max-width:980px;margin:0 auto;border-radius:var(--radius);overflow:hidden;border:1px solid var(--border-glass);background:var(--bg-glass)}
@@ -279,6 +290,14 @@ footer .footer-copy{color:var(--text-muted);font-size:.8rem;margin-top:16px}
   <div class="hero-trust">
     <span class="trust-item">From bloggers, for bloggers.</span>
   </div>
+</div></section>
+<section class="demo reveal"><div class="container">
+  <h2>This is what your editor looks like</h2>
+  <p class="subtitle">Your post, a search box, and the products you want. No tabs, no copy-paste, no leaving the editor.</p>
+  <div class="demo-frame">
+    <video src="assets/myfeeds-demo.mp4" poster="assets/myfeeds-demo-poster.jpg" autoplay loop muted playsinline preload="metadata" aria-label="MyFeeds in use: picking products from an affiliate feed inside the WordPress block editor"></video>
+  </div>
+  <p class="demo-note">In Pro, you change colors, corner radius and layout to fit your site. <a href="business.html#demo-cards">See the editor →</a></p>
 </div></section>
 <section class="showcase reveal"><div class="container">
   <h2>This is what your reader sees</h2>
