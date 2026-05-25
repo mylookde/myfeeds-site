@@ -3,18 +3,18 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Just launched MyFeeds on WordPress.org — the story behind why I built it</title>
-<meta name="description" content="After 2 years of building, MyFeeds is live on the WordPress plugin directory. The story behind why I built it, what it does, and where I'm at right now.">
+<title>Updates — MyFeeds</title>
+<meta name="description" content="Building MyFeeds in public. Launches, milestones, and what I'm learning as I grow it.">
 <link rel="canonical" href="https://myfeeds.site/launch.html">
-<meta property="og:type" content="article">
+<meta property="og:type" content="website">
 <meta property="og:site_name" content="MyFeeds">
-<meta property="og:title" content="Just launched MyFeeds on WordPress.org">
-<meta property="og:description" content="After 2 years of building, MyFeeds is live on the WordPress plugin directory. A plugin that keeps affiliate product cards current automatically, built because my own posts kept rotting.">
+<meta property="og:title" content="Updates — MyFeeds">
+<meta property="og:description" content="Building MyFeeds in public. Launches, milestones, and what I'm learning as I grow it.">
 <meta property="og:image" content="https://myfeeds.site/logo.png">
 <meta property="og:url" content="https://myfeeds.site/launch.html">
 <meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:title" content="Just launched MyFeeds on WordPress.org">
-<meta name="twitter:description" content="After 2 years of building, MyFeeds is live on the WordPress plugin directory.">
+<meta name="twitter:title" content="Updates — MyFeeds">
+<meta name="twitter:description" content="Building MyFeeds in public. Launches, milestones, and what I'm learning as I grow it.">
 <meta name="twitter:image" content="https://myfeeds.site/logo.png">
 <link rel="icon" type="image/png" href="favicon.png">
 <link rel="icon" type="image/x-icon" href="favicon.ico">
@@ -49,27 +49,22 @@ nav{position:fixed;top:0;left:0;right:0;z-index:100;padding:16px 0;backdrop-filt
 .nav-logo img{width:32px;height:32px;border-radius:8px}
 .nav-back{color:var(--text-secondary);text-decoration:none;font-size:.9rem;transition:color .2s}
 .nav-back:hover{color:var(--text-primary)}
-article{position:relative;z-index:1;max-width:680px;margin:0 auto;padding:120px 24px 80px}
-.article-header{margin-bottom:48px}
-.article-eyebrow{display:inline-flex;align-items:center;gap:8px;padding:6px 14px;border-radius:999px;background:linear-gradient(135deg,rgba(52,211,153,.14) 0%,rgba(102,126,234,.08) 100%);border:1px solid rgba(52,211,153,.3);font-size:.78rem;color:var(--text-secondary);margin-bottom:24px;font-weight:500}
-.article-eyebrow .dot{width:6px;height:6px;border-radius:50%;background:var(--accent-green);animation:pulse 2s infinite}
-@keyframes pulse{0%,100%{opacity:1;transform:scale(1)}50%{opacity:.5;transform:scale(1.3)}}
-h1{font-size:clamp(2rem,4vw,2.8rem);font-weight:800;letter-spacing:-.03em;line-height:1.15;margin-bottom:16px}
-.article-meta{color:var(--text-muted);font-size:.9rem}
-.article-body p{margin-bottom:24px;color:var(--text-secondary);font-size:1.05rem;line-height:1.75}
-.article-body p:first-of-type{font-size:1.18rem;color:var(--text-primary);font-weight:500}
-.article-body ul{margin:0 0 28px 0;padding-left:0;list-style:none;background:var(--bg-glass);border:1px solid var(--border-glass);border-radius:var(--radius);padding:8px 24px}
-.article-body ul li{padding:14px 0;color:var(--text-secondary);font-size:.98rem;border-bottom:1px solid var(--border-glass);display:flex;gap:12px;align-items:flex-start}
-.article-body ul li:last-child{border-bottom:none}
-.article-body ul li::before{content:'';display:block;width:6px;height:6px;border-radius:50%;background:var(--accent-start);margin-top:10px;flex-shrink:0}
-.article-body strong{color:var(--text-primary);font-weight:600}
-.cta-block{margin-top:56px;padding:32px;background:var(--bg-glass);border:1px solid var(--border-glass);border-radius:var(--radius)}
-.cta-block h3{font-size:1.05rem;font-weight:600;margin-bottom:18px;color:var(--text-primary);text-transform:uppercase;letter-spacing:.08em}
-.cta-block a{display:flex;align-items:center;gap:8px;color:var(--accent-start);text-decoration:none;padding:14px 0;font-weight:500;font-size:1rem;transition:all .2s}
-.cta-block a:hover{gap:14px;color:#a78bfa}
-.cta-block a + a{border-top:1px solid var(--border-glass)}
+main{position:relative;z-index:1;max-width:720px;margin:0 auto;padding:120px 24px 80px}
+.archive-header{text-align:center;margin-bottom:56px}
+.archive-header h1{font-size:clamp(2rem,4vw,2.6rem);font-weight:800;letter-spacing:-.03em;margin-bottom:14px}
+.archive-header p{color:var(--text-secondary);font-size:1.05rem;max-width:540px;margin:0 auto;line-height:1.6}
+.archive-list{display:flex;flex-direction:column;gap:20px}
+.archive-card{display:block;text-decoration:none;color:inherit;padding:28px 32px;background:var(--bg-glass);border:1px solid var(--border-glass);border-radius:var(--radius);transition:all .25s}
+.archive-card:hover{transform:translateY(-2px);border-color:rgba(102,126,234,.3);background:rgba(102,126,234,.05)}
+.card-date{display:inline-flex;align-items:center;gap:8px;color:var(--text-muted);font-size:.82rem;margin-bottom:12px;font-weight:500;letter-spacing:.02em}
+.card-date .dot{width:6px;height:6px;border-radius:50%;background:var(--accent-green)}
+.card-title{font-size:1.3rem;font-weight:700;margin-bottom:10px;color:var(--text-primary);letter-spacing:-.01em;line-height:1.3}
+.card-excerpt{color:var(--text-secondary);font-size:1rem;line-height:1.6;margin-bottom:14px}
+.card-link{color:var(--accent-start);font-size:.9rem;font-weight:600;display:inline-flex;align-items:center;gap:6px;transition:gap .2s}
+.archive-card:hover .card-link{gap:12px;color:#a78bfa}
+.archive-empty{text-align:center;padding:48px 24px;color:var(--text-muted);font-style:italic}
 footer{position:relative;z-index:1;padding:40px 24px;text-align:center;color:var(--text-muted);font-size:.85rem;border-top:1px solid var(--border-glass)}
-@media(max-width:600px){article{padding:100px 20px 60px}h1{font-size:1.8rem}}
+@media(max-width:600px){main{padding:100px 20px 60px}.archive-card{padding:24px}}
 </style>
 <!-- GoatCounter Analytics (privacy-friendly, no cookies, GDPR-safe, free) -->
 <script data-goatcounter="https://myfeeds.goatcounter.com/count" async src="//gc.zgo.at/count.js"></script>
@@ -85,40 +80,22 @@ footer{position:relative;z-index:1;padding:40px 24px;text-align:center;color:var
     <a href="/" class="nav-back">← Back to site</a>
   </div>
 </nav>
-<article>
-  <header class="article-header">
-    <div class="article-eyebrow"><span class="dot"></span> Now available for WordPress</div>
-    <h1>Just launched MyFeeds on WordPress.org</h1>
-    <p class="article-meta">May 25, 2026 · by Marlon</p>
+<main>
+  <header class="archive-header">
+    <h1>Updates</h1>
+    <p>Building MyFeeds in public. Launches, milestones, and what I'm learning along the way.</p>
   </header>
-  <div class="article-body">
-    <p>After 2 years of building, MyFeeds is live on the WordPress plugin directory.</p>
+  <div class="archive-list">
 
-    <p><strong>Why I built it.</strong> I run a fashion affiliate blog and got tired of watching my old posts decay. Every roundup I published in 2023 had products that quietly went out of stock, prices that drifted, and merchants that pulled their feeds. Two months ago I checked my best post from last year and 14 of 22 product links were dead. I had been earning fewer clicks for months without knowing why.</p>
+    <a href="/articles/just-launched-on-wordpress-org.html" class="archive-card">
+      <div class="card-date"><span class="dot"></span>May 25, 2026</div>
+      <div class="card-title">Just launched MyFeeds on WordPress.org</div>
+      <div class="card-excerpt">After 2 years of building, MyFeeds is live on the WordPress plugin directory. The story behind why I built it, what it does, and where I'm at right now.</div>
+      <div class="card-link">Read article →</div>
+    </a>
 
-    <p>The plugins I tried all assumed I'd go back and manually check every post every few months. That works at 10 posts. It stops working at 50.</p>
-
-    <p>So I built MyFeeds. You connect your affiliate network's feed URL once. Every product the network sells becomes searchable inside the WordPress block editor. You pick the products you want and drop them as cards in your post. The plugin re-syncs every night. Prices stay current. Sold-out products get flagged. When a product disappears, you get a list of every post that still links to it.</p>
-
-    <p><strong>What's available right now:</strong></p>
-    <ul>
-      <li><strong>Free</strong> on WordPress.org &mdash; 1 feed, smart search, nightly sync, works with 10 affiliate networks out of the box</li>
-      <li><strong>Pro</strong> at $29/mo &mdash; unlimited feeds, card design editor, conversion analytics, automatic dead-product detection</li>
-      <li><strong>Business</strong> at $129/mo &mdash; full affiliate storefront on your WordPress domain</li>
-    </ul>
-
-    <p><strong>Where I'm at:</strong> 0 paying customers, plugin just went live, building in public from here.</p>
-
-    <p><strong>What's next:</strong> direct outreach to other affiliate bloggers, Product Hunt launch in the coming weeks, and 100 paying users by end of year (ambitious, I know).</p>
-
-    <p><strong>What I'd love:</strong> feedback from anyone who runs affiliate posts and has felt this same pain. Honest reactions are gold right now.</p>
   </div>
-  <div class="cta-block">
-    <h3>Take it for a spin</h3>
-    <a href="https://wordpress.org/plugins/myfeeds-affiliate-feed-manager/" target="_blank" rel="noopener">Get MyFeeds free on WordPress.org →</a>
-    <a href="/">See features, pricing and a 30-second demo →</a>
-  </div>
-</article>
+</main>
 <footer>
   MyFeeds · Affiliate product feeds for WordPress · © 2026
 </footer>
