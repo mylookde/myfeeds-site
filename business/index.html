@@ -109,6 +109,7 @@ nav .container{display:flex;align-items:center;justify-content:space-between}
 .tool-card .tool-icon.yellow{background:rgba(251,191,36,.15)}
 .tool-card h3{font-size:1.1rem;font-weight:700;margin-bottom:8px}
 .tool-card p{color:var(--text-secondary);font-size:.9rem;line-height:1.55}
+.tools-cta{display:flex;justify-content:center;margin-top:40px}
 
 /* Demo sections — shared */
 .demo{padding:80px 0;position:relative}
@@ -230,27 +231,6 @@ nav .container{display:flex;align-items:center;justify-content:space-between}
 .insight-card .insight-title{font-size:.92rem;font-weight:600;margin-bottom:4px}
 .insight-card .insight-meta{font-size:.78rem;color:var(--text-muted)}
 
-/* Demo 3: Card Design Editor */
-.card-demo{display:grid;grid-template-columns:300px 1fr;gap:24px;background:var(--bg-glass);border:1px solid var(--border-glass);border-radius:var(--radius);padding:24px;align-items:center}
-@media(max-width:900px){.card-demo{grid-template-columns:1fr}}
-.card-preview-stage{display:flex;justify-content:center;padding:30px 20px;background:rgba(0,0,0,0.2);border-radius:var(--radius-sm);min-height:380px;align-items:center}
-.demo-product-card{width:240px;background:var(--cd-bg,#ffffff);border:1px solid var(--cd-border,#e5e5ee);border-radius:var(--cd-radius,12px);overflow:hidden;box-shadow:var(--cd-shadow,0 4px 24px rgba(0,0,0,0.08));transition:all .25s;font-family:'Outfit',sans-serif}
-.demo-product-card .dpc-img{height:180px;display:flex;align-items:center;justify-content:center;position:relative;background:linear-gradient(135deg,rgba(102,126,234,.1),rgba(167,139,250,.05));transition:background .25s,padding .25s}
-.demo-product-card.image-full .dpc-img{background:#f5f3ff}
-.demo-product-card .dpc-shape{width:80px;height:100px;border-radius:10px;background:linear-gradient(135deg,#a78bfa,#ec4899);position:relative;transition:width .25s,height .25s}
-.demo-product-card.image-full .dpc-shape{width:140px;height:160px;border-radius:0}
-.demo-product-card .dpc-shape::after{content:'';position:absolute;inset:8px;border-radius:6px;background:rgba(255,255,255,.18)}
-.demo-product-card.image-full .dpc-shape::after{inset:14px}
-.demo-product-card .dpc-badge{position:absolute;top:12px;left:12px;background:var(--cd-accent,#ec4899);color:#fff;font-size:.65rem;font-weight:700;padding:4px 10px;border-radius:6px}
-.demo-product-card .dpc-info{padding:14px}
-.demo-product-card .dpc-brand{font-size:.7rem;color:#888;text-transform:uppercase;letter-spacing:.08em;margin-bottom:4px}
-.demo-product-card .dpc-brand.hidden{display:none}
-.demo-product-card .dpc-name{font-size:.92rem;font-weight:500;color:var(--cd-text,#1a1a2e);margin-bottom:8px}
-.demo-product-card .dpc-price-row{display:flex;align-items:baseline;gap:8px}
-.demo-product-card .dpc-old{font-size:.78rem;color:#888;text-decoration:line-through}
-.demo-product-card .dpc-old.hidden{display:none}
-.demo-product-card .dpc-price{font-size:1.1rem;font-weight:700;color:var(--cd-accent,#ec4899)}
-
 /* CTA */
 .cta-section{padding:80px 0 100px;text-align:center}
 .cta-card{background:linear-gradient(135deg,rgba(167,139,250,.1),rgba(236,72,153,.06));border:1px solid rgba(167,139,250,.3);border-radius:var(--radius);padding:48px 32px;max-width:760px;margin:0 auto}
@@ -314,9 +294,9 @@ footer .footer-copy{color:var(--text-muted);font-size:.8rem;margin-top:16px}
 
 <section class="shop-hero-visual reveal"><div class="container">
   <div class="screenshot-frame">
-    <img src="/assets/screenshot-shop-frontend.png" alt="MyFeeds storefront on a WordPress site: All products view with category sidebar (Men, Women, T-Shirts, Trousers, Footwear) and a grid of real product cards" loading="eager">
+    <img src="/assets/screenshot-shop-frontend.png" alt="MyFeeds storefront on a WordPress site: All products view with category sidebar and a grid of real product cards" loading="eager">
   </div>
-  <p class="screenshot-caption">Your own shop, on your own domain — categories, sorting, real product cards from your affiliate feeds. Built into the same WordPress site you already publish from.</p>
+  <p class="screenshot-caption">Visitors land in something that feels like a real online shop — categories, filters, sorting, the controls they already know — all on your domain, your affiliate link baked into every checkout.</p>
 </div></section>
 
 <section class="tools-section"><div class="container">
@@ -371,16 +351,19 @@ footer .footer-copy{color:var(--text-muted);font-size:.8rem;margin-top:16px}
       <p>Drop a shop category into any blog post and pick how many products to show. The dynamic block stays current on its own — sold-out items drop out, new top-sellers slot in. Sort by most popular, biggest discount, or newest.</p>
     </div>
   </div>
+  <div class="tools-cta">
+    <a href="/#pricing" class="btn btn-primary">See pricing ↓</a>
+  </div>
 </div></section>
 
 <section class="demo reveal" id="categories"><div class="container">
   <div class="demo-eyebrow">Inside the plugin · Categories</div>
-  <h2>Categories you actually control</h2>
-  <p class="demo-subtitle">Build the category tree your readers will use. The smart matcher previews which products from your feeds fit each one. Drill down as deep as you like — Men → Footwear → Sneaker, Women → Trousers → Jeans, whatever your shop needs.</p>
+  <h2>A shop organised the way your readers shop</h2>
+  <p class="demo-subtitle">Your taste, your structure, your tree. Reshuffle whenever the season turns, drill into any branch as deep as it deserves, and curate products into each category the way you'd assemble an editorial — guided by smart keyword search, decided by you.</p>
   <div class="screenshot-frame">
-    <img src="/assets/screenshot-category-editor.png" alt="MyFeeds Shop admin Categories tab: 16-category hierarchy with nested subcategories (Men, T-Shirts, Trousers, Jeans, Shorts, Jackets, Footwear, Sneaker, Sweaters, Women) and product counts per category" loading="lazy">
+    <img src="/assets/screenshot-category-editor.png" alt="MyFeeds Shop admin Categories tab: nested category hierarchy with subcategories and product counts" loading="lazy">
   </div>
-  <p class="screenshot-caption">Real admin screen. Add, rename, nest, delete — the smart matcher reassigns products as you go.</p>
+  <p class="screenshot-caption">One slice of the editor — every category opens into its own world of detail behind the scenes.</p>
 </div></section>
 
 <section class="demo reveal" id="demo-storefront"><div class="container">
@@ -481,12 +464,12 @@ footer .footer-copy{color:var(--text-muted);font-size:.8rem;margin-top:16px}
 
 <section class="demo reveal" id="design-editor"><div class="container">
   <div class="demo-eyebrow">Inside the plugin · Design tab</div>
-  <h2>The control panel behind the storefront</h2>
-  <p class="demo-subtitle">Shop width, products per row, corner style, hover effect, filter position, card spacing — every choice lives here, with a Desktop / Tablet / Mobile preview that updates as you tweak. The slider you just played with is one of these.</p>
+  <h2>Your storefront tracks your taste</h2>
+  <p class="demo-subtitle">A storefront that wears your brand. Tune the mood until it feels like a continuation of your writing — and watch a phone, tablet and laptop preview move with you, so what you ship is exactly what your reader meets.</p>
   <div class="screenshot-frame">
-    <img src="/assets/screenshot-shop-design-editor.png" alt="MyFeeds Shop admin Design tab with Layout panel (shop width, products per row, corner style, hover effect, filter position, card spacing) on the left and a Desktop/Tablet/Mobile storefront preview on the right" loading="lazy">
+    <img src="/assets/screenshot-shop-design-editor.png" alt="MyFeeds Shop admin Design tab with layout controls and a Desktop/Tablet/Mobile storefront preview" loading="lazy">
   </div>
-  <p class="screenshot-caption">Real admin screen. The interactive demo above is a slice of this.</p>
+  <p class="screenshot-caption">A taste of the controls — the live editor opens a lot more than this screen lets on.</p>
 </div></section>
 
 <section class="demo reveal" id="demo-analytics"><div class="container">
@@ -587,73 +570,6 @@ footer .footer-copy{color:var(--text-muted);font-size:.8rem;margin-top:16px}
     </div>
   </div>
   <p class="demo-disclaimer">Simplified visualisation with sample numbers — the live dashboard runs on your real data and may differ in detail from what you see here.</p>
-</div></section>
-
-<section class="demo reveal" id="demo-cards"><div class="container">
-  <div class="demo-eyebrow">Interactive demo · Card design editor</div>
-  <h2>Product cards that feel like part of your site</h2>
-  <p class="demo-subtitle">The same card designer Pro users get, and Business inherits all of it. Adjust the controls below and watch the card update. Every tweak you save inside WordPress lands on every card across your site at once.</p>
-
-  <div class="card-demo">
-    <div class="editor-panel">
-      <div class="editor-group">
-        <h4>Accent color</h4>
-        <div class="color-row" id="cd-accents">
-          <div class="color-swatch active" data-accent="#ec4899" style="background:#ec4899"></div>
-          <div class="color-swatch" data-accent="#667eea" style="background:#667eea"></div>
-          <div class="color-swatch" data-accent="#34d399" style="background:#34d399"></div>
-          <div class="color-swatch" data-accent="#f59e42" style="background:#f59e42"></div>
-          <div class="color-swatch" data-accent="#fbbf24" style="background:#fbbf24"></div>
-        </div>
-      </div>
-
-      <div class="editor-group">
-        <h4>Corner radius</h4>
-        <div class="editor-slider">
-          <input type="range" min="0" max="24" value="12" id="cd-radius">
-          <span class="value" id="cd-radius-value">12px</span>
-        </div>
-      </div>
-
-      <div class="editor-group">
-        <h4>Image</h4>
-        <div class="editor-toggle" id="cd-image">
-          <button class="active" data-image="boxed">Boxed</button>
-          <button data-image="full">Full sized</button>
-        </div>
-      </div>
-
-      <div class="editor-group">
-        <h4>Show</h4>
-        <div style="display:flex;gap:14px;align-items:center;font-size:.85rem;color:var(--text-secondary);flex-wrap:wrap">
-          <label style="display:flex;gap:6px;align-items:center;cursor:pointer">
-            <input type="checkbox" id="cd-show-brand" checked> Brand
-          </label>
-          <label style="display:flex;gap:6px;align-items:center;cursor:pointer">
-            <input type="checkbox" id="cd-show-strike" checked> Original price
-          </label>
-        </div>
-      </div>
-    </div>
-
-    <div class="card-preview-stage">
-      <div class="demo-product-card" id="cd-card">
-        <div class="dpc-img">
-          <div class="dpc-shape"></div>
-          <span class="dpc-badge">-25%</span>
-        </div>
-        <div class="dpc-info">
-          <div class="dpc-brand" id="cd-brand">FASHION BRAND</div>
-          <div class="dpc-name">Premium Essential Tee — M</div>
-          <div class="dpc-price-row">
-            <span class="dpc-old" id="cd-strike">39.90 €</span>
-            <span class="dpc-price">29.90 €</span>
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
-  <p class="demo-disclaimer">Simplified visualisation — the live editor exposes more options and may differ in detail from what you see here.</p>
 </div></section>
 
 <section class="faq reveal" id="faq"><div class="container">
@@ -817,48 +733,6 @@ footer .footer-copy{color:var(--text-muted);font-size:.8rem;margin-top:16px}
       pill.classList.toggle('active');
       applyFilters();
     });
-  });
-})();
-
-// ─── Demo 3: Card design editor ───
-(function(){
-  var card = document.getElementById('cd-card');
-  if (!card) return;
-
-  function activate(group, item) {
-    group.querySelectorAll('.color-swatch, .editor-toggle button').forEach(function(el){
-      el.classList.remove('active');
-    });
-    item.classList.add('active');
-  }
-
-  document.querySelectorAll('#cd-accents .color-swatch').forEach(function(sw){
-    sw.addEventListener('click', function(){
-      activate(document.getElementById('cd-accents'), sw);
-      card.style.setProperty('--cd-accent', sw.dataset.accent);
-    });
-  });
-
-  var cdR = document.getElementById('cd-radius');
-  var cdRv = document.getElementById('cd-radius-value');
-  cdR.addEventListener('input', function(){
-    card.style.setProperty('--cd-radius', cdR.value + 'px');
-    cdRv.textContent = cdR.value + 'px';
-  });
-
-  document.querySelectorAll('#cd-image button').forEach(function(btn){
-    btn.addEventListener('click', function(){
-      activate(document.getElementById('cd-image'), btn);
-      card.classList.remove('image-boxed','image-full');
-      card.classList.add('image-' + btn.dataset.image);
-    });
-  });
-
-  document.getElementById('cd-show-brand').addEventListener('change', function(e){
-    document.getElementById('cd-brand').classList.toggle('hidden', !e.target.checked);
-  });
-  document.getElementById('cd-show-strike').addEventListener('change', function(e){
-    document.getElementById('cd-strike').classList.toggle('hidden', !e.target.checked);
   });
 })();
 
