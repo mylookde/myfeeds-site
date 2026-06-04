@@ -117,6 +117,14 @@ nav .container{display:flex;align-items:center;justify-content:space-between}
 .demo .demo-subtitle{text-align:center;color:var(--text-secondary);max-width:640px;margin:0 auto 48px;font-size:1.02rem;line-height:1.55}
 .demo-disclaimer{text-align:center;color:var(--text-muted);font-size:.8rem;font-style:italic;margin:18px auto 0;line-height:1.5;max-width:680px}
 
+/* Real-plugin screenshots */
+.screenshot-frame{max-width:1080px;margin:0 auto;position:relative;border-radius:var(--radius);overflow:hidden;border:1px solid var(--border-glass);background:var(--bg-glass);box-shadow:0 30px 80px rgba(167,139,250,.18),0 10px 30px rgba(0,0,0,.4)}
+.screenshot-frame::before{content:'';position:absolute;inset:-1px;border-radius:var(--radius);padding:1px;background:linear-gradient(135deg,rgba(167,139,250,.45),rgba(236,72,153,.15) 40%,transparent 70%);-webkit-mask:linear-gradient(#000 0 0) content-box,linear-gradient(#000 0 0);-webkit-mask-composite:xor;mask-composite:exclude;pointer-events:none;z-index:1}
+.screenshot-frame img{display:block;width:100%;height:auto;background:#fff}
+.screenshot-caption{text-align:center;color:var(--text-secondary);font-size:.92rem;margin:18px auto 0;max-width:640px;line-height:1.55}
+.shop-hero-visual{padding:0 0 40px}
+@media(max-width:768px){.shop-hero-visual{padding:0 0 24px}}
+
 /* Demo 1: Storefront Design Editor */
 .storefront-demo{display:grid;grid-template-columns:300px 1fr;gap:24px;background:var(--bg-glass);border:1px solid var(--border-glass);border-radius:var(--radius);padding:24px;align-items:stretch}
 @media(max-width:900px){.storefront-demo{grid-template-columns:1fr}}
@@ -304,6 +312,13 @@ footer .footer-copy{color:var(--text-muted);font-size:.8rem;margin-top:16px}
   </div>
 </div></section>
 
+<section class="shop-hero-visual reveal"><div class="container">
+  <div class="screenshot-frame">
+    <img src="/assets/screenshot-shop-frontend.png" alt="MyFeeds storefront on a WordPress site: All products view with category sidebar (Men, Women, T-Shirts, Trousers, Footwear) and a grid of real product cards" loading="eager">
+  </div>
+  <p class="screenshot-caption">Your own shop, on your own domain — categories, sorting, real product cards from your affiliate feeds. Built into the same WordPress site you already publish from.</p>
+</div></section>
+
 <section class="tools-section"><div class="container">
   <div class="section-header">
     <h2>What changes the day you turn Business on</h2>
@@ -356,6 +371,16 @@ footer .footer-copy{color:var(--text-muted);font-size:.8rem;margin-top:16px}
       <p>Drop a shop category into any blog post and pick how many products to show. The dynamic block stays current on its own — sold-out items drop out, new top-sellers slot in. Sort by most popular, biggest discount, or newest.</p>
     </div>
   </div>
+</div></section>
+
+<section class="demo reveal" id="categories"><div class="container">
+  <div class="demo-eyebrow">Inside the plugin · Categories</div>
+  <h2>Categories you actually control</h2>
+  <p class="demo-subtitle">Build the category tree your readers will use. The smart matcher previews which products from your feeds fit each one. Drill down as deep as you like — Men → Footwear → Sneaker, Women → Trousers → Jeans, whatever your shop needs.</p>
+  <div class="screenshot-frame">
+    <img src="/assets/screenshot-category-editor.png" alt="MyFeeds Shop admin Categories tab: 16-category hierarchy with nested subcategories (Men, T-Shirts, Trousers, Jeans, Shorts, Jackets, Footwear, Sneaker, Sweaters, Women) and product counts per category" loading="lazy">
+  </div>
+  <p class="screenshot-caption">Real admin screen. Add, rename, nest, delete — the smart matcher reassigns products as you go.</p>
 </div></section>
 
 <section class="demo reveal" id="demo-storefront"><div class="container">
@@ -452,6 +477,16 @@ footer .footer-copy{color:var(--text-muted);font-size:.8rem;margin-top:16px}
     </div>
   </div>
   <p class="demo-disclaimer">Simplified visualisation — the live plugin offers more controls and may differ in detail from what you see here.</p>
+</div></section>
+
+<section class="demo reveal" id="design-editor"><div class="container">
+  <div class="demo-eyebrow">Inside the plugin · Design tab</div>
+  <h2>The control panel behind the storefront</h2>
+  <p class="demo-subtitle">Shop width, products per row, corner style, hover effect, filter position, card spacing — every choice lives here, with a Desktop / Tablet / Mobile preview that updates as you tweak. The slider you just played with is one of these.</p>
+  <div class="screenshot-frame">
+    <img src="/assets/screenshot-shop-design-editor.png" alt="MyFeeds Shop admin Design tab with Layout panel (shop width, products per row, corner style, hover effect, filter position, card spacing) on the left and a Desktop/Tablet/Mobile storefront preview on the right" loading="lazy">
+  </div>
+  <p class="screenshot-caption">Real admin screen. The interactive demo above is a slice of this.</p>
 </div></section>
 
 <section class="demo reveal" id="demo-analytics"><div class="container">

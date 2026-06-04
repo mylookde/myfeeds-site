@@ -91,8 +91,12 @@ nav .container{display:flex;align-items:center;justify-content:space-between}
 @keyframes fadeUp{from{opacity:0;transform:translateY(24px)}to{opacity:1;transform:translateY(0)}}
 .showcase{padding:40px 0 20px}
 .showcase h2{text-align:center;font-size:2rem;font-weight:700;margin-bottom:12px;letter-spacing:-.03em}
-.showcase .subtitle{text-align:center;color:var(--text-secondary);margin-bottom:48px;font-size:1.05rem}
+.showcase .subtitle{text-align:center;color:var(--text-secondary);margin-bottom:48px;font-size:1.05rem;max-width:680px;margin-left:auto;margin-right:auto}
 .showcase-disclaimer{text-align:center;color:var(--text-muted);font-size:.8rem;font-style:italic;margin:20px auto 0;line-height:1.5;max-width:680px}
+.screenshot-frame{max-width:1080px;margin:0 auto;position:relative;border-radius:var(--radius);overflow:hidden;border:1px solid var(--border-glass);background:var(--bg-glass);box-shadow:0 30px 80px rgba(102,126,234,.18),0 10px 30px rgba(0,0,0,.4)}
+.screenshot-frame::before{content:'';position:absolute;inset:-1px;border-radius:var(--radius);padding:1px;background:linear-gradient(135deg,rgba(102,126,234,.45),rgba(118,75,162,.15) 40%,transparent 70%);-webkit-mask:linear-gradient(#000 0 0) content-box,linear-gradient(#000 0 0);-webkit-mask-composite:xor;mask-composite:exclude;pointer-events:none;z-index:1}
+.screenshot-frame img{display:block;width:100%;height:auto;background:#fff}
+.screenshot-caption{text-align:center;color:var(--text-secondary);font-size:.92rem;margin:18px auto 0;max-width:640px;line-height:1.55}
 .product-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:20px}
 @media(max-width:768px){.product-grid{grid-template-columns:repeat(2,1fr)}}
 @media(max-width:480px){.product-grid{grid-template-columns:repeat(2,1fr);gap:12px}}
@@ -312,40 +316,23 @@ footer .footer-copy{color:var(--text-muted);font-size:.8rem;margin-top:16px}
 </div></section>
 <section class="showcase reveal"><div class="container">
   <h2>This is what your reader sees</h2>
-  <p class="subtitle">Pick the products in the WordPress block editor. Hit publish. Your visitors get this: current prices, current stock, your affiliate link baked in.</p>
+  <p class="subtitle">Pick the products in the WordPress block editor. Hit publish. Your visitors get this: current prices, current stock, your affiliate link baked in. Real screenshots from a real MyFeeds blog.</p>
   <div class="layout-labels">
     <span class="layout-label active" data-view="grid">Grid Layout</span>
     <span class="layout-label" data-view="carousel">Carousel</span>
   </div>
   <div class="showcase-view active" id="view-grid">
-    <div class="product-grid">
-      <div class="product-card"><div class="card-image"><div class="shape"></div><span class="badge-tag">-25%</span></div><div class="card-info"><div class="brand">Brand A</div><div class="name">Premium Essential Tee — M</div><div class="price-row"><span class="old-price">39.90 €</span><span class="price sale">29.90 €</span></div><div class="shop">FASHION STORE</div></div></div>
-      <div class="product-card"><div class="card-image"><div class="shape"></div></div><div class="card-info"><div class="brand">Brand B</div><div class="name">Signature Eau de Parfum</div><div class="price-row"><span class="price">120.00 €</span></div><div class="shop">BEAUTY SHOP</div></div></div>
-      <div class="product-card"><div class="card-image"><div class="shape"></div><span class="badge-tag">-50%</span></div><div class="card-info"><div class="brand">Brand C</div><div class="name">Court Classic White Sneaker</div><div class="price-row"><span class="old-price">93.95 €</span><span class="price sale">46.95 €</span></div><div class="shop">SNEAKER STORE</div></div></div>
-      <div class="product-card"><div class="card-image"><div class="shape"></div></div><div class="card-info"><div class="brand">Brand D</div><div class="name">Base Coat Nail Care S.O.S.</div><div class="price-row"><span class="price">16.95 €</span></div><div class="shop">BEAUTY SHOP</div></div></div>
+    <div class="screenshot-frame">
+      <img src="assets/screenshot-product-grid.png" alt="MyFeeds product grid inside a WordPress post: four product cards with sale badges, prices and shipping note" loading="lazy">
     </div>
+    <p class="screenshot-caption">Four products, picked in the editor, rendered as a responsive grid. Discounts, prices and stock pulled straight from the live feed.</p>
   </div>
   <div class="showcase-view" id="view-carousel">
-    <div class="carousel-preview">
-      <button class="carousel-arrows left" id="carousel-prev"><svg viewBox="0 0 24 24"><polyline points="15 18 9 12 15 6"/></svg></button>
-      <button class="carousel-arrows right" id="carousel-next"><svg viewBox="0 0 24 24"><polyline points="9 6 15 12 9 18"/></svg></button>
-      <div class="carousel-track">
-        <div class="carousel-card"><div class="cc-img"><div class="cc-shape"></div></div><div class="cc-info"><div class="cc-brand">Brand A</div><div class="cc-name">Premium Hoodie — L</div><div class="cc-price-row"><span class="cc-price">275.00 €</span></div></div></div>
-        <div class="carousel-card"><div class="cc-badge">-15%</div><div class="cc-img"><div class="cc-shape"></div></div><div class="cc-info"><div class="cc-brand">Brand B</div><div class="cc-name">Classic Cap Navy</div><div class="cc-price-row"><span class="cc-old">23.50 €</span><span class="cc-price sale">19.95 €</span></div></div></div>
-        <div class="carousel-card"><div class="cc-img"><div class="cc-shape"></div></div><div class="cc-info"><div class="cc-brand">Brand C</div><div class="cc-name">Minimal Watch Silver</div><div class="cc-price-row"><span class="cc-price">149.00 €</span></div></div></div>
-        <div class="carousel-card"><div class="cc-badge">-30%</div><div class="cc-img"><div class="cc-shape"></div></div><div class="cc-info"><div class="cc-brand">Brand D</div><div class="cc-name">Leather Belt Brown</div><div class="cc-price-row"><span class="cc-old">85.00 €</span><span class="cc-price sale">59.90 €</span></div></div></div>
-        <div class="carousel-card"><div class="cc-img"><div class="cc-shape"></div></div><div class="cc-info"><div class="cc-brand">Brand E</div><div class="cc-name">Summer Dress Floral</div><div class="cc-price-row"><span class="cc-price">89.00 €</span></div></div></div>
-        <div class="carousel-card"><div class="cc-img"><div class="cc-shape"></div></div><div class="cc-info"><div class="cc-brand">Brand F</div><div class="cc-name">Running Sneaker V2</div><div class="cc-price-row"><span class="cc-price">129.95 €</span></div></div></div>
-        <div class="carousel-card"><div class="cc-img"><div class="cc-shape"></div></div><div class="cc-info"><div class="cc-brand">Brand A</div><div class="cc-name">Premium Hoodie — L</div><div class="cc-price-row"><span class="cc-price">275.00 €</span></div></div></div>
-        <div class="carousel-card"><div class="cc-badge">-15%</div><div class="cc-img"><div class="cc-shape"></div></div><div class="cc-info"><div class="cc-brand">Brand B</div><div class="cc-name">Classic Cap Navy</div><div class="cc-price-row"><span class="cc-old">23.50 €</span><span class="cc-price sale">19.95 €</span></div></div></div>
-        <div class="carousel-card"><div class="cc-img"><div class="cc-shape"></div></div><div class="cc-info"><div class="cc-brand">Brand C</div><div class="cc-name">Minimal Watch Silver</div><div class="cc-price-row"><span class="cc-price">149.00 €</span></div></div></div>
-        <div class="carousel-card"><div class="cc-badge">-30%</div><div class="cc-img"><div class="cc-shape"></div></div><div class="cc-info"><div class="cc-brand">Brand D</div><div class="cc-name">Leather Belt Brown</div><div class="cc-price-row"><span class="cc-old">85.00 €</span><span class="cc-price sale">59.90 €</span></div></div></div>
-        <div class="carousel-card"><div class="cc-img"><div class="cc-shape"></div></div><div class="cc-info"><div class="cc-brand">Brand E</div><div class="cc-name">Summer Dress Floral</div><div class="cc-price-row"><span class="cc-price">89.00 €</span></div></div></div>
-        <div class="carousel-card"><div class="cc-img"><div class="cc-shape"></div></div><div class="cc-info"><div class="cc-brand">Brand F</div><div class="cc-name">Running Sneaker V2</div><div class="cc-price-row"><span class="cc-price">129.95 €</span></div></div></div>
-      </div>
+    <div class="screenshot-frame">
+      <img src="assets/screenshot-product-carousel.png" alt="MyFeeds product carousel with chevron arrows, three cards visible" loading="lazy">
     </div>
+    <p class="screenshot-caption">Same products, same data — laid out as a swipeable carousel. One block, two layouts, your choice per post.</p>
   </div>
-  <p class="showcase-disclaimer">Simplified visualisation — the real cards may differ in detail from what you see here.</p>
 </div></section>
 <section class="comparison reveal" id="comparison"><div class="container">
   <div class="section-header"><h2>Built different.</h2><p>You stop maintaining your affiliate posts. They stay fresh anyway.</p></div>
@@ -386,6 +373,14 @@ footer .footer-copy{color:var(--text-muted);font-size:.8rem;margin-top:16px}
       <div class="comparison-cell highlight"><span class="check-icon">✓</span>Clicks and commissions from every network in one place</div>
     </div>
   </div>
+</div></section>
+<section class="demo reveal" id="card-editor"><div class="container">
+  <h2>Match your blog down to the pixel</h2>
+  <p class="subtitle">Open the Pro card editor and shape every card to your site: background, border, shadow, radius, hover effect. One save, every card across every post updates at once.</p>
+  <div class="screenshot-frame">
+    <img src="assets/screenshot-card-design-editor.png" alt="MyFeeds Pro card design editor with color, border, shadow controls and a live preview card on the right" loading="lazy">
+  </div>
+  <p class="screenshot-caption">Real Pro editor. Live preview on the right. No code, no theme files, no developer hand-off.</p>
 </div></section>
 <section class="features reveal" id="features"><div class="container">
   <div class="section-header"><h2>What changes for you</h2><p>Every roundup, every gift guide, every product page stays quietly looked after, while you focus on the next post.</p></div>
