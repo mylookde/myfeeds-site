@@ -142,6 +142,14 @@ nav .container{display:flex;align-items:center;justify-content:space-between}
 .cta-card p{color:var(--text-secondary);margin-bottom:28px;line-height:1.6}
 .cta-card .cta-meta{display:block;margin-top:16px;font-size:.85rem;color:var(--text-muted)}
 
+/* Email fallback (works for visitors without a mailto handler) */
+.email-fallback{text-align:center;margin-top:18px;font-size:.9rem;color:var(--text-muted);animation:fadeUp .8s .65s both}
+.email-copy{background:none;border:none;color:var(--accent-start);font-family:inherit;font-size:inherit;font-weight:500;cursor:pointer;padding:0;text-decoration:underline;text-decoration-color:rgba(102,126,234,0.4);text-underline-offset:3px;transition:color .2s,text-decoration-color .2s}
+.email-copy:hover{color:#a78bfa;text-decoration-color:#a78bfa}
+.email-copy.copied{color:var(--accent-green);text-decoration-color:var(--accent-green)}
+.email-copy::after{content:' 📋';font-size:.85em;opacity:.7}
+.email-copy.copied::after{content:' ✓';opacity:1}
+
 /* Footer */
 footer{border-top:1px solid var(--border-glass);padding:48px 0;text-align:center}
 footer .footer-brand{font-size:1.2rem;font-weight:700;margin-bottom:8px}
@@ -175,9 +183,10 @@ footer .footer-copy{color:var(--text-muted);font-size:.8rem;margin-top:16px}
   <h1>One recommendation. <span class="gradient-text">Years of commission.</span></h1>
   <p>A sponsored post pays you once. A MyFeeds affiliate keeps earning every billing cycle, for as long as their reader stays a customer. Your Reel from today still pays you in two years.</p>
   <div class="hero-actions">
-    <a href="mailto:support@myfeeds.site?subject=MyFeeds%20Affiliate%20Application&body=Hi%20MyFeeds%20team%2C%0A%0AI%27d%20like%20to%20apply%20to%20the%20MyFeeds%20affiliate%20program.%0A%0AAbout%20me%3A%0A-%20Channels%20(IG%2FTikTok%2FYouTube%2Fblog%2Fnewsletter%20URLs)%3A%0A-%20What%20I%20cover%3A%0A-%20Approximate%20audience%20size%3A%0A-%20Where%20I%27d%20recommend%20MyFeeds%3A%0A%0AThanks!" class="btn btn-primary">Apply to join</a>
+    <a href="mailto:support@myfeeds.site?subject=MyFeeds%20Affiliate%20Application&body=Hi%20MyFeeds%20team%2C%0A%0AI%27d%20like%20to%20apply%20to%20the%20MyFeeds%20affiliate%20program.%0A%0AAbout%20me%3A%0A-%20Channels%20%28IG%2FTikTok%2FYouTube%2Fblog%2Fnewsletter%20URLs%29%3A%0A-%20What%20I%20cover%3A%0A-%20Approximate%20audience%20size%3A%0A-%20Where%20I%27d%20recommend%20MyFeeds%3A%0A%0AThanks%21" class="btn btn-primary">Apply to join</a>
     <a href="#how-it-works" class="btn btn-outline">See how it works ↓</a>
   </div>
+  <p class="email-fallback">Mail app doesn't open? Copy <button class="email-copy" data-email="support@myfeeds.site" type="button">support@myfeeds.site</button></p>
 </div></section>
 
 <section class="numbers reveal"><div class="container">
@@ -335,9 +344,8 @@ footer .footer-copy{color:var(--text-muted);font-size:.8rem;margin-top:16px}
   <div class="cta-card">
     <h2>Ready when you are</h2>
     <p>One short application. We read it, reply within a few days, and if it's a fit you get your code the same week.</p>
-    <!-- TODO Marlon: swap mailto: for Tally/Typeform/Formspree URL when form is ready -->
-    <a href="mailto:support@myfeeds.site?subject=MyFeeds%20Affiliate%20Application&body=Hi%20MyFeeds%20team%2C%0A%0AI%27d%20like%20to%20apply%20to%20the%20MyFeeds%20affiliate%20program.%0A%0AAbout%20me%3A%0A-%20Channels%20(IG%2FTikTok%2FYouTube%2Fblog%2Fnewsletter%20URLs)%3A%0A-%20What%20I%20cover%3A%0A-%20Approximate%20audience%20size%3A%0A-%20Where%20I%27d%20recommend%20MyFeeds%3A%0A%0AThanks!" class="btn btn-primary">Apply to join</a>
-    <span class="cta-meta">Or write directly to <a href="mailto:support@myfeeds.site" style="color:var(--accent-start);text-decoration:none">support@myfeeds.site</a></span>
+    <a href="mailto:support@myfeeds.site?subject=MyFeeds%20Affiliate%20Application&body=Hi%20MyFeeds%20team%2C%0A%0AI%27d%20like%20to%20apply%20to%20the%20MyFeeds%20affiliate%20program.%0A%0AAbout%20me%3A%0A-%20Channels%20%28IG%2FTikTok%2FYouTube%2Fblog%2Fnewsletter%20URLs%29%3A%0A-%20What%20I%20cover%3A%0A-%20Approximate%20audience%20size%3A%0A-%20Where%20I%27d%20recommend%20MyFeeds%3A%0A%0AThanks%21" class="btn btn-primary">Apply to join</a>
+    <span class="cta-meta">Mail app doesn't open? Copy <button class="email-copy" data-email="support@myfeeds.site" type="button">support@myfeeds.site</button></span>
   </div>
 </div></section>
 
@@ -380,6 +388,41 @@ footer .footer-copy{color:var(--text-muted);font-size:.8rem;margin-top:16px}
         faqItems.forEach(function(other){
           if (other !== item && other.open) other.open = false;
         });
+      }
+    });
+  });
+})();
+
+// Copy email to clipboard with visual feedback (fallback for visitors without a mailto handler)
+(function(){
+  document.querySelectorAll('.email-copy').forEach(function(btn){
+    btn.addEventListener('click', function(e){
+      e.preventDefault();
+      var email = btn.dataset.email;
+      var orig = btn.textContent;
+      var done = function(){
+        btn.textContent = 'Copied';
+        btn.classList.add('copied');
+        setTimeout(function(){
+          btn.textContent = orig;
+          btn.classList.remove('copied');
+        }, 2000);
+      };
+      if (navigator.clipboard && navigator.clipboard.writeText) {
+        navigator.clipboard.writeText(email).then(done).catch(function(){
+          // Fallback: select the text so user can Cmd+C / Ctrl+C
+          var range = document.createRange();
+          range.selectNode(btn);
+          var sel = window.getSelection();
+          sel.removeAllRanges();
+          sel.addRange(range);
+        });
+      } else {
+        var range = document.createRange();
+        range.selectNode(btn);
+        var sel = window.getSelection();
+        sel.removeAllRanges();
+        sel.addRange(range);
       }
     });
   });
