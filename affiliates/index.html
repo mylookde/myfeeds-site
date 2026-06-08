@@ -87,7 +87,7 @@ nav .container{display:flex;align-items:center;justify-content:space-between}
 .number-card{background:var(--bg-glass);border:1px solid var(--border-glass);border-radius:var(--radius);padding:28px 24px;text-align:center;transition:all .3s}
 .number-card:hover{border-color:rgba(102,126,234,.25);transform:translateY(-4px)}
 .number-card .figure{font-size:2.6rem;font-weight:800;letter-spacing:-.03em;background:var(--gradient-brand);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;margin-bottom:6px;line-height:1}
-.number-card .figure .pct{font-size:1.6rem;vertical-align:super;margin-left:2px}
+.number-card .figure .pct{margin-left:2px}
 .number-card .label{font-size:.95rem;color:var(--text-primary);font-weight:600;margin-bottom:6px}
 .number-card .sub{font-size:.82rem;color:var(--text-muted);line-height:1.45}
 
@@ -144,7 +144,7 @@ nav .container{display:flex;align-items:center;justify-content:space-between}
 
 /* Email fallback (works for visitors without a mailto handler) */
 .email-fallback{text-align:center;font-size:.9rem;color:var(--text-muted);max-height:0;opacity:0;margin-top:0;overflow:hidden;transition:max-height .4s ease,opacity .4s ease,margin-top .4s ease}
-.email-fallback.visible{max-height:80px;opacity:1;margin-top:36px}
+.email-fallback.visible{max-height:80px;opacity:1;margin-top:24px}
 .cta-card .email-fallback{max-height:none;opacity:1;margin-top:16px;font-size:.85rem}
 .email-copy{background:none;border:none;color:var(--accent-start);font-family:inherit;font-size:inherit;font-weight:500;cursor:pointer;padding:0;text-decoration:underline;text-decoration-color:rgba(102,126,234,0.4);text-underline-offset:3px;transition:color .2s,text-decoration-color .2s}
 .email-copy:hover{color:#a78bfa;text-decoration-color:#a78bfa}
@@ -410,7 +410,7 @@ footer .footer-copy{color:var(--text-muted);font-size:.8rem;margin-top:16px}
     setTimeout(function(){
       window.removeEventListener('blur', onBlur);
       if (!opened) hint.classList.add('visible');
-    }, 700);
+    }, 400);
   });
 })();
 
