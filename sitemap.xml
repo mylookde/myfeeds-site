@@ -16,6 +16,11 @@
     <priority>0.8</priority>
   </url>
   <url>
+    <loc>https://myfeeds.site/affiliates/</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
     <loc>https://myfeeds.site/articles/</loc>
     <changefreq>weekly</changefreq>
     <priority>0.7</priority>

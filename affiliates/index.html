@@ -1,0 +1,389 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>MyFeeds Affiliate Program — Recurring commission on every renewal</title>
+<meta name="description" content="Recommend MyFeeds. Earn 30% commission on every billing cycle, for as long as your reader stays a customer. Invite-only program for WordPress, blogging and affiliate-marketing creators.">
+<link rel="canonical" href="https://myfeeds.site/affiliates/">
+<link rel="icon" type="image/png" href="/favicon.png">
+<link rel="icon" type="image/x-icon" href="/favicon.ico">
+<link rel="apple-touch-icon" href="/apple-touch-icon.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Outfit:wght@300..800&display=swap">
+<style>
+*,*::before,*::after{margin:0;padding:0;box-sizing:border-box}
+:root {
+  --bg-deep: #0a0a12;
+  --bg-surface: #12121e;
+  --bg-card: rgba(255,255,255,0.04);
+  --bg-glass: rgba(255,255,255,0.06);
+  --border-glass: rgba(255,255,255,0.08);
+  --text-primary: #f0eef6;
+  --text-secondary: rgba(240,238,246,0.6);
+  --text-muted: rgba(240,238,246,0.35);
+  --accent-start: #667eea;
+  --accent-end: #764ba2;
+  --accent-orange: #f59e42;
+  --accent-green: #34d399;
+  --accent-pink: #ec4899;
+  --gradient-brand: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  --radius: 16px;
+  --radius-sm: 10px;
+}
+html{scroll-behavior:smooth;background:var(--bg-deep);color:var(--text-primary);font-family:'Outfit',sans-serif}
+body{overflow-x:hidden;min-height:100vh;background:var(--bg-deep)}
+.ambient{position:fixed;inset:0;z-index:0;pointer-events:none;overflow:hidden}
+.ambient .orb{position:absolute;border-radius:50%;filter:blur(120px);opacity:.25;animation:float 20s ease-in-out infinite}
+.ambient .orb:nth-child(1){width:600px;height:600px;background:#667eea;top:-10%;left:-10%}
+.ambient .orb:nth-child(2){width:500px;height:500px;background:#764ba2;bottom:-10%;right:-10%;animation-delay:-7s}
+.ambient .orb:nth-child(3){width:350px;height:350px;background:#34d399;top:40%;left:50%;animation-delay:-14s;opacity:.12}
+@keyframes float{0%,100%{transform:translate(0,0) scale(1)}33%{transform:translate(30px,-40px) scale(1.05)}66%{transform:translate(-20px,30px) scale(.95)}}
+body::after{content:'';position:fixed;inset:0;z-index:1;pointer-events:none;opacity:.03;background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E")}
+.container{max-width:1200px;margin:0 auto;padding:0 24px;position:relative;z-index:2}
+
+/* Nav */
+nav{position:fixed;top:0;left:0;right:0;z-index:100;padding:16px 0;backdrop-filter:blur(20px);background:rgba(10,10,18,0.7);border-bottom:1px solid var(--border-glass)}
+nav .container{display:flex;align-items:center;justify-content:space-between}
+.nav-logo{display:flex;align-items:center;gap:12px;text-decoration:none;color:var(--text-primary)}
+.nav-logo img{width:36px;height:36px;border-radius:8px}
+.nav-logo span{font-weight:700;font-size:1.15rem;letter-spacing:-.02em}
+.nav-links{display:flex;gap:32px;align-items:center}
+.nav-links a{color:var(--text-secondary);text-decoration:none;font-size:.9rem;font-weight:500;transition:color .2s}
+.nav-links a:hover{color:var(--text-primary)}
+.nav-links a.current{color:var(--text-primary)}
+.hamburger{display:none;background:none;border:none;cursor:pointer;padding:8px}
+.hamburger svg{width:24px;height:24px;stroke:var(--text-primary);stroke-width:2;fill:none}
+@media(max-width:768px){
+.nav-links{display:none;position:absolute;top:100%;left:0;right:0;background:rgba(10,10,18,0.95);backdrop-filter:blur(20px);flex-direction:column;padding:20px 24px;gap:16px;border-bottom:1px solid var(--border-glass)}
+.nav-links.open{display:flex}
+.nav-links .btn-primary{width:100%;justify-content:center}
+.hamburger{display:block}
+}
+
+.btn{display:inline-flex;align-items:center;gap:8px;padding:10px 24px;border-radius:var(--radius-sm);font-weight:600;font-size:.9rem;text-decoration:none;transition:all .25s;border:none;cursor:pointer;font-family:inherit}
+.btn-primary{background:var(--gradient-brand);color:#fff;box-shadow:0 4px 24px rgba(102,126,234,.3)}
+.btn-primary:hover{transform:translateY(-2px);box-shadow:0 8px 32px rgba(102,126,234,.45)}
+.btn-outline{background:transparent;color:var(--text-primary);border:1px solid var(--border-glass)}
+.btn-outline:hover{border-color:var(--accent-start);background:rgba(102,126,234,.08)}
+
+/* Hero */
+.hero{padding:160px 0 60px;text-align:center}
+.hero-badge{display:inline-flex;align-items:center;gap:8px;padding:6px 16px;border-radius:999px;background:linear-gradient(135deg,rgba(52,211,153,.14),rgba(102,126,234,.08));border:1px solid rgba(52,211,153,.3);font-size:.8rem;color:var(--text-secondary);margin-bottom:24px;animation:fadeUp .8s .2s both}
+.hero-badge .dot{width:6px;height:6px;border-radius:50%;background:var(--accent-green);animation:pulse-dot 2s infinite}
+@keyframes pulse-dot{0%,100%{opacity:1}50%{opacity:.4}}
+.hero h1{font-size:clamp(2.5rem,6vw,4.5rem);font-weight:800;letter-spacing:-.04em;line-height:1.05;margin-bottom:20px;animation:fadeUp .8s .3s both;max-width:900px;margin-left:auto;margin-right:auto}
+.hero h1 .gradient-text{background:var(--gradient-brand);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text}
+.hero p{font-size:clamp(1rem,2vw,1.2rem);color:var(--text-secondary);max-width:680px;margin:0 auto 36px;line-height:1.6;animation:fadeUp .8s .4s both}
+.hero-actions{display:flex;gap:16px;justify-content:center;flex-wrap:wrap;animation:fadeUp .8s .5s both}
+@keyframes revealUp{from{opacity:0;transform:translateY(30px)}to{opacity:1;transform:translateY(0)}}
+@keyframes fadeUp{from{opacity:0;transform:translateY(24px)}to{opacity:1;transform:translateY(0)}}
+
+/* Numbers strip */
+.numbers{padding:40px 0 20px}
+.numbers-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:20px;max-width:900px;margin:0 auto}
+@media(max-width:768px){.numbers-grid{grid-template-columns:1fr}}
+.number-card{background:var(--bg-glass);border:1px solid var(--border-glass);border-radius:var(--radius);padding:28px 24px;text-align:center;transition:all .3s}
+.number-card:hover{border-color:rgba(102,126,234,.25);transform:translateY(-4px)}
+.number-card .figure{font-size:2.6rem;font-weight:800;letter-spacing:-.03em;background:var(--gradient-brand);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;margin-bottom:6px;line-height:1}
+.number-card .figure .pct{font-size:1.6rem;vertical-align:super;margin-left:2px}
+.number-card .label{font-size:.95rem;color:var(--text-primary);font-weight:600;margin-bottom:6px}
+.number-card .sub{font-size:.82rem;color:var(--text-muted);line-height:1.45}
+
+/* Sections shared */
+.section{padding:70px 0}
+.section-header{text-align:center;margin-bottom:48px}
+.section-header h2{font-size:2rem;font-weight:700;letter-spacing:-.03em;margin-bottom:12px}
+.section-header p{color:var(--text-secondary);font-size:1.05rem;max-width:580px;margin:0 auto;line-height:1.55}
+
+/* What's in it */
+.perks-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:24px}
+@media(max-width:768px){.perks-grid{grid-template-columns:1fr}}
+.perk-card{background:var(--bg-glass);border:1px solid var(--border-glass);border-radius:var(--radius);padding:32px;transition:all .3s}
+.perk-card:hover{border-color:rgba(102,126,234,.25);transform:translateY(-4px)}
+.perk-card .perk-icon{width:42px;height:42px;border-radius:12px;display:flex;align-items:center;justify-content:center;font-size:1.4rem;margin-bottom:16px}
+.perk-card .perk-icon.violet{background:rgba(167,139,250,.15)}
+.perk-card .perk-icon.green{background:rgba(52,211,153,.15)}
+.perk-card .perk-icon.orange{background:rgba(245,158,66,.15)}
+.perk-card h3{font-size:1.15rem;font-weight:700;margin-bottom:10px}
+.perk-card p{color:var(--text-secondary);font-size:.92rem;line-height:1.6}
+
+/* How it works */
+.steps{max-width:760px;margin:0 auto;display:flex;flex-direction:column;gap:18px}
+.step{display:flex;gap:20px;background:var(--bg-glass);border:1px solid var(--border-glass);border-radius:var(--radius);padding:24px 28px;transition:all .3s}
+.step:hover{border-color:rgba(102,126,234,.25)}
+.step .step-num{flex-shrink:0;width:42px;height:42px;border-radius:50%;background:var(--gradient-brand);color:#fff;font-weight:700;font-size:1.05rem;display:flex;align-items:center;justify-content:center}
+.step .step-body h3{font-size:1.05rem;font-weight:700;margin-bottom:6px}
+.step .step-body p{color:var(--text-secondary);font-size:.92rem;line-height:1.55}
+
+/* Who we look for */
+.who-card{background:var(--bg-glass);border:1px solid var(--border-glass);border-radius:var(--radius);padding:36px;max-width:780px;margin:0 auto}
+.who-card h3{font-size:1.1rem;font-weight:700;margin-bottom:18px;color:var(--text-primary)}
+.who-card ul{list-style:none;display:grid;gap:12px}
+.who-card li{padding:0;font-size:.95rem;color:var(--text-secondary);display:flex;align-items:flex-start;gap:12px;line-height:1.55}
+.who-card li .check{color:var(--accent-green);font-weight:700;flex-shrink:0;font-size:1rem}
+.who-card .who-divider{height:1px;background:var(--border-glass);margin:24px 0}
+
+/* FAQ */
+.faq-grid{display:grid;gap:12px;max-width:780px;margin:0 auto}
+.faq-grid details{background:var(--bg-glass);border:1px solid var(--border-glass);border-radius:var(--radius-sm);transition:border-color .2s}
+.faq-grid details[open]{border-color:rgba(102,126,234,.25)}
+.faq-grid summary{padding:18px 22px;cursor:pointer;font-weight:600;font-size:1rem;color:var(--text-primary);list-style:none;display:flex;justify-content:space-between;align-items:center;gap:16px}
+.faq-grid summary::-webkit-details-marker{display:none}
+.faq-grid summary::after{content:'+';font-size:1.5rem;font-weight:300;color:var(--text-muted);transition:transform .25s;line-height:1}
+.faq-grid details[open] summary::after{content:'−'}
+.faq-grid details p{padding:0 22px 20px;color:var(--text-secondary);line-height:1.6;font-size:.92rem;margin:0}
+
+/* CTA */
+.cta-section{padding:80px 0 100px;text-align:center}
+.cta-card{background:linear-gradient(135deg,rgba(102,126,234,.1),rgba(52,211,153,.06));border:1px solid rgba(102,126,234,.3);border-radius:var(--radius);padding:48px 32px;max-width:760px;margin:0 auto}
+.cta-card h2{font-size:1.8rem;font-weight:700;letter-spacing:-.03em;margin-bottom:14px}
+.cta-card p{color:var(--text-secondary);margin-bottom:28px;line-height:1.6}
+.cta-card .cta-meta{display:block;margin-top:16px;font-size:.85rem;color:var(--text-muted)}
+
+/* Footer */
+footer{border-top:1px solid var(--border-glass);padding:48px 0;text-align:center}
+footer .footer-brand{font-size:1.2rem;font-weight:700;margin-bottom:8px}
+footer .footer-links{display:flex;gap:24px;justify-content:center;flex-wrap:wrap;margin:16px 0}
+footer .footer-links a{color:var(--text-secondary);text-decoration:none;font-size:.85rem;transition:color .2s}
+footer .footer-links a:hover{color:var(--text-primary)}
+@media(max-width:480px){footer .footer-links{display:grid;grid-template-columns:1fr 1fr;gap:12px 24px;justify-items:center}}
+footer .footer-copy{color:var(--text-muted);font-size:.8rem;margin-top:16px}
+
+.reveal{animation:revealUp .8s ease both}
+</style>
+<!-- GoatCounter Analytics (privacy-friendly, no cookies, GDPR-safe, free). -->
+<script data-goatcounter="https://myfeeds.goatcounter.com/count" async src="//gc.zgo.at/count.js"></script>
+</head>
+<body>
+<div class="ambient"><div class="orb"></div><div class="orb"></div><div class="orb"></div></div>
+
+<nav><div class="container">
+  <a href="/" class="nav-logo"><img src="/logo.png" alt="MyFeeds"><span>MyFeeds</span></a>
+  <button class="hamburger" id="hamburger-btn"><svg viewBox="0 0 24 24"><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="18" x2="21" y2="18"/></svg></button>
+  <div class="nav-links">
+    <a href="/#pricing">Pricing</a>
+    <a href="/business/">Business</a>
+    <a href="/affiliates/" class="current">Affiliates</a>
+    <a href="https://wordpress.org/plugins/myfeeds-affiliate-feed-manager/" class="btn btn-primary" style="padding:8px 20px;font-size:.85rem">Get Started</a>
+  </div>
+</div></nav>
+
+<section class="hero"><div class="container">
+  <div class="hero-badge"><span class="dot"></span> Invite-only · accepting first creators</div>
+  <h1>One recommendation. <span class="gradient-text">Years of commission.</span></h1>
+  <p>A sponsored post pays you once. A MyFeeds affiliate keeps earning every billing cycle, for as long as their reader stays a customer. Your Reel from today still pays you in two years.</p>
+  <div class="hero-actions">
+    <a href="#apply" class="btn btn-primary">Apply to join</a>
+    <a href="#how-it-works" class="btn btn-outline">See how it works ↓</a>
+  </div>
+</div></section>
+
+<section class="numbers reveal"><div class="container">
+  <div class="numbers-grid">
+    <div class="number-card">
+      <div class="figure">30<span class="pct">%</span></div>
+      <div class="label">Commission on every cycle</div>
+      <div class="sub">Monthly subscriptions, annual subscriptions, renewals. Not a one-time payout.</div>
+    </div>
+    <div class="number-card">
+      <div class="figure">60</div>
+      <div class="label">Days cookie window</div>
+      <div class="sub">Plenty of room for the reader to think it over before buying.</div>
+    </div>
+    <div class="number-card">
+      <div class="figure">$0</div>
+      <div class="label">Cost to join</div>
+      <div class="sub">No application fee, no minimum traffic threshold, no contract lock-in.</div>
+    </div>
+  </div>
+</div></section>
+
+<section class="section reveal">
+  <div class="container">
+    <div class="section-header">
+      <h2>What you actually get</h2>
+      <p>The pieces that make recommending MyFeeds worth your time, instead of another one-off sponsored post.</p>
+    </div>
+    <div class="perks-grid">
+      <div class="perk-card">
+        <div class="perk-icon green">💸</div>
+        <h3>Commission that compounds</h3>
+        <p>You earn on the first checkout and every renewal that follows. The customer who upgrades through your link in March still pays you in November, and the November after that.</p>
+      </div>
+      <div class="perk-card">
+        <div class="perk-icon violet">🎟️</div>
+        <h3>Your own coupon code</h3>
+        <p>Get a personal code your audience uses at checkout. Works on TikTok, Reels and Shorts where links don't, and gives your readers a real discount on day one.</p>
+      </div>
+      <div class="perk-card">
+        <div class="perk-icon orange">📊</div>
+        <h3>Numbers you can actually see</h3>
+        <p>Live dashboard for clicks, conversions, pending and paid balance. No spreadsheets, no chasing a brand for last month's report.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section reveal" id="how-it-works">
+  <div class="container">
+    <div class="section-header">
+      <h2>How it works</h2>
+      <p>Four steps, none of them complicated.</p>
+    </div>
+    <div class="steps">
+      <div class="step">
+        <div class="step-num">1</div>
+        <div class="step-body">
+          <h3>Apply</h3>
+          <p>Tell us where your audience lives and what you cover. We read every application, usually answer inside a few days.</p>
+        </div>
+      </div>
+      <div class="step">
+        <div class="step-num">2</div>
+        <div class="step-body">
+          <h3>Get your code and tracking link</h3>
+          <p>Personal coupon code for your audience plus a tracking URL for blog posts and newsletters. Both attribute the sale to you, even if the reader takes the long way to checkout.</p>
+        </div>
+      </div>
+      <div class="step">
+        <div class="step-num">3</div>
+        <div class="step-body">
+          <h3>Recommend on your own terms</h3>
+          <p>Reels, TikToks, Shorts, YouTube videos, blog posts, newsletters, emails. We trust you to know your audience better than we do.</p>
+        </div>
+      </div>
+      <div class="step">
+        <div class="step-num">4</div>
+        <div class="step-body">
+          <h3>Get paid</h3>
+          <p>Payouts run through Freemius on a monthly cycle once your balance crosses the threshold. PayPal, bank transfer, the usual.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section reveal">
+  <div class="container">
+    <div class="section-header">
+      <h2>Who we're looking for</h2>
+      <p>The program is invite-only at this stage. We're selective so the program stays clean and your code stays valuable.</p>
+    </div>
+    <div class="who-card">
+      <h3>A good fit:</h3>
+      <ul>
+        <li><span class="check">✓</span><span>You publish for an audience that runs WordPress sites, blogs, or earns from affiliate marketing.</span></li>
+        <li><span class="check">✓</span><span>You make content on YouTube, TikTok, Instagram, a newsletter, a podcast or a blog, and your audience trusts your recommendations.</span></li>
+        <li><span class="check">✓</span><span>You're honest about what works and what doesn't. We're not interested in fake reviews or pressure tactics.</span></li>
+        <li><span class="check">✓</span><span>You'd actually use the plugin yourself, or already do.</span></li>
+      </ul>
+      <div class="who-divider"></div>
+      <h3>Not a fit:</h3>
+      <ul>
+        <li><span class="check" style="color:var(--accent-pink)">✗</span><span>Coupon-scraping sites with no audience of your own.</span></li>
+        <li><span class="check" style="color:var(--accent-pink)">✗</span><span>Inbox-spam funnels, fake-review networks, anything that would burn our brand to land a sale.</span></li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<section class="section reveal" id="faq">
+  <div class="container">
+    <div class="section-header">
+      <h2>Common questions</h2>
+    </div>
+    <div class="faq-grid">
+      <details>
+        <summary>How long do I keep earning per customer?</summary>
+        <p>As long as the customer's subscription stays active. Monthly plans, annual plans, every renewal. If they cancel, the trail ends; if they re-subscribe later, the new period counts again.</p>
+      </details>
+      <details>
+        <summary>What's the commission percentage?</summary>
+        <p>30% recurring as the default. For creators with strong reach in the WordPress or affiliate space, we'll talk individual terms.</p>
+      </details>
+      <details>
+        <summary>Do I need a website?</summary>
+        <p>No. Social channels, newsletters, podcasts and email all count. Your coupon code works even where links can't.</p>
+      </details>
+      <details>
+        <summary>Can I recommend the free version too?</summary>
+        <p>Yes. The free plugin lives on WordPress.org. If a reader installs the free version and later upgrades to Pro or Business, the upgrade still attributes to you for the cookie window after the click.</p>
+      </details>
+      <details>
+        <summary>How quickly do you approve?</summary>
+        <p>Usually within a few days. We read every application personally.</p>
+      </details>
+      <details>
+        <summary>What's the cookie window?</summary>
+        <p>60 days. The reader clicks your link or uses your code today; they can take the next two months to decide and you still get the credit.</p>
+      </details>
+      <details>
+        <summary>When and how do I get paid?</summary>
+        <p>Monthly through Freemius once your balance crosses the payout threshold. PayPal and bank transfer are the standard options.</p>
+      </details>
+      <details>
+        <summary>Can I work with other affiliate plugins at the same time?</summary>
+        <p>Yes, no exclusivity. Recommend whatever genuinely helps your audience.</p>
+      </details>
+    </div>
+  </div>
+</section>
+
+<section class="cta-section" id="apply"><div class="container">
+  <div class="cta-card">
+    <h2>Ready when you are</h2>
+    <p>One short application. We read it, reply within a few days, and if it's a fit you get your code the same week.</p>
+    <!-- TODO Marlon: swap mailto: for Tally/Typeform/Formspree URL when form is ready -->
+    <a href="mailto:support@myfeeds.site?subject=MyFeeds%20Affiliate%20Application&body=Hi%20MyFeeds%20team%2C%0A%0AI%27d%20like%20to%20apply%20to%20the%20MyFeeds%20affiliate%20program.%0A%0AAbout%20me%3A%0A-%20Channels%20(IG%2FTikTok%2FYouTube%2Fblog%2Fnewsletter%20URLs)%3A%0A-%20What%20I%20cover%3A%0A-%20Approximate%20audience%20size%3A%0A-%20Where%20I%27d%20recommend%20MyFeeds%3A%0A%0AThanks!" class="btn btn-primary">Apply to join</a>
+    <span class="cta-meta">Or write directly to <a href="mailto:support@myfeeds.site" style="color:var(--accent-start);text-decoration:none">support@myfeeds.site</a></span>
+  </div>
+</div></section>
+
+<footer><div class="container">
+  <div class="footer-brand">MyFeeds</div>
+  <p style="color:var(--text-secondary);font-size:.9rem">Affiliate product feeds for WordPress</p>
+  <div class="footer-links">
+    <a href="/">Home</a>
+    <a href="/business/">Business</a>
+    <a href="/install/">Install Guide</a>
+    <a href="/affiliates/">Affiliates</a>
+    <a href="/imprint/">Imprint</a>
+    <a href="/privacy/">Privacy Policy</a>
+    <a href="/terms/">Terms of Service</a>
+    <a href="/refund/">Refund Policy</a>
+  </div>
+  <div class="footer-copy">© 2026 MyFeeds. All rights reserved.</div>
+</div></footer>
+
+<script>
+// Hamburger
+(function(){
+  var hamburger = document.getElementById('hamburger-btn');
+  var navLinks = document.querySelector('.nav-links');
+  if (!hamburger) return;
+  hamburger.addEventListener('click', function(){ navLinks.classList.toggle('open'); });
+  document.addEventListener('click', function(e){
+    if (!hamburger.contains(e.target) && !navLinks.contains(e.target)) {
+      navLinks.classList.remove('open');
+    }
+  });
+})();
+
+// FAQ accordion — single-open
+(function(){
+  var faqItems = document.querySelectorAll('.faq-grid details');
+  faqItems.forEach(function(item){
+    item.addEventListener('toggle', function(){
+      if (item.open) {
+        faqItems.forEach(function(other){
+          if (other !== item && other.open) other.open = false;
+        });
+      }
+    });
+  });
+})();
+</script>
+</body>
+</html>
