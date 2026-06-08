@@ -143,7 +143,9 @@ nav .container{display:flex;align-items:center;justify-content:space-between}
 .cta-card .cta-meta{display:block;margin-top:16px;font-size:.85rem;color:var(--text-muted)}
 
 /* Email fallback (works for visitors without a mailto handler) */
-.email-fallback{text-align:center;margin-top:18px;font-size:.9rem;color:var(--text-muted);animation:fadeUp .8s .65s both}
+.email-fallback{text-align:center;font-size:.9rem;color:var(--text-muted);max-height:0;opacity:0;margin-top:0;overflow:hidden;transition:max-height .4s ease,opacity .4s ease,margin-top .4s ease}
+.email-fallback.visible{max-height:80px;opacity:1;margin-top:36px}
+.cta-card .email-fallback{max-height:none;opacity:1;margin-top:16px;font-size:.85rem}
 .email-copy{background:none;border:none;color:var(--accent-start);font-family:inherit;font-size:inherit;font-weight:500;cursor:pointer;padding:0;text-decoration:underline;text-decoration-color:rgba(102,126,234,0.4);text-underline-offset:3px;transition:color .2s,text-decoration-color .2s}
 .email-copy:hover{color:#a78bfa;text-decoration-color:#a78bfa}
 .email-copy.copied{color:var(--accent-green);text-decoration-color:var(--accent-green)}
@@ -345,7 +347,7 @@ footer .footer-copy{color:var(--text-muted);font-size:.8rem;margin-top:16px}
     <h2>Ready when you are</h2>
     <p>One short application. We read it, reply within a few days, and if it's a fit you get your code the same week.</p>
     <a href="mailto:support@myfeeds.site?subject=MyFeeds%20Affiliate%20Application&body=Hi%20MyFeeds%20team%2C%0A%0AI%27d%20like%20to%20apply%20to%20the%20MyFeeds%20affiliate%20program.%0A%0AAbout%20me%3A%0A-%20Channels%20%28IG%2FTikTok%2FYouTube%2Fblog%2Fnewsletter%20URLs%29%3A%0A-%20What%20I%20cover%3A%0A-%20Approximate%20audience%20size%3A%0A-%20Where%20I%27d%20recommend%20MyFeeds%3A%0A%0AThanks%21" class="btn btn-primary">Apply to join</a>
-    <span class="cta-meta">Mail app doesn't open? Copy <button class="email-copy" data-email="support@myfeeds.site" type="button">support@myfeeds.site</button></span>
+    <p class="email-fallback">Mail app doesn't open? Copy <button class="email-copy" data-email="support@myfeeds.site" type="button">support@myfeeds.site</button></p>
   </div>
 </div></section>
 
@@ -390,6 +392,25 @@ footer .footer-copy{color:var(--text-muted);font-size:.8rem;margin-top:16px}
         });
       }
     });
+  });
+})();
+
+// Hero: reveal the "copy email" hint only if clicking the mailto button does nothing
+// (no registered mailto handler -> window never blurs -> hint slides in after ~700ms)
+(function(){
+  var hero = document.querySelector('section.hero');
+  if (!hero) return;
+  var btn = hero.querySelector('a[href^="mailto:"]');
+  var hint = hero.querySelector('.email-fallback');
+  if (!btn || !hint) return;
+  btn.addEventListener('click', function(){
+    var opened = false;
+    var onBlur = function(){ opened = true; };
+    window.addEventListener('blur', onBlur, { once: true });
+    setTimeout(function(){
+      window.removeEventListener('blur', onBlur);
+      if (!opened) hint.classList.add('visible');
+    }, 700);
   });
 })();
 
