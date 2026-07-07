@@ -152,19 +152,24 @@ section>.container{position:relative;z-index:2}
 .strip:hover .strip-track{animation-play-state:paused}
 @keyframes slide{to{transform:translateX(-50%)}}
 @media(prefers-reduced-motion:reduce){.strip-track{animation:none}}
-.s-card{flex:0 0 190px;background:var(--surface);border:1px solid var(--line);border-radius:12px;overflow:hidden;box-shadow:var(--shadow-card);position:relative}
-.s-card .sc-img{height:110px;display:flex;align-items:center;justify-content:center}
-.s-card .sc-shape{width:46px;height:58px;border-radius:9px}
-.s-card .sc-badge{position:absolute;top:10px;left:10px;background:var(--sale);color:#fff;font-size:.6rem;font-weight:700;letter-spacing:.05em;padding:3px 8px;border-radius:5px}
-.s-card .sc-body{padding:11px 13px 13px}
-.s-card .sc-brand{font-size:.58rem;color:var(--ink-mute);text-transform:uppercase;letter-spacing:.12em;font-weight:600}
-.s-card .sc-name{font-size:.8rem;font-weight:600;margin:2px 0 5px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.s-card{flex:0 0 208px;background:var(--surface);border:1px solid var(--line);border-radius:12px;overflow:hidden;box-shadow:var(--shadow-card);position:relative}
+.s-card .sc-img{height:172px;display:flex;align-items:center;justify-content:center;background:linear-gradient(165deg,#F6F3EC,#EFEAE0)}
+.s-card .sc-img svg{width:120px;height:auto}
+.s-card .sc-badge{position:absolute;top:12px;left:12px;background:#fff;color:var(--sale);font-size:.66rem;font-weight:700;letter-spacing:.02em;padding:4px 10px;border-radius:999px;box-shadow:0 2px 8px rgba(26,23,32,.12)}
+.s-card .sc-body{padding:12px 14px 12px}
+.s-card .sc-brand{font-size:.68rem;color:var(--ink);font-weight:700;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.s-card .sc-name{font-size:.72rem;color:var(--ink-soft);margin:1px 0 7px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
 .s-card .sc-price{font-size:.85rem;font-weight:700}
 .s-card .sc-price s{color:var(--ink-mute);font-weight:500;font-size:.72rem;margin-right:6px}
 .s-card .sc-price.sale{color:var(--sale)}
+.s-card .sc-foot{display:flex;justify-content:space-between;align-items:baseline;gap:8px;border-top:1px solid var(--line-soft);margin-top:9px;padding-top:8px}
+.s-card .sc-ship{font-size:.5rem;letter-spacing:.06em;color:var(--ink-mute);text-transform:uppercase;white-space:nowrap}
+.s-card .sc-shop{font-size:.54rem;letter-spacing:.06em;color:var(--ink-soft);font-weight:700;text-transform:uppercase;white-space:nowrap}
 .strip-caption{text-align:center;font-size:.72rem;color:var(--ink-mute);font-style:italic;margin-top:20px}
-.g5{background:linear-gradient(135deg,#F5D98F,#EBB963)}
-.g6{background:linear-gradient(135deg,#B7D9EE,#8FBFDF)}
+.la{stroke:#1A1720;stroke-width:2.4;fill:none;stroke-linecap:round;stroke-linejoin:round}
+.la .fill{fill:#1A1720;stroke:none}
+.la .acc{stroke:#5849D6}
+.la .soft{stroke-width:1.8;opacity:.55}
 .sec-head{display:flex;align-items:baseline;gap:22px;margin-bottom:14px}
 .sec-num{font-family:var(--serif);font-size:.95rem;color:var(--accent);font-weight:600;flex-shrink:0}
 .sec-head h2{font-size:clamp(1.7rem,3.4vw,2.4rem);line-height:1.15}
@@ -198,21 +203,28 @@ section>.container{position:relative;z-index:2}
 .mock-input .caret{width:1.5px;height:16px;background:var(--accent);animation:blink 1s steps(1) infinite}
 @keyframes blink{50%{opacity:0}}
 .mock-rows{margin-top:22px;display:flex;flex-direction:column;gap:10px}
-.mock-row{display:flex;align-items:center;gap:12px;padding:10px 12px;border:1px solid var(--line-soft);border-radius:10px;background:#FDFCFA}
-.mock-row .sw{width:34px;height:34px;border-radius:8px;flex-shrink:0}
+.mock-row{display:flex;align-items:center;gap:12px;padding:9px 12px;border:1px solid var(--line-soft);border-radius:10px;background:#FDFCFA}
+.mock-row .sw{width:38px;height:38px;border-radius:8px;flex-shrink:0;background:linear-gradient(165deg,#F6F3EC,#EFEAE0);display:flex;align-items:center;justify-content:center}
+.mock-row .sw svg{width:28px;height:28px}
+.mock-row .rn{font-size:.8rem;color:var(--ink);font-weight:600;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
 .mock-row .ln{height:8px;border-radius:4px;background:var(--line);flex:1}
 .mock-row .ln.short{flex:0 0 60px}
-.mock-row .pr{font-size:.78rem;font-weight:700;color:var(--ink)}
+.mock-row .pr{font-size:.78rem;font-weight:700;color:var(--ink);margin-left:auto}
 .mock-search{display:flex;align-items:center;gap:10px;border:1px solid var(--line);border-radius:10px;padding:12px 16px;font-size:.85rem;color:var(--ink);background:var(--paper)}
 .mock-search .hl{color:var(--accent);font-weight:700}
 .mock-btn{display:inline-block;margin-top:22px;background:var(--accent);color:#fff;font-size:.8rem;font-weight:600;padding:10px 20px;border-radius:8px}
-.mock-cardrow{display:grid;grid-template-columns:1fr 1fr;gap:14px;margin-top:4px}
-.mock-card{border:1px solid var(--line-soft);border-radius:12px;overflow:hidden;background:#fff}
-.mock-card .mc-img{height:86px}
-.mock-card .mc-body{padding:10px 12px}
-.mock-card .mc-ln{height:7px;border-radius:4px;background:var(--line);margin-bottom:6px}
-.mock-card .mc-ln.w60{width:60%}
-.mock-card .mc-pr{font-size:.8rem;font-weight:700}
+.mock-cardrow{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin-top:4px}
+.mock-card{border:1px solid var(--line-soft);border-radius:12px;overflow:hidden;background:#fff;box-shadow:var(--shadow-card)}
+.mock-card .mc-img{aspect-ratio:1/1;background:linear-gradient(165deg,#F6F3EC,#EFEAE0);display:flex;align-items:center;justify-content:center;position:relative}
+.mock-card .mc-img svg{width:68%;height:auto}
+.mock-card .mc-badge{position:absolute;top:8px;left:8px;background:#fff;color:var(--sale);font-size:.56rem;font-weight:700;padding:3px 8px;border-radius:999px;box-shadow:0 2px 6px rgba(26,23,32,.12)}
+.mock-card .mc-body{padding:9px 11px 10px}
+.mock-card .mc-brand{font-size:.6rem;font-weight:700;color:var(--ink);white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.mock-card .mc-name{font-size:.62rem;color:var(--ink-soft);margin:1px 0 5px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.mock-card .mc-pr{font-size:.74rem;font-weight:700}
+.mock-card .mc-pr.sale{color:var(--sale)}
+.mock-card .mc-pr s{color:var(--ink-mute);font-weight:500;font-size:.62rem;margin-right:5px}
+.mock-card .mc-ship{font-size:.44rem;letter-spacing:.06em;color:var(--ink-mute);text-transform:uppercase;margin-top:5px;border-top:1px solid var(--line-soft);padding-top:5px}
 .mock-live{display:inline-flex;align-items:center;gap:7px;margin-top:20px;font-size:.75rem;color:var(--green);font-weight:600}
 .mock-live i{width:7px;height:7px;border-radius:50%;background:var(--green);animation:pulse 2s infinite}
 .g1{background:linear-gradient(135deg,#B9AEF4,#8B7DE8)}
@@ -430,6 +442,54 @@ footer .container{display:flex;justify-content:space-between;gap:40px;flex-wrap:
 <script data-goatcounter="https://myfeeds.goatcounter.com/count" async src="//gc.zgo.at/count.js"></script>
 </head>
 <body>
+<svg width="0" height="0" style="position:absolute" aria-hidden="true">
+  <symbol id="la-sneaker" viewBox="0 0 240 140">
+    <path d="M32 100 L32 84 C32 70 36 58 44 52 C50 56 58 58 66 58 C72 58 74 53 80 51 C85 49.5 90 51 94 55 C102 63 112 70 124 76 C148 87 172 93 196 97" />
+    <path d="M44 52 C50 56 58 58 66 58 C72 58 74 53 80 51" class="soft" />
+    <path d="M80 51 C94 55 106 65 114 80" />
+    <path d="M90 60 L104 52" /><path d="M96 67 L111 58" /><path d="M102 74 L117 65" />
+    <path class="soft" d="M44 62 C50 68 54 76 55 86" />
+    <path class="soft" d="M168 84 C180 89 190 94 195 98" />
+    <path d="M24 104 C18 104 14 109 14 114 C14 122 22 126 34 126 L204 126 C218 126 226 120 226 111 C226 105 220 101 210 100 L36 100 C30 100 27 101 24 104 Z" />
+    <path class="soft" d="M22 114 L218 114" />
+    <path class="acc" d="M62 84 C92 92 130 95 166 96" />
+  </symbol>
+  <symbol id="la-hoodie" viewBox="0 0 200 190">
+    <path d="M68 62 L54 68 C44 72 38 80 36 90 L30 128 C29 135 34 140 41 140 L52 141 C56 141 59 138 60 134 L64 116 L64 160 C64 166 68 170 74 170 L126 170 C132 170 136 166 136 160 L136 116 L140 134 C141 138 144 141 148 141 L159 140 C166 140 171 135 170 128 L164 90 C162 80 156 72 146 68 L132 62" />
+    <path d="M68 62 C68 40 82 30 100 30 C118 30 132 40 132 62 C122 52 112 48 100 48 C88 48 78 52 68 62 Z" />
+    <path d="M78 128 L122 128 L117 156 L83 156 Z" />
+    <path d="M93 60 L91 80" /><path d="M107 60 L109 80" />
+    <path class="soft" d="M64 116 L64 100 C64 88 66 76 72 66" />
+    <path class="soft" d="M136 116 L136 100 C136 88 134 76 128 66" />
+    <path class="acc soft" d="M68 162 L132 162" />
+  </symbol>
+  <symbol id="la-tote" viewBox="0 0 200 190">
+    <path d="M52 78 L148 78 C154 78 158 82 158 88 L152 160 C151 166 147 170 141 170 L59 170 C53 170 49 166 48 160 L42 88 C42 82 46 78 52 78 Z" />
+    <path d="M70 78 C70 52 82 44 100 44 C118 44 130 52 130 78" />
+    <path class="soft" d="M80 78 C80 60 88 54 100 54 C112 54 120 60 120 78" />
+    <path class="acc soft" d="M52 98 L148 98" />
+  </symbol>
+  <symbol id="la-beanie" viewBox="0 0 200 190">
+    <circle cx="100" cy="46" r="11" />
+    <path d="M52 128 C52 84 74 58 100 58 C126 58 148 84 148 128" />
+    <path d="M52 128 L148 128 C154 128 158 132 158 138 L158 148 C158 154 154 158 148 158 L52 158 C46 158 42 154 42 148 L42 138 C42 132 46 128 52 128 Z" />
+    <path class="soft" d="M100 62 L100 124" /><path class="soft" d="M80 66 C76 86 74 106 75 124" /><path class="soft" d="M120 66 C124 86 126 106 125 124" />
+    <path class="soft" d="M66 132 L66 154" /><path class="soft" d="M88 132 L88 154" /><path class="soft" d="M112 132 L112 154" /><path class="soft" d="M134 132 L134 154" />
+  </symbol>
+  <symbol id="la-pack" viewBox="0 0 200 190">
+    <path d="M60 66 C60 46 76 36 100 36 C124 36 140 46 140 66 L144 150 C144 162 136 170 124 170 L76 170 C64 170 56 162 56 150 Z" />
+    <path d="M88 38 C88 28 112 28 112 38" />
+    <path d="M72 112 L128 112 L128 152 C128 158 124 162 118 162 L82 162 C76 162 72 158 72 152 Z" />
+    <path class="soft" d="M72 126 L128 126" />
+    <path class="soft" d="M84 42 L80 64" /><path class="soft" d="M116 42 L120 64" />
+    <path class="acc" d="M100 126 L100 140" />
+  </symbol>
+  <symbol id="la-tee" viewBox="0 0 200 190">
+    <path d="M70 44 L54 52 C46 56 42 62 40 70 L34 92 C33 97 36 101 41 102 L58 106 L58 158 C58 164 62 168 68 168 L132 168 C138 168 142 164 142 158 L142 106 L159 102 C164 101 167 97 166 92 L160 70 C158 62 154 56 146 52 L130 44 C122 52 112 56 100 56 C88 56 78 52 70 44 Z" />
+    <path class="soft" d="M84 44 C88 50 94 53 100 53 C106 53 112 50 116 44" />
+    <path class="acc soft" d="M84 92 L116 92" />
+  </symbol>
+</svg>
 <nav><div class="container">
   <a href="/v2/" class="nav-logo"><img src="/logo.png" alt="MyFeeds"><span>MyFeeds</span></a>
   <button class="hamburger" id="hamburger-btn" aria-label="Menu"><svg viewBox="0 0 24 24"><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="18" x2="21" y2="18"/></svg></button>
@@ -461,25 +521,17 @@ footer .container{display:flex;justify-content:space-between;gap:40px;flex-wrap:
   <div class="hero-visual">
     <div class="cluster" id="cluster">
       <div class="p-card card-back-l">
-        <div class="pc-img"><div class="mini-shape g1" style="width:54px;height:68px"></div></div>
-        <div class="pc-info"><div class="pc-brand">Atelier</div><div class="pc-name">Wool Overshirt</div><div class="pc-price">$129.00</div></div>
+        <div class="pc-img"><svg class="la" style="width:78px" viewBox="0 0 200 190"><use href="#la-hoodie"/></svg></div>
+        <div class="pc-info"><div class="pc-brand">Studio Form</div><div class="pc-name">Cotton Hoodie</div><div class="pc-price">$89.00</div></div>
       </div>
       <div class="p-card card-back-r">
-        <div class="pc-img"><div class="mini-shape g2" style="width:50px;height:62px"></div></div>
-        <div class="pc-info"><div class="pc-brand">Studio Form</div><div class="pc-name">Canvas Tote</div><div class="pc-price">$48.00</div></div>
+        <div class="pc-img"><svg class="la" style="width:70px" viewBox="0 0 200 190"><use href="#la-tote"/></svg></div>
+        <div class="pc-info"><div class="pc-brand">Atelier</div><div class="pc-name">Canvas Tote</div><div class="pc-price">$48.00</div></div>
       </div>
       <div class="p-card card-main" id="live-card">
         <div class="pc-img">
           <span class="live-badge">SALE</span>
-          <svg viewBox="0 0 220 120" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
-            <path d="M44 34 C36 40 30 52 30 66 L30 76 L180 76 C177 66 168 59 153 54 C136 48 118 44 104 36 C96 31 88 30 80 33 C68 37 54 30 44 34 Z" fill="#FDFCFA" stroke="#1A1720" stroke-width="2.5" stroke-linejoin="round"/>
-            <path d="M26 76 L184 76 C196 76 203 81 202 87 C201 92 194 94 184 94 L34 94 C26 94 20 90 20 84 C20 79 22 76 26 76 Z" fill="#1A1720"/>
-            <path d="M86 50 L100 41" stroke="#1A1720" stroke-width="2.2" stroke-linecap="round"/>
-            <path d="M94 57 L110 47" stroke="#1A1720" stroke-width="2.2" stroke-linecap="round"/>
-            <path d="M103 63 L120 53" stroke="#1A1720" stroke-width="2.2" stroke-linecap="round"/>
-            <path d="M44 34 C50 46 50 62 42 76" stroke="#1A1720" stroke-width="2.2" stroke-linecap="round"/>
-            <path d="M126 55 C134 62 146 68 162 71" stroke="#5849D6" stroke-width="3" stroke-linecap="round"/>
-          </svg>
+          <svg class="la" viewBox="0 0 240 140" aria-hidden="true"><use href="#la-sneaker"/></svg>
         </div>
         <div class="pc-info">
           <div class="pc-brand">Nordic Trail</div>
@@ -498,22 +550,18 @@ footer .container{display:flex;justify-content:space-between;gap:40px;flex-wrap:
 
 <div class="strip" aria-hidden="true">
   <div class="strip-track" id="strip-track">
-    <div class="s-card"><div class="sc-img"><div class="sc-shape g1"></div></div><div class="sc-body"><div class="sc-brand">Atelier</div><div class="sc-name">Wool Overshirt</div><div class="sc-price">$129.00</div></div></div>
-    <div class="s-card"><span class="sc-badge">-25%</span><div class="sc-img"><div class="sc-shape g3"></div></div><div class="sc-body"><div class="sc-brand">Nordic Trail</div><div class="sc-name">Low-Top Sneaker</div><div class="sc-price sale"><s>$79.90</s>$59.90</div></div></div>
-    <div class="s-card"><div class="sc-img"><div class="sc-shape g2"></div></div><div class="sc-body"><div class="sc-brand">Studio Form</div><div class="sc-name">Canvas Tote</div><div class="sc-price">$48.00</div></div></div>
-    <div class="s-card"><div class="sc-img"><div class="sc-shape g5"></div></div><div class="sc-body"><div class="sc-brand">Maison Rue</div><div class="sc-name">Linen Shirt</div><div class="sc-price">$74.00</div></div></div>
-    <div class="s-card"><span class="sc-badge">-20%</span><div class="sc-img"><div class="sc-shape g6"></div></div><div class="sc-body"><div class="sc-brand">Field &amp; Co</div><div class="sc-name">Rain Jacket</div><div class="sc-price sale"><s>$189.00</s>$149.00</div></div></div>
-    <div class="s-card"><div class="sc-img"><div class="sc-shape g4"></div></div><div class="sc-body"><div class="sc-brand">Bergen</div><div class="sc-name">Knit Beanie</div><div class="sc-price">$29.00</div></div></div>
-    <div class="s-card"><div class="sc-img"><div class="sc-shape g3"></div></div><div class="sc-body"><div class="sc-brand">Studio Form</div><div class="sc-name">Cotton Hoodie</div><div class="sc-price">$89.00</div></div></div>
-    <div class="s-card"><div class="sc-img"><div class="sc-shape g6"></div></div><div class="sc-body"><div class="sc-brand">Field &amp; Co</div><div class="sc-name">Trail Backpack</div><div class="sc-price">$119.00</div></div></div>
-    <div class="s-card"><div class="sc-img"><div class="sc-shape g1"></div></div><div class="sc-body"><div class="sc-brand">Atelier</div><div class="sc-name">Wool Overshirt</div><div class="sc-price">$129.00</div></div></div>
-    <div class="s-card"><span class="sc-badge">-25%</span><div class="sc-img"><div class="sc-shape g3"></div></div><div class="sc-body"><div class="sc-brand">Nordic Trail</div><div class="sc-name">Low-Top Sneaker</div><div class="sc-price sale"><s>$79.90</s>$59.90</div></div></div>
-    <div class="s-card"><div class="sc-img"><div class="sc-shape g2"></div></div><div class="sc-body"><div class="sc-brand">Studio Form</div><div class="sc-name">Canvas Tote</div><div class="sc-price">$48.00</div></div></div>
-    <div class="s-card"><div class="sc-img"><div class="sc-shape g5"></div></div><div class="sc-body"><div class="sc-brand">Maison Rue</div><div class="sc-name">Linen Shirt</div><div class="sc-price">$74.00</div></div></div>
-    <div class="s-card"><span class="sc-badge">-20%</span><div class="sc-img"><div class="sc-shape g6"></div></div><div class="sc-body"><div class="sc-brand">Field &amp; Co</div><div class="sc-name">Rain Jacket</div><div class="sc-price sale"><s>$189.00</s>$149.00</div></div></div>
-    <div class="s-card"><div class="sc-img"><div class="sc-shape g4"></div></div><div class="sc-body"><div class="sc-brand">Bergen</div><div class="sc-name">Knit Beanie</div><div class="sc-price">$29.00</div></div></div>
-    <div class="s-card"><div class="sc-img"><div class="sc-shape g3"></div></div><div class="sc-body"><div class="sc-brand">Studio Form</div><div class="sc-name">Cotton Hoodie</div><div class="sc-price">$89.00</div></div></div>
-    <div class="s-card"><div class="sc-img"><div class="sc-shape g6"></div></div><div class="sc-body"><div class="sc-brand">Field &amp; Co</div><div class="sc-name">Trail Backpack</div><div class="sc-price">$119.00</div></div></div>
+    <div class="s-card"><span class="sc-badge">-25%</span><div class="sc-img"><svg class="la" viewBox="0 0 240 140"><use href="#la-sneaker"/></svg></div><div class="sc-body"><div class="sc-brand">Nordic Trail</div><div class="sc-name">Low-Top Sneaker White</div><div class="sc-price sale"><s>$79.90</s>$59.90</div><div class="sc-foot"><span class="sc-ship">Shipping costs may apply</span><span class="sc-shop">Stockroom</span></div></div></div>
+    <div class="s-card"><div class="sc-img"><svg class="la" style="width:104px" viewBox="0 0 200 190"><use href="#la-hoodie"/></svg></div><div class="sc-body"><div class="sc-brand">Studio Form</div><div class="sc-name">Cotton Hoodie Heather Grey</div><div class="sc-price">$89.00</div><div class="sc-foot"><span class="sc-ship">Shipping costs may apply</span><span class="sc-shop">Outlet24</span></div></div></div>
+    <div class="s-card"><div class="sc-img"><svg class="la" style="width:100px" viewBox="0 0 200 190"><use href="#la-tote"/></svg></div><div class="sc-body"><div class="sc-brand">Atelier</div><div class="sc-name">Canvas Tote Natural</div><div class="sc-price">$48.00</div><div class="sc-foot"><span class="sc-ship">Shipping costs may apply</span><span class="sc-shop">Stockroom</span></div></div></div>
+    <div class="s-card"><div class="sc-img"><svg class="la" style="width:96px" viewBox="0 0 200 190"><use href="#la-beanie"/></svg></div><div class="sc-body"><div class="sc-brand">Bergen</div><div class="sc-name">Knit Beanie Rib Navy</div><div class="sc-price">$29.00</div><div class="sc-foot"><span class="sc-ship">Shipping costs may apply</span><span class="sc-shop">Nord Store</span></div></div></div>
+    <div class="s-card"><span class="sc-badge">-20%</span><div class="sc-img"><svg class="la" style="width:100px" viewBox="0 0 200 190"><use href="#la-pack"/></svg></div><div class="sc-body"><div class="sc-brand">Field &amp; Co</div><div class="sc-name">Trail Backpack 24L</div><div class="sc-price sale"><s>$149.00</s>$119.00</div><div class="sc-foot"><span class="sc-ship">Shipping costs may apply</span><span class="sc-shop">Outlet24</span></div></div></div>
+    <div class="s-card"><div class="sc-img"><svg class="la" style="width:104px" viewBox="0 0 200 190"><use href="#la-tee"/></svg></div><div class="sc-body"><div class="sc-brand">Maison Rue</div><div class="sc-name">Boxy Tee Off-White</div><div class="sc-price">$39.00</div><div class="sc-foot"><span class="sc-ship">Shipping costs may apply</span><span class="sc-shop">Nord Store</span></div></div></div>
+    <div class="s-card"><span class="sc-badge">-25%</span><div class="sc-img"><svg class="la" viewBox="0 0 240 140"><use href="#la-sneaker"/></svg></div><div class="sc-body"><div class="sc-brand">Nordic Trail</div><div class="sc-name">Low-Top Sneaker White</div><div class="sc-price sale"><s>$79.90</s>$59.90</div><div class="sc-foot"><span class="sc-ship">Shipping costs may apply</span><span class="sc-shop">Stockroom</span></div></div></div>
+    <div class="s-card"><div class="sc-img"><svg class="la" style="width:104px" viewBox="0 0 200 190"><use href="#la-hoodie"/></svg></div><div class="sc-body"><div class="sc-brand">Studio Form</div><div class="sc-name">Cotton Hoodie Heather Grey</div><div class="sc-price">$89.00</div><div class="sc-foot"><span class="sc-ship">Shipping costs may apply</span><span class="sc-shop">Outlet24</span></div></div></div>
+    <div class="s-card"><div class="sc-img"><svg class="la" style="width:100px" viewBox="0 0 200 190"><use href="#la-tote"/></svg></div><div class="sc-body"><div class="sc-brand">Atelier</div><div class="sc-name">Canvas Tote Natural</div><div class="sc-price">$48.00</div><div class="sc-foot"><span class="sc-ship">Shipping costs may apply</span><span class="sc-shop">Stockroom</span></div></div></div>
+    <div class="s-card"><div class="sc-img"><svg class="la" style="width:96px" viewBox="0 0 200 190"><use href="#la-beanie"/></svg></div><div class="sc-body"><div class="sc-brand">Bergen</div><div class="sc-name">Knit Beanie Rib Navy</div><div class="sc-price">$29.00</div><div class="sc-foot"><span class="sc-ship">Shipping costs may apply</span><span class="sc-shop">Nord Store</span></div></div></div>
+    <div class="s-card"><span class="sc-badge">-20%</span><div class="sc-img"><svg class="la" style="width:100px" viewBox="0 0 200 190"><use href="#la-pack"/></svg></div><div class="sc-body"><div class="sc-brand">Field &amp; Co</div><div class="sc-name">Trail Backpack 24L</div><div class="sc-price sale"><s>$149.00</s>$119.00</div><div class="sc-foot"><span class="sc-ship">Shipping costs may apply</span><span class="sc-shop">Outlet24</span></div></div></div>
+    <div class="s-card"><div class="sc-img"><svg class="la" style="width:104px" viewBox="0 0 200 190"><use href="#la-tee"/></svg></div><div class="sc-body"><div class="sc-brand">Maison Rue</div><div class="sc-name">Boxy Tee Off-White</div><div class="sc-price">$39.00</div><div class="sc-foot"><span class="sc-ship">Shipping costs may apply</span><span class="sc-shop">Nord Store</span></div></div></div>
   </div>
 </div>
 
@@ -543,25 +591,26 @@ footer .container{display:flex;justify-content:space-between;gap:40px;flex-wrap:
             <div class="mock-label">Import a feed</div>
             <div class="mock-input">https://your-network.com/datafeed/…<span class="caret"></span></div>
             <div class="mock-rows">
-              <div class="mock-row"><div class="sw g1"></div><div class="ln"></div><div class="pr">$129.00</div></div>
-              <div class="mock-row"><div class="sw g2"></div><div class="ln"></div><div class="pr">$48.00</div></div>
-              <div class="mock-row"><div class="sw g3"></div><div class="ln"></div><div class="pr">$79.90</div></div>
+              <div class="mock-row"><div class="sw"><svg class="la" viewBox="0 0 200 190"><use href="#la-hoodie"/></svg></div><span class="rn">Cotton Hoodie Heather Grey</span><div class="ln"></div><div class="pr">$89.00</div></div>
+              <div class="mock-row"><div class="sw"><svg class="la" viewBox="0 0 200 190"><use href="#la-tote"/></svg></div><span class="rn">Canvas Tote Natural</span><div class="ln"></div><div class="pr">$48.00</div></div>
+              <div class="mock-row"><div class="sw"><svg class="la" viewBox="0 0 240 140"><use href="#la-sneaker"/></svg></div><span class="rn">Low-Top Sneaker White</span><div class="ln"></div><div class="pr">$79.90</div></div>
             </div>
           </div>
           <div class="lv-panel" id="panel-1">
             <div class="mock-label">Block editor</div>
             <div class="mock-search"><span class="hl">sn</span>eaker<span class="caret"></span></div>
             <div class="mock-rows">
-              <div class="mock-row"><div class="sw g3"></div><div class="ln short"></div><div class="ln"></div><div class="pr">$79.90</div></div>
-              <div class="mock-row" style="opacity:.55"><div class="sw g4"></div><div class="ln short"></div><div class="ln"></div><div class="pr">$64.00</div></div>
+              <div class="mock-row"><div class="sw"><svg class="la" viewBox="0 0 240 140"><use href="#la-sneaker"/></svg></div><span class="rn">Low-Top Sneaker White</span><div class="pr">$79.90</div></div>
+              <div class="mock-row" style="opacity:.55"><div class="sw"><svg class="la" viewBox="0 0 240 140"><use href="#la-sneaker"/></svg></div><span class="rn">High-Top Sneaker Black</span><div class="pr">$64.00</div></div>
             </div>
             <span class="mock-btn">Insert card</span>
           </div>
           <div class="lv-panel" id="panel-2">
             <div class="mock-label">Published post</div>
             <div class="mock-cardrow">
-              <div class="mock-card"><div class="mc-img g3"></div><div class="mc-body"><div class="mc-ln"></div><div class="mc-ln w60"></div><div class="mc-pr">$79.90</div></div></div>
-              <div class="mock-card"><div class="mc-img g1"></div><div class="mc-body"><div class="mc-ln"></div><div class="mc-ln w60"></div><div class="mc-pr">$129.00</div></div></div>
+              <div class="mock-card"><div class="mc-img"><span class="mc-badge">-25%</span><svg class="la" viewBox="0 0 240 140"><use href="#la-sneaker"/></svg></div><div class="mc-body"><div class="mc-brand">Nordic Trail</div><div class="mc-name">Low-Top Sneaker White</div><div class="mc-pr sale"><s>$79.90</s>$59.90</div><div class="mc-ship">Shipping costs may apply</div></div></div>
+              <div class="mock-card"><div class="mc-img"><svg class="la" viewBox="0 0 200 190"><use href="#la-hoodie"/></svg></div><div class="mc-body"><div class="mc-brand">Studio Form</div><div class="mc-name">Cotton Hoodie Heather Grey</div><div class="mc-pr">$89.00</div><div class="mc-ship">Shipping costs may apply</div></div></div>
+              <div class="mock-card"><div class="mc-img"><svg class="la" viewBox="0 0 200 190"><use href="#la-tote"/></svg></div><div class="mc-body"><div class="mc-brand">Atelier</div><div class="mc-name">Canvas Tote Natural</div><div class="mc-pr">$48.00</div><div class="mc-ship">Shipping costs may apply</div></div></div>
             </div>
             <span class="mock-live"><i></i>Prices update themselves, nightly</span>
           </div>
@@ -571,14 +620,14 @@ footer .container{display:flex;justify-content:space-between;gap:40px;flex-wrap:
   </div>
 </div></section>
 
-<section id="editor"><div class="container">
-  <div class="sec-head rv"><span class="sec-num">02</span><h2>This is what your editor looks like</h2></div>
-  <p class="sec-sub rv">Your post, a search box, and the products you want. No tabs, no copy-paste, no leaving the editor.</p>
+<section id="card-editor"><div class="container">
+  <div class="sec-head rv"><span class="sec-num">02</span><h2>Cards that look like your blog wrote them</h2></div>
+  <p class="sec-sub rv">Bend every visible detail to your brand. Tweak once; every card across every post you've ever published catches up before the next reader lands.</p>
   <div class="browser rv">
     <div class="browser-bar"><div class="browser-dots"><span></span><span></span><span></span></div><div class="browser-url">yourblog.com/wp-admin</div></div>
-    <video src="/assets/myfeeds-demo.mp4" poster="/assets/myfeeds-demo-poster.jpg" autoplay loop muted playsinline preload="metadata" aria-label="MyFeeds in use: picking products from an affiliate feed inside the WordPress block editor"></video>
+    <img src="/assets/screenshot-card-design-editor.png" alt="MyFeeds Pro card design editor with controls and a live preview card on the right" loading="lazy">
   </div>
-  <p class="frame-caption rv">In Pro, every card bends to your site down to the font. <a href="#card-editor">See the editor →</a></p>
+  <p class="frame-caption rv">A glimpse of the Pro editor. The live screen opens plenty more.</p>
 </div></section>
 
 <section id="reader"><div class="container">
@@ -647,14 +696,14 @@ footer .container{display:flex;justify-content:space-between;gap:40px;flex-wrap:
   <div class="center-cta rv"><a href="#pricing" class="btn btn-ink">See the plans ↓</a></div>
 </div></section>
 
-<section id="card-editor"><div class="container">
-  <div class="sec-head rv"><span class="sec-num">05</span><h2>Cards that look like your blog wrote them</h2></div>
-  <p class="sec-sub rv">Bend every visible detail to your brand. Tweak once; every card across every post you've ever published catches up before the next reader lands.</p>
+<section id="editor"><div class="container">
+  <div class="sec-head rv"><span class="sec-num">05</span><h2>This is what your editor looks like</h2></div>
+  <p class="sec-sub rv">Your post, a search box, and the products you want. No tabs, no copy-paste, no leaving the editor.</p>
   <div class="browser rv">
     <div class="browser-bar"><div class="browser-dots"><span></span><span></span><span></span></div><div class="browser-url">yourblog.com/wp-admin</div></div>
-    <img src="/assets/screenshot-card-design-editor.png" alt="MyFeeds Pro card design editor with controls and a live preview card on the right" loading="lazy">
+    <video src="/assets/myfeeds-demo.mp4" poster="/assets/myfeeds-demo-poster.jpg" autoplay loop muted playsinline preload="metadata" aria-label="MyFeeds in use: picking products from an affiliate feed inside the WordPress block editor"></video>
   </div>
-  <p class="frame-caption rv">A glimpse of the Pro editor. The live screen opens plenty more.</p>
+  <p class="frame-caption rv">In Pro, every card bends to your site down to the font. <a href="#card-editor">See the editor →</a></p>
 </div></section>
 
 <section id="features"><span class="sec-ghost" aria-hidden="true">for you</span><div class="container">
