@@ -26,6 +26,9 @@
   --accent-deep:#4536C4;
   --accent-soft:rgba(88,73,214,.07);
   --dark:#17141D;
+  --plum:#231A3D;
+  --tint-lav:#F1EEFA;
+  --tint-sand:#F5EFE4;
   --green:#1E9E6A;
   --sale:#D93A6A;
   --serif:'Fraunces',Georgia,serif;
@@ -134,6 +137,34 @@ nav .container{display:flex;align-items:center;justify-content:space-between;hei
 
 /* ── Section scaffolding ── */
 section{padding:96px 0;position:relative}
+#loop{background:linear-gradient(180deg,var(--paper) 0%,var(--tint-lav) 18%,var(--tint-lav) 82%,var(--paper) 100%)}
+#features{background:linear-gradient(180deg,var(--paper) 0%,var(--tint-sand) 14%,var(--tint-sand) 86%,var(--paper) 100%)}
+.sec-ghost{position:absolute;top:38px;right:-30px;font-family:var(--serif);font-style:italic;font-weight:500;font-size:clamp(6rem,14vw,13rem);line-height:1;color:transparent;-webkit-text-stroke:1.5px rgba(88,73,214,.10);pointer-events:none;user-select:none;white-space:nowrap;z-index:0}
+#features .sec-ghost{-webkit-text-stroke-color:rgba(26,23,32,.07)}
+section>.container{position:relative;z-index:2}
+
+/* ── Product marquee strip ── */
+.strip{padding:34px 0 44px;overflow:hidden;position:relative}
+.strip::before,.strip::after{content:'';position:absolute;top:0;bottom:0;width:120px;z-index:3;pointer-events:none}
+.strip::before{left:0;background:linear-gradient(90deg,var(--paper),transparent)}
+.strip::after{right:0;background:linear-gradient(270deg,var(--paper),transparent)}
+.strip-track{display:flex;gap:18px;width:max-content;animation:slide 55s linear infinite}
+.strip:hover .strip-track{animation-play-state:paused}
+@keyframes slide{to{transform:translateX(-50%)}}
+@media(prefers-reduced-motion:reduce){.strip-track{animation:none}}
+.s-card{flex:0 0 190px;background:var(--surface);border:1px solid var(--line);border-radius:12px;overflow:hidden;box-shadow:var(--shadow-card);position:relative}
+.s-card .sc-img{height:110px;display:flex;align-items:center;justify-content:center}
+.s-card .sc-shape{width:46px;height:58px;border-radius:9px}
+.s-card .sc-badge{position:absolute;top:10px;left:10px;background:var(--sale);color:#fff;font-size:.6rem;font-weight:700;letter-spacing:.05em;padding:3px 8px;border-radius:5px}
+.s-card .sc-body{padding:11px 13px 13px}
+.s-card .sc-brand{font-size:.58rem;color:var(--ink-mute);text-transform:uppercase;letter-spacing:.12em;font-weight:600}
+.s-card .sc-name{font-size:.8rem;font-weight:600;margin:2px 0 5px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.s-card .sc-price{font-size:.85rem;font-weight:700}
+.s-card .sc-price s{color:var(--ink-mute);font-weight:500;font-size:.72rem;margin-right:6px}
+.s-card .sc-price.sale{color:var(--sale)}
+.strip-caption{text-align:center;font-size:.72rem;color:var(--ink-mute);font-style:italic;margin-top:20px}
+.g5{background:linear-gradient(135deg,#F5D98F,#EBB963)}
+.g6{background:linear-gradient(135deg,#B7D9EE,#8FBFDF)}
 .sec-head{display:flex;align-items:baseline;gap:22px;margin-bottom:14px}
 .sec-num{font-family:var(--serif);font-size:.95rem;color:var(--accent);font-weight:600;flex-shrink:0}
 .sec-head h2{font-size:clamp(1.7rem,3.4vw,2.4rem);line-height:1.15}
@@ -292,7 +323,7 @@ section{padding:96px 0;position:relative}
 .features-link{text-align:center;margin-top:36px}
 
 /* ── Pricing ── */
-#pricing{background:linear-gradient(180deg,var(--paper) 0%,#F3F0E9 100%)}
+#pricing{background:linear-gradient(180deg,var(--paper) 0%,var(--tint-lav) 30%,var(--tint-lav) 100%)}
 #pricing .wash i:nth-child(1){width:560px;height:560px;background:rgba(88,73,214,.07);top:8%;left:50%;transform:translateX(-50%)}
 .pricing-head{text-align:center;max-width:620px;margin:0 auto 20px}
 .pricing-head .sec-num{display:block;margin-bottom:12px}
@@ -312,9 +343,9 @@ section{padding:96px 0;position:relative}
 @media(max-width:880px){
   .pricing-card.side-l,.pricing-card.side-r{border-radius:var(--radius);border:1px solid var(--line);margin:0}
 }
-.pricing-card.featured{background:var(--dark);border:1px solid var(--dark);border-radius:var(--radius);color:#F4F2F8;box-shadow:0 34px 80px -24px rgba(23,20,29,.55);z-index:3;padding-top:44px}
+.pricing-card.featured{background:linear-gradient(170deg,#6558E0 0%,var(--accent) 45%,#4C3DC8 100%);border:1px solid var(--accent);border-radius:var(--radius);color:#FFFFFF;box-shadow:0 34px 80px -22px rgba(88,73,214,.55);z-index:3;padding-top:44px}
 .card-chip{display:inline-block;align-self:flex-start;font-size:.62rem;font-weight:700;letter-spacing:.12em;padding:5px 13px;border-radius:999px;margin-bottom:18px}
-.card-chip.popular{background:var(--accent);color:#fff}
+.card-chip.popular{background:#FFFFFF;color:var(--accent)}
 .card-chip.value{background:var(--accent-soft);color:var(--accent);border:1px solid rgba(88,73,214,.2)}
 .card-chip.ghost{visibility:hidden}
 .plan-name{font-size:.78rem;text-transform:uppercase;letter-spacing:.14em;color:var(--ink-mute);font-weight:600;margin-bottom:4px}
@@ -329,7 +360,7 @@ section{padding:96px 0;position:relative}
 .featured .plan-original-price{color:#7BE0B4}
 .plan-original-price s{text-decoration:line-through;text-decoration-thickness:1px}
 .plan-includes{font-size:.7rem;text-transform:uppercase;letter-spacing:.12em;color:var(--accent);font-weight:600;margin:22px 0 6px}
-.featured .plan-includes{color:#A79CF2}
+.featured .plan-includes{color:rgba(255,255,255,.8)}
 .plan-features{list-style:none;margin-bottom:30px;flex:1}
 .plan-features li{padding:9px 0;font-size:.9rem;color:var(--ink-soft);display:flex;align-items:flex-start;gap:10px;border-bottom:1px solid var(--line-soft)}
 .featured .plan-features li{color:rgba(244,242,248,.78);border-bottom-color:rgba(255,255,255,.07)}
@@ -341,10 +372,12 @@ section{padding:96px 0;position:relative}
 .plan-cta.cta-outline:hover{border-color:var(--ink-mute)}
 .plan-cta.cta-accent{background:var(--accent);color:#fff;box-shadow:0 10px 26px -8px rgba(88,73,214,.6)}
 .plan-cta.cta-accent:hover{background:var(--accent-deep);transform:translateY(-1px)}
+.plan-cta.cta-paper{background:#FFFFFF;color:var(--accent);box-shadow:0 10px 26px -10px rgba(23,20,29,.45)}
+.plan-cta.cta-paper:hover{transform:translateY(-1px);box-shadow:0 14px 32px -10px rgba(23,20,29,.5)}
 .plan-cta.cta-ink{background:var(--ink);color:#FCFBF8}
 .plan-cta.cta-ink:hover{background:#000;transform:translateY(-1px)}
 .plan-link{display:block;text-align:center;margin-bottom:12px;color:var(--accent);text-decoration:none;font-size:.83rem;font-weight:500}
-.featured .plan-link{color:#A79CF2}
+.featured .plan-link{color:rgba(255,255,255,.85)}
 .plan-link:hover{text-decoration:underline}
 .refund-badge{display:block;text-align:center;font-size:.72rem;color:var(--ink-mute);margin-top:12px}
 .featured .refund-badge{color:rgba(244,242,248,.45)}
@@ -372,7 +405,7 @@ section{padding:96px 0;position:relative}
 .network-badge.soon{opacity:.4}
 
 /* ── Final CTA band ── */
-.final-cta{background:var(--dark);color:#F4F2F8;text-align:center;padding:110px 0;position:relative;overflow:hidden}
+.final-cta{background:var(--plum);color:#F4F2F8;text-align:center;padding:110px 0;position:relative;overflow:hidden}
 .final-cta .wash i:nth-child(1){width:600px;height:600px;background:rgba(88,73,214,.22);top:-260px;left:50%;transform:translateX(-50%)}
 .final-cta h2{font-size:clamp(2rem,4.6vw,3.2rem);line-height:1.1;max-width:760px;margin:0 auto 18px;position:relative;z-index:2}
 .final-cta h2 em{font-style:italic;color:#A79CF2}
@@ -450,7 +483,7 @@ footer .container{display:flex;justify-content:space-between;gap:40px;flex-wrap:
         </div>
         <div class="pc-info">
           <div class="pc-brand">Nordic Trail</div>
-          <div class="pc-name">Alto Runner Mid</div>
+          <div class="pc-name">Low-Top Sneaker</div>
           <div class="live-price-row">
             <span class="live-price" id="live-price">$79.90</span>
             <span class="live-old">$79.90</span>
@@ -463,9 +496,28 @@ footer .container{display:flex;justify-content:space-between;gap:40px;flex-wrap:
   </div>
 </div></section>
 
-<div class="container"><hr class="rule"></div>
+<div class="strip" aria-hidden="true">
+  <div class="strip-track" id="strip-track">
+    <div class="s-card"><div class="sc-img"><div class="sc-shape g1"></div></div><div class="sc-body"><div class="sc-brand">Atelier</div><div class="sc-name">Wool Overshirt</div><div class="sc-price">$129.00</div></div></div>
+    <div class="s-card"><span class="sc-badge">-25%</span><div class="sc-img"><div class="sc-shape g3"></div></div><div class="sc-body"><div class="sc-brand">Nordic Trail</div><div class="sc-name">Low-Top Sneaker</div><div class="sc-price sale"><s>$79.90</s>$59.90</div></div></div>
+    <div class="s-card"><div class="sc-img"><div class="sc-shape g2"></div></div><div class="sc-body"><div class="sc-brand">Studio Form</div><div class="sc-name">Canvas Tote</div><div class="sc-price">$48.00</div></div></div>
+    <div class="s-card"><div class="sc-img"><div class="sc-shape g5"></div></div><div class="sc-body"><div class="sc-brand">Maison Rue</div><div class="sc-name">Linen Shirt</div><div class="sc-price">$74.00</div></div></div>
+    <div class="s-card"><span class="sc-badge">-20%</span><div class="sc-img"><div class="sc-shape g6"></div></div><div class="sc-body"><div class="sc-brand">Field &amp; Co</div><div class="sc-name">Rain Jacket</div><div class="sc-price sale"><s>$189.00</s>$149.00</div></div></div>
+    <div class="s-card"><div class="sc-img"><div class="sc-shape g4"></div></div><div class="sc-body"><div class="sc-brand">Bergen</div><div class="sc-name">Knit Beanie</div><div class="sc-price">$29.00</div></div></div>
+    <div class="s-card"><div class="sc-img"><div class="sc-shape g3"></div></div><div class="sc-body"><div class="sc-brand">Studio Form</div><div class="sc-name">Cotton Hoodie</div><div class="sc-price">$89.00</div></div></div>
+    <div class="s-card"><div class="sc-img"><div class="sc-shape g6"></div></div><div class="sc-body"><div class="sc-brand">Field &amp; Co</div><div class="sc-name">Trail Backpack</div><div class="sc-price">$119.00</div></div></div>
+    <div class="s-card"><div class="sc-img"><div class="sc-shape g1"></div></div><div class="sc-body"><div class="sc-brand">Atelier</div><div class="sc-name">Wool Overshirt</div><div class="sc-price">$129.00</div></div></div>
+    <div class="s-card"><span class="sc-badge">-25%</span><div class="sc-img"><div class="sc-shape g3"></div></div><div class="sc-body"><div class="sc-brand">Nordic Trail</div><div class="sc-name">Low-Top Sneaker</div><div class="sc-price sale"><s>$79.90</s>$59.90</div></div></div>
+    <div class="s-card"><div class="sc-img"><div class="sc-shape g2"></div></div><div class="sc-body"><div class="sc-brand">Studio Form</div><div class="sc-name">Canvas Tote</div><div class="sc-price">$48.00</div></div></div>
+    <div class="s-card"><div class="sc-img"><div class="sc-shape g5"></div></div><div class="sc-body"><div class="sc-brand">Maison Rue</div><div class="sc-name">Linen Shirt</div><div class="sc-price">$74.00</div></div></div>
+    <div class="s-card"><span class="sc-badge">-20%</span><div class="sc-img"><div class="sc-shape g6"></div></div><div class="sc-body"><div class="sc-brand">Field &amp; Co</div><div class="sc-name">Rain Jacket</div><div class="sc-price sale"><s>$189.00</s>$149.00</div></div></div>
+    <div class="s-card"><div class="sc-img"><div class="sc-shape g4"></div></div><div class="sc-body"><div class="sc-brand">Bergen</div><div class="sc-name">Knit Beanie</div><div class="sc-price">$29.00</div></div></div>
+    <div class="s-card"><div class="sc-img"><div class="sc-shape g3"></div></div><div class="sc-body"><div class="sc-brand">Studio Form</div><div class="sc-name">Cotton Hoodie</div><div class="sc-price">$89.00</div></div></div>
+    <div class="s-card"><div class="sc-img"><div class="sc-shape g6"></div></div><div class="sc-body"><div class="sc-brand">Field &amp; Co</div><div class="sc-name">Trail Backpack</div><div class="sc-price">$119.00</div></div></div>
+  </div>
+</div>
 
-<section id="loop"><div class="container">
+<section id="loop"><span class="sec-ghost" aria-hidden="true">the loop</span><div class="container">
   <div class="sec-head rv"><span class="sec-num">01</span><h2>That's the loop.</h2></div>
   <p class="sec-sub rv">Most setups land in five to ten minutes.</p>
   <div class="loop-grid">
@@ -498,7 +550,7 @@ footer .container{display:flex;justify-content:space-between;gap:40px;flex-wrap:
           </div>
           <div class="lv-panel" id="panel-1">
             <div class="mock-label">Block editor</div>
-            <div class="mock-search"><span class="hl">al</span>to runner<span class="caret"></span></div>
+            <div class="mock-search"><span class="hl">sn</span>eaker<span class="caret"></span></div>
             <div class="mock-rows">
               <div class="mock-row"><div class="sw g3"></div><div class="ln short"></div><div class="ln"></div><div class="pr">$79.90</div></div>
               <div class="mock-row" style="opacity:.55"><div class="sw g4"></div><div class="ln short"></div><div class="ln"></div><div class="pr">$64.00</div></div>
@@ -605,7 +657,7 @@ footer .container{display:flex;justify-content:space-between;gap:40px;flex-wrap:
   <p class="frame-caption rv">A glimpse of the Pro editor. The live screen opens plenty more.</p>
 </div></section>
 
-<section id="features"><div class="container">
+<section id="features"><span class="sec-ghost" aria-hidden="true">for you</span><div class="container">
   <div class="sec-head rv"><span class="sec-num">06</span><h2>What changes for you</h2></div>
   <p class="sec-sub rv">Every roundup, every gift guide, every product page stays quietly looked after, while you focus on the next post.</p>
   <div class="bento">
@@ -616,14 +668,14 @@ footer .container{display:flex;justify-content:space-between;gap:40px;flex-wrap:
     </div>
     <div class="tile rv">
       <div class="tile-viz viz-dead">
-        <div class="vd-row"><i class="vd-dot ok"></i>Alto Runner Mid</div>
+        <div class="vd-row"><i class="vd-dot ok"></i>Low-Top Sneaker</div>
         <div class="vd-row"><i class="vd-dot dead"></i>Canvas Tote<span class="vd-flag">GONE</span></div>
       </div>
       <h3>Your posts stop rotting</h3>
       <p>Dead products surface so you can replace them. Stock that comes back lights up again. Nothing decays silently behind your last post.</p>
     </div>
     <div class="tile rv">
-      <div class="tile-viz viz-type"><span><span class="hl">al</span>to runner</span><span class="caret"></span></div>
+      <div class="tile-viz viz-type"><span><span class="hl">sn</span>eaker</span><span class="caret"></span></div>
       <h3>You publish faster</h3>
       <p>Two letters in the editor, the product appears, you click, the card is in. No new tab, no copy, no paste, no missed link.</p>
     </div>
@@ -716,7 +768,7 @@ footer .container{display:flex;justify-content:space-between;gap:40px;flex-wrap:
         <li><span class="check">✓</span> Support</li>
       </ul>
       <a href="/install/#pro" class="plan-link">Step-by-step install guide →</a>
-      <a href="https://checkout.freemius.com/plugin/21336/plan/35610/?trial=paid" class="plan-cta cta-accent">Try every Pro feature free for 7 days</a>
+      <a href="https://checkout.freemius.com/plugin/21336/plan/35610/?trial=paid" class="plan-cta cta-paper">Try every Pro feature free for 7 days</a>
       <p class="refund-badge">14-day money-back guarantee · Cancel from your dashboard</p>
     </div>
     <div class="pricing-card side-r rv">
