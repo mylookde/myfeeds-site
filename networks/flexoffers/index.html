@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>FlexOffers product feed for WordPress — import, display, auto-update | MyFeeds</title>
+<meta name="description" content="Turn your FlexOffers product feed into live, searchable product cards inside the WordPress block editor. Prices and stock update themselves nightly.">
+<link rel="canonical" href="https://myfeeds.site/networks/flexoffers/">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="MyFeeds">
+<meta property="og:url" content="https://myfeeds.site/networks/flexoffers/">
+<meta property="og:title" content="FlexOffers product feed for WordPress — import, display, auto-update | MyFeeds">
+<meta property="og:description" content="Turn your FlexOffers product feed into live, searchable product cards inside the WordPress block editor. Prices and stock update themselves nightly.">
+<meta property="og:image" content="https://myfeeds.site/assets/og-image.jpg">
+<link rel="icon" type="image/png" href="/favicon.png">
+<link rel="apple-touch-icon" href="/apple-touch-icon.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Outfit:wght@300..800&display=swap">
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "FAQPage", "mainEntity": [{"@type": "Question", "name": "Does MyFeeds work with FlexOffers?", "acceptedAnswer": {"@type": "Answer", "text": "Yes. If FlexOffers gives you a product feed file or URL for a program you have joined, MyFeeds imports it, maps the fields automatically and turns it into a searchable catalogue inside the WordPress block editor."}}, {"@type": "Question", "name": "Can I mix FlexOffers with feeds from other sources?", "acceptedAnswer": {"@type": "Answer", "text": "Yes. Each feed lives as its own source inside MyFeeds, and one post can show products from any of them side by side."}}, {"@type": "Question", "name": "Do I have to pay to get started?", "acceptedAnswer": {"@type": "Answer", "text": "No. The free version lives on WordPress.org and covers one feed, the smart search, the grid layout, manual plus nightly sync. Upgrade only when you outgrow it."}}, {"@type": "Question", "name": "Where does my data live?", "acceptedAnswer": {"@type": "Answer", "text": "On your own WordPress site, in your own database. The plugin doesn't proxy product images, doesn't ping a third-party server when a page loads, and doesn't send anything about your visitors anywhere."}}]}</script>
+<style>*,*::before,*::after{margin:0;padding:0;box-sizing:border-box}
+:root{--bg:#0a0a12;--card:rgba(255,255,255,.05);--line:rgba(255,255,255,.09);--txt:#f0eef6;--soft:rgba(240,238,246,.62);--mute:rgba(240,238,246,.38);--a1:#667eea;--a2:#764ba2;--green:#34d399;--grad:linear-gradient(135deg,#667eea,#764ba2)}
+html{background:var(--bg);color:var(--txt);font-family:'Outfit',sans-serif;scroll-behavior:smooth}
+body{line-height:1.6;overflow-x:hidden}
+.wrap{max-width:860px;margin:0 auto;padding:0 24px}
+nav{position:fixed;top:0;left:0;right:0;z-index:50;padding:14px 0;backdrop-filter:blur(18px);background:rgba(10,10,18,.75);border-bottom:1px solid var(--line)}
+nav .wrap{display:flex;align-items:center;justify-content:space-between;max-width:1200px}
+.logo{display:flex;align-items:center;gap:10px;text-decoration:none;color:var(--txt);font-weight:700;font-size:1.05rem}
+.logo img{width:30px;height:30px;border-radius:7px}
+.nav-r{display:flex;gap:22px;align-items:center}
+.nav-r a{color:var(--soft);text-decoration:none;font-size:.88rem;font-weight:500}
+.nav-r a:hover{color:var(--txt)}
+.nav-r a.cta{background:var(--grad);color:#fff;padding:8px 18px;border-radius:9px;font-weight:600}
+header{padding:130px 0 30px}
+.crumb{font-size:.78rem;color:var(--mute);margin-bottom:18px}
+.crumb a{color:var(--mute);text-decoration:none}
+.crumb a:hover{color:var(--soft)}
+.badge{display:inline-flex;align-items:center;gap:8px;padding:6px 14px;border-radius:999px;background:var(--card);border:1px solid var(--line);font-size:.78rem;color:var(--soft);margin-bottom:20px}
+.badge i{width:6px;height:6px;border-radius:50%;background:var(--green)}
+h1{font-size:clamp(1.9rem,4.6vw,2.9rem);font-weight:800;letter-spacing:-.03em;line-height:1.12;margin-bottom:18px}
+.lede{color:var(--soft);font-size:1.06rem;max-width:640px}
+main{padding:26px 0 60px}
+h2{font-size:1.45rem;font-weight:700;letter-spacing:-.02em;margin:44px 0 14px}
+p{color:var(--soft);margin-bottom:14px;font-size:.97rem}
+.steps{counter-reset:s;display:grid;gap:14px;margin:20px 0 8px}
+.step{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:20px 22px 18px;position:relative}
+.step::before{counter-increment:s;content:counter(s,decimal-leading-zero);font-size:.78rem;font-weight:700;color:var(--a1);letter-spacing:.08em}
+.step h3{font-size:1.02rem;font-weight:700;margin:6px 0 6px;color:var(--txt)}
+.step p{margin:0;font-size:.92rem}
+.facts{background:linear-gradient(135deg,rgba(102,126,234,.10),rgba(118,75,162,.06));border:1px solid rgba(102,126,234,.25);border-radius:14px;padding:22px 24px;margin:24px 0}
+.facts h2{margin:0 0 12px;font-size:1.05rem}
+.facts ul{list-style:none}
+.facts li{padding:7px 0;color:var(--soft);font-size:.93rem;display:flex;gap:10px;align-items:flex-start;border-bottom:1px solid rgba(255,255,255,.05)}
+.facts li:last-child{border:none}
+.facts li b{color:var(--green);font-weight:700;flex-shrink:0}
+.faq details{background:var(--card);border:1px solid var(--line);border-radius:11px;margin-bottom:10px}
+.faq summary{padding:15px 18px;cursor:pointer;font-weight:600;font-size:.95rem;list-style:none;display:flex;justify-content:space-between;gap:14px}
+.faq summary::-webkit-details-marker{display:none}
+.faq summary::after{content:'+';color:var(--mute);font-weight:300;font-size:1.3rem;line-height:1}
+.faq details[open] summary::after{content:'-'}
+.faq details p{padding:0 18px 16px;margin:0;font-size:.91rem}
+.cta-box{background:var(--grad);border-radius:16px;padding:36px 30px;text-align:center;margin:52px 0 0}
+.cta-box h2{margin:0 0 8px;color:#fff}
+.cta-box p{color:rgba(255,255,255,.85);max-width:460px;margin:0 auto 20px}
+.btn{display:inline-block;background:#fff;color:#1c1633;font-weight:700;padding:13px 28px;border-radius:999px;text-decoration:none;font-size:.95rem}
+.btn:hover{opacity:.93}
+.cta-sub{display:block;margin-top:12px;font-size:.8rem;color:rgba(255,255,255,.7)}
+.cta-sub a{color:#fff}
+footer{border-top:1px solid var(--line);padding:36px 0;text-align:center;margin-top:70px}
+footer .links{display:flex;gap:20px;justify-content:center;flex-wrap:wrap;margin-bottom:14px}
+footer a{color:var(--soft);text-decoration:none;font-size:.84rem}
+footer a:hover{color:var(--txt)}
+footer .copy{color:var(--mute);font-size:.76rem}
+.netgrid{display:grid;grid-template-columns:repeat(auto-fill,minmax(200px,1fr));gap:14px;margin:26px 0}
+.netcard{display:block;background:var(--card);border:1px solid var(--line);border-radius:13px;padding:20px;text-decoration:none;transition:border-color .2s,transform .2s}
+.netcard:hover{border-color:rgba(102,126,234,.45);transform:translateY(-2px)}
+.netcard b{color:var(--txt);font-size:1rem;display:block;margin-bottom:4px}
+.netcard span{color:var(--mute);font-size:.8rem}
+</style>
+<script data-goatcounter="https://myfeeds.goatcounter.com/count" async src="//gc.zgo.at/count.js"></script>
+</head>
+<body>
+<nav><div class="wrap">
+  <a href="/" class="logo"><img src="/logo.png" alt="MyFeeds">MyFeeds</a>
+  <div class="nav-r">
+    <a href="/networks/">Networks</a>
+    <a href="/#pricing">Pricing</a>
+    <a href="https://wordpress.org/plugins/myfeeds-affiliate-feed-manager/" class="cta">Get Started</a>
+  </div>
+</div></nav>
+<header><div class="wrap">
+  <div class="crumb"><a href="/">MyFeeds</a> / <a href="/networks/">Networks</a> / FlexOffers</div>
+  <div class="badge"><i></i> Works with FlexOffers</div>
+  <h1>Your FlexOffers products, live inside your WordPress posts</h1>
+  <p class="lede">Stop copying product links out of your FlexOffers account by hand. MyFeeds turns the product feed into a searchable catalogue inside the WordPress block editor: pick a product, publish, and the card keeps its price and stock current on its own.</p>
+</div></header>
+<main><div class="wrap">
+
+  <h2>From feed to published post, in three steps</h2>
+  <div class="steps">
+    <div class="step"><h3>Get your feed link</h3><p>FlexOffers publishers can request product feeds for their approved advertisers. Point MyFeeds at the feed URL or upload the export.</p></div>
+    <div class="step"><h3>Paste it into MyFeeds</h3><p>The importer reads CSV product feeds, sniffs the structure and maps the fields on its own. A few minutes later your products are searchable inside WordPress.</p></div>
+    <div class="step"><h3>Pick products in the editor and publish</h3><p>Search your catalogue right inside the post, click, and the card is in. A nightly sync keeps every card on every post current; products that disappear from the feed get flagged so old posts stop pointing at 404s.</p></div>
+  </div>
+
+  <div class="facts">
+    <h2>What MyFeeds handles for FlexOffers feeds</h2>
+    <ul>
+      <li><b>&#10003;</b> Reads CSV product feeds; unusual columns are matched by the smart mapper</li>
+      <li><b>&#10003;</b> Affiliate deep links are used exactly as your feed delivers them; your tracking stays intact</li>
+      <li><b>&#10003;</b> Every click carries an id via the fobs tracking parameter, so commissions can be matched back to the exact post and product in the MyFeeds analytics dashboard (Pro)</li>
+      <li><b>&#10003;</b> Nightly sync updates price, stock and sale badges on every published card</li>
+      <li><b>&#10003;</b> Everything is stored in your own WordPress database, fully self-hosted</li>
+    </ul>
+  </div>
+
+  <h2>Clicks and commissions</h2>
+  <p>On paid plans, MyFeeds tags every outgoing click through the fobs tracking parameter and pulls your commissions back into WordPress, so you see which post and which product actually earned. Clicks are counted server-side; ad blockers don't punch holes into your numbers.</p>
+
+  <h2>Common questions</h2>
+  <div class="faq">
+    <details><summary>Does MyFeeds work with FlexOffers?</summary><p>Yes. If FlexOffers gives you a product feed file or URL for a program you have joined, MyFeeds imports it, maps the fields automatically and turns it into a searchable catalogue inside the WordPress block editor.</p></details>
+    <details><summary>Can I mix FlexOffers with feeds from other sources?</summary><p>Yes. Each feed lives as its own source inside MyFeeds, and one post can show products from any of them side by side.</p></details>
+    <details><summary>Do I have to pay to get started?</summary><p>No. The free version lives on WordPress.org and covers one feed, the smart search, the grid layout, manual plus nightly sync. Upgrade only when you outgrow it.</p></details>
+    <details><summary>Where does my data live?</summary><p>On your own WordPress site, in your own database. The plugin doesn&#x27;t proxy product images, doesn&#x27;t ping a third-party server when a page loads, and doesn&#x27;t send anything about your visitors anywhere.</p></details>
+  </div>
+
+  <div class="cta-box">
+    <h2>Try it with your own FlexOffers feed</h2>
+    <p>The free plugin covers your first feed. Setup lands in five to ten minutes.</p>
+    <a class="btn" href="https://wordpress.org/plugins/myfeeds-affiliate-feed-manager/">Add live product cards to my posts &rarr;</a>
+    <span class="cta-sub">Need more feeds or the analytics dashboard? <a href="/#pricing">See the plans</a></span>
+  </div>
+
+</div></main>
+<footer><div class="wrap">
+  <div class="links">
+    <a href="/">Home</a>
+    <a href="/networks/">Supported networks</a>
+    <a href="/install/">Install Guide</a>
+    <a href="/affiliates/">Affiliates</a>
+    <a href="/privacy/">Privacy Policy</a>
+    <a href="/imprint/">Imprint</a>
+  </div>
+  <div class="copy">&copy; 2026 MyFeeds. All rights reserved.</div>
+</div></footer>
+</body>
+</html>
