@@ -80,11 +80,11 @@ nav .container{display:flex;align-items:center;justify-content:space-between;hei
 .link-arrow:hover{border-color:var(--ink)}
 
 /* ── Hero ── */
-.hero{padding:158px 0 100px;position:relative}
+.hero{padding:140px 0 70px;position:relative}
 .hero .wash i:nth-child(1){width:520px;height:520px;background:rgba(88,73,214,.10);top:-120px;right:-80px}
 .hero .wash i:nth-child(2){width:420px;height:420px;background:rgba(217,58,106,.06);bottom:-160px;left:-120px}
 .hero .container{display:grid;grid-template-columns:1.02fr .98fr;gap:56px;align-items:center;position:relative;z-index:2}
-@media(max-width:920px){.hero .container{grid-template-columns:1fr;gap:64px}.hero{padding:130px 0 80px}}
+@media(max-width:920px){.hero .container{grid-template-columns:1fr;gap:48px}.hero{padding:104px 0 44px}}
 .hero-badge{display:inline-flex;align-items:center;gap:8px;padding:7px 15px;border-radius:999px;background:var(--surface);border:1px solid var(--line);font-size:.78rem;color:var(--ink-soft);margin-bottom:26px;font-weight:500;letter-spacing:.02em}
 .hero-badge .dot{width:6px;height:6px;border-radius:50%;background:var(--green);animation:pulse 2.2s infinite}
 @keyframes pulse{0%,100%{opacity:1}50%{opacity:.35}}
@@ -136,7 +136,8 @@ nav .container{display:flex;align-items:center;justify-content:space-between;hei
 .cluster-caption{position:absolute;bottom:-38px;left:0;right:0;text-align:center;font-size:.72rem;color:var(--ink-mute);font-style:italic}
 
 /* ── Section scaffolding ── */
-section{padding:96px 0;position:relative}
+section{padding:68px 0;position:relative}
+@media(max-width:640px){section{padding:42px 0}}
 #loop{background:linear-gradient(180deg,var(--paper) 0%,var(--tint-lav) 18%,var(--tint-lav) 82%,var(--paper) 100%)}
 #features{background:linear-gradient(180deg,var(--paper) 0%,var(--tint-sand) 14%,var(--tint-sand) 86%,var(--paper) 100%)}
 .sec-ghost{position:absolute;top:38px;right:-30px;font-family:var(--serif);font-style:italic;font-weight:500;font-size:clamp(6rem,14vw,13rem);line-height:1;color:transparent;-webkit-text-stroke:1.5px rgba(88,73,214,.10);pointer-events:none;user-select:none;white-space:nowrap;z-index:0}
@@ -173,8 +174,8 @@ section>.container{position:relative;z-index:2}
 .sec-head{display:flex;align-items:baseline;gap:22px;margin-bottom:14px}
 .sec-num{font-family:var(--serif);font-size:.95rem;color:var(--accent);font-weight:600;flex-shrink:0}
 .sec-head h2{font-size:clamp(1.7rem,3.4vw,2.4rem);line-height:1.15}
-.sec-sub{color:var(--ink-soft);font-size:1.02rem;max-width:640px;margin:0 0 48px 46px}
-@media(max-width:640px){.sec-head{gap:14px}.sec-sub{margin-left:0}}
+.sec-sub{color:var(--ink-soft);font-size:1.02rem;max-width:640px;margin:0 0 36px 46px}
+@media(max-width:640px){.sec-head{gap:14px}.sec-sub{margin-left:0;margin-bottom:26px}}
 .rule{border:none;border-top:1px solid var(--line);margin:0}
 
 /* ── The loop (scroll story) ── */
@@ -296,10 +297,13 @@ section>.container{position:relative;z-index:2}
 .viz-dead .ok{background:var(--green)}
 .viz-dead .dead{background:var(--sale);animation:pulse 1.6s infinite}
 .viz-dead .vd-flag{margin-left:auto;font-size:.62rem;font-weight:700;color:var(--sale);letter-spacing:.05em}
-/* typing viz */
-.viz-type{display:flex;align-items:center;gap:10px;border:1px solid var(--line);border-radius:10px;padding:11px 14px;background:var(--paper);font-size:.85rem;color:var(--ink);max-width:280px}
-.viz-type .hl{color:var(--accent);font-weight:700}
-.viz-type .caret{width:1.5px;height:15px;background:var(--accent);animation:blink 1s steps(1) infinite}
+/* process flow viz */
+.viz-flow{display:flex;align-items:center;gap:9px;flex-wrap:wrap}
+.viz-flow .vf-step{display:inline-flex;align-items:center;gap:6px;border:1px solid var(--line);border-radius:999px;padding:7px 14px;background:var(--paper);font-size:.76rem;font-weight:600;color:var(--ink-soft)}
+.viz-flow .vf-step.done{border-color:rgba(30,158,106,.35)}
+.viz-flow .vf-step.done::before{content:'✓';color:var(--green);font-weight:700}
+.viz-flow .vf-step.act{background:var(--accent);border-color:var(--accent);color:#fff}
+.viz-flow .vf-arrow{color:var(--ink-mute);font-size:.8rem}
 /* swatch viz */
 .viz-swatch{display:flex;gap:8px;align-items:center}
 .viz-swatch i{width:26px;height:26px;border-radius:8px;border:1px solid rgba(26,23,32,.08)}
@@ -417,7 +421,8 @@ section>.container{position:relative;z-index:2}
 .network-badge.soon{opacity:.4}
 
 /* ── Final CTA band ── */
-.final-cta{background:var(--plum);color:#F4F2F8;text-align:center;padding:110px 0;position:relative;overflow:hidden}
+.final-cta{background:var(--plum);color:#F4F2F8;text-align:center;padding:86px 0;position:relative;overflow:hidden}
+@media(max-width:640px){.final-cta{padding:60px 0}}
 .final-cta .wash i:nth-child(1){width:600px;height:600px;background:rgba(88,73,214,.22);top:-260px;left:50%;transform:translateX(-50%)}
 .final-cta h2{font-size:clamp(2rem,4.6vw,3.2rem);line-height:1.1;max-width:760px;margin:0 auto 18px;position:relative;z-index:2}
 .final-cta h2 em{font-style:italic;color:#A79CF2}
@@ -575,8 +580,8 @@ footer .container{display:flex;justify-content:space-between;gap:40px;flex-wrap:
         <p>MyFeeds imports and maps it. The smart mapper figures out which column is which on its own.</p>
       </div>
       <div class="loop-step" data-panel="1">
-        <h3>Type two letters in the editor</h3>
-        <p>The product appears, you click, the card is in. No new tab, no copy, no paste, no missed link.</p>
+        <h3>Pick your products in the editor</h3>
+        <p>Search your catalogue right inside the post. You click, the card is in. No new tab, no copy, no paste, no missed link.</p>
       </div>
       <div class="loop-step" data-panel="2">
         <h3>Hit publish</h3>
@@ -724,9 +729,9 @@ footer .container{display:flex;justify-content:space-between;gap:40px;flex-wrap:
       <p>Dead products surface so you can replace them. Stock that comes back lights up again. Nothing decays silently behind your last post.</p>
     </div>
     <div class="tile rv">
-      <div class="tile-viz viz-type"><span><span class="hl">sn</span>eaker</span><span class="caret"></span></div>
+      <div class="tile-viz viz-flow"><span class="vf-step done">Feed</span><span class="vf-arrow">→</span><span class="vf-step done">Pick</span><span class="vf-arrow">→</span><span class="vf-step act">Publish</span></div>
       <h3>You publish faster</h3>
-      <p>Two letters in the editor, the product appears, you click, the card is in. No new tab, no copy, no paste, no missed link.</p>
+      <p>Paste your feed URL, pick your products, hit publish. Most setups land in five to ten minutes, and every post after that is faster.</p>
     </div>
     <div class="tile rv">
       <div class="tile-viz viz-swatch"><i></i><i></i><i></i><i></i><span class="vs-font">Aa</span></div>
