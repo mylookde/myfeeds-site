@@ -17,7 +17,7 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Outfit:wght@300..800&display=swap">
-<script type="application/ld+json">{"@context": "https://schema.org", "@type": "FAQPage", "mainEntity": [{"@type": "Question", "name": "Does MyFeeds work with Rakuten Advertising?", "acceptedAnswer": {"@type": "Answer", "text": "Yes. If Rakuten Advertising gives you a product feed file or URL for a program you have joined, MyFeeds imports it, maps the fields automatically and turns it into a searchable catalogue inside the WordPress block editor."}}, {"@type": "Question", "name": "Which Rakuten feed format should I use?", "acceptedAnswer": {"@type": "Answer", "text": "Whichever your advertiser provides. The importer sniffs delimiter and structure on its own, so a pipe-delimited merchandiser file works as well as a plain CSV."}}, {"@type": "Question", "name": "Do I have to pay to get started?", "acceptedAnswer": {"@type": "Answer", "text": "No. The free version lives on WordPress.org and covers one feed, the smart search, the grid layout, manual plus nightly sync. Upgrade only when you outgrow it."}}, {"@type": "Question", "name": "Where does my data live?", "acceptedAnswer": {"@type": "Answer", "text": "On your own WordPress site, in your own database. The plugin doesn't proxy product images, doesn't ping a third-party server when a page loads, and doesn't send anything about your visitors anywhere."}}]}</script>
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "FAQPage", "mainEntity": [{"@type": "Question", "name": "Does MyFeeds work with Rakuten Advertising?", "acceptedAnswer": {"@type": "Answer", "text": "Yes. If Rakuten Advertising gives you a product feed file or URL for a program you have joined, MyFeeds imports it, maps the fields automatically and turns it into a searchable catalogue inside the WordPress block editor."}}, {"@type": "Question", "name": "Which Rakuten feed format should I use?", "acceptedAnswer": {"@type": "Answer", "text": "Whichever your advertiser provides. The importer sniffs delimiter and structure on its own, so a gzip-compressed pipe-delimited catalog file works as well as a plain CSV."}}, {"@type": "Question", "name": "Do I have to pay to get started?", "acceptedAnswer": {"@type": "Answer", "text": "No. The free version lives on WordPress.org and covers one feed, the smart search, the grid layout, manual plus nightly sync. Upgrade only when you outgrow it."}}, {"@type": "Question", "name": "Where does my data live?", "acceptedAnswer": {"@type": "Answer", "text": "On your own WordPress site, in your own database. The plugin doesn't proxy product images, doesn't ping a third-party server when a page loads, and doesn't send anything about your visitors anywhere."}}]}</script>
 <style>*,*::before,*::after{margin:0;padding:0;box-sizing:border-box}
 :root{--bg:#0a0a12;--card:rgba(255,255,255,.05);--line:rgba(255,255,255,.09);--txt:#f0eef6;--soft:rgba(240,238,246,.62);--mute:rgba(240,238,246,.38);--a1:#667eea;--a2:#764ba2;--green:#34d399;--grad:linear-gradient(135deg,#667eea,#764ba2)}
 html{background:var(--bg);color:var(--txt);font-family:'Outfit',sans-serif;scroll-behavior:smooth}
@@ -92,21 +92,21 @@ footer .copy{color:var(--mute);font-size:.76rem}
   <div class="crumb"><a href="/">MyFeeds</a> / <a href="/networks/">Networks</a> / Rakuten Advertising</div>
   <div class="badge"><i></i> Works with Rakuten Advertising</div>
   <h1>Your Rakuten Advertising products, live inside your WordPress posts</h1>
-  <p class="lede">Rakuten Advertising merchandiser feeds carry everything your advertisers sell, in files no human wants to open. MyFeeds reads them for you and turns them into a searchable catalogue inside the WordPress block editor, with cards that keep their price and stock current on their own.</p>
+  <p class="lede">Rakuten Advertising delivers Product Catalog feeds for everything your advertisers sell, in files no human wants to open. MyFeeds reads them for you and turns them into a searchable catalogue inside the WordPress block editor, with cards that keep their price and stock current on their own.</p>
 </div></header>
 <main><div class="wrap">
 
   <h2>From feed to published post, in three steps</h2>
   <div class="steps">
-    <div class="step"><h3>Get your feed link</h3><p>Rakuten Advertising delivers merchandiser product feeds for your approved advertisers. Point MyFeeds at the feed file you receive.</p></div>
-    <div class="step"><h3>Paste it into MyFeeds</h3><p>The importer reads CSV, TSV and XML feeds, sniffs the structure and maps the fields on its own. A few minutes later your products are searchable inside WordPress.</p></div>
+    <div class="step"><h3>Get your feed link</h3><p>Rakuten Advertising delivers Product Catalog Data Feeds through its SFTP server: download the file for your approving advertiser and hand it to MyFeeds.</p></div>
+    <div class="step"><h3>Paste it into MyFeeds</h3><p>The importer reads gzip-compressed XML or pipe-delimited text files, sniffs the structure and maps the fields on its own. A few minutes later your products are searchable inside WordPress.</p></div>
     <div class="step"><h3>Pick products in the editor and publish</h3><p>Search your catalogue right inside the post, click, and the card is in. A nightly sync keeps every card on every post current; products that disappear from the feed get flagged so old posts stop pointing at 404s.</p></div>
   </div>
 
   <div class="facts">
     <h2>What MyFeeds handles for Rakuten Advertising feeds</h2>
     <ul>
-      <li><b>&#10003;</b> Reads CSV, TSV and XML feeds; unusual columns are matched by the smart mapper</li>
+      <li><b>&#10003;</b> Reads gzip-compressed XML or pipe-delimited text files; unusual columns are matched by the smart mapper</li>
       <li><b>&#10003;</b> Affiliate deep links are used exactly as your feed delivers them; your tracking stays intact</li>
       <li><b>&#10003;</b> Every click carries an id via Rakuten's u1 parameter, so commissions can be matched back to the exact post and product in the MyFeeds analytics dashboard (Pro)</li>
       <li><b>&#10003;</b> Nightly sync updates price, stock and sale badges on every published card</li>
@@ -120,7 +120,7 @@ footer .copy{color:var(--mute);font-size:.76rem}
   <h2>Common questions</h2>
   <div class="faq">
     <details><summary>Does MyFeeds work with Rakuten Advertising?</summary><p>Yes. If Rakuten Advertising gives you a product feed file or URL for a program you have joined, MyFeeds imports it, maps the fields automatically and turns it into a searchable catalogue inside the WordPress block editor.</p></details>
-    <details><summary>Which Rakuten feed format should I use?</summary><p>Whichever your advertiser provides. The importer sniffs delimiter and structure on its own, so a pipe-delimited merchandiser file works as well as a plain CSV.</p></details>
+    <details><summary>Which Rakuten feed format should I use?</summary><p>Whichever your advertiser provides. The importer sniffs delimiter and structure on its own, so a gzip-compressed pipe-delimited catalog file works as well as a plain CSV.</p></details>
     <details><summary>Do I have to pay to get started?</summary><p>No. The free version lives on WordPress.org and covers one feed, the smart search, the grid layout, manual plus nightly sync. Upgrade only when you outgrow it.</p></details>
     <details><summary>Where does my data live?</summary><p>On your own WordPress site, in your own database. The plugin doesn&#x27;t proxy product images, doesn&#x27;t ping a third-party server when a page loads, and doesn&#x27;t send anything about your visitors anywhere.</p></details>
   </div>
