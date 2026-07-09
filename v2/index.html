@@ -76,6 +76,15 @@ nav .container{display:flex;align-items:center;justify-content:space-between;hei
 .btn{display:inline-flex;align-items:center;justify-content:center;gap:8px;padding:14px 28px;border-radius:999px;font-weight:600;font-size:.95rem;text-decoration:none;transition:all .22s;border:none;cursor:pointer;font-family:inherit}
 .btn-ink{background:var(--ink);color:#FCFBF8 !important}
 .btn-ink:hover{background:#000;transform:translateY(-1px);box-shadow:0 12px 30px -8px rgba(26,23,32,.45)}
+/* The one direct-CTA colour on the page: accent purple appears on no
+   other interactive element, so the buy-path button is unmistakable
+   wherever it repeats. */
+.btn-cta{background:var(--accent);color:#FFFFFF !important;box-shadow:0 10px 26px -8px rgba(88,73,214,.55)}
+.btn-cta:hover{background:var(--accent-deep);transform:translateY(-1px);box-shadow:0 14px 32px -8px rgba(88,73,214,.6)}
+.btn-ghost{background:transparent;color:var(--ink-soft) !important;border:1px solid var(--line);padding:13px 25px}
+.btn-ghost:hover{border-color:var(--ink-mute);color:var(--ink) !important}
+.stakes-line{text-align:center;font-size:.95rem;color:var(--ink-soft);padding:6px 28px 40px;font-style:italic}
+.stakes-line b{color:var(--sale);font-style:normal;font-weight:600}
 .link-arrow{color:var(--ink);text-decoration:none;font-weight:600;font-size:.92rem;border-bottom:1px solid var(--line);padding-bottom:2px;transition:border-color .2s}
 .link-arrow:hover{border-color:var(--ink)}
 
@@ -512,11 +521,11 @@ footer .container{display:flex;justify-content:space-between;gap:40px;flex-wrap:
   <div>
     <div class="hero-badge"><span class="dot"></span> Now available for WordPress</div>
     <h1>Stop pasting affiliate links by hand. <em>Start publishing.</em></h1>
-    <p class="lede">Pick products from your affiliate feed inside the WordPress block editor. Drop them into any post as polished, always-current product cards. No copy-paste, no dead links, no manual updates.</p>
+    <p class="lede">MyFeeds turns your affiliate feed into product cards and shops that keep themselves current inside WordPress. Dead links stop costing you commissions.</p>
     <p class="hero-stat"><strong>Setup in 5 minutes.</strong></p>
     <div class="hero-actions">
-      <a href="https://wordpress.org/plugins/myfeeds-affiliate-feed-manager/" class="btn btn-ink">Add live product cards to my posts →</a>
-      <a href="#pricing" class="link-arrow">See pricing ↓</a>
+      <a href="https://wordpress.org/plugins/myfeeds-affiliate-feed-manager/" class="btn btn-cta">Add live product cards to my posts →</a>
+      <a href="#loop" class="btn btn-ghost">See how it works ↓</a>
     </div>
     <div class="hero-trust">
       <span class="trust-item" id="trust-default">From bloggers, for bloggers.</span>
@@ -570,9 +579,11 @@ footer .container{display:flex;justify-content:space-between;gap:40px;flex-wrap:
   </div>
 </div>
 
+<p class="stakes-line rv"><b>Every dead link is a commission you earned and never received.</b> Your cards should fix themselves.</p>
+
 <section id="loop"><span class="sec-ghost" aria-hidden="true">the loop</span><div class="container">
   <div class="sec-head rv"><span class="sec-num">01</span><h2>That's the loop.</h2></div>
-  <p class="sec-sub rv">Most setups land in five to ten minutes.</p>
+  <p class="sec-sub rv">Most setups land in five to ten minutes. Like you, we got tired of finding dead links in our best posts, so MyFeeds runs on our own blog first.</p>
   <div class="loop-grid">
     <div class="loop-steps" id="loop-steps">
       <div class="loop-step active" data-panel="0">
@@ -698,7 +709,7 @@ footer .container{display:flex;justify-content:space-between;gap:40px;flex-wrap:
       <div class="comparison-cell highlight"><span class="check-icon">✓</span>Clicks and commissions from every network in one place</div>
     </div>
   </div>
-  <div class="center-cta rv"><a href="#pricing" class="btn btn-ink">See the plans ↓</a></div>
+  <div class="center-cta rv"><a href="https://wordpress.org/plugins/myfeeds-affiliate-feed-manager/" class="btn btn-cta">Add live product cards to my posts →</a></div>
 </div></section>
 
 <section id="editor"><div class="container">
@@ -916,7 +927,7 @@ footer .container{display:flex;justify-content:space-between;gap:40px;flex-wrap:
   <div class="wash"><i></i></div>
   <h2 class="rv">Stop pasting affiliate links by hand. <em>Start publishing.</em></h2>
   <p class="fc-stat rv"><strong>Setup in 5 minutes.</strong> Begin on the free plan and move up when you're ready.</p>
-  <a href="https://wordpress.org/plugins/myfeeds-affiliate-feed-manager/" class="btn btn-paper rv">Add live product cards to my posts →</a>
+  <a href="https://wordpress.org/plugins/myfeeds-affiliate-feed-manager/" class="btn btn-cta rv">Add live product cards to my posts →</a>
 </div>
 
 <footer><div class="container">
