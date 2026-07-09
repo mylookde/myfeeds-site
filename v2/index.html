@@ -191,7 +191,8 @@ section>.container{position:relative;z-index:2}
 .loop-grid{display:grid;grid-template-columns:1fr 1.1fr;gap:64px;align-items:start}
 @media(max-width:880px){.loop-grid{grid-template-columns:1fr;gap:40px}}
 .loop-steps{display:flex;flex-direction:column}
-.loop-step{padding:30px 0 30px 34px;border-left:1px solid var(--line);position:relative;cursor:pointer;transition:opacity .35s}
+.loop-step{padding:40px 0 40px 34px;border-left:1px solid var(--line);position:relative;cursor:pointer;transition:opacity .35s}
+@media(max-width:880px){.loop-step{padding:28px 0 28px 34px}}
 .loop-step::before{content:'';position:absolute;left:-5px;top:42px;width:9px;height:9px;border-radius:50%;background:var(--line);border:2px solid var(--paper);transition:background .35s,transform .35s}
 .loop-step.active::before{background:var(--accent);transform:scale(1.3)}
 .loop-step h3{font-family:var(--serif);font-size:1.35rem;font-weight:500;margin-bottom:8px;color:var(--ink-mute);transition:color .35s}
@@ -647,7 +648,7 @@ footer .container{display:flex;justify-content:space-between;gap:40px;flex-wrap:
 </div></section>
 
 <section id="reader"><div class="container">
-  <div class="sec-head rv"><span class="sec-num">03</span><h2>This is what your reader sees</h2></div>
+  <div class="sec-head rv"><span class="sec-num">03</span><h2>What your reader sees</h2></div>
   <p class="sec-sub rv">Pick the products in the WordPress block editor. Hit publish. Your visitors get this: current prices, current stock, your affiliate link baked in. Real screenshots from a real MyFeeds blog.</p>
   <div class="view-tabs rv">
     <button class="view-tab active" data-view="grid">Grid Layout</button>
@@ -669,8 +670,18 @@ footer .container{display:flex;justify-content:space-between;gap:40px;flex-wrap:
   </div>
 </div></section>
 
+<section id="editor"><div class="container">
+  <div class="sec-head rv"><span class="sec-num">04</span><h2>What your editor looks like</h2></div>
+  <p class="sec-sub rv">Your post, a search box, and the products you want. No tabs, no copy-paste, no leaving the editor.</p>
+  <div class="browser rv">
+    <div class="browser-bar"><div class="browser-dots"><span></span><span></span><span></span></div><div class="browser-url">yourblog.com/wp-admin</div></div>
+    <video src="/assets/myfeeds-demo.mp4" poster="/assets/myfeeds-demo-poster.jpg" autoplay loop muted playsinline preload="metadata" aria-label="MyFeeds in use: picking products from an affiliate feed inside the WordPress block editor"></video>
+  </div>
+  <p class="frame-caption rv">In Pro, every card bends to your site down to the font. <a href="#card-editor">See the editor →</a></p>
+</div></section>
+
 <section id="comparison"><div class="container">
-  <div class="sec-head rv"><span class="sec-num">04</span><h2>Built different.</h2></div>
+  <div class="sec-head rv"><span class="sec-num">05</span><h2>Built different.</h2></div>
   <p class="sec-sub rv">You stop maintaining your affiliate posts. They stay fresh anyway.</p>
   <div class="comparison-table rv">
     <div class="comparison-row comparison-head">
@@ -710,16 +721,6 @@ footer .container{display:flex;justify-content:space-between;gap:40px;flex-wrap:
     </div>
   </div>
   <div class="center-cta rv"><a href="https://wordpress.org/plugins/myfeeds-affiliate-feed-manager/" class="btn btn-cta">Add live product cards to my posts →</a></div>
-</div></section>
-
-<section id="editor"><div class="container">
-  <div class="sec-head rv"><span class="sec-num">05</span><h2>This is what your editor looks like</h2></div>
-  <p class="sec-sub rv">Your post, a search box, and the products you want. No tabs, no copy-paste, no leaving the editor.</p>
-  <div class="browser rv">
-    <div class="browser-bar"><div class="browser-dots"><span></span><span></span><span></span></div><div class="browser-url">yourblog.com/wp-admin</div></div>
-    <video src="/assets/myfeeds-demo.mp4" poster="/assets/myfeeds-demo-poster.jpg" autoplay loop muted playsinline preload="metadata" aria-label="MyFeeds in use: picking products from an affiliate feed inside the WordPress block editor"></video>
-  </div>
-  <p class="frame-caption rv">In Pro, every card bends to your site down to the font. <a href="#card-editor">See the editor →</a></p>
 </div></section>
 
 <section id="features"><span class="sec-ghost" aria-hidden="true">for you</span><div class="container">
@@ -1036,17 +1037,36 @@ if (hamburger) {
     panels.forEach(function (p, j) { p.classList.toggle('show', i === j); });
     if (titleEl) titleEl.textContent = titles[i] || titles[0];
   }
+  var section = document.getElementById('loop');
   steps.forEach(function (s, i) {
     s.addEventListener('click', function () { activate(i); });
   });
-  if ('IntersectionObserver' in window) {
-    var io = new IntersectionObserver(function (entries) {
-      entries.forEach(function (en) {
-        if (en.isIntersecting) activate(steps.indexOf(en.target));
-      });
-    }, { rootMargin: '-40% 0px -40% 0px' });
-    steps.forEach(function (s) { io.observe(s); });
+
+  // Scroll-driven activation keyed to the section's own scroll progress,
+  // split into equal thirds. The old IntersectionObserver band fired on
+  // enter/exit, so whichever step last crossed the narrow band won and
+  // the middle step was active for only a sliver of scroll — you saw 1,
+  // then 3, and barely 2. Mapping progress into floor(progress * 3)
+  // guarantees each step, middle included, gets exactly one third of the
+  // section's scroll, evenly and predictably.
+  var ticking = false;
+  function onScroll() {
+    if (ticking || !section) return;
+    ticking = true;
+    window.requestAnimationFrame(function () {
+      ticking = false;
+      var vh = window.innerHeight || document.documentElement.clientHeight || 800;
+      var r = section.getBoundingClientRect();
+      // progress: 0 when the section's top reaches the viewport centre,
+      // 1 when its bottom reaches it. Clamped so the ends hold steps 0/2.
+      var progress = ((vh * 0.5) - r.top) / (r.height || 1);
+      progress = Math.max(0, Math.min(0.9999, progress));
+      activate(Math.floor(progress * steps.length));
+    });
   }
+  window.addEventListener('scroll', onScroll, { passive: true });
+  window.addEventListener('resize', onScroll, { passive: true });
+  onScroll();
 })();
 
 // Layout toggle
