@@ -37,8 +37,8 @@
   --shadow-card:0 1px 2px rgba(26,23,32,.04),0 12px 40px -12px rgba(26,23,32,.12);
   --shadow-float:0 2px 4px rgba(26,23,32,.05),0 30px 70px -18px rgba(26,23,32,.25);
 }
-html{scroll-behavior:smooth}
-body{background:var(--paper);color:var(--ink);font-family:var(--sans);font-size:16px;line-height:1.6;overflow-x:hidden;-webkit-font-smoothing:antialiased}
+html{scroll-behavior:smooth;overflow-x:clip}
+body{background:var(--paper);color:var(--ink);font-family:var(--sans);font-size:16px;line-height:1.6;overflow-x:clip;-webkit-font-smoothing:antialiased}
 [hidden]{display:none !important}
 .container{max-width:1180px;margin:0 auto;padding:0 28px}
 h1,h2{font-family:var(--serif);font-weight:500;letter-spacing:-.01em}
@@ -83,7 +83,7 @@ nav .container{display:flex;align-items:center;justify-content:space-between;hei
 .btn-cta:hover{background:var(--accent-deep);transform:translateY(-1px);box-shadow:0 14px 32px -8px rgba(88,73,214,.6)}
 .btn-ghost{background:transparent;color:var(--ink-soft) !important;border:1px solid var(--line);padding:13px 25px}
 .btn-ghost:hover{border-color:var(--ink-mute);color:var(--ink) !important}
-.stakes-line{text-align:center;font-size:1.05rem;line-height:1.65;color:var(--ink-soft);padding:10px 28px 48px;max-width:660px;margin:0 auto}
+.stakes-line{text-align:center;font-size:1.05rem;line-height:1.65;color:var(--ink-soft);padding:10px 28px 48px;max-width:1080px;margin:0 auto}
 .stakes-line b{color:var(--green);font-weight:700}
 .link-arrow{color:var(--ink);text-decoration:none;font-weight:600;font-size:.92rem;border-bottom:1px solid var(--line);padding-bottom:2px;transition:border-color .2s}
 .link-arrow:hover{border-color:var(--ink)}
@@ -1131,14 +1131,18 @@ if (hamburger) {
   });
   window.__tl = tl;
 
-  tl.to(chapters[0], { autoAlpha: 0, scale: 0.94, filter: 'blur(12px)', duration: 1 }, 0)
-    .fromTo(chapters[1], { scale: 1.06, filter: 'blur(12px)' }, { autoAlpha: 1, scale: 1, filter: 'blur(0px)', duration: 1 }, 0)
-    .to(chapters[1], { autoAlpha: 0, scale: 0.94, filter: 'blur(12px)', duration: 1 }, 1)
-    .fromTo(chapters[2], { scale: 1.06, filter: 'blur(12px)' }, { autoAlpha: 1, scale: 1, filter: 'blur(0px)', duration: 1 }, 1)
-    .to('.pub-glow', { autoAlpha: 1, scale: 1, duration: 0.9 }, 1.05)
-    .to('.pubgrid .pub-card', { autoAlpha: 1, y: 0, scale: 1, stagger: 0.12, duration: 0.7, ease: 'power3.out' }, 1.15)
-    .to(price, { v: 59.9, duration: 0.6, onUpdate: writePrice }, 1.55)
-    .to('#cine-badge', { autoAlpha: 1, scale: 1, duration: 0.3, ease: 'back.out(2)' }, 1.65);
+  // Chapters dwell fully visible before their crossfade starts: chapter 1
+  // holds for the first quarter of the scrub instead of fading from the
+  // very first scrolled pixel.
+  tl.to(chapters[0], { autoAlpha: 0, scale: 0.94, filter: 'blur(12px)', duration: 1 }, 0.9)
+    .fromTo(chapters[1], { scale: 1.06, filter: 'blur(12px)' }, { autoAlpha: 1, scale: 1, filter: 'blur(0px)', duration: 1 }, 0.9)
+    .to(chapters[1], { autoAlpha: 0, scale: 0.94, filter: 'blur(12px)', duration: 1 }, 2.3)
+    .fromTo(chapters[2], { scale: 1.06, filter: 'blur(12px)' }, { autoAlpha: 1, scale: 1, filter: 'blur(0px)', duration: 1 }, 2.3)
+    .to('.pub-glow', { autoAlpha: 1, scale: 1, duration: 0.9 }, 2.45)
+    .to('.pubgrid .pub-card', { autoAlpha: 1, y: 0, scale: 1, stagger: 0.12, duration: 0.7, ease: 'power3.out' }, 2.55)
+    .to(price, { v: 59.9, duration: 0.6, onUpdate: writePrice }, 2.95)
+    .to('#cine-badge', { autoAlpha: 1, scale: 1, duration: 0.3, ease: 'back.out(2)' }, 3.35)
+    .to({}, { duration: 0.4 });
 })();
 
 // Layout toggle
