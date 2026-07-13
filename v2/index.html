@@ -260,7 +260,7 @@ img.pp{display:block;width:auto;height:auto;filter:drop-shadow(0 10px 16px rgba(
 .cine-on .cine-track{height:360vh}
 @media(max-width:880px){.cine-on .cine-track{height:300vh}}
 .cine-on .cine-stage{position:sticky;top:0;height:100vh;overflow:hidden;display:flex;align-items:center}
-.cine-on .cine-chapter{position:absolute;inset:0;padding:0;will-change:opacity,transform;opacity:0;pointer-events:none}
+.cine-on .cine-chapter{position:absolute;inset:0;padding:0;will-change:opacity,transform,filter;opacity:0;pointer-events:none}
 .cine-on .cine-rail{display:flex}
 .cine-bg{position:absolute;inset:0;z-index:0}
 .cine-c0 .cine-bg{background:radial-gradient(120% 90% at 78% 30%,var(--tint-lav) 0%,var(--paper) 62%)}
@@ -988,11 +988,10 @@ footer .container{display:flex;justify-content:space-between;gap:40px;flex-wrap:
   <div class="footer-copy">© 2026 MyFeeds. All rights reserved.</div>
 </div></footer>
 
-<!-- GSAP 3.13 (free since 2025, incl. ScrollTrigger + SplitText) + Lenis, self-hosted -->
+<!-- GSAP 3.13 (free since 2025, incl. ScrollTrigger + SplitText), self-hosted -->
 <script src="/v2/lib/gsap.min.js"></script>
 <script src="/v2/lib/ScrollTrigger.min.js"></script>
 <script src="/v2/lib/SplitText.min.js"></script>
-<script src="/v2/lib/lenis.min.js"></script>
 <script>
 // Hamburger menu
 var hamburger = document.getElementById('hamburger-btn');
@@ -1089,13 +1088,10 @@ if (hamburger) {
 
   gsap.registerPlugin(ScrollTrigger);
 
-  // Desktop-only smooth scroll; touch keeps native physics.
-  if (window.Lenis && window.matchMedia('(hover: hover) and (pointer: fine)').matches) {
-    var lenis = new Lenis();
-    lenis.on('scroll', ScrollTrigger.update);
-    gsap.ticker.add(function (t) { lenis.raf(t * 1000); });
-    gsap.ticker.lagSmoothing(0);
-  }
+  // Native scrolling only. Lenis used to smooth-wrap the wheel here, but it
+  // preventDefaults every wheel event and re-scrolls via its own rAF loop —
+  // whenever that loop stalls (heavy paint, throttled tab) the page simply
+  // stops scrolling. scrub:1 below already gives the cinematic lag.
 
   // Section-title line reveals (SplitText is free since 2025).
   if (window.SplitText) {
