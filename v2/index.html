@@ -176,10 +176,12 @@ section>.container{position:relative;z-index:2}
 .s-card .sc-ship{font-size:.5rem;letter-spacing:.06em;color:var(--ink-mute);text-transform:uppercase;white-space:nowrap}
 .s-card .sc-shop{font-size:.54rem;letter-spacing:.06em;color:var(--ink-soft);font-weight:700;text-transform:uppercase;white-space:nowrap}
 .strip-caption{text-align:center;font-size:.72rem;color:var(--ink-mute);font-style:italic;margin-top:20px}
-.la{stroke:#1A1720;stroke-width:2.4;fill:none;stroke-linecap:round;stroke-linejoin:round}
-.la .fill{fill:#1A1720;stroke:none}
-.la .acc{stroke:#5849D6}
-.la .soft{stroke-width:1.8;opacity:.55}
+img.pp{display:block;width:auto;height:auto;filter:drop-shadow(0 10px 16px rgba(26,23,32,.14))}
+.card-main .pc-img img.pp{width:190px}
+.card-back-l .pc-img img.pp,.card-back-r .pc-img img.pp{max-height:86px;max-width:80%}
+.s-card .sc-img img.pp{max-width:150px;max-height:144px}
+.pub-card .pc-img img.pp{max-width:74%;max-height:76%;filter:drop-shadow(0 8px 14px rgba(0,0,0,.28))}
+.sw img.pp{width:84%;height:84%;object-fit:contain;filter:none}
 .sec-head{display:flex;align-items:baseline;gap:22px;margin-bottom:14px}
 .sec-num{font-family:var(--serif);font-size:.95rem;color:var(--accent);font-weight:600;flex-shrink:0}
 .sec-head h2{font-size:clamp(1.7rem,3.4vw,2.4rem);line-height:1.15}
@@ -553,54 +555,6 @@ footer .container{display:flex;justify-content:space-between;gap:40px;flex-wrap:
 <script data-goatcounter="https://myfeeds.goatcounter.com/count" async src="//gc.zgo.at/count.js"></script>
 </head>
 <body>
-<svg width="0" height="0" style="position:absolute" aria-hidden="true">
-  <symbol id="la-sneaker" viewBox="0 0 240 140">
-    <path d="M32 100 L32 84 C32 70 36 58 44 52 C50 56 58 58 66 58 C72 58 74 53 80 51 C85 49.5 90 51 94 55 C102 63 112 70 124 76 C148 87 172 93 196 97" />
-    <path d="M44 52 C50 56 58 58 66 58 C72 58 74 53 80 51" class="soft" />
-    <path d="M80 51 C94 55 106 65 114 80" />
-    <path d="M90 60 L104 52" /><path d="M96 67 L111 58" /><path d="M102 74 L117 65" />
-    <path class="soft" d="M44 62 C50 68 54 76 55 86" />
-    <path class="soft" d="M168 84 C180 89 190 94 195 98" />
-    <path d="M24 104 C18 104 14 109 14 114 C14 122 22 126 34 126 L204 126 C218 126 226 120 226 111 C226 105 220 101 210 100 L36 100 C30 100 27 101 24 104 Z" />
-    <path class="soft" d="M22 114 L218 114" />
-    <path class="acc" d="M62 84 C92 92 130 95 166 96" />
-  </symbol>
-  <symbol id="la-hoodie" viewBox="0 0 200 190">
-    <path d="M68 62 L54 68 C44 72 38 80 36 90 L30 128 C29 135 34 140 41 140 L52 141 C56 141 59 138 60 134 L64 116 L64 160 C64 166 68 170 74 170 L126 170 C132 170 136 166 136 160 L136 116 L140 134 C141 138 144 141 148 141 L159 140 C166 140 171 135 170 128 L164 90 C162 80 156 72 146 68 L132 62" />
-    <path d="M68 62 C68 40 82 30 100 30 C118 30 132 40 132 62 C122 52 112 48 100 48 C88 48 78 52 68 62 Z" />
-    <path d="M78 128 L122 128 L117 156 L83 156 Z" />
-    <path d="M93 60 L91 80" /><path d="M107 60 L109 80" />
-    <path class="soft" d="M64 116 L64 100 C64 88 66 76 72 66" />
-    <path class="soft" d="M136 116 L136 100 C136 88 134 76 128 66" />
-    <path class="acc soft" d="M68 162 L132 162" />
-  </symbol>
-  <symbol id="la-tote" viewBox="0 0 200 190">
-    <path d="M52 78 L148 78 C154 78 158 82 158 88 L152 160 C151 166 147 170 141 170 L59 170 C53 170 49 166 48 160 L42 88 C42 82 46 78 52 78 Z" />
-    <path d="M70 78 C70 52 82 44 100 44 C118 44 130 52 130 78" />
-    <path class="soft" d="M80 78 C80 60 88 54 100 54 C112 54 120 60 120 78" />
-    <path class="acc soft" d="M52 98 L148 98" />
-  </symbol>
-  <symbol id="la-beanie" viewBox="0 0 200 190">
-    <circle cx="100" cy="46" r="11" />
-    <path d="M52 128 C52 84 74 58 100 58 C126 58 148 84 148 128" />
-    <path d="M52 128 L148 128 C154 128 158 132 158 138 L158 148 C158 154 154 158 148 158 L52 158 C46 158 42 154 42 148 L42 138 C42 132 46 128 52 128 Z" />
-    <path class="soft" d="M100 62 L100 124" /><path class="soft" d="M80 66 C76 86 74 106 75 124" /><path class="soft" d="M120 66 C124 86 126 106 125 124" />
-    <path class="soft" d="M66 132 L66 154" /><path class="soft" d="M88 132 L88 154" /><path class="soft" d="M112 132 L112 154" /><path class="soft" d="M134 132 L134 154" />
-  </symbol>
-  <symbol id="la-pack" viewBox="0 0 200 190">
-    <path d="M60 66 C60 46 76 36 100 36 C124 36 140 46 140 66 L144 150 C144 162 136 170 124 170 L76 170 C64 170 56 162 56 150 Z" />
-    <path d="M88 38 C88 28 112 28 112 38" />
-    <path d="M72 112 L128 112 L128 152 C128 158 124 162 118 162 L82 162 C76 162 72 158 72 152 Z" />
-    <path class="soft" d="M72 126 L128 126" />
-    <path class="soft" d="M84 42 L80 64" /><path class="soft" d="M116 42 L120 64" />
-    <path class="acc" d="M100 126 L100 140" />
-  </symbol>
-  <symbol id="la-tee" viewBox="0 0 200 190">
-    <path d="M70 44 L54 52 C46 56 42 62 40 70 L34 92 C33 97 36 101 41 102 L58 106 L58 158 C58 164 62 168 68 168 L132 168 C138 168 142 164 142 158 L142 106 L159 102 C164 101 167 97 166 92 L160 70 C158 62 154 56 146 52 L130 44 C122 52 112 56 100 56 C88 56 78 52 70 44 Z" />
-    <path class="soft" d="M84 44 C88 50 94 53 100 53 C106 53 112 50 116 44" />
-    <path class="acc soft" d="M84 92 L116 92" />
-  </symbol>
-</svg>
 <nav><div class="container">
   <a href="/v2/" class="nav-logo"><img src="/logo.png" alt="MyFeeds"><span>MyFeeds</span></a>
   <button class="hamburger" id="hamburger-btn" aria-label="Menu"><svg viewBox="0 0 24 24"><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="18" x2="21" y2="18"/></svg></button>
@@ -632,17 +586,17 @@ footer .container{display:flex;justify-content:space-between;gap:40px;flex-wrap:
   <div class="hero-visual">
     <div class="cluster" id="cluster">
       <div class="p-card card-back-l">
-        <div class="pc-img"><svg class="la" style="width:78px" viewBox="0 0 200 190"><use href="#la-hoodie"/></svg></div>
+        <div class="pc-img"><img class="pp" src="/assets/products/hoodie-heather-grey.webp" alt="" width="527" height="720"></div>
         <div class="pc-info"><div class="pc-brand">Studio Form</div><div class="pc-name">Cotton Hoodie</div><div class="pc-price">$89.00</div></div>
       </div>
       <div class="p-card card-back-r">
-        <div class="pc-img"><svg class="la" style="width:70px" viewBox="0 0 200 190"><use href="#la-tote"/></svg></div>
+        <div class="pc-img"><img class="pp" src="/assets/products/tote-canvas-natural.webp" alt="" width="425" height="720"></div>
         <div class="pc-info"><div class="pc-brand">Atelier</div><div class="pc-name">Canvas Tote</div><div class="pc-price">$48.00</div></div>
       </div>
       <div class="p-card card-main" id="live-card">
         <div class="pc-img">
           <span class="live-badge">SALE</span>
-          <svg class="la" viewBox="0 0 240 140" aria-hidden="true"><use href="#la-sneaker"/></svg>
+          <img class="pp" src="/assets/products/sneaker-white-lowtop.webp" alt="" width="720" height="344">
         </div>
         <div class="pc-info">
           <div class="pc-brand">Nordic Trail</div>
@@ -661,18 +615,18 @@ footer .container{display:flex;justify-content:space-between;gap:40px;flex-wrap:
 
 <div class="strip" aria-hidden="true">
   <div class="strip-track" id="strip-track">
-    <div class="s-card"><span class="sc-badge">-25%</span><div class="sc-img"><svg class="la" viewBox="0 0 240 140"><use href="#la-sneaker"/></svg></div><div class="sc-body"><div class="sc-brand">Nordic Trail</div><div class="sc-name">Low-Top Sneaker White</div><div class="sc-price sale"><s>$79.90</s>$59.90</div><div class="sc-foot"><span class="sc-ship">Shipping costs may apply</span><span class="sc-shop">Stockroom</span></div></div></div>
-    <div class="s-card"><div class="sc-img"><svg class="la" style="width:104px" viewBox="0 0 200 190"><use href="#la-hoodie"/></svg></div><div class="sc-body"><div class="sc-brand">Studio Form</div><div class="sc-name">Cotton Hoodie Heather Grey</div><div class="sc-price">$89.00</div><div class="sc-foot"><span class="sc-ship">Shipping costs may apply</span><span class="sc-shop">Outlet24</span></div></div></div>
-    <div class="s-card"><div class="sc-img"><svg class="la" style="width:100px" viewBox="0 0 200 190"><use href="#la-tote"/></svg></div><div class="sc-body"><div class="sc-brand">Atelier</div><div class="sc-name">Canvas Tote Natural</div><div class="sc-price">$48.00</div><div class="sc-foot"><span class="sc-ship">Shipping costs may apply</span><span class="sc-shop">Stockroom</span></div></div></div>
-    <div class="s-card"><div class="sc-img"><svg class="la" style="width:96px" viewBox="0 0 200 190"><use href="#la-beanie"/></svg></div><div class="sc-body"><div class="sc-brand">Bergen</div><div class="sc-name">Knit Beanie Rib Navy</div><div class="sc-price">$29.00</div><div class="sc-foot"><span class="sc-ship">Shipping costs may apply</span><span class="sc-shop">Nord Store</span></div></div></div>
-    <div class="s-card"><span class="sc-badge">-20%</span><div class="sc-img"><svg class="la" style="width:100px" viewBox="0 0 200 190"><use href="#la-pack"/></svg></div><div class="sc-body"><div class="sc-brand">Field &amp; Co</div><div class="sc-name">Trail Backpack 24L</div><div class="sc-price sale"><s>$149.00</s>$119.00</div><div class="sc-foot"><span class="sc-ship">Shipping costs may apply</span><span class="sc-shop">Outlet24</span></div></div></div>
-    <div class="s-card"><div class="sc-img"><svg class="la" style="width:104px" viewBox="0 0 200 190"><use href="#la-tee"/></svg></div><div class="sc-body"><div class="sc-brand">Maison Rue</div><div class="sc-name">Boxy Tee Off-White</div><div class="sc-price">$39.00</div><div class="sc-foot"><span class="sc-ship">Shipping costs may apply</span><span class="sc-shop">Nord Store</span></div></div></div>
-    <div class="s-card"><span class="sc-badge">-25%</span><div class="sc-img"><svg class="la" viewBox="0 0 240 140"><use href="#la-sneaker"/></svg></div><div class="sc-body"><div class="sc-brand">Nordic Trail</div><div class="sc-name">Low-Top Sneaker White</div><div class="sc-price sale"><s>$79.90</s>$59.90</div><div class="sc-foot"><span class="sc-ship">Shipping costs may apply</span><span class="sc-shop">Stockroom</span></div></div></div>
-    <div class="s-card"><div class="sc-img"><svg class="la" style="width:104px" viewBox="0 0 200 190"><use href="#la-hoodie"/></svg></div><div class="sc-body"><div class="sc-brand">Studio Form</div><div class="sc-name">Cotton Hoodie Heather Grey</div><div class="sc-price">$89.00</div><div class="sc-foot"><span class="sc-ship">Shipping costs may apply</span><span class="sc-shop">Outlet24</span></div></div></div>
-    <div class="s-card"><div class="sc-img"><svg class="la" style="width:100px" viewBox="0 0 200 190"><use href="#la-tote"/></svg></div><div class="sc-body"><div class="sc-brand">Atelier</div><div class="sc-name">Canvas Tote Natural</div><div class="sc-price">$48.00</div><div class="sc-foot"><span class="sc-ship">Shipping costs may apply</span><span class="sc-shop">Stockroom</span></div></div></div>
-    <div class="s-card"><div class="sc-img"><svg class="la" style="width:96px" viewBox="0 0 200 190"><use href="#la-beanie"/></svg></div><div class="sc-body"><div class="sc-brand">Bergen</div><div class="sc-name">Knit Beanie Rib Navy</div><div class="sc-price">$29.00</div><div class="sc-foot"><span class="sc-ship">Shipping costs may apply</span><span class="sc-shop">Nord Store</span></div></div></div>
-    <div class="s-card"><span class="sc-badge">-20%</span><div class="sc-img"><svg class="la" style="width:100px" viewBox="0 0 200 190"><use href="#la-pack"/></svg></div><div class="sc-body"><div class="sc-brand">Field &amp; Co</div><div class="sc-name">Trail Backpack 24L</div><div class="sc-price sale"><s>$149.00</s>$119.00</div><div class="sc-foot"><span class="sc-ship">Shipping costs may apply</span><span class="sc-shop">Outlet24</span></div></div></div>
-    <div class="s-card"><div class="sc-img"><svg class="la" style="width:104px" viewBox="0 0 200 190"><use href="#la-tee"/></svg></div><div class="sc-body"><div class="sc-brand">Maison Rue</div><div class="sc-name">Boxy Tee Off-White</div><div class="sc-price">$39.00</div><div class="sc-foot"><span class="sc-ship">Shipping costs may apply</span><span class="sc-shop">Nord Store</span></div></div></div>
+    <div class="s-card"><span class="sc-badge">-25%</span><div class="sc-img"><img class="pp" src="/assets/products/sneaker-white-lowtop.webp" alt="" width="720" height="344" loading="lazy"></div><div class="sc-body"><div class="sc-brand">Nordic Trail</div><div class="sc-name">Low-Top Sneaker White</div><div class="sc-price sale"><s>$79.90</s>$59.90</div><div class="sc-foot"><span class="sc-ship">Shipping costs may apply</span><span class="sc-shop">Stockroom</span></div></div></div>
+    <div class="s-card"><div class="sc-img"><img class="pp" src="/assets/products/hoodie-heather-grey.webp" alt="" width="527" height="720" loading="lazy"></div><div class="sc-body"><div class="sc-brand">Studio Form</div><div class="sc-name">Cotton Hoodie Heather Grey</div><div class="sc-price">$89.00</div><div class="sc-foot"><span class="sc-ship">Shipping costs may apply</span><span class="sc-shop">Outlet24</span></div></div></div>
+    <div class="s-card"><div class="sc-img"><img class="pp" src="/assets/products/tote-canvas-natural.webp" alt="" width="425" height="720" loading="lazy"></div><div class="sc-body"><div class="sc-brand">Atelier</div><div class="sc-name">Canvas Tote Natural</div><div class="sc-price">$48.00</div><div class="sc-foot"><span class="sc-ship">Shipping costs may apply</span><span class="sc-shop">Stockroom</span></div></div></div>
+    <div class="s-card"><div class="sc-img"><img class="pp" src="/assets/products/beanie-knit-navy.webp" alt="" width="720" height="657" loading="lazy"></div><div class="sc-body"><div class="sc-brand">Bergen</div><div class="sc-name">Knit Beanie Rib Navy</div><div class="sc-price">$29.00</div><div class="sc-foot"><span class="sc-ship">Shipping costs may apply</span><span class="sc-shop">Nord Store</span></div></div></div>
+    <div class="s-card"><span class="sc-badge">-20%</span><div class="sc-img"><img class="pp" src="/assets/products/backpack-trail.webp" alt="" width="527" height="720" loading="lazy"></div><div class="sc-body"><div class="sc-brand">Field &amp; Co</div><div class="sc-name">Trail Backpack 24L</div><div class="sc-price sale"><s>$149.00</s>$119.00</div><div class="sc-foot"><span class="sc-ship">Shipping costs may apply</span><span class="sc-shop">Outlet24</span></div></div></div>
+    <div class="s-card"><div class="sc-img"><img class="pp" src="/assets/products/tee-boxy-offwhite.webp" alt="" width="666" height="720" loading="lazy"></div><div class="sc-body"><div class="sc-brand">Maison Rue</div><div class="sc-name">Boxy Tee Off-White</div><div class="sc-price">$39.00</div><div class="sc-foot"><span class="sc-ship">Shipping costs may apply</span><span class="sc-shop">Nord Store</span></div></div></div>
+    <div class="s-card"><span class="sc-badge">-25%</span><div class="sc-img"><img class="pp" src="/assets/products/sneaker-white-lowtop.webp" alt="" width="720" height="344" loading="lazy"></div><div class="sc-body"><div class="sc-brand">Nordic Trail</div><div class="sc-name">Low-Top Sneaker White</div><div class="sc-price sale"><s>$79.90</s>$59.90</div><div class="sc-foot"><span class="sc-ship">Shipping costs may apply</span><span class="sc-shop">Stockroom</span></div></div></div>
+    <div class="s-card"><div class="sc-img"><img class="pp" src="/assets/products/hoodie-heather-grey.webp" alt="" width="527" height="720" loading="lazy"></div><div class="sc-body"><div class="sc-brand">Studio Form</div><div class="sc-name">Cotton Hoodie Heather Grey</div><div class="sc-price">$89.00</div><div class="sc-foot"><span class="sc-ship">Shipping costs may apply</span><span class="sc-shop">Outlet24</span></div></div></div>
+    <div class="s-card"><div class="sc-img"><img class="pp" src="/assets/products/tote-canvas-natural.webp" alt="" width="425" height="720" loading="lazy"></div><div class="sc-body"><div class="sc-brand">Atelier</div><div class="sc-name">Canvas Tote Natural</div><div class="sc-price">$48.00</div><div class="sc-foot"><span class="sc-ship">Shipping costs may apply</span><span class="sc-shop">Stockroom</span></div></div></div>
+    <div class="s-card"><div class="sc-img"><img class="pp" src="/assets/products/beanie-knit-navy.webp" alt="" width="720" height="657" loading="lazy"></div><div class="sc-body"><div class="sc-brand">Bergen</div><div class="sc-name">Knit Beanie Rib Navy</div><div class="sc-price">$29.00</div><div class="sc-foot"><span class="sc-ship">Shipping costs may apply</span><span class="sc-shop">Nord Store</span></div></div></div>
+    <div class="s-card"><span class="sc-badge">-20%</span><div class="sc-img"><img class="pp" src="/assets/products/backpack-trail.webp" alt="" width="527" height="720" loading="lazy"></div><div class="sc-body"><div class="sc-brand">Field &amp; Co</div><div class="sc-name">Trail Backpack 24L</div><div class="sc-price sale"><s>$149.00</s>$119.00</div><div class="sc-foot"><span class="sc-ship">Shipping costs may apply</span><span class="sc-shop">Outlet24</span></div></div></div>
+    <div class="s-card"><div class="sc-img"><img class="pp" src="/assets/products/tee-boxy-offwhite.webp" alt="" width="666" height="720" loading="lazy"></div><div class="sc-body"><div class="sc-brand">Maison Rue</div><div class="sc-name">Boxy Tee Off-White</div><div class="sc-price">$39.00</div><div class="sc-foot"><span class="sc-ship">Shipping costs may apply</span><span class="sc-shop">Nord Store</span></div></div></div>
   </div>
 </div>
 
@@ -699,10 +653,10 @@ footer .container{display:flex;justify-content:space-between;gap:40px;flex-wrap:
             <div class="feedstack">
               <div class="fs-head">Import a feed</div>
               <div class="fs-url">https://your-network.com/datafeed/…<span class="caret"></span></div>
-              <div class="fs-row"><div class="sw"><svg class="la" viewBox="0 0 200 190"><use href="#la-hoodie"/></svg></div><span class="rn">Cotton Hoodie Heather Grey</span><span class="pr">$89.00</span></div>
-              <div class="fs-row"><div class="sw"><svg class="la" viewBox="0 0 200 190"><use href="#la-tote"/></svg></div><span class="rn">Canvas Tote Natural</span><span class="pr">$48.00</span></div>
-              <div class="fs-row"><div class="sw"><svg class="la" viewBox="0 0 240 140"><use href="#la-sneaker"/></svg></div><span class="rn">Low-Top Sneaker White</span><span class="pr">$79.90</span></div>
-              <div class="fs-row"><div class="sw"><svg class="la" viewBox="0 0 200 190"><use href="#la-beanie"/></svg></div><span class="rn">Knit Beanie Rib Navy</span><span class="pr">$29.00</span></div>
+              <div class="fs-row"><div class="sw"><img class="pp" src="/assets/products/hoodie-heather-grey.webp" alt="" width="527" height="720" loading="lazy"></div><span class="rn">Cotton Hoodie Heather Grey</span><span class="pr">$89.00</span></div>
+              <div class="fs-row"><div class="sw"><img class="pp" src="/assets/products/tote-canvas-natural.webp" alt="" width="425" height="720" loading="lazy"></div><span class="rn">Canvas Tote Natural</span><span class="pr">$48.00</span></div>
+              <div class="fs-row"><div class="sw"><img class="pp" src="/assets/products/sneaker-white-lowtop.webp" alt="" width="720" height="344" loading="lazy"></div><span class="rn">Low-Top Sneaker White</span><span class="pr">$79.90</span></div>
+              <div class="fs-row"><div class="sw"><img class="pp" src="/assets/products/beanie-knit-navy.webp" alt="" width="720" height="657" loading="lazy"></div><span class="rn">Knit Beanie Rib Navy</span><span class="pr">$29.00</span></div>
             </div>
           </div>
         </div>
@@ -722,8 +676,8 @@ footer .container{display:flex;justify-content:space-between;gap:40px;flex-wrap:
               <div class="ed-body">
                 <div class="ed-search"><span class="hl">sn</span>eaker<span class="caret"></span></div>
                 <div class="ed-res">
-                  <div class="ed-item pick"><div class="sw"><svg class="la" viewBox="0 0 240 140"><use href="#la-sneaker"/></svg></div><span class="rn">Low-Top Sneaker White</span><span class="pr">$79.90</span></div>
-                  <div class="ed-item" style="opacity:.6"><div class="sw"><svg class="la" viewBox="0 0 240 140"><use href="#la-sneaker"/></svg></div><span class="rn">High-Top Sneaker Black</span><span class="pr">$64.00</span></div>
+                  <div class="ed-item pick"><div class="sw"><img class="pp" src="/assets/products/sneaker-white-lowtop.webp" alt="" width="720" height="344" loading="lazy"></div><span class="rn">Low-Top Sneaker White</span><span class="pr">$79.90</span></div>
+                  <div class="ed-item" style="opacity:.6"><div class="sw"><img class="pp" src="/assets/products/sneaker-black-hightop.webp" alt="" width="720" height="422" loading="lazy"></div><span class="rn">High-Top Sneaker Black</span><span class="pr">$64.00</span></div>
                 </div>
                 <span class="ed-insert">Insert card →</span>
               </div>
@@ -744,9 +698,9 @@ footer .container{display:flex;justify-content:space-between;gap:40px;flex-wrap:
           <div class="cine-viz">
             <div class="pub-glow" aria-hidden="true"></div>
             <div class="pubgrid">
-              <div class="pub-card"><div class="pc-img"><svg class="la" viewBox="0 0 200 190"><use href="#la-hoodie"/></svg></div><div class="pc-b"><div class="pc-brand">Studio Form</div><div class="pc-name">Cotton Hoodie</div><div class="pc-pr">$89.00</div></div></div>
-              <div class="pub-card featured"><div class="pc-img"><span class="pc-badge">-25%</span><svg class="la" viewBox="0 0 240 140"><use href="#la-sneaker"/></svg></div><div class="pc-b"><div class="pc-brand">Nordic Trail</div><div class="pc-name">Low-Top Sneaker</div><div class="pc-pr sale"><s>$79.90</s><span id="cine-price">$59.90</span><span class="badge-updated" id="cine-badge">updated</span></div></div></div>
-              <div class="pub-card"><div class="pc-img"><svg class="la" viewBox="0 0 200 190"><use href="#la-tote"/></svg></div><div class="pc-b"><div class="pc-brand">Atelier</div><div class="pc-name">Canvas Tote</div><div class="pc-pr">$48.00</div></div></div>
+              <div class="pub-card"><div class="pc-img"><img class="pp" src="/assets/products/hoodie-heather-grey.webp" alt="" width="527" height="720" loading="lazy"></div><div class="pc-b"><div class="pc-brand">Studio Form</div><div class="pc-name">Cotton Hoodie</div><div class="pc-pr">$89.00</div></div></div>
+              <div class="pub-card featured"><div class="pc-img"><span class="pc-badge">-25%</span><img class="pp" src="/assets/products/sneaker-white-lowtop.webp" alt="" width="720" height="344" loading="lazy"></div><div class="pc-b"><div class="pc-brand">Nordic Trail</div><div class="pc-name">Low-Top Sneaker</div><div class="pc-pr sale"><s>$79.90</s><span id="cine-price">$59.90</span><span class="badge-updated" id="cine-badge">updated</span></div></div></div>
+              <div class="pub-card"><div class="pc-img"><img class="pp" src="/assets/products/tote-canvas-natural.webp" alt="" width="425" height="720" loading="lazy"></div><div class="pc-b"><div class="pc-brand">Atelier</div><div class="pc-name">Canvas Tote</div><div class="pc-pr">$48.00</div></div></div>
             </div>
           </div>
         </div>
