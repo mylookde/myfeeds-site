@@ -214,9 +214,13 @@ section>.container{position:relative;z-index:2}
 .s-card .sc-price{font-size:.85rem;font-weight:700}
 .s-card .sc-price s{color:var(--ink-mute);font-weight:500;font-size:.72rem;margin-right:6px}
 .s-card .sc-price.sale{color:var(--sale)}
-.s-card .sc-foot{display:flex;justify-content:space-between;align-items:baseline;gap:8px;border-top:1px solid var(--line-soft);margin-top:9px;padding-top:8px}
-.s-card .sc-ship{font-size:.5rem;letter-spacing:.06em;color:var(--ink-mute);text-transform:uppercase;white-space:nowrap}
-.s-card .sc-shop{font-size:.54rem;letter-spacing:.06em;color:var(--ink-soft);font-weight:700;text-transform:uppercase;white-space:nowrap}
+/* Shipping and merchant sit on their own lines, the way the real card
+   renders them. Side by side they ran out of room on a 208px card and
+   the merchant name got clipped — something the actual plugin never
+   does, so the mock was inventing a flaw. */
+.s-card .sc-foot{display:flex;flex-direction:column;gap:3px;border-top:1px solid var(--line-soft);margin-top:9px;padding-top:8px}
+.s-card .sc-ship{font-size:.5rem;letter-spacing:.06em;color:var(--ink-mute);text-transform:uppercase;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.s-card .sc-shop{font-size:.54rem;letter-spacing:.06em;color:var(--ink-soft);font-weight:700;text-transform:uppercase;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
 .strip-caption{text-align:center;font-size:.72rem;color:var(--ink-mute);font-style:italic;margin-top:20px}
 img.pp{display:block;width:auto;height:auto;filter:drop-shadow(0 10px 16px rgba(26,23,32,.14))}
 .card-main .pc-img img.pp{width:190px}
