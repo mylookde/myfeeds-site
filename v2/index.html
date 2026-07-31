@@ -3,8 +3,8 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>MyFeeds — Affiliate Product Feed Manager</title>
-<meta name="description" content="Stop copy-pasting affiliate products. Your network's product feed becomes a searchable catalog inside WordPress. Pick in the editor, publish, move on.">
+<title>MyFeeds — Look like a shop, not a link list</title>
+<meta name="description" content="Upload your affiliate product feed. MyFeeds builds product cards in your own design in minutes, and a whole storefront when you want one. WordPress plugin, free to start.">
 <meta name="robots" content="noindex, nofollow">
 <link rel="icon" type="image/png" href="/favicon.png">
 <link rel="icon" type="image/x-icon" href="/favicon.ico">
@@ -85,6 +85,42 @@ nav .container{display:flex;align-items:center;justify-content:space-between;hei
 .btn-ghost:hover{border-color:var(--ink-mute);color:var(--ink) !important}
 .stakes-line{text-align:center;font-size:1.05rem;line-height:1.65;color:var(--ink-soft);padding:10px 28px 48px;max-width:1080px;margin:0 auto}
 .stakes-line b{color:var(--green);font-weight:700}
+
+/* ── Stakes: the cost of the status quo, kept to three lines so the
+   salt never becomes fearmongering ── */
+.stakes{padding:56px 0 60px}
+.stakes-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:18px;max-width:1000px;margin:0 auto}
+@media(max-width:820px){.stakes-grid{grid-template-columns:1fr}}
+.stake{background:var(--surface);border:1px solid var(--line);border-left:3px solid var(--sale);border-radius:0 var(--radius) var(--radius) 0;padding:22px 24px}
+.stake h3{font-size:1rem;font-weight:600;margin-bottom:6px}
+.stake p{font-size:.92rem;color:var(--ink-soft);line-height:1.55}
+.stakes-head{text-align:center;max-width:640px;margin:0 auto 32px}
+.stakes-head h2{font-size:clamp(1.5rem,3vw,2.1rem);line-height:1.2;margin-bottom:10px}
+.stakes-head p{color:var(--ink-soft);font-size:1rem}
+
+/* ── Guide: the one place the brand may talk about itself, and only
+   in the order Miller prescribes — empathy first, authority second ── */
+.guide{background:var(--tint-lav)}
+.guide-card{max-width:900px;margin:0 auto;display:grid;grid-template-columns:172px 1fr;gap:36px;align-items:center}
+@media(max-width:760px){.guide-card{grid-template-columns:1fr;gap:24px;text-align:center}}
+.guide-portrait{width:172px;height:172px;border-radius:50%;overflow:hidden;background:var(--surface);border:1px solid var(--line);display:flex;align-items:center;justify-content:center;justify-self:center}
+.guide-portrait img{width:100%;height:100%;object-fit:cover}
+.guide-portrait .gp-fallback{font-family:var(--serif);font-size:2.6rem;color:var(--accent);font-weight:600}
+.guide-body h2{font-size:clamp(1.5rem,3vw,2.1rem);line-height:1.2;margin-bottom:14px}
+.guide-body p{color:var(--ink-soft);font-size:1.02rem;margin-bottom:12px}
+.guide-body p:last-child{margin-bottom:0}
+.guide-body strong{color:var(--ink);font-weight:600}
+.guide-sig{font-family:var(--serif);font-style:italic;color:var(--ink);font-size:1rem}
+
+/* ── Explanatory paragraph: due-diligence reading for an expensive,
+   technical-sounding purchase, folded away behind a summary ── */
+.explain{max-width:720px;margin:0 auto;background:var(--surface);border:1px solid var(--line);border-radius:var(--radius);padding:30px 34px}
+.explain h2{font-size:1.3rem;margin-bottom:12px}
+.explain p{color:var(--ink-soft);font-size:.98rem;margin-bottom:12px}
+.explain p:last-child{margin-bottom:0}
+.explain details summary{cursor:pointer;color:var(--accent);font-weight:600;font-size:.92rem;list-style:none;margin-top:6px}
+.explain details summary::-webkit-details-marker{display:none}
+.explain details[open] summary{margin-bottom:12px}
 .link-arrow{color:var(--ink);text-decoration:none;font-weight:600;font-size:.92rem;border-bottom:1px solid var(--line);padding-bottom:2px;transition:border-color .2s}
 .link-arrow:hover{border-color:var(--ink)}
 
@@ -102,6 +138,9 @@ nav .container{display:flex;align-items:center;justify-content:space-between;hei
 .hero .lede{font-size:1.08rem;color:var(--ink-soft);max-width:480px;margin-bottom:14px}
 .hero-stat{font-size:.95rem;color:var(--ink-soft);margin-bottom:30px}
 .hero-stat strong{color:var(--ink);font-weight:600}
+.value-stack{list-style:none;margin:0 0 30px;display:grid;gap:7px}
+.value-stack li{font-size:.94rem;color:var(--ink-soft);padding-left:24px;position:relative}
+.value-stack li::before{content:'';position:absolute;left:2px;top:.55em;width:9px;height:9px;border-radius:50%;background:var(--accent-soft);border:1.5px solid var(--accent)}
 .hero-actions{display:flex;gap:18px;flex-wrap:wrap;align-items:center;margin-bottom:26px}
 .hero-trust .trust-item{display:inline-block;font-size:.85rem;color:var(--ink-soft);padding:8px 18px;border-radius:999px;background:var(--accent-soft);border:1px solid rgba(88,73,214,.16);font-weight:500}
 .hero-trust .trust-item.wporg-badge{background:rgba(30,158,106,.07);border-color:rgba(30,158,106,.22)}
@@ -249,6 +288,7 @@ img.pp{display:block;width:auto;height:auto;filter:drop-shadow(0 10px 16px rgba(
 /* Base = no-JS / GSAP-failed floor: chapters read as normal stacked
    sections so the page is never a blank pinned void. The pinned,
    scroll-scrubbed layout is layered on only once JS adds .cine-on. */
+.cine-intro{padding:64px 0 0}
 .cine{position:relative}
 .cine-track{position:relative}
 .cine-stage{position:relative}
@@ -561,7 +601,7 @@ footer .container{display:flex;justify-content:space-between;gap:40px;flex-wrap:
   <div class="nav-links">
     <a href="#pricing">Pricing</a>
     <a href="#faq">FAQ</a>
-    <a href="/business/">Business</a>
+    <a href="/ecommerce/">E-commerce</a>
     <a href="https://wordpress.org/plugins/myfeeds-affiliate-feed-manager/" class="nav-cta">Get Started</a>
   </div>
 </div></nav>
@@ -571,12 +611,16 @@ footer .container{display:flex;justify-content:space-between;gap:40px;flex-wrap:
   <div class="container">
   <div>
     <div class="hero-badge"><span class="dot"></span> Now available for WordPress</div>
-    <h1>Stop pasting affiliate links by hand. <em>Start publishing.</em></h1>
-    <p class="lede">MyFeeds turns your affiliate feed into product cards and shops that keep themselves current inside WordPress. Dead links stop costing you commissions.</p>
-    <p class="hero-stat"><strong>Setup in 5 minutes.</strong></p>
+    <h1>Look like a shop, <em>not a link list.</em></h1>
+    <p class="lede">Upload your affiliate product feed. MyFeeds builds product cards in your own design in minutes, and a whole storefront when you want one.</p>
+    <ul class="value-stack">
+      <li>Any affiliate network that hands you a feed</li>
+      <li>Your colours, your fonts, your spacing</li>
+      <li>First cards live in about five minutes</li>
+    </ul>
     <div class="hero-actions">
-      <a href="https://wordpress.org/plugins/myfeeds-affiliate-feed-manager/" class="btn btn-cta">Add live product cards to my posts →</a>
-      <a href="#how" class="btn btn-ghost">See how it works ↓</a>
+      <a href="https://wordpress.org/plugins/myfeeds-affiliate-feed-manager/" class="btn btn-cta">Add product cards to my posts →</a>
+      <a href="#how" class="btn btn-ghost">See a live card ↓</a>
     </div>
     <div class="hero-trust">
       <span class="trust-item" id="trust-default">From bloggers, for bloggers.</span>
@@ -630,7 +674,50 @@ footer .container{display:flex;justify-content:space-between;gap:40px;flex-wrap:
   </div>
 </div>
 
-<p class="stakes-line rv"><b>These cards keep themselves current.</b> Every night MyFeeds syncs them with your feed. Prices correct themselves, sold-out products drop out, new deals appear. You write the post once. It earns like you wrote it today.</p>
+<section class="stakes"><div class="container">
+  <div class="stakes-head rv">
+    <h2>What a link list costs you</h2>
+    <p>Not the traffic. The three things that happen after the reader arrives.</p>
+  </div>
+  <div class="stakes-grid">
+    <div class="stake rv">
+      <h3>It reads like a hobby</h3>
+      <p>A row of blue links and borrowed thumbnails tells a reader you are passing them on to someone else. A shop tells them they have arrived.</p>
+    </div>
+    <div class="stake rv">
+      <h3>Every product eats ten minutes</h3>
+      <p>Copy the link, save the image, retype the price, format the block, repeat. That is an afternoon per roundup that should have gone into the next post.</p>
+    </div>
+    <div class="stake rv">
+      <h3>By next month it is wrong</h3>
+      <p>Prices move, sizes sell out, merchants pull products. Your best post keeps sending readers to a page that no longer exists.</p>
+    </div>
+  </div>
+</div></section>
+
+<p class="stakes-line rv"><b>A shop, in your own design, from the feed you already have.</b> MyFeeds reads your affiliate feed and turns it into product cards that carry your colours, your fonts and your spacing. And because they read from the feed, prices and stock keep themselves right without you.</p>
+
+<section class="guide"><div class="container">
+  <div class="guide-card rv">
+    <!-- Real founder photo goes here: /assets/marlon.jpg, square, 400px+.
+         Until then the monogram stands in — a stock smile would say the
+         opposite of what this section is for. -->
+    <div class="guide-portrait"><span class="gp-fallback">M</span></div>
+    <div class="guide-body">
+      <h2>Built by someone with the same problem</h2>
+      <p>Like you, we run an affiliate blog. We got tired of posts that looked like link lists, and of losing an afternoon to pasting products by hand.</p>
+      <p><strong>Every feature ships to our own shop first.</strong> It runs there, on a real catalogue, against real readers, before it reaches your site. If it doesn't hold up there, you never see it.</p>
+      <p class="guide-sig">— Marlon, MyFeeds</p>
+    </div>
+  </div>
+</div></section>
+
+<!-- Intro sits OUTSIDE the pinned track on purpose: anything inside
+     .cine-track becomes part of the ScrollTrigger pin. -->
+<div class="cine-intro"><div class="container">
+  <div class="sec-head rv"><span class="sec-num">01</span><h2>From link list to shop in three steps</h2></div>
+  <p class="sec-sub rv">No code, no export files, no support ticket. Paste, pick, publish.</p>
+</div></div>
 
 <section id="how" class="cine">
   <div class="cine-track" id="cine-track">
@@ -712,61 +799,30 @@ footer .container{display:flex;justify-content:space-between;gap:40px;flex-wrap:
 </section>
 
 <section id="card-editor"><div class="container">
-  <div class="sec-head rv"><span class="sec-num">02</span><h2>Cards that look like your blog wrote them</h2></div>
-  <p class="sec-sub rv">Bend every visible detail to your brand. Tweak once; every card across every post you've ever published catches up before the next reader lands.</p>
+  <div class="sec-head rv"><span class="sec-num">02</span><h2>It looks like a shop because it looks like you</h2></div>
+  <p class="sec-sub rv">Colours, typography, spacing, hover behaviour. Set it once, and every card across every post you have ever published catches up before the next reader lands.</p>
   <div class="browser rv">
     <div class="browser-bar"><div class="browser-dots"><span></span><span></span><span></span></div><div class="browser-url">yourblog.com/wp-admin</div></div>
     <img src="/assets/screenshot-card-design-editor.png" alt="MyFeeds Pro card design editor with controls and a live preview card on the right" loading="lazy">
   </div>
   <p class="frame-caption rv">A glimpse of the Pro editor. The live screen opens plenty more.</p>
+  <div class="center-cta rv"><a href="https://wordpress.org/plugins/myfeeds-affiliate-feed-manager/" class="btn btn-cta">Add product cards to my posts →</a></div>
 </div></section>
 
-<section id="comparison"><div class="container">
-  <div class="sec-head rv"><span class="sec-num">03</span><h2>Built different.</h2></div>
-  <p class="sec-sub rv">You stop maintaining your affiliate posts. They stay fresh anyway.</p>
-  <div class="comparison-table rv">
-    <div class="comparison-row comparison-head">
-      <div class="comparison-cell">&nbsp;</div>
-      <div class="comparison-cell">Other affiliate plugins</div>
-      <div class="comparison-cell highlight">MyFeeds</div>
-    </div>
-    <div class="comparison-row">
-      <div class="comparison-cell label">Products in your posts</div>
-      <div class="comparison-cell"><span class="cross-icon">✕</span>One link or button at a time, pasted manually</div>
-      <div class="comparison-cell highlight"><span class="check-icon">✓</span>Searchable catalogue inside the editor, picked in seconds</div>
-    </div>
-    <div class="comparison-row">
-      <div class="comparison-cell label">Price + stock updates</div>
-      <div class="comparison-cell"><span class="cross-icon">✕</span>You edit each post when something changes</div>
-      <div class="comparison-cell highlight"><span class="check-icon">✓</span>Nightly sync updates every card on every post</div>
-    </div>
-    <div class="comparison-row">
-      <div class="comparison-cell label">Dead products</div>
-      <div class="comparison-cell"><span class="cross-icon">✕</span>Posts quietly link to 404s until you notice</div>
-      <div class="comparison-cell highlight"><span class="check-icon">✓</span>Plugin flags them and shows which posts need a swap</div>
-    </div>
-    <div class="comparison-row">
-      <div class="comparison-cell label">Affiliate networks</div>
-      <div class="comparison-cell"><span class="cross-icon">✕</span>One integration per plugin, you stack two or three</div>
-      <div class="comparison-cell highlight"><span class="check-icon">✓</span>Any network's product feed, one plugin</div>
-    </div>
-    <div class="comparison-row">
-      <div class="comparison-cell label">Where your data lives</div>
-      <div class="comparison-cell"><span class="cross-icon">✕</span>Often proxied through a third-party server</div>
-      <div class="comparison-cell highlight"><span class="check-icon">✓</span>Your own WordPress database, fully self-hosted</div>
-    </div>
-    <div class="comparison-row">
-      <div class="comparison-cell label">Conversions and analytics</div>
-      <div class="comparison-cell"><span class="cross-icon">✕</span>Network dashboards, one tab per network</div>
-      <div class="comparison-cell highlight"><span class="check-icon">✓</span>Clicks and commissions from every network in one place</div>
-    </div>
+<section id="storefront"><div class="container">
+  <div class="sec-head rv"><span class="sec-num">03</span><h2>A real storefront, not a plugin's storefront</h2></div>
+  <p class="sec-sub rv">The same feed, on your own domain, with categories, filters and sorting your readers recognise from every shop they use. You choose the design; nothing gives away that it started as a data file.</p>
+  <div class="browser rv">
+    <div class="browser-bar"><div class="browser-dots"><span></span><span></span><span></span></div><div class="browser-url">yourblog.com/shop</div></div>
+    <img src="/assets/screenshot-shop-frontend.png" alt="A MyFeeds storefront with category navigation, filters and a product grid" loading="lazy">
   </div>
-  <div class="center-cta rv"><a href="https://wordpress.org/plugins/myfeeds-affiliate-feed-manager/" class="btn btn-cta">Add live product cards to my posts →</a></div>
+  <p class="frame-caption rv">Part of the E-commerce tier. Your categories, your filters, your design.</p>
+  <div class="center-cta rv"><a href="/ecommerce/" class="btn btn-cta">Turn my feed into a shop →</a></div>
 </div></section>
 
 <section id="features"><span class="sec-ghost" aria-hidden="true">for you</span><div class="container">
-  <div class="sec-head rv"><span class="sec-num">04</span><h2>What changes for you</h2></div>
-  <p class="sec-sub rv">Every roundup, every gift guide, every product page stays quietly looked after, while you focus on the next post.</p>
+  <div class="sec-head rv"><span class="sec-num">04</span><h2>What changes once you stop looking like an affiliate</h2></div>
+  <p class="sec-sub rv">Nothing about the way you write changes. Everything about how it looks, and how long it stays true, does.</p>
   <div class="bento">
     <div class="tile wide rv">
       <div class="tile-viz viz-price"><span class="vp-tag"><s>$79.90</s><b>$59.90</b></span><span class="vp-chip">-25%</span></div>
@@ -809,24 +865,81 @@ footer .container{display:flex;justify-content:space-between;gap:40px;flex-wrap:
     <div class="tile rv">
       <div class="tile-viz viz-shop"><i class="g1"></i><i class="g2"></i><i class="g3"></i><i class="g4"></i><i class="g4"></i><i class="g1"></i><i class="g2"></i><i class="g3"></i></div>
       <h3>Your blog grows a shop</h3>
-      <p>Business tier: turn the same feed into a full storefront on your domain, with the categories, filters and design you choose. Visitors browse the way they'd browse any retailer's site.</p>
+      <p>E-commerce tier: turn the same feed into a full storefront on your domain, with the categories, filters and design you choose. Visitors browse the way they'd browse any retailer's site.</p>
     </div>
     <div class="tile wide rv">
       <div class="tile-viz viz-serp">
         <div class="vsr"><b>yourblog.com › shop</b><span class="stars">★★★★★</span><i></i></div>
       </div>
       <h3>Search engines treat you like a shop</h3>
-      <p>Business tier: structured data, sitemaps and bulk meta tools so your storefront earns the same SERP treatment as the real ones. None of it asks anything technical from you.</p>
+      <p>E-commerce tier: structured data, sitemaps and bulk meta tools so your storefront earns the same SERP treatment as the real ones. None of it asks anything technical from you.</p>
     </div>
   </div>
-  <p class="features-link rv"><a href="/business/" class="link-arrow">See the Business storefront in action →</a></p>
+  <p class="features-link rv"><a href="/ecommerce/" class="link-arrow">See the whole storefront in action →</a></p>
+  <div class="center-cta rv"><a href="https://wordpress.org/plugins/myfeeds-affiliate-feed-manager/" class="btn btn-cta">Add product cards to my posts →</a></div>
+</div></section>
+
+<section id="comparison"><div class="container">
+  <div class="sec-head rv"><span class="sec-num">05</span><h2>Built different.</h2></div>
+  <p class="sec-sub rv">Other plugins help you paste links faster. This one gives you a shop.</p>
+  <div class="comparison-table rv">
+    <div class="comparison-row comparison-head">
+      <div class="comparison-cell">&nbsp;</div>
+      <div class="comparison-cell">Other affiliate plugins</div>
+      <div class="comparison-cell highlight">MyFeeds</div>
+    </div>
+    <div class="comparison-row">
+      <div class="comparison-cell label">Products in your posts</div>
+      <div class="comparison-cell"><span class="cross-icon">✕</span>One link or button at a time, pasted manually</div>
+      <div class="comparison-cell highlight"><span class="check-icon">✓</span>Searchable catalogue inside the editor, picked in seconds</div>
+    </div>
+    <div class="comparison-row">
+      <div class="comparison-cell label">Price + stock updates</div>
+      <div class="comparison-cell"><span class="cross-icon">✕</span>You edit each post when something changes</div>
+      <div class="comparison-cell highlight"><span class="check-icon">✓</span>Nightly sync updates every card on every post</div>
+    </div>
+    <div class="comparison-row">
+      <div class="comparison-cell label">Dead products</div>
+      <div class="comparison-cell"><span class="cross-icon">✕</span>Posts quietly link to 404s until you notice</div>
+      <div class="comparison-cell highlight"><span class="check-icon">✓</span>Plugin flags them and shows which posts need a swap</div>
+    </div>
+    <div class="comparison-row">
+      <div class="comparison-cell label">Affiliate networks</div>
+      <div class="comparison-cell"><span class="cross-icon">✕</span>One integration per plugin, you stack two or three</div>
+      <div class="comparison-cell highlight"><span class="check-icon">✓</span>Any network's product feed, one plugin</div>
+    </div>
+    <div class="comparison-row">
+      <div class="comparison-cell label">Where your data lives</div>
+      <div class="comparison-cell"><span class="cross-icon">✕</span>Often proxied through a third-party server</div>
+      <div class="comparison-cell highlight"><span class="check-icon">✓</span>Your own WordPress database, fully self-hosted</div>
+    </div>
+    <div class="comparison-row">
+      <div class="comparison-cell label">Conversions and analytics</div>
+      <div class="comparison-cell"><span class="cross-icon">✕</span>Network dashboards, one tab per network</div>
+      <div class="comparison-cell highlight"><span class="check-icon">✓</span>Clicks and commissions from every network in one place</div>
+    </div>
+  </div>
+  <div class="center-cta rv"><a href="https://wordpress.org/plugins/myfeeds-affiliate-feed-manager/" class="btn btn-cta">Add product cards to my posts →</a></div>
+</div></section>
+
+<section class="explain-wrap"><div class="container">
+  <div class="explain rv">
+    <h2>So what is this, exactly?</h2>
+    <p>Affiliate networks hand every publisher a product feed: one file listing everything a merchant sells, with prices, images, stock and your tracking links already in it. Almost nobody uses it, because on its own it is a spreadsheet with a hundred thousand rows.</p>
+    <p>MyFeeds is the WordPress plugin that turns that file into something a reader wants to look at. It imports the feed into your own database, gives you a search box inside the post editor, and renders whatever you pick as product cards styled to match your site. On the E-commerce tier the same catalogue becomes a browsable storefront on your domain.</p>
+    <details>
+      <summary>What happens after the first import →</summary>
+      <p>The plugin re-reads your feed every night and updates the cards that are already live in your posts, so prices and stock stay right without you opening anything. Products a merchant has removed get flagged, with a list of the posts still pointing at them. A weekly full import catches everything the nightly pass doesn't.</p>
+      <p>Everything lives in your own WordPress database. No product images are proxied, no third-party server is contacted when a page loads, and nothing about your visitors leaves your site.</p>
+    </details>
+  </div>
 </div></section>
 
 <section id="pricing">
   <div class="wash"><i></i></div>
   <div class="container">
   <div class="pricing-head rv">
-    <span class="sec-num">05</span>
+    <span class="sec-num">06</span>
     <h2>Pick where you are right now</h2>
     <p>The free plugin covers your first feed. When your catalogue and your audience grow past it, the upgrade happens inside your WordPress dashboard. Your posts, your settings and your data carry over.</p>
   </div>
@@ -853,7 +966,7 @@ footer .container{display:flex;justify-content:space-between;gap:40px;flex-wrap:
         <li><span class="check">✓</span> Nightly auto-sync</li>
         <li><span class="check">✓</span> Multi-network support</li>
       </ul>
-      <a href="https://wordpress.org/plugins/myfeeds-affiliate-feed-manager/" class="plan-cta cta-outline">Add live product cards to my posts</a>
+      <a href="https://wordpress.org/plugins/myfeeds-affiliate-feed-manager/" class="plan-cta cta-outline">Add product cards to my posts</a>
     </div>
     <div class="pricing-card featured rv">
       <span class="card-chip popular">MOST POPULAR</span>
@@ -896,7 +1009,7 @@ footer .container{display:flex;justify-content:space-between;gap:40px;flex-wrap:
         <li><span class="check">✓</span> Auto-cleanup of dead products</li>
         <li><span class="check">✓</span> Priority support</li>
       </ul>
-      <a href="/business/" class="plan-link">See the storefront in action →</a>
+      <a href="/ecommerce/" class="plan-link">See the storefront in action →</a>
       <a href="https://checkout.freemius.com/plugin/21336/plan/48994/?trial=paid" class="plan-cta cta-ink">Open my shop for 14 days, free</a>
       <p class="refund-badge">14-day money-back guarantee · Cancel from your dashboard</p>
     </div>
@@ -906,7 +1019,7 @@ footer .container{display:flex;justify-content:space-between;gap:40px;flex-wrap:
 </div></section>
 
 <section id="faq"><div class="container">
-  <div class="sec-head rv"><span class="sec-num">06</span><h2>Common questions</h2></div>
+  <div class="sec-head rv"><span class="sec-num">07</span><h2>Common questions</h2></div>
   <p class="sec-sub rv">Quick answers before you install.</p>
   <div class="faq-grid rv">
     <div class="faq">
@@ -916,7 +1029,7 @@ footer .container{display:flex;justify-content:space-between;gap:40px;flex-wrap:
       </details>
       <details>
         <summary>What if my feed format is unusual?</summary>
-        <p>The plugin sniffs format, delimiter and structure on its own. If a column it expected is missing or empty for a row, a self-healing repair pass walks the ranked candidate list and swaps in the next column that genuinely carries data. A merchant dropping a field doesn't break your import.</p>
+        <p>It still works. MyFeeds recognises the format on its own, and when a merchant leaves a column out or empty, it looks for the same information elsewhere in the row instead of giving up. A messy feed doesn't break your import.</p>
       </details>
       <details>
         <summary>Do I have to pay to get started?</summary>
@@ -967,9 +1080,9 @@ footer .container{display:flex;justify-content:space-between;gap:40px;flex-wrap:
 
 <div class="final-cta">
   <div class="wash"><i></i></div>
-  <h2 class="rv">Stop pasting affiliate links by hand. <em>Start publishing.</em></h2>
-  <p class="fc-stat rv"><strong>Setup in 5 minutes.</strong> Begin on the free plan and move up when you're ready.</p>
-  <a href="https://wordpress.org/plugins/myfeeds-affiliate-feed-manager/" class="btn btn-cta rv">Add live product cards to my posts →</a>
+  <h2 class="rv">Look like a shop, <em>not a link list.</em></h2>
+  <p class="fc-stat rv"><strong>First cards live in about five minutes.</strong> Begin on the free plan and move up when you're ready.</p>
+  <a href="https://wordpress.org/plugins/myfeeds-affiliate-feed-manager/" class="btn btn-cta rv">Add product cards to my posts →</a>
 </div>
 
 <footer><div class="container">
@@ -977,9 +1090,15 @@ footer .container{display:flex;justify-content:space-between;gap:40px;flex-wrap:
     <div class="footer-brand"><img src="/logo.png" alt="">MyFeeds</div>
     <p class="footer-tag">Affiliate product feeds for WordPress</p>
   </div>
+  <!-- The junk drawer: everything that used to feel important enough
+       for the sales page lives down here instead. -->
   <div class="footer-links">
+    <a href="/ecommerce/">E-commerce</a>
     <a href="/install/">Install Guide</a>
-    <a href="/affiliates/">Affiliates</a>
+    <a href="/networks/">Affiliate Networks</a>
+    <a href="/articles/">Articles</a>
+    <a href="/affiliates/">Become an Affiliate</a>
+    <a href="https://wordpress.org/plugins/myfeeds-affiliate-feed-manager/">Free plugin on WordPress.org</a>
     <a href="/imprint/">Imprint</a>
     <a href="/privacy/">Privacy Policy</a>
     <a href="/terms/">Terms of Service</a>
