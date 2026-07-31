@@ -118,9 +118,42 @@ section{padding:74px 0;position:relative}
 .value-stack li::before{content:'';position:absolute;left:2px;top:.55em;width:9px;height:9px;border-radius:50%;background:rgba(252,144,0,.15);border:1.5px solid var(--brand-orange)}
 .hero-actions{display:flex;gap:18px;flex-wrap:wrap;align-items:center}
 .hero-note{font-size:.85rem;color:var(--ink-mute);margin-top:18px}
+.hero-grid{display:grid;grid-template-columns:1fr .92fr;gap:56px;align-items:center}
+@media(max-width:960px){.hero-grid{grid-template-columns:1fr;gap:44px}}
+
+/* Working storefront in the hero. The reader's only question is what
+   their shop would look like, so the answer is the thing itself. */
+.mini-shop{background:var(--surface);border:1px solid var(--line);border-radius:var(--radius);overflow:hidden;box-shadow:var(--shadow-float)}
+.ms-bar{display:flex;align-items:center;gap:12px;padding:10px 14px;border-bottom:1px solid var(--line-soft);background:#FDFCFA}
+.ms-dots{display:flex;gap:5px}
+.ms-dots i{width:9px;height:9px;border-radius:50%;background:var(--line)}
+.ms-url{font-size:.72rem;color:var(--ink-mute)}
+.ms-body{padding:16px 16px 18px}
+.ms-chips{display:flex;flex-wrap:wrap;gap:6px}
+.ms-chip{font-family:inherit;font-size:.76rem;font-weight:600;color:var(--ink-soft);background:var(--paper);border:1px solid var(--line);border-radius:999px;padding:6px 14px;cursor:pointer;transition:all .18s}
+.ms-chip:hover{border-color:var(--ink-mute);color:var(--ink)}
+.ms-chip.is-on{background:var(--ink);border-color:var(--ink);color:#FCFBF8}
+.ms-meta{display:flex;justify-content:space-between;align-items:baseline;margin:14px 0 10px;padding-bottom:9px;border-bottom:1px solid var(--line-soft);font-size:.74rem;color:var(--ink-mute)}
+.ms-sort{border:1px solid var(--line);border-radius:6px;padding:3px 9px}
+.ms-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;min-height:250px;align-content:start}
+@media(max-width:420px){.ms-grid{grid-template-columns:repeat(2,1fr)}}
+.ms-tile{border:1px solid var(--line-soft);border-radius:10px;overflow:hidden;background:var(--surface);animation:msIn .32s cubic-bezier(.2,.6,.2,1) both}
+@keyframes msIn{from{opacity:0;transform:translateY(8px)}to{opacity:1;transform:none}}
+@media(prefers-reduced-motion:reduce){.ms-tile{animation:none}}
+.ms-img{position:relative;height:78px;background:linear-gradient(165deg,#F6F3EC,#EFEAE0);display:flex;align-items:center;justify-content:center}
+.ms-img img{max-width:76%;max-height:80%;object-fit:contain;filter:drop-shadow(0 5px 9px rgba(26,23,32,.18))}
+.ms-badge{position:absolute;top:6px;left:6px;background:#fff;color:var(--sale);font-size:.55rem;font-weight:700;padding:2px 7px;border-radius:999px;box-shadow:0 1px 4px rgba(0,0,0,.12)}
+.ms-info{padding:8px 9px 10px}
+.ms-brand{font-size:.55rem;text-transform:uppercase;letter-spacing:.08em;color:var(--ink-mute);font-weight:600}
+.ms-name{font-size:.68rem;color:var(--ink);line-height:1.3;margin:2px 0 4px;overflow:hidden;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical}
+.ms-price{font-size:.72rem;font-weight:700}
+.ms-price.sale{color:var(--sale)}
+.ms-price s{color:var(--ink-mute);font-weight:500;font-size:.62rem;margin-right:4px}
+.ms-empty{grid-column:1/-1;padding:40px 10px;text-align:center;color:var(--ink-mute);font-size:.82rem}
+.ms-note{text-align:center;color:var(--ink-mute);font-size:.8rem;margin-top:14px}
 
 /* Stakes carry the same red signal the home page gives the villain. */
-.stakes{background:#FCF1EE;padding:66px 0 72px}
+.stakes{padding:66px 0 72px}
 .stakes-head{display:grid;grid-template-columns:1fr auto;gap:26px;align-items:end;margin-bottom:34px}
 @media(max-width:760px){.stakes-head{grid-template-columns:1fr;gap:10px}}
 .stakes-head h2{font-size:var(--h2);line-height:1.1;max-width:18ch}
@@ -155,6 +188,24 @@ section{padding:74px 0;position:relative}
 .sec-foot{display:flex;align-items:center;justify-content:space-between;gap:20px;flex-wrap:wrap;margin-top:30px}
 .sec-foot p{font-size:.9rem;color:var(--ink-amber);opacity:.85}
 
+/* One room, three doors. Stacking categories, design and analytics as
+   three full sections made one product look like three features. */
+.room{background:var(--surface);border:1px solid var(--line);border-radius:var(--radius);overflow:hidden;box-shadow:var(--shadow-float)}
+.room-tabs{display:flex;gap:2px;padding:0 8px;border-bottom:1px solid var(--line);background:#FDFCFA;overflow-x:auto}
+.room-tab{font-family:inherit;font-size:.88rem;font-weight:600;color:var(--ink-mute);background:none;border:none;border-bottom:2px solid transparent;padding:16px 18px;cursor:pointer;white-space:nowrap;transition:color .18s,border-color .18s}
+.room-tab:hover{color:var(--ink-soft)}
+.room-tab.is-on{color:var(--ink);border-bottom-color:var(--brand-orange)}
+.room-body{padding:30px}
+@media(max-width:700px){.room-body{padding:22px 18px}}
+.room-panel{display:none;grid-template-columns:.82fr 1.18fr;gap:36px;align-items:center;animation:msIn .3s cubic-bezier(.2,.6,.2,1) both}
+.room-panel.is-on{display:grid}
+@media(max-width:860px){.room-panel.is-on{grid-template-columns:1fr;gap:24px}}
+.room-copy h3{font-family:var(--serif);font-weight:500;font-size:1.35rem;line-height:1.2;margin-bottom:12px}
+.room-copy p{color:var(--ink-soft);font-size:.95rem;line-height:1.65}
+.room-shot{border:1px solid var(--line);border-radius:10px;overflow:hidden;background:var(--paper)}
+.room-shot img{display:block;width:100%;height:auto}
+.room-stats{display:grid;grid-template-columns:1fr 1fr;gap:0 24px}
+.room-stats .room-note{grid-column:1/-1;font-size:.8rem;color:var(--ink-mute);margin-top:18px;line-height:1.5}
 .stat-row{display:grid;grid-template-columns:repeat(auto-fit,minmax(170px,1fr));gap:0 26px;margin-top:38px}
 .stat{border-top:1px solid rgba(122,67,0,.2);padding:18px 20px 4px 0}
 .stat span{font-size:.78rem;color:var(--ink-amber);opacity:.8;letter-spacing:.05em;text-transform:uppercase}
@@ -225,20 +276,42 @@ footer .container{display:flex;flex-wrap:wrap;gap:32px;justify-content:space-bet
   </div>
 </div></nav>
 
-<section class="hero"><div class="container">
-  <div class="kicker rv"><span>E-commerce</span><i></i></div>
-  <h1 class="rv">Not a link list. <em>A shop of your own.</em></h1>
-  <p class="lede rv">You already write about products you love. This turns the same feeds into a browsable storefront on your own domain, with the categories, filters and search your readers know from every shop they use.</p>
-  <ul class="value-stack rv">
-    <li>Your domain, your design, your affiliate links</li>
-    <li>Categories, filters, search and sorting out of the box</li>
-    <li>The structured data Google expects from a retailer</li>
-  </ul>
-  <div class="hero-actions rv">
-    <a href="https://checkout.freemius.com/plugin/21336/plan/48994/?trial=paid" class="btn btn-cta">Open my shop for 14 days, free →</a>
-    <a href="#storefront" class="btn btn-ghost">See the storefront ↓</a>
+<section class="hero"><div class="container hero-grid">
+  <div>
+    <div class="kicker rv"><span>E-commerce</span><i></i></div>
+    <h1 class="rv">Start your own <em>affiliate shop.</em></h1>
+    <p class="lede rv">The feeds you already import become a browsable storefront on your own domain, with the categories, filters and search your readers know from every shop they use.</p>
+    <ul class="value-stack rv">
+      <li>Your domain, your design, your affiliate links</li>
+      <li>Categories, filters and sorting out of the box</li>
+      <li>The structured data Google expects from a retailer</li>
+    </ul>
+    <div class="hero-actions rv">
+      <a href="https://checkout.freemius.com/plugin/21336/plan/48994/?trial=paid" class="btn btn-cta">Open my shop for 14 days, free →</a>
+      <a href="#control" class="btn btn-ghost">See the controls ↓</a>
+    </div>
+    <p class="hero-note rv">14-day money-back guarantee · Cancel from your dashboard</p>
   </div>
-  <p class="hero-note rv">14-day money-back guarantee · Cancel from your dashboard</p>
+
+  <!-- A reader arriving here has one question: what would my shop look
+       like? A paragraph cannot answer that, so the hero is a working
+       storefront. Filtering it is the whole promise in one click. -->
+  <div class="hero-visual rv">
+    <div class="mini-shop">
+      <div class="ms-bar"><span class="ms-dots"><i></i><i></i><i></i></span><span class="ms-url">yourblog.com/shop</span></div>
+      <div class="ms-body">
+        <div class="ms-chips" role="group" aria-label="Filter the demo storefront">
+          <button type="button" class="ms-chip is-on" data-cat="all">All</button>
+          <button type="button" class="ms-chip" data-cat="shoes">Shoes</button>
+          <button type="button" class="ms-chip" data-cat="clothing">Clothing</button>
+          <button type="button" class="ms-chip" data-cat="bags">Bags</button>
+        </div>
+        <div class="ms-meta"><span id="ms-count">7 products</span><span class="ms-sort">Featured</span></div>
+        <div class="ms-grid" id="ms-grid"></div>
+      </div>
+    </div>
+    <p class="ms-note">Try the filters. This is the layout your visitors get.</p>
+  </div>
 </div></section>
 
 <section class="stakes"><div class="container">
@@ -310,30 +383,57 @@ footer .container{display:flex;flex-wrap:wrap;gap:32px;justify-content:space-bet
   </div>
 </section>
 
-<section><div class="container">
-  <div class="sec-head rv"><span class="sec-num">03</span><h2>Organised the way your readers shop</h2></div>
-  <p class="sec-sub rv">Your taste, your structure. Reshuffle when the season turns, go as deep as a branch deserves, and curate each category the way you would assemble an editorial.</p>
-  <div class="browser rv">
-    <div class="browser-bar"><div class="browser-dots"><span></span><span></span><span></span></div><div class="browser-url">yourblog.com/wp-admin</div></div>
-    <img src="/assets/screenshot-category-editor.png" alt="The MyFeeds category editor with a category tree and product assignment" loading="lazy">
+<!-- Three stacked screenshot sections became one room with three
+     doors. The reader has already seen their shop in the hero; this is
+     the other side of it, and it should feel like one product rather
+     than three features. -->
+<section id="control"><div class="container">
+  <div class="sec-head rv"><span class="sec-num">02</span><h2>Your side of the same shop</h2></div>
+  <p class="sec-sub rv">Everything above is what your reader meets. This is where you steer it, all inside WordPress.</p>
+  <div class="room rv">
+    <div class="room-tabs" role="tablist">
+      <button type="button" class="room-tab is-on" role="tab" aria-selected="true" data-panel="cats">Categories</button>
+      <button type="button" class="room-tab" role="tab" aria-selected="false" data-panel="design">Design</button>
+      <button type="button" class="room-tab" role="tab" aria-selected="false" data-panel="numbers">Numbers</button>
+    </div>
+    <div class="room-body">
+      <div class="room-panel is-on" data-panel="cats">
+        <div class="room-copy">
+          <h3>Organised the way your readers shop</h3>
+          <p>Build the tree they will actually use. Smart search suggests products by keyword, brand and feed source; you confirm what belongs, and later imports follow the rules you set.</p>
+        </div>
+        <div class="room-shot">
+          <img src="/assets/screenshot-category-editor.png" alt="The MyFeeds category editor with a category tree and product assignment" loading="lazy">
+        </div>
+      </div>
+      <div class="room-panel" data-panel="design">
+        <div class="room-copy">
+          <h3>It should read as a continuation of your writing</h3>
+          <p>Colours, typography, tile density, hover behaviour, badge placement, sidebar side, pagination. Live preview across phone, tablet and laptop. No code anywhere.</p>
+        </div>
+        <div class="room-shot">
+          <img src="/assets/screenshot-shop-design-editor.png" alt="The MyFeeds shop design editor with controls and a live storefront preview" loading="lazy">
+        </div>
+      </div>
+      <div class="room-panel" data-panel="numbers">
+        <div class="room-copy">
+          <h3>You find out what actually earns</h3>
+          <p>Which posts earn, which products sell, and which brand quietly makes the most money. Clicks and network conversions land in the same dashboard.</p>
+        </div>
+        <div class="room-stats">
+          <div class="stat"><span>Clicks &middot; 30 days</span><b>24,531</b><i>&#9650; 18%</i></div>
+          <div class="stat"><span>Unique visitors</span><b>7,842</b><i>&#9650; 9%</i></div>
+          <div class="stat"><span>Commission &middot; approved</span><b>$1,904</b><i>&#9650; 22%</i></div>
+          <div class="stat"><span>Dead products flagged</span><b>37</b></div>
+          <p class="room-note">Sample figures. Your dashboard fills them from your own clicks and your own network conversions.</p>
+        </div>
+      </div>
+    </div>
   </div>
-  <p class="frame-caption rv">A glimpse of the category editor. The live screen holds a good deal more.</p>
 </div></section>
 
-<section class="bleed bleed-lav"><div class="container">
-  <div class="kicker k-violet rv"><span>Four — the design</span><i></i></div>
-  <div class="split">
-    <h2 class="rv">It should read as a continuation of your writing</h2>
-    <p class="lede-narrow rv">Colours, typography, tile density, hover behaviour, badge placement, sidebar side, pagination. Live preview across phone, tablet and laptop. No code anywhere.</p>
-  </div>
-  <div class="browser rv">
-    <div class="browser-bar"><div class="browser-dots"><span></span><span></span><span></span></div><div class="browser-url">yourblog.com/wp-admin</div></div>
-    <img src="/assets/screenshot-shop-design-editor.png" alt="The MyFeeds shop design editor with controls and a live storefront preview" loading="lazy">
-  </div>
-</div></section>
-
 <section><div class="container">
-  <div class="sec-head rv"><span class="sec-num">05</span><h2>Google treats it like a shop</h2></div>
+  <div class="sec-head rv"><span class="sec-num">03</span><h2>Google treats it like a shop</h2></div>
   <p class="sec-sub rv">The part most affiliate setups never get right. Here it is built in rather than bolted on.</p>
   <ul class="seo-list rv">
     <li><b>Structured data</b><span>Every category page ships CollectionPage, BreadcrumbList and ItemList markup with Product, Offer and Brand details, so search engines read a catalogue rather than a blog page.</span></li>
@@ -344,20 +444,6 @@ footer .container{display:flex;flex-wrap:wrap;gap:32px;justify-content:space-bet
   </ul>
 </div></section>
 
-<section class="bleed bleed-amber"><div class="container">
-  <div class="kicker rv"><span>Six — the numbers</span><i></i></div>
-  <div class="split">
-    <h2 class="rv">You find out what actually earns</h2>
-    <p class="lede-narrow rv">Which posts earn, which products sell, and which brand quietly makes the most money. Clicks and network conversions land in the same dashboard.</p>
-  </div>
-  <div class="stat-row rv">
-    <div class="stat"><span>Clicks · 30 days</span><b>24,531</b><i>&#9650; 18%</i></div>
-    <div class="stat"><span>Unique visitors</span><b>7,842</b><i>&#9650; 9%</i></div>
-    <div class="stat"><span>Commission · approved</span><b>$1,904</b><i>&#9650; 22%</i></div>
-    <div class="stat"><span>Dead products flagged</span><b>37</b></div>
-  </div>
-  <p class="frame-caption rv" style="text-align:left;margin-left:0">Sample figures. Your dashboard fills them from your own clicks and your own network conversions.</p>
-</div></section>
 
 <section class="guide"><div class="container">
   <div class="guide-card rv">
@@ -382,7 +468,7 @@ footer .container{display:flex;flex-wrap:wrap;gap:32px;justify-content:space-bet
 </div></section>
 
 <section id="faq"><div class="container">
-  <div class="sec-head rv"><span class="sec-num">07</span><h2>Before you start the trial</h2></div>
+  <div class="sec-head rv"><span class="sec-num">04</span><h2>Before you start the trial</h2></div>
   <p class="sec-sub rv">The shop-specific questions.</p>
   <div class="faq faq-grid rv">
     <details>
@@ -452,6 +538,61 @@ if (hamburger) {
     if (!hamburger.contains(e.target) && !navLinks.contains(e.target)) navLinks.classList.remove('open');
   });
 }
+// Control room tabs
+;(function () {
+  var tabs = document.querySelectorAll('.room-tab');
+  if (!tabs.length) return;
+  tabs.forEach(function (tab) {
+    tab.addEventListener('click', function () {
+      tabs.forEach(function (t) { t.classList.remove('is-on'); t.setAttribute('aria-selected', 'false'); });
+      tab.classList.add('is-on');
+      tab.setAttribute('aria-selected', 'true');
+      document.querySelectorAll('.room-panel').forEach(function (p) {
+        p.classList.toggle('is-on', p.dataset.panel === tab.dataset.panel);
+      });
+    });
+  });
+})();
+
+// Hero storefront. Same product set the home page uses, so the two
+// pages describe one shop rather than two demos.
+;(function () {
+  var grid = document.getElementById('ms-grid');
+  if (!grid) return;
+  var P = [
+    { c:'shoes',    b:'Nordic Trail', n:'Low-Top Sneaker White',  p:'$59.90', o:'$79.90', d:'-25%', i:'sneaker-white-lowtop' },
+    { c:'shoes',    b:'Nordic Trail', n:'High-Top Sneaker Black', p:'$64.00', i:'sneaker-black-hightop' },
+    { c:'clothing', b:'Studio Form',  n:'Cotton Hoodie Heather',  p:'$89.00', i:'hoodie-heather-grey' },
+    { c:'clothing', b:'Maison Rue',   n:'Boxy Tee Off-White',     p:'$39.00', i:'tee-boxy-offwhite' },
+    { c:'clothing', b:'Bergen',       n:'Knit Beanie Rib Navy',   p:'$29.00', i:'beanie-knit-navy' },
+    { c:'bags',     b:'Atelier',      n:'Canvas Tote Natural',    p:'$48.00', i:'tote-canvas-natural' },
+    { c:'bags',     b:'Field & Co',   n:'Trail Backpack 24L',     p:'$119.00', o:'$149.00', d:'-20%', i:'backpack-trail' }
+  ];
+  var count = document.getElementById('ms-count');
+  function esc(s) { return String(s).replace(/&/g,'&amp;').replace(/</g,'&lt;'); }
+  function render(cat) {
+    var rows = cat === 'all' ? P : P.filter(function (x) { return x.c === cat; });
+    grid.innerHTML = rows.length ? rows.map(function (x) {
+      return '<div class="ms-tile">'
+        + '<div class="ms-img">' + (x.d ? '<span class="ms-badge">' + x.d + '</span>' : '')
+        + '<img src="/assets/products/' + x.i + '.webp" alt="" loading="lazy"></div>'
+        + '<div class="ms-info"><div class="ms-brand">' + esc(x.b) + '</div>'
+        + '<div class="ms-name">' + esc(x.n) + '</div>'
+        + '<div class="ms-price' + (x.o ? ' sale' : '') + '">'
+        + (x.o ? '<s>' + x.o + '</s>' : '') + x.p + '</div></div></div>';
+    }).join('') : '<div class="ms-empty">Nothing in this category yet.</div>';
+    count.textContent = rows.length + (rows.length === 1 ? ' product' : ' products');
+  }
+  document.querySelectorAll('.ms-chip').forEach(function (chip) {
+    chip.addEventListener('click', function () {
+      document.querySelectorAll('.ms-chip').forEach(function (c) { c.classList.remove('is-on'); });
+      chip.classList.add('is-on');
+      render(chip.dataset.cat);
+    });
+  });
+  render('all');
+})();
+
 ;(function () {
   var els = document.querySelectorAll('.rv');
   if (!('IntersectionObserver' in window)) {
