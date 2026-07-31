@@ -103,8 +103,11 @@ nav .container{display:flex;align-items:center;justify-content:space-between;hei
 .guide{background:var(--tint-lav)}
 .guide-card{max-width:900px;margin:0 auto;display:grid;grid-template-columns:172px 1fr;gap:36px;align-items:center}
 @media(max-width:760px){.guide-card{grid-template-columns:1fr;gap:24px;text-align:center}}
-.guide-portrait{width:172px;height:172px;border-radius:50%;overflow:hidden;background:var(--surface);border:1px solid var(--line);display:flex;align-items:center;justify-content:center;justify-self:center}
-.guide-portrait img{width:100%;height:100%;object-fit:cover}
+.guide-portrait{position:relative;width:172px;height:172px;border-radius:50%;overflow:hidden;background:var(--surface);border:1px solid var(--line);display:flex;align-items:center;justify-content:center;justify-self:center}
+/* The photo sits on top of the monogram rather than replacing it, so a
+   missing file degrades to the initial instead of a broken frame.
+   object-position keeps the face centred on a portrait-orientation shot. */
+.guide-portrait img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:50% 22%}
 .guide-portrait .gp-fallback{font-family:var(--serif);font-size:2.6rem;color:var(--accent);font-weight:600}
 .guide-body h2{font-size:clamp(1.5rem,3vw,2.1rem);line-height:1.2;margin-bottom:14px}
 .guide-body p{color:var(--ink-soft);font-size:1.02rem;margin-bottom:12px}
@@ -699,10 +702,15 @@ footer .container{display:flex;justify-content:space-between;gap:40px;flex-wrap:
 
 <section class="guide"><div class="container">
   <div class="guide-card rv">
-    <!-- Real founder photo goes here: /assets/marlon.jpg, square, 400px+.
-         Until then the monogram stands in — a stock smile would say the
-         opposite of what this section is for. -->
-    <div class="guide-portrait"><span class="gp-fallback">M</span></div>
+    <!-- Drop the founder photo at /assets/marlon.jpg and it appears here.
+         Until that file exists the image removes itself and the monogram
+         stands in, so the section never shows a broken frame. Framing is
+         set for a portrait shot with the head in the upper third. -->
+    <div class="guide-portrait">
+      <span class="gp-fallback">M</span>
+      <img src="/assets/marlon.jpg" alt="Marlon, who builds MyFeeds" width="400" height="400"
+           onerror="this.remove()" loading="lazy">
+    </div>
     <div class="guide-body">
       <h2>Built by someone with the same problem</h2>
       <p>Like you, we run an affiliate blog. We got tired of posts that looked like link lists, and of losing an afternoon to pasting products by hand.</p>
