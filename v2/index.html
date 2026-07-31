@@ -125,22 +125,9 @@ nav .container{display:flex;align-items:center;justify-content:space-between;hei
 
 /* ── Guide: the one place the brand may talk about itself, and only
    in the order Miller prescribes — empathy first, authority second ── */
-.guide{background:var(--tint-lav)}
-.guide-card{max-width:900px;margin:0 auto;display:grid;grid-template-columns:auto 1fr;gap:38px;align-items:center}
-@media(max-width:760px){.guide-card{grid-template-columns:1fr;gap:24px;text-align:center}}
-.guide-portrait{position:relative;width:104px;height:104px;border-radius:50%;overflow:hidden;background:var(--surface);border:1px solid var(--line);display:flex;align-items:center;justify-content:center;justify-self:center}
 /* The photo sits on top of the monogram rather than replacing it, so a
    missing file degrades to the initial instead of a broken frame. The
    file itself is already cropped square around the face, so no offset. */
-.guide-portrait img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
-.guide-portrait .gp-fallback{font-family:var(--serif);font-size:1.7rem;color:var(--accent);font-weight:600}
-.guide-body h2{font-size:var(--h2);line-height:1.2;margin-bottom:14px}
-.guide-body p{color:var(--ink-soft);font-size:1.02rem;margin-bottom:12px}
-.guide-body p:last-child{margin-bottom:0}
-.guide-body strong{color:var(--ink);font-weight:600}
-.guide-face{display:grid;justify-items:center;gap:10px}
-.guide-cap{font-size:.82rem;color:var(--ink);font-weight:600;line-height:1.35;text-align:center}
-.guide-cap span{font-weight:400;color:var(--ink-mute)}
 
 /* ── Explanatory paragraph: due-diligence reading for an expensive,
    technical-sounding purchase, folded away behind a summary ── */
@@ -824,27 +811,6 @@ footer .container{display:flex;justify-content:space-between;gap:40px;flex-wrap:
 
 <p class="stakes-line rv"><b>A shop, in your own design, from the feed you already have.</b> MyFeeds reads your affiliate feed and turns it into product cards that carry your colours, your fonts and your spacing. And because they read from the feed, prices and stock keep themselves right without you.</p>
 
-<section class="guide"><div class="container">
-  <div class="guide-card rv">
-    <!-- Drop the founder photo at /assets/marlon.jpg and it appears here.
-         Until that file exists the image removes itself and the monogram
-         stands in, so the section never shows a broken frame. Framing is
-         set for a portrait shot with the head in the upper third. -->
-    <div class="guide-face">
-      <div class="guide-portrait">
-        <span class="gp-fallback">M</span>
-        <img src="/assets/marlon.jpg" alt="Marlon, who makes MyFeeds" width="400" height="400"
-             onerror="this.remove()" loading="lazy">
-      </div>
-      <p class="guide-cap">Marlon<br><span>makes MyFeeds</span></p>
-    </div>
-    <div class="guide-body">
-      <h2>You bring the taste. We keep the plumbing honest.</h2>
-      <p>You already know which products are worth your readers&rsquo; money. What you should not have to spend your week on is keeping a few hundred links, prices and stock counts truthful by hand.</p>
-      <p><strong>Every feature runs on a working affiliate shop before it ships.</strong> A real catalogue, real readers, real commissions. Whatever does not hold up there never reaches your site.</p>
-    </div>
-  </div>
-</div></section>
 
 <section id="how" class="cine">
   <div class="cine-track" id="cine-track">
@@ -1103,6 +1069,7 @@ footer .container{display:flex;justify-content:space-between;gap:40px;flex-wrap:
     <h2>So what is this, exactly?</h2>
     <p>Affiliate networks hand every publisher a product feed: one file listing everything a merchant sells, with prices, images, stock and your tracking links already in it. Almost nobody uses it, because on its own it is a spreadsheet with a hundred thousand rows.</p>
     <p>MyFeeds is the WordPress plugin that turns that file into something a reader wants to look at. It imports the feed into your own database, gives you a search box inside the post editor, and renders whatever you pick as product cards styled to match your site. On the E-commerce tier the same catalogue becomes a browsable storefront on your domain.</p>
+    <p>Every feature runs on a working affiliate shop before it ships. Whatever does not hold up against a real catalogue and real readers never reaches your site.</p>
     <details>
       <summary>What happens after the first import →</summary>
       <p>The plugin re-reads your feed every night and updates the cards that are already live in your posts, so prices and stock stay right without you opening anything. Products a merchant has removed get flagged, with a list of the posts still pointing at them. A weekly full import catches everything the nightly pass doesn't.</p>
