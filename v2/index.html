@@ -41,6 +41,12 @@
   --ink-amber:#7A4300;
   --serif:'Fraunces',Georgia,serif;
   --sans:'Inter',-apple-system,sans-serif;
+  /* One size for every section heading. Twelve different H2 sizes
+     between 21 and 32px were the measurable half of the 'strung
+     together' feeling: no reader clocks the pixels, everyone feels the
+     missing system. Hero, the three chapter titles and the closing CTA
+     stay large on purpose. */
+  --h2:clamp(1.75rem,3.3vw,2.4rem);
   --radius:14px;
   --shadow-card:0 1px 2px rgba(26,23,32,.04),0 12px 40px -12px rgba(26,23,32,.12);
   --shadow-float:0 2px 4px rgba(26,23,32,.05),0 30px 70px -18px rgba(26,23,32,.25);
@@ -104,7 +110,7 @@ nav .container{display:flex;align-items:center;justify-content:space-between;hei
 .stakes{background:#FCF1EE;padding:66px 0 72px}
 .stakes-head{display:grid;grid-template-columns:1fr auto;gap:26px;align-items:end;margin-bottom:34px}
 @media(max-width:760px){.stakes-head{grid-template-columns:1fr;gap:10px}}
-.stakes-head h2{font-size:clamp(1.7rem,3.4vw,2.5rem);line-height:1.1;max-width:16ch}
+.stakes-head h2{font-size:var(--h2);line-height:1.1;max-width:16ch}
 .stakes-head p{color:var(--ink-soft);font-size:.95rem;max-width:34ch}
 .stakes-head h2 em{font-style:normal;color:var(--sale)}
 .stakes-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:0}
@@ -127,7 +133,7 @@ nav .container{display:flex;align-items:center;justify-content:space-between;hei
    file itself is already cropped square around the face, so no offset. */
 .guide-portrait img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
 .guide-portrait .gp-fallback{font-family:var(--serif);font-size:2.6rem;color:var(--accent);font-weight:600}
-.guide-body h2{font-size:clamp(1.5rem,3vw,2.1rem);line-height:1.2;margin-bottom:14px}
+.guide-body h2{font-size:var(--h2);line-height:1.2;margin-bottom:14px}
 .guide-body p{color:var(--ink-soft);font-size:1.02rem;margin-bottom:12px}
 .guide-body p:last-child{margin-bottom:0}
 .guide-body strong{color:var(--ink);font-weight:600}
@@ -136,7 +142,7 @@ nav .container{display:flex;align-items:center;justify-content:space-between;hei
 /* ── Explanatory paragraph: due-diligence reading for an expensive,
    technical-sounding purchase, folded away behind a summary ── */
 .explain{max-width:720px;margin:0 auto;background:var(--surface);border:1px solid var(--line);border-radius:var(--radius);padding:30px 34px}
-.explain h2{font-size:1.3rem;margin-bottom:12px}
+.explain h2{font-size:var(--h2);line-height:1.15;margin-bottom:16px}
 .explain p{color:var(--ink-soft);font-size:.98rem;margin-bottom:12px}
 .explain p:last-child{margin-bottom:0}
 .explain details summary{cursor:pointer;color:var(--accent);font-weight:600;font-size:.92rem;list-style:none;margin-top:6px}
@@ -248,7 +254,7 @@ img.pp{display:block;width:auto;height:auto;filter:drop-shadow(0 10px 16px rgba(
 .sw img.pp{width:84%;height:84%;object-fit:contain;filter:none}
 .sec-head{display:flex;align-items:baseline;gap:22px;margin-bottom:14px}
 .sec-num{font-family:var(--serif);font-size:.95rem;color:var(--accent);font-weight:600;flex-shrink:0}
-.sec-head h2{font-size:clamp(1.7rem,3.4vw,2.4rem);line-height:1.15}
+.sec-head h2{font-size:var(--h2);line-height:1.15}
 .sec-sub{color:var(--ink-soft);font-size:1.02rem;max-width:640px;margin:0 0 36px 46px}
 @media(max-width:640px){.sec-head{gap:14px}.sec-sub{margin-left:0;margin-bottom:26px}}
 .rule{border:none;border-top:1px solid var(--line);margin:0}
@@ -339,7 +345,7 @@ img.pp{display:block;width:auto;height:auto;filter:drop-shadow(0 10px 16px rgba(
 .cine-head{padding:26px 0 0}
 .cine-head .container{display:flex;align-items:baseline;gap:20px}
 .cine-head .ch-num{font-family:var(--serif);font-size:.95rem;color:var(--accent);font-weight:600;flex-shrink:0}
-.cine-head h2{font-size:clamp(1.6rem,3.2vw,2.3rem);line-height:1.12;color:var(--ink)}
+.cine-head h2{font-size:var(--h2);line-height:1.12;color:var(--ink)}
 .cine-on .cine-head{position:absolute;top:30px;left:0;right:0;z-index:4;padding:0}
 .cine-on .cine-chapter{padding-top:78px}
 @media(max-width:880px){.cine-on .cine-head{top:18px}.cine-on .cine-head h2{font-size:1.25rem}}
@@ -526,7 +532,7 @@ img.pp{display:block;width:auto;height:auto;filter:drop-shadow(0 10px 16px rgba(
 .kicker{display:flex;align-items:center;gap:14px;margin-bottom:18px}
 .kicker span{font-family:var(--serif);font-size:.95rem;font-style:italic;color:var(--ink-amber);font-weight:500;white-space:nowrap}
 .kicker i{flex:1;height:1px;background:rgba(122,67,0,.22)}
-.bleed h2{font-size:clamp(1.9rem,4vw,2.9rem);line-height:1.06;max-width:15ch}
+.bleed h2{font-size:var(--h2);line-height:1.08;max-width:17ch}
 .bleed .lede-narrow{color:var(--ink-soft);font-size:1.02rem;max-width:46ch;margin-top:16px}
 .bleed .browser{margin-top:44px}
 .shop-head{display:grid;grid-template-columns:1.15fr .85fr;gap:48px;align-items:end}
@@ -606,7 +612,7 @@ img.pp{display:block;width:auto;height:auto;filter:drop-shadow(0 10px 16px rgba(
 #pricing .wash i:nth-child(1){width:560px;height:560px;background:rgba(88,73,214,.07);top:8%;left:50%;transform:translateX(-50%)}
 .pricing-head{text-align:center;max-width:620px;margin:0 auto 20px}
 .pricing-head .sec-num{display:block;margin-bottom:12px}
-.pricing-head h2{font-size:clamp(1.8rem,3.4vw,2.5rem);margin-bottom:14px}
+.pricing-head h2{font-size:var(--h2);margin-bottom:14px}
 .pricing-head p{color:var(--ink-soft);font-size:1rem}
 .toggle-wrap{display:flex;justify-content:center;margin:32px 0 44px}
 .pricing-toggle{display:inline-flex;border:1px solid var(--line);border-radius:999px;background:var(--surface);padding:4px;box-shadow:var(--shadow-card)}
