@@ -11,7 +11,7 @@
 <link rel="apple-touch-icon" href="/apple-touch-icon.png">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,500;0,9..144,600;1,9..144,500&family=Inter:wght@400;500;600;700&display=swap">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,500;0,9..144,600;1,9..144,500&family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@500&display=swap">
 <style>
 *,*::before,*::after{margin:0;padding:0;box-sizing:border-box}
 :root{
@@ -31,6 +31,15 @@
   --tint-sand:#F5EFE4;
   --green:#1E9E6A;
   --sale:#D93A6A;
+  /* Brand colours taken from the logo: the violet is the card path,
+     the orange is the shop path. The old --accent was a bluer violet
+     that appears nowhere in the mark. */
+  --brand-violet:#6C54B4;
+  --brand-violet-lite:#7884E4;
+  --brand-orange:#FC9000;
+  --tint-amber:#FDF2E3;
+  --ink-amber:#7A4300;
+  --mono:'JetBrains Mono',ui-monospace,SFMono-Regular,monospace;
   --serif:'Fraunces',Georgia,serif;
   --sans:'Inter',-apple-system,sans-serif;
   --radius:14px;
@@ -470,6 +479,32 @@ img.pp{display:block;width:auto;height:auto;filter:drop-shadow(0 10px 16px rgba(
 }
 .center-cta{display:flex;justify-content:center;margin-top:44px}
 
+/* ── Prototype: one section composed instead of stacked ──
+   Four devices at once — it breaks the container edge to edge, it owns
+   a colour zone (the logo's orange, which marks the shop path), it uses
+   a mono kicker instead of the seventh identical section head, and the
+   screenshot lifts out of the band into the section above. */
+/* No 100vw here: sections are already edge to edge, and a viewport-width
+   child would count the scrollbar and reintroduce the horizontal overflow
+   that once froze ScrollTrigger in Chrome (5f0b484). The band is the
+   section's own background; only the screenshot escapes the text column. */
+.bleed{padding:74px 0 84px}
+.wide{max-width:1480px;margin:0 auto;padding:0 28px}
+.bleed-amber{background:var(--tint-amber)}
+.kicker{display:flex;align-items:center;gap:14px;margin-bottom:18px}
+.kicker span{font-family:var(--mono);font-size:.7rem;letter-spacing:.16em;text-transform:uppercase;color:var(--ink-amber);font-weight:500;white-space:nowrap}
+.kicker i{flex:1;height:1px;background:rgba(122,67,0,.22)}
+.bleed h2{font-size:clamp(1.9rem,4vw,2.9rem);line-height:1.06;max-width:15ch}
+.bleed .lede-narrow{color:var(--ink-soft);font-size:1.02rem;max-width:46ch;margin-top:16px}
+.shop-head{display:grid;grid-template-columns:1.15fr .85fr;gap:48px;align-items:end}
+@media(max-width:860px){.shop-head{grid-template-columns:1fr;gap:20px}}
+.shop-shot{margin-top:44px;border-radius:var(--radius);overflow:hidden;box-shadow:0 3px 8px rgba(26,23,32,.06),0 40px 90px -30px rgba(122,67,0,.45);border:1px solid rgba(122,67,0,.12)}
+.shop-shot img{display:block;width:100%;height:auto}
+.btn-shop{background:var(--brand-orange);color:#241300 !important;box-shadow:0 10px 26px -8px rgba(252,144,0,.55)}
+.btn-shop:hover{background:#E88200;transform:translateY(-1px)}
+.shop-foot{display:flex;align-items:center;justify-content:space-between;gap:20px;flex-wrap:wrap;margin-top:26px}
+.shop-foot p{font-family:var(--mono);font-size:.7rem;letter-spacing:.06em;text-transform:uppercase;color:var(--ink-amber);opacity:.75}
+
 /* ── Bento features ── */
 .bento{display:grid;grid-template-columns:repeat(3,1fr);gap:18px}
 @media(max-width:880px){.bento{grid-template-columns:repeat(2,1fr)}}
@@ -893,16 +928,26 @@ footer .container{display:flex;justify-content:space-between;gap:40px;flex-wrap:
   <div class="center-cta rv"><a href="https://wordpress.org/plugins/myfeeds-affiliate-feed-manager/" class="btn btn-cta">Add product cards to my posts →</a></div>
 </div></section>
 
-<section id="storefront"><div class="container">
-  <div class="sec-head rv"><span class="sec-num">03</span><h2>A real storefront, not a plugin's storefront</h2></div>
-  <p class="sec-sub rv">The same feed, on your own domain, with categories, filters and sorting your readers recognise from every shop they use. You choose the design; nothing gives away that it started as a data file.</p>
-  <div class="browser rv">
-    <div class="browser-bar"><div class="browser-dots"><span></span><span></span><span></span></div><div class="browser-url">yourblog.com/shop</div></div>
-    <img src="/assets/screenshot-shop-frontend.png" alt="A MyFeeds storefront with category navigation, filters and a product grid" loading="lazy">
+<section id="storefront" class="bleed bleed-amber">
+  <div class="container">
+    <div class="kicker rv"><span>Three — the shop</span><i></i></div>
+    <div class="shop-head">
+      <h2 class="rv">A real storefront, not a plugin's storefront</h2>
+      <p class="lede-narrow rv">The same feeds, on your own domain, with the categories, filters and sorting your readers know from every shop they use. Nothing gives away that it started as a data file.</p>
+    </div>
   </div>
-  <p class="frame-caption rv">Part of the E-commerce tier. Your categories, your filters, your design.</p>
-  <div class="center-cta rv"><a href="/ecommerce/" class="btn btn-cta">Turn my feeds into a shop →</a></div>
-</div></section>
+  <div class="wide">
+    <div class="shop-shot rv">
+      <img src="/assets/screenshot-shop-frontend.png" alt="A MyFeeds storefront with category navigation, brand filters, search and a product grid" loading="lazy">
+    </div>
+  </div>
+  <div class="container">
+    <div class="shop-foot rv">
+      <p>Part of the E-commerce tier</p>
+      <a href="/ecommerce/" class="btn btn-shop">Turn my feeds into a shop →</a>
+    </div>
+  </div>
+</section>
 
 <section id="features"><span class="sec-ghost" aria-hidden="true">for you</span><div class="container">
   <div class="sec-head rv"><span class="sec-num">04</span><h2>What changes once you stop looking like an affiliate</h2></div>
