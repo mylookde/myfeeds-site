@@ -11,7 +11,7 @@
 <link rel="apple-touch-icon" href="/apple-touch-icon.png">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,500;0,9..144,600;1,9..144,500&family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@500&display=swap">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,500;0,9..144,600;1,9..144,500&family=Inter:wght@400;500;600;700&display=swap">
 <style>
 *,*::before,*::after{margin:0;padding:0;box-sizing:border-box}
 :root{
@@ -22,9 +22,9 @@
   --ink-mute:#8F8A99;
   --line:#E8E4DB;
   --line-soft:#F0EDE5;
-  --accent:#5849D6;
-  --accent-deep:#4536C4;
-  --accent-soft:rgba(88,73,214,.07);
+  --accent:#6C54B4;
+  --accent-deep:#5A4499;
+  --accent-soft:rgba(108,84,180,.08);
   --dark:#17141D;
   --plum:#231A3D;
   --tint-lav:#F1EEFA;
@@ -39,7 +39,6 @@
   --brand-orange:#FC9000;
   --tint-amber:#FDF2E3;
   --ink-amber:#7A4300;
-  --mono:'JetBrains Mono',ui-monospace,SFMono-Regular,monospace;
   --serif:'Fraunces',Georgia,serif;
   --sans:'Inter',-apple-system,sans-serif;
   --radius:14px;
@@ -97,15 +96,21 @@ nav .container{display:flex;align-items:center;justify-content:space-between;hei
 
 /* ── Stakes: the cost of the status quo, kept to three lines so the
    salt never becomes fearmongering ── */
-.stakes{padding:56px 0 60px}
-.stakes-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:18px;max-width:1000px;margin:0 auto}
+/* Dark and dense, straight after the airy hero. The page needs one place
+   where the reader feels the cost, and contrast carries that better than
+   a red border on a white card. */
+.stakes{background:var(--dark);color:#EFEBE2;padding:62px 0 66px}
+.stakes-head{display:grid;grid-template-columns:1fr auto;gap:26px;align-items:end;margin-bottom:34px}
+@media(max-width:760px){.stakes-head{grid-template-columns:1fr;gap:10px}}
+.stakes-head h2{font-size:clamp(1.7rem,3.4vw,2.5rem);line-height:1.1;color:#FCFBF8;max-width:16ch}
+.stakes-head p{color:rgba(239,235,226,.55);font-size:.95rem;max-width:34ch}
+.stakes-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:0}
 @media(max-width:820px){.stakes-grid{grid-template-columns:1fr}}
-.stake{background:var(--surface);border:1px solid var(--line);border-left:3px solid var(--sale);border-radius:0 var(--radius) var(--radius) 0;padding:22px 24px}
-.stake h3{font-size:1rem;font-weight:600;margin-bottom:6px}
-.stake p{font-size:.92rem;color:var(--ink-soft);line-height:1.55}
-.stakes-head{text-align:center;max-width:640px;margin:0 auto 32px}
-.stakes-head h2{font-size:clamp(1.5rem,3vw,2.1rem);line-height:1.2;margin-bottom:10px}
-.stakes-head p{color:var(--ink-soft);font-size:1rem}
+.stake{padding:22px 30px 4px 0;border-top:1px solid rgba(239,235,226,.16)}
+@media(min-width:821px){.stake+.stake{padding-left:30px;border-left:1px solid rgba(239,235,226,.1)}}
+.stake-n{font-family:var(--serif);font-style:italic;font-size:.9rem;color:var(--brand-orange);display:block;margin-bottom:10px}
+.stake h3{font-size:1.02rem;font-weight:600;margin-bottom:7px;color:#FCFBF8}
+.stake p{font-size:.9rem;color:rgba(239,235,226,.62);line-height:1.6}
 
 /* ── Guide: the one place the brand may talk about itself, and only
    in the order Miller prescribes — empathy first, authority second ── */
@@ -304,7 +309,6 @@ img.pp{display:block;width:auto;height:auto;filter:drop-shadow(0 10px 16px rgba(
 /* Base = no-JS / GSAP-failed floor: chapters read as normal stacked
    sections so the page is never a blank pinned void. The pinned,
    scroll-scrubbed layout is layered on only once JS adds .cine-on. */
-.cine-intro{padding:64px 0 0}
 .cine{position:relative}
 .cine-track{position:relative}
 .cine-stage{position:relative}
@@ -323,6 +327,9 @@ img.pp{display:block;width:auto;height:auto;filter:drop-shadow(0 10px 16px rgba(
 .cine-c1 .cine-bg{background:radial-gradient(120% 90% at 22% 40%,var(--tint-sand) 0%,var(--paper) 62%)}
 .cine-c2 .cine-bg{background:radial-gradient(130% 120% at 70% 40%,#2A2140 0%,var(--plum) 55%,#120F1C 100%)}
 .cine-copy{position:relative;z-index:2}
+/* The section heading rides on chapter one instead of sitting in a band
+   of its own above the stage, which left a screen of empty paper. */
+.cine-lead{font-size:.78rem;letter-spacing:.14em;text-transform:uppercase;font-weight:600;color:var(--ink-mute);padding-bottom:12px;margin-bottom:16px;border-bottom:1px solid var(--line);display:inline-block}
 .cine-num{font-family:var(--serif);font-style:italic;font-size:1.05rem;color:var(--accent);font-weight:600;display:block;margin-bottom:14px}
 .cine-c2 .cine-num{color:#A79CF2}
 .cine-title{font-family:var(--serif);font-weight:500;font-size:clamp(2rem,4.4vw,3.3rem);line-height:1.08;letter-spacing:-.01em;margin-bottom:16px;color:var(--ink)}
@@ -491,19 +498,24 @@ img.pp{display:block;width:auto;height:auto;filter:drop-shadow(0 10px 16px rgba(
 .bleed{padding:74px 0 84px}
 .wide{max-width:1480px;margin:0 auto;padding:0 28px}
 .bleed-amber{background:var(--tint-amber)}
+.bleed-lav{background:var(--tint-lav)}
+/* The two product paths share one head grammar and are told apart by
+   colour and by how the product is shown: the card section keeps a
+   contained frame, the shop section lets its screenshot run wide. */
+.kicker.k-violet span{color:var(--brand-violet)}
+.kicker.k-violet i{background:rgba(108,84,180,.22)}
 .kicker{display:flex;align-items:center;gap:14px;margin-bottom:18px}
-.kicker span{font-family:var(--mono);font-size:.7rem;letter-spacing:.16em;text-transform:uppercase;color:var(--ink-amber);font-weight:500;white-space:nowrap}
+.kicker span{font-family:var(--serif);font-size:.95rem;font-style:italic;color:var(--ink-amber);font-weight:500;white-space:nowrap}
 .kicker i{flex:1;height:1px;background:rgba(122,67,0,.22)}
 .bleed h2{font-size:clamp(1.9rem,4vw,2.9rem);line-height:1.06;max-width:15ch}
 .bleed .lede-narrow{color:var(--ink-soft);font-size:1.02rem;max-width:46ch;margin-top:16px}
+.bleed .browser{margin-top:44px}
 .shop-head{display:grid;grid-template-columns:1.15fr .85fr;gap:48px;align-items:end}
 @media(max-width:860px){.shop-head{grid-template-columns:1fr;gap:20px}}
 .shop-shot{margin-top:44px;border-radius:var(--radius);overflow:hidden;box-shadow:0 3px 8px rgba(26,23,32,.06),0 40px 90px -30px rgba(122,67,0,.45);border:1px solid rgba(122,67,0,.12)}
 .shop-shot img{display:block;width:100%;height:auto}
-.btn-shop{background:var(--brand-orange);color:#241300 !important;box-shadow:0 10px 26px -8px rgba(252,144,0,.55)}
-.btn-shop:hover{background:#E88200;transform:translateY(-1px)}
 .shop-foot{display:flex;align-items:center;justify-content:space-between;gap:20px;flex-wrap:wrap;margin-top:26px}
-.shop-foot p{font-family:var(--mono);font-size:.7rem;letter-spacing:.06em;text-transform:uppercase;color:var(--ink-amber);opacity:.75}
+.shop-foot p{font-size:.9rem;color:var(--ink-amber);opacity:.8}
 
 /* ── Bento features ── */
 .bento{display:grid;grid-template-columns:repeat(3,1fr);gap:18px}
@@ -539,7 +551,7 @@ img.pp{display:block;width:auto;height:auto;filter:drop-shadow(0 10px 16px rgba(
 /* swatch viz */
 .viz-swatch{display:flex;gap:8px;align-items:center}
 .viz-swatch i{width:26px;height:26px;border-radius:8px;border:1px solid rgba(26,23,32,.08)}
-.viz-swatch i:nth-child(1){background:#5849D6}
+.viz-swatch i:nth-child(1){background:#6C54B4}
 .viz-swatch i:nth-child(2){background:#D93A6A}
 .viz-swatch i:nth-child(3){background:#1E9E6A}
 .viz-swatch i:nth-child(4){background:#E8A87C}
@@ -556,7 +568,7 @@ img.pp{display:block;width:auto;height:auto;filter:drop-shadow(0 10px 16px rgba(
 .viz-home .vh-db::after{top:24px}
 /* bars viz */
 .viz-bars{display:flex;align-items:flex-end;gap:7px;height:64px}
-.viz-bars i{flex:1;max-width:26px;border-radius:5px 5px 2px 2px;background:linear-gradient(180deg,#8B7DE8,#5849D6);opacity:.85;transform-origin:bottom;animation:grow 1.2s cubic-bezier(.2,.6,.2,1) both}
+.viz-bars i{flex:1;max-width:26px;border-radius:5px 5px 2px 2px;background:linear-gradient(180deg,#8B7DE8,#6C54B4);opacity:.85;transform-origin:bottom;animation:grow 1.2s cubic-bezier(.2,.6,.2,1) both}
 .viz-bars i:nth-child(1){height:34%}.viz-bars i:nth-child(2){height:58%}.viz-bars i:nth-child(3){height:42%}.viz-bars i:nth-child(4){height:88%;background:linear-gradient(180deg,#E48BAA,#D93A6A)}.viz-bars i:nth-child(5){height:66%}.viz-bars i:nth-child(6){height:74%}
 @keyframes grow{from{transform:scaleY(0)}}
 /* shop viz */
@@ -765,14 +777,17 @@ footer .container{display:flex;justify-content:space-between;gap:40px;flex-wrap:
   </div>
   <div class="stakes-grid">
     <div class="stake rv">
+      <span class="stake-n">One</span>
       <h3>It reads like a hobby</h3>
       <p>A row of blue links and borrowed thumbnails tells a reader you are passing them on to someone else. A shop tells them they have arrived.</p>
     </div>
     <div class="stake rv">
+      <span class="stake-n">Two</span>
       <h3>Every product eats ten minutes</h3>
       <p>Copy the link, save the image, retype the price, format the block, repeat. That is an afternoon per roundup that should have gone into the next post.</p>
     </div>
     <div class="stake rv">
+      <span class="stake-n">Three</span>
       <h3>By next month it is wrong</h3>
       <p>Prices move, sizes sell out, merchants pull products. Your best post keeps sending readers to a page that no longer exists.</p>
     </div>
@@ -801,13 +816,6 @@ footer .container{display:flex;justify-content:space-between;gap:40px;flex-wrap:
   </div>
 </div></section>
 
-<!-- Intro sits OUTSIDE the pinned track on purpose: anything inside
-     .cine-track becomes part of the ScrollTrigger pin. -->
-<div class="cine-intro"><div class="container">
-  <div class="sec-head rv"><span class="sec-num">01</span><h2>From link list to shop in three steps</h2></div>
-  <p class="sec-sub rv">No code, no export files, no support ticket. Paste, pick, publish.</p>
-</div></div>
-
 <section id="how" class="cine">
   <div class="cine-track" id="cine-track">
     <div class="cine-stage">
@@ -821,6 +829,7 @@ footer .container{display:flex;justify-content:space-between;gap:40px;flex-wrap:
         <div class="cine-bg"></div>
         <div class="container">
           <div class="cine-copy">
+            <div class="cine-lead">From link list to shop in three steps</div>
             <span class="cine-num">01 — Connect</span>
             <h2 class="cine-title">Point it at your <em>affiliate feed.</em></h2>
             <p class="cine-sub">One feed per retailer. Name it, paste the URL, done. MyFeeds detects the network, works out which column is which, and imports in the background while you carry on.</p>
@@ -917,9 +926,12 @@ footer .container{display:flex;justify-content:space-between;gap:40px;flex-wrap:
   </div>
 </section>
 
-<section id="card-editor"><div class="container">
-  <div class="sec-head rv"><span class="sec-num">02</span><h2>It looks like a shop because it looks like you</h2></div>
-  <p class="sec-sub rv">Colours, typography, spacing, hover behaviour. Set it once, and every card across every post you have ever published catches up before the next reader lands.</p>
+<section id="card-editor" class="bleed bleed-lav"><div class="container">
+  <div class="kicker k-violet rv"><span>Two — the cards</span><i></i></div>
+  <div class="shop-head">
+    <h2 class="rv">It looks like a shop because it looks like you</h2>
+    <p class="lede-narrow rv">Colours, typography, spacing, hover behaviour. Set it once, and every card across every post you have ever published catches up before the next reader lands.</p>
+  </div>
   <div class="browser rv">
     <div class="browser-bar"><div class="browser-dots"><span></span><span></span><span></span></div><div class="browser-url">yourblog.com/wp-admin</div></div>
     <img src="/assets/screenshot-card-design-editor.png" alt="MyFeeds Pro card design editor with controls and a live preview card on the right" loading="lazy">
@@ -944,7 +956,7 @@ footer .container{display:flex;justify-content:space-between;gap:40px;flex-wrap:
   <div class="container">
     <div class="shop-foot rv">
       <p>Part of the E-commerce tier</p>
-      <a href="/ecommerce/" class="btn btn-shop">Turn my feeds into a shop →</a>
+      <a href="/ecommerce/" class="btn btn-ink">Turn my feeds into a shop →</a>
     </div>
   </div>
 </section>
@@ -977,7 +989,7 @@ footer .container{display:flex;justify-content:space-between;gap:40px;flex-wrap:
       <p>Match your card to your site in a visual editor with live preview. Colours, typography, spacing, hover behaviour. Your design system, not someone else's.</p>
     </div>
     <div class="tile rv">
-      <div class="tile-viz"><span class="viz-sync"><svg viewBox="0 0 24 24" fill="none" stroke="#5849D6" stroke-width="2.4" stroke-linecap="round"><path d="M21 12a9 9 0 1 1-2.6-6.3"/><path d="M21 3v6h-6"/></svg>Nightly sync</span></div>
+      <div class="tile-viz"><span class="viz-sync"><svg viewBox="0 0 24 24" fill="none" stroke="#6C54B4" stroke-width="2.4" stroke-linecap="round"><path d="M21 12a9 9 0 1 1-2.6-6.3"/><path d="M21 3v6h-6"/></svg>Nightly sync</span></div>
       <h3>Your feed stays fresh</h3>
       <p>A nightly sync refreshes products in your live posts. A weekly full import catches everything else. If a sync stumbles mid-run, the plugin recovers on its own.</p>
     </div>
