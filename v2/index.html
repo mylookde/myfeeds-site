@@ -333,6 +333,21 @@ img.pp{display:block;width:auto;height:auto;filter:drop-shadow(0 10px 16px rgba(
 .feedstack .fs-head{font-size:.72rem;letter-spacing:.14em;text-transform:uppercase;color:var(--ink-mute);font-weight:600;margin-bottom:4px}
 .feedstack .fs-url{display:flex;align-items:center;border:1.5px solid var(--accent);border-radius:11px;padding:13px 16px;background:var(--surface);font-size:.85rem;color:var(--ink-soft);box-shadow:0 0 0 5px rgba(88,73,214,.08);margin-bottom:8px}
 .feedstack .fs-url .caret{width:1.5px;height:16px;background:var(--accent);margin-left:2px;animation:blink 1s steps(1) infinite}
+/* Chapter one mirrors the real Add New Feed screen: the same three
+   fields, the same auto-detect, the same mapping-quality line the
+   plugin prints once it has read the file. */
+.fs-label{font-size:.68rem;font-weight:600;letter-spacing:.06em;text-transform:uppercase;color:var(--ink-mute);margin-bottom:-4px}
+.fs-field{display:flex;align-items:center;justify-content:space-between;border:1px solid var(--line);border-radius:11px;padding:12px 15px;background:var(--surface);font-size:.85rem;color:var(--ink)}
+.fs-pill{font-size:.68rem;font-weight:700;letter-spacing:.04em;background:var(--accent-soft);color:var(--accent);border:1px solid rgba(88,73,214,.2);border-radius:999px;padding:3px 10px}
+.fs-status{display:flex;align-items:center;gap:8px;font-size:.8rem;font-weight:600;color:var(--green)}
+.fs-status i{width:15px;height:15px;border-radius:50%;background:var(--green);flex-shrink:0;position:relative}
+.fs-status i::after{content:'';position:absolute;left:4.5px;top:2.5px;width:4px;height:7px;border:solid #fff;border-width:0 1.7px 1.7px 0;transform:rotate(45deg)}
+.fs-status.muted{color:var(--ink-soft);font-weight:500}
+.fs-status.muted i{background:var(--accent);animation:pulse 1.4s infinite}
+.fs-status.muted i::after{display:none}
+.fs-bar{height:6px;border-radius:999px;background:var(--line-soft);overflow:hidden}
+.fs-bar span{display:block;height:100%;width:62%;background:var(--accent);border-radius:999px}
+.fs-count{font-size:.76rem;color:var(--ink-mute);text-align:right}
 .fs-row{display:flex;align-items:center;gap:13px;padding:12px 15px;border:1px solid var(--line);border-radius:12px;background:var(--surface);box-shadow:var(--shadow-card)}
 .fs-row .sw{width:44px;height:44px;border-radius:9px;flex-shrink:0;background:linear-gradient(165deg,#F6F3EC,#EFEAE0);display:flex;align-items:center;justify-content:center}
 .fs-row .sw svg{width:32px;height:32px}
@@ -357,6 +372,28 @@ img.pp{display:block;width:auto;height:auto;filter:drop-shadow(0 10px 16px rgba(
 .edcard .ed-item .rn{font-size:.8rem;font-weight:600;color:var(--ink);flex:1}
 .edcard .ed-item .pr{font-size:.78rem;font-weight:700;margin-left:auto}
 .edcard .ed-insert{display:inline-block;margin-top:16px;background:var(--accent);color:#fff;font-size:.82rem;font-weight:600;padding:11px 22px;border-radius:9px}
+/* Chapter two uses the picker's own vocabulary: Search Products,
+   Filters, Best match, Product Search Results, Add to Selection,
+   View Selected, Load More Results. */
+.edcard .ed-label{font-size:.68rem;font-weight:600;letter-spacing:.06em;text-transform:uppercase;color:var(--ink-mute);margin-bottom:7px}
+.edcard .ed-searchrow{display:flex;gap:8px;align-items:stretch}
+.edcard .ed-searchrow .ed-search{flex:1}
+.edcard .ed-btn{display:flex;align-items:center;background:var(--accent);color:#fff;font-size:.8rem;font-weight:600;padding:0 16px;border-radius:10px;white-space:nowrap}
+.edcard .ed-toolbar{display:flex;flex-wrap:wrap;gap:6px;margin-top:10px}
+.edcard .ed-chip{font-size:.7rem;font-weight:600;color:var(--ink-soft);border:1px solid var(--line);border-radius:999px;padding:4px 11px;background:var(--surface)}
+.edcard .ed-chip.on{color:var(--accent);border-color:rgba(88,73,214,.35);background:var(--accent-soft)}
+.edcard .ed-reshead{font-size:.68rem;font-weight:600;letter-spacing:.06em;text-transform:uppercase;color:var(--ink-mute);margin:16px 0 9px}
+.edcard .ed-grid{display:grid;grid-template-columns:1fr 1fr;gap:9px}
+.edcard .ed-tile{border:1px solid var(--line-soft);border-radius:10px;background:#FDFCFA;padding:9px;display:flex;flex-direction:column;gap:6px}
+.edcard .ed-tile.pick{border-color:var(--accent);box-shadow:0 0 0 3px rgba(88,73,214,.1)}
+.edcard .ed-tile .sw{width:100%;height:62px;border-radius:8px;background:linear-gradient(165deg,#F6F3EC,#EFEAE0);display:flex;align-items:center;justify-content:center}
+.edcard .ed-tile .rn{font-size:.72rem;font-weight:600;color:var(--ink);line-height:1.25;overflow:hidden;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical}
+.edcard .ed-tile .pr{font-size:.74rem;font-weight:700;color:var(--ink)}
+.edcard .ed-add{font-size:.66rem;font-weight:600;text-align:center;border-radius:7px;padding:5px 0;border:1px solid var(--line);color:var(--ink-soft);background:var(--surface)}
+.edcard .ed-tile.pick .ed-add{background:var(--accent);border-color:var(--accent);color:#fff}
+.edcard .ed-foot{display:flex;align-items:center;justify-content:space-between;margin-top:14px;font-size:.74rem}
+.edcard .ed-foot .ed-sel{font-weight:600;color:var(--accent)}
+.edcard .ed-foot .ed-more{color:var(--ink-mute)}
 
 /* Chapter 2 — published, live */
 .pubgrid{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;width:min(560px,94%)}
@@ -371,6 +408,11 @@ img.pp{display:block;width:auto;height:auto;filter:drop-shadow(0 10px 16px rgba(
 .pub-card .pc-pr{font-size:.78rem;font-weight:700}
 .pub-card .pc-pr.sale{color:var(--sale)}
 .pub-card .pc-pr s{color:var(--ink-mute);font-weight:500;font-size:.64rem;margin-right:5px}
+/* The real frontend card carries a shipping note and the merchant name
+   under the price; leaving them out made the mock look tidier than the
+   thing it is selling. */
+.pub-card .pc-ship{font-size:.5rem;letter-spacing:.04em;text-transform:uppercase;color:var(--ink-mute);margin-top:6px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.pub-card .pc-shop{font-size:.5rem;letter-spacing:.08em;text-transform:uppercase;color:var(--ink-soft);font-weight:700;margin-top:2px}
 .pub-card.featured{transform:scale(1.06);box-shadow:0 30px 70px -18px rgba(0,0,0,.7),0 0 0 1px rgba(185,174,244,.3)}
 .pub-live{display:inline-flex;align-items:center;gap:8px;margin-top:22px;font-size:.8rem;color:#B9AEF4;font-weight:600}
 .pub-live i{width:8px;height:8px;border-radius:50%;background:var(--green);animation:pulse 1.8s infinite}
@@ -742,16 +784,21 @@ footer .container{display:flex;justify-content:space-between;gap:40px;flex-wrap:
           <div class="cine-copy">
             <span class="cine-num">01 — Connect</span>
             <h2 class="cine-title">Point it at your <em>affiliate feed.</em></h2>
-            <p class="cine-sub">Paste the feed URL from any network. MyFeeds imports thousands of products and maps every field on its own.</p>
+            <p class="cine-sub">Name it, paste the feed URL, done. MyFeeds detects the network, works out which column is which, and imports in the background while you carry on.</p>
           </div>
           <div class="cine-viz">
             <div class="feedstack">
-              <div class="fs-head">Import a feed</div>
+              <div class="fs-head">Add New Feed</div>
+              <div class="fs-label">Feed Name</div>
+              <div class="fs-field">Menswear autumn</div>
+              <div class="fs-label">Feed URL</div>
               <div class="fs-url">https://your-network.com/datafeed/…<span class="caret"></span></div>
-              <div class="fs-row"><div class="sw"><img class="pp" src="/assets/products/hoodie-heather-grey.webp" alt="" width="527" height="720" loading="lazy"></div><span class="rn">Cotton Hoodie Heather Grey</span><span class="pr">$89.00</span></div>
-              <div class="fs-row"><div class="sw"><img class="pp" src="/assets/products/tote-canvas-natural.webp" alt="" width="425" height="720" loading="lazy"></div><span class="rn">Canvas Tote Natural</span><span class="pr">$48.00</span></div>
-              <div class="fs-row"><div class="sw"><img class="pp" src="/assets/products/sneaker-white-lowtop.webp" alt="" width="720" height="344" loading="lazy"></div><span class="rn">Low-Top Sneaker White</span><span class="pr">$79.90</span></div>
-              <div class="fs-row"><div class="sw"><img class="pp" src="/assets/products/beanie-knit-navy.webp" alt="" width="720" height="657" loading="lazy"></div><span class="rn">Knit Beanie Rib Navy</span><span class="pr">$29.00</span></div>
+              <div class="fs-label">Network</div>
+              <div class="fs-field">Auto-detect <span class="fs-pill">AWIN</span></div>
+              <div class="fs-status"><i></i>Excellent field mapping detected</div>
+              <div class="fs-status muted"><i></i>Importing products in the background…</div>
+              <div class="fs-bar"><span></span></div>
+              <div class="fs-count">12,480 of 20,116 products</div>
             </div>
           </div>
         </div>
@@ -763,18 +810,39 @@ footer .container{display:flex;justify-content:space-between;gap:40px;flex-wrap:
           <div class="cine-copy">
             <span class="cine-num">02 — Pick</span>
             <h2 class="cine-title">Drop products in <em>without leaving the editor.</em></h2>
-            <p class="cine-sub">Search your catalogue right inside the post. Click, and the card is in. No new tab, no copy, no paste, no missed link.</p>
+            <p class="cine-sub">Search your whole catalogue inside the post editor, narrow it by brand, colour or sale, and add what you want to the selection. No new tab, no copy, no paste, no missed link.</p>
           </div>
           <div class="cine-viz">
             <div class="edcard">
               <div class="ed-bar"><div class="ed-dots"><span></span><span></span><span></span></div><div class="ed-url">yourblog.com/wp-admin</div></div>
               <div class="ed-body">
-                <div class="ed-search"><span class="hl">sn</span>eaker<span class="caret"></span></div>
-                <div class="ed-res">
-                  <div class="ed-item pick"><div class="sw"><img class="pp" src="/assets/products/sneaker-white-lowtop.webp" alt="" width="720" height="344" loading="lazy"></div><span class="rn">Low-Top Sneaker White</span><span class="pr">$79.90</span></div>
-                  <div class="ed-item" style="opacity:.6"><div class="sw"><img class="pp" src="/assets/products/sneaker-black-hightop.webp" alt="" width="720" height="422" loading="lazy"></div><span class="rn">High-Top Sneaker Black</span><span class="pr">$64.00</span></div>
+                <div class="ed-label">Search Products</div>
+                <div class="ed-searchrow">
+                  <div class="ed-search"><span class="hl">sn</span>eaker<span class="caret"></span></div>
+                  <span class="ed-btn">Search</span>
                 </div>
-                <span class="ed-insert">Insert card →</span>
+                <div class="ed-toolbar">
+                  <span class="ed-chip">Filters</span>
+                  <span class="ed-chip">Best match</span>
+                  <span class="ed-chip on">On sale</span>
+                  <span class="ed-chip">In stock</span>
+                </div>
+                <div class="ed-reshead">Product Search Results</div>
+                <div class="ed-grid">
+                  <div class="ed-tile pick">
+                    <div class="sw"><img class="pp" src="/assets/products/sneaker-white-lowtop.webp" alt="" width="720" height="344" loading="lazy"></div>
+                    <span class="rn">Low-Top Sneaker White</span>
+                    <span class="pr">$79.90</span>
+                    <span class="ed-add">Remove from Selection</span>
+                  </div>
+                  <div class="ed-tile">
+                    <div class="sw"><img class="pp" src="/assets/products/sneaker-black-hightop.webp" alt="" width="720" height="422" loading="lazy"></div>
+                    <span class="rn">High-Top Sneaker Black</span>
+                    <span class="pr">$64.00</span>
+                    <span class="ed-add">Add to Selection</span>
+                  </div>
+                </div>
+                <div class="ed-foot"><span class="ed-sel">View Selected (3)</span><span class="ed-more">Load More Results</span></div>
               </div>
             </div>
           </div>
@@ -793,15 +861,15 @@ footer .container{display:flex;justify-content:space-between;gap:40px;flex-wrap:
           <div class="cine-viz">
             <div class="pub-glow" aria-hidden="true"></div>
             <div class="pubgrid">
-              <div class="pub-card"><div class="pc-img"><img class="pp" src="/assets/products/hoodie-heather-grey.webp" alt="" width="527" height="720" loading="lazy"></div><div class="pc-b"><div class="pc-brand">Studio Form</div><div class="pc-name">Cotton Hoodie</div><div class="pc-pr">$89.00</div></div></div>
-              <div class="pub-card featured"><div class="pc-img"><span class="pc-badge">-25%</span><img class="pp" src="/assets/products/sneaker-white-lowtop.webp" alt="" width="720" height="344" loading="lazy"></div><div class="pc-b"><div class="pc-brand">Nordic Trail</div><div class="pc-name">Low-Top Sneaker</div><div class="pc-pr sale"><s>$79.90</s><span id="cine-price">$59.90</span><span class="badge-updated" id="cine-badge">updated</span></div></div></div>
-              <div class="pub-card"><div class="pc-img"><img class="pp" src="/assets/products/tote-canvas-natural.webp" alt="" width="425" height="720" loading="lazy"></div><div class="pc-b"><div class="pc-brand">Atelier</div><div class="pc-name">Canvas Tote</div><div class="pc-pr">$48.00</div></div></div>
+              <div class="pub-card"><div class="pc-img"><img class="pp" src="/assets/products/hoodie-heather-grey.webp" alt="" width="527" height="720" loading="lazy"></div><div class="pc-b"><div class="pc-brand">Studio Form</div><div class="pc-name">Cotton Hoodie Heather Grey</div><div class="pc-pr">$89.00</div><div class="pc-ship">Shipping costs may apply</div><div class="pc-shop">Outlet24</div></div></div>
+              <div class="pub-card featured"><div class="pc-img"><span class="pc-badge">-25%</span><img class="pp" src="/assets/products/sneaker-white-lowtop.webp" alt="" width="720" height="344" loading="lazy"></div><div class="pc-b"><div class="pc-brand">Nordic Trail</div><div class="pc-name">Low-Top Sneaker White</div><div class="pc-pr sale"><s>$79.90</s><span id="cine-price">$59.90</span><span class="badge-updated" id="cine-badge">updated</span></div><div class="pc-ship">Free shipping</div><div class="pc-shop">Stockroom</div></div></div>
+              <div class="pub-card"><div class="pc-img"><img class="pp" src="/assets/products/tote-canvas-natural.webp" alt="" width="425" height="720" loading="lazy"></div><div class="pc-b"><div class="pc-brand">Atelier</div><div class="pc-name">Canvas Tote Natural</div><div class="pc-pr">$48.00</div><div class="pc-ship">Shipping costs may apply</div><div class="pc-shop">Stockroom</div></div></div>
             </div>
           </div>
         </div>
       </div>
 
-      <div class="cine-note">Illustrative demo. Your real cards use your products and your design.</div>
+      <div class="cine-note">Illustrative demo — the real screens hold far more than fits here. Your cards carry your products and your design.</div>
     </div>
   </div>
 </section>
