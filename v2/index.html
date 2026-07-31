@@ -91,7 +91,7 @@ nav .container{display:flex;align-items:center;justify-content:space-between;hei
 .btn-cta:hover{background:var(--accent-deep);transform:translateY(-1px);box-shadow:0 14px 32px -8px rgba(88,73,214,.6)}
 .btn-ghost{background:transparent;color:var(--ink-soft) !important;border:1px solid var(--line);padding:13px 25px}
 .btn-ghost:hover{border-color:var(--ink-mute);color:var(--ink) !important}
-.stakes-line{text-align:center;font-size:1.05rem;line-height:1.65;color:var(--ink-soft);padding:10px 28px 48px;max-width:1080px;margin:0 auto}
+.stakes-line{text-align:center;font-size:1.05rem;line-height:1.65;color:var(--ink-soft);padding:64px 28px 56px;max-width:920px;margin:0 auto}
 .stakes-line b{color:var(--green);font-weight:700}
 
 /* ── Stakes: the cost of the status quo, kept to three lines so the
@@ -99,16 +99,20 @@ nav .container{display:flex;align-items:center;justify-content:space-between;hei
 /* Dark and dense, straight after the airy hero. The page needs one place
    where the reader feels the cost, and contrast carries that better than
    a red border on a white card. */
-.stakes{background:#EFEAE1;padding:62px 0 66px}
+/* The villain section needs a signal, not a neutral band: warm rose
+   ground, red rules and red numerals. Beige said 'unimportant'. */
+.stakes{background:#FCF1EE;padding:66px 0 72px}
 .stakes-head{display:grid;grid-template-columns:1fr auto;gap:26px;align-items:end;margin-bottom:34px}
 @media(max-width:760px){.stakes-head{grid-template-columns:1fr;gap:10px}}
 .stakes-head h2{font-size:clamp(1.7rem,3.4vw,2.5rem);line-height:1.1;max-width:16ch}
 .stakes-head p{color:var(--ink-soft);font-size:.95rem;max-width:34ch}
+.stakes-head h2 em{font-style:normal;color:var(--sale)}
 .stakes-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:0}
 @media(max-width:820px){.stakes-grid{grid-template-columns:1fr}}
-.stake{padding:22px 30px 4px 0;border-top:1px solid rgba(26,23,32,.16)}
-@media(min-width:821px){.stake+.stake{padding-left:30px;border-left:1px solid rgba(26,23,32,.09)}}
-.stake-n{font-family:var(--serif);font-style:italic;font-size:.9rem;color:#B26400;display:block;margin-bottom:10px}
+.stake{padding:20px 30px 4px 0;border-top:2px solid var(--sale)}
+@media(min-width:821px){.stake+.stake{padding-left:30px}}
+@media(min-width:821px){.stakes-grid{gap:0 26px}}
+.stake-n{font-family:var(--serif);font-style:italic;font-size:.9rem;color:var(--sale);display:block;margin:12px 0 10px}
 .stake h3{font-size:1.02rem;font-weight:600;margin-bottom:7px}
 .stake p{font-size:.9rem;color:var(--ink-soft);line-height:1.6}
 
@@ -329,10 +333,16 @@ img.pp{display:block;width:auto;height:auto;filter:drop-shadow(0 10px 16px rgba(
 .cine-copy{position:relative;z-index:2}
 /* The section heading rides on chapter one instead of sitting in a band
    of its own above the stage, which left a screen of empty paper. */
-/* Reads as a section heading, not as fine print: at 12px in mute grey
-   and wrapped into a narrow box it was technically visible and
-   practically invisible. */
-.cine-lead{display:block;font-family:var(--serif);font-size:1.15rem;font-weight:500;color:var(--ink);padding-bottom:14px;margin-bottom:20px;border-bottom:1px solid var(--line)}
+/* The section title belongs to the stage, not to a chapter: chapters are
+   absolutely stacked and cross-faded, so a heading inside chapter one
+   faded away with it. Here it stands over all three steps. */
+.cine-head{padding:26px 0 0}
+.cine-head .container{display:flex;align-items:baseline;gap:20px}
+.cine-head .ch-num{font-family:var(--serif);font-size:.95rem;color:var(--accent);font-weight:600;flex-shrink:0}
+.cine-head h2{font-size:clamp(1.6rem,3.2vw,2.3rem);line-height:1.12;color:var(--ink)}
+.cine-on .cine-head{position:absolute;top:30px;left:0;right:0;z-index:4;padding:0}
+.cine-on .cine-chapter{padding-top:78px}
+@media(max-width:880px){.cine-on .cine-head{top:18px}.cine-on .cine-head h2{font-size:1.25rem}}
 .cine-num{font-family:var(--serif);font-style:italic;font-size:1.05rem;color:var(--accent);font-weight:600;display:block;margin-bottom:14px}
 .cine-c2 .cine-num{color:#A79CF2}
 .cine-title{font-family:var(--serif);font-weight:500;font-size:clamp(2rem,4.4vw,3.3rem);line-height:1.08;letter-spacing:-.01em;margin-bottom:16px;color:var(--ink)}
@@ -781,7 +791,7 @@ footer .container{display:flex;justify-content:space-between;gap:40px;flex-wrap:
 
 <section class="stakes"><div class="container">
   <div class="stakes-head rv">
-    <h2>What a link list costs you</h2>
+    <h2>What a link list <em>costs you</em></h2>
     <p>Not the traffic. The three things that happen after the reader arrives.</p>
   </div>
   <div class="stakes-grid">
@@ -828,6 +838,7 @@ footer .container{display:flex;justify-content:space-between;gap:40px;flex-wrap:
 <section id="how" class="cine">
   <div class="cine-track" id="cine-track">
     <div class="cine-stage">
+      <div class="cine-head"><div class="container"><span class="ch-num">01</span><h2>From link list to shop in three steps</h2></div></div>
       <div class="cine-rail" aria-hidden="true">
         <span class="cine-dot on" data-i="0"></span>
         <span class="cine-dot" data-i="1"></span>
@@ -838,7 +849,6 @@ footer .container{display:flex;justify-content:space-between;gap:40px;flex-wrap:
         <div class="cine-bg"></div>
         <div class="container">
           <div class="cine-copy">
-            <div class="cine-lead">From link list to shop in three steps</div>
             <span class="cine-num">01 — Connect</span>
             <h2 class="cine-title">Point it at your <em>affiliate feed.</em></h2>
             <p class="cine-sub">One feed per retailer. Name it, paste the URL, done. MyFeeds detects the network, works out which column is which, and imports in the background while you carry on.</p>
