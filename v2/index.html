@@ -99,18 +99,18 @@ nav .container{display:flex;align-items:center;justify-content:space-between;hei
 /* Dark and dense, straight after the airy hero. The page needs one place
    where the reader feels the cost, and contrast carries that better than
    a red border on a white card. */
-.stakes{background:var(--dark);color:#EFEBE2;padding:62px 0 66px}
+.stakes{background:#EFEAE1;padding:62px 0 66px}
 .stakes-head{display:grid;grid-template-columns:1fr auto;gap:26px;align-items:end;margin-bottom:34px}
 @media(max-width:760px){.stakes-head{grid-template-columns:1fr;gap:10px}}
-.stakes-head h2{font-size:clamp(1.7rem,3.4vw,2.5rem);line-height:1.1;color:#FCFBF8;max-width:16ch}
-.stakes-head p{color:rgba(239,235,226,.55);font-size:.95rem;max-width:34ch}
+.stakes-head h2{font-size:clamp(1.7rem,3.4vw,2.5rem);line-height:1.1;max-width:16ch}
+.stakes-head p{color:var(--ink-soft);font-size:.95rem;max-width:34ch}
 .stakes-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:0}
 @media(max-width:820px){.stakes-grid{grid-template-columns:1fr}}
-.stake{padding:22px 30px 4px 0;border-top:1px solid rgba(239,235,226,.16)}
-@media(min-width:821px){.stake+.stake{padding-left:30px;border-left:1px solid rgba(239,235,226,.1)}}
-.stake-n{font-family:var(--serif);font-style:italic;font-size:.9rem;color:var(--brand-orange);display:block;margin-bottom:10px}
-.stake h3{font-size:1.02rem;font-weight:600;margin-bottom:7px;color:#FCFBF8}
-.stake p{font-size:.9rem;color:rgba(239,235,226,.62);line-height:1.6}
+.stake{padding:22px 30px 4px 0;border-top:1px solid rgba(26,23,32,.16)}
+@media(min-width:821px){.stake+.stake{padding-left:30px;border-left:1px solid rgba(26,23,32,.09)}}
+.stake-n{font-family:var(--serif);font-style:italic;font-size:.9rem;color:#B26400;display:block;margin-bottom:10px}
+.stake h3{font-size:1.02rem;font-weight:600;margin-bottom:7px}
+.stake p{font-size:.9rem;color:var(--ink-soft);line-height:1.6}
 
 /* ── Guide: the one place the brand may talk about itself, and only
    in the order Miller prescribes — empathy first, authority second ── */
@@ -329,7 +329,10 @@ img.pp{display:block;width:auto;height:auto;filter:drop-shadow(0 10px 16px rgba(
 .cine-copy{position:relative;z-index:2}
 /* The section heading rides on chapter one instead of sitting in a band
    of its own above the stage, which left a screen of empty paper. */
-.cine-lead{font-size:.78rem;letter-spacing:.14em;text-transform:uppercase;font-weight:600;color:var(--ink-mute);padding-bottom:12px;margin-bottom:16px;border-bottom:1px solid var(--line);display:inline-block}
+/* Reads as a section heading, not as fine print: at 12px in mute grey
+   and wrapped into a narrow box it was technically visible and
+   practically invisible. */
+.cine-lead{display:block;font-family:var(--serif);font-size:1.15rem;font-weight:500;color:var(--ink);padding-bottom:14px;margin-bottom:20px;border-bottom:1px solid var(--line)}
 .cine-num{font-family:var(--serif);font-style:italic;font-size:1.05rem;color:var(--accent);font-weight:600;display:block;margin-bottom:14px}
 .cine-c2 .cine-num{color:#A79CF2}
 .cine-title{font-family:var(--serif);font-weight:500;font-size:clamp(2rem,4.4vw,3.3rem);line-height:1.08;letter-spacing:-.01em;margin-bottom:16px;color:var(--ink)}
@@ -475,6 +478,12 @@ img.pp{display:block;width:auto;height:auto;filter:drop-shadow(0 10px 16px rgba(
 .comparison-cell:last-child{border-right:none}
 .comparison-cell.label{color:var(--ink);font-weight:600;font-size:.9rem;background:#FDFCFA}
 .comparison-cell.highlight{background:var(--accent-soft);color:var(--ink)}
+/* The closing row states the controlling idea as the verdict of the
+   table, so a reader who only scans the bottom line still gets it. */
+.comparison-verdict{border-top:1px solid var(--line)}
+.comparison-verdict .comparison-cell{font-family:var(--serif);font-size:1.15rem;padding:22px 24px;color:var(--ink-mute)}
+.comparison-verdict .comparison-cell.label{font-family:var(--sans);font-size:.9rem}
+.comparison-verdict .comparison-cell.highlight{color:var(--accent);font-weight:500}
 .check-icon{color:var(--green);font-weight:700;margin-right:12px;flex-shrink:0}
 .cross-icon{color:#C6465F;font-weight:600;margin-right:12px;flex-shrink:0;opacity:.75}
 @media(max-width:768px){
@@ -1021,43 +1030,48 @@ footer .container{display:flex;justify-content:space-between;gap:40px;flex-wrap:
 </div></section>
 
 <section id="comparison"><div class="container">
-  <div class="sec-head rv"><span class="sec-num">05</span><h2>Built different.</h2></div>
-  <p class="sec-sub rv">Other plugins help you paste links faster. This one gives you a shop.</p>
+  <div class="sec-head rv"><span class="sec-num">05</span><h2>Why not just use a link plugin?</h2></div>
+  <p class="sec-sub rv">Because they help you paste links faster. This one gives you a shop.</p>
   <div class="comparison-table rv">
     <div class="comparison-row comparison-head">
       <div class="comparison-cell">&nbsp;</div>
-      <div class="comparison-cell">Other affiliate plugins</div>
+      <div class="comparison-cell">Link plugins</div>
       <div class="comparison-cell highlight">MyFeeds</div>
     </div>
     <div class="comparison-row">
-      <div class="comparison-cell label">Products in your posts</div>
-      <div class="comparison-cell"><span class="cross-icon">✕</span>One link or button at a time, pasted manually</div>
-      <div class="comparison-cell highlight"><span class="check-icon">✓</span>Searchable catalogue inside the editor, picked in seconds</div>
+      <div class="comparison-cell label">Adding products</div>
+      <div class="comparison-cell"><span class="cross-icon">&#10005;</span>One at a time, by hand</div>
+      <div class="comparison-cell highlight"><span class="check-icon">&#10003;</span>Searched and picked in seconds</div>
     </div>
     <div class="comparison-row">
-      <div class="comparison-cell label">Price + stock updates</div>
-      <div class="comparison-cell"><span class="cross-icon">✕</span>You edit each post when something changes</div>
-      <div class="comparison-cell highlight"><span class="check-icon">✓</span>Nightly sync updates every card on every post</div>
+      <div class="comparison-cell label">Price and stock</div>
+      <div class="comparison-cell"><span class="cross-icon">&#10005;</span>You edit every post</div>
+      <div class="comparison-cell highlight"><span class="check-icon">&#10003;</span>Updated nightly, everywhere</div>
     </div>
     <div class="comparison-row">
       <div class="comparison-cell label">Dead products</div>
-      <div class="comparison-cell"><span class="cross-icon">✕</span>Posts quietly link to 404s until you notice</div>
-      <div class="comparison-cell highlight"><span class="check-icon">✓</span>Plugin flags them and shows which posts need a swap</div>
+      <div class="comparison-cell"><span class="cross-icon">&#10005;</span>Silent 404s</div>
+      <div class="comparison-cell highlight"><span class="check-icon">&#10003;</span>Flagged, with the posts listed</div>
     </div>
     <div class="comparison-row">
-      <div class="comparison-cell label">Affiliate networks</div>
-      <div class="comparison-cell"><span class="cross-icon">✕</span>One integration per plugin, you stack two or three</div>
-      <div class="comparison-cell highlight"><span class="check-icon">✓</span>Any network's product feed, one plugin</div>
+      <div class="comparison-cell label">Networks</div>
+      <div class="comparison-cell"><span class="cross-icon">&#10005;</span>One plugin per network</div>
+      <div class="comparison-cell highlight"><span class="check-icon">&#10003;</span>Any feed, one plugin</div>
     </div>
     <div class="comparison-row">
-      <div class="comparison-cell label">Where your data lives</div>
-      <div class="comparison-cell"><span class="cross-icon">✕</span>Often proxied through a third-party server</div>
-      <div class="comparison-cell highlight"><span class="check-icon">✓</span>Your own WordPress database, fully self-hosted</div>
+      <div class="comparison-cell label">Your data</div>
+      <div class="comparison-cell"><span class="cross-icon">&#10005;</span>On someone else&#39;s server</div>
+      <div class="comparison-cell highlight"><span class="check-icon">&#10003;</span>In your own database</div>
     </div>
     <div class="comparison-row">
-      <div class="comparison-cell label">Conversions and analytics</div>
-      <div class="comparison-cell"><span class="cross-icon">✕</span>Network dashboards, one tab per network</div>
-      <div class="comparison-cell highlight"><span class="check-icon">✓</span>Clicks and commissions from every network in one place</div>
+      <div class="comparison-cell label">Earnings</div>
+      <div class="comparison-cell"><span class="cross-icon">&#10005;</span>A dashboard per network</div>
+      <div class="comparison-cell highlight"><span class="check-icon">&#10003;</span>All of it in one place</div>
+    </div>
+    <div class="comparison-row comparison-verdict">
+      <div class="comparison-cell label">What the reader sees</div>
+      <div class="comparison-cell">A list of links</div>
+      <div class="comparison-cell highlight">A shop</div>
     </div>
   </div>
   <div class="center-cta rv"><a href="https://wordpress.org/plugins/myfeeds-affiliate-feed-manager/" class="btn btn-cta">Add product cards to my posts →</a></div>
