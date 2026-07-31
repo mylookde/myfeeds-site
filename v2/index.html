@@ -105,9 +105,9 @@ nav .container{display:flex;align-items:center;justify-content:space-between;hei
 @media(max-width:760px){.guide-card{grid-template-columns:1fr;gap:24px;text-align:center}}
 .guide-portrait{position:relative;width:172px;height:172px;border-radius:50%;overflow:hidden;background:var(--surface);border:1px solid var(--line);display:flex;align-items:center;justify-content:center;justify-self:center}
 /* The photo sits on top of the monogram rather than replacing it, so a
-   missing file degrades to the initial instead of a broken frame.
-   object-position keeps the face centred on a portrait-orientation shot. */
-.guide-portrait img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:50% 22%}
+   missing file degrades to the initial instead of a broken frame. The
+   file itself is already cropped square around the face, so no offset. */
+.guide-portrait img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
 .guide-portrait .gp-fallback{font-family:var(--serif);font-size:2.6rem;color:var(--accent);font-weight:600}
 .guide-body h2{font-size:clamp(1.5rem,3vw,2.1rem);line-height:1.2;margin-bottom:14px}
 .guide-body p{color:var(--ink-soft);font-size:1.02rem;margin-bottom:12px}
