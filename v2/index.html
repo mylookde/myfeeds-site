@@ -126,19 +126,21 @@ nav .container{display:flex;align-items:center;justify-content:space-between;hei
 /* ── Guide: the one place the brand may talk about itself, and only
    in the order Miller prescribes — empathy first, authority second ── */
 .guide{background:var(--tint-lav)}
-.guide-card{max-width:900px;margin:0 auto;display:grid;grid-template-columns:172px 1fr;gap:36px;align-items:center}
+.guide-card{max-width:900px;margin:0 auto;display:grid;grid-template-columns:auto 1fr;gap:38px;align-items:center}
 @media(max-width:760px){.guide-card{grid-template-columns:1fr;gap:24px;text-align:center}}
-.guide-portrait{position:relative;width:172px;height:172px;border-radius:50%;overflow:hidden;background:var(--surface);border:1px solid var(--line);display:flex;align-items:center;justify-content:center;justify-self:center}
+.guide-portrait{position:relative;width:104px;height:104px;border-radius:50%;overflow:hidden;background:var(--surface);border:1px solid var(--line);display:flex;align-items:center;justify-content:center;justify-self:center}
 /* The photo sits on top of the monogram rather than replacing it, so a
    missing file degrades to the initial instead of a broken frame. The
    file itself is already cropped square around the face, so no offset. */
 .guide-portrait img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
-.guide-portrait .gp-fallback{font-family:var(--serif);font-size:2.6rem;color:var(--accent);font-weight:600}
+.guide-portrait .gp-fallback{font-family:var(--serif);font-size:1.7rem;color:var(--accent);font-weight:600}
 .guide-body h2{font-size:var(--h2);line-height:1.2;margin-bottom:14px}
 .guide-body p{color:var(--ink-soft);font-size:1.02rem;margin-bottom:12px}
 .guide-body p:last-child{margin-bottom:0}
 .guide-body strong{color:var(--ink);font-weight:600}
-.guide-sig{font-family:var(--serif);font-style:italic;color:var(--ink);font-size:1rem}
+.guide-face{display:grid;justify-items:center;gap:10px}
+.guide-cap{font-size:.82rem;color:var(--ink);font-weight:600;line-height:1.35;text-align:center}
+.guide-cap span{font-weight:400;color:var(--ink-mute)}
 
 /* ── Explanatory paragraph: due-diligence reading for an expensive,
    technical-sounding purchase, folded away behind a summary ── */
@@ -828,16 +830,18 @@ footer .container{display:flex;justify-content:space-between;gap:40px;flex-wrap:
          Until that file exists the image removes itself and the monogram
          stands in, so the section never shows a broken frame. Framing is
          set for a portrait shot with the head in the upper third. -->
-    <div class="guide-portrait">
-      <span class="gp-fallback">M</span>
-      <img src="/assets/marlon.jpg" alt="Marlon, who builds MyFeeds" width="400" height="400"
-           onerror="this.remove()" loading="lazy">
+    <div class="guide-face">
+      <div class="guide-portrait">
+        <span class="gp-fallback">M</span>
+        <img src="/assets/marlon.jpg" alt="Marlon, who makes MyFeeds" width="400" height="400"
+             onerror="this.remove()" loading="lazy">
+      </div>
+      <p class="guide-cap">Marlon<br><span>makes MyFeeds</span></p>
     </div>
     <div class="guide-body">
-      <h2>Built by someone with the same problem</h2>
-      <p>&ldquo;Like you, I run an affiliate blog. I got tired of posts that looked like link lists, and of losing an afternoon to pasting products in by hand.</p>
-      <p><strong>Every feature ships to my own shop first.</strong> It runs there, on a real catalogue, in front of real readers, before it reaches your site. If it doesn&rsquo;t hold up there, you never see it.&rdquo;</p>
-      <p class="guide-sig">— Marlon, who makes MyFeeds</p>
+      <h2>You bring the taste. We keep the plumbing honest.</h2>
+      <p>You already know which products are worth your readers&rsquo; money. What you should not have to spend your week on is keeping a few hundred links, prices and stock counts truthful by hand.</p>
+      <p><strong>Every feature runs on a working affiliate shop before it ships.</strong> A real catalogue, real readers, real commissions. Whatever does not hold up there never reaches your site.</p>
     </div>
   </div>
 </div></section>
