@@ -19,7 +19,7 @@
 <meta name="twitter:title" content="MyFeeds — Affiliate Product Feed Manager">
 <meta name="twitter:description" content="Stop copy-pasting affiliate products. Your network's product feed becomes a searchable catalog inside WordPress. Pick in the editor, publish, move on.">
 <meta name="twitter:image" content="https://myfeeds.site/assets/og-image.jpg">
-<script type="application/ld+json">{"@context":"https://schema.org","@graph":[{"@type":"Organization","@id":"https://myfeeds.site/#organization","name":"MyFeeds","url":"https://myfeeds.site/","logo":{"@type":"ImageObject","url":"https://myfeeds.site/logo.png"}},{"@type":"WebSite","@id":"https://myfeeds.site/#website","url":"https://myfeeds.site/","name":"MyFeeds","publisher":{"@id":"https://myfeeds.site/#organization"}},{"@type":"SoftwareApplication","name":"MyFeeds","url":"https://myfeeds.site/","image":"https://myfeeds.site/logo.png","operatingSystem":"WordPress","applicationCategory":"BusinessApplication","description":"Stop copy-pasting affiliate products. Your network's product feed becomes a searchable catalog inside WordPress. Pick in the editor, publish, move on.","publisher":{"@id":"https://myfeeds.site/#organization"},"offers":[{"@type":"Offer","name":"Free","price":"0","priceCurrency":"USD","url":"https://myfeeds.site/install/"},{"@type":"Offer","name":"Pro Monthly","price":"29","priceCurrency":"USD","url":"https://myfeeds.site/#pricing"},{"@type":"Offer","name":"Pro Annual","price":"249","priceCurrency":"USD","url":"https://myfeeds.site/#pricing"},{"@type":"Offer","name":"Business Monthly","price":"129","priceCurrency":"USD","url":"https://myfeeds.site/#pricing"},{"@type":"Offer","name":"Business Annual","price":"1099","priceCurrency":"USD","url":"https://myfeeds.site/#pricing"}]}]}</script>
+<script type="application/ld+json">{"@context":"https://schema.org","@graph":[{"@type":"Organization","@id":"https://myfeeds.site/#organization","name":"MyFeeds","url":"https://myfeeds.site/","logo":{"@type":"ImageObject","url":"https://myfeeds.site/logo.png"}},{"@type":"WebSite","@id":"https://myfeeds.site/#website","url":"https://myfeeds.site/","name":"MyFeeds","publisher":{"@id":"https://myfeeds.site/#organization"}},{"@type":"SoftwareApplication","name":"MyFeeds","url":"https://myfeeds.site/","image":"https://myfeeds.site/logo.png","operatingSystem":"WordPress","applicationCategory":"BusinessApplication","description":"Stop copy-pasting affiliate products. Your network's product feed becomes a searchable catalog inside WordPress. Pick in the editor, publish, move on.","publisher":{"@id":"https://myfeeds.site/#organization"},"offers":[{"@type":"Offer","name":"Free","price":"0","priceCurrency":"USD","url":"https://myfeeds.site/install/"},{"@type":"Offer","name":"Starter Monthly","price":"9","priceCurrency":"USD","url":"https://myfeeds.site/#pricing"},{"@type":"Offer","name":"Starter Annual","price":"89","priceCurrency":"USD","url":"https://myfeeds.site/#pricing"},{"@type":"Offer","name":"Pro Monthly","price":"19","priceCurrency":"USD","url":"https://myfeeds.site/#pricing"},{"@type":"Offer","name":"Pro Annual","price":"199","priceCurrency":"USD","url":"https://myfeeds.site/#pricing"},{"@type":"Offer","name":"E-commerce Monthly","price":"49","priceCurrency":"USD","url":"https://myfeeds.site/#pricing"},{"@type":"Offer","name":"E-commerce Annual","price":"499","priceCurrency":"USD","url":"https://myfeeds.site/#pricing"}]}]}</script>
 <link rel="icon" type="image/png" href="favicon.png">
 <link rel="icon" type="image/x-icon" href="favicon.ico">
 <link rel="apple-touch-icon" href="apple-touch-icon.png">
@@ -173,9 +173,15 @@ nav .container{display:flex;align-items:center;justify-content:space-between}
 .pricing-toggle .toggle-tab{padding:10px 24px;border-radius:999px;font-size:.9rem;font-weight:600;color:var(--text-muted);cursor:pointer;transition:all .3s;white-space:nowrap;user-select:none}
 .pricing-toggle .toggle-tab.active{background:var(--gradient-brand);color:#fff;box-shadow:0 2px 12px rgba(102,126,234,.35)}
 .pricing-toggle .toggle-tab .save-text{color:var(--accent-green);font-weight:700}
+#pricing-toggle{margin-bottom:12px}
 
-.pricing-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:24px;align-items:start}
-@media(max-width:768px){.pricing-grid{grid-template-columns:1fr;max-width:420px;margin:0 auto}}
+.pricing-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:16px;align-items:stretch}
+@media(max-width:1100px){.pricing-grid{grid-template-columns:repeat(2,1fr);max-width:720px;margin:0 auto;gap:20px}}
+@media(max-width:660px){.pricing-grid{grid-template-columns:1fr;max-width:420px;margin:0 auto}}
+.pricing-card{display:flex;flex-direction:column}
+.pricing-card .plan-features{flex:1}
+.pricing-card .plan-price-sub{display:block;margin-top:8px;font-size:.82rem;font-weight:500;color:var(--text-muted);line-height:1.35;letter-spacing:0}
+.pricing-card .plan-sites-note{display:block;margin-top:4px;font-size:.75rem;font-weight:500;color:var(--text-muted);line-height:1.35;letter-spacing:0}
 .pricing-card{background:var(--bg-glass);border:1px solid var(--border-glass);border-radius:var(--radius);padding:36px 32px;position:relative;transition:all .3s}
 .pricing-card:hover{transform:translateY(-4px)}
 .pricing-card.featured{border-color:rgba(102,126,234,.4);background:linear-gradient(180deg,rgba(102,126,234,.08) 0%,rgba(118,75,162,.04) 100%)}
@@ -286,7 +292,7 @@ footer .footer-copy{color:var(--text-muted);font-size:.8rem;margin-top:16px}
     <div class="nav-links">
     <a href="#pricing">Pricing</a>
     <a href="#faq">FAQ</a>
-    <a href="/ecommerce/">Business</a>
+    <a href="/ecommerce/">E-commerce</a>
     <a href="https://wordpress.org/plugins/myfeeds-affiliate-feed-manager/" class="btn btn-primary" style="padding:8px 20px;font-size:.85rem">Get Started</a>
   </div>
 </div></nav>
@@ -394,24 +400,28 @@ footer .footer-copy{color:var(--text-muted);font-size:.8rem;margin-top:16px}
     <div class="feature-card"><div class="feature-header"><span class="emoji yellow">🔄</span><h3>Your feed stays fresh</h3></div><p>A nightly sync refreshes products in your live posts. A weekly full import catches everything else. If a sync stumbles mid-run, the plugin recovers on its own.</p></div>
     <div class="feature-card"><div class="feature-header"><span class="emoji blue">🔒</span><h3>Your site stays yours</h3></div><p>Every product lives in your own WordPress database. Visitors don't wait on a third-party server, and nothing about them is sent off-site when a page loads.</p></div>
     <div class="feature-card"><div class="feature-header"><span class="emoji purple">📊</span><h3>You see what's actually earning</h3></div><p>Track which posts, products and brands turn clicks into commissions. Conversions pulled back in from your network land in the same dashboard. No more switching tabs to do the math.</p></div>
-    <div class="feature-card"><div class="feature-header"><span class="emoji green">🛍️</span><h3>Your blog grows a shop</h3></div><p>Business tier: turn the same feed into a full storefront on your domain, with the categories, filters and design you choose. Visitors browse the way they'd browse any retailer's site.</p></div>
-    <div class="feature-card"><div class="feature-header"><span class="emoji blue">🚀</span><h3>Search engines treat you like a shop</h3></div><p>Business tier: structured data, sitemaps and bulk meta tools so your storefront earns the same SERP treatment as the real ones. None of it asks anything technical from you.</p></div>
+    <div class="feature-card"><div class="feature-header"><span class="emoji green">🛍️</span><h3>Your blog grows a shop</h3></div><p>E-commerce tier: turn the same feed into a full storefront on your domain, with the categories, filters and design you choose. Visitors browse the way they'd browse any retailer's site.</p></div>
+    <div class="feature-card"><div class="feature-header"><span class="emoji blue">🚀</span><h3>Search engines treat you like a shop</h3></div><p>E-commerce tier: structured data, sitemaps and bulk meta tools so your storefront earns the same SERP treatment as the real ones. None of it asks anything technical from you.</p></div>
   </div>
-  <p style="text-align:center;margin-top:32px"><a href="/ecommerce/" style="color:var(--accent-start);text-decoration:none;font-weight:500">See the Business storefront in action →</a></p>
+  <p style="text-align:center;margin-top:32px"><a href="/ecommerce/" style="color:var(--accent-start);text-decoration:none;font-weight:500">See the E-commerce storefront in action →</a></p>
 </div></section>
 <section class="pricing reveal" id="pricing"><div class="container">
   <div class="section-header"><h2>Pick where you are right now</h2><p>The free plugin covers your first feed. When your catalogue and your audience grow past it, the upgrade happens inside your WordPress dashboard. Your posts, your settings and your data carry over.</p></div>
   
   <div class="pricing-toggle" id="pricing-toggle">
-    <span class="toggle-tab active" id="tab-monthly">Monthly</span>
-    <span class="toggle-tab" id="tab-yearly">Annual — <span class="save-text">Save up to 29%</span></span>
+    <span class="toggle-tab" id="tab-monthly">Monthly</span>
+    <span class="toggle-tab active" id="tab-yearly">Annual — <span class="save-text">Save up to 18%</span></span>
+  </div>
+  <div class="pricing-toggle" id="sites-toggle">
+    <span class="toggle-tab active" data-sites="1">1 site</span>
+    <span class="toggle-tab" data-sites="3">3 sites</span>
   </div>
 
   <div class="pricing-grid">
     <div class="pricing-card">
       <div class="plan-name">Free</div>
       <div class="plan-desc-sub">Your first affiliate feed, on us</div>
-      <div class="plan-price"><span class="currency">$</span>0 <span class="period">/mo</span></div>
+      <div class="plan-price"><span class="currency">$</span>0<span class="plan-price-sub">Free forever, one feed</span></div>
       <div class="plan-includes">Includes</div>
       <ul class="plan-features">
         <li><span class="check">✓</span> 1 feed</li>
@@ -423,49 +433,54 @@ footer .footer-copy{color:var(--text-muted);font-size:.8rem;margin-top:16px}
       </ul>
       <a href="https://wordpress.org/plugins/myfeeds-affiliate-feed-manager/" class="plan-cta cta-outline">Add live product cards to my posts</a>
     </div>
-    <div class="pricing-card featured">
-      <div class="card-badge popular">MOST POPULAR</div>
-      <div class="plan-name">Pro</div>
-      <div class="plan-desc-sub">For when one feed isn't enough</div>
-      <div class="plan-price" id="price-pro">
-        <span class="currency">$</span><span class="price-amount">29</span> <span class="period">/mo</span>
-      </div>
+    <div class="pricing-card" data-plan="starter" data-monthly-1="9" data-annual-1="89">
+      <div class="plan-name">Starter</div>
+      <div class="plan-desc-sub">How it looks</div>
+      <div class="plan-price"><span class="currency">$</span><span class="price-amount">89</span> <span class="period">/year</span><span class="plan-price-sub">or $<span class="alt-amount">9</span> <span class="alt-period">per month</span></span><span class="plan-sites-note">Single site license</span></div>
       <div class="plan-includes">Everything in Free, plus</div>
       <ul class="plan-features">
         <li><span class="check blue">✓</span> Unlimited feeds</li>
         <li><span class="check blue">✓</span> Grid + Carousel layouts</li>
-        <li><span class="check blue">✓</span> Auto product sync (daily + on-demand)</li>
         <li><span class="check blue">✓</span> Card design editor</li>
         <li><span class="check blue">✓</span> Google Fonts + custom font upload</li>
-        <li><span class="check blue">✓</span> Smart Analytics Dashboard</li>
-        <li><span class="check blue">✓</span> Detect dead products + edit</li>
-        <li><span class="check blue">✓</span> Affiliate Conversion Sync</li>
-        <li><span class="check blue">✓</span> Support</li>
+        <li><span class="check blue">✓</span> Email support</li>
       </ul>
-      <a href="/install/#pro" style="display:block;text-align:center;margin-bottom:10px;color:var(--accent-start);text-decoration:none;font-size:.85rem;font-weight:500">Step-by-step install guide →</a>
-      <a href="https://checkout.freemius.com/plugin/21336/plan/35610/?trial=paid" class="plan-cta cta-primary">Try every Pro feature free for 7 days</a>
+      <a href="https://checkout.freemius.com/plugin/21336/plan/60599/?trial=paid" class="plan-cta cta-outline plan-checkout">Make my cards look like my brand</a>
       <p class="refund-badge">14-day money-back guarantee · Cancel from your dashboard</p>
     </div>
-    <div class="pricing-card">
-      <div class="card-badge value">BEST VALUE</div>
-      <div class="plan-name">Business</div>
-      <div class="plan-desc-sub">Your feed becomes a shop</div>
-      <div class="plan-price" id="price-business">
-        <span class="currency">$</span><span class="price-amount">129</span> <span class="period">/mo</span>
-      </div>
-      <div class="plan-includes">Everything in Pro, plus</div>
+    <div class="pricing-card featured" data-plan="pro" data-monthly-1="19" data-annual-1="199" data-monthly-3="39" data-annual-3="399">
+      <div class="card-badge popular">MOST POPULAR</div>
+      <div class="plan-name">Pro</div>
+      <div class="plan-desc-sub">What it earns</div>
+      <div class="plan-price"><span class="currency">$</span><span class="price-amount">199</span> <span class="period">/year</span><span class="plan-price-sub">or $<span class="alt-amount">19</span> <span class="alt-period">per month</span></span><span class="plan-sites-note">Single site license</span></div>
+      <div class="plan-includes">Everything in Starter, plus</div>
       <ul class="plan-features">
-        <li><span class="check blue">✓</span> Full Shop system + storefront</li>
-        <li><span class="check blue">✓</span> Storefront design editor</li>
-        <li><span class="check blue">✓</span> Smart categories</li>
-        <li><span class="check blue">✓</span> SEO engine + Bulk SEO tools</li>
-        <li><span class="check blue">✓</span> Auto-sitemap</li>
-        <li><span class="check blue">✓</span> Add products to shop from any post</li>
-        <li><span class="check blue">✓</span> Auto-cleanup of dead products</li>
+        <li><span class="check blue">✓</span> Smart analytics dashboard</li>
+        <li><span class="check blue">✓</span> Dead product detection</li>
+        <li><span class="check blue">✓</span> Google Analytics 4 bridge</li>
+        <li><span class="check blue">✓</span> Affiliate conversion sync</li>
         <li><span class="check blue">✓</span> Priority support</li>
       </ul>
+      <a href="/install/#pro" style="display:block;text-align:center;margin-bottom:10px;color:var(--accent-start);text-decoration:none;font-size:.85rem;font-weight:500">Step-by-step install guide →</a>
+      <a href="https://checkout.freemius.com/plugin/21336/plan/35610/?trial=paid" class="plan-cta cta-primary plan-checkout">Try every Pro feature free for 7 days</a>
+      <p class="refund-badge">14-day money-back guarantee · Cancel from your dashboard</p>
+    </div>
+    <div class="pricing-card" data-plan="business" data-monthly-1="49" data-annual-1="499" data-monthly-3="89" data-annual-3="899">
+      <div class="card-badge value">BEST VALUE</div>
+      <div class="plan-name">E-commerce</div>
+      <div class="plan-desc-sub">A shop of your own</div>
+      <div class="plan-price"><span class="currency">$</span><span class="price-amount">499</span> <span class="period">/year</span><span class="plan-price-sub">or $<span class="alt-amount">49</span> <span class="alt-period">per month</span></span><span class="plan-sites-note">Single site license</span></div>
+      <div class="plan-includes">Everything in Pro, plus</div>
+      <ul class="plan-features">
+        <li><span class="check blue">✓</span> Full shop system + storefront</li>
+        <li><span class="check blue">✓</span> Smart categories + filters</li>
+        <li><span class="check blue">✓</span> Storefront design editor</li>
+        <li><span class="check blue">✓</span> SEO engine + bulk SEO tools</li>
+        <li><span class="check blue">✓</span> Auto-sitemap</li>
+        <li><span class="check blue">✓</span> Curated collections</li>
+      </ul>
       <a href="/ecommerce/" style="display:block;text-align:center;margin-bottom:10px;color:var(--accent-start);text-decoration:none;font-size:.85rem;font-weight:500">See the storefront in action →</a>
-      <a href="https://checkout.freemius.com/plugin/21336/plan/48994/?trial=paid" class="plan-cta cta-gradient-border">Open my shop for 14 days, free</a>
+      <a href="https://checkout.freemius.com/plugin/21336/plan/48994/?trial=paid" class="plan-cta cta-gradient-border plan-checkout">Open my shop for 14 days, free</a>
       <p class="refund-badge">14-day money-back guarantee · Cancel from your dashboard</p>
     </div>
   </div>
@@ -489,7 +504,7 @@ footer .footer-copy{color:var(--text-muted);font-size:.8rem;margin-top:16px}
     </details>
     <details>
       <summary>What happens after the trial?</summary>
-      <p>The Pro trial is 7 days, the Business trial is 14 days. If you don't continue, your plugin falls back to the free tier. Your existing feeds, posts and configuration stay intact.</p>
+      <p>The Starter and Pro trials are 7 days, the E-commerce trial is 14 days. If you don't continue, your plugin falls back to the free tier. Your existing feeds, posts and configuration stay intact.</p>
     </details>
     <details>
       <summary>How long does setup take?</summary>
@@ -566,29 +581,68 @@ document.querySelectorAll('.layout-label').forEach(function(label){
   });
 });
 
-// Pricing toggle (pill tabs)
+// Pricing toggles — billing cycle and site count
 (function(){
   var tabMonthly = document.getElementById('tab-monthly');
   var tabYearly = document.getElementById('tab-yearly');
-  var pricePro = document.getElementById('price-pro');
-  var priceBusiness = document.getElementById('price-business');
+  var siteTabs = document.querySelectorAll('#sites-toggle .toggle-tab');
+  var cards = document.querySelectorAll('.pricing-card[data-plan]');
+  if (!tabMonthly || !tabYearly) return;
 
-  function setMonthly() {
-    tabMonthly.classList.add('active');
-    tabYearly.classList.remove('active');
-    pricePro.innerHTML = '<span class="currency">$</span><span class="price-amount">29</span> <span class="period">/mo</span>';
-    priceBusiness.innerHTML = '<span class="currency">$</span><span class="price-amount">129</span> <span class="period">/mo</span>';
+  var cycle = 'annual';
+  var sites = 1;
+
+  function render() {
+    tabMonthly.classList.toggle('active', cycle === 'monthly');
+    tabYearly.classList.toggle('active', cycle === 'annual');
+    siteTabs.forEach(function(tab){
+      tab.classList.toggle('active', tab.getAttribute('data-sites') === String(sites));
+    });
+
+    cards.forEach(function(card){
+      // Starter has no three-site price, so it stays on its
+      // single-site figures rather than showing a blank.
+      var tier = (sites === 3 && card.getAttribute('data-monthly-3')) ? 3 : 1;
+      var monthly = card.getAttribute('data-monthly-' + tier);
+      var annual = card.getAttribute('data-annual-' + tier);
+
+      var amount = card.querySelector('.price-amount');
+      var period = card.querySelector('.period');
+      var altAmount = card.querySelector('.alt-amount');
+      var altPeriod = card.querySelector('.alt-period');
+      var note = card.querySelector('.plan-sites-note');
+      var cta = card.querySelector('.plan-checkout');
+
+      if (cycle === 'annual') {
+        if (amount) amount.textContent = annual;
+        if (period) period.textContent = '/year';
+        if (altAmount) altAmount.textContent = monthly;
+        if (altPeriod) altPeriod.textContent = 'per month';
+      } else {
+        if (amount) amount.textContent = monthly;
+        if (period) period.textContent = '/mo';
+        if (altAmount) altAmount.textContent = annual;
+        if (altPeriod) altPeriod.textContent = 'per year';
+      }
+
+      if (note) note.textContent = (tier === 3) ? '3 site license' : 'Single site license';
+      if (cta) {
+        var base = cta.getAttribute('href').split('?')[0];
+        cta.setAttribute('href', base + '?trial=paid&billing_cycle=' + cycle + '&licenses=' + tier);
+      }
+    });
   }
 
-  function setYearly() {
-    tabYearly.classList.add('active');
-    tabMonthly.classList.remove('active');
-    pricePro.innerHTML = '<span class="currency">$</span><span class="price-amount">249</span> <span class="period">/year</span><span class="plan-original-price"><s>$349/year</s></span>';
-    priceBusiness.innerHTML = '<span class="currency">$</span><span class="price-amount">1099</span> <span class="period">/year</span><span class="plan-original-price"><s>$1549/year</s></span>';
-  }
+  tabMonthly.addEventListener('click', function(){ cycle = 'monthly'; render(); });
+  tabYearly.addEventListener('click', function(){ cycle = 'annual'; render(); });
+  siteTabs.forEach(function(tab){
+    tab.addEventListener('click', function(){
+      sites = parseInt(tab.getAttribute('data-sites'), 10) || 1;
+      render();
+    });
+  });
 
-  tabMonthly.addEventListener('click', setMonthly);
-  tabYearly.addEventListener('click', setYearly);
+  render();
 })();
 
 // FAQ accordion — single-open behaviour

@@ -610,15 +610,16 @@ img.pp{display:block;width:auto;height:auto;filter:drop-shadow(0 10px 16px rgba(
 .toggle-tab.active{background:var(--ink);color:#FCFBF8}
 .toggle-tab .save-text{color:var(--green);font-weight:700}
 .toggle-tab.active .save-text{color:#7BE0B4}
-.pricing-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:0;max-width:1060px;margin:0 auto;align-items:stretch;position:relative;z-index:2}
-@media(max-width:880px){.pricing-grid{grid-template-columns:1fr;max-width:430px;gap:18px}}
-.pricing-card{background:var(--surface);border:1px solid var(--line);padding:36px 32px;display:flex;flex-direction:column;position:relative}
-.pricing-card.side-l{border-radius:var(--radius) 0 0 var(--radius);border-right:none;margin:18px 0}
-.pricing-card.side-r{border-radius:0 var(--radius) var(--radius) 0;border-left:none;margin:18px 0}
-@media(max-width:880px){
-  .pricing-card.side-l,.pricing-card.side-r{border-radius:var(--radius);border:1px solid var(--line);margin:0}
-}
-.pricing-card.featured{background:linear-gradient(170deg,#6558E0 0%,var(--accent) 45%,#4C3DC8 100%);border:1px solid var(--accent);border-radius:var(--radius);color:#FFFFFF;box-shadow:0 34px 80px -22px rgba(88,73,214,.55);z-index:3;padding-top:44px}
+.pricing-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:14px;max-width:1200px;margin:0 auto;align-items:stretch;position:relative;z-index:2}
+@media(max-width:1120px){.pricing-grid{grid-template-columns:repeat(2,1fr);max-width:760px;gap:16px}}
+@media(max-width:660px){.pricing-grid{grid-template-columns:1fr;max-width:430px;gap:18px}}
+.pricing-card{background:var(--surface);border:1px solid var(--line);border-radius:var(--radius);padding:32px 26px;display:flex;flex-direction:column;position:relative}
+.pricing-card.featured{background:linear-gradient(170deg,#6558E0 0%,var(--accent) 45%,#4C3DC8 100%);border:1px solid var(--accent);border-radius:var(--radius);color:#FFFFFF;box-shadow:0 34px 80px -22px rgba(88,73,214,.55);z-index:3}
+.toggle-wrap{gap:12px;flex-wrap:wrap}
+.plan-price-sub{display:block;margin-top:9px;font-family:var(--sans);font-size:.82rem;font-weight:500;color:var(--ink-mute);letter-spacing:0}
+.featured .plan-price-sub{color:rgba(244,242,248,.6)}
+.plan-sites-note{display:block;margin-top:5px;font-family:var(--sans);font-size:.75rem;font-weight:500;color:var(--ink-mute);letter-spacing:0}
+.featured .plan-sites-note{color:rgba(244,242,248,.5)}
 .card-chip{display:inline-block;align-self:flex-start;font-size:.62rem;font-weight:700;letter-spacing:.12em;padding:5px 13px;border-radius:999px;margin-bottom:18px}
 .card-chip.popular{background:#FFFFFF;color:var(--accent)}
 .card-chip.value{background:var(--accent-soft);color:var(--accent);border:1px solid rgba(88,73,214,.2)}
@@ -627,7 +628,7 @@ img.pp{display:block;width:auto;height:auto;filter:drop-shadow(0 10px 16px rgba(
 .featured .plan-name{color:rgba(244,242,248,.55)}
 .plan-desc-sub{color:var(--ink-soft);font-size:.86rem;margin-bottom:22px}
 .featured .plan-desc-sub{color:rgba(244,242,248,.65)}
-.plan-price{font-family:var(--serif);font-size:2.9rem;font-weight:500;letter-spacing:-.02em;line-height:1;margin-bottom:2px;min-height:76px}
+.plan-price{font-family:var(--serif);font-size:2.5rem;font-weight:500;letter-spacing:-.02em;line-height:1;margin-bottom:2px;min-height:104px}
 .plan-price .currency{font-size:1.4rem;vertical-align:16px;margin-right:2px}
 .plan-price .period{font-family:var(--sans);font-size:.85rem;font-weight:400;color:var(--ink-mute)}
 .featured .plan-price .period{color:rgba(244,242,248,.5)}
@@ -1088,17 +1089,21 @@ footer .container{display:flex;justify-content:space-between;gap:40px;flex-wrap:
 
   <div class="toggle-wrap rv">
     <div class="pricing-toggle" id="pricing-toggle">
-      <span class="toggle-tab active" id="tab-monthly">Monthly</span>
-      <span class="toggle-tab" id="tab-yearly">Annual — <span class="save-text">Save up to 29%</span></span>
+      <span class="toggle-tab" id="tab-monthly">Monthly</span>
+      <span class="toggle-tab active" id="tab-yearly">Annual — <span class="save-text">Save up to 18%</span></span>
+    </div>
+    <div class="pricing-toggle" id="sites-toggle">
+      <span class="toggle-tab active" data-sites="1">1 site</span>
+      <span class="toggle-tab" data-sites="3">3 sites</span>
     </div>
   </div>
 
   <div class="pricing-grid">
-    <div class="pricing-card side-l rv">
+    <div class="pricing-card rv">
       <span class="card-chip ghost">&nbsp;</span>
       <div class="plan-name">Free</div>
       <div class="plan-desc-sub">Your first affiliate feed, on us</div>
-      <div class="plan-price"><span class="currency">$</span>0 <span class="period">/mo</span></div>
+      <div class="plan-price"><span class="currency">$</span>0<span class="plan-price-sub">Free forever, one feed</span></div>
       <div class="plan-includes">Includes</div>
       <ul class="plan-features">
         <li><span class="check">✓</span> 1 feed</li>
@@ -1110,49 +1115,55 @@ footer .container{display:flex;justify-content:space-between;gap:40px;flex-wrap:
       </ul>
       <a href="https://wordpress.org/plugins/myfeeds-affiliate-feed-manager/" class="plan-cta cta-outline">Add product cards to my posts</a>
     </div>
-    <div class="pricing-card featured rv">
-      <span class="card-chip popular">MOST POPULAR</span>
-      <div class="plan-name">Pro</div>
-      <div class="plan-desc-sub">For when one feed isn't enough</div>
-      <div class="plan-price" id="price-pro">
-        <span class="currency">$</span><span class="price-amount">29</span> <span class="period">/mo</span>
-      </div>
+    <div class="pricing-card rv" data-plan="starter" data-monthly-1="9" data-annual-1="89">
+      <span class="card-chip ghost">&nbsp;</span>
+      <div class="plan-name">Starter</div>
+      <div class="plan-desc-sub">How it looks</div>
+      <div class="plan-price"><span class="currency">$</span><span class="price-amount">89</span> <span class="period">/year</span><span class="plan-price-sub">or $<span class="alt-amount">9</span> <span class="alt-period">per month</span></span><span class="plan-sites-note">Single site license</span></div>
       <div class="plan-includes">Everything in Free, plus</div>
       <ul class="plan-features">
         <li><span class="check">✓</span> Unlimited feeds</li>
         <li><span class="check">✓</span> Grid + Carousel layouts</li>
-        <li><span class="check">✓</span> Auto product sync (daily + on-demand)</li>
         <li><span class="check">✓</span> Card design editor</li>
         <li><span class="check">✓</span> Google Fonts + custom font upload</li>
-        <li><span class="check">✓</span> Smart Analytics Dashboard</li>
-        <li><span class="check">✓</span> Detect dead products + edit</li>
-        <li><span class="check">✓</span> Affiliate Conversion Sync</li>
-        <li><span class="check">✓</span> Support</li>
+        <li><span class="check">✓</span> Email support</li>
       </ul>
-      <a href="/install/#pro" class="plan-link">Step-by-step install guide →</a>
-      <a href="https://checkout.freemius.com/plugin/21336/plan/35610/?trial=paid" class="plan-cta cta-paper">Try every Pro feature free for 7 days</a>
+      <a href="https://checkout.freemius.com/plugin/21336/plan/60599/?trial=paid" class="plan-cta cta-outline plan-checkout">Make my cards look like my brand</a>
       <p class="refund-badge">14-day money-back guarantee · Cancel from your dashboard</p>
     </div>
-    <div class="pricing-card side-r rv">
-      <span class="card-chip value">BEST VALUE</span>
-      <div class="plan-name">Business</div>
-      <div class="plan-desc-sub">Your feed becomes a shop</div>
-      <div class="plan-price" id="price-business">
-        <span class="currency">$</span><span class="price-amount">129</span> <span class="period">/mo</span>
-      </div>
-      <div class="plan-includes">Everything in Pro, plus</div>
+    <div class="pricing-card featured rv" data-plan="pro" data-monthly-1="19" data-annual-1="199" data-monthly-3="39" data-annual-3="399">
+      <span class="card-chip popular">MOST POPULAR</span>
+      <div class="plan-name">Pro</div>
+      <div class="plan-desc-sub">What it earns</div>
+      <div class="plan-price"><span class="currency">$</span><span class="price-amount">199</span> <span class="period">/year</span><span class="plan-price-sub">or $<span class="alt-amount">19</span> <span class="alt-period">per month</span></span><span class="plan-sites-note">Single site license</span></div>
+      <div class="plan-includes">Everything in Starter, plus</div>
       <ul class="plan-features">
-        <li><span class="check">✓</span> Full Shop system + storefront</li>
-        <li><span class="check">✓</span> Storefront design editor</li>
-        <li><span class="check">✓</span> Smart categories</li>
-        <li><span class="check">✓</span> SEO engine + Bulk SEO tools</li>
-        <li><span class="check">✓</span> Auto-sitemap</li>
-        <li><span class="check">✓</span> Add products to shop from any post</li>
-        <li><span class="check">✓</span> Auto-cleanup of dead products</li>
+        <li><span class="check">✓</span> Smart analytics dashboard</li>
+        <li><span class="check">✓</span> Dead product detection</li>
+        <li><span class="check">✓</span> Google Analytics 4 bridge</li>
+        <li><span class="check">✓</span> Affiliate conversion sync</li>
         <li><span class="check">✓</span> Priority support</li>
       </ul>
+      <a href="/install/#pro" class="plan-link">Step-by-step install guide →</a>
+      <a href="https://checkout.freemius.com/plugin/21336/plan/35610/?trial=paid" class="plan-cta cta-paper plan-checkout">Try every Pro feature free for 7 days</a>
+      <p class="refund-badge">14-day money-back guarantee · Cancel from your dashboard</p>
+    </div>
+    <div class="pricing-card rv" data-plan="business" data-monthly-1="49" data-annual-1="499" data-monthly-3="89" data-annual-3="899">
+      <span class="card-chip value">BEST VALUE</span>
+      <div class="plan-name">E-commerce</div>
+      <div class="plan-desc-sub">A shop of your own</div>
+      <div class="plan-price"><span class="currency">$</span><span class="price-amount">499</span> <span class="period">/year</span><span class="plan-price-sub">or $<span class="alt-amount">49</span> <span class="alt-period">per month</span></span><span class="plan-sites-note">Single site license</span></div>
+      <div class="plan-includes">Everything in Pro, plus</div>
+      <ul class="plan-features">
+        <li><span class="check">✓</span> Full shop system + storefront</li>
+        <li><span class="check">✓</span> Smart categories + filters</li>
+        <li><span class="check">✓</span> Storefront design editor</li>
+        <li><span class="check">✓</span> SEO engine + bulk SEO tools</li>
+        <li><span class="check">✓</span> Auto-sitemap</li>
+        <li><span class="check">✓</span> Curated collections</li>
+      </ul>
       <a href="/ecommerce/" class="plan-link">See the storefront in action →</a>
-      <a href="https://checkout.freemius.com/plugin/21336/plan/48994/?trial=paid" class="plan-cta cta-ink">Open my shop for 14 days, free</a>
+      <a href="https://checkout.freemius.com/plugin/21336/plan/48994/?trial=paid" class="plan-cta cta-ink plan-checkout">Open my shop for 14 days, free</a>
       <p class="refund-badge">14-day money-back guarantee · Cancel from your dashboard</p>
     </div>
   </div>
@@ -1179,7 +1190,7 @@ footer .container{display:flex;justify-content:space-between;gap:40px;flex-wrap:
       </details>
       <details>
         <summary>What happens after the trial?</summary>
-        <p>The Pro trial is 7 days, the Business trial is 14 days. If you don't continue, your plugin falls back to the free tier. Your existing feeds, posts and configuration stay intact.</p>
+        <p>The Starter and Pro trials are 7 days, the E-commerce trial is 14 days. If you don't continue, your plugin falls back to the free tier. Your existing feeds, posts and configuration stay intact.</p>
       </details>
       <details>
         <summary>How long does setup take?</summary>
@@ -1419,29 +1430,68 @@ if (hamburger) {
   });
 })();
 
-// Pricing toggle
+// Pricing toggles — billing cycle and site count
 ;(function () {
   var tabMonthly = document.getElementById('tab-monthly');
   var tabYearly = document.getElementById('tab-yearly');
-  var pricePro = document.getElementById('price-pro');
-  var priceBusiness = document.getElementById('price-business');
+  var siteTabs = document.querySelectorAll('#sites-toggle .toggle-tab');
+  var cards = document.querySelectorAll('.pricing-card[data-plan]');
+  if (!tabMonthly || !tabYearly) return;
 
-  function setMonthly() {
-    tabMonthly.classList.add('active');
-    tabYearly.classList.remove('active');
-    pricePro.innerHTML = '<span class="currency">$</span><span class="price-amount">29</span> <span class="period">/mo</span>';
-    priceBusiness.innerHTML = '<span class="currency">$</span><span class="price-amount">129</span> <span class="period">/mo</span>';
+  var cycle = 'annual';
+  var sites = 1;
+
+  function render() {
+    tabMonthly.classList.toggle('active', cycle === 'monthly');
+    tabYearly.classList.toggle('active', cycle === 'annual');
+    siteTabs.forEach(function (tab) {
+      tab.classList.toggle('active', tab.getAttribute('data-sites') === String(sites));
+    });
+
+    cards.forEach(function (card) {
+      // Starter has no three-site price, so it stays on its
+      // single-site figures rather than showing a blank.
+      var tier = (sites === 3 && card.getAttribute('data-monthly-3')) ? 3 : 1;
+      var monthly = card.getAttribute('data-monthly-' + tier);
+      var annual = card.getAttribute('data-annual-' + tier);
+
+      var amount = card.querySelector('.price-amount');
+      var period = card.querySelector('.period');
+      var altAmount = card.querySelector('.alt-amount');
+      var altPeriod = card.querySelector('.alt-period');
+      var note = card.querySelector('.plan-sites-note');
+      var cta = card.querySelector('.plan-checkout');
+
+      if (cycle === 'annual') {
+        if (amount) amount.textContent = annual;
+        if (period) period.textContent = '/year';
+        if (altAmount) altAmount.textContent = monthly;
+        if (altPeriod) altPeriod.textContent = 'per month';
+      } else {
+        if (amount) amount.textContent = monthly;
+        if (period) period.textContent = '/mo';
+        if (altAmount) altAmount.textContent = annual;
+        if (altPeriod) altPeriod.textContent = 'per year';
+      }
+
+      if (note) note.textContent = (tier === 3) ? '3 site license' : 'Single site license';
+      if (cta) {
+        var base = cta.getAttribute('href').split('?')[0];
+        cta.setAttribute('href', base + '?trial=paid&billing_cycle=' + cycle + '&licenses=' + tier);
+      }
+    });
   }
 
-  function setYearly() {
-    tabYearly.classList.add('active');
-    tabMonthly.classList.remove('active');
-    pricePro.innerHTML = '<span class="currency">$</span><span class="price-amount">249</span> <span class="period">/year</span><span class="plan-original-price"><s>$349/year</s></span>';
-    priceBusiness.innerHTML = '<span class="currency">$</span><span class="price-amount">1099</span> <span class="period">/year</span><span class="plan-original-price"><s>$1549/year</s></span>';
-  }
+  tabMonthly.addEventListener('click', function () { cycle = 'monthly'; render(); });
+  tabYearly.addEventListener('click', function () { cycle = 'annual'; render(); });
+  siteTabs.forEach(function (tab) {
+    tab.addEventListener('click', function () {
+      sites = parseInt(tab.getAttribute('data-sites'), 10) || 1;
+      render();
+    });
+  });
 
-  tabMonthly.addEventListener('click', setMonthly);
-  tabYearly.addEventListener('click', setYearly);
+  render();
 })();
 
 // FAQ accordion — single-open behaviour
