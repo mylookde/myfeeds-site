@@ -1139,7 +1139,7 @@ footer .container{display:flex;justify-content:space-between;gap:40px;flex-wrap:
         <li><span class="check">✓</span> Google Fonts + custom font upload</li>
         <li><span class="check">✓</span> Email support</li>
       </ul>
-      <a href="https://checkout.freemius.com/plugin/21336/plan/60599/?trial=paid" class="plan-cta cta-outline plan-checkout">Make my cards look like my brand</a>
+      <a href="https://checkout.freemius.com/plugin/21336/plan/60599/?trial=paid" data-checkout-base="https://checkout.freemius.com/plugin/21336/plan/60599" class="plan-cta cta-outline plan-checkout">Make my cards look like my brand</a>
       <p class="refund-badge">14-day money-back guarantee · Cancel from your dashboard</p>
     </div>
     <div class="pricing-card featured rv" data-plan="pro" data-monthly-1="19" data-annual-1="199" data-monthly-3="39" data-annual-3="399">
@@ -1156,7 +1156,7 @@ footer .container{display:flex;justify-content:space-between;gap:40px;flex-wrap:
         <li><span class="check">✓</span> Priority support</li>
       </ul>
       <a href="/install/#pro" class="plan-link">Step-by-step install guide →</a>
-      <a href="https://checkout.freemius.com/plugin/21336/plan/35610/?trial=paid" class="plan-cta cta-paper plan-checkout">Try every Pro feature free for 7 days</a>
+      <a href="https://checkout.freemius.com/plugin/21336/plan/35610/?trial=paid" data-checkout-base="https://checkout.freemius.com/plugin/21336/plan/35610" class="plan-cta cta-paper plan-checkout">Try every Pro feature free for 7 days</a>
       <p class="refund-badge">14-day money-back guarantee · Cancel from your dashboard</p>
     </div>
     <div class="pricing-card rv" data-plan="business" data-monthly-1="49" data-annual-1="499" data-monthly-3="89" data-annual-3="899">
@@ -1174,7 +1174,7 @@ footer .container{display:flex;justify-content:space-between;gap:40px;flex-wrap:
         <li><span class="check">✓</span> Curated collections</li>
       </ul>
       <a href="/ecommerce/" class="plan-link">See the storefront in action →</a>
-      <a href="https://checkout.freemius.com/plugin/21336/plan/48994/?trial=paid" class="plan-cta cta-ink plan-checkout">Open my shop for 14 days, free</a>
+      <a href="https://checkout.freemius.com/plugin/21336/plan/48994/?trial=paid" data-checkout-base="https://checkout.freemius.com/plugin/21336/plan/48994" class="plan-cta cta-ink plan-checkout">Open my shop for 14 days, free</a>
       <p class="refund-badge">14-day money-back guarantee · Cancel from your dashboard</p>
     </div>
   </div>
@@ -1487,8 +1487,14 @@ if (hamburger) {
 
       if (note) note.textContent = (tier === 3) ? '3 site license' : 'Single site license';
       if (cta) {
-        var base = cta.getAttribute('href').split('?')[0];
-        cta.setAttribute('href', base + '?trial=paid&billing_cycle=' + cycle + '&licenses=' + tier);
+        // Freemius expresses the site count as a path segment, not a query
+        // parameter, and rejects it for a plan that has no multi-site price
+        // (Starter 60599 returns an error page for /licenses/3/). Reading
+        // the base from its own attribute keeps this idempotent — deriving
+        // it from href would accumulate segments on every re-render.
+        var base = cta.getAttribute('data-checkout-base');
+        var seats = (tier === 3) ? '/licenses/3/' : '/';
+        cta.setAttribute('href', base + seats + '?trial=paid&billing_cycle=' + cycle);
       }
     });
   }
