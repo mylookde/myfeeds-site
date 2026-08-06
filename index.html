@@ -725,7 +725,7 @@ footer .container{display:flex;justify-content:space-between;gap:40px;flex-wrap:
     <a href="#pricing">Pricing</a>
     <a href="#faq">FAQ</a>
     <a href="/ecommerce/">E-commerce</a>
-    <a href="https://wordpress.org/plugins/myfeeds-affiliate-feed-manager/" class="nav-cta">Get Started</a>
+    <a href="#pricing" class="nav-cta">Get Started</a>
   </div>
 </div></nav>
 
@@ -742,7 +742,7 @@ footer .container{display:flex;justify-content:space-between;gap:40px;flex-wrap:
       <li>First cards live in about five minutes</li>
     </ul>
     <div class="hero-actions">
-      <a href="https://wordpress.org/plugins/myfeeds-affiliate-feed-manager/" class="btn btn-cta">Add product cards to my posts →</a>
+      <a href="#pricing" class="btn btn-cta">Add product cards to my posts →</a>
       <a href="#how" class="btn btn-ghost">See a live card ↓</a>
     </div>
     <div class="hero-trust">
@@ -945,7 +945,7 @@ footer .container{display:flex;justify-content:space-between;gap:40px;flex-wrap:
     <img src="/assets/screenshot-card-design-editor.png" alt="MyFeeds Pro card design editor with controls and a live preview card on the right" loading="lazy">
   </div>
   <p class="frame-caption rv">A glimpse of the Pro editor. The live screen opens plenty more.</p>
-  <div class="center-cta rv"><a href="https://wordpress.org/plugins/myfeeds-affiliate-feed-manager/" class="btn btn-cta">Add product cards to my posts →</a></div>
+  <div class="center-cta rv"><a href="#pricing" class="btn btn-cta">Add product cards to my posts →</a></div>
 </div></section>
 
 <section id="storefront" class="bleed bleed-amber">
@@ -1025,7 +1025,7 @@ footer .container{display:flex;justify-content:space-between;gap:40px;flex-wrap:
     </div>
   </div>
   <p class="features-link rv"><a href="/ecommerce/" class="link-arrow">See the whole storefront in action →</a></p>
-  <div class="center-cta rv"><a href="https://wordpress.org/plugins/myfeeds-affiliate-feed-manager/" class="btn btn-cta">Add product cards to my posts →</a></div>
+  <div class="center-cta rv"><a href="#pricing" class="btn btn-cta">Add product cards to my posts →</a></div>
 </div></section>
 
 <section id="comparison"><div class="container">
@@ -1073,7 +1073,7 @@ footer .container{display:flex;justify-content:space-between;gap:40px;flex-wrap:
       <div class="comparison-cell highlight">A shop</div>
     </div>
   </div>
-  <div class="center-cta rv"><a href="https://wordpress.org/plugins/myfeeds-affiliate-feed-manager/" class="btn btn-cta">Add product cards to my posts →</a></div>
+  <div class="center-cta rv"><a href="#pricing" class="btn btn-cta">Add product cards to my posts →</a></div>
 </div></section>
 
 <section class="explain-wrap"><div class="container">
@@ -1246,7 +1246,7 @@ footer .container{display:flex;justify-content:space-between;gap:40px;flex-wrap:
   <div class="wash"><i></i></div>
   <h2 class="rv">Look like a shop, <em>not a link list.</em></h2>
   <p class="fc-stat rv"><strong>First cards live in about five minutes.</strong> Begin on the free plan and move up when you're ready.</p>
-  <a href="https://wordpress.org/plugins/myfeeds-affiliate-feed-manager/" class="btn btn-cta rv">Add product cards to my posts →</a>
+  <a href="#pricing" class="btn btn-cta rv">Add product cards to my posts →</a>
 </div>
 
 <footer><div class="container">
@@ -1285,6 +1285,14 @@ if (hamburger) {
   });
   document.addEventListener('click', function (e) {
     if (!hamburger.contains(e.target) && !navLinks.contains(e.target)) {
+      navLinks.classList.remove('open');
+    }
+  });
+  // Every nav entry is an in-page anchor now, so a tap has to fold the
+  // menu away — otherwise it stays open on top of the section it just
+  // scrolled to.
+  navLinks.addEventListener('click', function (e) {
+    if (e.target.closest('a')) {
       navLinks.classList.remove('open');
     }
   });
