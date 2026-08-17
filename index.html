@@ -119,6 +119,12 @@ nav .container{display:flex;align-items:center;justify-content:space-between;hei
 .btn-cta:hover{background:var(--accent-deep);transform:translateY(-1px);box-shadow:0 14px 32px -8px rgba(88,73,214,.6)}
 .btn-ghost{background:transparent;color:var(--ink-soft) !important;border:1px solid var(--line);padding:13px 25px}
 .btn-ghost:hover{border-color:var(--ink-mute);color:var(--ink) !important}
+/* A phone reader has just come through three disadvantages and the answer
+   to them, with the next call to action still a long scroll away. On a
+   desktop the pricing is closer and the page reads faster, so this one
+   stays off there. */
+.stakes-cta{display:none}
+@media(max-width:640px){.stakes-cta{display:flex;justify-content:center;margin:0 0 46px}}
 .stakes-line{text-align:center;font-size:1.05rem;line-height:1.65;color:var(--ink-soft);padding:64px 28px 56px;max-width:920px;margin:0 auto}
 .stakes-line b{color:var(--green);font-weight:700}
 
@@ -380,6 +386,10 @@ img.pp{display:block;width:auto;height:auto;filter:drop-shadow(0 10px 16px rgba(
 .cine-sub{font-size:1.05rem;color:var(--ink-soft);max-width:420px}
 .cine-c2 .cine-sub{color:rgba(246,244,251,.72)}
 @media(max-width:880px){.cine-sub{margin:0 auto}}
+/* The chapter copy centres on a phone, but the mock screens inside the
+   visual are interface: a product card reads down its left edge on a
+   phone exactly as it does on a laptop. */
+@media(max-width:880px){.cine-viz{text-align:left}}
 .cine-viz{position:relative;z-index:2;display:flex;justify-content:center;align-items:center;min-height:60vh}
 /* Unpinned, the visual sits in normal flow and brings its own height, so
    the reserved 42vh only added dead paper between copy and picture. */
@@ -845,7 +855,9 @@ footer .container{display:flex;justify-content:space-between;gap:40px;flex-wrap:
   </div>
 </div></section>
 
-<p class="stakes-line rv"><b>Shoppable product cards, in your own design, from the feed you already have.</b> Import the feed once and pick products from inside the post editor. The cards carry your colours, your fonts and your spacing, and because they read from the feed, prices and stock keep themselves right without you.</p>
+<p class="stakes-line rv"><b>Shoppable product cards, in your own design, from a file you already have.</b> Your affiliate network hands you a product feed: one file with every product, its price, its picture and your tracking link. Import it once, then pick products from inside the post editor. The cards carry your colours, your fonts and your spacing, and because they read from that file, prices and stock stay right without you.</p>
+
+<div class="stakes-cta rv"><a href="#pricing" class="btn btn-cta">Get started →</a></div>
 
 
 <section id="how" class="cine">
@@ -862,8 +874,8 @@ footer .container{display:flex;justify-content:space-between;gap:40px;flex-wrap:
         <div class="cine-bg"></div>
         <div class="container">
           <div class="cine-copy">
-            <span class="cine-num">01 — Connect</span>
-            <h2 class="cine-title">Point it at your <em>affiliate feed.</em></h2>
+            <span class="cine-num">01 — Import</span>
+            <h2 class="cine-title">Paste your network's <em>product feed.</em></h2>
             <p class="cine-sub">One feed per retailer. Name it, paste the URL, done. MyFeeds detects the network, works out which column is which, and imports in the background while you carry on.</p>
           </div>
           <div class="cine-viz">
@@ -892,8 +904,8 @@ footer .container{display:flex;justify-content:space-between;gap:40px;flex-wrap:
         <div class="cine-bg"></div>
         <div class="container">
           <div class="cine-copy">
-            <span class="cine-num">02 — Pick</span>
-            <h2 class="cine-title">Drop products in <em>without leaving the editor.</em></h2>
+            <span class="cine-num">02 — Choose</span>
+            <h2 class="cine-title">Choose products <em>without leaving the editor.</em></h2>
             <p class="cine-sub">Search your whole catalogue inside the post editor, narrow it by brand, colour or sale, and add what you want to the selection. No new tab, no copy, no paste, no missed link.</p>
           </div>
           <div class="cine-viz">
@@ -938,7 +950,7 @@ footer .container{display:flex;justify-content:space-between;gap:40px;flex-wrap:
         <div class="container">
           <div class="cine-copy">
             <span class="cine-num">03 — Publish</span>
-            <h2 class="cine-title">Hit publish. It <em>keeps itself alive.</em></h2>
+            <h2 class="cine-title">Hit publish. The cards <em>keep themselves current.</em></h2>
             <p class="cine-sub">Your readers see current prices, current stock, your affiliate link baked in. Every card refreshes itself, next month and next year.</p>
             <span class="pub-live"><i></i>Price updated · just now</span>
           </div>
