@@ -720,6 +720,8 @@ img.pp{display:block;width:auto;height:auto;filter:drop-shadow(0 10px 16px rgba(
 /* ── Networks ── */
 .networks{text-align:center;padding:70px 0}
 .networks h3{font-size:.8rem;text-transform:uppercase;letter-spacing:.16em;color:var(--ink-mute);font-weight:600;margin-bottom:18px}
+.networks .net-note{color:var(--ink-soft);font-size:.86rem;max-width:600px;margin:26px auto 0;line-height:1.6}
+.networks .net-note b{color:var(--ink)}
 .networks .net-sub{color:var(--ink-soft);font-size:.88rem;max-width:540px;margin:0 auto 30px;line-height:1.55}
 .network-badges{display:flex;gap:10px;justify-content:center;flex-wrap:wrap;max-width:760px;margin:0 auto}
 .network-badge{padding:9px 20px;border-radius:999px;background:var(--surface);border:1px solid var(--line);font-size:.85rem;font-weight:600;color:var(--ink-soft)}
@@ -1273,9 +1275,10 @@ footer .container{display:flex;justify-content:space-between;gap:40px;flex-wrap:
     <span class="network-badge">Pepperjam</span>
     <span class="network-badge">FlexOffers</span>
     <span class="network-badge">Sovrn</span>
-    <span class="network-badge soon">Amazon (coming soon)</span>
+    <span class="network-badge">Amazon</span>
     <span class="network-badge soon">eBay (coming soon)</span>
   </div>
+  <p class="net-note rv"><b>Amazon is in, and it is the one that works differently.</b> Amazon publishes no feed file, so MyFeeds pulls its products live through their Creators API. Amazon opens that access once your associates account has ten qualified sales in thirty days. Starter plan and up.</p>
 </div></section>
 
 <div class="final-cta">
