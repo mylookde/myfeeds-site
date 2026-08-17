@@ -715,11 +715,6 @@ img.pp{display:block;width:auto;height:auto;filter:drop-shadow(0 10px 16px rgba(
 .final-cta h2 em{font-style:italic;color:#A79CF2}
 .final-cta .fc-stat{color:rgba(244,242,248,.6);font-size:.95rem;margin-bottom:36px;position:relative;z-index:2}
 .final-cta .fc-stat strong{color:#F4F2F8}
-/* Second way out of the closing block: the pricing table is the funnel,
-   the storefront page is for the reader who wants to see it first. */
-.final-cta .fc-alt{margin-top:18px;position:relative;z-index:2}
-.final-cta .fc-alt a{color:rgba(244,242,248,.62);font-size:.92rem;text-decoration:none;border-bottom:1px solid rgba(244,242,248,.24);padding-bottom:2px}
-.final-cta .fc-alt a:hover{color:#F4F2F8;border-bottom-color:rgba(244,242,248,.6)}
 .final-cta .btn-paper{background:#FCFBF8;color:var(--ink) !important;position:relative;z-index:2}
 .final-cta .btn-paper:hover{transform:translateY(-1px);box-shadow:0 14px 34px -8px rgba(0,0,0,.55)}
 
@@ -1265,10 +1260,9 @@ footer .container{display:flex;justify-content:space-between;gap:40px;flex-wrap:
 
 <div class="final-cta">
   <div class="wash"><i></i></div>
-  <h2 class="rv">And when you are ready, <em>a whole shop.</em></h2>
-  <p class="fc-stat rv"><strong>First cards live in about five minutes.</strong> Start on the free plan. When you want the same products browsable on your own domain, that is the E-commerce plan.</p>
+  <h2 class="rv">Look like a shop, <em>not a post full of links.</em></h2>
+  <p class="fc-stat rv"><strong>First cards live in about five minutes.</strong> Begin on the free plan and move up when you're ready.</p>
   <a href="#pricing" class="btn btn-cta rv">Add product cards to my posts →</a>
-  <p class="fc-alt rv"><a href="/ecommerce/">See what the storefront looks like →</a></p>
 </div>
 
 <footer><div class="container">
@@ -1395,13 +1389,7 @@ if (hamburger) {
   var section = document.getElementById('how');
   var track = document.getElementById('cine-track');
   var reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-  // Phones do not get the pinned stage. It has to hold the section title,
-  // a paragraph and a visual inside one screen, and on a 375x812 handset
-  // chapter three alone needs 871px of that 812: the visual ran past the
-  // bottom, crossed the caption and the copy slid under the title. The
-  // stacked layout underneath was built for exactly this and reads fine.
-  var narrow = !window.matchMedia('(min-width: 881px)').matches;
-  if (!section || !track || typeof window.gsap === 'undefined' || typeof window.ScrollTrigger === 'undefined' || reduce || narrow) {
+  if (!section || !track || typeof window.gsap === 'undefined' || typeof window.ScrollTrigger === 'undefined' || reduce) {
     return; // base stacked layout stays; content fully readable
   }
 
@@ -1413,18 +1401,37 @@ if (hamburger) {
   // stops scrolling. scrub:1 below already gives the cinematic lag.
 
   // Section-title line reveals (SplitText is free since 2025).
+  // Phones do not get the pinned stage. It has to hold the section title,
+  // a paragraph and a visual inside one screen, and on a 375x812 handset
+  // chapter three alone needs 871px of that 812: the visual ran past the
+  // bottom, crossed the caption and the copy slid under the title. The
+  // stacked layout underneath was built for exactly this and reads fine.
+  //
+  // matchMedia rather than one check at load: a check at load only knows
+  // the window the page opened in. Resize a desktop window, rotate a
+  // tablet or switch DevTools to a phone and the pin stayed on at 375px
+  // wide, which is exactly how it looked broken. This sets up on entering
+  // the range and reverts what it made on leaving.
+  gsap.matchMedia().add('(min-width: 881px)', function () {
+  section.classList.add('cine-on');
+
+  // Line reveals live in here too. Split headings sit in a flex row and
+  // shrink to their widest line, which on a phone is a narrower column
+  // than the text needs; and until the trigger fires the lines are parked
+  // out of sight. Neither is worth it on a screen that shows one heading
+  // at a time.
+  var splits = [];
   if (window.SplitText) {
     gsap.registerPlugin(SplitText);
     document.querySelectorAll('.sec-head h2').forEach(function (h) {
       var sp = new SplitText(h, { type: 'lines', mask: 'lines' });
+      splits.push(sp);
       gsap.from(sp.lines, {
         yPercent: 115, duration: 0.85, stagger: 0.1, ease: 'power3.out',
         scrollTrigger: { trigger: h, start: 'top 84%' }
       });
     });
   }
-
-  section.classList.add('cine-on');
   var chapters = gsap.utils.toArray('.cine-chapter');
   var dots = gsap.utils.toArray('.cine-rail .cine-dot');
   var stage = document.querySelector('.cine-stage');
@@ -1463,6 +1470,15 @@ if (hamburger) {
     .to(price, { v: 59.9, duration: 0.6, onUpdate: writePrice }, 2.95)
     .to('#cine-badge', { autoAlpha: 1, scale: 1, duration: 0.3, ease: 'back.out(2)' }, 3.35)
     .to({}, { duration: 0.4 });
+
+  return function cleanup() {
+    // Tweens and ScrollTriggers created in here get reverted for us. The
+    // class and the split headings are ours to put back.
+    section.classList.remove('cine-on');
+    if (stage) stage.classList.remove('cine-c2-active');
+    splits.forEach(function (sp) { sp.revert(); });
+  };
+  });
 })();
 
 // Layout toggle
