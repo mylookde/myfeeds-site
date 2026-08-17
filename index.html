@@ -65,8 +65,16 @@
   --shadow-card:0 1px 2px rgba(26,23,32,.04),0 12px 40px -12px rgba(26,23,32,.12);
   --shadow-float:0 2px 4px rgba(26,23,32,.05),0 30px 70px -18px rgba(26,23,32,.25);
 }
-html{scroll-behavior:smooth}
-body{background:var(--paper);color:var(--ink);font-family:var(--sans);font-size:16px;line-height:1.6;overflow-x:hidden;-webkit-font-smoothing:antialiased}
+/* clip, and on html as well as body: body alone does not stop the page
+   from growing, the document element still reports the wider box. On a
+   phone that is what lets the reader pinch out to a page that no longer
+   fills its own width - measured at 390px wide, the document was 515.
+   The overhang is deliberate decoration (an oversized ghost word, the
+   glow behind chapter three, a tilted card), so it gets clipped rather
+   than moved. clip and not hidden, because clip creates no scroll box
+   and leaves position:sticky alone. */
+html{scroll-behavior:smooth;overflow-x:clip}
+body{background:var(--paper);color:var(--ink);font-family:var(--sans);font-size:16px;line-height:1.6;overflow-x:clip;-webkit-font-smoothing:antialiased}
 [hidden]{display:none !important}
 .container{max-width:1180px;margin:0 auto;padding:0 28px}
 h1,h2{font-family:var(--serif);font-weight:500;letter-spacing:-.01em}
@@ -751,7 +759,7 @@ footer .container{display:flex;justify-content:space-between;gap:40px;flex-wrap:
   <div>
     <div class="hero-badge"><span class="dot"></span> Now available for WordPress</div>
     <h1>Make your blog <em>shoppable.</em></h1>
-    <p class="lede">Upload your affiliate product feed. MyFeeds builds product cards in your own design in minutes, and a whole storefront when you want one.</p>
+    <p class="lede">Import your affiliate product feed once, then drop shoppable product cards into any post in your own design. A full storefront is there later, when you want one.</p>
     <ul class="value-stack">
       <li>Any affiliate network that hands you a feed</li>
       <li>Your colours, your fonts, your spacing</li>
@@ -821,23 +829,23 @@ footer .container{display:flex;justify-content:space-between;gap:40px;flex-wrap:
   <div class="stakes-grid">
     <div class="stake rv">
       <span class="stake-n">One</span>
-      <h3>It reads like a hobby</h3>
-      <p>A row of blue links and borrowed thumbnails tells a reader you are passing them on to someone else. A shop tells them they have arrived.</p>
+      <h3>Readers see links, not products</h3>
+      <p>A row of blue links and borrowed thumbnails asks the reader to go and look somewhere else. A product card with a picture, a price and a button lets them decide right there in your post.</p>
     </div>
     <div class="stake rv">
       <span class="stake-n">Two</span>
-      <h3>Every product eats ten minutes</h3>
+      <h3>Every product takes ten minutes by hand</h3>
       <p>Copy the link, save the image, retype the price, format the block, repeat. That is an afternoon per roundup that should have gone into the next post.</p>
     </div>
     <div class="stake rv">
       <span class="stake-n">Three</span>
-      <h3>By next month it is wrong</h3>
+      <h3>Prices and stock go out of date</h3>
       <p>Prices move, sizes sell out, merchants pull products. Your best post keeps sending readers to a page that no longer exists.</p>
     </div>
   </div>
 </div></section>
 
-<p class="stakes-line rv"><b>A shop, in your own design, from the feed you already have.</b> MyFeeds reads your affiliate feed and turns it into product cards that carry your colours, your fonts and your spacing. And because they read from the feed, prices and stock keep themselves right without you.</p>
+<p class="stakes-line rv"><b>Shoppable product cards, in your own design, from the feed you already have.</b> Import the feed once and pick products from inside the post editor. The cards carry your colours, your fonts and your spacing, and because they read from the feed, prices and stock keep themselves right without you.</p>
 
 
 <section id="how" class="cine">
@@ -1086,7 +1094,7 @@ footer .container{display:flex;justify-content:space-between;gap:40px;flex-wrap:
     <div class="comparison-row comparison-verdict">
       <div class="comparison-cell label">What the reader sees</div>
       <div class="comparison-cell">A list of links</div>
-      <div class="comparison-cell highlight">A shop</div>
+      <div class="comparison-cell highlight">Product cards they can buy from</div>
     </div>
   </div>
   <div class="center-cta rv"><a href="#pricing" class="btn btn-cta">Add product cards to my posts →</a></div>

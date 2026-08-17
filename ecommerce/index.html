@@ -51,8 +51,16 @@
   --radius:14px;
   --shadow-float:0 2px 4px rgba(26,23,32,.05),0 30px 70px -18px rgba(26,23,32,.25);
 }
-html{scroll-behavior:smooth}
-body{background:var(--paper);color:var(--ink);font-family:var(--sans);font-size:16px;line-height:1.6;overflow-x:hidden;-webkit-font-smoothing:antialiased}
+/* clip, and on html as well as body: body alone does not stop the page
+   from growing, the document element still reports the wider box. On a
+   phone that is what lets the reader pinch out to a page that no longer
+   fills its own width - measured at 390px wide, the document was 515.
+   The overhang is deliberate decoration (an oversized ghost word, the
+   glow behind chapter three, a tilted card), so it gets clipped rather
+   than moved. clip and not hidden, because clip creates no scroll box
+   and leaves position:sticky alone. */
+html{scroll-behavior:smooth;overflow-x:clip}
+body{background:var(--paper);color:var(--ink);font-family:var(--sans);font-size:16px;line-height:1.6;overflow-x:clip;-webkit-font-smoothing:antialiased}
 h1,h2{font-family:var(--serif);font-weight:500;letter-spacing:-.01em}
 ::selection{background:rgba(108,84,180,.16)}
 body::after{content:'';position:fixed;inset:0;z-index:60;pointer-events:none;opacity:.05;mix-blend-mode:multiply;background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.8' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E")}
