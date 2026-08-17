@@ -232,6 +232,10 @@ section>.container{position:relative;z-index:2}
 .strip-track{display:flex;gap:18px;width:max-content;animation:slide 55s linear infinite}
 @keyframes slide{to{transform:translateX(-50%)}}
 @media(prefers-reduced-motion:reduce){.strip-track{animation:none}}
+/* The marquee is scenery. On a phone it eats a whole screen on the way to
+   the first real section, and a row of cards sliding past is the one thing
+   a thumb cannot stop to look at. */
+@media(max-width:640px){.strip{display:none}}
 .s-card{flex:0 0 208px;background:var(--surface);border:1px solid var(--line);border-radius:12px;overflow:hidden;box-shadow:var(--shadow-card);position:relative}
 .s-card .sc-img{height:172px;display:flex;align-items:center;justify-content:center;background:linear-gradient(165deg,#F6F3EC,#EFEAE0)}
 .s-card .sc-img svg{width:120px;height:auto}
@@ -328,7 +332,8 @@ img.pp{display:block;width:auto;height:auto;filter:drop-shadow(0 10px 16px rgba(
 .cine-stage{position:relative}
 .cine-chapter{position:relative;display:flex;align-items:center;padding:70px 0}
 .cine-chapter .container{display:grid;grid-template-columns:0.92fr 1.08fr;gap:56px;align-items:center;width:100%}
-@media(max-width:880px){.cine-chapter .container{grid-template-columns:1fr;gap:30px;text-align:center}}
+@media(max-width:880px){.cine-chapter .container{grid-template-columns:1fr;gap:26px;text-align:center}}
+@media(max-width:640px){.cine-chapter{padding:40px 0}}
 .cine-rail{display:none}
 /* Enhanced: pinned cinematic stage */
 .cine-on .cine-track{height:280vh}
@@ -353,6 +358,11 @@ img.pp{display:block;width:auto;height:auto;filter:drop-shadow(0 10px 16px rgba(
 .cine-on .cine-head{position:absolute;top:30px;left:0;right:0;z-index:4;padding:0}
 .cine-on .cine-chapter{padding-top:78px}
 @media(max-width:880px){.cine-on .cine-head{top:18px}.cine-on .cine-head h2{font-size:1.25rem}}
+/* Has to sit after the base rule above, or it loses on source order.
+   Bottom padding is not cosmetic: the serif descenders of the last
+   heading line reach past the text box, and unpinned the next chapter
+   starts at that exact pixel with a dark background behind it. */
+@media(max-width:640px){.cine-head{padding:34px 0 20px}}
 .cine-num{font-family:var(--serif);font-style:italic;font-size:1.05rem;color:var(--accent);font-weight:600;display:block;margin-bottom:14px}
 .cine-c2 .cine-num{color:#A79CF2}
 .cine-title{font-family:var(--serif);font-weight:500;font-size:clamp(2rem,4.4vw,3.3rem);line-height:1.08;letter-spacing:-.01em;margin-bottom:16px;color:var(--ink)}
@@ -363,8 +373,14 @@ img.pp{display:block;width:auto;height:auto;filter:drop-shadow(0 10px 16px rgba(
 .cine-c2 .cine-sub{color:rgba(246,244,251,.72)}
 @media(max-width:880px){.cine-sub{margin:0 auto}}
 .cine-viz{position:relative;z-index:2;display:flex;justify-content:center;align-items:center;min-height:60vh}
-@media(max-width:880px){.cine-viz{min-height:42vh}}
-.cine-rail{position:absolute;right:34px;top:50%;transform:translateY(-50%);z-index:5;display:flex;flex-direction:column;gap:14px}
+/* Unpinned, the visual sits in normal flow and brings its own height, so
+   the reserved 42vh only added dead paper between copy and picture. */
+@media(max-width:880px){.cine-viz{min-height:0}}
+/* No display here. The rule further up hides the rail, and .cine-on turns
+   it back on: three chapter dots only mean something while the stage is
+   pinned. Declaring display:flex again undid that hiding, so without the
+   pin the dots floated over the page with nothing to point at. */
+.cine-rail{position:absolute;right:34px;top:50%;transform:translateY(-50%);z-index:5;flex-direction:column;gap:14px}
 @media(max-width:880px){.cine-rail{right:16px}}
 .cine-rail .cine-dot{width:9px;height:9px;border-radius:50%;background:var(--line);transition:background .3s,transform .3s;position:relative}
 .cine-rail .cine-dot.on{background:var(--accent);transform:scale(1.35)}
@@ -1373,7 +1389,13 @@ if (hamburger) {
   var section = document.getElementById('how');
   var track = document.getElementById('cine-track');
   var reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-  if (!section || !track || typeof window.gsap === 'undefined' || typeof window.ScrollTrigger === 'undefined' || reduce) {
+  // Phones do not get the pinned stage. It has to hold the section title,
+  // a paragraph and a visual inside one screen, and on a 375x812 handset
+  // chapter three alone needs 871px of that 812: the visual ran past the
+  // bottom, crossed the caption and the copy slid under the title. The
+  // stacked layout underneath was built for exactly this and reads fine.
+  var narrow = !window.matchMedia('(min-width: 881px)').matches;
+  if (!section || !track || typeof window.gsap === 'undefined' || typeof window.ScrollTrigger === 'undefined' || reduce || narrow) {
     return; // base stacked layout stays; content fully readable
   }
 
