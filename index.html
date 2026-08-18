@@ -11,14 +11,14 @@
 <meta property="og:url" content="https://myfeeds.site/">
 <meta property="og:title" content="MyFeeds — Make your blog shoppable">
 <meta property="og:description" content="Upload your affiliate product feed. MyFeeds builds product cards in your own design in minutes, and a whole storefront when you want one. WordPress plugin, free to start.">
-<meta property="og:image" content="https://myfeeds.site/assets/og-image.jpg">
+<meta property="og:image" content="https://myfeeds.site/assets/og-image.png">
 <meta property="og:image:width" content="1200">
 <meta property="og:image:height" content="628">
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:url" content="https://myfeeds.site/">
 <meta name="twitter:title" content="MyFeeds — Make your blog shoppable">
 <meta name="twitter:description" content="Upload your affiliate product feed. MyFeeds builds product cards in your own design in minutes, and a whole storefront when you want one. WordPress plugin, free to start.">
-<meta name="twitter:image" content="https://myfeeds.site/assets/og-image.jpg">
+<meta name="twitter:image" content="https://myfeeds.site/assets/og-image.png">
 <script type="application/ld+json">{"@context":"https://schema.org","@graph":[{"@type":"Organization","@id":"https://myfeeds.site/#organization","name":"MyFeeds","url":"https://myfeeds.site/","logo":{"@type":"ImageObject","url":"https://myfeeds.site/logo.png"}},{"@type":"WebSite","@id":"https://myfeeds.site/#website","url":"https://myfeeds.site/","name":"MyFeeds","publisher":{"@id":"https://myfeeds.site/#organization"}},{"@type":"SoftwareApplication","name":"MyFeeds","url":"https://myfeeds.site/","image":"https://myfeeds.site/logo.png","operatingSystem":"WordPress","applicationCategory":"BusinessApplication","description":"Upload your affiliate product feed. MyFeeds builds product cards in your own design in minutes, and a whole storefront when you want one.","publisher":{"@id":"https://myfeeds.site/#organization"},"offers":[{"@type":"Offer","name":"Free","price":"0","priceCurrency":"USD","url":"https://myfeeds.site/install/"},{"@type":"Offer","name":"Starter Monthly","price":"9","priceCurrency":"USD","url":"https://myfeeds.site/#pricing"},{"@type":"Offer","name":"Starter Annual","price":"89","priceCurrency":"USD","url":"https://myfeeds.site/#pricing"},{"@type":"Offer","name":"Pro Monthly","price":"19","priceCurrency":"USD","url":"https://myfeeds.site/#pricing"},{"@type":"Offer","name":"Pro Annual","price":"199","priceCurrency":"USD","url":"https://myfeeds.site/#pricing"},{"@type":"Offer","name":"E-commerce Monthly","price":"49","priceCurrency":"USD","url":"https://myfeeds.site/#pricing"},{"@type":"Offer","name":"E-commerce Annual","price":"499","priceCurrency":"USD","url":"https://myfeeds.site/#pricing"}]}]}</script>
 <link rel="icon" type="image/png" href="/favicon.png">
 <link rel="icon" type="image/x-icon" href="/favicon.ico">
@@ -233,9 +233,6 @@ section{padding:68px 0;position:relative}
 @media(max-width:640px){section{padding:42px 0}}
 #loop{background:linear-gradient(180deg,var(--paper) 0%,var(--tint-lav) 18%,var(--tint-lav) 82%,var(--paper) 100%)}
 #features{background:linear-gradient(180deg,var(--paper) 0%,var(--tint-sand) 14%,var(--tint-sand) 86%,var(--paper) 100%)}
-.sec-ghost{position:absolute;top:38px;right:-30px;font-family:var(--serif);font-style:italic;font-weight:500;font-size:clamp(6rem,14vw,13rem);line-height:1;color:transparent;-webkit-text-stroke:1.5px rgba(88,73,214,.10);pointer-events:none;user-select:none;white-space:nowrap;z-index:0}
-#features .sec-ghost{-webkit-text-stroke-color:rgba(26,23,32,.07)}
-section:has(> .sec-ghost){overflow-x:clip}
 section>.container{position:relative;z-index:2}
 
 /* ── Product marquee strip ── */
@@ -1210,7 +1207,7 @@ footer .container{display:flex;justify-content:space-between;gap:40px;flex-wrap:
   </div>
 </section>
 
-<section id="features"><span class="sec-ghost" aria-hidden="true">for you</span><div class="container">
+<section id="features"><div class="container">
   <div class="sec-head rv"><span class="sec-num">04</span><h2>What changes once you stop looking like every other affiliate</h2></div>
   <p class="sec-sub rv">Nothing about the way you write changes. Everything about how it looks, and how long it stays true, does.</p>
   <div class="bento">
@@ -1897,5 +1894,6 @@ if (hamburger) {
     .catch(function () {});
 })();
 </script>
+<script src="/assets/back-to-top.js" defer></script>
 </body>
 </html>
