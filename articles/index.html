@@ -23,7 +23,7 @@
 <link rel="apple-touch-icon" href="/apple-touch-icon.png">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@800&family=Outfit:wght@400;500;600;700;800&display=swap" rel="stylesheet">
 <style>
 :root{
   --bg-deep:#0a0a12;
@@ -67,6 +67,12 @@ main{position:relative;z-index:1;max-width:720px;margin:0 auto;padding:120px 24p
 .archive-empty{text-align:center;padding:48px 24px;color:var(--text-muted);font-style:italic}
 footer{position:relative;z-index:1;padding:40px 24px;text-align:center;color:var(--text-muted);font-size:.85rem;border-top:1px solid var(--border-glass)}
 @media(max-width:600px){main{padding:100px 20px 60px}.archive-card{padding:24px}}
+
+/* Die Wortmarke ist die Marke, nicht eine Zeile Fließtext: eine eigene
+   Schrift, auf jeder Seite dieselbe. Steht bewusst am Ende des Blocks -
+   sie hat die gleiche Spezifität wie die Regeln oben und gewinnt über die
+   Reihenfolge. */
+.nav-logo span,.footer-brand{font-family:'Plus Jakarta Sans',sans-serif;font-weight:800;letter-spacing:-.024em}
 </style>
 <!-- GoatCounter Analytics (privacy-friendly, no cookies, GDPR-safe, free) -->
 <script data-goatcounter="https://myfeeds.goatcounter.com/count" async src="//gc.zgo.at/count.js"></script>

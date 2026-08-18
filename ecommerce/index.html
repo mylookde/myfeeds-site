@@ -22,7 +22,7 @@
 <link rel="apple-touch-icon" href="/apple-touch-icon.png">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,500;0,9..144,600;1,9..144,500&family=Inter:wght@400;500;600;700&display=swap">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@800&family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,500;0,9..144,600;1,9..144,500&family=Inter:wght@400;500;600;700&display=swap">
 <script data-goatcounter="https://myfeeds.goatcounter.com/count" async src="//gc.zgo.at/count.js"></script>
 <style>
 *,*::before,*::after{margin:0;padding:0;box-sizing:border-box}
@@ -434,6 +434,12 @@ footer .container{display:flex;flex-wrap:wrap;gap:32px;justify-content:space-bet
 .footer-links a{color:var(--ink-soft);text-decoration:none;font-size:.86rem}
 .footer-links a:hover{color:var(--ink)}
 .footer-copy{color:var(--ink-mute);font-size:.8rem;width:100%}
+
+/* Die Wortmarke ist die Marke, nicht eine Zeile Fließtext: eine eigene
+   Schrift, auf jeder Seite dieselbe. Steht bewusst am Ende des Blocks -
+   sie hat die gleiche Spezifität wie die Regeln oben und gewinnt über die
+   Reihenfolge. */
+.nav-logo span,.footer-brand{font-family:'Plus Jakarta Sans',sans-serif;font-weight:800;letter-spacing:-.024em}
 </style>
 </head>
 <body>
