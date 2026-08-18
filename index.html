@@ -601,6 +601,34 @@ img.pp{display:block;width:auto;height:auto;filter:drop-shadow(0 10px 16px rgba(
    what it costs them, what happens later, what they do not have to do. */
 .room-copy .room-more{margin-top:14px;font-size:.92rem;color:var(--ink-mute)}
 .room-copy p{color:var(--ink-soft);font-size:1.04rem;line-height:1.62}
+/* Device switch, built to match the one in the shop design editor: the
+   reader sees the same control there when they buy. Three real screens,
+   not a rebuild of the shop in CSS - a hand-made copy would drift from
+   the product and could promise things it does not do. */
+.room-shot--devices{border:none;background:none;overflow:visible}
+.dev-bar{display:flex;justify-content:center;padding:0 0 14px}
+.dev-toggle{display:inline-flex;gap:2px;background:#EFEDE8;border-radius:999px;padding:4px}
+.dev-btn{font-family:inherit;font-size:.83rem;font-weight:600;color:var(--ink-mute);background:none;border:none;border-radius:999px;padding:7px 16px;cursor:pointer;white-space:nowrap;transition:background .15s ease,color .15s ease}
+.dev-btn:hover{color:var(--ink-soft)}
+.dev-btn.is-on{background:var(--surface);color:var(--ink);box-shadow:0 1px 3px rgba(26,23,32,.14)}
+/* One stage height for all three, so switching does not jump the page. */
+/* The height follows the device, because the three screens are not the
+   same shape: a laptop screen is wide and short, a phone is tall and
+   narrow. One fixed height either wastes a band of paper under the laptop
+   or shrinks the phone until nobody can read it. No transition on that
+   height: an animated one freezes at its start value whenever the tab is
+   not being painted, which leaves the stage stuck at the laptop height
+   with a phone screenshot inside it. */
+.dev-stage{height:440px;display:flex;align-items:center;justify-content:center;background:var(--paper);border:1px solid var(--line);border-radius:10px;overflow:hidden;padding:14px}
+.dev-stage[data-dev="tablet"],.dev-stage[data-dev="mobile"]{height:540px}
+/* Written as .room-shot .dev-img on purpose: .room-shot img above sets
+   display:block and width:100%, and a plain .dev-img loses to it on
+   specificity - which showed all three screens stacked on top of one
+   another. */
+.room-shot .dev-img{display:none;max-width:100%;max-height:100%;width:auto;height:auto;border-radius:4px}
+.room-shot .dev-img.is-on{display:block}
+@media(max-width:860px){.dev-stage{height:330px}.dev-stage[data-dev="tablet"],.dev-stage[data-dev="mobile"]{height:430px}}
+@media(max-width:480px){.dev-stage{height:270px;padding:10px}.dev-stage[data-dev="tablet"],.dev-stage[data-dev="mobile"]{height:380px}.dev-btn{padding:7px 12px;font-size:.78rem}}
 .room-stats{display:grid;grid-template-columns:1fr 1fr;gap:0 24px}
 .room-stats .room-note{grid-column:1/-1;font-size:.8rem;color:var(--ink-mute);margin-top:16px;line-height:1.5}
 .stat{border-top:1px solid rgba(122,67,0,.2);padding:18px 20px 4px 0}
@@ -1055,8 +1083,19 @@ footer .container{display:flex;justify-content:space-between;gap:40px;flex-wrap:
             <p>Your products get their own address on your site, <b>you pick which one</b>, with a category menu, filters for brand, size and price, a search box and sorting.</p>
             <p class="room-more">Every product still links out to the merchant with your affiliate link. You are not selling or shipping anything.</p>
           </div>
-          <div class="room-shot">
-            <img src="/assets/screenshot-shop-frontend.png" alt="A MyFeeds storefront with category navigation, brand filters, search and a product grid" loading="lazy">
+          <div class="room-shot room-shot--devices">
+            <div class="dev-bar">
+              <div class="dev-toggle" role="tablist" aria-label="Preview size">
+                <button type="button" class="dev-btn is-on" role="tab" aria-selected="true" data-dev="desktop">Desktop</button>
+                <button type="button" class="dev-btn" role="tab" aria-selected="false" data-dev="tablet">Tablet</button>
+                <button type="button" class="dev-btn" role="tab" aria-selected="false" data-dev="mobile">Mobile</button>
+              </div>
+            </div>
+            <div class="dev-stage">
+              <img class="dev-img is-on" data-dev="desktop" src="/assets/screenshot-shop-frontend.png" alt="The storefront on a laptop: category navigation on the left, brand filters, search and a product grid" loading="lazy">
+              <img class="dev-img" data-dev="tablet" src="/assets/screenshot-shop-tablet.png" alt="The same storefront on a tablet: categories and filters as buttons above a two-column product grid" loading="lazy">
+              <img class="dev-img" data-dev="mobile" src="/assets/screenshot-shop-mobile.png" alt="The same storefront on a phone: categories and filters as buttons above a two-column product grid" loading="lazy">
+            </div>
           </div>
         </div>
         <div class="room-panel" data-panel="cats">
@@ -1614,6 +1653,25 @@ if (hamburger) {
       document.querySelectorAll('.room-panel').forEach(function (p) {
         p.classList.toggle('is-on', p.dataset.panel === tab.dataset.panel);
       });
+    });
+  });
+})();
+
+// Device switch inside the storefront tab. Three screenshots, one shown
+// at a time; the stage keeps its height so the section does not jump.
+;(function () {
+  var btns = document.querySelectorAll('.dev-btn');
+  if (!btns.length) return;
+  btns.forEach(function (btn) {
+    btn.addEventListener('click', function () {
+      btns.forEach(function (b) { b.classList.remove('is-on'); b.setAttribute('aria-selected', 'false'); });
+      btn.classList.add('is-on');
+      btn.setAttribute('aria-selected', 'true');
+      document.querySelectorAll('.dev-img').forEach(function (img) {
+        img.classList.toggle('is-on', img.dataset.dev === btn.dataset.dev);
+      });
+      var stage = btn.closest('.room-shot').querySelector('.dev-stage');
+      if (stage) stage.dataset.dev = btn.dataset.dev;
     });
   });
 })();
