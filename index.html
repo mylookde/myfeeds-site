@@ -582,13 +582,24 @@ img.pp{display:block;width:auto;height:auto;filter:drop-shadow(0 10px 16px rgba(
 .room-tab{font-family:inherit;font-size:.88rem;font-weight:600;color:var(--ink-mute);background:none;border:none;border-bottom:2px solid transparent;padding:16px 18px;cursor:pointer;white-space:nowrap}
 .room-tab:hover{color:var(--ink-soft)}
 .room-tab.is-on{color:var(--ink);border-bottom-color:var(--brand-orange)}
-.room-body{padding:30px}
+.room-body{padding:44px}
 @media(max-width:700px){.room-body{padding:22px 18px}}
-.room-panel{display:none;grid-template-columns:.82fr 1.18fr;gap:36px;align-items:center;animation:roomIn .3s cubic-bezier(.2,.6,.2,1) both}
+/* Air around the panel: the heading and its paragraph need room to be read
+   before the screen underneath starts competing for attention. */
+#storefront .shop-head{margin-bottom:54px}
+#storefront .room{margin-bottom:12px}
+@media(max-width:700px){#storefront .shop-head{margin-bottom:34px}}
+/* The screenshot is the argument in this section, so it gets the space:
+   a wider frame and the larger share of the panel. */
+.room-panel{display:none;grid-template-columns:.62fr 1.38fr;gap:48px;align-items:center;animation:roomIn .3s cubic-bezier(.2,.6,.2,1) both}
 .room-panel.is-on{display:grid}
 @media(max-width:860px){.room-panel.is-on{grid-template-columns:1fr;gap:24px}}
 @keyframes roomIn{from{opacity:0;transform:translateY(8px)}to{opacity:1;transform:none}}
 .room-copy h3{font-family:var(--serif);font-weight:500;font-size:1.35rem;line-height:1.2;margin-bottom:10px}
+.room-copy p b{color:var(--ink);font-weight:600}
+/* The second line carries the thing people ask right after the first:
+   what it costs them, what happens later, what they do not have to do. */
+.room-copy .room-more{margin-top:14px;font-size:.88rem;color:var(--ink-mute)}
 .room-copy p{color:var(--ink-soft);font-size:.95rem;line-height:1.6}
 .room-stats{display:grid;grid-template-columns:1fr 1fr;gap:0 24px}
 .room-stats .room-note{grid-column:1/-1;font-size:.8rem;color:var(--ink-mute);margin-top:16px;line-height:1.5}
@@ -1029,7 +1040,7 @@ footer .container{display:flex;justify-content:space-between;gap:40px;flex-wrap:
       <p class="lede-narrow rv">The same feeds, on your own domain, with the categories, filters and sorting your readers know from every shop they use. Nothing gives away that it started as a data file.</p>
     </div>
   </div>
-  <div class="container">
+  <div class="wide">
     <div class="room rv">
       <div class="room-tabs" role="tablist">
         <button type="button" class="room-tab is-on" role="tab" aria-selected="true" data-panel="front">Storefront</button>
@@ -1040,8 +1051,9 @@ footer .container{display:flex;justify-content:space-between;gap:40px;flex-wrap:
       <div class="room-body">
         <div class="room-panel is-on" data-panel="front">
           <div class="room-copy">
-            <h3>What your reader gets</h3>
-            <p>Your products on your own domain, with the categories, filters, search and sorting people know from any shop.</p>
+            <h3>A shop page on your own site</h3>
+            <p>Your products at <b>yourblog.com/shop</b>, with a category menu, filters for brand, size and price, a search box and sorting by price or discount.</p>
+            <p class="room-more">Every product still links out to the merchant with your affiliate link. You are not selling or shipping anything.</p>
           </div>
           <div class="room-shot">
             <img src="/assets/screenshot-shop-frontend.png" alt="A MyFeeds storefront with category navigation, brand filters, search and a product grid" loading="lazy">
@@ -1049,8 +1061,9 @@ footer .container{display:flex;justify-content:space-between;gap:40px;flex-wrap:
         </div>
         <div class="room-panel" data-panel="cats">
           <div class="room-copy">
-            <h3>You decide what goes where</h3>
-            <p>Build the tree, confirm the products, and later imports follow the rules you set.</p>
+            <h3>You sort products into menu entries</h3>
+            <p>Name the sections your shop should have, the way a shop does it: <b>Men, Women, Shoes, Jackets</b>. MyFeeds proposes products for each one by keyword, brand and feed, and you tick off what belongs.</p>
+            <p class="room-more">Products from later imports land in the same sections on their own, so you set this up once.</p>
           </div>
           <div class="room-shot">
             <img src="/assets/screenshot-category-editor.png" alt="The MyFeeds category editor with a category tree and product assignment" loading="lazy">
@@ -1058,8 +1071,9 @@ footer .container{display:flex;justify-content:space-between;gap:40px;flex-wrap:
         </div>
         <div class="room-panel" data-panel="design">
           <div class="room-copy">
-            <h3>It carries your design</h3>
-            <p>Colours, typography, tile density, hover, pagination. Live preview, no code.</p>
+            <h3>It looks like the rest of your site</h3>
+            <p>Set the <b>colours, fonts, how many products sit in a row, what a hover does, which side the filters are on</b>. A live preview shows phone, tablet and laptop while you change it.</p>
+            <p class="room-more">No theme to buy and no code anywhere.</p>
           </div>
           <div class="room-shot">
             <img src="/assets/screenshot-shop-design-editor.png" alt="The MyFeeds shop design editor with controls and a live storefront preview" loading="lazy">
@@ -1067,8 +1081,9 @@ footer .container{display:flex;justify-content:space-between;gap:40px;flex-wrap:
         </div>
         <div class="room-panel" data-panel="numbers">
           <div class="room-copy">
-            <h3>You see what earns</h3>
-            <p>Clicks, visitors and the commissions your network confirms, in one dashboard. Pro plan and up, so it is already in this one.</p>
+            <h3>You see which products earn</h3>
+            <p>Clicks per <b>post, product and brand</b>, visitors, and the commissions your network confirms, in one dashboard instead of one login per network.</p>
+            <p class="room-more">Part of the Pro plan, so this one already includes it.</p>
           </div>
           <div class="room-stats">
             <div class="stat"><span>Clicks &middot; 30 days</span><b>24,531</b><i>&#9650; 18%</i></div>
