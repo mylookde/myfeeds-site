@@ -1,0 +1,79 @@
+name: Publish myfeeds.site
+
+# Why this file exists at all.
+#
+# The site used to be published by GitHub's legacy Pages builder: push to
+# main, and an invisible job somewhere turned the branch into the live
+# site. When it works you never think about it. When it does not, you get
+# a build with a duration of 0ms and one sentence - "Page build failed." -
+# with no log, no reason, and no way to make it try again. That happened
+# on 2026-05-26 for about six hours and again on 2026-08-17, where four
+# builds in a row died that way and the site sat a day behind the repo.
+#
+# This does the same job in the open: it checks the repo out, copies the
+# files that belong on the site into a folder, and hands that folder to
+# Pages. Every step prints what it did, a failure says which step and why,
+# and any run can be repeated from the Actions tab or with `gh run rerun`.
+#
+# It also skips Jekyll, which the legacy builder always ran. There is no
+# _config.yml here and no layouts - 57 hand-written files that only ever
+# needed copying.
+
+on:
+  push:
+    branches: [main]
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
+# One deploy at a time, and a newer push wins: if two land together the
+# older one has nothing to say that the newer one does not.
+concurrency:
+  group: pages
+  cancel-in-progress: true
+
+jobs:
+  publish:
+    runs-on: ubuntu-latest
+    environment:
+      name: github-pages
+      url: ${{ steps.deploy.outputs.page_url }}
+
+    steps:
+      - name: Check out the repository
+        uses: actions/checkout@v4
+
+      - name: Collect the files that belong on the site
+        run: |
+          set -euo pipefail
+          mkdir -p _site
+          # Everything except the plumbing. CNAME travels with it: the
+          # custom domain also lives in the repo settings, but a missing
+          # CNAME file has cost people their domain before.
+          rsync -a ./ _site/ \
+            --exclude '.git/' \
+            --exclude '.github/' \
+            --exclude '.claude/' \
+            --exclude '.DS_Store' \
+            --exclude '_site/'
+          # Tells Pages not to run Jekyll over it.
+          touch _site/.nojekyll
+          echo "Files going out: $(find _site -type f | wc -l)"
+          echo "Size: $(du -sh _site | cut -f1)"
+          # A deploy that quietly lost the homepage is worse than a failed
+          # one, so check the pages that must exist before handing it over.
+          for f in index.html ecommerce/index.html install/index.html CNAME; do
+            test -s "_site/$f" || { echo "::error::_site/$f is missing or empty"; exit 1; }
+          done
+
+      - name: Upload the folder
+        uses: actions/upload-pages-artifact@v3
+        with:
+          path: _site
+
+      - name: Publish
+        id: deploy
+        uses: actions/deploy-pages@v4
