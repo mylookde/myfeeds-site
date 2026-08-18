@@ -546,6 +546,15 @@ img.pp{display:block;width:auto;height:auto;filter:drop-shadow(0 10px 16px rgba(
   .comparison-cell:last-child{border-bottom:none}
   .comparison-row.comparison-head{display:none}
   .comparison-cell.label{font-size:.72rem;text-transform:uppercase;letter-spacing:.08em;color:var(--ink-mute);background:transparent;padding-bottom:4px}
+  /* Ohne Kopfzeile steht auf dem Handy jede Zelle ohne ihre Spalte da. Bei
+     den Zeilen mit Haken und Kreuz kann man es erraten, in der Schlusszeile
+     ohne Icons nicht: "A list of links" und "Product cards they can buy
+     from" standen untereinander, ohne dass etwas sagt, wer was ist. Jede
+     Zelle nennt ihre Spalte jetzt selbst. */
+  .comparison-cell[data-col]{flex-wrap:wrap}
+  .comparison-cell[data-col]::before{content:attr(data-col);flex:0 0 100%;font-size:.64rem;font-weight:700;text-transform:uppercase;letter-spacing:.09em;color:var(--ink-mute);margin-bottom:5px}
+  .comparison-cell[data-col].highlight::before{color:var(--accent)}
+  .comparison-verdict .comparison-cell{font-size:1rem;padding:15px 20px}
 }
 .center-cta{display:flex;justify-content:center;margin-top:44px}
 
@@ -1282,38 +1291,38 @@ footer .container{display:flex;justify-content:space-between;gap:40px;flex-wrap:
     </div>
     <div class="comparison-row">
       <div class="comparison-cell label">Adding products</div>
-      <div class="comparison-cell"><span class="cross-icon">&#10005;</span>One at a time, by hand</div>
-      <div class="comparison-cell highlight"><span class="check-icon">&#10003;</span>Searched and picked in seconds</div>
+      <div data-col="Link tools" class="comparison-cell"><span class="cross-icon">&#10005;</span>One at a time, by hand</div>
+      <div data-col="MyFeeds" class="comparison-cell highlight"><span class="check-icon">&#10003;</span>Searched and picked in seconds</div>
     </div>
     <div class="comparison-row">
       <div class="comparison-cell label">Price and stock</div>
-      <div class="comparison-cell"><span class="cross-icon">&#10005;</span>You edit every post</div>
-      <div class="comparison-cell highlight"><span class="check-icon">&#10003;</span>Updated nightly, everywhere</div>
+      <div data-col="Link tools" class="comparison-cell"><span class="cross-icon">&#10005;</span>You edit every post</div>
+      <div data-col="MyFeeds" class="comparison-cell highlight"><span class="check-icon">&#10003;</span>Updated nightly, everywhere</div>
     </div>
     <div class="comparison-row">
       <div class="comparison-cell label">Dead products</div>
-      <div class="comparison-cell"><span class="cross-icon">&#10005;</span>Silent 404s</div>
-      <div class="comparison-cell highlight"><span class="check-icon">&#10003;</span>Flagged, with the posts listed</div>
+      <div data-col="Link tools" class="comparison-cell"><span class="cross-icon">&#10005;</span>Silent 404s</div>
+      <div data-col="MyFeeds" class="comparison-cell highlight"><span class="check-icon">&#10003;</span>Flagged, with the posts listed</div>
     </div>
     <div class="comparison-row">
       <div class="comparison-cell label">Networks</div>
-      <div class="comparison-cell"><span class="cross-icon">&#10005;</span>One plugin per network</div>
-      <div class="comparison-cell highlight"><span class="check-icon">&#10003;</span>Any feed, one plugin</div>
+      <div data-col="Link tools" class="comparison-cell"><span class="cross-icon">&#10005;</span>One plugin per network</div>
+      <div data-col="MyFeeds" class="comparison-cell highlight"><span class="check-icon">&#10003;</span>Any feed, one plugin</div>
     </div>
     <div class="comparison-row">
       <div class="comparison-cell label">Your data</div>
-      <div class="comparison-cell"><span class="cross-icon">&#10005;</span>On someone else&#39;s server</div>
-      <div class="comparison-cell highlight"><span class="check-icon">&#10003;</span>In your own database</div>
+      <div data-col="Link tools" class="comparison-cell"><span class="cross-icon">&#10005;</span>On someone else&#39;s server</div>
+      <div data-col="MyFeeds" class="comparison-cell highlight"><span class="check-icon">&#10003;</span>In your own database</div>
     </div>
     <div class="comparison-row">
       <div class="comparison-cell label">Earnings</div>
-      <div class="comparison-cell"><span class="cross-icon">&#10005;</span>A dashboard per network</div>
-      <div class="comparison-cell highlight"><span class="check-icon">&#10003;</span>All of it in one place</div>
+      <div data-col="Link tools" class="comparison-cell"><span class="cross-icon">&#10005;</span>A dashboard per network</div>
+      <div data-col="MyFeeds" class="comparison-cell highlight"><span class="check-icon">&#10003;</span>All of it in one place</div>
     </div>
     <div class="comparison-row comparison-verdict">
       <div class="comparison-cell label">What the reader sees</div>
-      <div class="comparison-cell">A list of links</div>
-      <div class="comparison-cell highlight">Product cards they can buy from</div>
+      <div data-col="Link tools" class="comparison-cell">A list of links</div>
+      <div data-col="MyFeeds" class="comparison-cell highlight">Product cards they can buy from</div>
     </div>
   </div>
   <div class="center-cta rv"><a href="#pricing" class="btn btn-cta">Add product cards to my posts →</a></div>
