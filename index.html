@@ -594,6 +594,10 @@ img.pp{display:block;width:auto;height:auto;filter:drop-shadow(0 10px 16px rgba(
 .room-panel{display:none;grid-template-columns:.62fr 1.38fr;gap:48px;align-items:center;animation:roomIn .3s cubic-bezier(.2,.6,.2,1) both}
 .room-panel.is-on{display:grid}
 @media(max-width:860px){.room-panel.is-on{grid-template-columns:1fr;gap:24px}}
+/* The box keeps one height across the four tabs. Without this the frame
+   jumps a hundred pixels when you land on Analytics, which reads as
+   something failing to load rather than a tab with less in it. */
+@media(min-width:861px){.room-panel{min-height:500px}}
 @keyframes roomIn{from{opacity:0;transform:translateY(8px)}to{opacity:1;transform:none}}
 .room-copy h3{font-family:var(--serif);font-weight:500;font-size:1.55rem;line-height:1.18;margin-bottom:12px}
 .room-copy p b{color:var(--ink);font-weight:600}
@@ -636,7 +640,24 @@ img.pp{display:block;width:auto;height:auto;filter:drop-shadow(0 10px 16px rgba(
 .room-shot .dev-img.is-on{display:block}
 @media(max-width:860px){.dev-stage{height:330px}.dev-stage[data-dev="tablet"],.dev-stage[data-dev="mobile"]{height:430px}}
 @media(max-width:480px){.dev-stage{height:270px;padding:0 12px 16px}.dev-stage[data-dev="tablet"],.dev-stage[data-dev="mobile"]{height:380px}.dev-btn{padding:7px 12px;font-size:.78rem}}
+/* Daily chart under the two totals. Bars are buttons so a keyboard can
+   walk them and a screen reader gets the numbers; the tooltip is only a
+   nicer way to show what the label already says. */
+.chart{grid-column:1/-1;margin-top:26px;position:relative}
+.ch-head{display:flex;justify-content:space-between;align-items:baseline;font-size:.76rem;letter-spacing:.05em;text-transform:uppercase;color:var(--ink-amber);opacity:.8;margin-bottom:12px}
+.ch-hint{text-transform:none;letter-spacing:0;font-size:.78rem;color:var(--ink-mute);opacity:.9}
+.ch-plot{display:flex;align-items:flex-end;gap:3px;height:164px;padding-bottom:2px;border-bottom:1px solid rgba(122,67,0,.2)}
+.ch-bar{flex:1;height:100%;display:flex;align-items:flex-end;background:none;border:none;padding:0;cursor:pointer}
+.ch-bar i{display:block;width:100%;height:var(--h);background:rgba(122,67,0,.28);border-radius:3px 3px 0 0;transition:background .12s ease}
+.ch-bar:hover i,.ch-bar:focus-visible i{background:var(--brand-orange)}
+.ch-bar:focus-visible{outline:2px solid var(--brand-orange);outline-offset:2px;border-radius:4px}
+.ch-foot{display:flex;justify-content:space-between;font-size:.74rem;color:var(--ink-mute);margin-top:8px}
+.ch-tip{position:absolute;z-index:4;pointer-events:none;background:var(--ink);color:#F6F4FB;font-size:.78rem;line-height:1.45;padding:8px 11px;border-radius:8px;white-space:nowrap;box-shadow:0 8px 20px -6px rgba(26,23,32,.4);transform:translate(-50%,-100%)}
+.ch-tip b{display:block;font-size:.72rem;letter-spacing:.05em;text-transform:uppercase;opacity:.65;font-weight:600;margin-bottom:2px}
+@media(max-width:480px){.ch-plot{height:104px;gap:2px}}
 .room-stats{display:grid;grid-template-columns:1fr 1fr;gap:0 24px}
+.room-stats .room-note a{color:var(--ink-amber);text-decoration:underline;text-underline-offset:2px;text-decoration-thickness:1px;font-weight:600}
+.room-stats .room-note a:hover{color:var(--ink)}
 .room-stats .room-note{grid-column:1/-1;font-size:.8rem;color:var(--ink-mute);margin-top:16px;line-height:1.5}
 .stat{border-top:1px solid rgba(122,67,0,.2);padding:18px 20px 4px 0}
 .stat span{font-size:.78rem;color:var(--ink-amber);opacity:.8;letter-spacing:.05em;text-transform:uppercase}
@@ -1081,13 +1102,13 @@ footer .container{display:flex;justify-content:space-between;gap:40px;flex-wrap:
         <button type="button" class="room-tab is-on" role="tab" aria-selected="true" data-panel="front">Storefront</button>
         <button type="button" class="room-tab" role="tab" aria-selected="false" data-panel="cats">Categories</button>
         <button type="button" class="room-tab" role="tab" aria-selected="false" data-panel="design">Design</button>
-        <button type="button" class="room-tab" role="tab" aria-selected="false" data-panel="numbers">Numbers</button>
+        <button type="button" class="room-tab" role="tab" aria-selected="false" data-panel="numbers">Analytics</button>
       </div>
       <div class="room-body">
         <div class="room-panel is-on" data-panel="front">
           <div class="room-copy">
             <h3>A shop page on your own site</h3>
-            <p>Your products get their own address on your site, <b>you pick which one</b>, with a category menu, filters for brand, size and price, a search box and sorting.</p>
+            <p>Your products get their own page on your site, at <b>an address you choose</b>, with a category menu, filters for brand, size and price, a search box and sorting.</p>
             <p class="room-more">Every product still links out to the merchant with your affiliate link. You are not selling or shipping anything.</p>
           </div>
           <div class="room-shot room-shot--devices">
@@ -1107,7 +1128,7 @@ footer .container{display:flex;justify-content:space-between;gap:40px;flex-wrap:
         </div>
         <div class="room-panel" data-panel="cats">
           <div class="room-copy">
-            <h3>You sort products into menu entries</h3>
+            <h3>You sort products into sections</h3>
             <p>Name the sections your shop should have. Clothing in this example, so <b>Men, Women, Shoes</b>. A car parts site would say <b>Brakes, Filters, Tyres</b>. MyFeeds proposes products for each one by keyword, brand and feed, and you tick off what belongs.</p>
             <p class="room-more">Products from later imports land in the same sections on their own, so you set this up once.</p>
           </div>
@@ -1117,7 +1138,7 @@ footer .container{display:flex;justify-content:space-between;gap:40px;flex-wrap:
         </div>
         <div class="room-panel" data-panel="design">
           <div class="room-copy">
-            <h3>It looks like the rest of your site</h3>
+            <h3>Make it look like your own</h3>
             <p>Set the <b>colours, fonts, how many products sit in a row, what a hover does, which side the filters are on</b>. A live preview shows phone, tablet and laptop while you change it.</p>
             <p class="room-more">No theme to buy and no code anywhere.</p>
           </div>
@@ -1129,12 +1150,49 @@ footer .container{display:flex;justify-content:space-between;gap:40px;flex-wrap:
           <div class="room-copy">
             <h3>You see which products earn</h3>
             <p>Clicks per <b>post, product and brand</b>, visitors, and the commissions your network confirms, in one dashboard instead of one login per network.</p>
-            <p class="room-more">Part of the Pro plan, so this one already includes it.</p>
+            <p class="room-more">Products a merchant has dropped show up here too, with the posts still linking to them.</p>
           </div>
           <div class="room-stats">
             <div class="stat"><span>Clicks &middot; 30 days</span><b>24,531</b><i>&#9650; 18%</i></div>
             <div class="stat"><span>Commission &middot; approved</span><b>$1,904</b><i>&#9650; 22%</i></div>
-            <p class="room-note">Sample figures. Yours come from your own clicks and your own network.</p>
+            <div class="chart" data-chart>
+              <div class="ch-head"><span>Clicks per day</span><span class="ch-hint">Hover a day</span></div>
+              <div class="ch-plot">
+                <button type="button" class="ch-bar" style="--h:75.6%" data-i="0" data-day="Mon 1" data-clicks="779" data-comm="$51.39" aria-label="Day 1: 779 clicks, $51.39 approved"><i></i></button>
+              <button type="button" class="ch-bar" style="--h:78.9%" data-i="1" data-day="Tue 2" data-clicks="813" data-comm="$63.10" aria-label="Day 2: 813 clicks, $63.10 approved"><i></i></button>
+              <button type="button" class="ch-bar" style="--h:81.8%" data-i="2" data-day="Wed 3" data-clicks="843" data-comm="$75.24" aria-label="Day 3: 843 clicks, $75.24 approved"><i></i></button>
+              <button type="button" class="ch-bar" style="--h:83.7%" data-i="3" data-day="Thu 4" data-clicks="863" data-comm="$61.96" aria-label="Day 4: 863 clicks, $61.96 approved"><i></i></button>
+              <button type="button" class="ch-bar" style="--h:84.4%" data-i="4" data-day="Fri 5" data-clicks="870" data-comm="$72.59" aria-label="Day 5: 870 clicks, $72.59 approved"><i></i></button>
+              <button type="button" class="ch-bar" style="--h:60.4%" data-i="5" data-day="Sat 6" data-clicks="623" data-comm="$41.10" aria-label="Day 6: 623 clicks, $41.10 approved"><i></i></button>
+              <button type="button" class="ch-bar" style="--h:59.3%" data-i="6" data-day="Sun 7" data-clicks="611" data-comm="$47.42" aria-label="Day 7: 611 clicks, $47.42 approved"><i></i></button>
+              <button type="button" class="ch-bar" style="--h:80.2%" data-i="7" data-day="Mon 8" data-clicks="827" data-comm="$73.82" aria-label="Day 8: 827 clicks, $73.82 approved"><i></i></button>
+              <button type="button" class="ch-bar" style="--h:78.1%" data-i="8" data-day="Tue 9" data-clicks="805" data-comm="$57.79" aria-label="Day 9: 805 clicks, $57.79 approved"><i></i></button>
+              <button type="button" class="ch-bar" style="--h:76.5%" data-i="9" data-day="Wed 10" data-clicks="789" data-comm="$65.83" aria-label="Day 10: 789 clicks, $65.83 approved"><i></i></button>
+              <button type="button" class="ch-bar" style="--h:76.0%" data-i="10" data-day="Thu 11" data-clicks="784" data-comm="$51.72" aria-label="Day 11: 784 clicks, $51.72 approved"><i></i></button>
+              <button type="button" class="ch-bar" style="--h:76.9%" data-i="11" data-day="Fri 12" data-clicks="793" data-comm="$61.55" aria-label="Day 12: 793 clicks, $61.55 approved"><i></i></button>
+              <button type="button" class="ch-bar" style="--h:56.9%" data-i="12" data-day="Sat 13" data-clicks="587" data-comm="$52.39" aria-label="Day 13: 587 clicks, $52.39 approved"><i></i></button>
+              <button type="button" class="ch-bar" style="--h:59.2%" data-i="13" data-day="Sun 14" data-clicks="610" data-comm="$43.79" aria-label="Day 14: 610 clicks, $43.79 approved"><i></i></button>
+              <button type="button" class="ch-bar" style="--h:85.9%" data-i="14" data-day="Mon 15" data-clicks="886" data-comm="$73.93" aria-label="Day 15: 886 clicks, $73.93 approved"><i></i></button>
+              <button type="button" class="ch-bar" style="--h:89.6%" data-i="15" data-day="Tue 16" data-clicks="924" data-comm="$60.96" aria-label="Day 16: 924 clicks, $60.96 approved"><i></i></button>
+              <button type="button" class="ch-bar" style="--h:92.6%" data-i="16" data-day="Wed 17" data-clicks="955" data-comm="$74.12" aria-label="Day 17: 955 clicks, $74.12 approved"><i></i></button>
+              <button type="button" class="ch-bar" style="--h:94.5%" data-i="17" data-day="Thu 18" data-clicks="974" data-comm="$86.94" aria-label="Day 18: 974 clicks, $86.94 approved"><i></i></button>
+              <button type="button" class="ch-bar" style="--h:94.9%" data-i="18" data-day="Fri 19" data-clicks="978" data-comm="$70.22" aria-label="Day 19: 978 clicks, $70.22 approved"><i></i></button>
+              <button type="button" class="ch-bar" style="--h:67.6%" data-i="19" data-day="Sat 20" data-clicks="697" data-comm="$58.16" aria-label="Day 20: 697 clicks, $58.16 approved"><i></i></button>
+              <button type="button" class="ch-bar" style="--h:66.2%" data-i="20" data-day="Sun 21" data-clicks="683" data-comm="$45.06" aria-label="Day 21: 683 clicks, $45.06 approved"><i></i></button>
+              <button type="button" class="ch-bar" style="--h:89.4%" data-i="21" data-day="Mon 22" data-clicks="922" data-comm="$71.56" aria-label="Day 22: 922 clicks, $71.56 approved"><i></i></button>
+              <button type="button" class="ch-bar" style="--h:87.1%" data-i="22" data-day="Tue 23" data-clicks="898" data-comm="$80.15" aria-label="Day 23: 898 clicks, $80.15 approved"><i></i></button>
+              <button type="button" class="ch-bar" style="--h:85.5%" data-i="23" data-day="Wed 24" data-clicks="881" data-comm="$63.25" aria-label="Day 24: 881 clicks, $63.25 approved"><i></i></button>
+              <button type="button" class="ch-bar" style="--h:85.1%" data-i="24" data-day="Thu 25" data-clicks="877" data-comm="$73.17" aria-label="Day 25: 877 clicks, $73.17 approved"><i></i></button>
+              <button type="button" class="ch-bar" style="--h:86.1%" data-i="25" data-day="Fri 26" data-clicks="888" data-comm="$58.58" aria-label="Day 26: 888 clicks, $58.58 approved"><i></i></button>
+              <button type="button" class="ch-bar" style="--h:63.9%" data-i="26" data-day="Sat 27" data-clicks="659" data-comm="$51.15" aria-label="Day 27: 659 clicks, $51.15 approved"><i></i></button>
+              <button type="button" class="ch-bar" style="--h:66.5%" data-i="27" data-day="Sun 28" data-clicks="686" data-comm="$61.23" aria-label="Day 28: 686 clicks, $61.23 approved"><i></i></button>
+              <button type="button" class="ch-bar" style="--h:96.5%" data-i="28" data-day="Mon 29" data-clicks="995" data-comm="$71.44" aria-label="Day 29: 995 clicks, $71.44 approved"><i></i></button>
+              <button type="button" class="ch-bar" style="--h:100.0%" data-i="29" data-day="Tue 30" data-clicks="1,031" data-comm="$84.39" aria-label="Day 30: 1,031 clicks, $84.39 approved"><i></i></button>
+              </div>
+              <div class="ch-foot"><span>30 days ago</span><span>Today</span></div>
+              <div class="ch-tip" hidden></div>
+            </div>
+            <p class="room-note">Sample figures that add up: the thirty days in the chart make the 24,531 clicks and $1,904 above. Yours come from your own clicks and your own network. Part of the <a href="#pricing">Pro plan</a>, so this one already includes it.</p>
           </div>
         </div>
       </div>
@@ -1681,6 +1739,37 @@ if (hamburger) {
       if (stage) stage.dataset.dev = btn.dataset.dev;
     });
   });
+})();
+
+// Daily chart in the Analytics tab. The bar already carries its numbers
+// in aria-label; this only draws them where the pointer is.
+;(function () {
+  var chart = document.querySelector('[data-chart]');
+  if (!chart) return;
+  var tip = chart.querySelector('.ch-tip');
+  var plot = chart.querySelector('.ch-plot');
+
+  function show(bar) {
+    tip.innerHTML = '<b>Day ' + bar.dataset.day + '</b>' +
+      bar.dataset.clicks + ' clicks &middot; ' + bar.dataset.comm + ' approved';
+    tip.hidden = false;
+    var b = bar.getBoundingClientRect();
+    var c = chart.getBoundingClientRect();
+    tip.style.left = (b.left - c.left + b.width / 2) + 'px';
+    tip.style.top = (b.top - c.top - 8) + 'px';
+  }
+  function hide() { tip.hidden = true; }
+
+  plot.addEventListener('mouseover', function (e) {
+    var bar = e.target.closest('.ch-bar');
+    if (bar) show(bar);
+  });
+  plot.addEventListener('focusin', function (e) {
+    var bar = e.target.closest('.ch-bar');
+    if (bar) show(bar);
+  });
+  plot.addEventListener('mouseleave', hide);
+  plot.addEventListener('focusout', hide);
 })();
 
 // Layout toggle
