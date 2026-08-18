@@ -362,21 +362,11 @@ img.pp{display:block;width:auto;height:auto;filter:drop-shadow(0 10px 16px rgba(
 .cine-copy{position:relative;z-index:2}
 /* The section heading rides on chapter one instead of sitting in a band
    of its own above the stage, which left a screen of empty paper. */
-/* The section title belongs to the stage, not to a chapter: chapters are
-   absolutely stacked and cross-faded, so a heading inside chapter one
-   faded away with it. Here it stands over all three steps. */
-.cine-head{padding:26px 0 0}
-.cine-head .container{display:flex;align-items:baseline;gap:20px}
-.cine-head .ch-num{font-family:var(--serif);font-size:.95rem;color:var(--accent);font-weight:600;flex-shrink:0}
-.cine-head h2{font-size:var(--h2);line-height:1.12;color:var(--ink)}
-.cine-on .cine-head{position:absolute;top:30px;left:0;right:0;z-index:4;padding:0}
-.cine-on .cine-chapter{padding-top:78px}
-@media(max-width:880px){.cine-on .cine-head{top:18px}.cine-on .cine-head h2{font-size:1.25rem}}
-/* Has to sit after the base rule above, or it loses on source order.
-   Bottom padding is not cosmetic: the serif descenders of the last
-   heading line reach past the text box, and unpinned the next chapter
-   starts at that exact pixel with a dark background behind it. */
-@media(max-width:640px){.cine-head{padding:34px 0 20px}}
+/* Die Sektion hatte eine Ueberschrift ueber der Buehne ("01 From pasted
+   links to a shoppable blog in just three steps"). Sie ist raus: jedes
+   der drei Kapitel traegt seine eigene, und der Leser kommt aus der
+   Zeile darueber schon mit dem Thema an. Mit ihr faellt das
+   padding-top der Kapitel weg, das nur Platz fuer sie geschaffen hat. */
 .cine-num{font-family:var(--serif);font-style:italic;font-size:1.05rem;color:var(--accent);font-weight:600;display:block;margin-bottom:14px}
 .cine-c2 .cine-num{color:#A79CF2}
 .cine-title{font-family:var(--serif);font-weight:500;font-size:clamp(2rem,4.4vw,3.3rem);line-height:1.08;letter-spacing:-.01em;margin-bottom:16px;color:var(--ink)}
@@ -982,7 +972,6 @@ footer .container{display:flex;justify-content:space-between;gap:40px;flex-wrap:
 <section id="how" class="cine">
   <div class="cine-track" id="cine-track">
     <div class="cine-stage">
-      <div class="cine-head"><div class="container"><span class="ch-num">01</span><h2>From pasted links to a shoppable blog in just three steps</h2></div></div>
       <div class="cine-rail" aria-hidden="true">
         <span class="cine-dot on" data-i="0"></span>
         <span class="cine-dot" data-i="1"></span>
