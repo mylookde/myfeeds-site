@@ -755,7 +755,20 @@ img.pp{display:block;width:auto;height:auto;filter:drop-shadow(0 10px 16px rgba(
 .pricing-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:14px;max-width:1200px;margin:0 auto;align-items:stretch;position:relative;z-index:2}
 @media(max-width:1120px){.pricing-grid{grid-template-columns:repeat(2,1fr);max-width:760px;gap:16px}}
 @media(max-width:660px){.pricing-grid{grid-template-columns:1fr;max-width:430px;gap:18px}}
-.pricing-card{background:var(--surface);border:1px solid var(--line);border-radius:var(--radius);padding:32px 26px;display:flex;flex-direction:column;position:relative}
+.pricing-card{background:var(--surface);border:1px solid var(--line);border-radius:var(--radius);padding:32px 26px;display:flex;flex-direction:column;position:relative;scroll-margin-top:96px}
+/* Ein Knopf, der einen bestimmten Plan meint, springt auf schmalen
+   Schirmen zu genau dieser Karte - dort stehen die vier untereinander und
+   man sieht sonst nicht, welche gemeint war. Danach hebt sie sich einmal
+   kurz an und bekommt einen Schein.
+   Der Schein liegt auf ::after, nicht auf der Karte selbst: die
+   Pro-Karte traegt einen eigenen box-shadow, und eine Animation auf
+   derselben Eigenschaft haette ihn ueberschrieben. */
+.pricing-card::after{content:"";position:absolute;inset:-3px;border-radius:inherit;pointer-events:none;opacity:0;box-shadow:0 0 0 2px var(--accent),0 0 36px 8px rgba(108,84,180,.42)}
+.pricing-card.is-called{animation:planPop 1.35s cubic-bezier(.22,.7,.3,1);z-index:5}
+.pricing-card.is-called::after{animation:planGlow 1.35s ease-out}
+@keyframes planPop{0%{transform:none}24%{transform:translateY(-7px) scale(1.028)}100%{transform:none}}
+@keyframes planGlow{0%{opacity:0}24%{opacity:.7}100%{opacity:0}}
+@media(prefers-reduced-motion:reduce){.pricing-card.is-called,.pricing-card.is-called::after{animation:none}}
 .pricing-card.featured{background:linear-gradient(170deg,#6558E0 0%,var(--accent) 45%,#4C3DC8 100%);border:1px solid var(--accent);border-radius:var(--radius);color:#FFFFFF;box-shadow:0 34px 80px -22px rgba(88,73,214,.55);z-index:3}
 .toggle-wrap{gap:12px;flex-wrap:wrap}
 .plan-price-sub{display:block;margin-top:9px;font-family:var(--sans);font-size:.82rem;font-weight:500;color:var(--ink-mute);letter-spacing:0}
@@ -1354,7 +1367,7 @@ footer .container{display:flex;justify-content:space-between;gap:40px;flex-wrap:
   </div>
 
   <div class="pricing-grid">
-    <div class="pricing-card rv">
+    <div class="pricing-card rv" id="plan-free">
       <span class="card-chip ghost">&nbsp;</span>
       <div class="plan-name">Free</div>
       <div class="plan-desc-sub">Your first affiliate feed, on us</div>
@@ -1370,7 +1383,7 @@ footer .container{display:flex;justify-content:space-between;gap:40px;flex-wrap:
       </ul>
       <a href="https://wordpress.org/plugins/myfeeds-affiliate-feed-manager/" class="plan-cta cta-outline">Add product cards to my posts</a>
     </div>
-    <div class="pricing-card rv" data-plan="starter" data-monthly-1="9" data-annual-1="89">
+    <div class="pricing-card rv" id="plan-starter" data-plan="starter" data-monthly-1="9" data-annual-1="89">
       <span class="card-chip ghost">&nbsp;</span>
       <div class="plan-name">Starter</div>
       <div class="plan-desc-sub">How it looks</div>
@@ -1388,7 +1401,7 @@ footer .container{display:flex;justify-content:space-between;gap:40px;flex-wrap:
       <a href="https://checkout.freemius.com/plugin/21336/plan/60599/?trial=paid" data-checkout-base="https://checkout.freemius.com/plugin/21336/plan/60599" class="plan-cta cta-outline plan-checkout">Make my cards look like my brand</a>
       <p class="refund-badge">14-day money-back guarantee · Cancel from your dashboard</p>
     </div>
-    <div class="pricing-card featured rv" data-plan="pro" data-monthly-1="19" data-annual-1="199" data-monthly-3="39" data-annual-3="399">
+    <div class="pricing-card featured rv" id="plan-pro" data-plan="pro" data-monthly-1="19" data-annual-1="199" data-monthly-3="39" data-annual-3="399">
       <span class="card-chip popular">MOST POPULAR</span>
       <div class="plan-name">Pro</div>
       <div class="plan-desc-sub">What it earns</div>
@@ -1405,7 +1418,7 @@ footer .container{display:flex;justify-content:space-between;gap:40px;flex-wrap:
       <a href="https://checkout.freemius.com/plugin/21336/plan/35610/?trial=paid" data-checkout-base="https://checkout.freemius.com/plugin/21336/plan/35610" class="plan-cta cta-paper plan-checkout">Try every Pro feature free for 7 days</a>
       <p class="refund-badge">14-day money-back guarantee · Cancel from your dashboard</p>
     </div>
-    <div class="pricing-card rv" data-plan="business" data-monthly-1="49" data-annual-1="499" data-monthly-3="89" data-annual-3="899">
+    <div class="pricing-card rv" id="plan-ecommerce" data-plan="business" data-monthly-1="49" data-annual-1="499" data-monthly-3="89" data-annual-3="899">
       <span class="card-chip value">BEST VALUE</span>
       <div class="plan-name">E-commerce</div>
       <div class="plan-desc-sub">A shop of your own</div>
@@ -1493,7 +1506,7 @@ footer .container{display:flex;justify-content:space-between;gap:40px;flex-wrap:
   <div class="wash"><i></i></div>
   <h2 class="rv">You already import the products. <em>They deserve a shop.</em></h2>
   <p class="fc-stat rv"><strong>First cards live in about five minutes.</strong> Begin on the free plan. When you want the whole storefront, with categories, filters and a page of your own, that is the E&#8209;commerce plan.</p>
-  <a href="#pricing" class="btn btn-cta rv">Add product cards to my posts →</a>
+  <a href="#plan-ecommerce" class="btn btn-cta rv">Open my own shop →</a>
   <p class="fc-alt rv"><a href="/ecommerce/">See what the storefront looks like →</a></p>
 </div>
 
@@ -1860,6 +1873,66 @@ if (hamburger) {
   });
 
   render();
+})();
+
+// A link that means one particular plan. On a wide screen the four cards
+// sit side by side, so scrolling to the section is right; below that they
+// are stacked and the reader would land on whichever card happens to be
+// first. There it goes to the card itself, and either way the card lifts
+// once so it is obvious which one was meant.
+;(function () {
+  var section = document.getElementById('pricing');
+  if (!section) return;
+  var reduce = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+  function flash(card) {
+    // Removing and forcing a reflow before re-adding, or a second click
+    // on the same link would find the class already there and do nothing.
+    card.classList.remove('is-called');
+    void card.offsetWidth;
+    card.classList.add('is-called');
+    setTimeout(function () { card.classList.remove('is-called'); }, 1500);
+  }
+
+  function go(id, instant) {
+    var card = document.getElementById(id);
+    if (!card) return;
+    var wide = window.matchMedia('(min-width: 1121px)').matches;
+    var target = wide ? section : card;
+    target.scrollIntoView({ behavior: (instant || reduce) ? 'auto' : 'smooth', block: wide ? 'start' : 'center' });
+
+    // Wait for the card to actually arrive, not for a guessed duration.
+    // From the closing button the journey is some 16,000px, and a fixed
+    // timer would have it flashing while the reader is still somewhere
+    // in the middle of the page. The timeout is only a safety net for
+    // when the scroll never lands.
+    if (!('IntersectionObserver' in window)) { setTimeout(function () { flash(card); }, 620); return; }
+    var done = false;
+    var io = new IntersectionObserver(function (entries) {
+      if (!entries[0].isIntersecting || done) return;
+      done = true; io.disconnect(); clearTimeout(safety); flash(card);
+    }, { threshold: 0.35 });
+    io.observe(card);
+    var safety = setTimeout(function () {
+      if (done) return;
+      done = true; io.disconnect(); flash(card);
+    }, 3000);
+  }
+
+  document.addEventListener('click', function (e) {
+    var a = e.target.closest('a[href*="#plan-"]');
+    if (!a) return;
+    var id = a.getAttribute('href').split('#')[1];
+    if (!document.getElementById(id)) return;   // link to another page
+    e.preventDefault();
+    history.replaceState(null, '', '#' + id);
+    go(id);
+  });
+
+  // Arriving from another page with #plan-... already in the address.
+  if (/^#plan-/.test(location.hash) && document.getElementById(location.hash.slice(1))) {
+    window.addEventListener('load', function () { go(location.hash.slice(1), true); });
+  }
 })();
 
 // FAQ accordion — single-open behaviour
