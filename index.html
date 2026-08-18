@@ -573,6 +573,37 @@ img.pp{display:block;width:auto;height:auto;filter:drop-shadow(0 10px 16px rgba(
 .bleed h2{font-size:var(--h2);line-height:1.08;max-width:17ch}
 .bleed .lede-narrow{color:var(--ink-soft);font-size:1.02rem;max-width:46ch;margin-top:16px}
 .bleed .browser{margin-top:44px}
+/* Tabs for the E-commerce section. Same component as the one on the
+   E-commerce page, on purpose: a reader who follows the link should
+   recognise the thing they just looked at. The copy here is one line per
+   tab - this page shows, that page explains. */
+.room{background:var(--surface);border:1px solid var(--line);border-radius:var(--radius);overflow:hidden;box-shadow:var(--shadow-float)}
+.room-tabs{display:flex;gap:2px;padding:0 8px;border-bottom:1px solid var(--line);background:#FDFCFA;overflow-x:auto}
+.room-tab{font-family:inherit;font-size:.88rem;font-weight:600;color:var(--ink-mute);background:none;border:none;border-bottom:2px solid transparent;padding:16px 18px;cursor:pointer;white-space:nowrap}
+.room-tab:hover{color:var(--ink-soft)}
+.room-tab.is-on{color:var(--ink);border-bottom-color:var(--brand-orange)}
+.room-body{padding:30px}
+@media(max-width:700px){.room-body{padding:22px 18px}}
+.room-panel{display:none;grid-template-columns:.82fr 1.18fr;gap:36px;align-items:center;animation:roomIn .3s cubic-bezier(.2,.6,.2,1) both}
+.room-panel.is-on{display:grid}
+@media(max-width:860px){.room-panel.is-on{grid-template-columns:1fr;gap:24px}}
+@keyframes roomIn{from{opacity:0;transform:translateY(8px)}to{opacity:1;transform:none}}
+.room-copy h3{font-family:var(--serif);font-weight:500;font-size:1.35rem;line-height:1.2;margin-bottom:10px}
+.room-copy p{color:var(--ink-soft);font-size:.95rem;line-height:1.6}
+.room-stats{display:grid;grid-template-columns:1fr 1fr;gap:0 24px}
+.room-stats .room-note{grid-column:1/-1;font-size:.8rem;color:var(--ink-mute);margin-top:16px;line-height:1.5}
+.stat{border-top:1px solid rgba(122,67,0,.2);padding:18px 20px 4px 0}
+.stat span{font-size:.78rem;color:var(--ink-amber);opacity:.8;letter-spacing:.05em;text-transform:uppercase}
+.stat b{display:block;font-family:var(--serif);font-size:1.9rem;font-weight:500;line-height:1.1;margin:10px 0 4px}
+.stat i{font-style:normal;font-size:.82rem;color:var(--green);font-weight:600}
+.room-shot{border:1px solid var(--line);border-radius:10px;overflow:hidden;background:var(--paper)}
+.room-shot img{display:block;width:100%;height:auto}
+/* Same reasoning as on the E-commerce page: an 1800px screen of a desktop
+   admin fitted into 375 turns every label into texture. */
+@media(max-width:640px){
+  .room-shot{overflow-x:auto;-webkit-overflow-scrolling:touch;overscroll-behavior-x:contain}
+  .room-shot img{width:840px;max-width:none}
+}
 .shop-head{display:grid;grid-template-columns:1.15fr .85fr;gap:48px;align-items:end}
 @media(max-width:860px){.shop-head{grid-template-columns:1fr;gap:20px}}
 .shop-shot{margin-top:44px;border-radius:var(--radius);overflow:hidden;box-shadow:0 3px 8px rgba(26,23,32,.06),0 40px 90px -30px rgba(122,67,0,.45);border:1px solid rgba(122,67,0,.12)}
@@ -998,9 +1029,54 @@ footer .container{display:flex;justify-content:space-between;gap:40px;flex-wrap:
       <p class="lede-narrow rv">The same feeds, on your own domain, with the categories, filters and sorting your readers know from every shop they use. Nothing gives away that it started as a data file.</p>
     </div>
   </div>
-  <div class="wide">
-    <div class="shop-shot rv">
-      <img src="/assets/screenshot-shop-frontend.png" alt="A MyFeeds storefront with category navigation, brand filters, search and a product grid" loading="lazy">
+  <div class="container">
+    <div class="room rv">
+      <div class="room-tabs" role="tablist">
+        <button type="button" class="room-tab is-on" role="tab" aria-selected="true" data-panel="front">Storefront</button>
+        <button type="button" class="room-tab" role="tab" aria-selected="false" data-panel="cats">Categories</button>
+        <button type="button" class="room-tab" role="tab" aria-selected="false" data-panel="design">Design</button>
+        <button type="button" class="room-tab" role="tab" aria-selected="false" data-panel="numbers">Numbers</button>
+      </div>
+      <div class="room-body">
+        <div class="room-panel is-on" data-panel="front">
+          <div class="room-copy">
+            <h3>What your reader gets</h3>
+            <p>Your products on your own domain, with the categories, filters, search and sorting people know from any shop.</p>
+          </div>
+          <div class="room-shot">
+            <img src="/assets/screenshot-shop-frontend.png" alt="A MyFeeds storefront with category navigation, brand filters, search and a product grid" loading="lazy">
+          </div>
+        </div>
+        <div class="room-panel" data-panel="cats">
+          <div class="room-copy">
+            <h3>You decide what goes where</h3>
+            <p>Build the tree, confirm the products, and later imports follow the rules you set.</p>
+          </div>
+          <div class="room-shot">
+            <img src="/assets/screenshot-category-editor.png" alt="The MyFeeds category editor with a category tree and product assignment" loading="lazy">
+          </div>
+        </div>
+        <div class="room-panel" data-panel="design">
+          <div class="room-copy">
+            <h3>It carries your design</h3>
+            <p>Colours, typography, tile density, hover, pagination. Live preview, no code.</p>
+          </div>
+          <div class="room-shot">
+            <img src="/assets/screenshot-shop-design-editor.png" alt="The MyFeeds shop design editor with controls and a live storefront preview" loading="lazy">
+          </div>
+        </div>
+        <div class="room-panel" data-panel="numbers">
+          <div class="room-copy">
+            <h3>You see what earns</h3>
+            <p>Clicks, visitors and the commissions your network confirms, in one dashboard. Pro plan and up, so it is already in this one.</p>
+          </div>
+          <div class="room-stats">
+            <div class="stat"><span>Clicks &middot; 30 days</span><b>24,531</b><i>&#9650; 18%</i></div>
+            <div class="stat"><span>Commission &middot; approved</span><b>$1,904</b><i>&#9650; 22%</i></div>
+            <p class="room-note">Sample figures. Yours come from your own clicks and your own network.</p>
+          </div>
+        </div>
+      </div>
     </div>
   </div>
   <div class="container">
@@ -1507,6 +1583,23 @@ if (hamburger) {
     if (stage) stage.classList.remove('cine-c2-active');
     splits.forEach(function (sp) { sp.revert(); });
   };
+  });
+})();
+
+// E-commerce section tabs. Same behaviour as the control room on the
+// E-commerce page: one panel visible, the rest hidden, no routing.
+;(function () {
+  var tabs = document.querySelectorAll('.room-tab');
+  if (!tabs.length) return;
+  tabs.forEach(function (tab) {
+    tab.addEventListener('click', function () {
+      tabs.forEach(function (t) { t.classList.remove('is-on'); t.setAttribute('aria-selected', 'false'); });
+      tab.classList.add('is-on');
+      tab.setAttribute('aria-selected', 'true');
+      document.querySelectorAll('.room-panel').forEach(function (p) {
+        p.classList.toggle('is-on', p.dataset.panel === tab.dataset.panel);
+      });
+    });
   });
 })();
 
