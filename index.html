@@ -740,7 +740,7 @@ img.pp{display:block;width:auto;height:auto;filter:drop-shadow(0 10px 16px rgba(
 .features-link{text-align:center;margin-top:36px}
 
 /* ── Pricing ── */
-#pricing{background:linear-gradient(180deg,var(--paper) 0%,var(--tint-lav) 30%,var(--tint-lav) 100%)}
+#pricing{background:linear-gradient(180deg,var(--paper) 0%,var(--tint-lav) 30%,var(--tint-lav) 100%);scroll-margin-top:74px}
 #pricing .wash i:nth-child(1){width:560px;height:560px;background:rgba(88,73,214,.07);top:8%;left:50%;transform:translateX(-50%)}
 .pricing-head{text-align:center;max-width:620px;margin:0 auto 20px}
 .pricing-head .sec-num{display:block;margin-bottom:12px}
@@ -752,10 +752,14 @@ img.pp{display:block;width:auto;height:auto;filter:drop-shadow(0 10px 16px rgba(
 .toggle-tab.active{background:var(--ink);color:#FCFBF8}
 .toggle-tab .save-text{color:var(--green);font-weight:700}
 .toggle-tab.active .save-text{color:#7BE0B4}
-.pricing-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:14px;max-width:1200px;margin:0 auto;align-items:stretch;position:relative;z-index:2}
+/* start, nicht stretch: vorher wuchs jede Karte auf die Hoehe der
+   laengsten, was der Free-Karte ein Feld Leerraum ueber dem Knopf gab
+   und die ganze Sektion hoeher machte als ein Bildschirm. Jede Karte ist
+   jetzt so hoch, wie sie Inhalt hat. */
+.pricing-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:14px;max-width:1200px;margin:0 auto;align-items:start;position:relative;z-index:2}
 @media(max-width:1120px){.pricing-grid{grid-template-columns:repeat(2,1fr);max-width:760px;gap:16px}}
 @media(max-width:660px){.pricing-grid{grid-template-columns:1fr;max-width:430px;gap:18px}}
-.pricing-card{background:var(--surface);border:1px solid var(--line);border-radius:var(--radius);padding:32px 26px;display:flex;flex-direction:column;position:relative;scroll-margin-top:96px}
+.pricing-card{background:var(--surface);border:1px solid var(--line);border-radius:var(--radius);padding:28px 24px;display:flex;flex-direction:column;position:relative;scroll-margin-top:96px}
 /* Ein Knopf, der einen bestimmten Plan meint, springt auf schmalen
    Schirmen zu genau dieser Karte - dort stehen die vier untereinander und
    man sieht sonst nicht, welche gemeint war. Danach hebt sie sich einmal
@@ -789,8 +793,8 @@ img.pp{display:block;width:auto;height:auto;filter:drop-shadow(0 10px 16px rgba(
 .featured .plan-price .period{color:rgba(244,242,248,.5)}
 .plan-includes{font-size:.7rem;text-transform:uppercase;letter-spacing:.12em;color:var(--accent);font-weight:600;margin:22px 0 6px}
 .featured .plan-includes{color:rgba(255,255,255,.8)}
-.plan-features{list-style:none;margin-bottom:30px;flex:1}
-.plan-features li{padding:9px 0;font-size:.9rem;color:var(--ink-soft);display:flex;align-items:flex-start;gap:10px;border-bottom:1px solid var(--line-soft)}
+.plan-features{list-style:none;margin-bottom:26px}
+.plan-features li{padding:7px 0;font-size:.9rem;color:var(--ink-soft);display:flex;align-items:flex-start;gap:10px;border-bottom:1px solid var(--line-soft)}
 .featured .plan-features li{color:rgba(244,242,248,.78);border-bottom-color:rgba(255,255,255,.07)}
 .plan-features li:last-child{border:none}
 .plan-features .check{color:var(--green);font-weight:700;flex-shrink:0}
