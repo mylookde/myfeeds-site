@@ -4,19 +4,19 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>MyFeeds E-commerce — Start your own affiliate shop</title>
-<meta name="description" content="Turn the affiliate products you already import into a real shop on your own site: categories, filters, search, and pages Google reads as a shop instead of a blog post.">
+<meta name="description" content="Turn the product feeds your affiliate networks give you into a real shop on your own site: categories, filters, search, and pages Google reads as a shop instead of a blog post.">
 <link rel="canonical" href="https://myfeeds.site/ecommerce/">
 <meta property="og:type" content="website">
 <meta property="og:site_name" content="MyFeeds">
 <meta property="og:url" content="https://myfeeds.site/ecommerce/">
 <meta property="og:title" content="MyFeeds E-commerce — Start your own affiliate shop">
-<meta property="og:description" content="Turn the affiliate products you already import into a real shop on your own site: categories, filters, search, and pages Google reads as a shop instead of a blog post.">
+<meta property="og:description" content="Turn the product feeds your affiliate networks give you into a real shop on your own site: categories, filters, search, and pages Google reads as a shop instead of a blog post.">
 <meta property="og:image" content="https://myfeeds.site/assets/og-image.jpg">
 <meta property="og:image:width" content="1200">
 <meta property="og:image:height" content="630">
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:title" content="MyFeeds E-commerce — Start your own affiliate shop">
-<meta name="twitter:description" content="Turn the affiliate products you already import into a real shop on your own site.">
+<meta name="twitter:description" content="Turn the product feeds your affiliate networks give you into a real shop on your own site.">
 <link rel="icon" type="image/png" href="/favicon.png">
 <link rel="icon" type="image/x-icon" href="/favicon.ico">
 <link rel="apple-touch-icon" href="/apple-touch-icon.png">
@@ -178,8 +178,18 @@ section{padding:74px 0;position:relative}
 /* Rot gefuellt, wie im echten Shop - vorher war es weiss mit rotem Text
    und damit die einzige Stelle, die anders aussah als das Produkt. */
 .ms-badge{position:absolute;top:7px;left:7px;background:var(--sale);color:#fff;font-size:.58rem;font-weight:700;padding:3px 8px;border-radius:999px;letter-spacing:.01em}
-.ms-fresh{position:absolute;top:7px;right:7px;background:var(--green);color:#fff;font-size:.55rem;font-weight:700;padding:3px 7px;border-radius:999px;opacity:0;transform:translateY(-3px);transition:opacity .3s,transform .3s}
-.ms-fresh.on{opacity:1;transform:none}
+/* visibility, nicht nur opacity: ein Element mit opacity:0 ist optisch weg,
+   steht aber weiter im Accessibility-Tree - ein Screenreader las "updated"
+   bei jedem der sieben Produkte vor, von denen keines aktualisiert war. */
+/* visibility, nicht nur opacity: ein Element mit opacity:0 ist optisch weg,
+   steht aber weiter im Accessibility-Tree - ein Screenreader las "updated"
+   bei jedem der sieben Produkte vor, von denen keines aktualisiert war.
+   visibility darf dabei NICHT mitlaufen wie opacity: als Transition
+   umgelegt bleibt sie waehrend der ganzen Dauer auf dem alten Wert und
+   die Fahne erscheint nie. Einblenden sofort, Ausblenden erst nachdem
+   opacity durch ist. */
+.ms-fresh{position:absolute;top:7px;right:7px;background:var(--green);color:#fff;font-size:.55rem;font-weight:700;padding:3px 7px;border-radius:999px;opacity:0;visibility:hidden;transform:translateY(-3px);transition:opacity .3s,transform .3s,visibility 0s linear .3s}
+.ms-fresh.on{opacity:1;visibility:visible;transform:none;transition:opacity .3s,transform .3s,visibility 0s}
 .ms-info{padding:9px 10px 10px}
 .ms-brandname{font-size:.56rem;text-transform:uppercase;letter-spacing:.08em;color:var(--ink-mute);font-weight:700}
 .ms-name{font-size:.71rem;color:var(--ink);line-height:1.32;margin:3px 0 5px;overflow:hidden;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;min-height:1.9em}
@@ -433,7 +443,7 @@ footer .container{display:flex;flex-wrap:wrap;gap:32px;justify-content:space-bet
   <div>
     <div class="kicker rv"><span>E-commerce</span><i></i></div>
     <h1 class="rv">Start your own <em>affiliate shop.</em></h1>
-    <p class="lede rv">The products you already import get a shop page on your own site: categories to browse, filters like brand, colour and price, and a search box. The same things your readers already do on any other shop.</p>
+    <p class="lede rv">Your affiliate networks hand you a feed with their whole catalogue in it. MyFeeds turns that into a real shop on your own site: categories to browse, filters like brand, colour and price, and a search box.</p>
     <ul class="value-stack rv">
       <li>Your site, your design, your affiliate links</li>
       <li>Categories, filters, search and sorting from the first day</li>
@@ -479,20 +489,20 @@ footer .container{display:flex;flex-wrap:wrap;gap:32px;justify-content:space-bet
         </div>
       </div>
     </div>
-    <p class="ms-note">A working demo with seven products, at an address you choose, with clothing as the example. Filter it, narrow it by brand, sort it. The real shop adds a search box, price ranges and as many levels of categories as you need.</p>
+    <p class="ms-note">A much simplified demo, with clothing as the example.</p>
   </div>
 </div></section>
 
 <section class="stakes"><div class="container">
   <div class="stakes-head rv">
-    <h2>What stays buried <em>without one</em></h2>
-    <p>You already have the products. Without a shop, your readers never get to see most of them.</p>
+    <h2>What stays buried <em>without a shop</em></h2>
+    <p>Your feed holds a whole catalogue. Without a shop, your readers meet almost none of it.</p>
   </div>
   <div class="stakes-grid">
     <div class="stake rv">
       <span class="stake-n">One</span>
-      <h3>Your best products sit in old posts</h3>
-      <p>A product you wrote about last spring can only be found by someone who finds that one article again. Everything else you imported was never on your site at all.</p>
+      <h3>Most of your catalogue is nowhere</h3>
+      <p>A single feed can hold thousands of products. The only ones on your site are the handful you put into an article by hand, and those are reachable only by someone who finds that article again.</p>
     </div>
     <div class="stake rv">
       <span class="stake-n">Two</span>
@@ -502,31 +512,31 @@ footer .container{display:flex;flex-wrap:wrap;gap:32px;justify-content:space-bet
     <div class="stake rv">
       <span class="stake-n">Three</span>
       <h3>Shoppers search for pages you do not have</h3>
-      <p>People type a kind of product into Google, not the title of your roundup. With no page for that kind of product, you have nothing for Google to show them.</p>
+      <p>People type a kind of product into Google, not the title of your article. With no page for that kind of product, you have nothing for Google to show them.</p>
     </div>
   </div>
 </div></section>
 
-<p class="value-line rv"><b>The products are already inside your WordPress.</b> Everything you imported sits in your own site, waiting. The shop is simply the page that lets people walk through it, filled from the same feeds that already fill your posts.</p>
+<p class="value-line rv"><b>You do not need a blog full of product posts first.</b> Point MyFeeds at your affiliate feeds and the shop is the whole thing: your catalogue, your categories, your design, on your own domain. If you write posts as well, they pull from the same products.</p>
 
 <section><div class="container">
-  <div class="sec-head rv"><span class="sec-num">01</span><h2>Three steps to a storefront</h2></div>
-  <p class="sec-sub rv">No theme to buy, no developer, and no second website to keep running.</p>
+  <div class="sec-head rv"><span class="sec-num">01</span><h2>Three steps to your own online shop</h2></div>
+  <p class="sec-sub rv">Minutes, not a project. No theme to buy, no developer, and no second website to keep running.</p>
   <div class="plan-grid">
     <div class="plan-step rv">
       <span class="plan-n">One</span>
-      <h3>Turn the shop on</h3>
-      <p>Pick the address it should live at. The shop becomes a page on your own site, and your posts stay exactly as they are.</p>
+      <h3>Paste your feed address</h3>
+      <p>Your affiliate network gives you a feed: one file with every product it carries, prices and stock included. Paste the address. MyFeeds reads it, and the products are on your site.</p>
     </div>
     <div class="plan-step rv">
       <span class="plan-n">Two</span>
-      <h3>Sort your products into categories</h3>
-      <p>Name the categories your readers will use. Add products yourself, or let MyFeeds propose them by keyword, brand and feed and tick off what belongs.</p>
+      <h3>Name your categories</h3>
+      <p>Clothing in this example, so Men, Women, Shoes. Put products in yourself, or let MyFeeds propose them and tick off what fits.</p>
     </div>
     <div class="plan-step rv">
       <span class="plan-n">Three</span>
-      <h3>Publish, then keep writing</h3>
-      <p>The shop goes live with its own sitemap for Google. From then on, a product you place in a post can go into the shop with one switch.</p>
+      <h3>Switch the shop on</h3>
+      <p>Pick the address it lives at. The shop goes live as a page on your own site, with its own sitemap for Google.</p>
     </div>
   </div>
 </div></section>
@@ -570,7 +580,7 @@ footer .container{display:flex;flex-wrap:wrap;gap:32px;justify-content:space-bet
       </div>
       <div>
         <h3>They search and sort</h3>
-        <p>A search box over your whole catalogue, and sorting by newest, by price up or down, or by what your readers click most. You choose which one a visitor sees first.</p>
+        <p>A search box over your whole catalogue, and sorting by newest, by price, or by what your readers click most. You choose which one a visitor sees first.</p>
       </div>
       <div>
         <h3>They leave through your link</h3>
@@ -614,7 +624,7 @@ footer .container{display:flex;flex-wrap:wrap;gap:32px;justify-content:space-bet
       <div class="room-panel" data-panel="styles">
         <div class="room-copy">
           <h3>A shortlist inside a category</h3>
-          <p>Jackets holds everything you carry all year. What you want to point at in October is a handful of them. A style is that handful: you pick products out of one category and give the set a name. <b>Fall Jackets</b> inside Jackets, in this example. A car parts site might keep <b>Winter Tyres</b> inside Tyres.</p>
+          <p>Jackets holds every jacket you have, all year round. What you want to point at in October is a handful of them. A style is that handful: you pick products out of one category and give the set a name. <b>Fall Jackets</b> inside Jackets, in this example. A car parts site might keep <b>Winter Tyres</b> inside Tyres.</p>
           <p><b>"Style" is only the default word</b>, and you can rename it to anything that fits what you write about: Looks, Collections, Editions, Seasons.</p>
           <p>Your readers meet it in two places. It is a page of its own, with its own address, your own words on it and its own title and description for Google, so it can be what you link to from a post. And it is a box in the filter list, so someone already looking at Jackets can switch it on and stay where they are.</p>
           <p>You can pick every product by hand, or set rules like a brand, a colour, a price range or a word in the product name, and let MyFeeds collect the matches out of every later import. They wait on a list until you wave them through, so nothing turns up in your shop that you have not seen.</p>
@@ -625,7 +635,7 @@ footer .container{display:flex;flex-wrap:wrap;gap:32px;justify-content:space-bet
       <div class="room-panel" data-panel="design">
         <div class="room-copy">
           <h3>Make it look like your own</h3>
-          <p>Set the <b>colours, fonts, how many products sit in a row, what a hover does, which side the filters are on, how big the pictures are</b> and much more. Products per row is set per device, so a phone is not just a squeezed laptop.</p>
+          <p>Set the <b>colours, fonts, how many products sit in a row, what happens when someone points at a product, which side the filters are on, how big the pictures are</b> and much more. Products per row is set separately for phone, tablet and laptop, so a phone is not a squeezed laptop.</p>
           <p>A live preview sits next to the controls and follows every change as you make it, and it switches between laptop, tablet and phone. What you see there is the same card your visitors get, built by the same code.</p>
           <p class="room-more">No theme to buy and no code anywhere. You can put everything back to the defaults, and undo that too if you change your mind.</p>
         </div>
@@ -637,7 +647,7 @@ footer .container{display:flex;flex-wrap:wrap;gap:32px;justify-content:space-bet
         <div class="room-copy">
           <h3>You see which products earn</h3>
           <p>Clicks per <b>post, product and brand</b>, how many people came, and the commissions your networks confirm, in one place instead of one login per network.</p>
-          <p>Every outgoing link runs over your own site first, so the click is counted before the reader leaves. That keeps counting when a visitor blocks scripts, which is where click counters usually go quiet.</p>
+          <p>Every link out goes through your own site first, so the click is counted before the reader leaves. It keeps counting even when a visitor blocks scripts, which is where most click counters go quiet.</p>
           <p class="room-more">Products that have gone inactive, because the merchant stopped listing them, are flagged here too, together with the posts that still link to them, so you know what to fix first.</p>
         </div>
         <div class="room-stats">
@@ -691,7 +701,7 @@ footer .container{display:flex;flex-wrap:wrap;gap:32px;justify-content:space-bet
 
 <section><div class="container">
   <div class="sec-head rv"><span class="sec-num">03</span><h2>Google treats it like a shop</h2></div>
-  <p class="sec-sub rv">The part most affiliate setups never get right. Here it comes with the shop instead of being added later.</p>
+  <p class="sec-sub rv">Most affiliate setups never get this right. Here it comes with the shop.</p>
   <div class="bento">
     <div class="tile wide rv">
       <div class="tile-viz vz-serp">
@@ -707,7 +717,7 @@ footer .container{display:flex;flex-wrap:wrap;gap:32px;justify-content:space-bet
         <div class="seg"><i>/shop</i><i>/men</i><i>/jackets</i></div>
         <div class="old"><s>/mens-jackets</s><b>301 &rarr;</b></div>
       </div>
-      <h3>Addresses that hold</h3>
+      <h3>Addresses that keep working</h3>
       <p>Categories sit inside each other in the address, one address per page. Rename one and the old address forwards to the new one for good, so links you or anyone else has already shared keep working.</p>
     </div>
     <div class="tile rv">
@@ -744,7 +754,7 @@ footer .container{display:flex;flex-wrap:wrap;gap:32px;justify-content:space-bet
 <section><div class="container">
   <div class="explain rv">
     <h2>How it fits your site</h2>
-    <p>The shop is a page on your own WordPress site, at an address you choose. It uses the same imported products your posts already use, so there is one set of products and two ways to meet them: inside an article, or by browsing.</p>
+    <p>The shop is a page on your own WordPress site, at an address you choose. Everything in it comes from your affiliate feeds, and it stands on its own: you can run the shop and never write a single product post. If you do write them, they pull from the same catalogue, so you keep one set of products and two ways to meet them.</p>
     <p>Nothing runs through us. The products sit in your own site, your own site serves the pages, and every click out carries your affiliate link.</p>
     <details>
       <summary>What happens if you cancel &rarr;</summary>
@@ -767,7 +777,7 @@ footer .container{display:flex;flex-wrap:wrap;gap:32px;justify-content:space-bet
     </details>
     <details>
       <summary>Does the shop change my blog?</summary>
-      <p>No. The shop has its own address, which you choose, and your posts stay untouched. The same products fill both, so a product you add for a post is already there when you build the shop.</p>
+      <p>No. The shop has its own address, which you choose, and your posts stay untouched. Both draw from the same catalogue, so a product is there for whichever of the two you build first.</p>
     </details>
     <details>
       <summary>Can I make the shop look like my site?</summary>
@@ -783,7 +793,7 @@ footer .container{display:flex;flex-wrap:wrap;gap:32px;justify-content:space-bet
     </details>
     <details>
       <summary>How long is the trial?</summary>
-      <p>14 days with everything in it: the shop, the design editor, the SEO work and the sorting help. Cancel from your dashboard whenever you like. Your free setup and the posts you have already built stay as they are.</p>
+      <p>14 days with everything in it: the shop, the design editor, the SEO tools and the rules that sort your products. Cancel from your dashboard whenever you like. Anything you have already built stays as it is.</p>
     </details>
     <details>
       <summary>What happens to my things if I cancel?</summary>
