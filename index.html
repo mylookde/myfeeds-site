@@ -1915,7 +1915,12 @@ if (hamburger) {
     io.observe(card);
     var safety = setTimeout(function () {
       if (done) return;
-      done = true; io.disconnect(); flash(card);
+      done = true; io.disconnect();
+      // Nur aufleuchten lassen, wenn die Karte auch zu sehen ist. Landet
+      // das Scrollen nie (blockiert, oder der Leser scrollt dazwischen
+      // woanders hin), spielt die Animation sonst fuer niemanden.
+      var r = card.getBoundingClientRect();
+      if (r.top < window.innerHeight && r.bottom > 0) flash(card);
     }, 3000);
   }
 
@@ -1931,7 +1936,12 @@ if (hamburger) {
 
   // Arriving from another page with #plan-... already in the address.
   if (/^#plan-/.test(location.hash) && document.getElementById(location.hash.slice(1))) {
-    window.addEventListener('load', function () { go(location.hash.slice(1), true); });
+    var jump = function () { go(location.hash.slice(1), true); };
+    // readyState mitpruefen: dieses Skript steht am Seitenende, und wenn
+    // die Seite aus dem Cache kommt, ist "load" bereits durch - der
+    // Listener allein wuerde dann nie feuern.
+    if (document.readyState === 'complete') { setTimeout(jump, 0); }
+    else { window.addEventListener('load', jump); }
   }
 })();
 
