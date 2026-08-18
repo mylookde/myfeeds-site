@@ -131,7 +131,12 @@ section{padding:74px 0;position:relative}
 .value-stack li::before{content:'';position:absolute;left:2px;top:.55em;width:9px;height:9px;border-radius:50%;background:rgba(252,144,0,.15);border:1.5px solid var(--brand-orange)}
 .hero-actions{display:flex;gap:18px;flex-wrap:wrap;align-items:center}
 .hero-note{font-size:.85rem;color:var(--ink-mute);margin-top:18px}
-.hero-grid{display:grid;grid-template-columns:1fr .92fr;gap:56px;align-items:center}
+/* Der Hero bricht aus dem 1180er Textmass aus, damit der Laden daneben
+   breiter als hoch stehen kann statt als Quadrat. Nur dieser eine
+   Container - alles darunter bleibt auf Lesebreite. Rechts bleiben auf
+   1440px rund 60px Luft. */
+.hero .container{max-width:1320px}
+.hero-grid{display:grid;grid-template-columns:1fr 1.2fr;gap:52px;align-items:center}
 @media(max-width:960px){.hero-grid{grid-template-columns:1fr;gap:44px}}
 
 /* Working storefront in the hero. The reader's only question is what
@@ -170,6 +175,11 @@ section{padding:74px 0;position:relative}
    waren weg. Jede Zeile nimmt jetzt ihre eigene Hoehe, der Rest laeuft
    unter der Maske aus. */
 .ms-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:11px;height:412px;align-content:start;grid-auto-rows:min-content;overflow:hidden;-webkit-mask-image:linear-gradient(to bottom,#000 82%,transparent 100%);mask-image:linear-gradient(to bottom,#000 82%,transparent 100%)}
+/* Drei Kacheln nebeneinander, sobald der Hero breit genug ist - so
+   stellt der echte Shop sie auch. Muss NACH der Regel darueber stehen:
+   gleiche Spezifitaet, also entscheidet die Reihenfolge, und davor
+   platziert hat sie schlicht nichts getan. */
+@media(min-width:1100px){.ms-grid{grid-template-columns:repeat(3,1fr)}}
 .ms-tile{border:1px solid var(--line-soft);border-radius:10px;overflow:hidden;background:var(--surface);transition:transform .2s,box-shadow .2s;animation:msIn .34s cubic-bezier(.2,.6,.2,1) both;animation-delay:calc(var(--i,0) * 45ms)}
 .ms-tile:hover{transform:translateY(-2px);box-shadow:0 10px 22px -10px rgba(26,23,32,.3)}
 @media(prefers-reduced-motion:reduce){.ms-tile{animation:none}}
