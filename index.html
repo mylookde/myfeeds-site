@@ -835,8 +835,14 @@ img.pp{display:block;width:auto;height:auto;filter:drop-shadow(0 10px 16px rgba(
 .final-cta .wash i:nth-child(1){width:600px;height:600px;background:rgba(88,73,214,.22);top:-260px;left:50%;transform:translateX(-50%)}
 .final-cta h2{font-size:clamp(2rem,4.6vw,3.2rem);line-height:1.1;max-width:760px;margin:0 auto 18px;position:relative;z-index:2}
 .final-cta h2 em{font-style:italic;color:#A79CF2}
-.final-cta .fc-stat{color:rgba(244,242,248,.6);font-size:.95rem;margin-bottom:36px;position:relative;z-index:2}
+.final-cta .fc-stat{color:rgba(244,242,248,.6);font-size:.95rem;max-width:62ch;margin:0 auto 36px;position:relative;z-index:2}
 .final-cta .fc-stat strong{color:#F4F2F8}
+/* Der Abschluss der Startseite ist jetzt die Ueberleitung zum Shop, also
+   braucht er neben dem Preis-Knopf einen Weg dorthin. Gleiche Bauart wie
+   die Zweitzeile auf der E-commerce-Seite. */
+.final-cta .fc-alt{margin-top:20px;font-size:.88rem;position:relative;z-index:2}
+.final-cta .fc-alt a{color:#CFC8E4;text-decoration:underline;text-underline-offset:3px;text-decoration-thickness:1px}
+.final-cta .fc-alt a:hover{color:#F4F2F8}
 .final-cta .btn-paper{background:#FCFBF8;color:var(--ink) !important;position:relative;z-index:2}
 .final-cta .btn-paper:hover{transform:translateY(-1px);box-shadow:0 14px 34px -8px rgba(0,0,0,.55)}
 
@@ -1484,9 +1490,10 @@ footer .container{display:flex;justify-content:space-between;gap:40px;flex-wrap:
 
 <div class="final-cta">
   <div class="wash"><i></i></div>
-  <h2 class="rv">Look like a shop, <em>not a post full of links.</em></h2>
-  <p class="fc-stat rv"><strong>First cards live in about five minutes.</strong> Begin on the free plan and move up when you're ready.</p>
+  <h2 class="rv">You already import the products. <em>They deserve a shop.</em></h2>
+  <p class="fc-stat rv"><strong>First cards live in about five minutes.</strong> Begin on the free plan. When you want the whole storefront, with categories, filters and a page of your own, that is the E&#8209;commerce plan.</p>
   <a href="#pricing" class="btn btn-cta rv">Add product cards to my posts →</a>
+  <p class="fc-alt rv"><a href="/ecommerce/">See what the storefront looks like →</a></p>
 </div>
 
 <footer><div class="container">
