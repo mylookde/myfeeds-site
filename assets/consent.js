@@ -64,7 +64,11 @@
         };
         p.callQueue = [];
         var t = d.createElement('script');
-        t.src = 'https://www.redditstatic.com/ads/pixel.js';
+        // Die ID haengt an der Skript-URL, nicht nur im init-Aufruf. So
+        // steht es in Reddits eigenem Setup-Code; der Kommentar dort
+        // sagt ausdruecklich, an dem Block nichts zu aendern ausser dem
+        // Nutzer-Identifikator.
+        t.src = 'https://www.redditstatic.com/ads/pixel.js?pixel_id=' + PIXEL_ID;
         t.async = true;
         var s = d.getElementsByTagName('script')[0];
         s.parentNode.insertBefore(t, s);
