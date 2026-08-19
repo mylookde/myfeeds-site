@@ -61,6 +61,17 @@ jobs:
             --exclude '_site/'
           # Tells Pages not to run Jekyll over it.
           touch _site/.nojekyll
+
+          # Cache-Sperre gegen die eigenen Skripte. Pages liefert sie mit
+          # max-age=600 aus, also sah ein Besucher (und wir beim Testen)
+          # zehn Minuten lang die alte Fassung - genau lange genug, um eine
+          # Aenderung fuer kaputt zu halten. Der Commit-Hash an der URL
+          # macht jede Auslieferung zu einer neuen Adresse.
+          REV="${GITHUB_SHA::8}"
+          find _site -name '*.html' -type f -print0 | xargs -0 sed -i \
+            -e "s#/assets/consent\.js#/assets/consent.js?v=$REV#g" \
+            -e "s#/assets/back-to-top\.js#/assets/back-to-top.js?v=$REV#g"
+          echo "Asset revision: $REV"
           echo "Files going out: $(find _site -type f | wc -l)"
           echo "Size: $(du -sh _site | cut -f1)"
           # A deploy that quietly lost the homepage is worse than a failed
