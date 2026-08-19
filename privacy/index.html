@@ -75,6 +75,11 @@ footer .footer-copy{color:var(--text-muted);font-size:.8rem;margin-top:16px}
    sie hat die gleiche Spezifität wie die Regeln oben und gewinnt über die
    Reihenfolge. */
 .nav-logo span,.footer-brand{font-family:'Archivo',sans-serif;font-weight:700;letter-spacing:-.022em}
+/* Jedes Sprungziel muss unter der festen Navigation durchpassen. Vorher
+   hatten das nur die Preistabelle und die Plan-Karten, weil ich beim
+   Bauen nur dorthin gesehen habe - #faq, #how, #storefront, #curator und
+   #control landeten alle hinter der Leiste. Eine Regel fuer alle. */
+[id]{scroll-margin-top:84px}
 </style>
 </head>
 <body>
