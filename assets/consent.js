@@ -78,9 +78,22 @@
     window.rdt('track', 'PageVisit');
   }
 
+  // Eine Kennung pro Knopf und Seitenaufruf. Reddits Vorlage aus dem
+  // Setup ("Prepare for deduplication") verlangt conversionId; sie sorgt
+  // hier ausserdem dafuer, dass ein zweiter Klick auf denselben Knopf
+  // nicht als zweiter Lead zaehlt.
+  var conversionIds = {};
+  function conversionIdFor(label) {
+    if (!conversionIds[label]) {
+      conversionIds[label] = label + '-' + Date.now() + '-' +
+        Math.random().toString(36).slice(2, 8);
+    }
+    return conversionIds[label];
+  }
+
   function pixelLead(label) {
     if (!pixelReady || !window.rdt) return;
-    window.rdt('track', 'Lead', { customEventName: label });
+    window.rdt('track', 'Lead', { conversionId: conversionIdFor(label) });
   }
 
   // ------------------------------------------------------------- the banner
@@ -144,8 +157,23 @@
     if (!a) return;
     var label = labelFor(a.getAttribute('href'));
     if (!label) return;
+
     countEvent(label);
     pixelLead(label);
+
+    // Beide Zaehler feuern eine Anfrage ab, und diese Links verlassen die
+    // Seite. Ein Browser bricht laufende Anfragen beim Verlassen ab, also
+    // ging genau der Klick verloren, den wir messen wollten - Reddit blieb
+    // auf "no events" und die GoatCounter-Ziele wurden nie gezaehlt.
+    // Ein Wimpernschlag Aufschub reicht; alles, was der Nutzer bewusst in
+    // einem neuen Tab oeffnet, bleibt unberuehrt.
+    if (e.defaultPrevented || e.button !== 0 ||
+        e.metaKey || e.ctrlKey || e.shiftKey || e.altKey ||
+        a.target === '_blank') return;
+
+    var href = a.href;
+    e.preventDefault();
+    setTimeout(function () { window.location.href = href; }, 250);
   });
 
   // Withdrawing consent: any link to #consent-reset clears the choice and
