@@ -16,13 +16,13 @@
 <link rel="apple-touch-icon" href="/apple-touch-icon.png">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Outfit:wght@300..800&display=swap">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,500;0,9..144,600;1,9..144,500&family=Inter:wght@400;500;600;700&display=swap">
 <style>*,*::before,*::after{margin:0;padding:0;box-sizing:border-box}
-:root{--bg:#0a0a12;--card:rgba(255,255,255,.05);--line:rgba(255,255,255,.09);--txt:#f0eef6;--soft:rgba(240,238,246,.62);--mute:rgba(240,238,246,.38);--a1:#667eea;--a2:#764ba2;--green:#34d399;--grad:linear-gradient(135deg,#667eea,#764ba2)}
-html{background:var(--bg);color:var(--txt);font-family:'Outfit',sans-serif;scroll-behavior:smooth}
+:root{--bg:#FAF8F4;--card:#FFFFFF;--line:#E8E4DB;--txt:#1A1720;--soft:#57515F;--mute:#8F8A99;--a1:#6C54B4;--a2:#5A4499;--green:#1E9E6A;--grad:linear-gradient(135deg,#6C54B4,#5A4499);--serif:'Fraunces',Georgia,serif;--sans:'Inter',-apple-system,BlinkMacSystemFont,sans-serif}
+html{background:var(--bg);color:var(--txt);font-family:var(--sans);scroll-behavior:smooth}
 body{line-height:1.6;overflow-x:hidden}
 .wrap{max-width:860px;margin:0 auto;padding:0 24px}
-nav{position:fixed;top:0;left:0;right:0;z-index:50;padding:14px 0;backdrop-filter:blur(18px);background:rgba(10,10,18,.75);border-bottom:1px solid var(--line)}
+nav{position:fixed;top:0;left:0;right:0;z-index:50;padding:14px 0;backdrop-filter:blur(18px);background:rgba(250,248,244,.88);border-bottom:1px solid var(--line)}
 nav .wrap{display:flex;align-items:center;justify-content:space-between;max-width:1200px}
 .logo{display:flex;align-items:center;gap:10px;text-decoration:none;color:var(--txt);font-weight:700;font-size:1.05rem}
 .logo img{width:30px;height:30px;border-radius:7px}
@@ -49,7 +49,7 @@ p{color:var(--soft);margin-bottom:14px;font-size:.97rem}
 .facts{background:linear-gradient(135deg,rgba(102,126,234,.10),rgba(118,75,162,.06));border:1px solid rgba(102,126,234,.25);border-radius:14px;padding:22px 24px;margin:24px 0}
 .facts h2{margin:0 0 12px;font-size:1.05rem}
 .facts ul{list-style:none}
-.facts li{padding:7px 0;color:var(--soft);font-size:.93rem;display:flex;gap:10px;align-items:flex-start;border-bottom:1px solid rgba(255,255,255,.05)}
+.facts li{padding:7px 0;color:var(--soft);font-size:.93rem;display:flex;gap:10px;align-items:flex-start;border-bottom:1px solid var(--line)}
 .facts li:last-child{border:none}
 .facts li b{color:var(--green);font-weight:700;flex-shrink:0}
 .faq details{background:var(--card);border:1px solid var(--line);border-radius:11px;margin-bottom:10px}
@@ -80,6 +80,10 @@ footer .copy{color:var(--mute);font-size:.76rem}
    Bauen nur dorthin gesehen habe - #faq, #how, #storefront, #curator und
    #control landeten alle hinter der Leiste. Eine Regel fuer alle. */
 [id]{scroll-margin-top:84px}
+
+.nav-logo span,.footer-brand{font-family:var(--serif) !important;font-weight:600 !important;letter-spacing:-.012em !important}
+h1,h2{font-family:var(--serif);font-weight:500;letter-spacing:-.012em}
+.legal-page h1,.legal-page h2{font-family:var(--serif);font-weight:500}
 </style>
 <script data-goatcounter="https://myfeeds.goatcounter.com/count" async src="//gc.zgo.at/count.js"></script>
 </head>
