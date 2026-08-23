@@ -1,0 +1,198 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>How to Import a Merchant Product Feed into WordPress | MyFeeds</title>
+<meta name="description" content="A step-by-step guide: find the product feed URL in your affiliate network, import it into WordPress, place products in a post, and keep prices current automatically.">
+<link rel="canonical" href="https://myfeeds.site/articles/import-product-feed-wordpress.html">
+<meta property="og:type" content="article">
+<meta property="og:site_name" content="MyFeeds">
+<meta property="og:title" content="How to Import a Merchant Product Feed into WordPress">
+<meta property="og:description" content="A step-by-step guide: find the product feed URL in your affiliate network, import it into WordPress, place products in a post, and keep prices current automatically.">
+<meta property="og:image" content="https://myfeeds.site/assets/og-image.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="628">
+<meta property="og:url" content="https://myfeeds.site/articles/import-product-feed-wordpress.html">
+<meta property="article:published_time" content="2026-08-22">
+<meta property="article:author" content="MyFeeds">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="How to Import a Merchant Product Feed into WordPress">
+<meta name="twitter:description" content="A step-by-step guide: find the product feed URL in your affiliate network, import it into WordPress, place products in a post, and keep prices current automatically.">
+<meta name="twitter:image" content="https://myfeeds.site/assets/og-image.png">
+<link rel="icon" type="image/png" href="/favicon.png">
+<link rel="icon" type="image/x-icon" href="/favicon.ico">
+<link rel="apple-touch-icon" href="/apple-touch-icon.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Archivo:wght@700&family=Outfit:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+:root{
+  --bg-deep:#0a0a12;
+  --bg-glass:rgba(255,255,255,0.06);
+  --border-glass:rgba(255,255,255,0.08);
+  --text-primary:#fff;
+  --text-secondary:rgba(255,255,255,0.7);
+  --text-muted:rgba(255,255,255,0.45);
+  --accent-start:#667eea;
+  --accent-end:#764ba2;
+  --gradient-brand:linear-gradient(135deg,#667eea 0%,#764ba2 100%);
+  --accent-green:#34d399;
+  --radius:16px;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth;background:var(--bg-deep);color:var(--text-primary);font-family:'Outfit',sans-serif}
+body{overflow-x:hidden;min-height:100vh;background:var(--bg-deep);line-height:1.6}
+.ambient{position:fixed;inset:0;z-index:0;pointer-events:none;overflow:hidden}
+.ambient .orb{position:absolute;border-radius:50%;filter:blur(120px);opacity:.18}
+.orb-1{width:500px;height:500px;background:#667eea;top:-200px;left:-200px}
+.orb-2{width:400px;height:400px;background:#764ba2;bottom:-100px;right:-100px}
+nav{position:fixed;top:0;left:0;right:0;z-index:100;padding:16px 0;backdrop-filter:blur(20px);background:rgba(10,10,18,0.7);border-bottom:1px solid var(--border-glass)}
+.nav-container{max-width:1200px;margin:0 auto;padding:0 24px;display:flex;align-items:center;justify-content:space-between}
+.nav-logo{display:flex;align-items:center;gap:10px;text-decoration:none;color:var(--text-primary);font-weight:600;font-size:1.05rem}
+.nav-logo img{width:32px;height:32px;border-radius:8px}
+.nav-back{color:var(--text-secondary);text-decoration:none;font-size:.9rem;transition:color .2s}
+.nav-back:hover{color:var(--text-primary)}
+article{position:relative;z-index:1;max-width:680px;margin:0 auto;padding:120px 24px 80px}
+.article-header{margin-bottom:48px}
+.article-eyebrow{display:inline-flex;align-items:center;gap:8px;padding:6px 14px;border-radius:999px;background:linear-gradient(135deg,rgba(52,211,153,.14) 0%,rgba(102,126,234,.08) 100%);border:1px solid rgba(52,211,153,.3);font-size:.78rem;color:var(--text-secondary);margin-bottom:24px;font-weight:500}
+.article-eyebrow .dot{width:6px;height:6px;border-radius:50%;background:var(--accent-green);animation:pulse 2s infinite}
+@keyframes pulse{0%,100%{opacity:1;transform:scale(1)}50%{opacity:.5;transform:scale(1.3)}}
+h1{font-size:clamp(2rem,4vw,2.8rem);font-weight:800;letter-spacing:-.03em;line-height:1.15;margin-bottom:16px}
+.article-meta{color:var(--text-muted);font-size:.9rem}
+.article-body p{margin-bottom:24px;color:var(--text-secondary);font-size:1.05rem;line-height:1.75}
+.article-body p:first-of-type{font-size:1.18rem;color:var(--text-primary);font-weight:500}
+.article-body p.update-note{margin-top:-14px;font-size:.9rem;color:var(--text-muted)}
+.article-body ul{margin:0 0 28px 0;padding-left:0;list-style:none;background:var(--bg-glass);border:1px solid var(--border-glass);border-radius:var(--radius);padding:8px 24px}
+.article-body ul li{padding:14px 0;color:var(--text-secondary);font-size:.98rem;border-bottom:1px solid var(--border-glass);display:flex;gap:12px;align-items:flex-start}
+.article-body ul li:last-child{border-bottom:none}
+.article-body ul li::before{content:'';display:block;width:6px;height:6px;border-radius:50%;background:var(--accent-start);margin-top:10px;flex-shrink:0}
+.article-body strong{color:var(--text-primary);font-weight:600}
+.cta-block{margin-top:56px;padding:32px;background:var(--bg-glass);border:1px solid var(--border-glass);border-radius:var(--radius)}
+.cta-block h3{font-size:1.05rem;font-weight:600;margin-bottom:18px;color:var(--text-primary);text-transform:uppercase;letter-spacing:.08em}
+.cta-block a{display:flex;align-items:center;gap:8px;color:var(--accent-start);text-decoration:none;padding:14px 0;font-weight:500;font-size:1rem;transition:all .2s}
+.cta-block a:hover{gap:14px;color:#a78bfa}
+.cta-block a + a{border-top:1px solid var(--border-glass)}
+.article-back-link{display:inline-flex;align-items:center;gap:8px;margin-top:48px;color:var(--text-muted);text-decoration:none;font-size:.9rem;transition:color .2s}
+.article-back-link:hover{color:var(--text-primary)}
+footer{position:relative;z-index:1;padding:40px 24px;text-align:center;color:var(--text-muted);font-size:.85rem;border-top:1px solid var(--border-glass)}
+@media(max-width:600px){article{padding:100px 20px 60px}h1{font-size:1.8rem}}
+
+/* Die Wortmarke ist die Marke, nicht eine Zeile Fließtext: eine eigene
+   Schrift, auf jeder Seite dieselbe. Steht bewusst am Ende des Blocks -
+   sie hat die gleiche Spezifität wie die Regeln oben und gewinnt über die
+   Reihenfolge. */
+.nav-logo span,.footer-brand{font-family:'Archivo',sans-serif;font-weight:700;letter-spacing:-.022em}
+/* Jedes Sprungziel muss unter der festen Navigation durchpassen. Vorher
+   hatten das nur die Preistabelle und die Plan-Karten, weil ich beim
+   Bauen nur dorthin gesehen habe - #faq, #how, #storefront, #curator und
+   #control landeten alle hinter der Leiste. Eine Regel fuer alle. */
+[id]{scroll-margin-top:84px}
+
+.article-body h2{font-family:'Archivo',sans-serif;font-size:1.5rem;font-weight:700;color:var(--text-primary);margin:44px 0 16px;line-height:1.25}
+.article-body h3{font-size:1.12rem;font-weight:700;color:var(--text-primary);margin:32px 0 12px}
+.article-body a{color:var(--accent-start);text-decoration:none;border-bottom:1px solid rgba(255,255,255,.2)}
+.article-body a:hover{border-bottom-color:var(--accent-start)}
+.article-body ol{margin:0 0 28px 0;padding-left:22px;color:var(--text-secondary)}
+.article-body ol li{padding:7px 0;font-size:.98rem}
+.article-body code{background:var(--bg-glass);border:1px solid var(--border-glass);border-radius:6px;padding:2px 7px;font-size:.9em}
+</style>
+<!-- GoatCounter Analytics (privacy-friendly, no cookies, GDPR-safe, free) -->
+<script data-goatcounter="https://myfeeds.goatcounter.com/count" async src="//gc.zgo.at/count.js"></script>
+</head>
+<body>
+<div class="ambient">
+  <div class="orb orb-1"></div>
+  <div class="orb orb-2"></div>
+</div>
+<nav>
+  <div class="nav-container">
+    <a href="/" class="nav-logo"><img src="/logo.png" alt="MyFeeds"><span>MyFeeds</span></a>
+    <a href="/articles/" class="nav-back">← All guides</a>
+  </div>
+</nav>
+<article>
+  <header class="article-header">
+    <div class="article-eyebrow"><span class="dot"></span> Guide</div>
+    <h1>How to import a merchant product feed into WordPress</h1>
+    <p class="article-meta">August 22, 2026</p>
+  </header>
+  <div class="article-body">
+    <p>Your affiliate network holds a file listing every product your merchants sell &mdash; the title, the current price, the image, the stock status and your tracking link, all of it kept up to date by the merchant. That file is a product feed, and almost nobody uses it. Most affiliate posts are still built by opening the merchant's website, copying a link, and pasting it into a paragraph.</p>
+
+    <p>This guide covers getting that file into WordPress: where to find it, how to import it, how to place products in a post, and the part most guides skip &mdash; keeping it current afterwards.</p>
+
+    <h2>What a product feed actually is</h2>
+
+    <p>A product feed is a spreadsheet your merchant maintains for you. It arrives as CSV, TSV, XML or JSON, usually behind a URL your network generates, and it is regenerated on the merchant's schedule &mdash; daily for most, hourly for some. A feed for a mid-sized fashion retailer holds twenty to eighty thousand rows.</p>
+
+    <p>Networks call it different things. AWIN says <em>datafeed</em>, CJ Affiliate says <em>product catalog</em>, Impact says <em>product catalog</em> too, Tradedoubler says <em>product feed</em>. It is the same object each time.</p>
+
+    <h2>Step 1: Get the feed URL from your network</h2>
+
+    <p>You need a URL, not a downloaded file. A downloaded file is a snapshot that starts going stale the moment you save it; the URL is the live version, and it is what lets prices update on their own later.</p>
+
+    <p>In every network the path is roughly the same:</p>
+
+    <ol>
+      <li>Log in and find the section named <em>Product feeds</em>, <em>Datafeeds</em>, or <em>Product catalog</em>.</li>
+      <li>Pick the merchant whose products you want. You need an approved partnership with them first &mdash; a pending application will not show a feed.</li>
+      <li>Choose a format if you are offered one. CSV is the safest default.</li>
+      <li>Copy the generated URL. It will contain your publisher ID, which is what stamps your commission onto the links inside it.</li>
+    </ol>
+
+    <p>Two things to check before you leave the page. Make sure the feed includes the <em>deep link</em> or <em>tracking link</em> column &mdash; some networks let you build a feed without it, and a feed without tracking links earns nothing. And if the network offers a compressed version, take it; a 60&nbsp;MB file downloads considerably faster as a 6&nbsp;MB one.</p>
+
+    <p>Per-network specifics are on the <a href="/networks/?utm_source=article&amp;utm_medium=guide&amp;utm_campaign=import-feed">supported networks page</a>.</p>
+
+    <h2>Step 2: Import the feed into WordPress</h2>
+
+    <p>WordPress cannot read a product feed on its own; it has no concept of a product outside of a shop plugin. You need something that fetches the file, works out which column means what, and stores the result.</p>
+
+    <p>With <a href="https://wordpress.org/plugins/myfeeds-affiliate-feed-manager/">MyFeeds</a> that is three fields: open <strong>MyFeeds &rarr; Feeds</strong>, paste the URL, and click Import. The plugin downloads the file, detects the format, maps the columns and writes every product into your own database. A 30,000-product feed takes two to five minutes and runs in the background, so you can close the tab.</p>
+
+    <p>The column mapping is the part that goes wrong most often, because no two networks name their fields the same way. One calls the price <code>search_price</code>, another <code>product_price</code>, a third <code>price_amount</code>. A good importer recognises the common patterns automatically and gives you a mapping editor for the rest. If your product titles import but your prices come through empty, that is a mapping problem, not a broken feed.</p>
+
+    <h2>Step 3: Put the products in a post</h2>
+
+    <p>Once the catalogue is in your database, it is searchable. Open any post, add the product block, and search by name, brand, colour or category the way you would search a shop. Pick the products you want and they land in the post as cards with the image, the price and your tracking link already attached.</p>
+
+    <p>This is the real change. You are no longer looking for products on the merchant's website and copying links; you are picking from a list you already own, and the link is correct by construction.</p>
+
+    <h2>Step 4: Keep it current &mdash; the part that matters most</h2>
+
+    <p>An import is a snapshot. Left alone, that snapshot is what makes affiliate posts rot: a price you quoted in March is wrong by June, a product that sold out still shows Buy Now, and a merchant that left the network takes your links with them. None of that announces itself. Your traffic stays flat and your earnings drift down.</p>
+
+    <p>So the import needs to repeat. MyFeeds re-reads every feed nightly and refreshes the cards already sitting in your posts, with a fuller import weekly to catch products added or withdrawn since. Prices in old posts correct themselves; sold-out items get flagged; and when a product disappears from the feed entirely, you get a list of every post that still points at it, so you can replace it instead of finding out from a reader.</p>
+
+    <h2>Common problems</h2>
+
+    <h3>Some products did not import</h3>
+    <p>Most importers skip rows missing something essential &mdash; no title, no price, no image, or no tracking link. That is usually correct behaviour: a card without a price is not a card you want published. Check the feed itself for incomplete rows before assuming the import failed.</p>
+
+    <h3>The feed URL returns an error</h3>
+    <p>Nearly always one of three things: the merchant partnership is not approved yet, the feed URL has an expiry the network did not mention, or the file is behind HTTP authentication that needs a username and password alongside the URL.</p>
+
+    <h3>The format is unusual</h3>
+    <p>Smaller merchants sometimes publish something idiosyncratic &mdash; a semicolon-delimited CSV with a byte-order mark, or XML with an unconventional structure. That is what a manual mapping editor is for: you tell it once which column is which, and it remembers.</p>
+
+    <h2>Is this worth it for a small site?</h2>
+
+    <p>If you publish two or three product links a year, no. Copying them by hand is faster than setting anything up.</p>
+
+    <p>It becomes worth it at the point where you cannot remember which posts contain which products. That is usually somewhere around thirty or forty published posts, and it is also the point at which manual maintenance quietly stops happening &mdash; not because you decided to stop, but because checking them all takes an afternoon you never have.</p>
+  </div>
+  <div class="cta-block">
+    <h3>Import your first feed</h3>
+    <a href="https://wordpress.org/plugins/myfeeds-affiliate-feed-manager/" target="_blank" rel="noopener">Get MyFeeds free on WordPress.org →</a>
+    <a href="/install/?utm_source=article&amp;utm_medium=guide&amp;utm_campaign=import-feed">Read the full setup guide →</a>
+  </div>
+  <a href="/articles/" class="article-back-link">← All guides</a>
+</article>
+<footer>
+  MyFeeds · Affiliate product feeds for WordPress · <a href="/affiliates/" style="color:inherit;text-decoration:none;border-bottom:1px solid rgba(255,255,255,0.15)">Affiliates</a> · © 2026
+</footer>
+<script src="/assets/back-to-top.js" defer></script>
+<script src="/assets/consent.js" defer></script>
+</body>
+</html>
