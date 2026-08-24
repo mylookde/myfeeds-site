@@ -1463,6 +1463,11 @@ footer .container{display:flex;justify-content:space-between;gap:40px;flex-wrap:
         <p>On your own WordPress site, in your own database. The plugin doesn't proxy product images, doesn't ping a third-party server when a page loads, and doesn't send anything about your visitors anywhere.</p>
       </details>
       <details>
+        <summary>Will this fill my database up over time?</summary>
+        <p>No, and the plugin actively works against it. Products belong to the feed they came from: delete a feed and its products go with it, rather than sitting in your database forever and turning up in the picker. The exception is deliberate &mdash; products a published post still shows are kept, so your pages don't go blank, and those stop being offered when you add new ones.</p>
+        <p>Once a day MyFeeds also clears out after itself: options left behind by versions you no longer run, cached data that has expired, and its own finished background jobs once they're more than a week old. A week is long enough to look back at what ran on Tuesday and short enough that a nightly sync doesn't grow the tables without end. Jobs belonging to other plugins are never touched &mdash; the scheduler is shared with WooCommerce and others, and their history is not ours to delete.</p>
+      </details>
+      <details>
         <summary>Do I need technical skills?</summary>
         <p>No code, no command line, no terminal. If you can install a WordPress plugin and paste a URL, you're done.</p>
       </details>
