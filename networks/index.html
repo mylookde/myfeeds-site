@@ -4,13 +4,13 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Supported affiliate networks - product feeds in WordPress | MyFeeds</title>
-<meta name="description" content="MyFeeds reads the product feed of any affiliate network that hands you a feed URL. Guides for AWIN, CJ, TradeDoubler, Impact, Rakuten and more.">
+<meta name="description" content="MyFeeds reads the product feed of any affiliate network that hands you a feed URL. Guides for AWIN, CJ, TradeDoubler, Impact, Rakuten and more, plus how Amazon works without a feed.">
 <link rel="canonical" href="https://myfeeds.site/networks/">
 <meta property="og:type" content="website">
 <meta property="og:site_name" content="MyFeeds">
 <meta property="og:url" content="https://myfeeds.site/networks/">
 <meta property="og:title" content="Supported affiliate networks - product feeds in WordPress | MyFeeds">
-<meta property="og:description" content="MyFeeds reads the product feed of any affiliate network that hands you a feed URL. Guides for AWIN, CJ, TradeDoubler, Impact, Rakuten and more.">
+<meta property="og:description" content="MyFeeds reads the product feed of any affiliate network that hands you a feed URL. Guides for AWIN, CJ, TradeDoubler, Impact, Rakuten and more, plus how Amazon works without a feed.">
 <meta property="og:image" content="https://myfeeds.site/assets/og-image.png">
 <link rel="icon" type="image/png" href="/favicon.png">
 <link rel="apple-touch-icon" href="/apple-touch-icon.png">
@@ -115,6 +115,11 @@ h1,h2{font-family:var(--serif);font-weight:500;letter-spacing:-.012em}
     <a class="netcard" href="/networks/flexoffers/"><b>FlexOffers</b><span>Feed import guide &rarr;</span></a>
     <a class="netcard" href="/networks/sovrn/"><b>Sovrn Commerce</b><span>Feed import guide &rarr;</span></a>
   </div>
+
+  <h2>Amazon works, but not through a feed</h2>
+  <p>Amazon is the exception on this page, and the reason it has no import guide: Amazon publishes no product feed file at all. MyFeeds pulls Amazon products live through Amazon's Creators API instead, so there is no URL to paste &mdash; you connect your Associates credentials once and search Amazon's catalogue from inside the editor.</p>
+  <p>Two things worth knowing before you count on it. Amazon opens Creators API access only to Associates accounts with ten qualified sales in thirty days, so a brand-new account cannot connect yet. And because it is a live API rather than a feed file, it sits on the <a href="/#pricing">Pro plan</a> and above.</p>
+
   <h2>Your network isn't listed?</h2>
   <p>The list above covers the networks MyFeeds recognises with zero configuration. Generic CSV, TSV, XML and JSON feeds work too; the smart mapper figures out which column is which on its own. If your program publishes a feed file you can download, MyFeeds will almost certainly import it.</p>
   <div class="cta-box">
