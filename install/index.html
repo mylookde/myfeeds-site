@@ -203,7 +203,7 @@ h1,h2{font-family:var(--serif);font-weight:500;letter-spacing:-.012em}
   <div class="step-content">
     <h2>Deactivate the free plugin (if installed)</h2>
     <p>In WP Admin go to <strong>Plugins</strong>, find the free <strong>MyFeeds</strong> entry &mdash; the one that is not called MyFeeds Pro &mdash; and click <strong>Deactivate</strong>. Your feeds, mappings and posts stay intact — they live in the database, not the plugin folder.</p>
-    <div class="tip"><strong>No need to delete it.</strong> Deactivating is enough. The Pro plugin runs alongside it without conflict, and you can keep the free version installed if you want a safety net.</div>
+    <div class="tip"><strong>They cannot both be active.</strong> The free plugin and MyFeeds Pro define the same code internally, so activating Pro while the free one is still running stops WordPress with a fatal error and a blank admin screen. Deactivate first, then activate Pro. Leaving the free plugin <em>installed</em> as a safety net is fine &mdash; installed is not the same as active. Nothing is lost either way: your feeds, mappings, products and posts live in the database, not in the plugin folder, and Pro reads exactly the same tables.</div>
   </div>
 </div>
 
