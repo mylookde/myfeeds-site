@@ -106,7 +106,7 @@ h1,h2{font-family:var(--serif);font-weight:500;letter-spacing:-.012em}
 
   <h2>From feed to published post, in three steps</h2>
   <div class="steps">
-    <div class="step"><h3>Get your feed link</h3><p>TradeDoubler delivers product data through its Products API: generate a token in your publisher account (Manage tokens) and use the feed URL built from it for the program you want to feature.</p></div>
+    <div class="step"><h3>Get your feed link</h3><p>Tradedoubler delivers product data through its Products API. In your publisher account open Account, then Manage tokens, and copy the token listed under PRODUCTS. The feed address is built from that token plus the id of the feed you want, in the shape api.tradedoubler.com/1.0/products;fid=&lt;feed&gt;?token=&lt;token&gt;. It is an ordinary HTTPS address, so MyFeeds can refetch it on its own.</p></div>
     <div class="step"><h3>Paste it into MyFeeds</h3><p>The importer reads CSV, XML and JSON output from the Products API, sniffs the structure and maps the fields on its own. A few minutes later your products are searchable inside WordPress.</p></div>
     <div class="step"><h3>Pick products in the editor and publish</h3><p>Search your catalogue right inside the post, click, and the card is in. A nightly sync keeps every card on every post current; products that disappear from the feed get flagged so old posts stop pointing at 404s.</p></div>
   </div>
