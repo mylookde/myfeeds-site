@@ -1,0 +1,479 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="p:domain_verify" content="0f13dbb87c7b78ab08817667740c2df2"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Look like a shop, not a link list - MyFeeds</title>
+<meta name="description" content="Pick products from your affiliate feed inside the WordPress editor. Readers see product cards with image, price and your link. Try Pro free for 7 days.">
+<!-- Ad landing page (lab variant "kinetic"): reachable for review, kept out of search. Not in the sitemap, not blocked in robots.txt (a blocked page cannot show its noindex). -->
+<meta name="robots" content="noindex, follow">
+<meta name="theme-color" content="#FC9000">
+<meta property="og:type" content="website">
+<meta property="og:title" content="Look like a shop, not a link list">
+<meta property="og:description" content="Product cards with image, price and your link, picked inside the WordPress editor.">
+<meta property="og:image" content="https://myfeeds.site/assets/pin/post-with-cards.webp">
+<meta property="og:url" content="https://myfeeds.site/pin/lab/kinetic/">
+<link rel="icon" type="image/png" href="/favicon.png">
+<link rel="icon" type="image/x-icon" href="/favicon.ico">
+<link rel="apple-touch-icon" href="/apple-touch-icon.png">
+<link rel="preload" href="/assets/pin/lab/kinetic/fonts/archivo-xcond-800.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="/assets/pin/lab/kinetic/shelf.webp" as="image">
+<script>
+/* Motion gate, before first paint. Without this class (no JS, reduced motion,
+   old browser) the page renders its end state: struck words, cards in place. */
+!function(d){try{if(matchMedia('(prefers-reduced-motion: no-preference)').matches&&d.animate&&window.Promise){d.classList.add('kin','mo')}}catch(e){}}(document.documentElement);
+</script>
+<style>
+@font-face{font-family:'Archivo XC';font-style:normal;font-weight:800;font-stretch:62%;font-display:swap;src:url(/assets/pin/lab/kinetic/fonts/archivo-xcond-800.woff2) format('woff2');unicode-range:U+0000-00FF,U+0131,U+0152-0153,U+02BB-02BC,U+02C6,U+02DA,U+02DC,U+0304,U+0308,U+0329,U+2000-206F,U+20AC,U+2122,U+2191,U+2193,U+2212,U+2215,U+FEFF,U+FFFD}
+@font-face{font-family:'XC Fallback';font-weight:800;src:local('HelveticaNeue-CondensedBlack'),local('HelveticaNeue-CondensedBold'),local('RobotoCondensed-Bold'),local('Roboto Condensed Bold'),local('ArialNarrow-Bold'),local('Arial Narrow Bold')}
+@font-face{font-family:'Archivo T';font-style:normal;font-weight:400 700;font-display:swap;src:url(/assets/pin/lab/kinetic/fonts/archivo-text.woff2) format('woff2');unicode-range:U+0000-00FF,U+0131,U+0152-0153,U+02BB-02BC,U+02C6,U+02DA,U+02DC,U+0304,U+0308,U+0329,U+2000-206F,U+20AC,U+2122,U+2191,U+2193,U+2212,U+2215,U+FEFF,U+FFFD}
+:root{
+  --orange:#FC9000;
+  --ink:#16121E;
+  --ink-2:#4A4458;
+  --paper:#F3F2F5;
+  --mute:#BDB8C8;
+  --violet:#6C54B4;
+  --violet-2:#4F3B96;
+  --xc:'Archivo XC','XC Fallback','sans-serif-condensed','Arial Narrow',sans-serif;
+  --t:'Archivo T',system-ui,-apple-system,'Segoe UI',sans-serif;
+  --g:16px;
+  --snap:cubic-bezier(.7,0,.2,1);
+  color-scheme:light;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html{-webkit-text-size-adjust:100%}
+body{background:var(--paper);color:var(--ink);font:400 17px/1.55 var(--t);-webkit-font-smoothing:antialiased;-webkit-tap-highlight-color:rgba(22,18,30,.12)}
+img,video{display:block;max-width:100%;height:auto}
+a{color:inherit}
+:focus-visible{outline:3px solid var(--ink);outline-offset:3px}
+.wrap{max-width:1360px;margin-inline:auto;padding-inline:var(--g)}
+.skip{position:absolute;left:8px;top:-80px;z-index:10;background:var(--ink);color:var(--paper);padding:10px 14px;font-weight:600;text-decoration:none}
+.skip:focus{top:8px}
+
+/* Display type: one family, the width axis carries the design */
+.xc,h1,h2,.num,.steps h3{font-family:var(--xc);font-weight:800;font-stretch:62%;text-transform:uppercase}
+h2{font-size:clamp(2.75rem,11.6vw,6.4rem);line-height:.88;letter-spacing:.002em;text-wrap:balance}
+
+/* The one button */
+.cta{position:relative;isolation:isolate;overflow:hidden;display:inline-flex;align-items:center;justify-content:center;min-height:56px;padding:0 26px;background:var(--violet);color:#FBFAFF;text-decoration:none;font:650 17px/1.1 var(--t);white-space:nowrap;touch-action:manipulation;transition:transform .18s cubic-bezier(.2,.8,.2,1)}
+.cta::before{content:"";position:absolute;inset:0;z-index:-1;background:var(--violet-2);transform:scaleX(0);transform-origin:right center;transition:transform .38s var(--snap)}
+.cta:hover::before{transform:scaleX(1);transform-origin:left center}
+.cta:active{transform:translateY(1px)}
+.cta-sm{min-height:40px;padding:0 12px;font-size:14px}
+.calm{font:500 14.5px/1.45 var(--t);max-width:40ch}
+
+/* Header */
+.top{background:var(--orange)}
+.top .wrap{display:flex;align-items:center;justify-content:space-between;gap:12px;padding-block:10px}
+.mark{display:flex;align-items:center;gap:9px;font:700 19px/1 var(--t);letter-spacing:-.01em}
+.stamp{display:grid;place-items:center;width:36px;height:36px;background:var(--paper)}
+.stamp img{width:24px;height:24px}
+
+/* Cover */
+.cover{background:var(--orange);padding-block:10px 30px;overflow-x:clip}
+.cover-grid{display:grid;grid-template-columns:minmax(0,1fr);grid-template-areas:"k" "h" "s" "a"}
+.kicker{grid-area:k;font:600 14px/1.3 var(--t);margin-bottom:8px}
+h1{grid-area:h;font-size:clamp(3.4rem,19.4vw,10.4rem);line-height:.8;letter-spacing:-.004em;text-wrap:balance}
+.ll{position:relative;display:inline-block;white-space:nowrap}
+.strike{position:absolute;left:-.035em;right:-.035em;top:var(--sy,.385em);height:.16em;margin-top:-.08em;display:flex;pointer-events:none;transform-origin:left center}
+.strike::before{content:"";position:absolute;left:0;right:0;top:50%;height:.07em;margin-top:-.035em;background:var(--ink)}
+.strike i{flex:1 1 0;height:100%;background:var(--ink);opacity:0}
+.act{grid-area:a;display:grid;gap:12px;justify-items:start;margin-top:14px}
+.lede{font-size:16px;line-height:1.45;max-width:36ch}
+.act .cta{width:100%}
+.desk{display:none;background:none;border:0;padding:4px 0;font:500 15px/1.3 var(--t);color:var(--ink);text-decoration:underline;text-underline-offset:3px;text-decoration-thickness:1.5px;cursor:pointer;touch-action:manipulation}
+@media (hover:none) and (pointer:coarse){.desk{display:inline-block}}
+
+/* The shop the line turns into */
+.shelf{grid-area:s;margin-top:10px}
+.cards{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:8px}
+.slot{display:flex;outline:1.5px dashed rgba(22,18,30,.4);outline-offset:-1.5px}
+.slot:nth-child(n+4){display:none}
+.card{position:relative;flex:1;display:flex;flex-direction:column;background:var(--paper);transform-origin:0 0}
+.pic{display:block;aspect-ratio:300/206;background:url(/assets/pin/lab/kinetic/shelf.webp) no-repeat;background-size:500% auto;background-position:calc(var(--i) * 25%) 50%}
+.meta{display:grid;gap:1px;padding:2px 8px 8px;font:500 11.5px/1.25 var(--t);min-width:0}
+.nm{color:var(--ink-2);white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.pr{font-weight:700;font-size:14px;font-variant-numeric:tabular-nums}
+.pr s{font-weight:500;color:var(--ink-2);margin-right:5px}
+.skin{position:absolute;inset:0;z-index:1;background:var(--ink);opacity:0;pointer-events:none}
+.shelf figcaption{font:500 12.5px/1.3 var(--t);margin-top:6px}
+
+/* Signature start state (only with the motion gate) */
+.kin .strike{transform:scaleX(0)}
+.kin .strike i{opacity:1}
+.kin .strike.lift i{opacity:0}
+.kin .card{opacity:0}
+.kin .skin{opacity:1}
+.kin .pic,.kin .meta,.kin .shelf figcaption{opacity:0}
+
+/* Proof: a real post, set across the fold between cover and paper */
+.proof{background:linear-gradient(var(--orange) 0 38%,var(--paper) 38% 100%);padding-bottom:64px}
+.post{display:grid;gap:12px}
+.post img{width:100%;border:2px solid var(--ink);background:#fff}
+.post figcaption{font:500 15px/1.4 var(--t);color:var(--ink-2);max-width:34ch}
+
+/* Video */
+.watch{background:var(--ink);color:var(--paper);padding-block:64px 72px}
+.watch .sub{color:var(--mute);max-width:34ch;margin-top:18px}
+.video{margin-top:28px}
+.video video{width:100%;aspect-ratio:1200/654;background:#0d0b12}
+
+/* Steps */
+.steps-sec{padding-block:72px 36px;overflow-x:clip}
+.x{position:relative;display:inline-block;white-space:nowrap}
+.x::after{content:"";position:absolute;left:-.03em;right:-.03em;top:.39em;height:.075em;background:var(--ink);transform-origin:left center}
+.steps{list-style:none;margin-top:40px}
+.steps li{display:grid;grid-template-columns:auto minmax(0,1fr);column-gap:18px;align-items:start;border-top:3px solid var(--ink);padding-block:20px 30px}
+.num{font-size:clamp(6.5rem,31vw,14rem);line-height:.74;color:var(--orange);min-width:.62em}
+.steps h3{font-size:clamp(1.85rem,7.6vw,3.1rem);line-height:.92;margin:4px 0 12px}
+.steps p{color:var(--ink-2);max-width:40ch}
+
+/* What Pro includes */
+.pro{padding-block:20px 72px}
+.pro-in{border-top:3px solid var(--ink);padding-top:44px}
+.pro-head p{color:var(--ink-2);margin-top:16px;max-width:34ch}
+.incl{list-style:none;display:grid;gap:14px 36px;margin-top:30px}
+.incl li{position:relative;padding-left:32px;font:600 18px/1.35 var(--t)}
+.incl li::before{content:"";position:absolute;left:3px;top:.32em;width:15px;height:8px;border-left:3px solid var(--ink);border-bottom:3px solid var(--ink);transform:rotate(-45deg)}
+
+/* FAQ */
+.faq-sec{padding-bottom:80px}
+.faq{margin-top:30px}
+.faq details{border-top:3px solid var(--ink)}
+.faq details:last-child{border-bottom:3px solid var(--ink)}
+.faq summary{display:flex;justify-content:space-between;align-items:center;gap:18px;padding-block:20px;cursor:pointer;list-style:none;font:650 19px/1.3 var(--t);touch-action:manipulation}
+.faq summary::-webkit-details-marker{display:none}
+.pm{position:relative;flex:none;width:18px;height:18px}
+.pm::before,.pm::after{content:"";position:absolute;left:0;right:0;top:50%;height:3px;margin-top:-1.5px;background:var(--ink);transition:transform .32s cubic-bezier(.2,.8,.2,1)}
+.pm::after{transform:rotate(90deg)}
+details[open] .pm::after{transform:rotate(0deg)}
+.faq p{color:var(--ink-2);max-width:62ch;padding-bottom:24px}
+.faq a{text-underline-offset:3px;text-decoration-thickness:1.5px}
+
+/* Back cover */
+.end{background:var(--orange);padding-block:72px 84px}
+.end h2{font-size:clamp(3.1rem,16vw,11rem);line-height:.86}
+.uline{position:relative;display:inline-block}
+.uline::after{content:"";position:absolute;left:0;right:0;bottom:-.04em;height:.09em;background:var(--ink);transform-origin:left center}
+.end-act{display:grid;gap:14px;justify-items:start;margin-top:36px}
+
+footer{background:var(--ink);color:var(--mute);font-size:14px}
+footer .wrap{display:flex;flex-wrap:wrap;gap:10px 24px;justify-content:space-between;padding-block:28px 40px}
+footer nav{display:flex;flex-wrap:wrap;gap:8px 18px}
+footer a{color:var(--paper);text-underline-offset:3px}
+
+/* Lines that draw when they come into view (armed by JS only) */
+.draw.arm::after{transform:scaleX(0);transition:transform .8s var(--snap) .12s}
+.draw.arm.on::after{transform:none}
+
+@media (min-width:600px){
+  :root{--g:28px}
+  .act .cta{width:auto}
+  .cards{max-width:620px}
+  .lede{font-size:18px}
+  h1{font-size:15.4vw}
+}
+@media (min-width:900px){
+  :root{--g:40px}
+  .top .wrap{padding-block:14px}
+  .cover{padding-block:22px 64px}
+  .cover-grid{grid-template-columns:repeat(12,minmax(0,1fr));column-gap:24px;grid-template-areas:"k k k k k k k k k k k k" "h h h h h h h h h h h h" "a a a a s s s s s s s s"}
+  h1{font-size:min(13.4vw,13.2rem)}
+  h2{font-size:clamp(2.75rem,8.2vw,7.6rem)}
+  .pic{aspect-ratio:300/236}
+  .l1,.l2{display:block}
+  .act{margin-top:44px;align-self:start}
+  .lede{font-size:19px}
+  .shelf{margin-top:44px}
+  .cards{max-width:none;grid-template-columns:repeat(5,minmax(0,1fr));gap:12px}
+  .slot:nth-child(n+4){display:flex}
+  .meta{padding:4px 12px 12px;font-size:13px}
+  .pr{font-size:16px}
+  .proof{background:linear-gradient(var(--orange) 0 46%,var(--paper) 46% 100%);padding-bottom:96px}
+  .post{grid-template-columns:repeat(12,minmax(0,1fr));column-gap:24px;align-items:end}
+  .post img{grid-column:5/13;grid-row:1}
+  .post figcaption{grid-column:1/5;grid-row:1}
+  .watch{padding-block:96px 104px}
+  .watch-grid{display:grid;grid-template-columns:repeat(12,minmax(0,1fr));column-gap:24px;align-items:end}
+  .watch h2{grid-column:1/11}
+  .watch .sub{grid-column:1/4;grid-row:2;align-self:start;margin-top:40px}
+  .video{grid-column:4/13;grid-row:2;margin-top:40px}
+  .steps-sec{padding-top:112px}
+  .steps-sec h2{max-width:none}
+  .steps li{grid-template-columns:repeat(12,minmax(0,1fr));column-gap:24px;padding-block:26px 40px}
+  .steps li .num{grid-column:var(--c) / span 2}
+  .steps li .step{grid-column:calc(var(--c) + 2) / span 5}
+  .pro{padding-block:40px 104px}
+  .pro-grid{display:grid;grid-template-columns:repeat(12,minmax(0,1fr));column-gap:24px}
+  .pro-head{grid-column:1/6}
+  .incl{grid-column:7/13;grid-template-columns:1fr 1fr;margin-top:10px;align-content:start}
+  .faq-sec{padding-bottom:112px}
+  .faq-grid{display:grid;grid-template-columns:repeat(12,minmax(0,1fr));column-gap:24px}
+  .faq-grid h2{grid-column:1/5;font-size:clamp(2.75rem,5.4vw,5.4rem)}
+  .faq{grid-column:6/13;margin-top:6px}
+  .end{padding-block:112px 120px}
+  .end h2{font-size:min(11.2vw,11rem)}
+  .end-act{grid-template-columns:auto minmax(0,1fr);align-items:center;column-gap:24px;margin-top:48px}
+}
+
+@media (prefers-reduced-motion:no-preference){
+  .faq details[open] p{animation:rise .38s cubic-bezier(.2,.8,.2,1)}
+  @keyframes rise{from{opacity:0;transform:translateY(-6px)}}
+  @supports (animation-timeline:view()){
+    .num{animation:nudge linear both;animation-timeline:view();animation-range:entry 0% cover 42%}
+    @keyframes nudge{from{transform:translateY(.16em)}to{transform:none}}
+  }
+}
+@media (prefers-reduced-motion:reduce){
+  .cta,.cta::before,.pm::before,.pm::after{transition:none}
+}
+</style>
+<script data-goatcounter="https://myfeeds.goatcounter.com/count" async src="//gc.zgo.at/count.js"></script>
+</head>
+<body>
+<a class="skip" href="#main">Skip to content</a>
+<header class="top">
+  <div class="wrap">
+    <span class="mark" translate="no"><span class="stamp"><img src="/assets/pin/logo-52.webp" alt="" width="26" height="26"></span>MyFeeds</span>
+    <a class="cta cta-sm" data-cta="header" href="https://checkout.freemius.com/plugin/21336/plan/35610/?trial=paid&amp;billing_cycle=monthly">Start my 7-day Pro trial</a>
+  </div>
+</header>
+
+<main id="main">
+  <section class="cover hero" aria-labelledby="h-cover">
+    <div class="wrap cover-grid">
+      <p class="kicker">For WordPress affiliate blogs</p>
+      <h1 id="h-cover"><span class="l1">Look like a shop,</span> <span class="l2">not a <span class="ll">link list<span class="strike" aria-hidden="true"><i></i><i></i><i></i><i></i><i></i></span></span>.</span></h1>
+      <div class="act">
+        <p class="lede">You pick products inside the WordPress editor. Your readers see cards with image, price and your link, and prices refresh every night.</p>
+        <a class="cta" data-cta="hero" href="https://checkout.freemius.com/plugin/21336/plan/35610/?trial=paid&amp;billing_cycle=monthly">Start my 7-day Pro trial</a>
+        <p class="calm">7 days free, then $19 a month. Cancel before the trial ends and you pay nothing.</p>
+        <button type="button" class="desk" id="to-desk">On your phone? Send this page to your computer</button>
+      </div>
+      <figure class="shelf">
+        <div class="cards" aria-hidden="true">
+          <div class="slot"><div class="card"><span class="skin"></span><span class="pic" style="--i:0"></span><span class="meta"><span class="nm">Heather hoodie</span><span class="pr">$58</span></span></div></div>
+          <div class="slot"><div class="card"><span class="skin"></span><span class="pic" style="--i:1"></span><span class="meta"><span class="nm">Black high-top</span><span class="pr"><s>$129</s>$96</span></span></div></div>
+          <div class="slot"><div class="card"><span class="skin"></span><span class="pic" style="--i:2"></span><span class="meta"><span class="nm">Trail backpack</span><span class="pr">$74</span></span></div></div>
+          <div class="slot"><div class="card"><span class="skin"></span><span class="pic" style="--i:3"></span><span class="meta"><span class="nm">Rib beanie</span><span class="pr">$22</span></span></div></div>
+          <div class="slot"><div class="card"><span class="skin"></span><span class="pic" style="--i:4"></span><span class="meta"><span class="nm">Canvas tote</span><span class="pr">$35</span></span></div></div>
+        </div>
+        <figcaption>Example cards with sample prices.</figcaption>
+      </figure>
+    </div>
+  </section>
+
+  <div class="proof">
+    <figure class="wrap post">
+      <img src="/assets/pin/post-with-cards.webp" width="720" height="460" alt="A blog post about cargo pants with three product cards below the text, each showing the product photo, brand, sale price and shop.">
+      <figcaption>What your readers see: a real post with product cards under the text.</figcaption>
+    </figure>
+  </div>
+
+  <section class="watch" aria-labelledby="h-watch">
+    <div class="wrap watch-grid">
+      <h2 id="h-watch">From plain post to product cards in 30 seconds</h2>
+      <p class="sub">Search the feed, click the products, publish. Recorded in the WordPress block editor.</p>
+      <div class="video">
+        <video controls playsinline preload="none" width="1200" height="654" poster="/assets/pin/demo-poster.webp" id="demo">
+          <source src="/assets/myfeeds-demo.mp4" type="video/mp4">
+        </video>
+      </div>
+    </div>
+  </section>
+
+  <section class="steps-sec" aria-labelledby="h-steps">
+    <div class="wrap">
+      <h2 id="h-steps">From <span class="x draw">link list</span> to shop in three steps</h2>
+      <ol class="steps">
+        <li style="--c:1"><span class="num" aria-hidden="true">1</span><div class="step"><h3>Paste your feed link.</h3><p>Copy the product feed link your affiliate network gives you. MyFeeds works out which column is the price, the image and the link.</p></div></li>
+        <li style="--c:4"><span class="num" aria-hidden="true">2</span><div class="step"><h3>Pick your products.</h3><p>Search the feed by name or brand inside the WordPress editor and click the ones you want.</p></div></li>
+        <li style="--c:6"><span class="num" aria-hidden="true">3</span><div class="step"><h3>Publish.</h3><p>Readers see product cards. Prices refresh every night, and products that leave the feed are flagged so you can swap them.</p></div></li>
+      </ol>
+    </div>
+  </section>
+
+  <section class="pro" aria-labelledby="h-plan">
+    <div class="wrap">
+      <div class="pro-in pro-grid">
+        <div class="pro-head">
+          <h2 id="h-plan">What your 7 days include</h2>
+          <p>Everything in Pro, on one site. $19 a month after the trial.</p>
+        </div>
+        <ul class="incl">
+          <li>Unlimited feeds</li>
+          <li>Grid and carousel layouts</li>
+          <li>Card design editor, with your own fonts</li>
+          <li>See which posts and products get the clicks</li>
+          <li>Discontinued products flagged, with the posts listed</li>
+          <li>Priority support</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <section class="faq-sec" aria-labelledby="h-faq">
+    <div class="wrap faq-grid">
+      <h2 id="h-faq">Questions before you start</h2>
+      <div class="faq">
+        <details>
+          <summary>Do I need an affiliate network?<span class="pm" aria-hidden="true"></span></summary>
+          <p>Yes, or a program that gives you a product feed. MyFeeds reads the feeds from AWIN, Rakuten Advertising, CJ, Impact, Partnerize, Webgains, Tradedoubler, Admitad, FlexOffers, Sovrn and Pepperjam. If your program publishes a feed file you can download, MyFeeds will almost certainly import it.</p>
+        </details>
+        <details>
+          <summary>Will it slow down my blog?<span class="pm" aria-hidden="true"></span></summary>
+          <p>Products are stored in your own WordPress database and the cards are built from there, so your pages don’t wait on a third-party server to show them.</p>
+        </details>
+        <details>
+          <summary>What happens after the 7 days?<span class="pm" aria-hidden="true"></span></summary>
+          <p>If you keep Pro, it continues at $19 a month. Cancel from your dashboard before the trial ends and you are not charged. The checkout asks for a card or PayPal to start the trial.</p>
+        </details>
+        <details>
+          <summary>Can I start with the free version?<span class="pm" aria-hidden="true"></span></summary>
+          <p>Yes. The free version covers one feed and the product grid. <a href="https://wordpress.org/plugins/myfeeds-affiliate-feed-manager/" data-free>Get it on WordPress.org</a>.</p>
+        </details>
+      </div>
+    </div>
+  </section>
+
+  <section class="end" aria-labelledby="h-end">
+    <div class="wrap">
+      <h2 id="h-end">Make your next post look like a <span class="uline draw">shop</span>.</h2>
+      <div class="end-act">
+        <a class="cta" data-cta="final" href="https://checkout.freemius.com/plugin/21336/plan/35610/?trial=paid&amp;billing_cycle=monthly">Start my 7-day Pro trial</a>
+        <p class="calm">7 days free, then $19 a month. Cancel before the trial ends and you pay nothing.</p>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer>
+  <div class="wrap">
+    <span>MyFeeds · Affiliate product feeds for WordPress</span>
+    <nav aria-label="Legal"><a href="/imprint/">Imprint</a><a href="/privacy/">Privacy</a><a href="/terms/">Terms</a><a href="/refund/">Refund policy</a></nav>
+  </div>
+</footer>
+
+<script>
+(function () {
+  // GoatCounter needs no consent (no cookie, nobody identified); the same
+  // labels as assets/consent.js, so these clicks add up with the rest of
+  // the site. The page itself is counted by count.js.
+  function count(path) {
+    try { if (window.goatcounter && window.goatcounter.count) window.goatcounter.count({ path: path, title: path, event: true }); } catch (e) {}
+  }
+  document.querySelectorAll('[data-cta]').forEach(function (a) {
+    a.addEventListener('click', function () { count('click/pro-trial'); count('pin/lab/kinetic/cta-' + a.getAttribute('data-cta')); });
+  });
+  var free = document.querySelector('[data-free]');
+  if (free) free.addEventListener('click', function () { count('click/free-plugin'); });
+
+  // The plugin is set up in wp-admin on a computer, while most Pinterest
+  // visitors are on a phone: give them a way to take the page with them.
+  var btn = document.getElementById('to-desk');
+  if (btn) btn.addEventListener('click', function () {
+    count('click/send-to-desktop');
+    var url = location.origin + location.pathname;
+    if (navigator.share) {
+      navigator.share({ title: 'MyFeeds for WordPress', url: url }).catch(function () {});
+    } else {
+      location.href = 'mailto:?subject=' + encodeURIComponent('MyFeeds for my WordPress blog') + '&body=' + encodeURIComponent(url);
+    }
+  });
+
+  var v = document.getElementById('demo');
+  if (v) v.addEventListener('play', function once() { count('pin/lab/kinetic/video-play'); v.removeEventListener('play', once); });
+})();
+
+(function () {
+  // Signature: the strike through "link list" breaks into pieces, and each
+  // piece unfolds into a product card that snaps into the shop grid.
+  // Transform and opacity only. The CSS without the "kin" class is the end
+  // state, so any failure or interruption simply lands there.
+  var root = document.documentElement;
+  if (!root.classList.contains('kin')) return;
+  var anims = [], timers = [], done = false;
+  function A(el, kf, opt) { var a = el.animate(kf, opt); anims.push(a); return a; }
+  function later(fn, ms) { timers.push(setTimeout(fn, ms)); }
+  function shown(el) { return el.getClientRects().length > 0; }
+  function finish() {
+    if (done) return; done = true;
+    timers.forEach(clearTimeout);
+    var s = document.querySelector('.strike'); if (s) s.classList.remove('lift');
+    root.classList.remove('kin');
+    anims.forEach(function (a) { try { a.cancel(); } catch (e) {} });
+  }
+  later(finish, 4200);
+  var EXPO = 'cubic-bezier(.16,1,.3,1)';
+  var SPRING = (window.CSS && CSS.supports && CSS.supports('animation-timing-function', 'linear(0, 1)'))
+    ? 'linear(0, 0.072, 0.233, 0.423, 0.605, 0.757, 0.874, 0.955, 1.006, 1.034, 1.045, 1.045, 1.039, 1.031, 1.022, 1.014, 1.008, 1.004, 1.001, 0.999, 0.998, 0.998, 0.998, 0.998, 1)'
+    : 'cubic-bezier(.2,1.2,.4,1)';
+
+  function run() {
+    var strike = document.querySelector('.strike');
+    var cover = document.querySelector('.cover');
+    if (done || !strike || document.hidden || cover.getBoundingClientRect().bottom < 0) return finish();
+    var segs = [].filter.call(strike.children, shown);
+    var cards = [].filter.call(document.querySelectorAll('.cards .card'), shown);
+    var n = Math.min(segs.length, cards.length);
+    if (!n) return finish();
+
+    // 1. The line goes through the words.
+    A(strike, [{ transform: 'scaleX(0)' }, { transform: 'scaleX(1)' }], { duration: 420, easing: 'cubic-bezier(.76,0,.24,1)', fill: 'forwards' })
+      .finished.then(function () {
+        // 2. It cracks into pieces.
+        var mid = (n - 1) / 2, cracks = [];
+        for (var i = 0; i < n; i++) {
+          var t = 'translate(' + ((i - mid) * 9) + 'px,-4px) scaleX(.9)';
+          cracks.push(A(segs[i], [{ transform: 'none' }, { transform: t }], { duration: 170, easing: 'cubic-bezier(.3,1.5,.5,1)', fill: 'forwards' }).finished);
+        }
+        return Promise.all(cracks);
+      })
+      .then(function () {
+        if (done) return;
+        // 3. Each piece becomes a card: start at the piece, end in its slot.
+        var froms = [];
+        for (var i = 0; i < n; i++) {
+          var s = segs[i].getBoundingClientRect(), c = cards[i].getBoundingClientRect();
+          froms.push('translate(' + (s.left - c.left) + 'px,' + (s.top - c.top) + 'px) scale(' + (s.width / c.width) + ',' + (s.height / c.height) + ')');
+        }
+        strike.classList.add('lift');
+        cards.slice(0, n).forEach(function (card, i) {
+          var d = 40 + i * 64;
+          A(card, [{ opacity: 1, transform: froms[i] }, { opacity: 1, transform: 'none' }], { duration: 720, delay: d, easing: SPRING, fill: 'both' });
+          later(function () {
+            A(card.querySelector('.skin'), [{ opacity: 1 }, { opacity: 0 }], { duration: 240, easing: 'ease-out', fill: 'forwards' });
+            A(card.querySelector('.pic'), [{ opacity: 0, transform: 'translateY(12px) scale(.94)' }, { opacity: 1, transform: 'none' }], { duration: 480, easing: EXPO, fill: 'forwards' });
+            A(card.querySelector('.meta'), [{ opacity: 0, transform: 'translateY(6px)' }, { opacity: 1, transform: 'none' }], { duration: 420, delay: 90, easing: EXPO, fill: 'forwards' });
+          }, d + 300);
+        });
+        var last = 40 + (n - 1) * 64 + 300;
+        later(function () {
+          A(document.querySelector('.shelf figcaption'), [{ opacity: 0 }, { opacity: 1 }], { duration: 360, easing: 'ease-out', fill: 'forwards' });
+        }, last + 120);
+        later(finish, last + 560);
+      })
+      .catch(finish);
+  }
+
+  var fonts = (document.fonts && document.fonts.ready) ? document.fonts.ready : Promise.resolve();
+  Promise.race([fonts, new Promise(function (r) { setTimeout(r, 1000); })]).then(function () { later(run, 60); });
+  document.addEventListener('visibilitychange', function () { if (document.hidden) finish(); });
+})();
+
+(function () {
+  // Bookend lines (the strike in "link list", the underline under "shop")
+  // draw once when they come into view. Without the observer they stay drawn.
+  if (!document.documentElement.classList.contains('mo') || !('IntersectionObserver' in window)) return;
+  var io = new IntersectionObserver(function (entries) {
+    entries.forEach(function (e) { if (e.isIntersecting) { e.target.classList.add('on'); io.unobserve(e.target); } });
+  }, { threshold: 1, rootMargin: '0px 0px -12% 0px' });
+  document.querySelectorAll('.draw').forEach(function (el) {
+    if (el.getBoundingClientRect().top > window.innerHeight) { el.classList.add('arm'); io.observe(el); }
+  });
+})();
+</script>
+</body>
+</html>
