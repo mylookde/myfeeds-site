@@ -14,12 +14,10 @@
 <meta property="og:image" content="https://myfeeds.site/assets/og-image.png">
 <link rel="icon" type="image/png" href="/favicon.png">
 <link rel="apple-touch-icon" href="/apple-touch-icon.png">
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,500;0,9..144,600;1,9..144,500&family=Inter:wght@400;500;600;700&display=swap">
+<link rel="stylesheet" href="/assets/fonts.css">
 <script type="application/ld+json">{"@context": "https://schema.org", "@type": "FAQPage", "mainEntity": [{"@type": "Question", "name": "Does MyFeeds work with Sovrn Commerce?", "acceptedAnswer": {"@type": "Answer", "text": "Not from Sovrn's own APIs — those answer single product lookups rather than handing you a catalogue. If you have a feed for the same merchant from another source, MyFeeds imports it, maps the fields automatically and turns it into a searchable catalogue inside the WordPress block editor. Your Sovrn links keep earning either way, and MyFeeds still tracks the clicks on them."}}, {"@type": "Question", "name": "I mostly use Sovrn for automatic link monetisation. Why feeds?", "acceptedAnswer": {"@type": "Answer", "text": "Automatic link rewriting monetises text links. Product feeds let you show the product itself: image, live price, stock. Readers click a card they can judge, which is a different quality of click."}}, {"@type": "Question", "name": "Do I have to pay to get started?", "acceptedAnswer": {"@type": "Answer", "text": "No. The free version lives on WordPress.org and covers one feed, the smart search, the grid layout, manual plus nightly sync. Upgrade only when you outgrow it."}}, {"@type": "Question", "name": "Where does my data live?", "acceptedAnswer": {"@type": "Answer", "text": "On your own WordPress site, in your own database. The plugin doesn't proxy product images, doesn't ping a third-party server when a page loads, and doesn't send anything about your visitors anywhere."}}]}</script>
 <style>*,*::before,*::after{margin:0;padding:0;box-sizing:border-box}
-:root{--bg:#FAF8F4;--card:#FFFFFF;--line:#E8E4DB;--txt:#1A1720;--soft:#57515F;--mute:#8F8A99;--a1:#6C54B4;--a2:#5A4499;--green:#1E9E6A;--grad:linear-gradient(135deg,#6C54B4,#5A4499);--serif:'Fraunces',Georgia,serif;--sans:'Inter',-apple-system,BlinkMacSystemFont,sans-serif}
+:root{--bg:#FAF8F4;--card:#FFFFFF;--line:#E8E4DB;--txt:#1A1720;--soft:#57515F;--mute:#8F8A99;--a1:#6C54B4;--a2:#5A4499;--tint:#F1EEFA;--green:#1E9E6A;--grad:linear-gradient(135deg,#6C54B4,#5A4499);--serif:'Fraunces',Georgia,serif;--sans:'Inter',-apple-system,BlinkMacSystemFont,sans-serif}
 html{background:var(--bg);color:var(--txt);font-family:var(--sans);scroll-behavior:smooth}
 body{line-height:1.6;overflow-x:hidden}
 .wrap{max-width:860px;margin:0 auto;padding:0 24px}
@@ -47,7 +45,7 @@ p{color:var(--soft);margin-bottom:14px;font-size:.97rem}
 .step::before{counter-increment:s;content:counter(s,decimal-leading-zero);font-size:.78rem;font-weight:700;color:var(--a1);letter-spacing:.08em}
 .step h3{font-size:1.02rem;font-weight:700;margin:6px 0 6px;color:var(--txt)}
 .step p{margin:0;font-size:.92rem}
-.facts{background:linear-gradient(135deg,rgba(102,126,234,.10),rgba(118,75,162,.06));border:1px solid rgba(102,126,234,.25);border-radius:14px;padding:22px 24px;margin:24px 0}
+.facts{background:var(--tint);border:1px solid rgba(108,84,180,.22);border-radius:14px;padding:22px 24px;margin:24px 0}
 .facts h2{margin:0 0 12px;font-size:1.05rem}
 .facts ul{list-style:none}
 .facts li{padding:7px 0;color:var(--soft);font-size:.93rem;display:flex;gap:10px;align-items:flex-start;border-bottom:1px solid rgba(255,255,255,.05)}
@@ -73,7 +71,7 @@ footer a:hover{color:var(--txt)}
 footer .copy{color:var(--mute);font-size:.76rem}
 .netgrid{display:grid;grid-template-columns:repeat(auto-fill,minmax(200px,1fr));gap:14px;margin:26px 0}
 .netcard{display:block;background:var(--card);border:1px solid var(--line);border-radius:13px;padding:20px;text-decoration:none;transition:border-color .2s,transform .2s}
-.netcard:hover{border-color:rgba(102,126,234,.45);transform:translateY(-2px)}
+.netcard:hover{border-color:rgba(108,84,180,.4);transform:translateY(-2px)}
 .netcard b{color:var(--txt);font-size:1rem;display:block;margin-bottom:4px}
 .netcard span{color:var(--mute);font-size:.8rem}
 /* Jedes Sprungziel muss unter der festen Navigation durchpassen. Vorher

@@ -22,18 +22,16 @@
 <link rel="icon" type="image/png" href="/favicon.png">
 <link rel="icon" type="image/x-icon" href="/favicon.ico">
 <link rel="apple-touch-icon" href="/apple-touch-icon.png">
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,500;0,9..144,600;1,9..144,500&family=Inter:wght@400;500;600;700&display=swap">
+<link rel="stylesheet" href="/assets/fonts.css">
 <style>
 *,*::before,*::after{margin:0;padding:0;box-sizing:border-box}
 :root{--bg-deep:#FAF8F4;--bg-glass:#FFFFFF;--border-glass:#E8E4DB;--text-primary:#1A1720;--text-secondary:#57515F;--text-muted:#8F8A99;--accent-start:#6C54B4;--gradient-brand:linear-gradient(135deg,#6C54B4 0%,#5A4499 100%);--radius:16px;--radius-sm:10px;--serif:'Fraunces',Georgia,serif;--sans:'Inter',-apple-system,BlinkMacSystemFont,sans-serif}
 html{scroll-behavior:smooth;background:var(--bg-deep);color:var(--text-primary);font-family:var(--sans)}
 body{overflow-x:hidden;min-height:100vh;background:var(--bg-deep)}
-.ambient{position:fixed;inset:0;z-index:0;pointer-events:none;overflow:hidden}
-.ambient .orb{position:absolute;border-radius:50%;filter:blur(120px);opacity:.18;animation:float 20s ease-in-out infinite}
-.ambient .orb:nth-child(1){width:500px;height:500px;background:#667eea;top:-10%;left:-10%}
-.ambient .orb:nth-child(2){width:400px;height:400px;background:#764ba2;bottom:-10%;right:-10%;animation-delay:-7s}
+
+
+
+
 @keyframes float{0%,100%{transform:translate(0,0) scale(1)}33%{transform:translate(30px,-40px) scale(1.05)}66%{transform:translate(-20px,30px) scale(.95)}}
 body::after{content:'';position:fixed;inset:0;z-index:1;pointer-events:none;opacity:.03;background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E")}
 nav{position:fixed;top:0;left:0;right:0;z-index:100;padding:16px 0;backdrop-filter:blur(20px);background:rgba(250,248,244,.88);border-bottom:1px solid var(--border-glass)}
@@ -44,8 +42,8 @@ nav .container{display:flex;align-items:center;justify-content:space-between;max
 .nav-links{display:flex;gap:32px;align-items:center}
 .nav-links a{color:var(--text-secondary);text-decoration:none;font-size:.9rem;font-weight:500;transition:color .2s}
 .nav-links a:hover{color:var(--text-primary)}
-.btn-primary{display:inline-flex;align-items:center;padding:8px 20px;border-radius:var(--radius-sm);font-weight:600;font-size:.85rem;text-decoration:none;background:var(--gradient-brand);color:#fff;box-shadow:0 4px 24px rgba(102,126,234,.3);transition:all .25s}
-.btn-primary:hover{transform:translateY(-2px);box-shadow:0 8px 32px rgba(102,126,234,.45)}
+.btn-primary{display:inline-flex;align-items:center;padding:8px 20px;border-radius:var(--radius-sm);font-weight:600;font-size:.85rem;text-decoration:none;background:var(--gradient-brand);color:#fff;box-shadow:0 4px 24px rgba(108,84,180,.3);transition:all .25s}
+.btn-primary:hover{transform:translateY(-2px);box-shadow:0 8px 32px rgba(108,84,180,.45)}
 .hamburger{display:none;background:none;border:none;cursor:pointer;padding:8px}
 .hamburger svg{width:24px;height:24px;stroke:var(--text-primary);stroke-width:2;fill:none}
 @media(max-width:768px){.nav-links{display:none;position:absolute;top:100%;left:0;right:0;background:rgba(255,255,255,.97);backdrop-filter:blur(20px);flex-direction:column;padding:20px 24px;gap:16px;border-bottom:1px solid var(--border-glass)}.nav-links.open{display:flex}.hamburger{display:block}}
@@ -102,7 +100,7 @@ h1,h2{font-family:var(--serif);font-weight:500;letter-spacing:-.012em}
 <div class="legal-page">
 
 <h1>Privacy Policy</h1>
-<p class="last-updated">Last updated: August 19, 2026</p>
+<p class="last-updated">Last updated: October 1, 2026</p>
 
 <h2>1. Data Controller</h2>
 <div class="info-box">
@@ -120,10 +118,8 @@ h1,h2{font-family:var(--serif);font-weight:500;letter-spacing:-.012em}
 <h3>3.1 Hosting</h3>
 <p>This website is hosted on GitHub Pages, a service provided by GitHub, Inc. (a subsidiary of Microsoft Corporation). When you visit this website, GitHub may collect and process your IP address and other technical data in server log files. This is necessary for the delivery of the website and constitutes a legitimate interest pursuant to Art. 6(1)(f) GDPR. For more information, see <a href="https://docs.github.com/en/site-policy/privacy-policies/github-general-privacy-statement" target="_blank" rel="noopener">GitHub's Privacy Statement</a>.</p>
 
-<h3>3.2 Web Fonts (Google Fonts)</h3>
-<p>This website loads the "Outfit" font family from <strong>Google Fonts</strong>, a service provided by Google Ireland Limited (Gordon House, Barrow Street, Dublin 4, Ireland). When you visit a page on this website, your browser establishes a connection to Google's servers (<code>fonts.googleapis.com</code> and <code>fonts.gstatic.com</code>) to download the font files. As part of that request, your IP address, browser User-Agent string, and the URL of the page you visited are transmitted to Google. Google may log this request.</p>
-<p>Google may transfer this data to servers located outside the European Economic Area, including the United States. Google is certified under the <a href="https://www.dataprivacyframework.gov/" target="_blank" rel="noopener">EU-U.S. Data Privacy Framework</a>, which provides a basis for such transfers under Art. 45 GDPR.</p>
-<p>Legal basis: Art. 6(1)(f) GDPR (legitimate interest in a coherent visual presentation across browsers and devices). For more information, see <a href="https://policies.google.com/privacy" target="_blank" rel="noopener">Google's Privacy Policy</a> and the <a href="https://developers.google.com/fonts/faq/privacy" target="_blank" rel="noopener">Google Fonts privacy FAQ</a>.</p>
+<h3>3.2 Web Fonts</h3>
+<p>The fonts on this website (Fraunces, Inter and Archivo) are stored on this website itself and delivered together with its pages. Your browser does not connect to Google or any other font provider, and no data about your visit is sent to a third party for displaying text.</p>
 
 <h3>3.3 Visitor Counting (GoatCounter)</h3>
 <p>This website uses <a href="https://www.goatcounter.com/" rel="noopener">GoatCounter</a> to count visits. GoatCounter sets no cookies, stores no IP addresses, and does not identify or follow individual visitors across pages or sessions. It records the page requested, the referring site, and coarse browser and country information. When you click a link to a plugin download or a checkout page, that click is counted as an anonymous event in the same way.</p>
@@ -134,7 +130,7 @@ h1,h2{font-family:var(--serif);font-weight:500;letter-spacing:-.012em}
 <p>The pixel stores a cookie named <code>_rdt_uuid</code> on your device (valid for up to 90 days) and transmits to Reddit: your IP address, browser User-Agent, the address of the page you are on, the time of your visit, and&mdash;where applicable&mdash;the fact that you clicked a link to start a trial. Reddit may combine this with an existing Reddit account.</p>
 <p>Reddit processes this data in the United States. Reddit, Inc. is certified under the <a href="https://www.dataprivacyframework.gov/" rel="noopener">EU-U.S. Data Privacy Framework</a>, which provides a basis for such transfers under Art. 45 GDPR.</p>
 <p>From <strong>14 September 2026</strong>, Reddit may additionally read structured metadata already published on our pages, such as Open Graph tags and JSON-LD product data (plan names, prices, currency). This is page information, not information about you.</p>
-<p><strong>Legal basis: Art. 6(1)(a) GDPR and &sect;25(1) TTDSG (your consent).</strong> Nothing is loaded and no cookie is set before you agree. Declining costs you nothing and hides nothing on this site.</p>
+<p><strong>Legal basis: Art. 6(1)(a) GDPR and &sect;25(1) TDDDG (your consent).</strong> Nothing is loaded and no cookie is set before you agree. Declining costs you nothing and hides nothing on this site.</p>
 <p><strong>Withdrawing your consent:</strong> <a href="#consent-reset">reopen the choice here</a> and select &ldquo;No thanks&rdquo;. This takes effect immediately and applies from that moment on. You can also delete the <code>_rdt_uuid</code> cookie in your browser settings at any time. See also <a href="https://www.reddit.com/policies/privacy-policy" rel="noopener">Reddit&rsquo;s privacy policy</a>.</p>
 
 <h3>3.5 No Other Tracking</h3>
