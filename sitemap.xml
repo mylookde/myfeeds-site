@@ -26,7 +26,22 @@
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://myfeeds.site/articles/just-launched-on-wordpress-org.html</loc>
+    <loc>https://myfeeds.site/articles/affiliate-shop-wordpress/</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://myfeeds.site/articles/import-product-feed-wordpress/</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://myfeeds.site/articles/why-affiliate-posts-stop-earning/</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://myfeeds.site/articles/just-launched-on-wordpress-org/</loc>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
