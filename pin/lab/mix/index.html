@@ -228,6 +228,58 @@ p{text-wrap:pretty}
   .look .myfeeds-product-card{width:240px}
 }
 
+/* ===== shop the look =====
+   The Look block's own markup and CSS (Pro includes/class-look-block.php,
+   render_point() and css_once()): <details name> points that open one
+   card at a time, a numbered list underneath. Only the links are left
+   out (example products), and the hit area, focus ring and pulse added. */
+.lk{display:grid;gap:28px;align-items:start;grid-template-areas:"head" "fig" "body"}
+.lk>.head{grid-area:head;margin-bottom:0}
+.lk-fig{grid-area:fig}
+.lk-body{grid-area:body}
+@media (min-width:900px){.lk{grid-template-columns:minmax(0,5fr) minmax(0,6fr);grid-template-areas:"head fig" "body fig";grid-template-rows:auto 1fr;column-gap:64px;row-gap:24px}}
+.lk-frame{position:relative;background:var(--paper);padding:10px 10px 16px;border-radius:3px;box-shadow:var(--shadow);max-width:520px;margin-inline:auto;transform:rotate(-.6deg)}
+.lk-frame::before{content:"";position:absolute;top:-9px;left:50%;width:84px;height:20px;margin-left:-42px;background:var(--tape);transform:rotate(-3deg);z-index:4}
+.lk-hint{display:flex;align-items:center;gap:8px;font-size:13.5px;font-weight:600;color:var(--ink-2);margin:2px 2px 10px}
+.lk-hint i{display:grid;place-items:center;width:20px;height:20px;border-radius:50%;background:#fff;box-shadow:0 1px 4px rgba(0,0,0,.3);font:600 11px/1 system-ui,-apple-system,sans-serif;font-style:normal;color:#111}
+.lk-fig figcaption{margin-top:14px;font-size:13px;color:var(--ink-3);max-width:520px;margin-inline:auto}
+.myfeeds-look{margin:0;font-family:system-ui,-apple-system,"Segoe UI",Roboto,sans-serif;color:#111}
+.myfeeds-look__stage{position:relative;line-height:0}
+.myfeeds-look__img{display:block;width:100%;height:auto;border-radius:2px;aspect-ratio:4/5;background:#B0B8AA}
+.myfeeds-look__pt{position:absolute;z-index:1;line-height:1.35;transform:translate(-50%,-50%)}
+.myfeeds-look__pt[open]{z-index:3}
+.myfeeds-look__dot{position:relative;list-style:none;display:block;width:30px;height:30px;border-radius:50%;cursor:pointer;background:#fff;color:#111;font:600 13px/30px system-ui,-apple-system,sans-serif;text-align:center;box-shadow:0 2px 8px rgba(0,0,0,.35);user-select:none;-webkit-user-select:none}
+.myfeeds-look__dot::-webkit-details-marker{display:none}
+.myfeeds-look__dot::marker{content:""}
+.myfeeds-look__dot::before{content:"";position:absolute;inset:-8px;border-radius:50%}
+.myfeeds-look__dot:focus-visible{outline:3px solid var(--ink);outline-offset:2px;box-shadow:0 0 0 2px #fff,0 2px 8px rgba(0,0,0,.35);border-radius:50%}
+.myfeeds-look__pt[open] .myfeeds-look__dot{background:#111;color:#fff}
+.myfeeds-look__card{position:absolute;top:calc(100% + 8px);left:50%;transform:translateX(-50%);display:flex;flex-direction:column;gap:3px;width:220px;max-width:72vw;padding:12px 14px;border-radius:8px;background:#fff;color:#111;text-decoration:none;box-shadow:0 8px 28px rgba(0,0,0,.25);font-size:14px}
+.myfeeds-look__pt.is-left .myfeeds-look__card{left:auto;right:-6px;transform:none}
+.myfeeds-look__pt.is-right .myfeeds-look__card{left:-6px;transform:none}
+.myfeeds-look__pt.is-up .myfeeds-look__card{top:auto;bottom:calc(100% + 8px)}
+.myfeeds-look__brand{font-size:11px;letter-spacing:.08em;text-transform:uppercase;opacity:.65}
+.myfeeds-look__name{font-weight:600}
+.myfeeds-look__note{font-size:13px;opacity:.8}
+.myfeeds-look__go{font-size:13px;font-weight:600;text-decoration:underline;text-underline-offset:3px}
+.myfeeds-look__list{list-style:none;margin:14px 2px 0;padding:0;display:grid;gap:8px;line-height:1.35;font-size:14.5px}
+.myfeeds-look__row{display:flex;align-items:baseline;gap:10px;color:inherit;text-decoration:none}
+.myfeeds-look__row .myfeeds-look__what{flex:1;display:flex;flex-wrap:wrap;gap:0 8px;align-items:baseline;min-width:0}
+.myfeeds-look__row .myfeeds-look__brand{font-size:12px}
+.myfeeds-look__row .myfeeds-look__price{opacity:.75}
+.myfeeds-look__row .myfeeds-look__go{flex:none;font-size:13px}
+.myfeeds-look__num{flex:none;display:inline-block;width:22px;height:22px;border-radius:50%;background:#111;color:#fff;font:600 12px/22px system-ui,-apple-system,sans-serif;text-align:center}
+@media (max-width:520px){.myfeeds-look__row{flex-wrap:wrap;row-gap:2px}.myfeeds-look__row .myfeeds-look__what{flex-basis:calc(100% - 32px)}.myfeeds-look__row .myfeeds-look__go{margin-left:32px}}
+/* invitation and opening: only with motion allowed */
+.mo .myfeeds-look__pt:not([open]) .myfeeds-look__dot::after{content:"";position:absolute;inset:0;border-radius:50%;border:2px solid #fff;animation:lk-ring 2.4s cubic-bezier(.2,.6,.3,1) infinite;pointer-events:none}
+.mo .myfeeds-look__pt:nth-of-type(2) .myfeeds-look__dot::after{animation-delay:.5s}
+.mo .myfeeds-look__pt:nth-of-type(3) .myfeeds-look__dot::after{animation-delay:1s}
+.mo .myfeeds-look__pt:nth-of-type(4) .myfeeds-look__dot::after{animation-delay:1.5s}
+.mo .myfeeds-look__pt:nth-of-type(5) .myfeeds-look__dot::after{animation-delay:2s}
+.mo .myfeeds-look__pt[open] .myfeeds-look__card{animation:lk-pop .22s cubic-bezier(.2,.9,.3,1.15)}
+@keyframes lk-ring{0%{transform:scale(1);opacity:.9}70%,100%{transform:scale(1.9);opacity:0}}
+@keyframes lk-pop{from{opacity:0;translate:0 6px}to{opacity:1;translate:0 0}}
+
 /* watch + steps */
 .frame{position:relative;background:var(--paper);padding:10px 10px 14px;border-radius:3px;box-shadow:var(--shadow);max-width:960px}
 .frame::before,.frame::after{content:"";position:absolute;top:-9px;width:70px;height:20px;background:var(--tape)}
@@ -394,6 +446,51 @@ footer a{color:#fff;text-underline-offset:3px}
     <div class="go">
       <a class="cta" data-cta="design" href="https://checkout.freemius.com/plugin/21336/plan/35610/?trial=paid&amp;billing_cycle=monthly">Start for free</a>
       <p class="calm">7 days free, then $19 a month. Cancel before the trial ends and you pay nothing.</p>
+    </div>
+  </div>
+</section>
+
+<section class="band" aria-labelledby="h-look">
+  <div class="wrap lk">
+    <div class="head">
+      <p class="kick">Shop the look · included in Pro</p>
+      <h2 id="h-look">Your own photo, <span class="tone">ready to shop.</span></h2>
+      <p>Take a photo of your outfit or your living room and put a dot on each thing in it. Readers tap a dot, see what it is and go straight to the shop through your affiliate link.</p>
+    </div>
+    <figure class="lk-fig">
+      <div class="lk-frame">
+        <p class="lk-hint" aria-hidden="true"><i>1</i>Tap or click a dot</p>
+        <div class="myfeeds-look" id="lk">
+          <div class="myfeeds-look__stage">
+            <img class="myfeeds-look__img" src="/assets/pin/lab/mix/look-flatlay-600.webp" srcset="/assets/pin/lab/mix/look-flatlay-600.webp 600w, /assets/pin/lab/mix/look-flatlay-1000.webp 1000w" sizes="(min-width:900px) 500px, calc(100vw - 52px)" width="1000" height="1250" loading="lazy" alt="A flat-lay of an outfit: grey hoodie, off-white tee, navy beanie, white sneakers and a canvas tote bag.">
+            <details class="myfeeds-look__pt is-right" name="lk" data-lk="hoodie" style="left:30%;top:31%"><summary class="myfeeds-look__dot" aria-label="1. Halden Heavyweight Hoodie Heather Grey"><span aria-hidden="true">1</span></summary><span class="myfeeds-look__card"><span class="myfeeds-look__brand">Halden</span><span class="myfeeds-look__name">Heavyweight Hoodie Heather Grey</span><span class="myfeeds-look__price">$58.00</span><span class="myfeeds-look__go">View at Northside Supply</span></span></details>
+            <details class="myfeeds-look__pt is-left" name="lk" data-lk="tee" style="left:72%;top:24%"><summary class="myfeeds-look__dot" aria-label="2. Common Thread Boxy Heavy Tee Off-White"><span aria-hidden="true">2</span></summary><span class="myfeeds-look__card"><span class="myfeeds-look__brand">Common Thread</span><span class="myfeeds-look__name">Boxy Heavy Tee Off-White</span><span class="myfeeds-look__price">$32.00</span><span class="myfeeds-look__go">View at Northside Supply</span></span></details>
+            <details class="myfeeds-look__pt is-left" name="lk" data-lk="beanie" style="left:77%;top:54%"><summary class="myfeeds-look__dot" aria-label="3. Fieldmade Ribbed Merino Beanie Navy"><span aria-hidden="true">3</span></summary><span class="myfeeds-look__card"><span class="myfeeds-look__brand">Fieldmade</span><span class="myfeeds-look__name">Ribbed Merino Beanie Navy</span><span class="myfeeds-look__price">$28.00</span><span class="myfeeds-look__go">View at Basecamp Outfitters</span></span></details>
+            <details class="myfeeds-look__pt is-left is-up" name="lk" data-lk="sneakers" style="left:76%;top:86%"><summary class="myfeeds-look__dot" aria-label="4. Arlo &amp; Finch Court Low-Top Leather White"><span aria-hidden="true">4</span></summary><span class="myfeeds-look__card"><span class="myfeeds-look__brand">Arlo &amp; Finch</span><span class="myfeeds-look__name">Court Low-Top Leather White</span><span class="myfeeds-look__price">$88.00</span><span class="myfeeds-look__note">Runs half a size small.</span><span class="myfeeds-look__go">View at Kicks Corner</span></span></details>
+            <details class="myfeeds-look__pt is-right is-up" name="lk" data-lk="amazon" style="left:25%;top:78%"><summary class="myfeeds-look__dot" aria-label="5. Everyday Canvas Tote Natural, on Amazon"><span aria-hidden="true">5</span></summary><span class="myfeeds-look__card"><span class="myfeeds-look__name">Everyday Canvas Tote Natural</span><span class="myfeeds-look__note">My daily bag, fits a 13-inch laptop.</span><span class="myfeeds-look__go">View on Amazon.com</span></span></details>
+          </div>
+          <ol class="myfeeds-look__list" aria-label="Products in this photo">
+            <li><span class="myfeeds-look__row"><span class="myfeeds-look__num" aria-hidden="true">1</span><span class="myfeeds-look__what"><span class="myfeeds-look__brand">Halden</span><span class="myfeeds-look__name">Heavyweight Hoodie Heather Grey</span><span class="myfeeds-look__price">$58.00</span></span><span class="myfeeds-look__go">View at Northside Supply</span></span></li>
+            <li><span class="myfeeds-look__row"><span class="myfeeds-look__num" aria-hidden="true">2</span><span class="myfeeds-look__what"><span class="myfeeds-look__brand">Common Thread</span><span class="myfeeds-look__name">Boxy Heavy Tee Off-White</span><span class="myfeeds-look__price">$32.00</span></span><span class="myfeeds-look__go">View at Northside Supply</span></span></li>
+            <li><span class="myfeeds-look__row"><span class="myfeeds-look__num" aria-hidden="true">3</span><span class="myfeeds-look__what"><span class="myfeeds-look__brand">Fieldmade</span><span class="myfeeds-look__name">Ribbed Merino Beanie Navy</span><span class="myfeeds-look__price">$28.00</span></span><span class="myfeeds-look__go">View at Basecamp Outfitters</span></span></li>
+            <li><span class="myfeeds-look__row"><span class="myfeeds-look__num" aria-hidden="true">4</span><span class="myfeeds-look__what"><span class="myfeeds-look__brand">Arlo &amp; Finch</span><span class="myfeeds-look__name">Court Low-Top Leather White</span><span class="myfeeds-look__price">$88.00</span></span><span class="myfeeds-look__go">View at Kicks Corner</span></span></li>
+            <li><span class="myfeeds-look__row"><span class="myfeeds-look__num" aria-hidden="true">5</span><span class="myfeeds-look__what"><span class="myfeeds-look__name">Everyday Canvas Tote Natural</span></span><span class="myfeeds-look__go">View on Amazon.com</span></span></li>
+          </ol>
+        </div>
+      </div>
+      <figcaption>An example look made from sample products. Dot 5 is from Amazon: you type its name and it links there with your tag. Amazon's own photos and prices come through its Creators API, which Amazon opens to associates with ten qualified sales in thirty days.</figcaption>
+    </figure>
+    <div class="lk-body">
+      <ul class="ticks">
+        <li>Each dot is a product from a shop you're an affiliate for.</li>
+        <li>Amazon works too: paste a product link and the dot leads there.</li>
+        <li>The same products follow as a numbered list under the photo.</li>
+        <li>When a shop's product sells out or is gone, its dot leaves the photo on its own.</li>
+      </ul>
+      <div class="go">
+        <a class="cta" data-cta="look" href="https://checkout.freemius.com/plugin/21336/plan/35610/?trial=paid&amp;billing_cycle=monthly">Make my photos shoppable</a>
+        <p class="calm">Free for 7 days, then $19 a month.</p>
+      </div>
     </div>
   </div>
 </section>
@@ -568,6 +665,40 @@ footer a{color:#fff;text-underline-offset:3px}
       count('pin/lab/mix/look-' + name);
     });
   });
+
+  // Shop the look: the block's own script (one point open, a click beside
+  // it or Escape closes it), plus focus back on the dot after Escape. Each
+  // dot is counted once per visit.
+  var pts = document.querySelectorAll('#lk .myfeeds-look__pt'), seen = {};
+  function shut(keep) { pts.forEach(function (d) { if (d !== keep && d.open) d.open = false; }); }
+  pts.forEach(function (d) {
+    d.addEventListener('toggle', function () {
+      if (!d.open) return;
+      shut(d);
+      var k = d.getAttribute('data-lk');
+      if (!seen[k]) { seen[k] = 1; count('pin/lab/mix/look-dot-' + k); }
+    });
+  });
+  // Keyboard: when focus moves past an open point, close it so its card
+  // never covers the dot that now has focus.
+  var lk = document.getElementById('lk');
+  if (lk) lk.addEventListener('focusin', function (e) {
+    pts.forEach(function (d) { if (d.open && !d.contains(e.target)) d.open = false; });
+  });
+  document.addEventListener('focusin', function (e) {
+    if (lk && !lk.contains(e.target)) shut(null);
+  });
+  if (pts.length) {
+    document.addEventListener('click', function (e) { shut(e.target.closest && e.target.closest('#lk .myfeeds-look__pt')); }, true);
+    document.addEventListener('keydown', function (e) {
+      if (e.key !== 'Escape') return;
+      var open = document.querySelector('#lk .myfeeds-look__pt[open]');
+      if (!open) return;
+      var back = open.contains(document.activeElement);
+      open.open = false;
+      if (back) open.querySelector('summary').focus();
+    });
+  }
 
   // Phone only: once the hero button has scrolled away, the same button
   // waits at the bottom; it steps aside when the closing button is in view.
