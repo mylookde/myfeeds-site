@@ -222,8 +222,16 @@ p{text-wrap:pretty}
 .look[data-style="clean"]{--myfeeds-card-radius:8px;--myfeeds-card-hover-radius:8px;--myfeeds-card-shadow:0 0 5px 2px rgba(0,0,0,.06);--myfeeds-img-bg:#fff}
 .look[data-style="editorial"]{--myfeeds-card-radius:0px;--myfeeds-card-hover-radius:0px;--myfeeds-card-border-width:1px;--myfeeds-card-border-color:#17151C;--myfeeds-card-shadow:none;--myfeeds-card-bg:#FBF8F3;--myfeeds-img-bg:#fff;--myfeeds-badge-bg:#17151C;--myfeeds-badge-color:#fff;--myfeeds-badge-radius:0px;--myfeeds-badge-size:11px;--myfeeds-badge-transform:uppercase;--myfeeds-brand-transform:uppercase;--myfeeds-brand-tracking:.08em;--myfeeds-brand-size:10px;--myfeeds-title-font:Georgia,'Times New Roman',serif;--myfeeds-title-size:15px;--myfeeds-title-color:#17151C;--myfeeds-price-font:Georgia,'Times New Roman',serif;--myfeeds-old-price-font:Georgia,'Times New Roman',serif;--myfeeds-old-price-weight:400;--myfeeds-old-price-color:#7A7484;--myfeeds-price-discount-color:#17151C;--myfeeds-price-weight:700;--myfeeds-details-px:14px;--myfeeds-details-py:14px}
 .look[data-style="bold"]{--myfeeds-card-radius:18px;--myfeeds-card-hover-radius:18px;--myfeeds-card-bg:#17151C;--myfeeds-card-shadow:0 16px 30px -14px rgba(23,21,28,.6);--myfeeds-img-bg:#fff;--myfeeds-badge-bg:#FC9000;--myfeeds-badge-color:#17151C;--myfeeds-badge-size:14px;--myfeeds-badge-weight:800;--myfeeds-brand-color:#fff;--myfeeds-brand-size:13px;--myfeeds-brand-weight:700;--myfeeds-title-color:#C9C5D3;--myfeeds-old-price-color:#8E89A0;--myfeeds-old-price-weight:500;--myfeeds-price-discount-color:#FC9000;--myfeeds-price-size:18px;--myfeeds-price-weight:800;--myfeeds-shipping-color:#8E89A0;--myfeeds-merchant-color:#C9C5D3;--myfeeds-details-px:14px;--myfeeds-details-py:14px}
+/* the button sits under the screenshot on a wide screen, so the space
+   left by the taller style demo beside it is used; on a phone it follows
+   the demo */
+.design{grid-template-areas:"shot" "try" "go"}
+.design>.shot{grid-area:shot}
+.design>.try{grid-area:try}
+.design>.go{grid-area:go;margin-top:0}
 @media (min-width:900px){
-  .design{grid-template-columns:minmax(0,7fr) minmax(0,4fr);gap:48px}
+  .design{grid-template-columns:minmax(0,7fr) minmax(0,4fr);grid-template-areas:"shot try" "go try";grid-template-rows:auto 1fr;gap:0 48px}
+  .design>.go{margin-top:32px}
   .try{padding:28px 20px 22px;position:sticky;top:24px}
   .look .myfeeds-product-card{width:240px}
 }
@@ -471,10 +479,10 @@ footer a{color:#fff;text-underline-offset:3px}
         </div>
         <p>Three examples of how your card could look. You can change every part of it.</p>
       </div>
-    </div>
-    <div class="go">
-      <a class="cta" data-cta="design" href="https://checkout.freemius.com/plugin/21336/plan/35610/?trial=paid&amp;billing_cycle=monthly">Start for free</a>
-      <p class="calm">7 days free, then $19 a month. Cancel before the trial ends and you pay nothing.</p>
+      <div class="go">
+        <a class="cta" data-cta="design" href="https://checkout.freemius.com/plugin/21336/plan/35610/?trial=paid&amp;billing_cycle=monthly">Start for free</a>
+        <p class="calm">7 days free, then $19 a month. Cancel before the trial ends and you pay nothing.</p>
+      </div>
     </div>
   </div>
 </section>
@@ -577,10 +585,16 @@ footer a{color:#fff;text-underline-offset:3px}
       <details name="faq">
         <summary>Do I need an affiliate network?</summary>
         <p>Yes, or a program that gives you a product feed. MyFeeds reads the feeds from AWIN, Rakuten Advertising, CJ, Impact, Partnerize, Webgains, Tradedoubler, Admitad, FlexOffers, Sovrn and Pepperjam. If your program publishes a feed file you can download, MyFeeds will almost certainly import it. Amazon has no feed file, so on Pro its products come live from Amazon's own Creators API. Amazon opens that access to associates with ten qualified sales in thirty days.</p>
+        <p>MyFeeds keeps growing, so that every affiliate can bring in the product feeds of the shops they work with. Is your platform missing? We can connect more platforms on request: write to <a href="mailto:business@myfeeds.site">business@myfeeds.site</a>.</p>
       </details>
       <details name="faq">
         <summary>Will it slow down my blog?</summary>
         <p>No, products are stored in your own WordPress database and the cards are built from there, so your pages don't wait on a third-party server to show them.</p>
+      </details>
+      <details name="faq">
+        <summary>Do I need technical skills?</summary>
+        <!-- The demo sentence is only true once the guided backend demos ship (Pro branch "tours", not released on 2026-10-02). Keep it off live pages until then. -->
+        <p>No code, no command line. If you can install a WordPress plugin and paste a link, you're set. The first time you open one of the main MyFeeds screens, a short guided demo walks you through it step by step, and you can replay it any time.</p>
       </details>
       <details name="faq">
         <summary>Can I upgrade or downgrade later?</summary>

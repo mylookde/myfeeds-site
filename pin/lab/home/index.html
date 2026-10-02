@@ -232,6 +232,41 @@ figure figcaption{margin-top:14px;font-size:13px;color:var(--ink-3)}
 .linklist span{color:#2546B5;text-decoration:underline;text-underline-offset:2px}
 @media (min-width:900px){.pain{grid-template-columns:minmax(0,6fr) minmax(0,5fr);gap:64px}}
 
+/* brush marks: a red X on the post with plain links, a green check on the
+   same post with cards. The paint is a tapered, ragged shape (a static
+   mask); the stroke underneath is what draws in, once, when the example
+   scrolls into view. Without motion (no JS, reduced motion) it is simply
+   there. Each mark stays inside the free space beside the column: --room
+   is how far it may reach past the example before it would leave the
+   page (the wrap's margin plus its gutter, less a safety edge). */
+.brush{position:absolute;z-index:3;pointer-events:none;overflow:visible;--room:max(6px,calc((100vw - 1240px) / 2 + var(--gut) - 26px))}
+.brush .rv{fill:none;stroke-width:48;stroke-linecap:round;stroke-linejoin:round}
+.brush-x .rv{stroke:#E0352B}
+.brush-ok .rv{stroke:#22B35F}
+.mo .brush .rv{stroke-dasharray:1 2;stroke-dashoffset:1.2;transition:stroke-dashoffset .34s cubic-bezier(.6,.05,.3,1)}
+.mo .brush-ok .rv{transition-duration:.6s;transition-timing-function:cubic-bezier(.5,0,.25,1)}
+.mo .brush.on .rv{stroke-dashoffset:0}
+.mo .brush.on .rv2{transition-delay:.28s}
+/* the X: its middle on the bottom-right corner, pulled in only as far as
+   the page edge needs */
+.brush-x{width:112px;height:112px;bottom:-56px;right:calc(-1 * min(56px,var(--room) + 12px))}
+/* the empty corner of a mark's box may reach past a phone's edge; the
+   band cuts it there, so it never widens the page */
+.clip-x{overflow-x:hidden;overflow-x:clip}
+.links figcaption{padding-right:84px}
+@media (min-width:900px){
+  .brush-x{width:150px;height:150px;bottom:-75px;right:calc(-1 * min(75px,var(--room) + 22px))}
+  .links figcaption{padding-right:70px}
+}
+/* the check: its first stroke starts just over the top-right corner, the
+   rest rises into the space above and beside the post */
+.brush-ok{width:104px;height:104px;top:-48px;left:min(calc(100% - 30px),calc(100% + var(--room) + 2px - 104px))}
+/* between 900 and 1320 px the page edge is close: the check gets
+   smaller and sits higher, so only its corner touches the post and the
+   headline stays clear */
+@media (min-width:900px){.brush-ok{width:112px;height:112px;top:-70px;left:min(calc(100% - 40px),calc(100% + var(--room) + 2px - 112px))}}
+@media (min-width:1320px){.brush-ok{width:140px;height:140px;top:-61px;left:min(calc(100% - 36px),calc(100% + var(--room) + 16px - 140px))}}
+
 /* new life: readers see products */
 .see{display:grid;gap:32px;align-items:center}
 .ticks{list-style:none;display:grid;gap:10px;margin-top:4px}
@@ -254,8 +289,16 @@ figure figcaption{margin-top:14px;font-size:13px;color:var(--ink-3)}
 .look[data-style="clean"]{--myfeeds-card-radius:8px;--myfeeds-card-hover-radius:8px;--myfeeds-card-shadow:0 0 5px 2px rgba(0,0,0,.06);--myfeeds-img-bg:#fff}
 .look[data-style="editorial"]{--myfeeds-card-radius:0px;--myfeeds-card-hover-radius:0px;--myfeeds-card-border-width:1px;--myfeeds-card-border-color:#17151C;--myfeeds-card-shadow:none;--myfeeds-card-bg:#FBF8F3;--myfeeds-img-bg:#fff;--myfeeds-badge-bg:#17151C;--myfeeds-badge-color:#fff;--myfeeds-badge-radius:0px;--myfeeds-badge-size:11px;--myfeeds-badge-transform:uppercase;--myfeeds-brand-transform:uppercase;--myfeeds-brand-tracking:.08em;--myfeeds-brand-size:10px;--myfeeds-title-font:Georgia,'Times New Roman',serif;--myfeeds-title-size:15px;--myfeeds-title-color:#17151C;--myfeeds-price-font:Georgia,'Times New Roman',serif;--myfeeds-old-price-font:Georgia,'Times New Roman',serif;--myfeeds-old-price-weight:400;--myfeeds-old-price-color:#7A7484;--myfeeds-price-discount-color:#17151C;--myfeeds-price-weight:700;--myfeeds-details-px:14px;--myfeeds-details-py:14px}
 .look[data-style="bold"]{--myfeeds-card-radius:18px;--myfeeds-card-hover-radius:18px;--myfeeds-card-bg:#17151C;--myfeeds-card-shadow:0 16px 30px -14px rgba(23,21,28,.6);--myfeeds-img-bg:#fff;--myfeeds-badge-bg:#FC9000;--myfeeds-badge-color:#17151C;--myfeeds-badge-size:14px;--myfeeds-badge-weight:800;--myfeeds-brand-color:#fff;--myfeeds-brand-size:13px;--myfeeds-brand-weight:700;--myfeeds-title-color:#C9C5D3;--myfeeds-old-price-color:#8E89A0;--myfeeds-old-price-weight:500;--myfeeds-price-discount-color:#FC9000;--myfeeds-price-size:18px;--myfeeds-price-weight:800;--myfeeds-shipping-color:#8E89A0;--myfeeds-merchant-color:#C9C5D3;--myfeeds-details-px:14px;--myfeeds-details-py:14px}
+/* the button sits under the screenshot on a wide screen, so the space
+   left by the taller style demo beside it is used; on a phone it follows
+   the demo */
+.design{grid-template-areas:"shot" "try" "go"}
+.design>.shot{grid-area:shot}
+.design>.try{grid-area:try}
+.design>.go{grid-area:go;margin-top:0}
 @media (min-width:900px){
-  .design{grid-template-columns:minmax(0,7fr) minmax(0,4fr);gap:48px}
+  .design{grid-template-columns:minmax(0,7fr) minmax(0,4fr);grid-template-areas:"shot try" "go try";grid-template-rows:auto 1fr;gap:0 48px}
+  .design>.go{margin-top:32px}
   .try{padding:28px 20px 22px}
   .look .myfeeds-product-card{width:240px}
 }
@@ -309,6 +352,25 @@ figure figcaption{margin-top:14px;font-size:13px;color:var(--ink-3)}
 @keyframes lk-ring{0%{transform:scale(1);opacity:.9}70%,100%{transform:scale(1.9);opacity:0}}
 @keyframes lk-pop{from{opacity:0;translate:0 6px}to{opacity:1;translate:0 0}}
 @media (min-width:900px){.pro{grid-template-columns:minmax(0,5fr) minmax(0,6fr);gap:64px}}
+
+/* four of the dashboard's insight cards, rebuilt small: the plugin's own
+   titles and severity edges (analytics-dashboard.css), example numbers
+   that fit the screenshot above (30 days, 4,837 clicks, $543.27) */
+.ins-fig{margin-top:22px}
+.ins{display:grid;gap:10px}
+.in{background:var(--paper);border-radius:6px;border-left:4px solid #c8c8d3;padding:12px 14px 12px 13px;box-shadow:0 1px 2px rgba(40,30,70,.08)}
+.in-pos{border-left-color:#667eea}
+.in-warn{border-left-color:#d69e2e}
+.in-neg{border-left-color:#b32d2e}
+.in h4{font:600 14.5px/1.3 var(--sans);letter-spacing:0;color:var(--ink)}
+.in p{font-size:13.5px;line-height:1.4;color:var(--ink-2);margin-top:3px}
+.in ul{list-style:none;margin-top:8px;display:grid;gap:5px}
+.in li{display:flex;flex-wrap:wrap;justify-content:space-between;align-items:baseline;gap:0 10px;font-size:13px;line-height:1.35;border-top:1px solid var(--line);padding-top:5px}
+.in li b{font-weight:600;min-width:0}
+.in li>span{color:var(--ink-3);font-variant-numeric:tabular-nums;margin-left:auto}
+.in .up{color:#1f7a3d}
+.in .down{color:#b32d2e}
+@media (min-width:560px){.ins{grid-template-columns:repeat(2,minmax(0,1fr))}}
 
 /* how it works: the 30 s recording and three steps */
 .frame{position:relative;background:var(--paper);padding:10px 10px 14px;border-radius:3px;box-shadow:var(--shadow);max-width:960px}
@@ -511,7 +573,7 @@ footer a{color:#fff;text-underline-offset:3px}
   </div>
 </div>
 
-<section class="band" aria-labelledby="h-pain">
+<section class="band clip-x" aria-labelledby="h-pain">
   <div class="wrap pain">
     <div>
       <div class="head">
@@ -520,7 +582,7 @@ footer a{color:#fff;text-underline-offset:3px}
       </div>
       <ol class="stakes">
         <li><h3>Readers see links, not products</h3><p>A row of links asks readers to go and look somewhere else before they know what you picked.</p></li>
-        <li><h3>Every product takes ten minutes by hand</h3><p>Copy the link, save the image, retype the price, repeat. An afternoon per roundup that you wanted for the next post.</p></li>
+        <li><h3>Every product takes minutes by hand</h3><p>Copy the link, save the image, retype the price, repeat. A roundup eats the time you wanted for the next post.</p></li>
         <li><h3>Prices and stock go out of date</h3><p>Prices move and products sell out. Your best post keeps sending readers to a page that no longer exists.</p></li>
       </ol>
     </div>
@@ -534,13 +596,14 @@ footer a{color:#fff;text-underline-offset:3px}
           <li><span>Court Low-Top Leather White at Kicks Corner</span></li>
           <li><span>Ribbed Merino Beanie Navy at Basecamp Outfitters</span></li>
         </ul>
+        <svg class="brush brush-x" viewBox="0 0 200 200" aria-hidden="true" focusable="false"><defs><mask id="bx1" maskUnits="userSpaceOnUse" x="0" y="0" width="200" height="200"><path d="M25.8 43.1 28.3 46.1 30 50 31.5 54.2 33.3 58 35.6 61.3 38.3 64.2 41.2 66.9 43.9 69.8 46.8 72.6 49.8 75.2 52.9 77.8 55.7 80.7 58.4 83.7 61.3 86.6 64.5 89.1 67.9 91.5 71.2 94 74.2 96.9 77 99.9 80 102.8 83.2 105.6 86.2 108.5 89 111.7 91.7 115 94.6 118.2 97.8 121 101.2 123.7 104.5 126.5 107.6 129.5 110.8 132.5 114.3 135.1 118 137.7 121.6 140.2 125.1 143 128.6 145.7 132.2 148.4 136.6 150.3 141.3 152 145.4 154.2 150 156.1 153.3 159.2 157.2 161.8 162.9 162.6 166.3 165.7 166.6 170.7 166.2 167.7 172.1 171 168.9 165.1 173.3 166.4 171.8 162.2 174.3 162.1 174.5 157.5 170.8 154.6 168.5 150.4 164.9 147.5 161.1 144.9 159.5 140 156.7 136.3 155 131.6 151.9 128.3 149.4 124.4 147 120.5 144.4 116.7 141.7 113.2 138.4 110.2 134.8 107.5 131.3 104.8 128.1 101.9 125 98.8 121.7 95.9 118.4 93.2 115.1 90.3 112.3 87 109.7 83.6 106.9 80.4 103.7 77.5 100.4 74.9 97.2 72.1 94.3 69.1 91.5 66 88.5 63.1 85.3 60.4 82.3 57.6 79.7 54.4 77.2 51 74.5 47.9 71.4 45.3 68.2 42.8 65.1 40.2 62.2 37.5 58.6 35.6 54.2 34.5 49.4 34 44.9 33.2 41 31.6 37.9 29.2 35.3 28.2 32.3 28.9 29.3 29.1 26.8 31.4 25.7 34.4 24 37.4 24.7 40.3Z" fill="#fff"/><path d="M149.6 150 153.1 153 156.5 156 159.9 159.1 163.3 162.2 166.6 165.4 174.3 173.1" stroke="#000" stroke-width="1.3" stroke-linecap="round" fill="none"/><path d="M146 134.4 148.9 137.8 151.8 141.3 154.7 144.8 157.6 148.3 160.6 151.8 163.7 155.3 166.8 158.7 170 162 177.7 169.7" stroke="#000" stroke-width="1.0" stroke-linecap="round" fill="none"/></mask><mask id="bx2" maskUnits="userSpaceOnUse" x="0" y="0" width="200" height="200"><path d="M159.1 26.7 156.1 29.5 152.6 32 149 34.3 145.2 36.5 141.3 38.7 137.8 41.1 134.8 43.9 132.1 47.1 129.7 50.4 127.3 53.7 124.5 56.8 121.7 59.8 119 63 116.5 66.3 113.8 69.5 110.8 72.4 107.5 75 104.3 77.7 101.4 80.7 98.7 83.9 96 87.1 93 90.1 90.1 93.1 87.4 96.4 84.9 99.8 82.2 103.1 79.1 106 75.8 108.7 72.7 111.5 69.8 114.7 67.1 118 64.3 121.3 61.5 124.6 58.8 128 56.6 132 54.4 135.9 53 140.7 50.7 144.7 47.1 147.3 45.3 151.9 42.6 155.4 38.9 157.8 36.3 161.6 32.6 164.1 29.8 166.2 32.6 166.1 29.2 171.4 34.9 168.7 33.4 172.8 37.5 171.6 37.4 174 39.8 172.4 42.2 168.4 46.4 166.3 49.6 163.3 53.9 161.5 57 158.3 61.2 156.2 66.3 155.3 70.7 153.5 74.4 151 78.2 148.6 82.1 146.3 85.9 143.9 89.5 141.2 92.7 138.2 95.6 134.9 98.6 131.6 101.8 128.7 105.3 125.9 108.6 123 111.6 119.9 114.7 116.8 117.9 113.9 121.3 111 124.4 108 127.1 104.6 129.6 101 132.2 97.5 135.1 94.3 138.1 91.2 140.9 88 143.6 84.6 146.3 81.3 149.3 78.2 152.4 75.3 155.3 72.1 157.8 68.7 160.2 65.1 162.6 61.5 164.8 57.8 166.5 53.8 167.7 49.3 168.8 44.8 170.4 40.7 172.9 37.4 174.4 35 174.3 31.9 172.1 29.2 170.5 26.2 167.4 24.5 164.3 24.9 161 24.6Z" fill="#fff"/><path d="M56.8 144.9 53.7 148.1 50.7 151.2 47.6 154.4 44.5 157.5 41.3 160.6 38.1 163.6 34.7 166.5 27 173.2" stroke="#000" stroke-width="1.3" stroke-linecap="round" fill="none"/><path d="M58.8 153.7 55.3 156.3 51.7 159 48.1 161.6 44.6 164.4 41.2 167.2 37.8 170 30 176.7" stroke="#000" stroke-width="1.0" stroke-linecap="round" fill="none"/></mask></defs><g mask="url(#bx1)"><path class="rv" pathLength="1" d="M32 36Q96 92 168 164"/></g><g mask="url(#bx2)"><path class="rv rv2" pathLength="1" d="M166 32Q110 104 36 168"/></g></svg>
       </div>
       <figcaption>A post with three picks as plain affiliate links.</figcaption>
     </figure>
   </div>
 </section>
 
-<section class="band ink" id="features" aria-labelledby="h-see">
+<section class="band ink clip-x" id="features" aria-labelledby="h-see">
   <div class="wrap see">
     <div>
       <div class="head">
@@ -557,6 +620,7 @@ footer a{color:#fff;text-underline-offset:3px}
     </div>
     <figure>
       <div class="pinned post">
+        <svg class="brush brush-ok" viewBox="0 0 200 200" aria-hidden="true" focusable="false"><defs><mask id="bck" maskUnits="userSpaceOnUse" x="0" y="0" width="200" height="200"><path d="M15.4 111.2 16.3 112.3 16.8 113.8 16.8 115.7 16.6 117.8 16.7 119.7 17.3 121.1 18.4 122.2 19.3 123.4 20.2 124.6 21.2 125.8 22.4 126.8 23.9 127.6 25.2 128.6 26.2 129.8 27.1 131.1 28.1 132.3 29.3 133.4 30.4 134.6 31.3 135.9 32.2 137.4 33.1 138.7 34.4 139.8 35.9 140.7 37.2 141.8 38.2 143.2 39.1 144.6 40.2 145.9 41.4 147.1 42.6 148.4 43.5 149.9 44.3 151.5 45.4 153 46.6 154.3 48.1 155.3 49.4 156.5 50.6 157.9 52 159 53.8 159.8 55.3 160.9 57.3 161.5 57.8 163.6 59.4 164.6 60 166.6 60.6 168.6 65.7 171 75.3 171.4 82.8 167.4 86.3 160.1 84 146.8 83.1 145.1 80.9 144.7 78.2 144.7 77.3 143 75.6 142.1 74.2 141 73.4 139.3 72.2 138 71.2 136.5 70.4 134.9 69.4 133.4 68.3 132.1 67 130.9 66 129.6 65 128.2 63.9 126.9 62.6 125.8 61.3 124.7 60.3 123.4 59.5 121.9 58.9 120.2 58 118.8 57 117.5 56 116.3 55.1 114.9 54.3 113.6 53.2 112.5 51.8 111.5 50.5 110.6 49.4 109.6 48.5 108.3 47.6 107.1 46.6 106 45.4 105 44.4 103.9 43.5 102.7 42.6 101.5 41.5 100.5 39.8 100 37.9 99.8 36 99.6 34.3 99.1 32.9 98.5 31.7 97.6 29 96 26 94.1 22.1 95.4 19 98 15.4 100.4 14.4 104.2 15.2 107.5Z" fill="#fff"/><path d="M75.3 168 77.8 165.2 80.5 162.5 83.2 159.8 85.6 156.8 88 153.9 90.6 151.1 93.3 148.3 95.8 145.3 97.9 142.1 100 138.8 102.4 135.6 105.1 132.8 108 130 110.6 127 113.1 123.8 115.7 120.8 118.5 117.9 121.4 115 124 111.8 126.2 108.3 128.3 104.6 130.6 101.2 133.3 97.9 135.9 94.7 138.4 91.3 141 87.8 143.7 84.6 146.8 81.6 149.9 78.6 152.6 75.2 155 71.5 157.3 67.7 159.6 63.8 162.1 60.1 164.2 56 166.5 52.1 167.8 47.1 170.1 43.1 173.8 40.3 176.8 36.8 180.1 33.6 182.2 29.2 184.4 24.9 189.1 22.9 189.6 19.1 187.1 19.4 189.7 14.6 184.9 17.3 185.9 13.6 182.5 14.9 182.3 12.9 177.3 11.5 175.9 16.7 172.1 19.5 167.7 21.7 162.7 23.4 159.5 26.8 157.3 31 153.3 33.6 149.5 36.3 145.5 38.8 141.8 41.5 138.5 44.6 135.2 47.7 132 50.8 128.6 53.8 125.6 57 123 60.6 120.6 64.4 118.1 67.9 115.2 71.2 112.1 74.3 109.1 77.3 106.2 80.6 103.3 83.7 100.1 86.6 96.8 89.3 93.8 92.3 91.2 95.5 88.8 99 86.2 102.3 83.5 105.4 80.7 108.4 78.1 111.6 75.8 115 73.3 118.2 70.6 121.2 67.8 124.1 65.2 127.2 63.2 130.6 61.4 134.2 59.5 137.8 57.5 141.2 55.6 144.6 53.9 148.2 52.3 151.8 49 155.5 50 160.8 53.6 165.4 56.6 170.5 62.2 172.7 67.5 172.2 73.3 172.6Z" fill="#fff"/><path d="M161.3 47.2 164.1 43.7 167 40.1 169.9 36.6 172.8 33 175.8 29.5 178.9 26 182 22.6 185.2 19.2 191.5 12.7" stroke="#000" stroke-width="1.3" stroke-linecap="round" fill="none"/><path d="M154.9 41.2 158.3 38.2 161.7 35.2 165.2 32.2 168.7 29.1 172.2 26 175.6 22.9 179 19.7 182.3 16.4 188.6 9.9" stroke="#000" stroke-width="1.0" stroke-linecap="round" fill="none"/></mask></defs><g mask="url(#bck)"><path class="rv" pathLength="1" d="M22 104Q44 128 70 161Q112 92 186 16"/></g></svg>
         <p class="post-k">Style notes</p>
         <p class="post-h">My fall uniform, in three pieces</p>
         <p class="post-p">Three things I reach for most mornings. Tap a card to see it in the shop.</p>
@@ -595,10 +659,10 @@ footer a{color:#fff;text-underline-offset:3px}
         </div>
         <p>Three examples of how your card could look. You can change every part of it.</p>
       </div>
-    </div>
-    <div class="go">
-      <a class="cta" data-cta="design" href="https://checkout.freemius.com/plugin/21336/plan/60599/?trial=paid&amp;billing_cycle=monthly">Design my cards, free for 7 days</a>
-      <p class="calm">The Starter trial: 7 days free, then $9 a month.</p>
+      <div class="go">
+        <a class="cta" data-cta="design" href="https://checkout.freemius.com/plugin/21336/plan/60599/?trial=paid&amp;billing_cycle=monthly">Design my cards, free for 7 days</a>
+        <p class="calm">The Starter trial: 7 days free, then $9 a month.</p>
+      </div>
     </div>
   </div>
 </section>
@@ -646,6 +710,43 @@ footer a{color:#fff;text-underline-offset:3px}
         <figure class="shot">
           <img src="/assets/pin/lab/home/analytics-dashboard-800.webp" srcset="/assets/pin/lab/home/analytics-dashboard-800.webp 800w, /assets/pin/lab/home/analytics-dashboard-1400.webp 1400w" sizes="(min-width:1240px) 600px, (min-width:900px) 52vw, 100vw" width="1400" height="690" loading="lazy" alt="The MyFeeds Pro dashboard in WordPress: total clicks, earnings, earnings per click and unique visitors for the last 30 days, a daily chart of clicks and earnings, and tabs for posts, products, brands and networks.">
           <figcaption>The Pro dashboard in WordPress, with example data. Your numbers come from your own clicks and your own networks.</figcaption>
+        </figure>
+        <figure class="ins-fig">
+          <div class="ins">
+            <article class="in in-pos">
+              <h4>Top earning posts</h4>
+              <p>The posts that bring in your commission.</p>
+              <ul>
+                <li><b>My fall uniform, in three pieces</b><span>$96.40 · 612 clicks</span></li>
+                <li><b>Ten sneakers I actually wear</b><span>$71.15 · 498 clicks</span></li>
+              </ul>
+            </article>
+            <article class="in in-pos">
+              <h4>Top-performing brands</h4>
+              <p>Arlo &amp; Finch gets 2.4× your average clicks per post.</p>
+              <ul>
+                <li><b>Arlo &amp; Finch</b><span>38 clicks per post</span></li>
+                <li><b>Fieldmade</b><span>27 clicks per post</span></li>
+              </ul>
+            </article>
+            <article class="in in-warn">
+              <h4>Risers and fallers</h4>
+              <p>Posts gaining or losing clicks against the 30 days before.</p>
+              <ul>
+                <li><b><span class="up" aria-hidden="true">▲</span> Ten sneakers I actually wear</b><span><span class="vh">Rising: </span>+64%</span></li>
+                <li><b><span class="down" aria-hidden="true">▼</span> Summer linen edit</b><span><span class="vh">Falling: </span>−38%</span></li>
+              </ul>
+            </article>
+            <article class="in in-neg">
+              <h4>Dead products</h4>
+              <p>Products a shop stopped selling, still in your posts. Click one to open the post and swap it.</p>
+              <ul>
+                <li><b>Linen Overshirt Sand</b><span>14 clicks in 30 days</span></li>
+                <li><b>Canvas High-Top Ecru</b><span>9 clicks in 30 days</span></li>
+              </ul>
+            </article>
+          </div>
+          <figcaption>Four of the insights, with example data. The dashboard has more, like posts that get no clicks and posts without any product cards.</figcaption>
         </figure>
         <div class="go">
           <a class="cta" data-cta="pro" href="https://checkout.freemius.com/plugin/21336/plan/35610/?trial=paid&amp;billing_cycle=monthly">Get both with Pro, free for 7 days</a>
@@ -851,6 +952,7 @@ footer a{color:#fff;text-underline-offset:3px}
       <details name="faq">
         <summary>Does this work with my affiliate network?</summary>
         <p>If your network gives you a shop's product feed link, MyFeeds reads it. AWIN, CJ, TradeDoubler, Impact, Rakuten, Webgains, Admitad, Pepperjam, Partnerize, FlexOffers and Sovrn are recognised out of the box, and other CSV, TSV, XML and JSON feeds work too. Amazon has no feed file, so on Pro and up its products come live from Amazon's own Creators API; Amazon opens that access to associates with ten qualified sales in thirty days. <a href="/networks/">How to get a feed link from your network</a>.</p>
+        <p>MyFeeds keeps growing, so that every affiliate can bring in the product feeds of the shops they work with. Is your platform missing? We can connect more platforms on request: write to <a href="mailto:business@myfeeds.site" data-cta="faq-network-request">business@myfeeds.site</a>.</p>
       </details>
       <details name="faq">
         <summary>How is this different from a link plugin?</summary>
@@ -882,7 +984,8 @@ footer a{color:#fff;text-underline-offset:3px}
       </details>
       <details name="faq">
         <summary>Do I need technical skills?</summary>
-        <p>No code, no command line. If you can install a WordPress plugin and paste a link, you're set.</p>
+        <!-- The demo sentence is only true once the guided backend demos ship (Pro branch "tours", not released on 2026-10-02). Keep it off live pages until then. -->
+        <p>No code, no command line. If you can install a WordPress plugin and paste a link, you're set. The first time you open one of the main MyFeeds screens, a short guided demo walks you through it step by step, and you can replay it any time.</p>
       </details>
       <details name="faq">
         <summary>Can I upgrade or downgrade later?</summary>
@@ -1007,6 +1110,24 @@ footer a{color:#fff;text-underline-offset:3px}
   }
 
   var mo = document.documentElement.classList.contains('mo');
+
+  // Brush marks: each one paints itself once, when most of its example is
+  // on screen. Without motion the CSS shows them finished.
+  var brushes = document.querySelectorAll('.brush');
+  if (mo && brushes.length) {
+    if ('IntersectionObserver' in window) {
+      var paint = new IntersectionObserver(function (es) {
+        es.forEach(function (x) {
+          if (!x.isIntersecting) return;
+          x.target.querySelector('.brush').classList.add('on');
+          paint.unobserve(x.target);
+        });
+      }, { threshold: .6 });
+      brushes.forEach(function (b) { paint.observe(b.parentNode); });
+    } else {
+      brushes.forEach(function (b) { b.classList.add('on'); });
+    }
+  }
 
   // The design chapter: the same real card, three sets of the editor's
   // own variables. Nothing but custom properties changes.
