@@ -237,12 +237,27 @@ p{text-wrap:pretty}
 .lk>.head{grid-area:head;margin-bottom:0}
 .lk-fig{grid-area:fig}
 .lk-body{grid-area:body}
-@media (min-width:900px){.lk{grid-template-columns:minmax(0,5fr) minmax(0,6fr);grid-template-areas:"head fig" "body fig";grid-template-rows:auto 1fr;column-gap:64px;row-gap:24px}}
+@media (min-width:1180px){.lk{grid-template-columns:minmax(0,10fr) minmax(0,21fr);grid-template-areas:"head fig" "body fig";grid-template-rows:auto 1fr;column-gap:32px;row-gap:24px}}
 .lk-frame{position:relative;background:var(--paper);padding:10px 10px 16px;border-radius:3px;box-shadow:var(--shadow);max-width:520px;margin-inline:auto;transform:rotate(-.6deg)}
 .lk-frame::before{content:"";position:absolute;top:-9px;left:50%;width:84px;height:20px;margin-left:-42px;background:var(--tape);transform:rotate(-3deg);z-index:4}
 .lk-hint{display:flex;align-items:center;gap:8px;font-size:13.5px;font-weight:600;color:var(--ink-2);margin:2px 2px 10px}
 .lk-hint i{display:grid;place-items:center;width:20px;height:20px;border-radius:50%;background:#fff;box-shadow:0 1px 4px rgba(0,0,0,.3);font:600 11px/1 system-ui,-apple-system,sans-serif;font-style:normal;color:#111}
 .lk-fig figcaption{margin-top:14px;font-size:13px;color:var(--ink-3);max-width:520px;margin-inline:auto}
+/* From 760 px the list sits beside the photo instead of under it, so the
+   example is about as tall as the text next to it. The photo keeps its
+   width (up to 480 px, about what it had above the list) so an open card
+   never covers another dot; the list takes the rest and, narrower than
+   480 px, stacks its rows the way the plugin does in a narrow column. */
+@media (min-width:760px){
+  .lk-frame{max-width:780px;padding:12px 12px 16px}
+  .lk-fig figcaption{max-width:780px}
+  .lk-frame .myfeeds-look{display:grid;grid-template-columns:minmax(0,480px) minmax(190px,1fr);column-gap:24px;align-items:center}
+  .lk-frame .myfeeds-look__list{margin-top:0}
+}
+@media (min-width:1180px){
+  .lk-frame{max-width:none}
+  .lk-fig figcaption{max-width:none;margin-inline:4px}
+}
 .myfeeds-look{margin:0;font-family:system-ui,-apple-system,"Segoe UI",Roboto,sans-serif;color:#111}
 .myfeeds-look__stage{position:relative;line-height:0}
 .myfeeds-look__img{display:block;width:100%;height:auto;border-radius:2px;aspect-ratio:4/5;background:#B0B8AA}
@@ -258,18 +273,32 @@ p{text-wrap:pretty}
 .myfeeds-look__pt.is-left .myfeeds-look__card{left:auto;right:-6px;transform:none}
 .myfeeds-look__pt.is-right .myfeeds-look__card{left:-6px;transform:none}
 .myfeeds-look__pt.is-up .myfeeds-look__card{top:auto;bottom:calc(100% + 8px)}
-.myfeeds-look__brand{font-size:11px;letter-spacing:.08em;text-transform:uppercase;opacity:.65}
-.myfeeds-look__name{font-weight:600}
 .myfeeds-look__note{font-size:13px;opacity:.8}
+/* the list under the photo: the plugin's CSS as it ships (css_once()),
+   one grid per row whatever the text, the shop link always in one place */
+.myfeeds-look__brand{font-size:11px;letter-spacing:.08em;text-transform:uppercase;opacity:.65}
+.myfeeds-look__name{font-weight:600;overflow-wrap:break-word;hyphens:auto}
+.myfeeds-look__price{font-variant-numeric:tabular-nums}
+.myfeeds-look__was{opacity:.6}
 .myfeeds-look__go{font-size:13px;font-weight:600;text-decoration:underline;text-underline-offset:3px}
-.myfeeds-look__list{list-style:none;margin:14px 2px 0;padding:0;display:grid;gap:8px;line-height:1.35;font-size:14.5px}
-.myfeeds-look__row{display:flex;align-items:baseline;gap:10px;color:inherit;text-decoration:none}
-.myfeeds-look__row .myfeeds-look__what{flex:1;display:flex;flex-wrap:wrap;gap:0 8px;align-items:baseline;min-width:0}
-.myfeeds-look__row .myfeeds-look__brand{font-size:12px}
-.myfeeds-look__row .myfeeds-look__price{opacity:.75}
-.myfeeds-look__row .myfeeds-look__go{flex:none;font-size:13px}
-.myfeeds-look__num{flex:none;display:inline-block;width:22px;height:22px;border-radius:50%;background:#111;color:#fff;font:600 12px/22px system-ui,-apple-system,sans-serif;text-align:center}
-@media (max-width:520px){.myfeeds-look__row{flex-wrap:wrap;row-gap:2px}.myfeeds-look__row .myfeeds-look__what{flex-basis:calc(100% - 32px)}.myfeeds-look__row .myfeeds-look__go{margin-left:32px}}
+.myfeeds-look.is-left,.myfeeds-look.is-right{min-width:min(200px,100%)}
+.myfeeds-look__list{list-style:none;margin:14px 0 0;padding:0;container-type:inline-size}
+.myfeeds-look.is-broken .myfeeds-look__list{container-type:normal}
+.myfeeds-look__list>li{margin:0;padding:0}
+.myfeeds-look__list>li+li{border-top:1px solid rgba(127,127,127,.25);border-top-color:color-mix(in srgb,currentColor 14%,transparent)}
+.myfeeds-look__row{display:grid;grid-template-columns:24px minmax(0,1fr) auto;align-items:center;column-gap:14px;padding:10px 0;color:inherit;text-decoration:none;line-height:1.35}
+.myfeeds-look__row:focus-visible{outline:2px solid currentColor;outline-offset:2px}
+.myfeeds-look__num{display:block;box-sizing:border-box;width:24px;height:24px;border:1.5px solid currentColor;border-radius:50%;font:600 12px/21px system-ui,-apple-system,sans-serif;text-align:center;font-variant-numeric:tabular-nums}
+.myfeeds-look__row .myfeeds-look__what{display:flex;flex-direction:column;gap:2px;min-width:0}
+.myfeeds-look__row .myfeeds-look__brand{white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.myfeeds-look__row .myfeeds-look__name{display:-webkit-box;-webkit-box-orient:vertical;-webkit-line-clamp:2;overflow:hidden}
+.myfeeds-look__row .myfeeds-look__price{font-size:14px}
+.myfeeds-look__row .myfeeds-look__go{justify-self:end;max-width:16em;text-align:end}
+.myfeeds-look__row:hover .myfeeds-look__go{text-decoration-thickness:2px}
+@container (max-width:479px){.myfeeds-look__row{grid-template-columns:24px minmax(0,1fr);align-items:start;row-gap:6px}.myfeeds-look__row .myfeeds-look__go{grid-column:2;justify-self:start;max-width:none;text-align:start}}
+@media (max-width:479px){.myfeeds-look__row{grid-template-columns:24px minmax(0,1fr);align-items:start;row-gap:6px}.myfeeds-look__row .myfeeds-look__go{grid-column:2;justify-self:start;max-width:none;text-align:start}}
+/* what a theme would set: the text size around the block */
+.lk-frame .myfeeds-look__list{font-size:15px}
 /* invitation and opening: only with motion allowed */
 .mo .myfeeds-look__pt:not([open]) .myfeeds-look__dot::after{content:"";position:absolute;inset:0;border-radius:50%;border:2px solid #fff;animation:lk-ring 2.4s cubic-bezier(.2,.6,.3,1) infinite;pointer-events:none}
 .mo .myfeeds-look__pt:nth-of-type(2) .myfeeds-look__dot::after{animation-delay:.5s}
@@ -462,18 +491,18 @@ footer a{color:#fff;text-underline-offset:3px}
         <p class="lk-hint" aria-hidden="true"><i>1</i>Tap or click a dot</p>
         <div class="myfeeds-look" id="lk">
           <div class="myfeeds-look__stage">
-            <img class="myfeeds-look__img" src="/assets/pin/lab/mix/look-flatlay-600.webp" srcset="/assets/pin/lab/mix/look-flatlay-600.webp 600w, /assets/pin/lab/mix/look-flatlay-1000.webp 1000w" sizes="(min-width:900px) 500px, calc(100vw - 52px)" width="1000" height="1250" loading="lazy" alt="A flat-lay of an outfit: grey hoodie, off-white tee, navy beanie, white sneakers and a canvas tote bag.">
-            <details class="myfeeds-look__pt is-right" name="lk" data-lk="hoodie" style="left:30%;top:31%"><summary class="myfeeds-look__dot" aria-label="1. Halden Heavyweight Hoodie Heather Grey"><span aria-hidden="true">1</span></summary><span class="myfeeds-look__card"><span class="myfeeds-look__brand">Halden</span><span class="myfeeds-look__name">Heavyweight Hoodie Heather Grey</span><span class="myfeeds-look__price">$58.00</span><span class="myfeeds-look__go">View at Northside Supply</span></span></details>
-            <details class="myfeeds-look__pt is-left" name="lk" data-lk="tee" style="left:72%;top:24%"><summary class="myfeeds-look__dot" aria-label="2. Common Thread Boxy Heavy Tee Off-White"><span aria-hidden="true">2</span></summary><span class="myfeeds-look__card"><span class="myfeeds-look__brand">Common Thread</span><span class="myfeeds-look__name">Boxy Heavy Tee Off-White</span><span class="myfeeds-look__price">$32.00</span><span class="myfeeds-look__go">View at Northside Supply</span></span></details>
-            <details class="myfeeds-look__pt is-left" name="lk" data-lk="beanie" style="left:77%;top:54%"><summary class="myfeeds-look__dot" aria-label="3. Fieldmade Ribbed Merino Beanie Navy"><span aria-hidden="true">3</span></summary><span class="myfeeds-look__card"><span class="myfeeds-look__brand">Fieldmade</span><span class="myfeeds-look__name">Ribbed Merino Beanie Navy</span><span class="myfeeds-look__price">$28.00</span><span class="myfeeds-look__go">View at Basecamp Outfitters</span></span></details>
-            <details class="myfeeds-look__pt is-left is-up" name="lk" data-lk="sneakers" style="left:76%;top:86%"><summary class="myfeeds-look__dot" aria-label="4. Arlo &amp; Finch Court Low-Top Leather White"><span aria-hidden="true">4</span></summary><span class="myfeeds-look__card"><span class="myfeeds-look__brand">Arlo &amp; Finch</span><span class="myfeeds-look__name">Court Low-Top Leather White</span><span class="myfeeds-look__price">$88.00</span><span class="myfeeds-look__note">Runs half a size small.</span><span class="myfeeds-look__go">View at Kicks Corner</span></span></details>
+            <img class="myfeeds-look__img" src="/assets/pin/lab/mix/look-flatlay-600.webp" srcset="/assets/pin/lab/mix/look-flatlay-600.webp 600w, /assets/pin/lab/mix/look-flatlay-1000.webp 1000w" sizes="(min-width:760px) 480px, (min-width:560px) 500px, calc(100vw - 52px)" width="1000" height="1250" loading="lazy" alt="A flat-lay of an outfit: grey hoodie, off-white tee, navy beanie, white sneakers and a canvas tote bag.">
+            <details class="myfeeds-look__pt is-right" name="lk" data-lk="hoodie" style="left:30%;top:31%"><summary class="myfeeds-look__dot" aria-label="1. Halden Heavyweight Hoodie Heather Grey"><span aria-hidden="true">1</span></summary><span class="myfeeds-look__card"><span class="myfeeds-look__brand">Halden</span><span class="myfeeds-look__name">Heavyweight Hoodie Heather Grey</span><span class="myfeeds-look__price"><span class="myfeeds-look__now">$58.00</span></span><span class="myfeeds-look__go">View at Northside Supply</span></span></details>
+            <details class="myfeeds-look__pt is-left" name="lk" data-lk="tee" style="left:72%;top:24%"><summary class="myfeeds-look__dot" aria-label="2. Common Thread Boxy Heavy Tee Off-White"><span aria-hidden="true">2</span></summary><span class="myfeeds-look__card"><span class="myfeeds-look__brand">Common Thread</span><span class="myfeeds-look__name">Boxy Heavy Tee Off-White</span><span class="myfeeds-look__price"><span class="myfeeds-look__now">$32.00</span></span><span class="myfeeds-look__go">View at Northside Supply</span></span></details>
+            <details class="myfeeds-look__pt is-left" name="lk" data-lk="beanie" style="left:77%;top:54%"><summary class="myfeeds-look__dot" aria-label="3. Fieldmade Ribbed Merino Beanie Navy"><span aria-hidden="true">3</span></summary><span class="myfeeds-look__card"><span class="myfeeds-look__brand">Fieldmade</span><span class="myfeeds-look__name">Ribbed Merino Beanie Navy</span><span class="myfeeds-look__price"><span class="myfeeds-look__now">$22.40</span> <s class="myfeeds-look__was">$28.00</s></span><span class="myfeeds-look__go">View at Basecamp Outfitters</span></span></details>
+            <details class="myfeeds-look__pt is-left is-up" name="lk" data-lk="sneakers" style="left:76%;top:86%"><summary class="myfeeds-look__dot" aria-label="4. Arlo &amp; Finch Court Low-Top Leather White"><span aria-hidden="true">4</span></summary><span class="myfeeds-look__card"><span class="myfeeds-look__brand">Arlo &amp; Finch</span><span class="myfeeds-look__name">Court Low-Top Leather White</span><span class="myfeeds-look__price"><span class="myfeeds-look__now">$88.00</span></span><span class="myfeeds-look__note">Runs half a size small.</span><span class="myfeeds-look__go">View at Kicks Corner</span></span></details>
             <details class="myfeeds-look__pt is-right is-up" name="lk" data-lk="amazon" style="left:25%;top:78%"><summary class="myfeeds-look__dot" aria-label="5. Everyday Canvas Tote Natural, on Amazon"><span aria-hidden="true">5</span></summary><span class="myfeeds-look__card"><span class="myfeeds-look__name">Everyday Canvas Tote Natural</span><span class="myfeeds-look__note">My daily bag, fits a 13-inch laptop.</span><span class="myfeeds-look__go">View on Amazon.com</span></span></details>
           </div>
           <ol class="myfeeds-look__list" aria-label="Products in this photo">
-            <li><span class="myfeeds-look__row"><span class="myfeeds-look__num" aria-hidden="true">1</span><span class="myfeeds-look__what"><span class="myfeeds-look__brand">Halden</span><span class="myfeeds-look__name">Heavyweight Hoodie Heather Grey</span><span class="myfeeds-look__price">$58.00</span></span><span class="myfeeds-look__go">View at Northside Supply</span></span></li>
-            <li><span class="myfeeds-look__row"><span class="myfeeds-look__num" aria-hidden="true">2</span><span class="myfeeds-look__what"><span class="myfeeds-look__brand">Common Thread</span><span class="myfeeds-look__name">Boxy Heavy Tee Off-White</span><span class="myfeeds-look__price">$32.00</span></span><span class="myfeeds-look__go">View at Northside Supply</span></span></li>
-            <li><span class="myfeeds-look__row"><span class="myfeeds-look__num" aria-hidden="true">3</span><span class="myfeeds-look__what"><span class="myfeeds-look__brand">Fieldmade</span><span class="myfeeds-look__name">Ribbed Merino Beanie Navy</span><span class="myfeeds-look__price">$28.00</span></span><span class="myfeeds-look__go">View at Basecamp Outfitters</span></span></li>
-            <li><span class="myfeeds-look__row"><span class="myfeeds-look__num" aria-hidden="true">4</span><span class="myfeeds-look__what"><span class="myfeeds-look__brand">Arlo &amp; Finch</span><span class="myfeeds-look__name">Court Low-Top Leather White</span><span class="myfeeds-look__price">$88.00</span></span><span class="myfeeds-look__go">View at Kicks Corner</span></span></li>
+            <li><span class="myfeeds-look__row"><span class="myfeeds-look__num" aria-hidden="true">1</span><span class="myfeeds-look__what"><span class="myfeeds-look__brand">Halden</span><span class="myfeeds-look__name">Heavyweight Hoodie Heather Grey</span><span class="myfeeds-look__price"><span class="myfeeds-look__now">$58.00</span></span></span><span class="myfeeds-look__go">View at Northside Supply</span></span></li>
+            <li><span class="myfeeds-look__row"><span class="myfeeds-look__num" aria-hidden="true">2</span><span class="myfeeds-look__what"><span class="myfeeds-look__brand">Common Thread</span><span class="myfeeds-look__name">Boxy Heavy Tee Off-White</span><span class="myfeeds-look__price"><span class="myfeeds-look__now">$32.00</span></span></span><span class="myfeeds-look__go">View at Northside Supply</span></span></li>
+            <li><span class="myfeeds-look__row"><span class="myfeeds-look__num" aria-hidden="true">3</span><span class="myfeeds-look__what"><span class="myfeeds-look__brand">Fieldmade</span><span class="myfeeds-look__name">Ribbed Merino Beanie Navy</span><span class="myfeeds-look__price"><span class="myfeeds-look__now">$22.40</span> <s class="myfeeds-look__was">$28.00</s></span></span><span class="myfeeds-look__go">View at Basecamp Outfitters</span></span></li>
+            <li><span class="myfeeds-look__row"><span class="myfeeds-look__num" aria-hidden="true">4</span><span class="myfeeds-look__what"><span class="myfeeds-look__brand">Arlo &amp; Finch</span><span class="myfeeds-look__name">Court Low-Top Leather White</span><span class="myfeeds-look__price"><span class="myfeeds-look__now">$88.00</span></span></span><span class="myfeeds-look__go">View at Kicks Corner</span></span></li>
             <li><span class="myfeeds-look__row"><span class="myfeeds-look__num" aria-hidden="true">5</span><span class="myfeeds-look__what"><span class="myfeeds-look__name">Everyday Canvas Tote Natural</span></span><span class="myfeeds-look__go">View on Amazon.com</span></span></li>
           </ol>
         </div>
@@ -482,9 +511,9 @@ footer a{color:#fff;text-underline-offset:3px}
     </figure>
     <div class="lk-body">
       <ul class="ticks">
+        <li>Pick a photo from your WordPress media library or paste an image link. Use your own photos or ones you have the right to use.</li>
         <li>Each dot is a product from a shop you're an affiliate for.</li>
         <li>Amazon works too: paste a product link and the dot leads there.</li>
-        <li>The same products follow as a numbered list under the photo.</li>
         <li>When a shop's product sells out or is gone, its dot leaves the photo on its own.</li>
       </ul>
       <div class="go">
