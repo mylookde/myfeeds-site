@@ -139,7 +139,7 @@ p{text-wrap:pretty}
 
 /* ===== the real MyFeeds card =====
    Markup and CSS copied from the Free plugin's frontend (the same block as
-   /pin/lab/mix/). Every variable is one the card design editor writes. */
+   /pin/look-like-a-shop/). Every variable is one the card design editor writes. */
 .myfeeds-product-grid{display:flex;flex-wrap:wrap;justify-content:center;gap:var(--myfeeds-grid-gap,16px);padding:var(--myfeeds-grid-padding-y,24px) 0}
 .myfeeds-product-card{position:relative;display:flex;flex-direction:column;text-decoration:none;color:inherit;font-family:var(--myfeeds-card-font,system-ui,-apple-system,"Segoe UI",Roboto,Helvetica,Arial,sans-serif);line-height:1.3;background:var(--myfeeds-card-bg,#fff);border-radius:var(--myfeeds-card-radius,0);overflow:hidden;transition:transform .25s ease,box-shadow .25s ease,border-radius .25s ease;box-shadow:var(--myfeeds-card-shadow,0 1px 3px rgba(0,0,0,.06));border:var(--myfeeds-card-border-width,0) solid var(--myfeeds-card-border-color,transparent);min-width:0}
 .myfeeds-product-image{position:relative;width:100%;padding-bottom:var(--myfeeds-img-ratio,125%);overflow:hidden;background:var(--myfeeds-img-bg,#f8f8f8)}
@@ -311,7 +311,7 @@ figure figcaption{margin-top:14px;font-size:13px;color:var(--ink-3)}
 
 /* ===== Pro: shop the look + what it earns =====
    The Look block's own markup and CSS (Pro includes/class-look-block.php,
-   render_point() and css_once()), as on /pin/lab/mix/: <details name>
+   render_point() and css_once()), as on /pin/look-like-a-shop/: <details name>
    points that open one card at a time, a numbered list underneath. Only
    the links are left out (example products); hit area, focus ring and
    pulse added. The dashboard is a real screenshot with example data. */
@@ -340,7 +340,7 @@ figure figcaption{margin-top:14px;font-size:13px;color:var(--ink-3)}
 .myfeeds-look__pt.is-up .myfeeds-look__card{top:auto;bottom:calc(100% + 8px)}
 .myfeeds-look__note{font-size:13px;opacity:.8}
 /* the list under the photo: the plugin's CSS as it ships (css_once()),
-   same as /pin/lab/mix/: one grid per row whatever the text, the shop
+   same as /pin/look-like-a-shop/: one grid per row whatever the text, the shop
    link always in one place */
 .myfeeds-look__brand{font-size:11px;letter-spacing:.08em;text-transform:uppercase;opacity:.65}
 .myfeeds-look__name{font-weight:600;overflow-wrap:break-word;hyphens:auto}
@@ -1012,7 +1012,7 @@ footer a{color:#fff;text-underline-offset:3px}
       </details>
       <details name="faq">
         <summary>Do I need technical skills?</summary>
-        <p>No code, no command line. If you can install a WordPress plugin and paste a link, you're set.</p>
+        <p>No code, no command line. If you can install a WordPress plugin and paste a link, you're set. On the paid plans, a short guided demo walks you through each main MyFeeds screen the first time you open it, and you can replay it any time.</p>
       </details>
       <details name="faq">
         <summary>Can I upgrade or downgrade later?</summary>
@@ -1281,7 +1281,7 @@ footer a{color:#fff;text-underline-offset:3px}
 })();
 
 (function () {
-  // The one opening moment, from /pin/lab/mix/. The cards are on screen
+  // The one opening moment, from /pin/look-like-a-shop/. The cards are on screen
   // from the first frame, in their "before" state (one price, no badge).
   // A line goes through "link list" and runs on into the top edge of each
   // card; then the nightly sync runs on the sneaker. Transform and opacity
