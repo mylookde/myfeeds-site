@@ -173,7 +173,7 @@ h1,h2{font-family:var(--serif);font-weight:500;letter-spacing:-.012em}
 <h3>4.5 Optional Google Analytics 4 Bridge (Pro &amp; E-commerce)</h3>
 <p>Paid customers can optionally route the same click events to <strong>Google Analytics 4</strong> by entering their own GA4 Measurement ID in the plugin settings. This feature is OFF by default and is only activated by the site owner pasting an ID. When activated, the plugin:</p>
 <ul>
-  <li>Loads Google's <code>gtag.js</code> tracking library from <code>https://www.googletagmanager.com/gtag/js</code> on the front-end of the site</li>
+  <li>Loads Google's <code>gtag.js</code> tracking library from <code style="overflow-wrap:anywhere">https://www.googletagmanager.com/gtag/js</code> on the front-end of the site</li>
   <li>Sends a "select_item" e-commerce event to the GA4 property each time a visitor clicks an affiliate card</li>
   <li>Includes the post title, product title, brand, and affiliate network slug in the event payload (no IP, no User-Agent, no email, no name)</li>
   <li>Skips the event entirely for logged-in editors and devices marked as internal</li>
