@@ -1937,6 +1937,25 @@ if (hamburger) {
   }
 })();
 
+// Arriving from another page with any other #anchor (/#pricing from the
+// affiliate page, the guides, the structured data). The browser jumps
+// while the pinned film section is still short; once ScrollTrigger adds
+// its scroll length the target sits thousands of pixels further down.
+// So jump again once the page has its final height. #plan-... has its
+// own handling above.
+;(function () {
+  var id = decodeURIComponent(location.hash.slice(1));
+  if (!id || /^plan-/.test(id)) return;
+  var el = document.getElementById(id);
+  if (!el) return;
+  var jump = function () {
+    if (window.ScrollTrigger) window.ScrollTrigger.refresh();
+    el.scrollIntoView({ behavior: 'instant', block: 'start' });
+  };
+  if (document.readyState === 'complete') { setTimeout(jump, 0); }
+  else { window.addEventListener('load', function () { setTimeout(jump, 0); }); }
+})();
+
 // FAQ accordion — single-open behaviour
 ;(function () {
   var faqItems = document.querySelectorAll('.faq details');
