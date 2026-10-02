@@ -1,0 +1,780 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="p:domain_verify" content="0f13dbb87c7b78ab08817667740c2df2"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+<title>MyFeeds Affiliate Program - 30% of every renewal</title>
+<meta name="description" content="Recommend MyFeeds to the bloggers you teach. Earn 30% of every payment they make, monthly or yearly, for as long as they stay. Your own coupon code and a free Pro license for your site.">
+<!-- Test version of /affiliates/ (lab "affiliates", house style of /pin/lab/mix/): reachable for review, kept out of search. Not in the sitemap, not blocked in robots.txt (a blocked page cannot show its noindex). -->
+<meta name="robots" content="noindex, follow">
+<meta name="theme-color" content="#FC9000">
+<meta property="og:type" content="website">
+<meta property="og:title" content="Recommend MyFeeds once. Get paid every renewal.">
+<meta property="og:description" content="The MyFeeds affiliate program: 30% of every payment, a 60-day cookie, your own coupon code and a free Pro license for your own site.">
+<meta property="og:image" content="https://myfeeds.site/assets/pin/post-with-cards.webp">
+<meta property="og:url" content="https://myfeeds.site/pin/lab/affiliates/">
+<link rel="icon" type="image/png" href="/favicon.png">
+<link rel="icon" type="image/x-icon" href="/favicon.ico">
+<link rel="apple-touch-icon" href="/apple-touch-icon.png">
+<link rel="preload" href="/assets/pin/lab/affiliates/fonts/bricolage-latin.woff2" as="font" type="font/woff2" crossorigin>
+<script>
+/* Motion gate, before first paint. Everything is visible from the first
+   frame; "mx" only holds back what the opening sequence changes (the sale
+   price, the badge, the months of the example). Without it (no JS, reduced
+   motion, old browser) the page shows its end state. */
+!function(d){d.classList.add('js');try{if(matchMedia('(prefers-reduced-motion: no-preference)').matches&&d.animate&&window.Promise){d.classList.add('mo','mx')}}catch(e){}}(document.documentElement);
+</script>
+<style>
+@font-face{font-family:'Bricolage';font-style:normal;font-weight:800;font-display:swap;src:url(/assets/pin/lab/affiliates/fonts/bricolage-latin.woff2) format('woff2');unicode-range:U+0000-00FF,U+0131,U+0152-0153,U+02BB-02BC,U+02C6,U+02DA,U+02DC,U+0304,U+0308,U+0329,U+2000-206F,U+20AC,U+2122,U+2191,U+2193,U+2212,U+2215,U+FEFF,U+FFFD}
+@font-face{font-family:'Instrument Sans';font-style:normal;font-weight:400 600;font-display:swap;src:url(/assets/pin/lab/affiliates/fonts/instrument-sans-latin.woff2) format('woff2');unicode-range:U+0000-00FF,U+0131,U+0152-0153,U+02BB-02BC,U+02C6,U+02DA,U+02DC,U+0304,U+0308,U+0329,U+2000-206F,U+20AC,U+2122,U+2191,U+2193,U+2212,U+2215,U+FEFF,U+FFFD}
+/* Tones in a fixed order: orange (open and close), board (light, with
+   grain), ink (what the audience gets), violet (the example math), paper
+   (the steps). One button colour: ink, turned white on dark bands. */
+:root{
+  --orange:#FC9000;
+  --board:#E8E7EC;
+  --grain:rgba(23,21,28,.075);
+  --paper:#FFFFFF;
+  --paper-2:#F4F3F7;
+  --ink:#17151C;
+  --ink-2:#4A4653;
+  --ink-3:#5F5A69;
+  --on-ink:#C9C5D3;
+  --violet:#5B45A8;
+  --on-violet:#E4DEF7;
+  --line:rgba(23,21,28,.14);
+  --tape:rgba(252,144,0,.34);
+  --shadow:0 1px 1px rgba(40,30,70,.08),0 10px 24px -14px rgba(40,30,70,.38);
+  --display:'Bricolage','Arial Narrow',Arial,sans-serif;
+  --sans:'Instrument Sans',-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,sans-serif;
+  --gut:16px;
+  --spring:cubic-bezier(.3,1.45,.5,1);
+  color-scheme:light;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html{-webkit-text-size-adjust:100%;scroll-padding-bottom:96px;background:var(--ink)}
+body{background:var(--board);background-image:radial-gradient(var(--grain) 1px,transparent 1.2px);background-size:22px 22px;color:var(--ink);font:400 17px/1.55 var(--sans);-webkit-font-smoothing:antialiased;overflow-x:hidden;-webkit-tap-highlight-color:rgba(23,21,28,.12)}
+img{display:block;max-width:100%;height:auto}
+a{color:inherit}
+a,button,summary,label{touch-action:manipulation}
+:focus-visible{outline:3px solid var(--ink);outline-offset:3px;border-radius:4px}
+.ink :focus-visible,.vio :focus-visible{outline-color:#fff}
+.pinned :focus-visible,.calc :focus-visible{outline-color:var(--ink)}
+.wrap{max-width:1240px;margin:0 auto;padding-inline:var(--gut)}
+h1,h2{font-family:var(--display);font-weight:800;letter-spacing:-.025em;text-wrap:balance}
+h2{font-size:clamp(1.95rem,7vw,3.2rem);line-height:1}
+p{text-wrap:pretty}
+[id]{scroll-margin-top:24px}
+.vh{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap}
+.skip{position:absolute;left:8px;top:-80px;z-index:30;background:var(--ink);color:#fff;padding:10px 14px;font-weight:600;text-decoration:none}
+.skip:focus{top:8px}
+@media (min-width:900px){:root{--gut:40px}}
+
+/* buttons */
+.cta{display:inline-flex;align-items:center;justify-content:center;background:var(--ink);color:#fff;text-decoration:none;font:600 17px/1.2 var(--sans);padding:17px 28px;border-radius:999px;white-space:nowrap;box-shadow:0 12px 24px -14px rgba(23,21,28,.8);transition:transform .18s cubic-bezier(.2,.8,.2,1),background-color .18s}
+.cta:hover{background:#2C2836;transform:translateY(-2px)}
+.cta:active{transform:translateY(1px) scale(.98)}
+.cta-sm{font-size:14px;padding:10px 16px}
+.inv .cta{background:#fff;color:var(--ink);box-shadow:none}
+.inv .cta:hover{background:#F1EFF5}
+.calm{font-size:14.5px;line-height:1.45;color:var(--ink-2);max-width:40ch}
+.go{display:grid;gap:10px;justify-items:start;margin-top:30px}
+.more{font-weight:600;text-underline-offset:4px;text-decoration-thickness:1.5px}
+
+/* ===== opener: orange ===== */
+.open{background:var(--orange)}
+.top{display:flex;align-items:center;justify-content:space-between;gap:12px;padding-block:12px}
+.mark{display:flex;align-items:center;gap:8px;font:800 20px/1 var(--display);letter-spacing:-.02em;text-decoration:none}
+.mark span{display:grid;place-items:center;width:34px;height:34px;border-radius:50%;background:#fff}
+.mark img{width:22px;height:22px}
+.hero{display:grid;gap:30px;padding-block:10px 48px}
+.eyebrow{font-size:14px;font-weight:600}
+.hero h1{font-size:clamp(2.45rem,10.4vw,5rem);line-height:.98;margin-block:8px 16px}
+.hl{position:relative;display:inline-block;white-space:nowrap}
+.under{position:absolute;left:-.02em;right:-.02em;bottom:-.02em;height:.1em;background:var(--ink);border-radius:2px;pointer-events:none;transform-origin:left center}
+.lede{font-size:clamp(1.06rem,2.6vw,1.22rem);max-width:36ch}
+.hero .calm{color:var(--ink)}
+.hero .go{margin-top:20px}
+
+/* the stage: what the audience gets (real cards) + what you get (example) */
+.stage{position:relative;z-index:2}
+.stage figcaption{display:flex;justify-content:space-between;align-items:baseline;gap:12px;margin-top:12px;font-size:13px;color:var(--ink)}
+.replay{font:500 13px/1.3 var(--sans);color:var(--ink);background:none;border:0;padding:4px 0;text-decoration:underline;text-underline-offset:3px;cursor:pointer;white-space:nowrap}
+.replay.off{visibility:hidden}
+.stage-k{font-size:13px;font-weight:600;margin-bottom:10px}
+
+/* the example cut: a taped note with six months */
+.cut{position:relative;background:var(--paper);border-radius:3px;box-shadow:var(--shadow);padding:20px 16px 14px;margin:22px 4px 0;transform:rotate(-1.2deg)}
+.cut::before{content:"";position:absolute;top:-9px;left:28px;width:76px;height:20px;background:var(--tape);transform:rotate(-4deg)}
+.cut-k{font-size:12px;font-weight:600;letter-spacing:.08em;text-transform:uppercase;color:var(--ink-3)}
+.cut-h{font:800 clamp(1.15rem,4.6vw,1.35rem)/1.15 var(--display);letter-spacing:-.015em;margin:4px 0 12px}
+.cut-m{list-style:none;display:grid;grid-template-columns:repeat(6,minmax(0,1fr));gap:5px}
+.cut-m li{display:grid;gap:3px;text-align:center;font-size:11px;color:var(--ink-3)}
+.cut-m b{display:block;background:var(--ink);color:#fff;border-radius:6px;padding:7px 0;font:600 12.5px/1 var(--sans);white-space:nowrap}
+.cut-f{margin-top:10px;font-size:13.5px;color:var(--ink-2)}
+@media (min-width:900px){
+  .hero{grid-template-columns:minmax(0,1fr) minmax(0,1.15fr);column-gap:56px;align-items:center;padding-block:36px 72px}
+  .hero h1{font-size:clamp(3.4rem,4.8vw,4.3rem)}
+  .stage{display:flex;flex-direction:column}
+  .stage figcaption{order:2;max-width:calc(100% - 360px)}
+  .cut{order:3;align-self:flex-end;width:340px;margin:-30px -8px 0 0;transform:rotate(-2deg)}
+}
+
+/* ===== the real MyFeeds card =====
+   Markup and CSS copied from the Free plugin's frontend (the same block as
+   /pin/lab/mix/). Every variable is one the card design editor writes. */
+.myfeeds-product-grid{display:flex;flex-wrap:wrap;justify-content:center;gap:var(--myfeeds-grid-gap,16px);padding:var(--myfeeds-grid-padding-y,24px) 0}
+.myfeeds-product-card{position:relative;display:flex;flex-direction:column;text-decoration:none;color:inherit;font-family:var(--myfeeds-card-font,system-ui,-apple-system,"Segoe UI",Roboto,Helvetica,Arial,sans-serif);line-height:1.3;background:var(--myfeeds-card-bg,#fff);border-radius:var(--myfeeds-card-radius,0);overflow:hidden;transition:transform .25s ease,box-shadow .25s ease,border-radius .25s ease;box-shadow:var(--myfeeds-card-shadow,0 1px 3px rgba(0,0,0,.06));border:var(--myfeeds-card-border-width,0) solid var(--myfeeds-card-border-color,transparent);min-width:0}
+.myfeeds-product-image{position:relative;width:100%;padding-bottom:var(--myfeeds-img-ratio,125%);overflow:hidden;background:var(--myfeeds-img-bg,#f8f8f8)}
+.myfeeds-product-image img{position:absolute;top:0;left:0;width:100%;height:100%;object-fit:var(--myfeeds-img-fit,contain);object-position:center}
+.myfeeds-discount-badge{position:absolute;top:var(--myfeeds-badge-top,3%);left:var(--myfeeds-badge-left,3%);background:var(--myfeeds-badge-bg,#fff);color:var(--myfeeds-badge-color,#e74c3c);padding:6px 16px;border-radius:var(--myfeeds-badge-radius,20px);font-size:var(--myfeeds-badge-size,13px);font-weight:var(--myfeeds-badge-weight,700);z-index:2;letter-spacing:-.3px;box-shadow:0 3px 10px rgba(0,0,0,.2);display:var(--myfeeds-badge-display,block);line-height:1;font-family:var(--myfeeds-badge-font,inherit);text-transform:var(--myfeeds-badge-transform,none)}
+.myfeeds-product-details{padding:var(--myfeeds-details-py,12px) var(--myfeeds-details-px,10px);display:flex;flex-direction:column;flex:1;min-width:0;overflow:hidden}
+.myfeeds-product-brand{display:var(--myfeeds-brand-display,block);font-weight:var(--myfeeds-brand-weight,600);font-size:var(--myfeeds-brand-size,11px);line-height:1.3;margin-bottom:4px;color:var(--myfeeds-brand-color,#222);text-transform:var(--myfeeds-brand-transform,none);letter-spacing:var(--myfeeds-brand-tracking,0);white-space:nowrap;overflow:hidden;text-overflow:ellipsis;font-family:var(--myfeeds-brand-font,inherit)}
+.myfeeds-product-title{display:var(--myfeeds-title-display,block);font-size:var(--myfeeds-title-size,12px);font-weight:var(--myfeeds-title-weight,400);color:var(--myfeeds-title-color,#666);line-height:1.3;margin-bottom:8px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;font-family:var(--myfeeds-title-font,inherit);text-transform:var(--myfeeds-title-transform,none)}
+.myfeeds-product-price{display:var(--myfeeds-price-display,flex);align-items:baseline;gap:8px;margin-bottom:6px;line-height:1.3;flex-wrap:nowrap;overflow:hidden;min-width:0}
+.myfeeds-old-price{text-decoration:line-through;color:var(--myfeeds-old-price-color,#222);font-size:var(--myfeeds-old-price-size,15px);margin-right:4px;font-weight:var(--myfeeds-old-price-weight,700);white-space:nowrap;flex-shrink:0;font-family:var(--myfeeds-old-price-font,inherit)}
+.myfeeds-current-price{font-weight:var(--myfeeds-price-weight,600);color:var(--myfeeds-price-color,#333);font-size:var(--myfeeds-price-size,15px);white-space:nowrap;overflow:hidden;text-overflow:ellipsis;font-family:var(--myfeeds-price-font,inherit)}
+.myfeeds-current-price.has-discount{color:var(--myfeeds-price-discount-color,#e74c3c)}
+.myfeeds-shipping-info{display:var(--myfeeds-shipping-display,block);font-size:var(--myfeeds-shipping-size,10px);line-height:1.3;color:var(--myfeeds-shipping-color,#999);margin-bottom:6px;text-transform:var(--myfeeds-shipping-transform,uppercase);letter-spacing:.3px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;font-family:var(--myfeeds-shipping-font,inherit)}
+.myfeeds-merchant{display:var(--myfeeds-merchant-display,block);font-size:var(--myfeeds-merchant-size,10px);line-height:1.3;color:var(--myfeeds-merchant-color,#666);text-align:right;margin-top:auto;padding-top:4px;text-transform:var(--myfeeds-merchant-transform,uppercase);letter-spacing:.3px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;font-family:var(--myfeeds-merchant-font,inherit)}
+@media (hover:hover){.myfeeds-product-card:hover{transform:scale(var(--myfeeds-card-hover-scale,1.02));box-shadow:var(--myfeeds-card-hover-shadow,0 4px 16px rgba(0,0,0,.12));border-radius:var(--myfeeds-card-hover-radius,4px);z-index:2}}
+
+/* a card row: 2 cards on a phone (the plugin's own phone layout), 3 from 600px */
+.row3{--myfeeds-grid-gap:10px;--myfeeds-grid-padding-y:0px;--myfeeds-card-radius:8px;--myfeeds-card-hover-radius:8px;--myfeeds-img-ratio:100%;--myfeeds-img-bg:#fff;--myfeeds-card-shadow:0 0 5px 2px rgba(0,0,0,.06),0 18px 30px -18px rgba(23,21,28,.45);--myfeeds-card-hover-shadow:0 0 13px 3px rgba(0,0,0,.09),0 18px 30px -18px rgba(23,21,28,.45);justify-content:flex-start}
+.row3 .myfeeds-product-card{width:calc((100% - var(--myfeeds-grid-gap)) / 2)}
+.row3 .myfeeds-product-card:nth-child(3){display:none}
+@media (min-width:600px){
+  .row3 .myfeeds-product-card{width:calc((100% - 2 * var(--myfeeds-grid-gap)) / 3)}
+  .row3 .myfeeds-product-card:nth-child(3){display:flex}
+}
+@media (min-width:900px){.row3{--myfeeds-grid-gap:14px}}
+@media (min-width:900px) and (max-width:1139px){.hero .row3{--myfeeds-grid-gap:10px;--myfeeds-price-size:13px;--myfeeds-old-price-size:13px}.hero .row3 .myfeeds-product-details{--myfeeds-details-px:8px}}
+
+/* the nightly sync, drawn on top of the real card (aria-hidden extras that
+   never change the card's box; only transform/opacity move) */
+.sale .myfeeds-old-price{position:relative;text-decoration:none}
+.sale .myfeeds-old-price::after{content:"";position:absolute;left:-1px;right:-1px;top:54%;height:1.5px;margin-top:-.75px;background:currentColor;transform-origin:left center}
+.mx-chip{position:absolute;left:8px;bottom:8px;z-index:3;display:flex;align-items:center;gap:7px;padding:6px 11px 6px 8px;border-radius:999px;background:var(--ink);color:#fff;font:600 11.5px/1 var(--sans);white-space:nowrap;opacity:0;pointer-events:none}
+.mx-ic,.mx-tx{display:grid;align-items:center}
+.mx-ic>*,.mx-tx>*{grid-area:1/1}
+.mx-ic{width:12px;height:12px}
+.mx-spin{width:12px;height:12px;border-radius:50%;border:2px solid rgba(255,255,255,.35);border-top-color:#fff}
+.mx-tick{width:11px;height:6px;margin:0 0 3px 1px;border-left:2px solid var(--orange);border-bottom:2px solid var(--orange);transform:rotate(-45deg);opacity:0}
+.mx-tx .t-done{opacity:0}
+.mx-scan{position:absolute;top:0;bottom:0;left:0;width:18%;z-index:1;background:linear-gradient(90deg,rgba(255,255,255,0) 0%,rgba(255,255,255,.12) 30%,rgba(255,255,255,.34) 50%,rgba(255,255,255,.12) 70%,rgba(255,255,255,0) 100%);opacity:0;transform:translateX(-110%);pointer-events:none}
+
+/* the "before" state, only while the sequence runs (class "mx" on <html>) */
+.mx .under{transform:scaleX(0)}
+.mx #cards .sale .myfeeds-discount-badge{transition:transform .5s var(--spring),opacity .2s}
+.mx #cards .sale .has-discount{transition:transform .45s var(--spring),opacity .3s}
+.mx #cards .sale .myfeeds-old-price::after{transition:transform .38s cubic-bezier(.7,0,.2,1)}
+.mx .mx-chip{transition:opacity .25s}
+.mx .mx-spin,.mx .mx-tick,.mx .mx-tx>*{transition:opacity .2s}
+.mx .cut-m b{transition:transform .42s var(--spring) calc(var(--i) * 130ms),opacity .25s calc(var(--i) * 130ms),background-color .3s calc(var(--i) * 130ms)}
+.mx:not(.s-done) #cards .sale .myfeeds-discount-badge{opacity:0;transform:scale(.3)}
+.mx:not(.s-done) #cards .sale .has-discount{opacity:0;transform:translateY(-8px)}
+.mx:not(.s-done) #cards .sale .myfeeds-old-price::after{transform:scaleX(0)}
+.mx:not(.m-on) .cut-m b{opacity:.18;transform:scale(.55);background:var(--ink-3)}
+.s-sync:not(.s-fade) .mx-chip{opacity:1}
+.s-sync .mx-spin{animation:spin .8s linear infinite}
+.s-sync .mx-scan{animation:scan 1s cubic-bezier(.45,0,.35,1) .1s 1 both}
+.s-done .mx-spin,.s-done .mx-tx .t-sync{opacity:0}
+.s-done .mx-tick,.s-done .mx-tx .t-done{opacity:1}
+@keyframes spin{to{transform:rotate(360deg)}}
+@keyframes scan{0%{opacity:0;transform:translateX(-110%)}15%{opacity:1}85%{opacity:1}100%{opacity:0;transform:translateX(560%)}}
+
+/* ===== bands ===== */
+.band{padding-block:64px}
+.head{display:grid;gap:12px;max-width:720px;margin-bottom:28px}
+.head p{color:var(--ink-2);max-width:48ch}
+.kick{font-size:14px;font-weight:600;color:var(--ink-2)}
+.ink{background:var(--ink);color:#fff}
+.ink .head p,.ink .calm{color:var(--on-ink)}
+.ink .kick{color:var(--orange)}
+.vio{background:var(--violet);color:#fff}
+.vio .head p,.vio .calm{color:var(--on-violet)}
+.vio .kick{color:#FFD08A}
+.paper{background:var(--paper)}
+.tone{color:var(--ink-3)}
+.ink .tone{color:#8E89A0}
+
+/* the offer: two lanes and the sheet */
+.offer{display:grid;gap:36px;align-items:start}
+.lanes{display:grid;gap:14px;max-width:560px}
+.lane{background:var(--paper);border-radius:3px;box-shadow:var(--shadow);padding:16px 16px 14px}
+.lane-k{font-size:14px;font-weight:600}
+.dots{list-style:none;display:grid;grid-template-columns:repeat(12,minmax(0,1fr));gap:4px;margin:10px 0 8px}
+.dots li{height:22px;border-radius:5px;border:1.5px dashed var(--line)}
+.dots li.on{border:0;background:var(--ink)}
+.lane.yes .dots li.on{background:var(--orange)}
+.lane-f{font-size:14px;color:var(--ink-2)}
+.lanes figcaption{font-size:13px;color:var(--ink-3)}
+.mo .lanes .yes .dots li.on{transition:transform .4s var(--spring) calc(var(--i) * 70ms),opacity .25s calc(var(--i) * 70ms)}
+.mo .lanes:not(.seen) .yes .dots li.on{opacity:.22;transform:scaleY(.35)}
+.sheet{position:relative;background:var(--paper);border-radius:3px;padding:30px 22px 26px;box-shadow:var(--shadow);transform:rotate(-.6deg);max-width:560px}
+.sheet::before{content:"";position:absolute;top:-9px;left:50%;width:84px;height:20px;margin-left:-42px;background:var(--tape);transform:rotate(3deg)}
+.sheet ul{list-style:none;display:grid;gap:14px}
+.sheet li{padding-left:30px;position:relative;line-height:1.45}
+.sheet li::before{content:"";position:absolute;left:3px;top:.45em;width:13px;height:7px;border-left:2.5px solid var(--ink);border-bottom:2.5px solid var(--ink);transform:rotate(-45deg)}
+.sheet b{font-weight:600}
+.sheet span{color:var(--ink-2)}
+@media (min-width:900px){.offer{grid-template-columns:minmax(0,5fr) minmax(0,6fr);gap:64px}.lanes{margin-top:8px}}
+
+/* what the audience gets */
+.see{display:grid;gap:32px;align-items:center}
+.try{margin-top:22px;font-weight:600;color:#fff}
+.ticks{list-style:none;display:grid;gap:10px;margin-top:4px}
+.ticks li{position:relative;padding-left:30px}
+.ticks li::before{content:"";position:absolute;left:3px;top:.48em;width:13px;height:7px;border-left:2.5px solid var(--orange);border-bottom:2.5px solid var(--orange);transform:rotate(-45deg)}
+.pinned{position:relative;background:var(--paper);color:var(--ink);padding:26px 18px 22px;border-radius:3px;box-shadow:0 24px 48px -24px rgba(0,0,0,.7);transform:rotate(1deg)}
+.pinned::before{content:"";position:absolute;top:-9px;left:50%;width:84px;height:20px;margin-left:-42px;background:var(--tape);transform:rotate(-3deg)}
+.post-k{font-size:12px;font-weight:600;letter-spacing:.08em;text-transform:uppercase;color:var(--ink-3)}
+.post-h{font:700 clamp(1.3rem,4.6vw,1.6rem)/1.15 Georgia,'Times New Roman',serif;letter-spacing:-.01em;margin:6px 0 10px}
+.post-p{font:400 15.5px/1.6 Georgia,'Times New Roman',serif;color:var(--ink-2);max-width:52ch}
+.post .row3{--myfeeds-grid-padding-y:18px;--myfeeds-card-shadow:0 0 5px 2px rgba(0,0,0,.06);--myfeeds-card-hover-shadow:0 0 13px 3px rgba(0,0,0,.09)}
+.chips{display:flex;flex-wrap:wrap;align-items:center;gap:8px;margin-top:4px}
+.chips span{font-size:13px;color:var(--ink-3);margin-right:2px}
+.chip{font:600 14px/1 var(--sans);color:var(--ink);background:#fff;border:1.5px solid var(--line);border-radius:999px;padding:9px 14px;cursor:pointer}
+.chip[aria-pressed="true"]{background:var(--ink);border-color:var(--ink);color:#fff}
+.see figcaption{margin-top:14px;font-size:13px;color:#A7A2B5}
+.post[data-style="editorial"] .row3{--myfeeds-card-radius:0px;--myfeeds-card-hover-radius:0px;--myfeeds-card-border-width:1px;--myfeeds-card-border-color:#17151C;--myfeeds-card-shadow:none;--myfeeds-card-hover-shadow:none;--myfeeds-card-bg:#FBF8F3;--myfeeds-badge-bg:#17151C;--myfeeds-badge-color:#fff;--myfeeds-badge-radius:0px;--myfeeds-badge-size:11px;--myfeeds-badge-transform:uppercase;--myfeeds-brand-transform:uppercase;--myfeeds-brand-tracking:.08em;--myfeeds-brand-size:10px;--myfeeds-title-font:Georgia,'Times New Roman',serif;--myfeeds-title-size:14px;--myfeeds-title-color:#17151C;--myfeeds-price-font:Georgia,'Times New Roman',serif;--myfeeds-old-price-font:Georgia,'Times New Roman',serif;--myfeeds-old-price-weight:400;--myfeeds-old-price-color:#7A7484;--myfeeds-price-discount-color:#17151C;--myfeeds-price-weight:700}
+.post[data-style="bold"] .row3{--myfeeds-card-radius:16px;--myfeeds-card-hover-radius:16px;--myfeeds-card-bg:#17151C;--myfeeds-card-shadow:0 16px 30px -14px rgba(23,21,28,.6);--myfeeds-badge-bg:#FC9000;--myfeeds-badge-color:#17151C;--myfeeds-badge-weight:800;--myfeeds-brand-color:#fff;--myfeeds-brand-weight:700;--myfeeds-title-color:#C9C5D3;--myfeeds-price-color:#fff;--myfeeds-old-price-color:#8E89A0;--myfeeds-old-price-weight:500;--myfeeds-price-discount-color:#FC9000;--myfeeds-price-weight:800;--myfeeds-shipping-color:#8E89A0;--myfeeds-merchant-color:#C9C5D3}
+@media (min-width:900px){.see{grid-template-columns:minmax(0,5fr) minmax(0,6fr);gap:64px}}
+
+/* the example math */
+.math{display:grid;gap:28px;align-items:start}
+.calc{background:var(--paper);color:var(--ink);border-radius:6px;padding:22px 18px 20px;box-shadow:0 24px 48px -24px rgba(20,10,50,.6);max-width:620px}
+.calc fieldset{border:0;display:grid;gap:8px;margin-bottom:18px;min-width:0}
+.calc legend,.calc .lbl{font-size:13px;font-weight:600;color:var(--ink-3);margin-bottom:8px;padding:0}
+.seg{display:flex;flex-wrap:wrap;gap:8px}
+.seg input{position:absolute;opacity:0;width:1px;height:1px;pointer-events:none}
+.seg label{font:600 14.5px/1 var(--sans);border:1.5px solid var(--line);border-radius:999px;padding:11px 15px;cursor:pointer;background:#fff;white-space:nowrap}
+.seg label small{font-weight:500;color:var(--ink-3);font-size:13px;margin-left:4px}
+.seg input:checked+label{background:var(--ink);border-color:var(--ink);color:#fff}
+.seg input:checked+label small{color:var(--on-ink)}
+.seg input:focus-visible+label{outline:3px solid var(--violet);outline-offset:2px}
+.range{display:grid;grid-template-columns:minmax(0,1fr) auto;align-items:center;gap:14px}
+.range input{width:100%;accent-color:var(--violet);height:28px}
+.range output{font:800 22px/1 var(--display);min-width:3ch;text-align:right}
+.res{border-top:1.5px solid var(--ink);padding-top:16px;margin-top:4px}
+.res-big{font:800 clamp(2.4rem,11vw,3.6rem)/1 var(--display);letter-spacing:-.03em}
+.res-big small{font:600 16px/1.3 var(--sans);letter-spacing:0;margin-left:6px;color:var(--ink-2)}
+.res-line{margin-top:10px;font-size:15.5px;color:var(--ink-2)}
+.res-note{margin-top:12px;font-size:13px;color:var(--ink-3)}
+@media (min-width:900px){.math{grid-template-columns:minmax(0,4fr) minmax(0,6fr);gap:64px}.calc{padding:30px 28px 26px}}
+
+/* who it is for */
+.who{display:grid;gap:24px}
+.who .head{margin-bottom:0}
+.tags{list-style:none;display:flex;flex-wrap:wrap;gap:10px}
+.tags li{background:var(--paper);border-radius:999px;padding:10px 16px;font-weight:600;font-size:15.5px;box-shadow:var(--shadow)}
+.tags li:nth-child(3n+1){background:#FFE2B8}
+.tags li:nth-child(3n+2){background:#E4DEF7}
+.fit{display:grid;gap:14px;max-width:760px}
+.fit p{padding-left:30px;position:relative;color:var(--ink-2)}
+.fit p b{color:var(--ink);font-weight:600}
+.fit .y::before{content:"";position:absolute;left:3px;top:.48em;width:13px;height:7px;border-left:2.5px solid var(--ink);border-bottom:2.5px solid var(--ink);transform:rotate(-45deg)}
+.fit .n::before,.fit .n::after{content:"";position:absolute;left:2px;top:.72em;width:16px;height:2.5px;background:var(--ink-3);transform:rotate(45deg)}
+.fit .n::after{transform:rotate(-45deg)}
+
+/* steps */
+.steps{list-style:none;display:grid;gap:18px;counter-reset:s;max-width:1000px}
+.steps li{position:relative;padding-left:46px;font-size:17px;color:var(--ink-2)}
+.steps li::before{counter-increment:s;content:counter(s);position:absolute;left:0;top:-2px;width:32px;height:32px;border-radius:50%;background:var(--orange);color:var(--ink);font:800 15px/32px var(--display);text-align:center}
+.steps b{font-weight:600;color:var(--ink)}
+@media (min-width:900px){.steps{grid-template-columns:repeat(3,minmax(0,1fr));gap:32px}}
+
+/* faq */
+.faq{max-width:780px;border-top:1.5px solid var(--ink)}
+.faq details{border-bottom:1px solid var(--line)}
+.faq summary{cursor:pointer;font-weight:600;font-size:18px;list-style:none;display:flex;justify-content:space-between;align-items:center;gap:16px;padding:18px 0}
+.faq summary::-webkit-details-marker{display:none}
+.faq summary::after{content:"+";flex:none;width:30px;height:30px;border-radius:50%;background:var(--paper);font:500 20px/29px var(--sans);text-align:center;transition:transform .25s cubic-bezier(.2,.8,.2,1)}
+.faq details[open] summary::after{transform:rotate(45deg)}
+.faq p{padding-bottom:20px;color:var(--ink-2);font-size:16px;max-width:62ch}
+.faq-band{padding-top:56px}
+@media (min-width:900px){.faq-grid{display:grid;grid-template-columns:minmax(0,4fr) minmax(0,7fr);gap:64px;align-items:start}.faq-grid .head{position:sticky;top:32px}}
+
+/* close */
+.close{background:var(--orange);padding-block:64px 72px}
+.close h2{font-size:clamp(2.1rem,8vw,4rem);max-width:16ch}
+.close .calm{color:var(--ink)}
+.close .go{margin-top:28px}
+.close-in{display:grid;gap:40px;align-items:center}
+@media (min-width:900px){.close-in{grid-template-columns:minmax(0,1fr) minmax(0,1.15fr);gap:56px}}
+
+/* mail fallback: a mailto link that opens nothing gets a way to copy the address */
+.mailcopy{background:none;border:0;padding:0;font:inherit;font-weight:600;color:inherit;text-decoration:underline;text-underline-offset:3px;cursor:pointer}
+.toast{position:fixed;left:var(--gut);right:var(--gut);bottom:calc(84px + env(safe-area-inset-bottom));z-index:25;max-width:440px;margin-inline:auto;background:var(--ink);color:#fff;border-radius:12px;padding:12px 16px;font-size:14.5px;box-shadow:0 18px 40px -16px rgba(0,0,0,.6);opacity:0;transform:translateY(12px);visibility:hidden;transition:opacity .25s,transform .25s,visibility 0s linear .25s}
+.toast.on{opacity:1;transform:none;visibility:visible;transition:opacity .25s,transform .25s}
+.toast .mailcopy{color:var(--orange)}
+@media (min-width:900px){.toast{bottom:28px}}
+
+footer{background:var(--ink);color:#A7A2B5;font-size:13px}
+footer .wrap{display:flex;flex-wrap:wrap;gap:8px 18px;justify-content:space-between;padding-block:24px calc(36px + env(safe-area-inset-bottom))}
+footer nav{display:flex;flex-wrap:wrap;gap:6px 16px}
+footer a{color:#fff;text-underline-offset:3px}
+
+/* phone: the button follows once the hero button has scrolled away */
+.dock{position:fixed;left:0;right:0;bottom:0;z-index:20;padding:9px var(--gut) calc(9px + env(safe-area-inset-bottom));background:rgba(255,255,255,.95);border-top:1px solid var(--line);transform:translateY(110%);visibility:hidden;transition:transform .32s cubic-bezier(.2,.8,.2,1),visibility 0s linear .32s}
+.dock.on{transform:none;visibility:visible;transition:transform .32s cubic-bezier(.2,.8,.2,1)}
+.dock .cta{width:100%;padding-block:15px}
+@media (min-width:900px){
+  .dock{display:none}
+  .band{padding-block:96px}
+  .close{padding-block:96px 104px}
+}
+@media (max-width:420px){.hero .cta{width:100%}}
+@media (prefers-reduced-motion:reduce){*,*::before,*::after{transition:none!important;animation:none!important}html{scroll-behavior:auto}}
+</style>
+<script data-goatcounter="https://myfeeds.goatcounter.com/count" async src="//gc.zgo.at/count.js"></script>
+</head>
+<body>
+<a class="skip" href="#main">Skip to content</a>
+<div class="open">
+  <div class="wrap">
+    <header class="top">
+      <a class="mark" href="/" translate="no" aria-label="MyFeeds home"><span><img src="/assets/pin/lab/affiliates/logo-52.webp" alt="" width="22" height="22"></span>MyFeeds</a>
+      <a class="cta cta-sm" data-cta="header" href="mailto:business@myfeeds.site?subject=MyFeeds%20Affiliate%20Application&body=Hi%20MyFeeds%20team%2C%0A%0AI%27d%20like%20to%20apply%20to%20the%20MyFeeds%20affiliate%20program.%0A%0AAbout%20me%3A%0A-%20Channels%20%28IG%2FTikTok%2FYouTube%2Fblog%2Fnewsletter%20URLs%29%3A%0A-%20What%20I%20cover%3A%0A-%20Approximate%20audience%20size%3A%0A-%20Where%20I%27d%20recommend%20MyFeeds%3A%0A%0AThanks%21">Apply</a>
+    </header>
+  </div>
+</div>
+
+<main id="main">
+<div class="open">
+  <div class="wrap">
+    <section class="hero" aria-labelledby="h-hero">
+      <div class="hero-copy">
+        <p class="eyebrow">The MyFeeds affiliate program</p>
+        <h1 id="h-hero">Recommend MyFeeds once. Get paid <span class="hl">every renewal<span class="under" aria-hidden="true"></span></span>.</h1>
+        <p class="lede">The bloggers you teach get a WordPress plugin that adds a little shop to their affiliate posts. You earn 30% of every payment they make, for as long as they stay.</p>
+        <div class="go">
+          <a class="cta" data-cta="hero" id="hero-cta" href="mailto:business@myfeeds.site?subject=MyFeeds%20Affiliate%20Application&body=Hi%20MyFeeds%20team%2C%0A%0AI%27d%20like%20to%20apply%20to%20the%20MyFeeds%20affiliate%20program.%0A%0AAbout%20me%3A%0A-%20Channels%20%28IG%2FTikTok%2FYouTube%2Fblog%2Fnewsletter%20URLs%29%3A%0A-%20What%20I%20cover%3A%0A-%20Approximate%20audience%20size%3A%0A-%20Where%20I%27d%20recommend%20MyFeeds%3A%0A%0AThanks%21">Apply to join</a>
+          <p class="calm">Free to apply, and there is nothing you have to post. A Pro license for your own site comes with it.</p>
+        </div>
+      </div>
+
+      <figure class="stage" aria-label="Example MyFeeds product cards in a blog post. During the nightly price sync, the sneaker drops from 129 to 96 dollars. Below, an example of your cut: one reader on Pro, paying 19 dollars a month, earns you 5 dollars 70 every month they stay. Example products, sample prices.">
+        <p class="stage-k">What their readers see in a post:</p>
+        <div class="myfeeds-product-grid row3" id="cards">
+          <div class="myfeeds-product-card"><div class="myfeeds-product-image"><img src="/assets/pin/lab/affiliates/hoodie-heather-grey.webp" width="400" height="400" alt="Heavyweight hoodie in heather grey"></div><div class="myfeeds-product-details"><div class="myfeeds-product-brand">Halden</div><div class="myfeeds-product-title">Heavyweight Hoodie Heather Grey</div><div class="myfeeds-product-price"><span class="myfeeds-current-price">$58.00</span></div><div class="myfeeds-shipping-info">Free Shipping</div><div class="myfeeds-merchant">Northside Supply</div></div></div>
+          <div class="myfeeds-product-card sale"><div class="myfeeds-product-image"><div class="myfeeds-discount-badge">-26%</div><img src="/assets/pin/lab/affiliates/sneaker-black-hightop.webp" width="400" height="400" alt="Black leather high-top sneaker"><span class="mx-scan" aria-hidden="true"></span><span class="mx-chip" aria-hidden="true"><span class="mx-ic"><i class="mx-spin"></i><i class="mx-tick"></i></span><span class="mx-tx"><span class="t-sync">Syncing prices</span><span class="t-done">Price updated</span></span></span></div><div class="myfeeds-product-details"><div class="myfeeds-product-brand">Arlo &amp; Finch</div><div class="myfeeds-product-title">Court High-Top Leather Black</div><div class="myfeeds-product-price"><span class="myfeeds-old-price">$129.00</span> <span class="myfeeds-current-price has-discount">$96.00</span></div><div class="myfeeds-shipping-info">Free Shipping</div><div class="myfeeds-merchant">Kicks Corner</div></div></div>
+          <div class="myfeeds-product-card"><div class="myfeeds-product-image"><img src="/assets/pin/lab/affiliates/backpack-trail.webp" width="400" height="400" alt="Trail backpack in sage green"></div><div class="myfeeds-product-details"><div class="myfeeds-product-brand">Fieldmade</div><div class="myfeeds-product-title">Trail Pack 28 L Sage</div><div class="myfeeds-product-price"><span class="myfeeds-current-price">$74.00</span></div><div class="myfeeds-shipping-info">Shipping costs may apply</div><div class="myfeeds-merchant">Basecamp Outfitters</div></div></div>
+        </div>
+        <div class="cut">
+          <p class="cut-k">Your 30%, an example</p>
+          <p class="cut-h">One reader on Pro at $19 a month</p>
+          <ol class="cut-m">
+            <li><b style="--i:0">$5.70</b><span aria-hidden="true">Mo 1</span><span class="vh">month 1</span></li>
+            <li><b style="--i:1">$5.70</b><span aria-hidden="true">Mo 2</span><span class="vh">month 2</span></li>
+            <li><b style="--i:2">$5.70</b><span aria-hidden="true">Mo 3</span><span class="vh">month 3</span></li>
+            <li><b style="--i:3">$5.70</b><span aria-hidden="true">Mo 4</span><span class="vh">month 4</span></li>
+            <li><b style="--i:4">$5.70</b><span aria-hidden="true">Mo 5</span><span class="vh">month 5</span></li>
+            <li><b style="--i:5">$5.70</b><span aria-hidden="true">Mo 6</span><span class="vh">month 6</span></li>
+          </ol>
+          <p class="cut-f">And every month after that, while they stay.</p>
+        </div>
+        <figcaption><span>Example products, sample prices.</span><button type="button" class="replay off" id="replay">Replay</button></figcaption>
+      </figure>
+    </section>
+  </div>
+</div>
+
+<section class="band" aria-labelledby="h-offer">
+  <div class="wrap offer">
+    <div>
+      <div class="head">
+        <h2 id="h-offer">A sponsored post pays once. <span class="tone">This keeps paying.</span></h2>
+        <p>Every reader you send to MyFeeds pays you again with each monthly or yearly payment they make. One honest recommendation can keep earning long after you made it.</p>
+      </div>
+      <figure class="lanes" id="lanes">
+        <div class="lane">
+          <p class="lane-k">A sponsored post</p>
+          <ol class="dots" aria-hidden="true"><li class="on"></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li></ol>
+          <p class="lane-f">Paid once.</p>
+        </div>
+        <div class="lane yes">
+          <p class="lane-k">A reader you sent to MyFeeds</p>
+          <ol class="dots" aria-hidden="true"><li class="on" style="--i:0"></li><li class="on" style="--i:1"></li><li class="on" style="--i:2"></li><li class="on" style="--i:3"></li><li class="on" style="--i:4"></li><li class="on" style="--i:5"></li><li class="on" style="--i:6"></li><li class="on" style="--i:7"></li><li class="on" style="--i:8"></li><li class="on" style="--i:9"></li><li class="on" style="--i:10"></li><li class="on" style="--i:11"></li></ol>
+          <p class="lane-f">Paid every month they stay on a monthly plan.</p>
+        </div>
+        <figcaption>Twelve months, drawn as an example.</figcaption>
+      </figure>
+    </div>
+    <div>
+      <div class="sheet">
+        <ul>
+          <li><b>30% of every payment.</b> <span>Monthly or yearly, for as long as the customer keeps their plan.</span></li>
+          <li><b>60 days to decide.</b> <span>Someone who clicks your link today and buys within 60 days still counts as yours.</span></li>
+          <li><b>Your own coupon code.</b> <span>A discount for your audience, and the sale is yours even when nobody clicks a link.</span></li>
+          <li><b>A free Pro license</b> <span>for your own site, so you show what you actually use.</span></li>
+          <li><b>Nothing you have to post.</b> <span>Recommend it when it fits what you teach.</span></li>
+          <li><b>Your own dashboard.</b> <span>Clicks, sales and your balance in one place. Paid out monthly once your balance passes the payout threshold.</span></li>
+        </ul>
+      </div>
+      <div class="go">
+        <a class="cta" data-cta="offer" href="mailto:business@myfeeds.site?subject=MyFeeds%20Affiliate%20Application&body=Hi%20MyFeeds%20team%2C%0A%0AI%27d%20like%20to%20apply%20to%20the%20MyFeeds%20affiliate%20program.%0A%0AAbout%20me%3A%0A-%20Channels%20%28IG%2FTikTok%2FYouTube%2Fblog%2Fnewsletter%20URLs%29%3A%0A-%20What%20I%20cover%3A%0A-%20Approximate%20audience%20size%3A%0A-%20Where%20I%27d%20recommend%20MyFeeds%3A%0A%0AThanks%21">Apply for my code and link</a>
+        <p class="calm">One short email. We read every application and usually answer within a few days.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="band ink" aria-labelledby="h-see">
+  <div class="wrap see">
+    <div>
+      <div class="head">
+        <p class="kick">What the bloggers you teach get</p>
+        <h2 id="h-see">A tool your audience is glad you showed them.</h2>
+        <p>They pick products from the shops they are an affiliate for, right in the WordPress editor. Their readers get a little shop in the post and click straight through to buy.</p>
+      </div>
+      <ul class="ticks">
+        <li>Prices refresh every night.</li>
+        <li>When a shop runs a sale, the card shows it, old price struck through.</li>
+        <li>When a product is no longer sold, MyFeeds tells them which post it's in.</li>
+        <li>They design the cards to match their own blog.</li>
+      </ul>
+      <p class="try">Try it on your own site first. Your Pro license is free.</p>
+      <p style="margin-top:14px"><a class="more" href="/" data-more>See what MyFeeds does</a></p>
+    </div>
+    <figure>
+      <div class="pinned post" id="post" data-style="clean">
+        <p class="post-k">Style notes</p>
+        <p class="post-h">My fall uniform, in three pieces</p>
+        <p class="post-p">Three things I reach for most mornings.</p>
+        <div class="myfeeds-product-grid row3">
+          <div class="myfeeds-product-card"><div class="myfeeds-product-image"><img src="/assets/pin/lab/affiliates/tee-boxy-offwhite.webp" width="400" height="400" loading="lazy" alt="Boxy tee in off-white"></div><div class="myfeeds-product-details"><div class="myfeeds-product-brand">Common Thread</div><div class="myfeeds-product-title">Boxy Heavy Tee Off-White</div><div class="myfeeds-product-price"><span class="myfeeds-current-price">$32.00</span></div><div class="myfeeds-shipping-info">Free Shipping</div><div class="myfeeds-merchant">Northside Supply</div></div></div>
+          <div class="myfeeds-product-card"><div class="myfeeds-product-image"><div class="myfeeds-discount-badge">-20%</div><img src="/assets/pin/lab/affiliates/sneaker-white-lowtop.webp" width="400" height="400" loading="lazy" alt="White leather low-top sneaker"></div><div class="myfeeds-product-details"><div class="myfeeds-product-brand">Arlo &amp; Finch</div><div class="myfeeds-product-title">Court Low-Top Leather White</div><div class="myfeeds-product-price"><span class="myfeeds-old-price">$110.00</span> <span class="myfeeds-current-price has-discount">$88.00</span></div><div class="myfeeds-shipping-info">Free Shipping</div><div class="myfeeds-merchant">Kicks Corner</div></div></div>
+          <div class="myfeeds-product-card"><div class="myfeeds-product-image"><img src="/assets/pin/lab/affiliates/beanie-knit-navy.webp" width="400" height="400" loading="lazy" alt="Ribbed knit beanie in navy"></div><div class="myfeeds-product-details"><div class="myfeeds-product-brand">Fieldmade</div><div class="myfeeds-product-title">Ribbed Merino Beanie Navy</div><div class="myfeeds-product-price"><span class="myfeeds-current-price">$28.00</span></div><div class="myfeeds-shipping-info">Shipping costs may apply</div><div class="myfeeds-merchant">Basecamp Outfitters</div></div></div>
+        </div>
+        <div class="chips" role="group" aria-label="Card style">
+          <span>Try a style:</span>
+          <button type="button" class="chip" data-look="clean" aria-pressed="true">Clean</button>
+          <button type="button" class="chip" data-look="editorial" aria-pressed="false">Editorial</button>
+          <button type="button" class="chip" data-look="bold" aria-pressed="false">Bold</button>
+        </div>
+      </div>
+      <figcaption>A blog post with MyFeeds cards. Three of many possible looks. Example products, sample prices.</figcaption>
+    </figure>
+  </div>
+</section>
+
+<section class="band vio inv" aria-labelledby="h-math">
+  <div class="wrap math">
+    <div class="head">
+      <p class="kick">Example math</p>
+      <h2 id="h-math">See what a few readers add up to.</h2>
+      <p>Pick a plan, how they pay and how many readers sign up through you. It's plain arithmetic: 30% of what they pay, every time they pay it.</p>
+    </div>
+    <div>
+      <form class="calc" id="calc" onsubmit="return false">
+        <fieldset>
+          <legend>Plan they choose</legend>
+          <div class="seg">
+            <input type="radio" name="plan" id="p-s" value="starter"><label for="p-s">Starter</label>
+            <input type="radio" name="plan" id="p-p" value="pro" checked><label for="p-p">Pro</label>
+            <input type="radio" name="plan" id="p-e" value="ecommerce"><label for="p-e">E-commerce</label>
+          </div>
+        </fieldset>
+        <fieldset>
+          <legend>How they pay</legend>
+          <div class="seg">
+            <input type="radio" name="cycle" id="c-m" value="m" checked><label for="c-m">Monthly <small id="pm">$19</small></label>
+            <input type="radio" name="cycle" id="c-y" value="y"><label for="c-y">Yearly <small id="py">$199</small></label>
+          </div>
+        </fieldset>
+        <div>
+          <label class="lbl" for="n">Readers who sign up through you</label>
+          <div class="range"><input type="range" id="n" min="1" max="50" step="1" value="10"><output id="nout" for="n">10</output></div>
+        </div>
+        <div class="res" aria-live="polite">
+          <p class="res-big"><span id="big">$57</span><small id="per">a month for you</small></p>
+          <p class="res-line" id="line">10 readers on Pro, paying $19 a month: 30% of each payment is $5.70, so $57 a month for you, for as long as they stay.</p>
+          <p class="res-note">An example on list prices, not a promise. If they use your coupon, they pay less, and your 30% is taken from what they pay.</p>
+        </div>
+      </form>
+      <div class="go">
+        <a class="cta" data-cta="math" href="mailto:business@myfeeds.site?subject=MyFeeds%20Affiliate%20Application&body=Hi%20MyFeeds%20team%2C%0A%0AI%27d%20like%20to%20apply%20to%20the%20MyFeeds%20affiliate%20program.%0A%0AAbout%20me%3A%0A-%20Channels%20%28IG%2FTikTok%2FYouTube%2Fblog%2Fnewsletter%20URLs%29%3A%0A-%20What%20I%20cover%3A%0A-%20Approximate%20audience%20size%3A%0A-%20Where%20I%27d%20recommend%20MyFeeds%3A%0A%0AThanks%21">Ask for my partner link</a>
+        <p class="calm">Your link and your code both count. Use whichever suits the place you recommend it.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="band" aria-labelledby="h-who">
+  <div class="wrap who">
+    <div class="head">
+      <h2 id="h-who">For people who teach bloggers.</h2>
+      <p>If the people who follow you write a blog or earn from affiliate links, MyFeeds is made for them. A few examples:</p>
+    </div>
+    <ul class="tags">
+      <li>Blogging coaches</li>
+      <li>Pinterest coaches</li>
+      <li>WordPress YouTubers</li>
+      <li>Newsletter writers</li>
+      <li>Affiliate marketing teachers</li>
+    </ul>
+    <div class="fit">
+      <p class="y"><b>A good fit</b> if your audience trusts your recommendations and you'd use MyFeeds on your own site too.</p>
+      <p class="n"><b>Not a fit</b> for coupon sites without an audience of their own, or anything built on fake reviews or pressure.</p>
+    </div>
+  </div>
+</section>
+
+<section class="band paper" aria-labelledby="h-steps">
+  <div class="wrap">
+    <div class="head">
+      <h2 id="h-steps">How it works</h2>
+    </div>
+    <ol class="steps">
+      <li><b>Send one short email.</b> Tell us where your audience is and what you teach.</li>
+      <li><b>Get your link, your code and your Pro license.</b> Usually within a few days.</li>
+      <li><b>Recommend it when it fits.</b> Payouts run monthly once your balance passes the payout threshold.</li>
+    </ol>
+    <div class="go">
+      <a class="cta" data-cta="steps" href="mailto:business@myfeeds.site?subject=MyFeeds%20Affiliate%20Application&body=Hi%20MyFeeds%20team%2C%0A%0AI%27d%20like%20to%20apply%20to%20the%20MyFeeds%20affiliate%20program.%0A%0AAbout%20me%3A%0A-%20Channels%20%28IG%2FTikTok%2FYouTube%2Fblog%2Fnewsletter%20URLs%29%3A%0A-%20What%20I%20cover%3A%0A-%20Approximate%20audience%20size%3A%0A-%20Where%20I%27d%20recommend%20MyFeeds%3A%0A%0AThanks%21">Write the short email</a>
+      <p class="calm">The email comes pre-filled. You just add four short answers about you.</p>
+    </div>
+  </div>
+</section>
+
+<section class="band faq-band" aria-labelledby="h-faq">
+  <div class="wrap faq-grid">
+    <div class="head"><h2 id="h-faq">Questions partners ask</h2></div>
+    <div class="faq">
+      <details name="faq">
+        <summary>Can I try MyFeeds before I recommend it?</summary>
+        <p>Yes. Your Pro license comes with your partner link, so you can run the full plugin on your own site before you tell anyone about it. The free version is on WordPress.org too.</p>
+      </details>
+      <details name="faq">
+        <summary>Do I have to post anything?</summary>
+        <p>No. There is no quota and no deadline. Recommend MyFeeds when it fits what you already teach.</p>
+      </details>
+      <details name="faq">
+        <summary>When and how do I get paid?</summary>
+        <p>Monthly through Freemius, the platform that runs the MyFeeds checkout, once your balance passes the payout threshold. PayPal and bank transfer are the usual options.</p>
+      </details>
+      <details name="faq">
+        <summary>How long do I earn from one customer?</summary>
+        <p>As long as their subscription stays active. Every monthly or yearly payment counts. If they cancel, it stops. If they come back later, the new payments count again.</p>
+      </details>
+      <details name="faq">
+        <summary>Do I need a website?</summary>
+        <p>No. Social channels, newsletters, podcasts and email all count. Your coupon code works even where links can't.</p>
+      </details>
+      <details name="faq">
+        <summary>What does my audience pay?</summary>
+        <p>Starter is $9 a month or $89 a year, Pro $19 a month or $199 a year, E-commerce $49 a month or $499 a year, each for one site. <a href="/#pricing" data-more>All plans side by side</a>.</p>
+      </details>
+      <details name="faq">
+        <summary>Can I recommend the free version too?</summary>
+        <p>Yes. The free plugin lives on WordPress.org. If a reader installs the free version and later upgrades to a paid plan, the upgrade still counts for you within the 60 days after their click.</p>
+      </details>
+      <details name="faq">
+        <summary>Is 30% the only rate?</summary>
+        <p>30% on every payment is the standard. If you have a large audience in WordPress, blogging or affiliate marketing, ask us about individual terms.</p>
+      </details>
+      <details name="faq">
+        <summary>Can I recommend other plugins too?</summary>
+        <p>Yes, there is no exclusivity. Recommend whatever genuinely helps your audience.</p>
+      </details>
+    </div>
+  </div>
+</section>
+
+<section class="close" id="end" aria-labelledby="h-end">
+  <div class="wrap close-in">
+    <div>
+      <h2 id="h-end">Give your audience a better blog. Get paid every time they renew.</h2>
+      <div class="go">
+        <a class="cta" data-cta="final" href="mailto:business@myfeeds.site?subject=MyFeeds%20Affiliate%20Application&body=Hi%20MyFeeds%20team%2C%0A%0AI%27d%20like%20to%20apply%20to%20the%20MyFeeds%20affiliate%20program.%0A%0AAbout%20me%3A%0A-%20Channels%20%28IG%2FTikTok%2FYouTube%2Fblog%2Fnewsletter%20URLs%29%3A%0A-%20What%20I%20cover%3A%0A-%20Approximate%20audience%20size%3A%0A-%20Where%20I%27d%20recommend%20MyFeeds%3A%0A%0AThanks%21">Send my application</a>
+        <p class="calm">Mail app doesn't open? Copy <button type="button" class="mailcopy" data-email="business@myfeeds.site">business@myfeeds.site</button></p>
+        <p class="calm">Rather talk first? <a class="more" data-call href="mailto:business@myfeeds.site?subject=MyFeeds%20Affiliate%20Program%3A%2015-minute%20call&body=Hi%20MyFeeds%20team%2C%0A%0AI%27d%20like%20a%2015-minute%20call%20about%20the%20affiliate%20program%20before%20I%20apply.%0A%0AA%20few%20times%20that%20work%20for%20me%3A%0A%0AThanks%21">Ask for a 15-minute call</a>.</p>
+      </div>
+    </div>
+    <div class="myfeeds-product-grid row3" aria-hidden="true">
+      <div class="myfeeds-product-card"><div class="myfeeds-product-image"><img src="/assets/pin/lab/affiliates/tee-boxy-offwhite.webp" width="400" height="400" alt="" loading="lazy"></div><div class="myfeeds-product-details"><div class="myfeeds-product-brand">Common Thread</div><div class="myfeeds-product-title">Boxy Heavy Tee Off-White</div><div class="myfeeds-product-price"><span class="myfeeds-current-price">$32.00</span></div><div class="myfeeds-shipping-info">Free Shipping</div><div class="myfeeds-merchant">Northside Supply</div></div></div>
+      <div class="myfeeds-product-card"><div class="myfeeds-product-image"><div class="myfeeds-discount-badge">-26%</div><img src="/assets/pin/lab/affiliates/sneaker-black-hightop.webp" width="400" height="400" alt="" loading="lazy"></div><div class="myfeeds-product-details"><div class="myfeeds-product-brand">Arlo &amp; Finch</div><div class="myfeeds-product-title">Court High-Top Leather Black</div><div class="myfeeds-product-price"><span class="myfeeds-old-price">$129.00</span> <span class="myfeeds-current-price has-discount">$96.00</span></div><div class="myfeeds-shipping-info">Free Shipping</div><div class="myfeeds-merchant">Kicks Corner</div></div></div>
+      <div class="myfeeds-product-card"><div class="myfeeds-product-image"><img src="/assets/pin/lab/affiliates/beanie-knit-navy.webp" width="400" height="400" alt="" loading="lazy"></div><div class="myfeeds-product-details"><div class="myfeeds-product-brand">Fieldmade</div><div class="myfeeds-product-title">Ribbed Merino Beanie Navy</div><div class="myfeeds-product-price"><span class="myfeeds-current-price">$28.00</span></div><div class="myfeeds-shipping-info">Shipping costs may apply</div><div class="myfeeds-merchant">Basecamp Outfitters</div></div></div>
+    </div>
+  </div>
+</section>
+</main>
+
+<footer>
+  <div class="wrap">
+    <span>MyFeeds · Affiliate product feeds for WordPress</span>
+    <nav aria-label="Legal"><a href="/">Home</a><a href="/imprint/">Imprint</a><a href="/privacy/">Privacy</a><a href="/terms/">Terms</a><a href="/refund/">Refund policy</a></nav>
+  </div>
+</footer>
+
+<div class="dock" id="dock">
+  <a class="cta" data-cta="sticky" href="mailto:business@myfeeds.site?subject=MyFeeds%20Affiliate%20Application&body=Hi%20MyFeeds%20team%2C%0A%0AI%27d%20like%20to%20apply%20to%20the%20MyFeeds%20affiliate%20program.%0A%0AAbout%20me%3A%0A-%20Channels%20%28IG%2FTikTok%2FYouTube%2Fblog%2Fnewsletter%20URLs%29%3A%0A-%20What%20I%20cover%3A%0A-%20Approximate%20audience%20size%3A%0A-%20Where%20I%27d%20recommend%20MyFeeds%3A%0A%0AThanks%21">Apply to join</a>
+</div>
+<p class="toast" id="toast" role="status">Mail app didn't open? Copy <button type="button" class="mailcopy" data-email="business@myfeeds.site">business@myfeeds.site</button></p>
+
+<script>
+(function () {
+  // GoatCounter needs no consent (no cookie, nobody identified). The page
+  // itself is counted by count.js; these are the clicks on it.
+  function count(path) {
+    try { if (window.goatcounter && window.goatcounter.count) window.goatcounter.count({ path: path, title: path, event: true }); } catch (e) {}
+  }
+  window.mfCount = count;
+  var P = 'pin/lab/affiliates/';
+
+  // Every button is the same mailto. If no mail app takes it (the window
+  // never loses focus), show a way to copy the address instead.
+  var toast = document.getElementById('toast'), toastT;
+  document.querySelectorAll('[data-cta]').forEach(function (a) {
+    a.addEventListener('click', function () {
+      count(P + 'cta-' + a.getAttribute('data-cta'));
+      var opened = false, onBlur = function () { opened = true; };
+      window.addEventListener('blur', onBlur, { once: true });
+      document.addEventListener('visibilitychange', onBlur, { once: true });
+      setTimeout(function () {
+        window.removeEventListener('blur', onBlur);
+        document.removeEventListener('visibilitychange', onBlur);
+        if (!opened && toast) { toast.classList.add('on'); clearTimeout(toastT); toastT = setTimeout(function () { toast.classList.remove('on'); }, 9000); }
+      }, 700);
+    });
+  });
+  document.querySelectorAll('.mailcopy').forEach(function (b) {
+    b.addEventListener('click', function () {
+      var email = b.getAttribute('data-email'), orig = b.textContent;
+      count(P + 'copy-email');
+      var done = function () { b.textContent = 'Copied'; setTimeout(function () { b.textContent = orig; }, 2000); };
+      var select = function () { try { var r = document.createRange(); r.selectNodeContents(b); var s = getSelection(); s.removeAllRanges(); s.addRange(r); } catch (e) {} };
+      if (navigator.clipboard && navigator.clipboard.writeText) navigator.clipboard.writeText(email).then(done, select);
+      else select();
+    });
+  });
+  document.querySelectorAll('[data-call]').forEach(function (a) {
+    a.addEventListener('click', function () { count(P + 'call'); });
+  });
+  document.querySelectorAll('[data-more]').forEach(function (a) {
+    a.addEventListener('click', function () { count(P + 'more-' + (a.getAttribute('href') === '/' ? 'home' : 'pricing')); });
+  });
+
+  // FAQ: one answer open at a time (name="faq" does it in current
+  // browsers; this covers the ones that don't know the attribute yet).
+  var faqs = document.querySelectorAll('.faq details');
+  faqs.forEach(function (d) {
+    d.addEventListener('toggle', function () {
+      if (d.open) faqs.forEach(function (o) { if (o !== d && o.open) o.open = false; });
+    });
+  });
+
+  // The post: the same real cards, three sets of the editor's own variables.
+  var post = document.getElementById('post'), chips = document.querySelectorAll('.chip');
+  var mo = document.documentElement.classList.contains('mo');
+  chips.forEach(function (c) {
+    c.addEventListener('click', function () {
+      var name = c.getAttribute('data-look');
+      if (post.getAttribute('data-style') === name) return;
+      post.setAttribute('data-style', name);
+      chips.forEach(function (o) { o.setAttribute('aria-pressed', o === c ? 'true' : 'false'); });
+      if (mo) post.querySelectorAll('.myfeeds-product-card').forEach(function (card, i) {
+        if (card.animate) card.animate([{ opacity: .4, transform: 'scale(.96)' }, { opacity: 1, transform: 'none' }], { duration: 320, delay: i * 50, easing: 'cubic-bezier(.2,.9,.3,1.2)', fill: 'backwards' });
+      });
+      count(P + 'look-' + name);
+    });
+  });
+
+  // The example math. List prices from the pricing table; 30% of each.
+  var PRICES = { starter: { m: 9, y: 89, n: 'Starter' }, pro: { m: 19, y: 199, n: 'Pro' }, ecommerce: { m: 49, y: 499, n: 'E-commerce' } };
+  var form = document.getElementById('calc'), range = document.getElementById('n');
+  function money(v) { var r = Math.round(v * 100) / 100; return '$' + (r % 1 ? r.toFixed(2) : String(r)).replace(/\B(?=(\d{3})+(?!\d))/g, ','); }
+  var touched = false;
+  function calc() {
+    var plan = form.querySelector('[name=plan]:checked').value, cyc = form.querySelector('[name=cycle]:checked').value;
+    var n = +range.value, p = PRICES[plan], price = p[cyc], each = price * 0.3, total = each * n;
+    var unit = cyc === 'm' ? 'month' : 'year';
+    document.getElementById('pm').textContent = '$' + p.m;
+    document.getElementById('py').textContent = '$' + p.y;
+    document.getElementById('nout').textContent = n;
+    document.getElementById('big').textContent = money(total);
+    document.getElementById('per').textContent = 'a ' + unit + ' for you';
+    document.getElementById('line').textContent = n + (n === 1 ? ' reader' : ' readers') + ' on ' + p.n + ', paying ' + money(price) + ' a ' + unit + ': 30% of each payment is ' + money(each) + ', so ' + money(total) + ' a ' + unit + ' for you, for as long as they stay.';
+    range.setAttribute('aria-valuetext', n + (n === 1 ? ' reader' : ' readers'));
+  }
+  if (form) {
+    form.addEventListener('input', function () { calc(); if (!touched) { touched = true; count(P + 'calc'); } });
+    form.addEventListener('change', calc);
+    calc();
+  }
+
+  // The two lanes fill in once they are on screen.
+  var lanes = document.getElementById('lanes');
+  if (lanes) {
+    if (mo && 'IntersectionObserver' in window) {
+      var io = new IntersectionObserver(function (e) { if (e[0].isIntersecting) { lanes.classList.add('seen'); io.disconnect(); } }, { threshold: .4 });
+      io.observe(lanes);
+    } else lanes.classList.add('seen');
+  }
+
+  // Phone only: once the hero button has scrolled away, the same button
+  // waits at the bottom. It steps aside while the closing section or any
+  // other in-page button is on screen, so two buttons never stack.
+  var dock = document.getElementById('dock'), hero = document.getElementById('hero-cta'), end = document.getElementById('end');
+  if (dock && hero && end && 'IntersectionObserver' in window) {
+    var heroGone = false, endSeen = false, inView = 0;
+    var sync = function () { dock.classList.toggle('on', heroGone && !endSeen && !inView); };
+    new IntersectionObserver(function (e) { heroGone = !e[0].isIntersecting && e[0].boundingClientRect.top < 0; sync(); }).observe(hero);
+    new IntersectionObserver(function (e) { endSeen = e[0].isIntersecting; sync(); }).observe(end);
+    var inline = new IntersectionObserver(function (es) {
+      es.forEach(function (x) { var was = x.target._in === true; x.target._in = x.isIntersecting; inView += (x.isIntersecting ? 1 : 0) - (was ? 1 : 0); });
+      sync();
+    });
+    document.querySelectorAll('main .go .cta').forEach(function (b) { if (b !== hero) inline.observe(b); });
+  }
+})();
+
+(function () {
+  // The opening moment. The cards are on screen from the first frame. A line
+  // draws under "every renewal"; the nightly sync runs on the sneaker
+  // (129 struck, 96 slides in, the badge appears); then the six months of
+  // the example fill in one by one. Transform and opacity only. Without
+  // the "mx" class the CSS is the end state; any failure lands there.
+  var root = document.documentElement;
+  var under = document.querySelector('.under');
+  var replay = document.getElementById('replay');
+  var anims = [], timers = [], running = false;
+  function later(fn, ms) { timers.push(setTimeout(fn, ms)); }
+  function finish() {
+    timers.forEach(clearTimeout); timers = [];
+    root.classList.remove('mx', 's-sync', 's-done', 's-fade', 'm-on');
+    anims.forEach(function (a) { try { a.cancel(); } catch (e) {} }); anims = [];
+    running = false;
+    if (replay && root.classList.contains('mo')) replay.classList.remove('off');
+  }
+  if (!root.classList.contains('mo')) return;
+
+  function run() {
+    if (document.hidden) return finish();
+    running = true;
+    later(finish, 7000);
+    anims.push(under.animate([{ transform: 'scaleX(0)' }, { transform: 'scaleX(1)' }], { duration: 480, easing: 'cubic-bezier(.76,0,.24,1)', fill: 'forwards' }));
+    later(function () { root.classList.add('s-sync'); }, 700);
+    later(function () { root.classList.add('s-done'); }, 1800);
+    later(function () { root.classList.add('m-on'); }, 2300);
+    later(function () { root.classList.add('s-fade'); }, 3000);
+    later(finish, 3700);
+  }
+
+  if (replay) replay.addEventListener('click', function () {
+    if (running) return;
+    replay.classList.add('off');
+    root.classList.add('mx');
+    if (window.mfCount) window.mfCount('pin/lab/affiliates/replay');
+    later(run, 250);
+  });
+
+  if (document.querySelector('.hero').getBoundingClientRect().bottom < 0) finish();
+  else later(run, 200);
+  document.addEventListener('visibilitychange', function () { if (document.hidden && running) finish(); });
+})();
+</script>
+</body>
+</html>
