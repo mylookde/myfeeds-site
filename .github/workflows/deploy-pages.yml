@@ -70,7 +70,9 @@ jobs:
           REV="${GITHUB_SHA::8}"
           find _site -name '*.html' -type f -print0 | xargs -0 sed -i \
             -e "s#/assets/consent\.js#/assets/consent.js?v=$REV#g" \
-            -e "s#/assets/back-to-top\.js#/assets/back-to-top.js?v=$REV#g"
+            -e "s#/assets/back-to-top\.js#/assets/back-to-top.js?v=$REV#g" \
+            -e "s#/assets/site\.css#/assets/site.css?v=$REV#g" \
+            -e "s#/assets/site\.js#/assets/site.js?v=$REV#g"
           echo "Asset revision: $REV"
           echo "Files going out: $(find _site -type f | wc -l)"
           echo "Size: $(du -sh _site | cut -f1)"

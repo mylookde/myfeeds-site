@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="p:domain_verify" content="0f13dbb87c7b78ab08817667740c2df2"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+<title>Legal page layout - MyFeeds pattern</title>
+<meta name="description" content="The layout for legal texts on myfeeds.site: a plain head, a jump list that stays beside the text, numbered sections and an address card.">
+<!-- Preview: lives under /pin/lab/v3/ until it goes live. Going live = move the file and delete the next line. -->
+<meta name="robots" content="noindex, follow">
+<link rel="canonical" href="https://myfeeds.site/pin/lab/v3/patterns/legal/">
+<meta name="theme-color" content="#FC9000">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="MyFeeds">
+<meta property="og:url" content="https://myfeeds.site/pin/lab/v3/patterns/legal/">
+<meta property="og:title" content="Legal page layout - MyFeeds pattern">
+<meta property="og:description" content="The layout for legal texts on myfeeds.site: a plain head, a jump list that stays beside the text, numbered sections and an address card.">
+<meta property="og:image" content="https://myfeeds.site/assets/og-image.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="628">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:url" content="https://myfeeds.site/pin/lab/v3/patterns/legal/">
+<meta name="twitter:title" content="Legal page layout - MyFeeds pattern">
+<meta name="twitter:description" content="The layout for legal texts on myfeeds.site: a plain head, a jump list that stays beside the text, numbered sections and an address card.">
+<meta name="twitter:image" content="https://myfeeds.site/assets/og-image.png">
+<link rel="icon" type="image/png" href="/favicon.png">
+<link rel="icon" type="image/x-icon" href="/favicon.ico">
+<link rel="apple-touch-icon" href="/apple-touch-icon.png">
+<link rel="preload" href="/assets/fonts/bricolage-latin.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="stylesheet" href="/assets/site.css">
+<script>
+/* Motion gate, before first paint. Nothing on this page waits for script:
+   without "mo" (no JS, reduced motion) there are simply no transitions. */
+!function(d){d.classList.add('js');try{if(matchMedia('(prefers-reduced-motion: no-preference)').matches)d.classList.add('mo')}catch(e){}}(document.documentElement);
+</script>
+</head>
+<body data-page="pin/lab/v3/patterns/legal/">
+<a class="skip" href="#main">Skip to content</a>
+<div class="open-top">
+  <div class="wrap">
+    <header class="top">
+      <a class="mark" href="/" translate="no" aria-label="MyFeeds home"><span><img src="/assets/home/logo-52.webp" alt="" width="22" height="22"></span>MyFeeds</a>
+      <nav class="nav" aria-label="Main">
+        <a href="/#how">How it works</a>
+        <a href="/#pricing" data-cta="nav-pricing">Pricing</a>
+        <a href="/ecommerce/">E-commerce</a>
+        <a href="/networks/">Networks</a>
+        <a href="/articles/">Guides</a>
+        <a href="/install/">Install</a>
+        <a href="/#faq">FAQ</a>
+      </nav>
+      <div class="top-r">
+        <button type="button" class="menu-btn" id="menu-btn" aria-expanded="false" aria-controls="menu"><i aria-hidden="true"></i>Menu</button>
+        <a class="cta cta-sm" data-cta="header" href="/#pricing">Get started</a>
+      </div>
+      <div class="menu" id="menu" hidden>
+        <a href="/#how">How it works</a>
+        <a href="/#pricing">Plans and prices</a>
+        <a href="/ecommerce/">E-commerce</a>
+        <a href="/networks/">Affiliate networks</a>
+        <a href="/articles/">Guides</a>
+        <a href="/install/">Install guide</a>
+        <a href="/#faq">Questions</a>
+      </div>
+    </header>
+  </div>
+</div>
+
+<main id="main">
+<div class="open">
+  <div class="wrap">
+    <section class="hero plain" aria-labelledby="h-hero">
+      <p class="eyebrow">Legal</p>
+      <h1 id="h-hero">A legal page</h1>
+      <p class="calm">Last updated: 9 October 2026 (sample date)</p>
+    </section>
+  </div>
+</div>
+
+<section class="band paper" id="text" aria-label="The text">
+  <div class="wrap chap">
+    <nav class="toc" aria-label="On this page">
+      <details>
+        <summary>On this page</summary>
+        <ol>
+          <li><a href="#who"><span>Who is responsible</span></a></li>
+          <li><a href="#scope"><span>What this page covers</span></a></li>
+          <li><a href="#data"><span>What we collect, and why</span></a></li>
+          <li><a href="#rights"><span>Your rights</span></a></li>
+          <li><a href="#changes"><span>Changes and contact</span></a></li>
+        </ol>
+      </details>
+    </nav>
+
+    <div class="prose legal">
+      <p class="note"><b>Sample text.</b> This page shows the layout for legal texts. It is not a legal document. The real wording of a policy is never rewritten for style, only given this structure.</p>
+
+      <h2 id="who">1. Who is responsible</h2>
+      <p>A legal page opens with who stands behind it. The contact block is a card, so it is easy to find again and easy to copy.</p>
+      <address class="goal addr">
+        <b>Responsible for this site</b>
+        MyFeeds<br>
+        [Name of the operator]<br>
+        [Street and number]<br>
+        [Postcode and city], Germany<br>
+        <a href="mailto:support@myfeeds.site">support@myfeeds.site</a>
+      </address>
+
+      <h2 id="scope">2. What this page covers</h2>
+      <p>Each numbered section answers one question a reader may arrive with. The heading says the question in plain words, the first paragraph answers it.</p>
+      <p>Paragraphs stay short. One thought, then a new paragraph. Nobody reads a legal text for pleasure, so the layout should at least let them find their place.</p>
+
+      <h2 id="data">3. What we collect, and why</h2>
+      <p>Longer sections are split with smaller headings, so a reader can skip to the part that concerns them.</p>
+      <h3>3.1 When you visit</h3>
+      <p>A sub-section starts with its number. That keeps references possible: “see section 3.1”.</p>
+      <h3>3.2 When you write to us</h3>
+      <p>Lists are for things that really are a list:</p>
+      <ul>
+        <li>one item with one fact,</li>
+        <li>a second item of the same kind,</li>
+        <li>and a third, not a paragraph in disguise.</li>
+      </ul>
+
+      <h2 id="rights">4. Your rights</h2>
+      <p>Where a section asks the reader to do something, the way to do it stands right there, as a link in the sentence: <a href="mailto:support@myfeeds.site">support@myfeeds.site</a>.</p>
+      <p class="note warn"><b>Use the warning sparingly.</b> A legal page has at most one, for the single thing a reader must not miss.</p>
+
+      <h2 id="changes">5. Changes and contact</h2>
+      <p>The last section says how changes are announced. The date at the top of the page is the date of the last change. Legal pages are the only pages on this site that carry a date.</p>
+    </div>
+  </div>
+</section>
+
+<section class="close slim" id="end" aria-labelledby="h-end">
+  <div class="wrap">
+    <h2 id="h-end">Questions about this page?</h2>
+    <p>Write to <a href="mailto:support@myfeeds.site" data-cta="final-mail">support@myfeeds.site</a> and a person answers.</p>
+  </div>
+</section>
+</main>
+
+<footer>
+  <div class="wrap">
+    <div class="brand"><b translate="no">MyFeeds</b><span>Affiliate product feeds for WordPress</span></div>
+    <nav aria-label="Site">
+      <a href="/ecommerce/">E-commerce</a>
+      <a href="/install/">Install guide</a>
+      <a href="/networks/">Affiliate networks</a>
+      <a href="/articles/">Guides</a>
+      <a href="/affiliates/">Become an affiliate</a>
+      <a href="https://wordpress.org/plugins/myfeeds-affiliate-feed-manager/" rel="noopener">Free plugin on WordPress.org</a>
+      <a href="/imprint/">Imprint</a>
+      <a href="/privacy/">Privacy</a>
+      <a href="/terms/">Terms</a>
+      <a href="/refund/">Refund policy</a>
+    </nav>
+    <span>© 2026 MyFeeds. All rights reserved.</span>
+  </div>
+</footer>
+
+<script src="/assets/site.js" defer></script>
+<script src="/assets/back-to-top.js" defer></script>
+<script src="/assets/consent.js" defer></script>
+</body>
+</html>

@@ -1,0 +1,753 @@
+/* myfeeds.site - the one stylesheet for content pages: guides, network
+   guides, hubs, legal pages, small landing pages. Derived from the install
+   guide (/install/), same tokens as the homepage. The five sales pages
+   still carry their own inline CSS.
+
+   Order matters in this file: base, then components, then the tone
+   overrides that need more than a variable, then phone tweaks, and the
+   reduced-motion switch last. Add a variant AFTER its base rule. */
+@font-face{font-family:'Bricolage';font-style:normal;font-weight:800;font-display:swap;src:url(/assets/fonts/bricolage-latin.woff2) format('woff2');unicode-range:U+0000-00FF,U+0131,U+0152-0153,U+02BB-02BC,U+02C6,U+02DA,U+02DC,U+0304,U+0308,U+0329,U+2000-206F,U+20AC,U+2122,U+2191,U+2193,U+2212,U+2215,U+FEFF,U+FFFD}
+@font-face{font-family:'Instrument Sans';font-style:normal;font-weight:400 600;font-display:swap;src:url(/assets/fonts/instrument-sans-latin.woff2) format('woff2');unicode-range:U+0000-00FF,U+0131,U+0152-0153,U+02BB-02BC,U+02C6,U+02DA,U+02DC,U+0304,U+0308,U+0329,U+2000-206F,U+20AC,U+2122,U+2191,U+2193,U+2212,U+2215,U+FEFF,U+FFFD}
+
+/* Tones in order: orange (open, close), then board, paper, ink and at
+   most one violet band in between. One button colour: ink. */
+:root{
+  --orange:#FC9000;
+  --board:#E8E7EC;
+  --grain:rgba(23,21,28,.075);
+  --paper:#FFFFFF;
+  --paper-2:#F4F3F7;
+  --ink:#17151C;
+  --ink-2:#4A4653;
+  --ink-3:#5F5A69;
+  --on-ink:#C9C5D3;
+  --violet:#5B45A8;
+  --on-violet:#E4DEF7;
+  --line:rgba(23,21,28,.14);
+  --tape:rgba(252,144,0,.34);
+  --ok:#1E7A52;
+  --warn:#A8460B;
+  --shadow:0 1px 1px rgba(40,30,70,.08),0 10px 24px -14px rgba(40,30,70,.38);
+  --display:'Bricolage','Arial Narrow',Arial,sans-serif;
+  --sans:'Instrument Sans',-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,sans-serif;
+  --mono:ui-monospace,SFMono-Regular,Menlo,Consolas,monospace;
+  --gut:16px;
+  color-scheme:light;
+}
+
+/* ===== tone scopes =====
+   A band sets these, a component reads them, so a component needs no rule
+   per tone. --fg text, --fg-2 body copy, --fg-3 captions and small labels,
+   --tint a flat box, --raise a card, --mark ticks, --chip number circles.
+   This first set is the board (the page ground). */
+:root,.board{
+  --fg:var(--ink);--fg-2:var(--ink-2);--fg-3:var(--ink-3);
+  --rule:var(--line);--edge:var(--ink);
+  --tint:#fff;--tint-line:var(--line);
+  --raise:#fff;--lift:var(--shadow);--hover:#F6F3FF;
+  --mark:var(--ink);--kick:var(--ink-2);--muted:var(--ink-3);--bar:var(--ink-3);
+  --chip:var(--ink);--chip-fg:#fff;--pill:#fff;
+  --btn:var(--ink);--btn-fg:#fff;--btn-hover:#2C2836;--btn-shadow:0 12px 24px -14px rgba(23,21,28,.8);
+  --focus:var(--ink);--hl:rgba(252,144,0,.28);--bg:var(--board);
+}
+/* orange: ink is the only text colour that passes on it */
+.open-top,.open,.close{
+  --fg-2:var(--ink);--fg-3:var(--ink);--kick:var(--ink);--muted:var(--ink);--bar:var(--ink);
+  --rule:rgba(23,21,28,.3);--tint-line:transparent;--bg:var(--orange);
+}
+.ink,.pitch,footer{
+  --fg:#fff;--fg-2:var(--on-ink);--fg-3:var(--on-ink);
+  --rule:rgba(255,255,255,.2);--edge:#fff;
+  --tint:rgba(255,255,255,.08);--tint-line:rgba(255,255,255,.18);
+  --raise:rgba(255,255,255,.07);--lift:inset 0 0 0 1px rgba(255,255,255,.14);--hover:rgba(255,255,255,.12);
+  --mark:var(--orange);--kick:var(--orange);--muted:#8E89A0;--bar:var(--orange);
+  --chip:var(--orange);--chip-fg:var(--ink);--pill:#fff;
+  --btn:#fff;--btn-fg:var(--ink);--btn-hover:#F1EFF5;--btn-shadow:none;
+  --focus:#fff;--hl:rgba(252,144,0,.42);--bg:var(--ink);
+}
+.vio{
+  --fg:#fff;--fg-2:var(--on-violet);--fg-3:var(--on-violet);
+  --rule:rgba(255,255,255,.26);--edge:#fff;
+  --tint:rgba(23,21,28,.2);--tint-line:rgba(255,255,255,.22);
+  --raise:#fff;--lift:0 24px 40px -26px rgba(10,5,30,.8);--hover:#F6F3FF;
+  --mark:#FFD08A;--kick:#FFD08A;--muted:#C7BCEB;--bar:#FFD08A;
+  --chip:#fff;--chip-fg:var(--ink);--pill:#fff;
+  --btn:#fff;--btn-fg:var(--ink);--btn-hover:#F1EFF5;--btn-shadow:none;
+  --focus:#fff;--hl:rgba(252,144,0,.5);--bg:var(--violet);
+}
+/* white things: the paper band, and every paper object wherever it lies
+   (a note on the ink band, a white card on violet, the flipped pitch) */
+.paper,.pinned,.sheet,.frame,.calc,.viz,.menu,.browser,.dock,.lit,.note.warn,
+.ink .pitch,.vio .pitch,.vio .card,.vio a.h,.vio .need li,.vio .shots li,.vio .done{
+  --fg:var(--ink);--fg-2:var(--ink-2);--fg-3:var(--ink-3);
+  --rule:var(--line);--edge:var(--ink);
+  --tint:var(--paper-2);--tint-line:var(--line);
+  --raise:var(--paper-2);--lift:none;--hover:var(--board);
+  --mark:var(--ink);--kick:var(--ink-2);--muted:var(--ink-3);--bar:var(--ink-3);
+  --chip:var(--ink);--chip-fg:#fff;--pill:var(--paper-2);
+  --btn:var(--ink);--btn-fg:#fff;--btn-hover:#2C2836;--btn-shadow:0 12px 24px -14px rgba(23,21,28,.8);
+  --focus:var(--ink);--hl:rgba(252,144,0,.28);--bg:#fff;
+  color:var(--ink);
+}
+
+/* ===== base ===== */
+*{box-sizing:border-box;margin:0;padding:0}
+html{-webkit-text-size-adjust:100%;background:var(--ink)}
+@media (prefers-reduced-motion:no-preference){html{scroll-behavior:smooth}}
+body{background:var(--board);background-image:radial-gradient(var(--grain) 1px,transparent 1.2px);background-size:22px 22px;color:var(--ink);font:400 17px/1.55 var(--sans);-webkit-font-smoothing:antialiased;overflow-x:hidden;-webkit-tap-highlight-color:rgba(23,21,28,.12)}
+img{display:block;max-width:100%;height:auto}
+a{color:inherit}
+a,button,summary,label{touch-action:manipulation}
+button{font:inherit;color:inherit}
+address{font-style:normal}
+fieldset{border:0;min-width:0}
+:focus-visible{outline:3px solid var(--focus);outline-offset:3px;border-radius:4px}
+.wrap{max-width:1240px;margin:0 auto;padding-inline:var(--gut)}
+h1,h2,h3{font-family:var(--display);font-weight:800;letter-spacing:-.025em;text-wrap:balance;overflow-wrap:break-word}
+h2{font-size:clamp(1.85rem,6.6vw,3rem);line-height:1.02}
+h3{font-size:1.3rem;line-height:1.15;letter-spacing:-.015em}
+p{text-wrap:pretty}
+/* the header scrolls away, so an anchor only needs a little air */
+[id]{scroll-margin-top:24px}
+.vh{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap}
+.skip{position:absolute;left:8px;top:-80px;z-index:60;background:var(--ink);color:#fff;padding:13px 16px;font-weight:600;text-decoration:none}
+.skip:focus{top:8px}
+@media (min-width:900px){:root{--gut:40px}}
+b,strong{font-weight:600}
+/* what the reader types (code) and what the reader clicks (.ui) */
+code,kbd{font:500 .9em/1 var(--mono);background:var(--tint);border:1px solid var(--tint-line);border-radius:5px;padding:2px 6px;white-space:nowrap}
+.ui{font-weight:600;color:var(--fg);background:linear-gradient(transparent 62%,var(--hl) 0)}
+/* small caps label: over a note, a card, a diagram */
+.k,.post-k{font-size:12px;font-weight:600;letter-spacing:.08em;text-transform:uppercase;color:var(--fg-3)}
+.cap{margin-top:14px;font-size:13px;color:var(--fg-3)}
+figure figcaption{margin-top:14px;font-size:13px;color:var(--fg-3)}
+
+/* the preview strip: assets/site.js adds it under /pin/lab/v3/ only */
+.pv{background:var(--ink);color:var(--on-ink);font:600 12.5px/1.35 var(--sans);text-align:center;padding:7px var(--gut);word-break:break-word;overflow-wrap:anywhere}
+.pv b{color:#fff}
+.pv em{font-style:normal;color:#FFD08A}
+
+/* ===== buttons ===== */
+.cta{display:inline-flex;align-items:center;justify-content:center;background:var(--btn);color:var(--btn-fg);text-decoration:none;font:600 17px/1.2 var(--sans);padding:17px 28px;border-radius:999px;white-space:nowrap;box-shadow:var(--btn-shadow);border:0;cursor:pointer}
+.mo .cta{transition:transform .18s cubic-bezier(.2,.8,.2,1),background-color .18s}
+.cta:hover{background:var(--btn-hover);transform:translateY(-2px)}
+.cta:active{transform:translateY(1px) scale(.98)}
+.cta-sm{position:relative;font-size:14px;padding:10px 16px}
+.calm{font-size:14.5px;line-height:1.45;color:var(--fg-2);max-width:42ch}
+.go{display:grid;gap:10px;justify-items:start;margin-top:26px}
+.more{font-weight:600;text-underline-offset:4px;text-decoration-thickness:1.5px}
+/* a quiet link on a line of its own gets a finger-sized box */
+.go>.more,p.go>.more,.ov-x .more{display:inline-block;padding-block:11px;margin-block:-11px}
+
+/* ===== opener: header and hero ===== */
+.open-top{background:var(--orange);position:relative;z-index:30}
+.open{background:var(--orange)}
+.top{position:relative;display:flex;align-items:center;justify-content:space-between;gap:12px;padding-block:12px}
+.mark{position:relative;display:flex;align-items:center;gap:8px;font:800 20px/1 var(--display);letter-spacing:-.02em;text-decoration:none}
+.mark span{display:grid;place-items:center;width:34px;height:34px;border-radius:50%;background:#fff}
+.mark img{width:22px;height:22px}
+.nav{display:none}
+.top-r{display:flex;align-items:center;gap:8px}
+.menu-btn{position:relative;display:inline-flex;align-items:center;gap:8px;background:none;border:1.5px solid var(--ink);border-radius:999px;padding:8px 14px;font:600 14px/1.2 var(--sans);cursor:pointer}
+.menu-btn i{position:relative;width:14px;height:2px;background:var(--ink);border-radius:2px}
+.menu-btn i::before,.menu-btn i::after{content:"";position:absolute;left:0;width:14px;height:2px;background:var(--ink);border-radius:2px}
+.menu-btn i::before{top:-5px}
+.menu-btn i::after{top:5px}
+/* the two header buttons and the mark look 35px high and take a 44px tap */
+.mark::after,.menu-btn::after,.cta-sm::after{content:"";position:absolute;left:0;right:0;top:50%;height:44px;margin-top:-22px}
+.menu{position:absolute;left:0;right:0;top:calc(100% - 4px);z-index:40;background:var(--paper);border-radius:14px;box-shadow:0 24px 48px -20px rgba(23,21,28,.55);padding:8px}
+.menu[hidden]{display:none}
+.menu a{display:block;padding:13px 14px;border-radius:8px;font-weight:600;text-decoration:none}
+.menu a:hover,.menu a[aria-current]{background:var(--paper-2)}
+@media (min-width:900px){
+  .nav{display:flex;gap:24px;align-items:center;margin-left:auto;margin-right:12px;font-size:15px;font-weight:600}
+  .nav a{text-decoration:none;padding:6px 0;border-bottom:2px solid transparent;white-space:nowrap}
+  .nav a:hover,.nav a[aria-current]{border-bottom-color:var(--ink)}
+  .menu-btn,.menu{display:none!important}
+}
+@media (min-width:900px) and (max-width:1099px){.nav{gap:16px;font-size:14.5px;margin-right:4px}}
+
+.hero{display:grid;gap:30px;padding-block:10px 56px}
+.hero>*{min-width:0}
+/* the eyebrow doubles as the breadcrumb: "Guides · Affiliate basics" */
+.eyebrow{font-size:14px;font-weight:600}
+.eyebrow a{position:relative;text-underline-offset:3px;text-decoration-thickness:1.5px}
+.eyebrow a::after{content:"";position:absolute;left:-4px;right:-4px;top:50%;height:44px;margin-top:-22px}
+.hero h1{font-size:clamp(2.5rem,10.4vw,5rem);line-height:.96;margin-block:8px 16px}
+/* a headline of more than about 32 characters */
+.hero.long h1{font-size:clamp(2.1rem,8.6vw,3.6rem);line-height:.98}
+.lede{font-size:clamp(1.06rem,2.6vw,1.2rem);max-width:36ch}
+.hero.long .lede{max-width:40ch}
+.hero .go{margin-top:22px}
+/* small facts under the lede: reading time, what you need */
+.facts{display:flex;flex-wrap:wrap;gap:6px 16px;font-size:14px;color:var(--fg-3)}
+.hero .facts{gap:8px;margin-top:20px}
+.hero .facts span{border:1.5px solid var(--ink);border-radius:999px;padding:5px 12px;font-weight:600;line-height:1.3}
+.hero figcaption{margin-top:12px}
+.hero .nets{margin-top:22px}
+@media (min-width:900px){
+  .hero{grid-template-columns:minmax(0,1fr) minmax(0,1.05fr);column-gap:64px;align-items:center;padding-block:40px 80px}
+  .hero h1{font-size:clamp(3.4rem,4.8vw,4.3rem)}
+  .hero.long h1{font-size:clamp(2.75rem,3.9vw,3.5rem)}
+}
+/* the plain head of a legal page: no picture, no button */
+.hero.plain{display:block;padding-block:8px 40px}
+.hero.plain h1{font-size:clamp(2.2rem,8.4vw,3.6rem);line-height:1;margin-bottom:12px}
+@media (min-width:900px){.hero.plain{padding-block:28px 56px}}
+
+/* ===== paper notes ===== */
+/* the taped note: a table of contents, an at-a-glance list, a blog post */
+.pinned{position:relative;background:var(--paper);padding:24px 18px 18px;border-radius:3px;box-shadow:var(--shadow);transform:rotate(.8deg)}
+.pinned::before{content:"";position:absolute;top:-9px;left:50%;width:84px;height:20px;margin-left:-42px;background:var(--tape);transform:rotate(-3deg)}
+.ov-k{display:flex;justify-content:space-between;align-items:baseline;gap:12px;font-size:12px;font-weight:600;letter-spacing:.08em;text-transform:uppercase;color:var(--ink-3);margin-bottom:8px}
+.ov{list-style:none;display:grid}
+.ov li+li{border-top:1px dashed var(--line)}
+.ov a{display:grid;grid-template-columns:34px minmax(0,1fr) auto;gap:2px 12px;align-items:start;padding:12px 2px;text-decoration:none}
+.ov a:hover .ov-t{text-decoration:underline;text-underline-offset:3px}
+.ov .n{grid-row:span 2;width:32px;height:32px;border-radius:50%;background:var(--ink);color:#fff;font:800 15px/32px var(--display);text-align:center}
+.ov-t{font-weight:600;line-height:1.3}
+.ov-g{grid-column:2;font-size:14px;line-height:1.4;color:var(--ink-2)}
+.ov .t{grid-column:3;grid-row:1;font-size:12.5px;font-weight:600;color:var(--ink-3);white-space:nowrap;padding-top:2px}
+.ov-x{display:flex;flex-wrap:wrap;gap:6px 18px;margin-top:10px;padding-top:12px;border-top:1.5px solid var(--ink);font-size:14.5px}
+/* at a glance: label left, answer right */
+.glance>div{display:grid;grid-template-columns:104px minmax(0,1fr);gap:4px 14px;align-items:baseline;padding:12px 2px}
+.glance>div+div{border-top:1px dashed var(--line)}
+.glance dt{font-size:12px;font-weight:600;letter-spacing:.07em;text-transform:uppercase;color:var(--ink-3)}
+.glance dd{font-size:15.5px;line-height:1.4}
+.glance dd b{display:block}
+/* the note as a blog post on somebody's site (Georgia on purpose) */
+.post-h{font:700 clamp(1.3rem,4.6vw,1.6rem)/1.15 Georgia,'Times New Roman',serif;letter-spacing:-.01em;margin:6px 0 10px}
+.post-p{font:400 15.5px/1.6 Georgia,'Times New Roman',serif;color:var(--ink-2);max-width:52ch}
+.post .row3{--myfeeds-grid-padding-y:18px;--myfeeds-card-shadow:0 0 5px 2px rgba(0,0,0,.06);--myfeeds-card-hover-shadow:0 0 13px 3px rgba(0,0,0,.09)}
+.links .pinned{transform:rotate(-1deg)}
+.linklist{list-style:none;display:grid;gap:9px;margin-top:16px;font:400 15.5px/1.5 Georgia,'Times New Roman',serif}
+.linklist li{padding-left:18px;position:relative}
+.linklist li::before{content:"";position:absolute;left:2px;top:.62em;width:6px;height:6px;border-radius:50%;background:var(--ink-3)}
+.linklist span{color:#2546B5;text-decoration:underline;text-underline-offset:2px}
+/* the sheet: "In short", an offer, a list worth keeping */
+.sheet{position:relative;background:var(--paper);border-radius:3px;padding:28px 22px 26px;box-shadow:var(--shadow);transform:rotate(-.6deg);max-width:560px}
+.sheet::before{content:"";position:absolute;top:-9px;left:50%;width:84px;height:20px;margin-left:-42px;background:var(--tape);transform:rotate(3deg)}
+.sheet .k{margin-bottom:14px}
+.sheet ul{list-style:none;display:grid;gap:14px}
+.sheet li{padding-left:30px;position:relative;line-height:1.45}
+.sheet li::before{content:"";position:absolute;left:3px;top:.45em;width:13px;height:7px;border-left:2.5px solid var(--ink);border-bottom:2.5px solid var(--ink);transform:rotate(-45deg)}
+.sheet li span{color:var(--ink-2)}
+/* a picture or video in a paper frame, taped at both corners */
+.frame{position:relative;background:var(--paper);padding:10px 10px 14px;border-radius:3px;box-shadow:var(--shadow);max-width:960px}
+.frame::before,.frame::after{content:"";position:absolute;top:-9px;width:70px;height:20px;background:var(--tape)}
+.frame::before{left:18px;transform:rotate(-6deg)}
+.frame::after{right:18px;transform:rotate(5deg)}
+.frame img,.frame video{width:100%;border-radius:2px;background:var(--paper-2)}
+/* a picture taped up as a note, its caption on the paper */
+.pinned.pic{padding:10px 10px 12px}
+.pinned.pic img{width:100%;border-radius:2px}
+.pinned.pic figcaption{margin-top:10px}
+.close .pinned{transform:rotate(1.4deg)}
+/* on the white band a white note needs an edge */
+.paper .pinned,.paper .sheet,.paper .frame,.paper .calc{box-shadow:0 0 0 1px var(--line),var(--shadow)}
+.ink .pinned,.ink .sheet,.ink .frame,.ink .calc{box-shadow:0 24px 48px -24px rgba(0,0,0,.7)}
+
+/* ===== bands ===== */
+.band{padding-block:56px}
+.ink{background:var(--ink);color:#fff}
+.vio{background:var(--violet);color:#fff}
+.paper{background:var(--paper)}
+.head{display:grid;gap:12px;max-width:760px;margin-bottom:30px}
+:where(.head>p){color:var(--fg-2);max-width:56ch}
+.head>p a{font-weight:600;text-underline-offset:3px}
+.kick{font-size:14px;font-weight:600;color:var(--kick)}
+.tone{color:var(--muted)}
+/* a band with a brush mark cuts it at the page edge */
+.clip-x{overflow-x:hidden;overflow-x:clip}
+@media (min-width:900px){.band{padding-block:88px}}
+/* chapter: the heading stays beside the text while it scrolls */
+.chap{display:grid;gap:26px}
+.chap>*{min-width:0}
+.chap>.head{margin-bottom:0}
+/* the reading column of a chapter: text blocks and the things between */
+.col>*+*{margin-top:32px}
+/* text beside a thing (6:5), and text beside a column of notes (7:5) */
+.split{display:grid;gap:36px;align-items:center}
+.split>*,.side>*{min-width:0}
+.side{display:grid;gap:36px}
+.aside{display:grid;gap:14px;align-content:start}
+@media (min-width:900px){
+  .split{grid-template-columns:minmax(0,6fr) minmax(0,5fr);gap:64px}
+  .split>.head{margin-bottom:0}
+}
+@media (min-width:1000px){
+  .chap{grid-template-columns:minmax(0,4fr) minmax(0,8fr);gap:56px;align-items:start}
+  .chap>.head,.chap>.toc{position:sticky;top:24px}
+  .side{grid-template-columns:minmax(0,7fr) minmax(0,5fr);gap:56px}
+}
+
+/* ===== reading column =====
+   Rules for plain p, li inside a block are written :where(.block p): they
+   weigh nothing, so .note, .k, .cap, .calm ... always win over them, no
+   matter which comes first in this file. */
+/* 58ch of this typeface is about 84 letters at 18px: the longest line a
+   reader follows without losing the next one (66ch would be about 96) */
+.prose{max-width:58ch;font-size:17px;line-height:1.65}
+.prose>*+*{margin-top:1.05em}
+:where(.prose p,.prose li){color:var(--fg-2)}
+.prose>h3{margin-top:1.9em}
+.prose>h3+*{margin-top:.5em}
+.prose :where(a:not(.cta)){font-weight:600;color:var(--fg);text-underline-offset:3px}
+.prose :where(strong,b){color:var(--fg)}
+@media (min-width:900px){.prose{font-size:18px}}
+
+/* ===== lists ===== */
+/* ticks; a plain ul inside .prose is one too */
+.ticks,.prose ul:not([class]){list-style:none;display:grid;gap:10px}
+.ticks>li,.prose ul:not([class])>li{position:relative;padding-left:30px}
+.ticks>li::before,.prose ul:not([class])>li::before{content:"";position:absolute;left:3px;top:.5em;width:13px;height:7px;border-left:2.5px solid var(--mark);border-bottom:2.5px solid var(--mark);transform:rotate(-45deg)}
+.ticks{color:var(--fg-2)}
+.ticks b{color:var(--fg)}
+/* small number circles; a plain ol inside .prose is one too */
+.nums,.prose ol:not([class]){list-style:none;counter-reset:n;display:grid;gap:12px}
+.nums>li,.prose ol:not([class])>li{position:relative;padding-left:38px}
+.nums>li::before,.prose ol:not([class])>li::before{counter-increment:n;content:counter(n);position:absolute;left:0;top:.14em;width:26px;height:26px;border-radius:50%;background:var(--chip);color:var(--chip-fg);font:800 13px/26px var(--display);text-align:center}
+/* yes and no lines of an honest comparison */
+.yn{list-style:none;display:grid;gap:10px}
+.yn li{position:relative;padding-left:30px}
+.yn .y::before{content:"";position:absolute;left:3px;top:.5em;width:13px;height:7px;border-left:2.5px solid var(--mark);border-bottom:2.5px solid var(--mark);transform:rotate(-45deg)}
+.yn .n::before,.yn .n::after{content:"";position:absolute;left:2px;top:.74em;width:16px;height:2.5px;background:var(--fg-3);transform:rotate(45deg)}
+.yn .n::after{transform:rotate(-45deg)}
+/* problems: ink circles, a heading and one sentence each */
+.stakes{list-style:none;display:grid;gap:20px;counter-reset:k}
+.stakes li{position:relative;padding-left:46px}
+.stakes li::before{counter-increment:k;content:counter(k);position:absolute;left:0;top:0;width:32px;height:32px;border-radius:50%;background:var(--chip);color:var(--chip-fg);font:800 15px/32px var(--display);text-align:center}
+.stakes h3{margin-bottom:4px}
+:where(.stakes p){color:var(--fg-2);font-size:16px}
+@media (min-width:900px){.stakes.row{grid-template-columns:repeat(3,minmax(0,1fr));gap:32px}}
+.ba+.stakes{margin-top:64px}
+/* steps: orange circles, three across on a desktop */
+.steps{list-style:none;display:grid;gap:18px;counter-reset:s;max-width:1000px}
+.steps li{position:relative;padding-left:46px;color:var(--fg-2)}
+.steps li::before{counter-increment:s;content:counter(s);position:absolute;left:0;top:-2px;width:32px;height:32px;border-radius:50%;background:var(--orange);color:var(--ink);font:800 15px/32px var(--display);text-align:center}
+.steps b{color:var(--fg)}
+.steps a{font-weight:600;color:var(--fg);text-underline-offset:3px}
+@media (min-width:900px){.steps{grid-template-columns:repeat(3,minmax(0,1fr));gap:32px}}
+/* sub-steps: outlined circles joined by a line */
+.sub{list-style:none;counter-reset:s;display:grid;gap:22px;max-width:760px}
+.sub>li{position:relative;padding-left:48px}
+.sub>li::before{counter-increment:s;content:counter(s);position:absolute;left:0;top:-3px;width:32px;height:32px;border-radius:50%;border:2px solid var(--fg);color:var(--fg);font:800 15px/28px var(--display);text-align:center}
+.sub>li:not(:last-child)::after{content:"";position:absolute;left:15px;top:34px;bottom:-20px;width:2px;background:var(--rule)}
+.sub h3{font-size:1.15rem;margin-bottom:4px}
+:where(.sub p){color:var(--fg-2);font-size:16px;max-width:62ch}
+:where(.sub p+p){margin-top:8px}
+.sub :where(a:not(.cta)){font-weight:600;color:var(--fg);text-underline-offset:3px}
+.sub>li>:where(figure,.viz,.nets,.ticks){margin-top:14px}
+/* "have this at hand" cards */
+.need{display:grid;gap:14px;list-style:none}
+.need li{position:relative;background:var(--raise);border-radius:8px;padding:16px 16px 16px 50px;box-shadow:var(--lift);font-size:16px;color:var(--fg-2)}
+.need li b{display:block;color:var(--fg);font-size:16.5px;margin-bottom:2px}
+.need li::before{content:"";position:absolute;left:18px;top:21px;width:14px;height:7px;border-left:2.5px solid var(--mark);border-bottom:2.5px solid var(--mark);transform:rotate(-45deg)}
+.need a{font-weight:600;text-underline-offset:3px}
+@media (min-width:900px){.need{grid-template-columns:repeat(3,minmax(0,1fr))}}
+
+/* ===== pills and labels ===== */
+.meta{display:flex;flex-wrap:wrap;align-items:flex-start;gap:8px 10px;margin-top:4px}
+/* the goal of a step; also the card that explains a term */
+.goal{display:grid;gap:3px;font-size:15px;line-height:1.4;border-radius:10px;padding:10px 14px 11px;background:var(--tint);border:1px solid var(--tint-line);color:var(--fg);max-width:46ch}
+.goal>b{display:block;color:var(--fg-3);font-size:12px;line-height:1.2;letter-spacing:.07em;text-transform:uppercase}
+.goal a{font-weight:600;text-underline-offset:3px}
+.time{display:inline-flex;align-items:center;font-size:14.5px;line-height:1.35;border-radius:999px;padding:7px 13px;background:var(--orange);color:var(--ink);font-weight:600}
+.tag{display:inline-block;justify-self:start;font-size:11.5px;font-weight:600;letter-spacing:.06em;text-transform:uppercase;background:var(--orange);color:var(--ink);border-radius:999px;padding:3px 9px}
+.pill{display:inline-block;justify-self:start;font-size:12px;font-weight:600;letter-spacing:.05em;text-transform:uppercase;border-radius:999px;padding:4px 10px;background:var(--paper-2);color:var(--ink-2)}
+.pill.free{background:#E3F3EA;color:var(--ok)}
+.pill.paid{background:var(--btn);color:var(--btn-fg)}
+/* pills that go somewhere: networks, topics. .jump = further down this page */
+.nets{display:flex;flex-wrap:wrap;gap:8px}
+.nets a{display:inline-flex;align-items:center;gap:8px;min-height:44px;background:var(--pill);color:var(--ink);text-decoration:none;font-weight:600;font-size:15px;line-height:1.2;border-radius:999px;padding:10px 15px}
+.nets a::after{content:"";flex:none;width:6px;height:6px;border-top:2px solid currentColor;border-right:2px solid currentColor;transform:rotate(45deg);opacity:.55}
+.nets.jump a::after{transform:rotate(135deg);margin-top:-4px}
+.nets a:hover{background:#FFE7C4}
+.nets a small{font-size:12.5px;font-weight:600;color:var(--ink-3)}
+.nets a.all{background:none;color:var(--fg);box-shadow:inset 0 0 0 1.5px var(--edge)}
+.nets a.all:hover{background:var(--hover)}
+.ink .nets a.all,.vio .nets a.all{box-shadow:inset 0 0 0 1.5px rgba(255,255,255,.5)}
+.ink .nets a.all:hover,.vio .nets a.all:hover{background:rgba(255,255,255,.1)}
+
+/* ===== notes: tip (calm), warn (read this first), done (where you are) ===== */
+.note{margin-top:12px;border-radius:8px;padding:13px 15px;font-size:15px;line-height:1.5;color:var(--fg-2);background:var(--tint);border-left:4px solid var(--bar);max-width:66ch}
+.note b:first-child{color:var(--fg)}
+.note a{font-weight:600;color:var(--fg);text-underline-offset:3px}
+.note.warn{background:#FFF4EA;border-left-color:var(--warn)}
+.note.warn b:first-child{color:var(--warn)}
+.aside .note{margin-top:0}
+.done{display:flex;flex-wrap:wrap;align-items:center;gap:12px;margin-top:28px;max-width:760px;background:#EAF6EF;border:1px solid rgba(30,122,82,.25);border-radius:10px;padding:14px 16px;font-size:15.5px;color:var(--ink)}
+.done::before{content:"";flex:none;width:12px;height:6px;margin:0 6px 4px 4px;border-left:2.5px solid var(--ok);border-bottom:2.5px solid var(--ok);transform:rotate(-45deg)}
+.done a{font-weight:600;text-underline-offset:3px;white-space:nowrap;margin-left:auto;padding-block:11px;margin-block:-11px}
+.ink .done{background:rgba(30,122,82,.2);border-color:rgba(120,210,160,.35);color:#fff}
+.ink .done::before{border-color:#7FD3A6}
+/* a sentence worth the big type, and a reader's question in their words */
+.pull{font:800 clamp(1.35rem,4.6vw,1.75rem)/1.12 var(--display);letter-spacing:-.02em;color:var(--fg);padding-left:18px;border-left:4px solid var(--orange);max-width:26ch;text-wrap:balance}
+.ask{display:grid;gap:4px;border-radius:8px;padding:14px 16px 15px;background:var(--tint);border:1px solid var(--tint-line);max-width:60ch}
+.ask p{font:400 1.02em/1.5 Georgia,'Times New Roman',serif;color:var(--fg)}
+/* spacing of the blocks that sit between paragraphs */
+.prose>:is(figure,.note,.goal,.ask,.pull,.pitch,.calc,.viz,.check,.done,.cmp-wrap){margin-block:1.5rem}
+.prose>:first-child{margin-top:0}
+.prose>:last-child{margin-bottom:0}
+
+/* ===== cards ===== */
+/* one card: white on board and violet, tinted on paper, glass on ink */
+.card{display:grid;gap:8px;align-content:start;background:var(--raise);border-radius:10px;padding:20px 18px;box-shadow:var(--lift)}
+.card h3{font-size:1.2rem}
+:where(.card p,.card li){color:var(--fg-2);font-size:15.5px}
+.card :where(a:not(.cta)){font-weight:600;color:var(--fg);text-underline-offset:3px}
+.card.lit{background:#fff}
+.ink .card.lit{box-shadow:none}
+/* the one of two that we would pick */
+.card.pick{outline:1.5px solid var(--edge);outline-offset:-1.5px}
+.card .go{margin-top:4px}
+.duo{display:grid;gap:14px}
+@media (min-width:700px){.duo{grid-template-columns:repeat(2,minmax(0,1fr))}}
+.duo+.note{margin-top:22px}
+/* a card that is one link: bold title, a sentence, the underlined way on */
+a.h{display:grid;gap:6px;align-content:start;background:var(--raise);color:var(--fg);text-decoration:none;border-radius:10px;padding:20px 18px;box-shadow:var(--lift)}
+a.h:hover{background:var(--hover)}
+.h :where(b,h3){font:800 1.15rem/1.2 var(--display);letter-spacing:-.015em}
+.h>span:not(.k){font-size:15px;color:var(--fg-2)}
+.h u{font-weight:600;text-underline-offset:3px;text-decoration-thickness:1.5px;word-break:break-word;margin-top:2px}
+.h .k{display:flex;justify-content:space-between;gap:10px}
+/* on violet every card is white paper */
+.vio .card,.vio a.h,.vio .need li,.vio .shots li{background:#fff;box-shadow:0 24px 40px -26px rgba(10,5,30,.8)}
+.vio a.h:hover{background:#F6F3FF}
+/* three across: "where to go next", help */
+.help{display:grid;gap:14px}
+@media (min-width:700px){.help{grid-template-columns:repeat(3,minmax(0,1fr))}}
+/* a shelf of guides: fills its row, good with 4 and with 24 */
+.guides{display:grid;gap:14px;grid-template-columns:repeat(auto-fill,minmax(min(100%,250px),1fr))}
+/* two across beside a topic heading; with an odd count the first leads */
+.guides.two{grid-template-columns:minmax(0,1fr)}
+@media (min-width:640px){
+  .guides.two{grid-template-columns:repeat(2,minmax(0,1fr))}
+  .guides.two>.h:first-child:nth-last-child(odd){grid-column:1/-1}
+  .guides.two>.h:first-child:nth-last-child(odd) :where(b,h3){font-size:1.4rem;max-width:24ch}
+  .guides.two>.h:first-child:nth-last-child(odd)>span:not(.k){max-width:56ch}
+}
+/* the guide to read first: a taped note that is one link */
+.start{display:grid;gap:10px}
+.start h2,.start h3{font-size:clamp(1.5rem,5vw,1.9rem);line-height:1.05;letter-spacing:-.02em}
+.start h2 a,.start h3 a{text-decoration:none}
+.start h2 a::after,.start h3 a::after{content:"";position:absolute;inset:0}
+:where(.start p){color:var(--ink-2);font-size:16px}
+.start .ticks{font-size:15.5px}
+.start u{font-weight:600;text-underline-offset:4px;text-decoration-thickness:1.5px}
+.start:hover u{text-decoration-thickness:2.5px}
+/* the end of a chapter: what comes next */
+.keep{display:flex;flex-wrap:wrap;align-items:baseline;justify-content:space-between;gap:6px 18px;margin-top:34px;padding-top:14px;border-top:1.5px solid var(--edge);max-width:66ch;font-size:15.5px}
+.keep a{display:inline-flex;align-items:center;gap:9px;font-weight:600;text-underline-offset:4px;text-decoration-thickness:1.5px;padding-block:11px;margin-block:-11px}
+.keep a::after{content:"";flex:none;width:7px;height:7px;border-top:2px solid currentColor;border-right:2px solid currentColor;transform:rotate(45deg)}
+.keep.down a::after{transform:rotate(135deg);margin-top:-5px}
+
+/* ===== the mid-page offer: an ink card, flipped to white on dark bands ===== */
+.pitch{display:grid;gap:12px;justify-items:start;max-width:66ch;background:var(--ink);color:#fff;border-radius:10px;padding:24px 22px;box-shadow:0 30px 60px -30px rgba(23,21,28,.8)}
+.pitch h3{font-size:1.45rem;line-height:1.1}
+:where(.pitch p){color:var(--fg-2);font-size:16px}
+.pitch .cta{white-space:normal;text-align:center;margin-top:4px}
+.pitch .calm{color:#A7A2B5;font-size:14.5px}
+.ink .pitch,.vio .pitch{background:#fff;color:var(--ink)}
+.ink .pitch .calm,.vio .pitch .calm{color:var(--ink-2)}
+
+/* ===== worked example: a taped slip with the sum on it ===== */
+.calc{position:relative;background:var(--paper);border-radius:3px;padding:24px 18px 16px;box-shadow:var(--shadow);transform:rotate(-.6deg);max-width:460px}
+.calc::before{content:"";position:absolute;top:-9px;left:28px;width:76px;height:20px;background:var(--tape);transform:rotate(-4deg)}
+.calc figcaption{margin:0 0 6px;font-size:12px;font-weight:600;letter-spacing:.08em;text-transform:uppercase;color:var(--ink-3)}
+.calc table{width:100%;border-collapse:collapse}
+.calc th,.calc td{padding:10px 0;border-top:1px dashed var(--line);vertical-align:baseline;text-align:left;font-size:15.5px;line-height:1.35}
+.calc tbody tr:first-child>*{border-top:0}
+.calc th{font-weight:400;color:var(--ink-2);padding-right:14px}
+.calc th span{display:block;font-size:13px;color:var(--ink-3)}
+.calc td{text-align:right;white-space:nowrap;font:500 15px/1.35 var(--mono);font-variant-numeric:tabular-nums;color:var(--ink)}
+.calc tfoot th,.calc tfoot td{border-top:1.5px solid var(--ink);padding-top:12px;font-weight:600;color:var(--ink)}
+.calc tfoot td{font:700 18px/1.2 var(--mono)}
+.calc .cap{margin-top:8px}
+
+/* ===== a list to tick off (looks only, nothing is stored) ===== */
+.check{max-width:66ch}
+.check ul{list-style:none;margin-top:8px;border-top:1.5px solid var(--edge)}
+.check li{border-bottom:1px solid var(--rule)}
+.check label{display:flex;gap:12px;align-items:flex-start;min-height:44px;padding:10px 2px;cursor:pointer;font-size:16px;line-height:1.45;color:var(--fg)}
+.check input{-webkit-appearance:none;appearance:none;flex:none;position:relative;width:22px;height:22px;margin-top:1px;border:2px solid var(--fg);border-radius:6px;background:none;cursor:pointer}
+.check input:checked{background:var(--chip);border-color:var(--chip)}
+.check input:checked::after{content:"";position:absolute;left:3.5px;top:4px;width:11px;height:5.5px;border-left:2.5px solid var(--chip-fg);border-bottom:2.5px solid var(--chip-fg);transform:rotate(-45deg)}
+.check input:checked+span{color:var(--fg-3);text-decoration:line-through}
+
+/* ===== comparison table: only the table scrolls, never the page ===== */
+.cmp-wrap{overflow-x:auto;-webkit-overflow-scrolling:touch;margin-inline:calc(-1 * var(--gut));padding-inline:var(--gut)}
+.cmp{width:100%;min-width:600px;border-collapse:separate;border-spacing:0;border-top:1.5px solid var(--edge);font-size:15.5px;line-height:1.45}
+.cmp th,.cmp td{text-align:left;vertical-align:top;padding:14px 18px 14px 0;border-bottom:1px solid var(--rule)}
+.cmp thead th{font-size:12px;font-weight:600;letter-spacing:.07em;text-transform:uppercase;color:var(--fg-3)}
+.cmp tbody th{font-weight:600;color:var(--fg);width:24%}
+.cmp td{color:var(--fg-2)}
+/* our own column: quietly tinted, not orange */
+.cmp .own{background:var(--tint);padding-left:14px;color:var(--fg)}
+.cmp .y,.cmp .n{position:relative;padding-left:28px}
+.cmp .own.y,.cmp .own.n{padding-left:40px}
+.cmp .y::before{content:"";position:absolute;left:3px;top:1.25em;width:13px;height:7px;border-left:2.5px solid var(--mark);border-bottom:2.5px solid var(--mark);transform:rotate(-45deg)}
+.cmp .n::before,.cmp .n::after{content:"";position:absolute;left:2px;top:1.5em;width:16px;height:2.5px;background:var(--fg-3);transform:rotate(45deg)}
+.cmp .n::after{transform:rotate(-45deg)}
+.cmp .own.y::before{left:15px}
+.cmp .own.n::before,.cmp .own.n::after{left:14px}
+/* the narrow table: two columns, fits a phone */
+.cmp.slim{min-width:0}
+.cmp.slim tbody th{width:40%;font:500 13.5px/1.6 var(--mono);word-break:break-word;overflow-wrap:anywhere}
+.swipe{font-size:13px;color:var(--fg-3);margin-top:10px}
+/* on a phone the row names stay put while the columns slide under them */
+@media (max-width:699px){
+  .cmp:not(.slim) tbody th,.cmp:not(.slim) thead th:first-child{position:sticky;left:0;z-index:1;background:var(--bg);box-shadow:calc(-1 * var(--gut)) 0 0 var(--bg),1px 0 0 var(--rule)}
+  .cmp:not(.slim) tbody th,.cmp:not(.slim) thead th:first-child{width:112px;min-width:112px;padding-right:12px}
+}
+@media (min-width:700px){.swipe{display:none}}
+@media (min-width:900px){.cmp-wrap{margin-inline:0;padding-inline:0}}
+
+/* ===== questions ===== */
+/* asked in the reader's words, answered in the open: the first paragraph
+   is the answer, the rest is why */
+.qa{max-width:760px;border-top:1.5px solid var(--edge)}
+.qa>div{padding:22px 0;border-bottom:1px solid var(--rule)}
+.qa h3{font-size:1.25rem;line-height:1.2;margin-bottom:8px}
+:where(.qa p){color:var(--fg-2);font-size:16.5px;line-height:1.6;max-width:64ch}
+:where(.qa p+p){margin-top:10px}
+.qa h3+p{color:var(--fg)}
+.qa :where(a){font-weight:600;color:var(--fg);text-underline-offset:3px}
+/* the folding list for side questions */
+.faq{max-width:780px;border-top:1.5px solid var(--edge)}
+.faq details{border-bottom:1px solid var(--rule)}
+.faq summary{cursor:pointer;font-weight:600;font-size:17.5px;line-height:1.35;list-style:none;display:flex;justify-content:space-between;align-items:center;gap:16px;padding:17px 0}
+.faq summary::-webkit-details-marker{display:none}
+.faq summary::after{content:"+";flex:none;width:30px;height:30px;border-radius:50%;background:var(--tint);font:500 20px/29px var(--sans);text-align:center}
+.mo .faq summary::after{transition:transform .25s cubic-bezier(.2,.8,.2,1)}
+.faq details[open] summary::after{transform:rotate(45deg)}
+.faq .a{padding-bottom:20px;color:var(--fg-2);font-size:16px;max-width:64ch}
+.faq .a p+p{margin-top:8px}
+.faq .a a{font-weight:600;text-underline-offset:3px;color:var(--fg)}
+.faq .where{display:inline-block;font-size:12px;font-weight:600;letter-spacing:.05em;text-transform:uppercase;color:var(--fg-3);margin-right:6px}
+/* a small heading between two kinds of questions */
+.sub-h{font-size:1.3rem;margin:44px 0 14px}
+
+/* ===== sources at the end of a guide ===== */
+.sources{max-width:66ch;margin-top:44px;padding-top:16px;border-top:1px solid var(--rule);font-size:13.5px;line-height:1.5;color:var(--fg-3)}
+.sources ol{list-style:none;counter-reset:q;display:grid;gap:6px;margin-top:8px}
+.sources li{position:relative;padding-left:26px;word-break:break-word;overflow-wrap:anywhere}
+.sources li::before{counter-increment:q;content:counter(q);position:absolute;left:0;top:0;font:500 12px/1.7 var(--mono)}
+.sources a{color:var(--fg-2);text-underline-offset:3px}
+
+/* ===== pictures ===== */
+.shot img{width:100%;border-radius:6px;box-shadow:0 24px 48px -24px rgba(23,21,28,.55)}
+.ink .shot img,.vio .shot img{box-shadow:0 24px 48px -24px rgba(0,0,0,.7)}
+/* numbered screenshot cards */
+.shots{list-style:none;counter-reset:f;display:grid;gap:22px}
+.shots li{background:var(--raise);border-radius:10px;box-shadow:var(--lift);padding:16px;display:flex;flex-direction:column;gap:12px;min-width:0}
+.shots h3{display:flex;align-items:center;gap:10px;font-size:1.15rem}
+.shots h3::before{counter-increment:f;content:counter(f);flex:none;width:28px;height:28px;border-radius:50%;background:var(--orange);color:var(--ink);font:800 14px/28px var(--display);text-align:center}
+:where(.shots p){font-size:15.5px;color:var(--fg-2)}
+.shots figure{min-width:0;margin-block:auto}
+.shots img{width:100%;border-radius:6px;border:1px solid var(--line);background:var(--paper-2)}
+.shots figcaption{margin-top:6px;font-size:12.5px}
+@media (min-width:700px){.shots{grid-template-columns:repeat(2,minmax(0,1fr))}}
+/* a screenshot in a browser window */
+.browser{background:#fff;border-radius:10px;overflow:hidden;box-shadow:0 30px 60px -28px rgba(23,21,28,.6),0 1px 2px rgba(23,21,28,.12)}
+.bbar{display:flex;align-items:center;gap:6px;padding:8px 10px;background:var(--paper-2);border-bottom:1px solid var(--line)}
+.bbar i{width:9px;height:9px;border-radius:50%;background:#D3D0DA}
+.bbar span{margin-left:8px;flex:1;min-width:0;background:#fff;border:1px solid var(--line);border-radius:999px;padding:4px 12px;font:500 12px/1.2 var(--sans);color:var(--ink-2);white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.browser img{width:100%}
+
+/* ===== small diagrams, for things there is no screenshot of ===== */
+.viz{background:#fff;border:1px solid var(--line);border-radius:8px;padding:16px 14px;max-width:760px}
+.viz>.k{margin-bottom:10px}
+.viz>.cap{margin-top:12px}
+/* an address in mono, the part that matters picked out */
+.url{display:block;max-width:none;padding:12px 14px;border-radius:6px;background:var(--paper-2);font:500 13.5px/1.65 var(--mono);color:var(--ink-2);word-break:break-word;overflow-wrap:anywhere}
+.url b,.url-key b{font:700 13.5px/1.3 var(--mono);color:var(--violet);background:rgba(91,69,168,.1);border-radius:3px;padding:1px 4px;white-space:nowrap}
+.url-key{list-style:none;display:grid;gap:8px;margin-top:12px;font-size:14.5px;line-height:1.45;color:var(--ink-2)}
+/* a way from box to box: stacked on a phone, in a row from 640px */
+.flow{list-style:none;display:grid;gap:34px}
+.flow li{position:relative;display:grid;gap:2px;align-content:start;background:var(--paper-2);border:1.5px solid var(--line);border-radius:8px;padding:12px 14px;font-size:14px;line-height:1.4;color:var(--ink-2)}
+.flow li b{font:800 1.05rem/1.2 var(--display);letter-spacing:-.015em;color:var(--ink)}
+.flow li.dest{background:var(--ink);border-color:var(--ink);color:var(--on-ink)}
+.flow li.dest b{color:#fff}
+.flow li+li::before{content:"";position:absolute;left:50%;top:-30px;width:2px;height:24px;margin-left:-1px;background:var(--ink)}
+.flow li+li::after{content:"";position:absolute;left:50%;top:-16px;width:9px;height:9px;margin-left:-4.5px;border-right:2px solid var(--ink);border-bottom:2px solid var(--ink);transform:rotate(45deg)}
+@media (min-width:640px){
+  .flow{grid-auto-flow:column;grid-auto-columns:minmax(0,1fr);gap:40px}
+  .flow li+li::before{left:-35px;top:50%;width:28px;height:2px;margin:-1px 0 0}
+  .flow li+li::after{left:-17px;top:50%;margin:-4.5px 0 0;transform:rotate(-45deg)}
+}
+/* one row of a feed, field by field */
+.kv>div{display:grid;grid-template-columns:minmax(0,11.5em) minmax(0,1fr);gap:10px;padding:7px 0;border-top:1px dashed var(--line);font:500 13px/1.5 var(--mono);word-break:break-word;overflow-wrap:anywhere}
+.kv>div:first-child{border-top:0}
+.kv dt{color:var(--ink-3)}
+.kv dd{color:var(--ink)}
+/* the row beside the card it turns into */
+.pair{display:grid;gap:18px;align-items:center}
+.pair>*{min-width:0}
+@media (min-width:640px){.pair{grid-template-columns:minmax(0,1.35fr) minmax(0,1fr);gap:26px}}
+
+/* ===== before and after: two notes, a red X and a green check ===== */
+.ba{display:grid;gap:72px;align-items:start}
+.ba>*{min-width:0}
+.links figcaption{padding-right:84px}
+@media (min-width:900px){
+  .ba{grid-template-columns:minmax(0,5fr) minmax(0,6fr);gap:72px}
+  .links figcaption{padding-right:70px}
+}
+/* brush marks, as on the homepage: a ragged mask, and under it a thick
+   stroke that draws in once when the example is on screen. Without motion
+   (no JS, reduced motion) the mark is simply there. --room is how far a
+   mark may reach past its note before it would leave the page. */
+.brush{position:absolute;z-index:3;pointer-events:none;overflow:visible;--room:max(6px,calc((100vw - 1240px) / 2 + var(--gut) - 26px))}
+.brush .rv{fill:none;stroke-width:48;stroke-linecap:round;stroke-linejoin:round}
+.brush-x .rv{stroke:#E0352B}
+.brush-ok .rv{stroke:#22B35F}
+.mo .brush .rv{stroke-dasharray:1 2;stroke-dashoffset:1.2;transition:stroke-dashoffset .34s cubic-bezier(.6,.05,.3,1)}
+.mo .brush-ok .rv{transition-duration:.6s;transition-timing-function:cubic-bezier(.5,0,.25,1)}
+.mo .brush.on .rv{stroke-dashoffset:0}
+.mo .brush.on .rv2{transition-delay:.28s}
+.brush-x{width:112px;height:112px;bottom:-56px;right:calc(-1 * min(56px,var(--room) + 12px))}
+.brush-ok{width:104px;height:104px;top:-48px;left:min(calc(100% - 30px),calc(100% + var(--room) + 2px - 104px))}
+@media (min-width:900px){
+  .brush-x{width:150px;height:150px;bottom:-75px;right:calc(-1 * min(75px,var(--room) + 22px))}
+  .brush-ok{width:112px;height:112px;top:-70px;left:min(calc(100% - 40px),calc(100% + var(--room) + 2px - 112px))}
+  /* side by side, the X has the gap between the notes and no more */
+  .ba .brush-x{--room:8px}
+}
+@media (min-width:1320px){.brush-ok{width:140px;height:140px;top:-61px;left:min(calc(100% - 36px),calc(100% + var(--room) + 16px - 140px))}}
+
+/* ===== legal pages ===== */
+/* the jump list: folded on a phone, open and sticky on a desktop
+   (assets/site.js opens it there; without script it stays a toggle) */
+.toc{font-size:15px}
+.toc summary{display:flex;align-items:center;justify-content:space-between;gap:12px;min-height:44px;cursor:pointer;list-style:none;font-size:12px;font-weight:600;letter-spacing:.08em;text-transform:uppercase;color:var(--fg-3)}
+.toc summary::-webkit-details-marker{display:none}
+.toc summary::after{content:"+";flex:none;width:30px;height:30px;border-radius:50%;background:var(--tint);color:var(--fg);font:500 20px/29px var(--sans);letter-spacing:0;text-align:center}
+.toc details[open] summary::after{transform:rotate(45deg)}
+.toc ol{list-style:none;counter-reset:t;border-top:1.5px solid var(--edge)}
+.toc li{border-bottom:1px solid var(--rule)}
+.toc a{display:flex;gap:10px;align-items:baseline;min-height:44px;padding:11px 2px;text-decoration:none;font-weight:600;line-height:1.35;color:var(--fg-2)}
+.toc a::before{counter-increment:t;content:counter(t);flex:none;width:1.5em;font:500 12.5px/1.6 var(--mono);color:var(--fg-3)}
+.toc a:hover,.toc a[aria-current]{color:var(--fg)}
+.toc a:hover span{text-decoration:underline;text-underline-offset:3px}
+.toc a[aria-current]::before{color:var(--fg);font-weight:700}
+@media (min-width:1000px){
+  .chap>.toc{max-height:calc(100vh - 48px);overflow-y:auto}
+  .js .toc summary{cursor:default;pointer-events:none}
+  .js .toc summary::after{display:none}
+}
+.legal>h2{font-size:clamp(1.45rem,4.6vw,1.9rem);line-height:1.08;margin-top:2em;padding-top:1.1em;border-top:1px solid var(--rule)}
+.legal>h2:first-child{margin-top:0;padding-top:0;border-top:0}
+.legal>h2+*{margin-top:.7em}
+.legal>h3{font-size:1.15rem;line-height:1.2;margin-top:1.6em}
+/* who and where: a controller, a contact */
+.addr{font-size:15.5px;line-height:1.5;max-width:40ch}
+/* position:relative keeps the padded tap area above the next line of the address */
+.addr a{display:inline-block;position:relative;padding-block:11px;margin-block:-11px}
+
+/* ===== the real MyFeeds card =====
+   Markup and CSS copied from the free plugin's frontend, as on the
+   homepage. Every variable is one the card design editor writes. */
+.myfeeds-product-grid{display:flex;flex-wrap:wrap;justify-content:center;gap:var(--myfeeds-grid-gap,16px);padding:var(--myfeeds-grid-padding-y,24px) 0}
+.myfeeds-product-card{position:relative;display:flex;flex-direction:column;text-decoration:none;color:inherit;font-family:var(--myfeeds-card-font,system-ui,-apple-system,"Segoe UI",Roboto,Helvetica,Arial,sans-serif);line-height:1.3;background:var(--myfeeds-card-bg,#fff);border-radius:var(--myfeeds-card-radius,0);overflow:hidden;box-shadow:var(--myfeeds-card-shadow,0 1px 3px rgba(0,0,0,.06));border:var(--myfeeds-card-border-width,0) solid var(--myfeeds-card-border-color,transparent);min-width:0}
+.mo .myfeeds-product-card{transition:transform .25s ease,box-shadow .25s ease,border-radius .25s ease}
+.myfeeds-product-image{position:relative;width:100%;padding-bottom:var(--myfeeds-img-ratio,125%);overflow:hidden;background:var(--myfeeds-img-bg,#f8f8f8)}
+.myfeeds-product-image img{position:absolute;top:0;left:0;width:100%;height:100%;object-fit:var(--myfeeds-img-fit,contain);object-position:center}
+.myfeeds-discount-badge{position:absolute;top:var(--myfeeds-badge-top,3%);left:var(--myfeeds-badge-left,3%);background:var(--myfeeds-badge-bg,#fff);color:var(--myfeeds-badge-color,#e74c3c);padding:6px 16px;border-radius:var(--myfeeds-badge-radius,20px);font-size:var(--myfeeds-badge-size,13px);font-weight:var(--myfeeds-badge-weight,700);z-index:2;letter-spacing:-.3px;box-shadow:0 3px 10px rgba(0,0,0,.2);display:var(--myfeeds-badge-display,block);line-height:1;font-family:var(--myfeeds-badge-font,inherit);text-transform:var(--myfeeds-badge-transform,none)}
+.myfeeds-product-details{padding:var(--myfeeds-details-py,12px) var(--myfeeds-details-px,10px);display:flex;flex-direction:column;flex:1;min-width:0;overflow:hidden}
+.myfeeds-product-brand{display:var(--myfeeds-brand-display,block);font-weight:var(--myfeeds-brand-weight,600);font-size:var(--myfeeds-brand-size,11px);line-height:1.3;margin-bottom:4px;color:var(--myfeeds-brand-color,#222);text-transform:var(--myfeeds-brand-transform,none);letter-spacing:var(--myfeeds-brand-tracking,0);white-space:nowrap;overflow:hidden;text-overflow:ellipsis;font-family:var(--myfeeds-brand-font,inherit)}
+.myfeeds-product-title{display:var(--myfeeds-title-display,block);font-size:var(--myfeeds-title-size,12px);font-weight:var(--myfeeds-title-weight,400);color:var(--myfeeds-title-color,#666);line-height:1.3;margin-bottom:8px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;font-family:var(--myfeeds-title-font,inherit);text-transform:var(--myfeeds-title-transform,none)}
+.myfeeds-product-price{display:var(--myfeeds-price-display,flex);align-items:baseline;gap:8px;margin-bottom:6px;line-height:1.3;flex-wrap:nowrap;overflow:hidden;min-width:0}
+.myfeeds-old-price{text-decoration:line-through;color:var(--myfeeds-old-price-color,#222);font-size:var(--myfeeds-old-price-size,15px);margin-right:4px;font-weight:var(--myfeeds-old-price-weight,700);white-space:nowrap;flex-shrink:0;font-family:var(--myfeeds-old-price-font,inherit)}
+.myfeeds-current-price{font-weight:var(--myfeeds-price-weight,600);color:var(--myfeeds-price-color,#333);font-size:var(--myfeeds-price-size,15px);white-space:nowrap;overflow:hidden;text-overflow:ellipsis;font-family:var(--myfeeds-price-font,inherit)}
+.myfeeds-current-price.has-discount{color:var(--myfeeds-price-discount-color,#e74c3c)}
+.myfeeds-shipping-info{display:var(--myfeeds-shipping-display,block);font-size:var(--myfeeds-shipping-size,10px);line-height:1.3;color:var(--myfeeds-shipping-color,#999);margin-bottom:6px;text-transform:var(--myfeeds-shipping-transform,uppercase);letter-spacing:.3px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;font-family:var(--myfeeds-shipping-font,inherit)}
+.myfeeds-merchant{display:var(--myfeeds-merchant-display,block);font-size:var(--myfeeds-merchant-size,10px);line-height:1.3;color:var(--myfeeds-merchant-color,#666);text-align:right;margin-top:auto;padding-top:4px;text-transform:var(--myfeeds-merchant-transform,uppercase);letter-spacing:.3px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;font-family:var(--myfeeds-merchant-font,inherit)}
+@media (hover:hover){.myfeeds-product-card:hover{transform:scale(var(--myfeeds-card-hover-scale,1.02));box-shadow:var(--myfeeds-card-hover-shadow,0 4px 16px rgba(0,0,0,.12));border-radius:var(--myfeeds-card-hover-radius,4px);z-index:2}}
+/* a card row in the editor's "Clean" look: square images, 2 cards on a
+   phone (the plugin's own phone layout), 3 from 600px */
+.row3,.solo{--myfeeds-grid-gap:10px;--myfeeds-grid-padding-y:0px;--myfeeds-card-radius:8px;--myfeeds-card-hover-radius:8px;--myfeeds-img-ratio:100%;--myfeeds-img-bg:#fff;--myfeeds-card-shadow:0 0 5px 2px rgba(0,0,0,.06),0 18px 30px -18px rgba(23,21,28,.45);--myfeeds-card-hover-shadow:0 0 13px 3px rgba(0,0,0,.09),0 18px 30px -18px rgba(23,21,28,.45);justify-content:flex-start}
+.row3 .myfeeds-product-card{width:calc((100% - var(--myfeeds-grid-gap)) / 2)}
+.row3 .myfeeds-product-card:nth-child(3){display:none}
+@media (min-width:600px){
+  .row3 .myfeeds-product-card{width:calc((100% - 2 * var(--myfeeds-grid-gap)) / 3)}
+  .row3 .myfeeds-product-card:nth-child(3){display:flex}
+}
+@media (min-width:900px){.row3{--myfeeds-grid-gap:14px}}
+@media (min-width:900px) and (max-width:1139px){.hero .row3{--myfeeds-grid-gap:10px;--myfeeds-price-size:13px;--myfeeds-old-price-size:13px}.hero .row3 .myfeeds-product-details{--myfeeds-details-px:8px}}
+/* one card on its own, in a diagram */
+.solo{justify-content:center}
+.solo .myfeeds-product-card{width:min(100%,220px);--myfeeds-card-shadow:0 0 5px 2px rgba(0,0,0,.06),0 14px 24px -16px rgba(23,21,28,.4)}
+
+/* ===== close ===== */
+.close{background:var(--orange);padding-block:60px 68px}
+.close h2{font-size:clamp(2.1rem,8vw,3.9rem);max-width:15ch}
+.close-in{display:grid;gap:40px;align-items:center}
+.close-in>*{min-width:0}
+.next{list-style:none;display:grid;gap:8px;margin-top:22px;font-size:15.5px;max-width:46ch}
+.next li{position:relative;padding-left:26px}
+.next li::before{content:"";position:absolute;left:3px;top:.5em;width:12px;height:6px;border-left:2.5px solid var(--ink);border-bottom:2.5px solid var(--ink);transform:rotate(-45deg)}
+.next+.go{margin-top:14px}
+@media (min-width:900px){.close{padding-block:96px 104px}.close-in{grid-template-columns:minmax(0,1fr) minmax(0,1.1fr);gap:56px}}
+/* the narrow close of a legal page: one line, no offer */
+.close.slim{padding-block:36px 40px}
+.close.slim h2{font-size:clamp(1.3rem,4.4vw,1.7rem);line-height:1.1;max-width:none}
+.close.slim p{margin-top:8px;max-width:56ch}
+.close.slim a{font-weight:600;text-underline-offset:4px;text-decoration-thickness:1.5px}
+
+footer{background:var(--ink);color:#A7A2B5;font-size:14px}
+footer .wrap{display:grid;gap:18px;padding-block:36px calc(40px + env(safe-area-inset-bottom))}
+footer .brand{display:grid;gap:4px}
+footer .brand b{font:800 20px/1 var(--display);color:#fff;letter-spacing:-.02em}
+footer nav{display:flex;flex-wrap:wrap;gap:8px 18px}
+footer a{color:#fff;text-underline-offset:3px}
+@media (min-width:900px){footer .wrap{grid-template-columns:minmax(0,3fr) minmax(0,7fr);align-items:start}}
+
+/* ===== phone: the button follows once the hero button has scrolled away.
+   Only on pages that ask for it with <body data-dock>. ===== */
+.dock{display:none}
+body[data-dock] .dock{display:block;position:fixed;left:0;right:0;bottom:0;z-index:20;padding:9px var(--gut) calc(9px + env(safe-area-inset-bottom));background:rgba(255,255,255,.95);border-top:1px solid var(--line);transform:translateY(110%);visibility:hidden}
+.mo body[data-dock] .dock{transition:transform .32s cubic-bezier(.2,.8,.2,1),visibility 0s linear .32s}
+body[data-dock] .dock.on{transform:none;visibility:visible}
+.mo body[data-dock] .dock.on{transition:transform .32s cubic-bezier(.2,.8,.2,1)}
+.dock .cta{width:100%;padding-block:15px}
+.has-dock{scroll-padding-bottom:96px}
+/* the site-wide back-to-top button moves up while the dock is there */
+@media (max-width:899px){.dock-on #to-top{bottom:calc(84px + env(safe-area-inset-bottom))}}
+@media (min-width:900px){body[data-dock] .dock{display:none}}
+
+/* ===== phone tweaks ===== */
+@media (max-width:899px){
+  /* standalone links in lists become finger-sized */
+  footer nav{gap:0 18px}
+  footer nav a{display:inline-flex;align-items:center;min-height:44px}
+  .sources ol{gap:0}
+  .sources a{display:block;position:relative;padding-top:10px}
+  .sources a::after{content:"";position:absolute;inset:0 0 -14px}
+  .sources li{padding-bottom:8px}
+  .sources li::before{top:10px}
+}
+@media (max-width:420px){.hero .cta,.close .cta,.pitch .cta{width:100%}.top .cta-sm{padding:9px 13px}}
+/* below 360px the header button no longer fits beside the menu (the menu has the plans) */
+@media (max-width:359px){.top .cta-sm{display:none}}
+
+
+/* ===== additions after the first two real pages (2026-10-10) ===== */
+/* a slim table whose row heads are words, not column names */
+.cmp.slim.txt tbody th{font:600 15.5px/1.45 var(--sans);word-break:normal;overflow-wrap:break-word}
+/* the swipe hint above a table instead of under it */
+.swipe.top{margin:0 0 10px}
+/* steps that stay in one column, for half-width columns */
+.steps.one{grid-template-columns:minmax(0,1fr)}
+/* one rule, not two, where the sources follow the questions */
+.faq+.sources{border-top:0;padding-top:0;margin-top:30px}
+/* a long source list folds away: <details class="sources"><summary>Sources (26)</summary><ol>...</ol></details> */
+details.sources>summary{display:flex;align-items:center;justify-content:space-between;gap:12px;min-height:44px;cursor:pointer;list-style:none;font-weight:600;color:var(--fg-2)}
+details.sources>summary::-webkit-details-marker{display:none}
+details.sources>summary::after{content:"+";flex:none;width:30px;height:30px;border-radius:50%;background:var(--tint);color:var(--fg);font:500 20px/29px var(--sans);text-align:center}
+details.sources[open]>summary::after{transform:rotate(45deg)}
+/* on a phone the contents note in the hero keeps its titles and drops the second lines */
+@media (max-width:899px){.hero .ov-g{display:none}.hero .ov a{padding:10px 2px;align-items:center}.hero .ov .n{grid-row:auto}}
+
+/* ===== the off switch for motion: keep this the last rule ===== */
+@media (prefers-reduced-motion:reduce){*,*::before,*::after{transition:none!important;animation:none!important}html{scroll-behavior:auto}}

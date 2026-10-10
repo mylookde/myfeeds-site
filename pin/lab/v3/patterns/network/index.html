@@ -1,0 +1,320 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="p:domain_verify" content="0f13dbb87c7b78ab08817667740c2df2"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+<title>AWIN product feed in WordPress - Get the feed link, step by step</title>
+<meta name="description" content="How to get a shop's product feed link from AWIN and add it to WordPress with MyFeeds: what to have ready, where the link is, what it looks like, and what to do if you only have a file.">
+<!-- Preview: lives under /pin/lab/v3/ until it goes live. Going live = move the file and delete the next line. -->
+<meta name="robots" content="noindex, follow">
+<link rel="canonical" href="https://myfeeds.site/pin/lab/v3/patterns/network/">
+<meta name="theme-color" content="#FC9000">
+<meta property="og:type" content="article">
+<meta property="og:site_name" content="MyFeeds">
+<meta property="og:url" content="https://myfeeds.site/pin/lab/v3/patterns/network/">
+<meta property="og:title" content="AWIN product feed in WordPress - Get the feed link, step by step">
+<meta property="og:description" content="Get a shop's product feed link from AWIN and add it to WordPress with MyFeeds, step by step.">
+<meta property="og:image" content="https://myfeeds.site/assets/og-image.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="628">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:url" content="https://myfeeds.site/pin/lab/v3/patterns/network/">
+<meta name="twitter:title" content="AWIN product feed in WordPress - Get the feed link, step by step">
+<meta name="twitter:description" content="Get a shop's product feed link from AWIN and add it to WordPress with MyFeeds, step by step.">
+<meta name="twitter:image" content="https://myfeeds.site/assets/og-image.png">
+<link rel="icon" type="image/png" href="/favicon.png">
+<link rel="icon" type="image/x-icon" href="/favicon.ico">
+<link rel="apple-touch-icon" href="/apple-touch-icon.png">
+<link rel="preload" href="/assets/fonts/bricolage-latin.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="stylesheet" href="/assets/site.css">
+<script>
+/* Motion gate, before first paint. Nothing on this page waits for script:
+   without "mo" (no JS, reduced motion) there are simply no transitions. */
+!function(d){d.classList.add('js');try{if(matchMedia('(prefers-reduced-motion: no-preference)').matches)d.classList.add('mo')}catch(e){}}(document.documentElement);
+</script>
+</head>
+<body data-page="pin/lab/v3/patterns/network/">
+<a class="skip" href="#main">Skip to the guide</a>
+<div class="open-top">
+  <div class="wrap">
+    <header class="top">
+      <a class="mark" href="/" translate="no" aria-label="MyFeeds home"><span><img src="/assets/home/logo-52.webp" alt="" width="22" height="22"></span>MyFeeds</a>
+      <nav class="nav" aria-label="Main">
+        <a href="/#how">How it works</a>
+        <a href="/#pricing" data-cta="nav-pricing">Pricing</a>
+        <a href="/ecommerce/">E-commerce</a>
+        <a href="/networks/" aria-current="page">Networks</a>
+        <a href="/articles/">Guides</a>
+        <a href="/install/">Install</a>
+        <a href="/#faq">FAQ</a>
+      </nav>
+      <div class="top-r">
+        <button type="button" class="menu-btn" id="menu-btn" aria-expanded="false" aria-controls="menu"><i aria-hidden="true"></i>Menu</button>
+        <a class="cta cta-sm" data-cta="header" href="/#pricing">Get started</a>
+      </div>
+      <div class="menu" id="menu" hidden>
+        <a href="/#how">How it works</a>
+        <a href="/#pricing">Plans and prices</a>
+        <a href="/ecommerce/">E-commerce</a>
+        <a href="/networks/" aria-current="page">Affiliate networks</a>
+        <a href="/articles/">Guides</a>
+        <a href="/install/">Install guide</a>
+        <a href="/#faq">Questions</a>
+      </div>
+    </header>
+  </div>
+</div>
+
+<main id="main">
+<div class="open">
+  <div class="wrap">
+    <section class="hero long" aria-labelledby="h-hero">
+      <div>
+        <p class="eyebrow"><a href="/networks/">Feed link guides</a> · AWIN</p>
+        <h1 id="h-hero">Get your AWIN product feed into WordPress.</h1>
+        <p class="lede">AWIN gives you one web address for each shop, and behind it sits the shop's whole range. Copy it once, paste it into MyFeeds, and pick products for your posts from then on.</p>
+        <div class="go">
+          <a class="cta" data-cta="hero" id="hero-cta" href="https://wordpress.org/plugins/myfeeds-affiliate-feed-manager/">Get the free plugin</a>
+          <p class="calm">Free on WordPress.org for one shop's feed. Paid plans each start with a free trial.</p>
+        </div>
+      </div>
+
+      <aside class="pinned" aria-labelledby="gl-k">
+        <p class="ov-k" id="gl-k"><span>At a glance</span><span>AWIN</span></p>
+        <dl class="glance">
+          <div><dt>You get</dt><dd><b>One link per shop.</b> The cards in your published posts follow the shop's prices.</dd></div>
+          <div><dt>Plan</dt><dd><span class="pill free">Free</span> for one shop's feed. As many shops as you like from Starter.</dd></div>
+          <div><dt>Time</dt><dd>About ten minutes, once a shop has accepted you.</dd></div>
+          <div><dt>You need</dt><dd>An AWIN publisher account and WordPress with the block editor.</dd></div>
+        </dl>
+        <p class="ov-x"><a class="more" href="#in-awin">Start with step 1</a><a class="more" href="#questions">Questions</a></p>
+      </aside>
+    </section>
+  </div>
+</div>
+
+<section class="band board" id="before" aria-labelledby="h-before">
+  <div class="wrap">
+    <div class="head">
+      <h2 id="h-before">Before you start</h2>
+      <p>Three things to have at hand. No code anywhere in this guide.</p>
+    </div>
+    <ul class="need">
+      <li><b>An AWIN publisher account</b>The one you log in to when you look at your programmes.</li>
+      <li><b>A shop that has accepted you</b>Shops share their feed with affiliates they have approved. A shop you have just joined can take a little while to show up.</li>
+      <li><b>MyFeeds in your WordPress</b>The free plugin is enough for one shop. Not installed yet? <a href="/install/">Follow the install guide</a> first.</li>
+    </ul>
+  </div>
+</section>
+
+<section class="band paper" id="in-awin" aria-labelledby="h-in-awin">
+  <div class="wrap chap">
+    <div class="head">
+      <p class="kick">Step 1 of 2</p>
+      <h2 id="h-in-awin">Copy the feed link in AWIN</h2>
+      <div class="meta">
+        <span class="goal"><b>Goal</b>A web address for the shop's product list, copied and ready to paste.</span>
+        <span class="time">About 5 minutes</span>
+      </div>
+    </div>
+    <div class="col">
+      <ol class="sub">
+        <li>
+          <h3>Open the place for product feeds</h3>
+          <p>In your AWIN account, look for the area where you choose shops' product feeds and get a download address for them. AWIN calls it <span class="ui">Create-a-Feed</span>.</p>
+          <p class="note"><b>Menus move.</b> If it is not where you expect it, search AWIN's help centre for “Create-a-Feed”.</p>
+        </li>
+        <li>
+          <h3>Pick the shop and its feed</h3>
+          <p>Choose the shop you want. Most shops have one feed, some have one for each part of their range. Leave all columns selected: MyFeeds finds the ones it needs.</p>
+        </li>
+        <li>
+          <h3>Copy the address</h3>
+          <p>AWIN builds a web address for what you chose. Copy all of it, from <code>https</code> to the last character.</p>
+          <div class="viz">
+            <p class="k">What you copied looks roughly like this</p>
+            <p class="url">https://…/datafeed/download/apikey/<b>YOUR-KEY</b>/fid/<b>12345</b>/format/csv/…</p>
+            <ul class="url-key">
+              <li><b>YOUR-KEY</b> is your personal key. Treat the whole address like a password.</li>
+              <li><b>12345</b> stands for the number of the shop's feed. Another shop, another number.</li>
+            </ul>
+            <p class="cap">A shortened example. Your address is longer.</p>
+          </div>
+        </li>
+      </ol>
+      <p class="done">You have the link copied. <a href="#in-wordpress">On to step 2</a></p>
+    </div>
+  </div>
+</section>
+
+<section class="band ink" id="in-wordpress" aria-labelledby="h-in-wordpress">
+  <div class="wrap">
+    <div class="head">
+      <p class="kick">Step 2 of 2</p>
+      <h2 id="h-in-wordpress">Add it in WordPress</h2>
+      <div class="meta">
+        <span class="goal"><b>Goal</b>The shop's products are in your WordPress, ready to search.</span>
+        <span class="time">1 minute, then the import runs on its own</span>
+      </div>
+    </div>
+    <div class="duo">
+      <div class="card lit pick">
+        <span class="tag">Recommended</span>
+        <h3>Paste the link</h3>
+        <ol class="nums">
+          <li>Click <span class="ui">MyFeeds</span> in the WordPress sidebar, then <span class="ui">Add your first feed</span>.</li>
+          <li>Give the feed the shop's name. Readers see it on your cards.</li>
+          <li>Under <span class="ui">Where is the feed?</span> keep <span class="ui">At a URL</span>, paste the address and click <span class="ui">Create Feed</span>.</li>
+        </ol>
+        <ul class="yn">
+          <li class="y">MyFeeds fetches a link again every night, so prices and stock stay right.</li>
+        </ul>
+      </div>
+      <div class="card">
+        <span class="k">If you only have a file</span>
+        <h3>Upload the file</h3>
+        <ol class="nums">
+          <li>Download the shop's feed from AWIN as a file.</li>
+          <li>In the same dialog, choose <span class="ui">Upload a file</span> and select it.</li>
+          <li>Click <span class="ui">Create Feed</span>.</li>
+        </ol>
+        <ul class="yn">
+          <li class="n">A file does not update by itself. When the shop's prices change, upload it again.</li>
+        </ul>
+      </div>
+    </div>
+    <p class="note"><b>Let it import.</b> The import runs in the background. A feed with 10,000 products typically takes two to five minutes, and you can keep working meanwhile.</p>
+    <p class="done">The shop's products are in. <a href="/install/#step-4">Publish your first cards</a></p>
+  </div>
+</section>
+
+<section class="band paper" id="contains" aria-labelledby="h-contains">
+  <div class="wrap">
+    <div class="head">
+      <h2 id="h-contains">What the feed contains</h2>
+      <p>AWIN's classic format names its columns like this. You do not have to match anything by hand.</p>
+    </div>
+    <div class="side">
+      <div class="cmp-wrap" tabindex="0" role="region" aria-labelledby="col-cap">
+        <table class="cmp slim">
+          <caption class="vh" id="col-cap">Columns of an AWIN feed and what a card shows from them</caption>
+          <thead>
+            <tr><th scope="col">Column in the feed</th><th scope="col">What your card shows</th></tr>
+          </thead>
+          <tbody>
+            <tr><th scope="row">product_name</th><td>The product's name</td></tr>
+            <tr><th scope="row">brand_name</th><td>The brand, above the name</td></tr>
+            <tr><th scope="row">search_price</th><td>The price</td></tr>
+            <tr><th scope="row">merchant_image_url</th><td>The picture</td></tr>
+            <tr><th scope="row">aw_deep_link</th><td>Where a tap leads: the product in the shop, through your affiliate link</td></tr>
+            <tr><th scope="row">merchant_name</th><td>The shop's name, at the bottom of the card</td></tr>
+          </tbody>
+        </table>
+      </div>
+      <div class="aside">
+        <p class="note"><b>No settings to work out.</b> MyFeeds recognises the format on its own and finds which column is the title, the price, the picture and the link. If a shop names a column in a way MyFeeds has never seen, the mapping editor lets you point it at the right field.</p>
+        <p class="note warn"><b>A column is empty?</b> Then the shop has not filled it in. MyFeeds cannot show what the feed does not carry.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="band board" id="questions" aria-labelledby="h-questions">
+  <div class="wrap chap">
+    <div class="head">
+      <h2 id="h-questions">Questions about AWIN feeds</h2>
+      <p>The snags people run into most. Still stuck? <a class="more" href="mailto:support@myfeeds.site?subject=AWIN%20feed%20question" data-cta="ask-support">Write to us</a>.</p>
+    </div>
+    <div class="faq">
+      <details name="faq">
+        <summary>The shop I joined does not show up</summary>
+        <div class="a"><p>A shop you have just joined can take up to an hour to appear. If it is still missing after that, check whether the shop offers a product feed at all. Not every shop does.</p></div>
+      </details>
+      <details name="faq">
+        <summary>Do I need a new link for every shop?</summary>
+        <div class="a"><p>Yes. Each shop has its own feed and its own link. The free plugin holds one shop's feed, every paid plan holds as many as you like.</p></div>
+      </details>
+      <details name="faq">
+        <summary>MyFeeds says the link returned a web page</summary>
+        <div class="a"><p>Then the address is not the feed itself. Copy it again in AWIN, the whole address, and check that it opens without a login.</p></div>
+      </details>
+      <details name="faq">
+        <summary>Prices on my cards do not change</summary>
+        <div class="a"><p>Check whether the feed was added as an uploaded file. A file stays as it was the day you uploaded it. Add the feed again with <span class="ui">At a URL</span> and the link from AWIN, and MyFeeds fetches it every night.</p></div>
+      </details>
+    </div>
+  </div>
+</section>
+
+<section class="band vio" id="networks" aria-labelledby="h-networks">
+  <div class="wrap">
+    <div class="head">
+      <p class="kick">Other networks</p>
+      <h2 id="h-networks">Working with another network too?</h2>
+      <p>Each one keeps its feed in a different place. Pick yours for the same kind of guide.</p>
+    </div>
+    <nav class="nets" aria-label="Feed link guides by network">
+      <a href="/networks/cj/">CJ</a>
+      <a href="/networks/tradedoubler/">TradeDoubler</a>
+      <a href="/networks/impact/">Impact</a>
+      <a href="/networks/rakuten/">Rakuten</a>
+      <a href="/networks/webgains/">Webgains</a>
+      <a href="/networks/admitad/">Admitad</a>
+      <a href="/networks/pepperjam/">Pepperjam</a>
+      <a href="/networks/partnerize/">Partnerize</a>
+      <a href="/networks/flexoffers/">FlexOffers</a>
+      <a href="/networks/sovrn/">Sovrn</a>
+      <a class="all" href="/networks/">All networks</a>
+    </nav>
+  </div>
+</section>
+
+<section class="close" id="end" aria-labelledby="h-end">
+  <div class="wrap close-in">
+    <div>
+      <h2 id="h-end">Your AWIN picks, as cards in your next post.</h2>
+      <div class="go">
+        <a class="cta" data-cta="final" href="https://wordpress.org/plugins/myfeeds-affiliate-feed-manager/">Install MyFeeds for free</a>
+        <p class="calm">Free on WordPress.org for one shop's feed. Paid plans each start with a free trial.</p>
+      </div>
+      <ul class="next" aria-label="When you want more">
+        <li>Cards that match your site: the card design editor, Starter and up.</li>
+        <li>What every post and product earns: Pro.</li>
+        <li>A shop of your own on your site: E-commerce.</li>
+      </ul>
+      <p class="go"><a class="more" href="/#pricing" data-cta="final-plans">Compare the plans</a></p>
+    </div>
+    <div class="myfeeds-product-grid row3" aria-hidden="true">
+      <div class="myfeeds-product-card"><div class="myfeeds-product-image"><img src="/assets/home/hoodie-heather-grey.webp" width="400" height="400" alt="" loading="lazy"></div><div class="myfeeds-product-details"><div class="myfeeds-product-brand">Halden</div><div class="myfeeds-product-title">Heavyweight Hoodie Heather Grey</div><div class="myfeeds-product-price"><span class="myfeeds-current-price">$58.00</span></div><div class="myfeeds-shipping-info">Free Shipping</div><div class="myfeeds-merchant">Northside Supply</div></div></div>
+      <div class="myfeeds-product-card"><div class="myfeeds-product-image"><div class="myfeeds-discount-badge">-26%</div><img src="/assets/home/sneaker-black-hightop.webp" width="400" height="400" alt="" loading="lazy"></div><div class="myfeeds-product-details"><div class="myfeeds-product-brand">Arlo &amp; Finch</div><div class="myfeeds-product-title">Court High-Top Leather Black</div><div class="myfeeds-product-price"><span class="myfeeds-old-price">$129.00</span> <span class="myfeeds-current-price has-discount">$96.00</span></div><div class="myfeeds-shipping-info">Free Shipping</div><div class="myfeeds-merchant">Kicks Corner</div></div></div>
+      <div class="myfeeds-product-card"><div class="myfeeds-product-image"><img src="/assets/home/backpack-trail.webp" width="400" height="400" alt="" loading="lazy"></div><div class="myfeeds-product-details"><div class="myfeeds-product-brand">Fieldmade</div><div class="myfeeds-product-title">Trail Pack 28 L Sage</div><div class="myfeeds-product-price"><span class="myfeeds-current-price">$74.00</span></div><div class="myfeeds-shipping-info">Shipping costs may apply</div><div class="myfeeds-merchant">Basecamp Outfitters</div></div></div>
+    </div>
+  </div>
+</section>
+</main>
+
+<footer>
+  <div class="wrap">
+    <div class="brand"><b translate="no">MyFeeds</b><span>Affiliate product feeds for WordPress</span></div>
+    <nav aria-label="Site">
+      <a href="/ecommerce/">E-commerce</a>
+      <a href="/install/">Install guide</a>
+      <a href="/networks/">Affiliate networks</a>
+      <a href="/articles/">Guides</a>
+      <a href="/affiliates/">Become an affiliate</a>
+      <a href="https://wordpress.org/plugins/myfeeds-affiliate-feed-manager/" rel="noopener">Free plugin on WordPress.org</a>
+      <a href="/imprint/">Imprint</a>
+      <a href="/privacy/">Privacy</a>
+      <a href="/terms/">Terms</a>
+      <a href="/refund/">Refund policy</a>
+    </nav>
+    <span>© 2026 MyFeeds. All rights reserved.</span>
+  </div>
+</footer>
+
+<script src="/assets/site.js" defer></script>
+<script src="/assets/back-to-top.js" defer></script>
+<script src="/assets/consent.js" defer></script>
+</body>
+</html>
