@@ -1,0 +1,383 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="p:domain_verify" content="0f13dbb87c7b78ab08817667740c2df2"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+<title>Affiliate network product feeds - How each gets into WordPress</title>
+<meta name="description" content="Eleven affiliate networks compared: which hand you a shop's product feed as a link, which as a file, which not at all, and how it gets into WordPress.">
+<!-- Preview: lives under /pin/lab/v3/ until it goes live. Going live = move the file and delete the next line. -->
+<meta name="robots" content="noindex, follow">
+<link rel="canonical" href="https://myfeeds.site/networks/">
+<meta name="theme-color" content="#FC9000">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="MyFeeds">
+<meta property="og:url" content="https://myfeeds.site/networks/">
+<meta property="og:title" content="Affiliate network product feeds - How each gets into WordPress">
+<meta property="og:description" content="Which affiliate networks hand you a shop's product feed as a link, which as a file, and how each gets into WordPress.">
+<meta property="og:image" content="https://myfeeds.site/assets/og-image.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="628">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:url" content="https://myfeeds.site/networks/">
+<meta name="twitter:title" content="Affiliate network product feeds - How each gets into WordPress">
+<meta name="twitter:description" content="Which affiliate networks hand you a shop's product feed as a link, which as a file, and how each gets into WordPress.">
+<meta name="twitter:image" content="https://myfeeds.site/assets/og-image.png">
+<link rel="icon" type="image/png" href="/favicon.png">
+<link rel="icon" type="image/x-icon" href="/favicon.ico">
+<link rel="apple-touch-icon" href="/apple-touch-icon.png">
+<link rel="preload" href="/assets/fonts/bricolage-latin.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="stylesheet" href="/assets/site.css">
+<script>
+/* Motion gate, before first paint. Nothing on this page waits for script:
+   without "mo" (no JS, reduced motion) there are simply no transitions. */
+!function(d){d.classList.add('js');try{if(matchMedia('(prefers-reduced-motion: no-preference)').matches)d.classList.add('mo')}catch(e){}}(document.documentElement);
+</script>
+<style>
+/* Only this page: the overview of the networks. A table from 900px, a list
+   of cards below (two across from 560px). Colours come from the band's tone
+   variables; the group labels are the shared .tag. */
+.nw-pick{display:grid;gap:12px;align-content:center}
+.nw-pick .nets{margin-top:0}
+.nw-after{margin-top:22px}
+.nw-t{width:100%;border-collapse:separate;border-spacing:0;font-size:15.5px;line-height:1.45}
+.nw-t th,.nw-t td{text-align:left;vertical-align:top;font-weight:400}
+.nw-t tbody th{font:800 1.25rem/1.15 var(--display);letter-spacing:-.015em;color:var(--fg)}
+.nw-t tbody th small{display:block;font:500 13px/1.3 var(--sans);letter-spacing:0;color:var(--fg-3);margin-top:3px}
+.nw-t .nw-kind th{font:400 15.5px/1.45 var(--sans);letter-spacing:0}
+.nw-t td{color:var(--fg-2)}
+.nw-t td b{color:var(--fg)}
+.nw-go a{font-weight:600;color:var(--fg);text-underline-offset:4px;text-decoration-thickness:1.5px}
+@media (min-width:900px){
+  .nw-t thead th{font-size:12px;font-weight:600;letter-spacing:.07em;text-transform:uppercase;color:var(--fg-3);padding:0 24px 4px 0}
+  .nw-t tbody th,.nw-t td{padding:15px 24px 15px 0;border-bottom:1px solid var(--rule)}
+  .nw-t tbody th{width:19%}
+  .nw-t td:nth-child(2){width:37%}
+  .nw-t .nw-go{width:1%;white-space:nowrap;padding-right:0}
+  .nw-t .nw-kind th{width:auto;padding:32px 0 10px;border-bottom:1.5px solid var(--edge)}
+  .nw-t tbody:first-of-type .nw-kind th{padding-top:10px}
+  .nw-t tr:target>*{background:#fff}
+  .nw-t tr:target>:first-child{box-shadow:-14px 0 0 #fff}
+  .nw-t tr:target>:last-child{box-shadow:14px 0 0 #fff}
+}
+@media (max-width:899px){
+  .nw-t,.nw-t tbody,.nw-t th,.nw-t td{display:block}
+  .nw-t thead{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap}
+  .nw-t tbody{display:grid;gap:12px}
+  .nw-t tbody+tbody{margin-top:30px}
+  .nw-t tr{display:flex;flex-direction:column}
+  .nw-t tr:not(.nw-kind){background:var(--raise);border-radius:10px;box-shadow:var(--lift);padding:18px 18px 0}
+  .nw-t tr:target{outline:1.5px solid var(--edge);outline-offset:-1.5px}
+  .nw-t tbody th{font-size:1.4rem}
+  .nw-t td:first-of-type{padding-top:8px}
+  .nw-t td[data-th]{padding:12px 0 16px}
+  .nw-t td[data-th]::before{content:attr(data-th);display:block;font-size:12px;font-weight:600;letter-spacing:.08em;text-transform:uppercase;color:var(--fg-3);margin-bottom:2px}
+  .nw-t .nw-go{margin-top:auto;border-top:1px solid var(--rule)}
+  .nw-go a{position:relative;display:block;padding:14px 22px 15px 0;text-decoration:none}
+  .nw-go a::after{content:"";position:absolute;right:4px;top:50%;width:7px;height:7px;margin-top:-4px;border-top:2px solid currentColor;border-right:2px solid currentColor;transform:rotate(45deg)}
+}
+@media (min-width:560px) and (max-width:899px){
+  .nw-t tbody{grid-template-columns:repeat(2,minmax(0,1fr))}
+  .nw-t .nw-kind{grid-column:1/-1}
+}
+</style>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "CollectionPage",
+  "name": "Product feeds by affiliate network",
+  "description": "Eleven affiliate networks compared: which hand you a shop's product feed as a link, which as a file, which not at all, and how it gets into WordPress.",
+  "url": "https://myfeeds.site/networks/",
+  "publisher": {
+    "@type": "Organization",
+    "name": "MyFeeds",
+    "url": "https://myfeeds.site/"
+  },
+  "mainEntity": {
+    "@type": "ItemList",
+    "itemListElement": [
+      { "@type": "ListItem", "position": 1, "name": "AWIN", "url": "https://myfeeds.site/networks/awin/" },
+      { "@type": "ListItem", "position": 2, "name": "Partnerize", "url": "https://myfeeds.site/networks/partnerize/" },
+      { "@type": "ListItem", "position": 3, "name": "Webgains", "url": "https://myfeeds.site/networks/webgains/" },
+      { "@type": "ListItem", "position": 4, "name": "Admitad", "url": "https://myfeeds.site/networks/admitad/" },
+      { "@type": "ListItem", "position": 5, "name": "Tradedoubler", "url": "https://myfeeds.site/networks/tradedoubler/" },
+      { "@type": "ListItem", "position": 6, "name": "CJ", "url": "https://myfeeds.site/networks/cj/" },
+      { "@type": "ListItem", "position": 7, "name": "Impact", "url": "https://myfeeds.site/networks/impact/" },
+      { "@type": "ListItem", "position": 8, "name": "FlexOffers", "url": "https://myfeeds.site/networks/flexoffers/" },
+      { "@type": "ListItem", "position": 9, "name": "Pepperjam (Ascend)", "url": "https://myfeeds.site/networks/pepperjam/" },
+      { "@type": "ListItem", "position": 10, "name": "Rakuten", "url": "https://myfeeds.site/networks/rakuten/" },
+      { "@type": "ListItem", "position": 11, "name": "Sovrn Commerce", "url": "https://myfeeds.site/networks/sovrn/" }
+    ]
+  }
+}
+</script>
+</head>
+<body data-page="networks/">
+<a class="skip" href="#main">Skip to content</a>
+<div class="open-top">
+  <div class="wrap">
+    <header class="top">
+      <a class="mark" href="/" translate="no" aria-label="MyFeeds home"><span><img src="/assets/home/logo-52.webp" alt="" width="22" height="22"></span>MyFeeds</a>
+      <nav class="nav" aria-label="Main">
+        <a href="/#how">How it works</a>
+        <a href="/#pricing" data-cta="nav-pricing">Pricing</a>
+        <a href="/ecommerce/">E-commerce</a>
+        <a href="#main" aria-current="page">Networks</a>
+        <a href="/articles/">Guides</a>
+        <a href="/install/">Install</a>
+        <a href="/#faq">FAQ</a>
+      </nav>
+      <div class="top-r">
+        <button type="button" class="menu-btn" id="menu-btn" aria-expanded="false" aria-controls="menu"><i aria-hidden="true"></i>Menu</button>
+        <a class="cta cta-sm" data-cta="header" href="/#pricing">Get started</a>
+      </div>
+      <div class="menu" id="menu" hidden>
+        <a href="/#how">How it works</a>
+        <a href="/#pricing">Plans and prices</a>
+        <a href="/ecommerce/">E-commerce</a>
+        <a href="#main" aria-current="page">Affiliate networks</a>
+        <a href="/articles/">Guides</a>
+        <a href="/install/">Install guide</a>
+        <a href="/#faq">Questions</a>
+      </div>
+    </header>
+  </div>
+</div>
+
+<main id="main">
+<div class="open">
+  <div class="wrap">
+    <section class="hero long" aria-labelledby="h-hero">
+      <div>
+        <p class="eyebrow">Feed link guides</p>
+        <h1 id="h-hero">Find your network. Get its product feed into WordPress.</h1>
+        <p class="lede">Each affiliate network hands you a shop's product feed differently: as a link, as a file, or not at all.</p>
+      </div>
+
+      <div class="nw-pick">
+        <p class="k" id="nw-pick-k">Jump to your network</p>
+        <nav aria-labelledby="nw-pick-k">
+        <div class="nets jump">
+          <a href="#admitad">Admitad</a>
+          <a href="#awin">AWIN</a>
+          <a href="#cj">CJ</a>
+          <a href="#flexoffers">FlexOffers</a>
+          <a href="#impact">Impact</a>
+          <a href="#partnerize">Partnerize</a>
+          <a href="#pepperjam">Pepperjam</a>
+          <a href="#rakuten">Rakuten</a>
+          <a href="#sovrn">Sovrn</a>
+          <a href="#tradedoubler">Tradedoubler</a>
+          <a href="#webgains">Webgains</a>
+          <a class="all" href="#amazon">Amazon</a>
+        </div>
+        </nav>
+      </div>
+    </section>
+  </div>
+</div>
+
+<section class="band board" id="overview" aria-labelledby="h-overview">
+  <div class="wrap">
+    <div class="head">
+      <h2 id="h-overview">What each network gives you.</h2>
+      <p>Five work with a link, four with a file. MyFeeds, our WordPress plugin, reads both. Rakuten needs the Pro plan. Sovrn has no product feed.</p>
+    </div>
+
+    <table class="nw-t" role="table" aria-labelledby="h-overview">
+      <thead role="rowgroup">
+        <tr role="row"><th scope="col" role="columnheader">Network</th><th scope="col" role="columnheader">You get</th><th scope="col" role="columnheader">In MyFeeds</th><th scope="col" role="columnheader"><span class="vh">Guide</span></th></tr>
+      </thead>
+      <tbody role="rowgroup">
+        <tr class="nw-kind" role="row"><th colspan="4" scope="rowgroup" role="rowheader"><span class="tag">A link</span></th></tr>
+        <tr id="awin" role="row">
+          <th scope="row" role="rowheader">AWIN</th>
+          <td role="cell"><b>A link you create.</b> One for each shop.</td>
+          <td role="cell" data-th="In MyFeeds">Paste the link.</td>
+          <td role="cell" class="nw-go"><a href="/networks/awin/">AWIN guide</a></td>
+        </tr>
+        <tr id="partnerize" role="row">
+          <th scope="row" role="rowheader">Partnerize</th>
+          <td role="cell"><b>A link.</b> One for each feed.</td>
+          <td role="cell" data-th="In MyFeeds">Paste the link.</td>
+          <td role="cell" class="nw-go"><a href="/networks/partnerize/">Partnerize guide</a></td>
+        </tr>
+        <tr id="webgains" role="row">
+          <th scope="row" role="rowheader">Webgains</th>
+          <td role="cell"><b>A link or a file.</b></td>
+          <td role="cell" data-th="In MyFeeds">Paste the link. Fallback: upload the file.</td>
+          <td role="cell" class="nw-go"><a href="/networks/webgains/">Webgains guide</a></td>
+        </tr>
+        <tr id="admitad" role="row">
+          <th scope="row" role="rowheader">Admitad</th>
+          <td role="cell"><b>A link you generate.</b> Admitad doesn't say how long it lasts.</td>
+          <td role="cell" data-th="In MyFeeds">Paste the link. Fallback: upload the file.</td>
+          <td role="cell" class="nw-go"><a href="/networks/admitad/">Admitad guide</a></td>
+        </tr>
+        <tr id="tradedoubler" role="row">
+          <th scope="row" role="rowheader">Tradedoubler</th>
+          <td role="cell"><b>An address you build</b> from a token and the shop's feed number. The standard one stops at 1,000 products.</td>
+          <td role="cell" data-th="In MyFeeds">Paste it. Untested with a live account.</td>
+          <td role="cell" class="nw-go"><a href="/networks/tradedoubler/">Tradedoubler guide</a></td>
+        </tr>
+      </tbody>
+      <tbody role="rowgroup">
+        <tr class="nw-kind" role="row"><th colspan="4" scope="rowgroup" role="rowheader"><span class="tag">A file</span></th></tr>
+        <tr id="cj" role="row">
+          <th scope="row" role="rowheader">CJ</th>
+          <td role="cell"><b>A file.</b> To your inbox or by FTP.</td>
+          <td role="cell" data-th="In MyFeeds">Upload the file.</td>
+          <td role="cell" class="nw-go"><a href="/networks/cj/">CJ guide</a></td>
+        </tr>
+        <tr id="impact" role="row">
+          <th scope="row" role="rowheader">Impact</th>
+          <td role="cell"><b>A file you download.</b> Impact calls it a product catalog.</td>
+          <td role="cell" data-th="In MyFeeds">Upload the file.</td>
+          <td role="cell" class="nw-go"><a href="/networks/impact/">Impact guide</a></td>
+        </tr>
+        <tr id="flexoffers" role="row">
+          <th scope="row" role="rowheader">FlexOffers</th>
+          <td role="cell"><b>A file, new every day.</b> By FTP or as a download.</td>
+          <td role="cell" data-th="In MyFeeds">Upload the file.</td>
+          <td role="cell" class="nw-go"><a href="/networks/flexoffers/">FlexOffers guide</a></td>
+        </tr>
+        <tr id="pepperjam" role="row">
+          <th scope="row" role="rowheader">Pepperjam <small>Now Ascend</small></th>
+          <td role="cell"><b>A file you download.</b></td>
+          <td role="cell" data-th="In MyFeeds">Upload the file.</td>
+          <td role="cell" class="nw-go"><a href="/networks/pepperjam/">Pepperjam guide</a></td>
+        </tr>
+      </tbody>
+      <tbody role="rowgroup">
+        <tr class="nw-kind" role="row"><th colspan="4" scope="rowgroup" role="rowheader"><span class="tag">Neither</span></th></tr>
+        <tr id="rakuten" role="row">
+          <th scope="row" role="rowheader">Rakuten</th>
+          <td role="cell"><b>No link.</b> Its product files sit behind a login.</td>
+          <td role="cell" data-th="In MyFeeds"><span class="pill paid">Pro</span> Connect directly. Fetched again every night.</td>
+          <td role="cell" class="nw-go"><a href="/networks/rakuten/">Rakuten guide</a></td>
+        </tr>
+        <tr id="sovrn" role="row">
+          <th scope="row" role="rowheader">Sovrn Commerce</th>
+          <td role="cell"><b>No product feed.</b> Sovrn turns the links in your posts into affiliate links.</td>
+          <td role="cell" data-th="In MyFeeds">Nothing to import. Use a feed from the shop's own network.</td>
+          <td role="cell" class="nw-go"><a href="/networks/sovrn/">Sovrn guide</a></td>
+        </tr>
+      </tbody>
+    </table>
+    <p class="note nw-after"><b>Check your first card.</b> Not every route is tested with a live account. Each guide says which.</p>
+  </div>
+</section>
+
+<section class="band ink" id="link-or-file" aria-labelledby="h-link-or-file">
+  <div class="wrap">
+    <div class="head">
+      <h2 id="h-link-or-file">Link or file: what's the difference?</h2>
+    </div>
+    <div class="duo">
+      <div class="card lit pick">
+        <span class="tag">Stays current</span>
+        <h3>A link</h3>
+        <ul class="yn">
+          <li class="y">MyFeeds reads it again every night.</li>
+          <li class="y">Cards in your published posts follow the shop's prices and stock.</li>
+        </ul>
+      </div>
+      <div class="card">
+        <span class="k">A snapshot</span>
+        <h3>A file</h3>
+        <ul class="yn">
+          <li class="n">Prices and stock stay as they were on upload day.</li>
+          <li class="y">Upload a newer file and your published cards follow.</li>
+        </ul>
+      </div>
+    </div>
+    <p class="note"><b>Offered both?</b> Take the link.</p>
+  </div>
+</section>
+
+<section class="band paper" id="amazon" aria-labelledby="h-amazon">
+  <div class="wrap chap">
+    <div class="head">
+      <h2 id="h-amazon">Amazon works differently.</h2>
+      <p>Amazon has no feed file. Both ways need the Pro plan and your own Amazon Associates account.</p>
+    </div>
+    <div class="col">
+      <div class="duo">
+        <div class="card">
+          <span class="k">Before Amazon opens its API</span>
+          <h3>By link or ASIN</h3>
+          <p>Paste a product link or its ASIN and name the product. It shows as a text card or a dot on a Shop the look photo.</p>
+          <ul class="yn">
+            <li class="n">No Amazon picture and no price.</li>
+          </ul>
+        </div>
+        <div class="card">
+          <span class="k">Once it does</span>
+          <h3>Live from Amazon</h3>
+          <p>Products come live from Amazon's own Creators API. Amazon opens that access to associates with ten qualified sales in thirty days (as of October 2026, <a href="https://affiliate-program.amazon.com/creatorsapi/docs/en-us/introduction" rel="noopener">Amazon's documentation</a>).</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="band board" id="other" aria-labelledby="h-other">
+  <div class="wrap">
+    <div class="head">
+      <h2 id="h-other">Your network isn't here?</h2>
+      <p>MyFeeds reads most product feeds, as a link or a file.</p>
+    </div>
+    <ul class="need">
+      <li><b>A common format</b>CSV, TSV, XML or JSON, also packed as .gz or .zip.</li>
+      <li><b>No login in the way</b>A link has to open without a password. Otherwise, upload the file.</li>
+      <li><b>A product ID in every row</b>Rows without one are skipped.</li>
+    </ul>
+    <p class="note nw-after"><b>Still stuck?</b> We can connect more platforms on request: <a href="mailto:support@myfeeds.site?subject=Network%20request" data-cta="ask-support">support@myfeeds.site</a>.</p>
+  </div>
+</section>
+
+<section class="close" id="end" aria-labelledby="h-end">
+  <div class="wrap close-in">
+    <div>
+      <h2 id="h-end">The shop's products, as cards in your next post.</h2>
+      <div class="go">
+        <a class="cta" data-cta="final" href="/install/">Get the free plugin</a>
+        <p class="calm">Free on WordPress.org for one shop's feed. Paid plans each start with a free trial.</p>
+        <p class="calm">New to feeds? <a class="more" data-cta="final-guide" href="/articles/import-product-feed-wordpress/">How a shop's product feed gets into WordPress</a>.</p>
+      </div>
+    </div>
+    <figure aria-hidden="true">
+    <div class="myfeeds-product-grid row3">
+      <div class="myfeeds-product-card"><div class="myfeeds-product-image"><img src="/assets/home/hoodie-heather-grey.webp" width="400" height="400" alt="" loading="lazy"></div><div class="myfeeds-product-details"><div class="myfeeds-product-brand">Halden</div><div class="myfeeds-product-title">Heavyweight Hoodie Heather Grey</div><div class="myfeeds-product-price"><span class="myfeeds-current-price">$58.00</span></div><div class="myfeeds-shipping-info">Free Shipping</div><div class="myfeeds-merchant">Northside Supply</div></div></div>
+      <div class="myfeeds-product-card"><div class="myfeeds-product-image"><div class="myfeeds-discount-badge">-26%</div><img src="/assets/home/sneaker-black-hightop.webp" width="400" height="400" alt="" loading="lazy"></div><div class="myfeeds-product-details"><div class="myfeeds-product-brand">Arlo &amp; Finch</div><div class="myfeeds-product-title">Court High-Top Leather Black</div><div class="myfeeds-product-price"><span class="myfeeds-old-price">$129.00</span> <span class="myfeeds-current-price has-discount">$96.00</span></div><div class="myfeeds-shipping-info">Free Shipping</div><div class="myfeeds-merchant">Kicks Corner</div></div></div>
+      <div class="myfeeds-product-card"><div class="myfeeds-product-image"><img src="/assets/home/backpack-trail.webp" width="400" height="400" alt="" loading="lazy"></div><div class="myfeeds-product-details"><div class="myfeeds-product-brand">Fieldmade</div><div class="myfeeds-product-title">Trail Pack 28 L Sage</div><div class="myfeeds-product-price"><span class="myfeeds-current-price">$74.00</span></div><div class="myfeeds-shipping-info">Shipping costs may apply</div><div class="myfeeds-merchant">Basecamp Outfitters</div></div></div>
+    </div>
+    </figure>
+  </div>
+</section>
+</main>
+
+<footer>
+  <div class="wrap">
+    <div class="brand"><b translate="no">MyFeeds</b><span>Affiliate product feeds for WordPress</span></div>
+    <nav aria-label="Site">
+      <a href="/ecommerce/">E-commerce</a>
+      <a href="/install/">Install guide</a>
+      <a href="/networks/">Affiliate networks</a>
+      <a href="/articles/">Guides</a>
+      <a href="/affiliates/">Become an affiliate</a>
+      <a href="https://wordpress.org/plugins/myfeeds-affiliate-feed-manager/" rel="noopener">Free plugin on WordPress.org</a>
+      <a href="/imprint/">Imprint</a>
+      <a href="/privacy/">Privacy</a>
+      <a href="/terms/">Terms</a>
+      <a href="/refund/">Refund policy</a>
+    </nav>
+    <span>© 2026 MyFeeds. All rights reserved.</span>
+  </div>
+</footer>
+
+<script src="/assets/site.js" defer></script>
+<script src="/assets/back-to-top.js" defer></script>
+<script src="/assets/consent.js" defer></script>
+</body>
+</html>
