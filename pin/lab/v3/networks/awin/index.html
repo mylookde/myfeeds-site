@@ -59,10 +59,10 @@
       "mainEntity": [
         {
           "@type": "Question",
-          "name": "A feed shows up for a shop I never joined. Does a sale count?",
+          "name": "The link worked. Now the import fails.",
           "acceptedAnswer": {
             "@type": "Answer",
-            "text": "It can. For selected shops that accept affiliates automatically, AWIN credits sales made through the feed even if you have not joined. It calls this soft membership. It covers selected shops only, so joining the programme is the way to be sure."
+            "text": "Wait an hour, then click Reimport once. A likely cause is AWIN's download limit: five downloads at once, and five identical requests within an hour (as of October 2026)."
           }
         },
         {
@@ -70,31 +70,7 @@
           "name": "The shop's feed says Enhanced. Does that work?",
           "acceptedAnswer": {
             "@type": "Answer",
-            "text": "We could not confirm it: that format, the shop's feed in Google's layout, is untested with MyFeeds. Take AWIN's own format where a shop offers both. If you try it, select aw_deep_link there too. In that format, link is the shop's plain link and aw_deep_link is your tracked one. When a row has it, MyFeeds uses it."
-          }
-        },
-        {
-          "@type": "Question",
-          "name": "Is a very large shop a problem?",
-          "acceptedAnswer": {
-            "@type": "Answer",
-            "text": "Usually not. A bigger feed takes longer to import, and you can keep working while it runs. If you write about a few brands only, choose those brands in Create-a-Feed. The link then holds just their products."
-          }
-        },
-        {
-          "@type": "Question",
-          "name": "A card has no picture or no price",
-          "acceptedAnswer": {
-            "@type": "Answer",
-            "text": "If you selected all columns, the shop left that column empty in its feed. AWIN's advice is to ask the shop or your account manager."
-          }
-        },
-        {
-          "@type": "Question",
-          "name": "A card's link does not open the product page",
-          "acceptedAnswer": {
-            "@type": "Answer",
-            "text": "The address a card leads to comes from the shop's feed. If it misses the product page, AWIN's advice is to contact its Partner Success team. The contact link is at the bottom of AWIN's feed FAQ, source 3 below."
+            "text": "We could not test it: Enhanced is the shop's feed in Google's layout. If you try it, select aw_deep_link there too. In that format, link is the shop's plain link. MyFeeds uses aw_deep_link when a row has it."
           }
         },
         {
@@ -102,7 +78,7 @@
           "name": "Can I see which post and product a click came from?",
           "acceptedAnswer": {
             "@type": "Answer",
-            "text": "From the Pro plan, yes: clicks on your cards are counted by post and product. With Network Hint set to AWIN (step 2), your affiliate links also get a click ID in clickref, the field AWIN reports back. A limit on AWIN's side: each click gets its own ID, and AWIN disables its Click References report for 30 days above 20,000 different ones (as of October 2026)."
+            "text": "From the Pro plan, yes: clicks on your cards are counted by post and product. Click Edit on the feed's row, set Network Hint to AWIN under Advanced Options and save. Your affiliate links then also get a click ID in clickref, the field AWIN reports back. A limit on AWIN's side: each click gets its own ID, and AWIN disables its Click References report for 30 days above 20,000 different ones (as of October 2026)."
           }
         }
       ]
@@ -150,7 +126,7 @@
       <div>
         <p class="eyebrow"><a href="/networks/">Feed link guides</a> · AWIN</p>
         <h1 id="h-hero">Get your AWIN product feed into WordPress.</h1>
-        <p class="lede">For each shop that has approved you, AWIN gives you one link to the products that shop shares: its product feed. Paste the link into MyFeeds, our WordPress plugin, and pick products for your posts right in the editor.</p>
+        <p class="lede">For each shop that has approved you, AWIN gives you one link to that shop's products: its product feed. Paste it into MyFeeds, our WordPress plugin, and pick products for your posts in the editor.</p>
         <div class="go">
           <a class="cta" data-cta="hero" id="hero-cta" href="/install/">Get the free plugin</a>
           <p class="calm">Free on WordPress.org for one shop's feed. Paid plans each start with a free trial.</p>
@@ -175,12 +151,12 @@
   <div class="wrap">
     <div class="head">
       <h2 id="h-before">Before you start</h2>
-      <p>A feed pays off when you want to show many products from one shop, with picture and price. For two or three products, a normal AWIN link in your text is enough. <a class="more" href="/articles/import-product-feed-wordpress/" data-cta="quiet-guide">How a shop's product feed gets into WordPress</a> explains the idea.</p>
+      <p><a class="more" href="/articles/import-product-feed-wordpress/" data-cta="quiet-guide">A shop's product feed</a> pays off when you show many of its products, with picture and price. For two or three, a normal AWIN link in your text is enough.</p>
     </div>
     <ul class="need">
-      <li><b>The shop has approved you</b>AWIN opens a shop's feed once the shop has accepted you. A fresh approval can take up to an hour to show.</li>
-      <li><b>The shop shares a product feed</b>Not every shop does. AWIN currently shows it under <span class="ui">Advertisers</span> (AWIN's word for shops), then <span class="ui">My Programmes</span>, in the column <span class="ui">Product Feed</span>. With No, there is nothing to import. You can still link to that shop by hand.</li>
-      <li><b>MyFeeds is in your WordPress</b>Our plugin for the WordPress block editor. If it is not installed yet, the <a href="/install/">install guide</a> takes you through it.</li>
+      <li><b>The shop has approved you</b>AWIN opens a shop's feed once the shop has accepted you.</li>
+      <li><b>The shop shares a product feed</b>Not every shop does. AWIN currently shows it under <span class="ui">Advertisers</span> (its word for shops), then <span class="ui">My Programmes</span>, in the column <span class="ui">Product Feed</span>. With No, there is nothing to import.</li>
+      <li><b>MyFeeds is in your WordPress</b>Our plugin for the WordPress block editor. The <a href="/install/">install guide</a> takes you through setting it up.</li>
     </ul>
   </div>
 </section>
@@ -191,40 +167,39 @@
       <p class="kick">Step 1 of 2</p>
       <h2 id="h-in-awin">Get the feed link in AWIN</h2>
       <div class="meta">
-        <span class="goal"><b>Goal</b>One link to the shop's product feed, ready to paste. This step is the same whatever you paste the link into.</span>
+        <span class="goal"><b>Goal</b>One link to the shop's product feed, ready to paste, whatever you paste it into.</span>
       </div>
     </div>
     <div class="col">
       <ol class="sub">
         <li>
           <h3>Open AWIN's feed tool</h3>
-          <p>It makes a download link for a shop's product feed, which AWIN calls a data feed. AWIN currently names the tool <span class="ui">Create-a-Feed</span> and keeps it in the <span class="ui">Toolbox</span> menu, under <span class="ui">Links &amp; Tools</span>.</p>
+          <p>It makes a download link for a shop's product feed (AWIN says data feed). AWIN currently calls it <span class="ui">Create-a-Feed</span> and keeps it in the <span class="ui">Toolbox</span> menu.</p>
           <p class="note"><b>Menus move.</b> If it is gone, see AWIN's own walkthrough: <a href="https://help.awin.com/developers/docs/downloading-feeds-using-create-a-feed" rel="noopener">Downloading feeds using Create-a-Feed</a>.</p>
         </li>
         <li>
           <h3>Choose the language, then the shop</h3>
-          <p>Set the feed language first, to the language your readers read. AWIN then lists only feeds in that language. <span class="ui">Any</span> lists them all.</p>
+          <p>Set the feed language first: AWIN then lists only feeds in that language. <span class="ui">Any</span> lists them all.</p>
           <p>Then pick the shop. Most have one feed, called Default. If a shop has several, take the one with the products you write about.</p>
-          <p>Where a shop offers two formats, take AWIN's own. Its help calls it Legacy or Awin feed. Legacy sounds old, but it is the standard.</p>
+          <p>Where a shop offers two formats, take AWIN's own, listed as Legacy.</p>
         </li>
         <li>
           <h3>Select all columns</h3>
           <p>On the next screen, select every column. One button does it.</p>
-          <p class="note warn"><b>Your tracking link is one of them.</b> It is called <code>aw_deep_link</code>. Without it, only the shop's plain link is left. A reader can buy through that and you get no commission, and no error tells you.</p>
+          <p class="note warn"><b>Your tracking link is one of them.</b> It is called <code>aw_deep_link</code>. Without it, cards carry the shop's plain link: a reader can buy and you get no commission, and no error tells you.</p>
         </li>
         <li>
           <h3>Copy the link</h3>
-          <p>When AWIN asks for a compression method, choose gzip. It only makes the download smaller.</p>
-          <p>AWIN then offers the feed as a CSV file to download or as a link to copy (AWIN says URL). Copy the whole link. AWIN calls it a reusable download link.</p>
+          <p>AWIN asks for a compression method: gzip works.</p>
+          <p>AWIN then offers a CSV file to download or a URL to copy. Copy the whole URL: AWIN calls it a reusable download link.</p>
           <div class="viz">
             <p class="k">What you copied looks roughly like this</p>
-            <p class="url">https://…/datafeed/download/apikey/<b>YOUR-KEY</b>/fid/<b>12345</b>/format/csv/language/en/…/compression/gzip/…/columns/<b>aw_deep_link</b>%2Cproduct_name%2C…/</p>
+            <p class="url">https://…/datafeed/download/apikey/<b>YOUR-KEY</b>/fid/12345/format/csv/language/en/…/compression/gzip/…/columns/<b>aw_deep_link</b>%2Cproduct_name%2C…/</p>
             <ul class="url-key">
-              <li><b>YOUR-KEY</b> is your personal feed key. AWIN fills it in. Treat the whole link like a password: keep it out of screenshots and forum posts.</li>
-              <li><b>12345</b> is the number of the shop's feed.</li>
-              <li><b>aw_deep_link</b> has to appear after <code>columns</code>. Check it once before you paste.</li>
+              <li><b>YOUR-KEY</b> is personal. Treat the whole link like a password: keep it out of screenshots and forum posts.</li>
+              <li><b>aw_deep_link</b> has to appear after <code>columns</code>. Check before you paste.</li>
             </ul>
-            <p class="cap">An invented, shortened example. Yours is longer.</p>
+            <p class="cap">An invented, shortened example.</p>
           </div>
         </li>
       </ol>
@@ -249,12 +224,11 @@
         <ol class="nums">
           <li>In WordPress, open <span class="ui">MyFeeds</span> and click <span class="ui">Add your first feed</span>. On a paid plan, later feeds go through <span class="ui">+ Add Feed</span>.</li>
           <li>Name the feed after the shop: readers see that name on your cards. Keep <span class="ui">At a URL</span>, paste the link and click <span class="ui">Create Feed</span>.</li>
-          <li>Let it import. It runs in the background while you keep working. When it is done, the feed's row shows the number of products.</li>
+          <li>Let it import in the background while you keep working. When it is done, the feed's row shows the number of products.</li>
         </ol>
         <ul class="yn">
-          <li class="y">A link is read again every night, so the cards in your published posts follow the shop's prices.</li>
+          <li class="y">MyFeeds reads a link again every night.</li>
         </ul>
-        <p><span class="pill paid">Pro</span> Under <span class="ui">Advanced Options</span>, set <span class="ui">Network Hint</span> to AWIN, now or later through <span class="ui">Edit</span>. Your affiliate links then get a click ID, in the field AWIN reports back.</p>
       </div>
       <div class="card">
         <span class="k">If MyFeeds shows an error for the link</span>
@@ -266,7 +240,7 @@
         <ul class="yn">
           <li class="n">A file stays as it was on upload day. Prices and stock freeze until you upload a newer one.</li>
         </ul>
-        <p>Send us the error message too, and we help you get the link working: <a href="mailto:support@myfeeds.site?subject=AWIN%20feed%20link%20error" data-cta="error-support">support@myfeeds.site</a>.</p>
+        <p>Send us the error message too: <a href="mailto:support@myfeeds.site?subject=AWIN%20feed%20link%20error" data-cta="error-support">support@myfeeds.site</a>.</p>
       </div>
     </div>
     <p class="done">The shop's products are in. <a href="/install/#step-4">Publish your first cards</a></p>
@@ -277,7 +251,6 @@
   <div class="wrap chap">
     <div class="head">
       <h2 id="h-current">How your cards stay current</h2>
-      <p>After the first import, the link is read again without you.</p>
     </div>
     <div class="col">
       <div class="duo">
@@ -290,26 +263,7 @@
           <p>The whole feed. New products become searchable. A product the shop has removed disappears from your posts.</p>
         </div>
       </div>
-      <p class="note"><b>One limit.</b> Shops on AWIN often update their feed several times a day. A card can be behind the shop until the next nightly read.</p>
-      <figure>
-        <div class="viz">
-          <p class="k">One row of a shop's feed, and the card it becomes</p>
-          <div class="pair">
-            <dl class="kv">
-              <div><dt>product_name</dt><dd>Court High-Top Leather Black</dd></div>
-              <div><dt>brand_name</dt><dd>Arlo &amp; Finch</dd></div>
-              <div><dt>search_price</dt><dd>96.00</dd></div>
-              <div><dt>rrp_price</dt><dd>129.00</dd></div>
-              <div><dt>merchant_<wbr>image_url</dt><dd>https://…/court-high-top.jpg</dd></div>
-              <div><dt>aw_deep_link</dt><dd>https://… your tracking link</dd></div>
-            </dl>
-            <div class="myfeeds-product-grid solo">
-              <div class="myfeeds-product-card"><div class="myfeeds-product-image"><div class="myfeeds-discount-badge">-26%</div><img src="/assets/home/sneaker-black-hightop.webp" width="400" height="400" alt="Black leather high-top sneaker" loading="lazy"></div><div class="myfeeds-product-details"><div class="myfeeds-product-brand">Arlo &amp; Finch</div><div class="myfeeds-product-title">Court High-Top Leather Black</div><div class="myfeeds-product-price"><span class="myfeeds-old-price">$129.00</span> <span class="myfeeds-current-price has-discount">$96.00</span></div><div class="myfeeds-shipping-info">Free Shipping</div><div class="myfeeds-merchant">Kicks Corner</div></div></div>
-            </div>
-          </div>
-        </div>
-        <figcaption>AWIN's column names. You don't have to match any of them by hand. Example product, sample prices.</figcaption>
-      </figure>
+      <p class="note"><b>One limit.</b> Shops on AWIN often update their feed several times a day, so a card can lag until the next nightly read.</p>
     </div>
   </div>
 </section>
@@ -318,34 +272,19 @@
   <div class="wrap chap">
     <div class="head">
       <h2 id="h-questions">Questions about AWIN feeds</h2>
-      <p>Where people usually get stuck. For anything else, <a class="more" href="mailto:support@myfeeds.site?subject=AWIN%20feed%20question" data-cta="ask-support">write to us</a>.</p>
+      <p>For anything else, <a class="more" href="mailto:support@myfeeds.site?subject=AWIN%20feed%20question" data-cta="ask-support">write to us</a>.</p>
     </div>
     <div class="col">
       <div class="qa">
         <div>
           <h3>Why is the shop I joined missing from the list?</h3>
           <p>Wait an hour after the shop approved you, then set the feed language to <span class="ui">Any</span>.</p>
-          <p>Those are the two causes AWIN's FAQ names. If the shop is still missing although <span class="ui">Product Feed</span> says Yes, AWIN's advice is to ask the shop or your account manager.</p>
+          <p>If it is still missing although <span class="ui">Product Feed</span> says Yes, AWIN's advice is to ask the shop or your account manager.</p>
         </div>
         <div>
           <h3>How do I know my cards carry my tracking link?</h3>
-          <p>Read the link you pasted. After <code>columns</code> it has to list <code>aw_deep_link</code>.</p>
-          <p>If not, copy a new link with that column selected. In MyFeeds, click <span class="ui">Edit</span> on the feed's row, swap the link, then click <span class="ui">Reimport</span>.</p>
-        </div>
-        <div>
-          <h3>The link worked. Now the import fails.</h3>
-          <p>Wait an hour, then click <span class="ui">Reimport</span> once.</p>
-          <p>A likely cause is AWIN's download limit: five downloads at once, and five identical requests within an hour (as of October 2026). Several reimports in a row use that up.</p>
-        </div>
-        <div>
-          <h3>The shop has a feed for each country. Which one?</h3>
-          <p>The one for the country most of your readers shop in.</p>
-          <p>Each feed has its own language and usually its own currency, and prices show as the feed gives them. Add two countries of one shop, which takes Starter, and most products appear twice in your search.</p>
-        </div>
-        <div>
-          <h3>Doesn't AWIN have its own WordPress plugin?</h3>
-          <p>It does. AWIN's FAQ says that plugin does not update feeds by itself: you upload the files by hand (as of October 2026).</p>
-          <p>That is where a link in MyFeeds differs: it is read again every night. Without any plugin, the same FAQ says, a feed takes programming knowledge.</p>
+          <p>The link you pasted has to list <code>aw_deep_link</code> after <code>columns</code>.</p>
+          <p>If not, copy a new link with that column selected. In MyFeeds, click <span class="ui">Edit</span> on the feed's row, swap the link and click <span class="ui">Save Changes</span>. Then click <span class="ui">Reimport</span>.</p>
         </div>
       </div>
 
@@ -353,28 +292,16 @@
         <h3 class="sub-h">More questions</h3>
         <div class="faq">
           <details name="faq">
-            <summary>A feed shows up for a shop I never joined. Does a sale count?</summary>
-            <div class="a"><p>It can. For selected shops that accept affiliates automatically, AWIN credits sales made through the feed even if you have not joined. It calls this soft membership. It covers selected shops only, so joining the programme is the way to be sure.</p></div>
+            <summary>The link worked. Now the import fails.</summary>
+            <div class="a"><p>Wait an hour, then click <span class="ui">Reimport</span> once.</p><p>A likely cause is AWIN's download limit: five downloads at once, and five identical requests within an hour (as of October 2026).</p></div>
           </details>
           <details name="faq">
             <summary>The shop's feed says Enhanced. Does that work?</summary>
-            <div class="a"><p>We could not confirm it: that format, the shop's feed in Google's layout, is untested with MyFeeds. Take AWIN's own format where a shop offers both.</p><p>If you try it, select <code>aw_deep_link</code> there too. In that format, <code>link</code> is the shop's plain link and <code>aw_deep_link</code> is your tracked one. When a row has it, MyFeeds uses it.</p></div>
-          </details>
-          <details name="faq">
-            <summary>Is a very large shop a problem?</summary>
-            <div class="a"><p>Usually not. A bigger feed takes longer to import, and you can keep working while it runs. If you write about a few brands only, choose those brands in Create-a-Feed. The link then holds just their products.</p></div>
-          </details>
-          <details name="faq">
-            <summary>A card has no picture or no price</summary>
-            <div class="a"><p>If you selected all columns, the shop left that column empty in its feed. AWIN's advice is to ask the shop or your account manager.</p></div>
-          </details>
-          <details name="faq">
-            <summary>A card's link does not open the product page</summary>
-            <div class="a"><p>The address a card leads to comes from the shop's feed. If it misses the product page, AWIN's advice is to contact its Partner Success team. The contact link is at the bottom of AWIN's feed FAQ, source 3 below.</p></div>
+            <div class="a"><p>We could not test it: Enhanced is the shop's feed in Google's layout.</p><p>If you try it, select <code>aw_deep_link</code> there too. In that format, <code>link</code> is the shop's plain link. MyFeeds uses <code>aw_deep_link</code> when a row has it.</p></div>
           </details>
           <details name="faq">
             <summary>Can I see which post and product a click came from?</summary>
-            <div class="a"><p><span class="where">Pro</span>From the Pro plan, yes: clicks on your cards are counted by post and product. With <span class="ui">Network Hint</span> set to AWIN (step 2), your affiliate links also get a click ID in <code>clickref</code>, the field AWIN reports back.</p><p>A limit on AWIN's side: each click gets its own ID, and AWIN disables its Click References report for 30 days above 20,000 different ones (as of October 2026).</p></div>
+            <div class="a"><p><span class="where">Pro</span>From the Pro plan, yes: clicks on your cards are counted by post and product. Click <span class="ui">Edit</span> on the feed's row, set <span class="ui">Network Hint</span> to AWIN under <span class="ui">Advanced Options</span> and save. Your affiliate links then also get a click ID in <code>clickref</code>, the field AWIN reports back.</p><p>A limit on AWIN's side: each click gets its own ID, and AWIN disables its Click References report for 30 days above 20,000 different ones (as of October 2026).</p></div>
           </details>
         </div>
       </div>
@@ -382,13 +309,13 @@
       <div class="sources">
         <p class="k">Sources, read in October 2026</p>
         <ol>
-          <li><a href="https://help.awin.com/developers/docs/downloading-feeds-using-create-a-feed" rel="noopener">Downloading feeds using Create-a-Feed</a> (Awin). Steps and formats.</li>
-          <li><a href="https://success.awin.com/articles/en_US/Knowledge/How-can-I-access-a-Product-Feed" rel="noopener">How to access a product data feed</a> (Awin). Language, file or link.</li>
-          <li><a href="https://success.awin.com/articles/en_US/Knowledge/Product-Data-Feed-FAQ" rel="noopener">Product data feeds: Troubleshooting and FAQs</a> (Awin). The menu, limits, missing shops, brands, AWIN's own plugin.</li>
-          <li><a href="https://help.awin.com/developers/docs/faqs-for-publishers" rel="noopener">FAQs for Publishers</a> (Awin). The hour after approval, soft membership.</li>
-          <li><a href="https://help.awin.com/developers/docs/product-feed-list-download" rel="noopener">Product Feed List Download</a> (Awin). The link and its key.</li>
-          <li><a href="https://help.awin.com/developers/docs/enhanced-feeds-publisher-faq" rel="noopener">Enhanced Feeds Publisher Column Descriptions</a> (Awin). The two link columns.</li>
-          <li><a href="https://success.awin.com/articles/en_US/Knowledge/Click-References-Report" rel="noopener">Click References Report</a> (Awin). The 20,000 limit.</li>
+          <li><a href="https://help.awin.com/developers/docs/downloading-feeds-using-create-a-feed" rel="noopener">Downloading feeds using Create-a-Feed</a> (Awin)</li>
+          <li><a href="https://success.awin.com/articles/en_US/Knowledge/How-can-I-access-a-Product-Feed" rel="noopener">How to access a product data feed</a> (Awin)</li>
+          <li><a href="https://success.awin.com/articles/en_US/Knowledge/Product-Data-Feed-FAQ" rel="noopener">Product data feeds: Troubleshooting and FAQs</a> (Awin)</li>
+          <li><a href="https://help.awin.com/developers/docs/faqs-for-publishers" rel="noopener">FAQs for Publishers</a> (Awin)</li>
+          <li><a href="https://help.awin.com/developers/docs/product-feed-list-download" rel="noopener">Product Feed List Download</a> (Awin)</li>
+          <li><a href="https://help.awin.com/developers/docs/enhanced-feeds-publisher-faq" rel="noopener">Enhanced Feeds Publisher Column Descriptions</a> (Awin)</li>
+          <li><a href="https://success.awin.com/articles/en_US/Knowledge/Click-References-Report" rel="noopener">Click References Report</a> (Awin)</li>
         </ol>
       </div>
     </div>
@@ -400,11 +327,10 @@
     <div class="head">
       <p class="kick">Other networks</p>
       <h2 id="h-networks">The same guide for your other networks.</h2>
-      <p>Each network hands over a shop's products in its own way.</p>
     </div>
     <nav class="nets" aria-label="Feed link guides by network">
       <a href="/networks/cj/">CJ</a>
-      <a href="/networks/tradedoubler/">TradeDoubler</a>
+      <a href="/networks/tradedoubler/">Tradedoubler</a>
       <a href="/networks/impact/">Impact</a>
       <a href="/networks/rakuten/">Rakuten</a>
       <a href="/networks/webgains/">Webgains</a>
@@ -425,7 +351,6 @@
       <div class="go">
         <a class="cta" data-cta="final" href="/install/">Install MyFeeds for free</a>
         <p class="calm">Free on WordPress.org for one shop's feed. Paid plans each start with a free trial.</p>
-        <p class="calm">If the feed is already in, <a class="more" data-cta="final-cards" href="/install/#step-4">publish your first cards</a>.</p>
       </div>
       <p class="go"><a class="more" href="/#pricing" data-cta="final-plans">Compare the plans</a></p>
     </div>

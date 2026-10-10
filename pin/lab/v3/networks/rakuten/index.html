@@ -1,0 +1,384 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="p:domain_verify" content="0f13dbb87c7b78ab08817667740c2df2"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+<title>Get Rakuten Advertising products into WordPress - Step by step</title>
+<meta name="description" content="Rakuten Advertising has no feed link: product files sit in an SFTP account. How MyFeeds Pro fetches a shop's products from Rakuten directly, and where that ends.">
+<!-- Preview: lives under /pin/lab/v3/ until it goes live. Going live = move the file and delete the next line. -->
+<meta name="robots" content="noindex, follow">
+<link rel="canonical" href="https://myfeeds.site/networks/rakuten/">
+<meta name="theme-color" content="#FC9000">
+<meta property="og:type" content="article">
+<meta property="og:site_name" content="MyFeeds">
+<meta property="og:url" content="https://myfeeds.site/networks/rakuten/">
+<meta property="og:title" content="Get Rakuten Advertising products into WordPress - Step by step">
+<meta property="og:description" content="Rakuten Advertising has no feed link. How MyFeeds Pro fetches a shop's products from Rakuten directly, and where that ends.">
+<meta property="og:image" content="https://myfeeds.site/assets/og-image.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="628">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:url" content="https://myfeeds.site/networks/rakuten/">
+<meta name="twitter:title" content="Get Rakuten Advertising products into WordPress - Step by step">
+<meta name="twitter:description" content="Rakuten Advertising has no feed link. How MyFeeds Pro fetches a shop's products from Rakuten directly, and where that ends.">
+<meta name="twitter:image" content="https://myfeeds.site/assets/og-image.png">
+<link rel="icon" type="image/png" href="/favicon.png">
+<link rel="icon" type="image/x-icon" href="/favicon.ico">
+<link rel="apple-touch-icon" href="/apple-touch-icon.png">
+<link rel="preload" href="/assets/fonts/bricolage-latin.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="stylesheet" href="/assets/site.css">
+<script>
+/* Motion gate, before first paint. Nothing on this page waits for script:
+   without "mo" (no JS, reduced motion) there are simply no transitions. */
+!function(d){d.classList.add('js');try{if(matchMedia('(prefers-reduced-motion: no-preference)').matches)d.classList.add('mo')}catch(e){}}(document.documentElement);
+</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "Article",
+      "headline": "Get Rakuten products into WordPress",
+      "description": "Rakuten Advertising has no feed link: product files sit in an SFTP account. How MyFeeds Pro fetches a shop's products from Rakuten directly, and where that ends.",
+      "mainEntityOfPage": "https://myfeeds.site/networks/rakuten/",
+      "image": "https://myfeeds.site/assets/og-image.png",
+      "author": {
+        "@type": "Organization",
+        "name": "MyFeeds",
+        "url": "https://myfeeds.site/"
+      },
+      "publisher": {
+        "@type": "Organization",
+        "name": "MyFeeds",
+        "url": "https://myfeeds.site/"
+      }
+    },
+    {
+      "@type": "FAQPage",
+      "mainEntity": [
+        {
+          "@type": "Question",
+          "name": "Rakuten rejected my details",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Check the Client ID, the Client Secret and the SID. The SID is your publisher account ID, not the ID of the application."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Can I get fresh prices before tonight?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Yes. On the feed's row, click Refresh now. MyFeeds fetches the shop's products from Rakuten again."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Can I see which post and product a click came from?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Yes: clicks on your cards are counted by post and product. MyFeeds also adds a click ID in u1, a field Rakuten reports back. Rakuten's help says you can add u1 once your account is enabled for its Signature option. It then appears in the Signature Orders Report as Member ID."
+          }
+        }
+      ]
+    }
+  ]
+}
+</script>
+</head>
+<body data-page="networks/rakuten/">
+<a class="skip" href="#main">Skip to the guide</a>
+<div class="open-top">
+  <div class="wrap">
+    <header class="top">
+      <a class="mark" href="/" translate="no" aria-label="MyFeeds home"><span><img src="/assets/home/logo-52.webp" alt="" width="22" height="22"></span>MyFeeds</a>
+      <nav class="nav" aria-label="Main">
+        <a href="/#how">How it works</a>
+        <a href="/#pricing" data-cta="nav-pricing">Pricing</a>
+        <a href="/ecommerce/">E-commerce</a>
+        <a href="/networks/" aria-current="page">Networks</a>
+        <a href="/articles/">Guides</a>
+        <a href="/install/">Install</a>
+        <a href="/#faq">FAQ</a>
+      </nav>
+      <div class="top-r">
+        <button type="button" class="menu-btn" id="menu-btn" aria-expanded="false" aria-controls="menu"><i aria-hidden="true"></i>Menu</button>
+        <a class="cta cta-sm" data-cta="header" href="/#pricing">Get started</a>
+      </div>
+      <div class="menu" id="menu" hidden>
+        <a href="/#how">How it works</a>
+        <a href="/#pricing">Plans and prices</a>
+        <a href="/ecommerce/">E-commerce</a>
+        <a href="/networks/" aria-current="page">Affiliate networks</a>
+        <a href="/articles/">Guides</a>
+        <a href="/install/">Install guide</a>
+        <a href="/#faq">Questions</a>
+      </div>
+    </header>
+  </div>
+</div>
+
+<main id="main">
+<div class="open">
+  <div class="wrap">
+    <section class="hero long" aria-labelledby="h-hero">
+      <div>
+        <p class="eyebrow"><a href="/networks/">Feed link guides</a> · Rakuten</p>
+        <h1 id="h-hero">Get Rakuten products into WordPress.</h1>
+        <p class="lede">Rakuten Advertising has no feed link to paste: a shop's product file waits on a file server (SFTP) that Rakuten's support sets up first. On the Pro plan, our WordPress plugin MyFeeds skips the file and fetches the shop's products from Rakuten directly.</p>
+        <div class="go">
+          <a class="cta" data-cta="hero" id="hero-cta" href="https://checkout.freemius.com/plugin/21336/plan/35610/?trial=paid&amp;billing_cycle=monthly" rel="noopener">Start my 7-day Pro trial</a>
+          <p class="calm">7 days free, then $19 a month. Cancel before the trial ends and you pay nothing.</p>
+        </div>
+      </div>
+
+      <aside class="pinned" aria-labelledby="gl-k">
+        <p class="ov-k" id="gl-k"><span>At a glance</span><span>Rakuten</span></p>
+        <dl class="glance">
+          <div><dt>You get</dt><dd><b>No link, no download.</b> Product files sit on a file server.</dd></div>
+          <div><dt>Direct</dt><dd><b>MyFeeds asks Rakuten.</b> Through its product search.</dd></div>
+          <div><dt>You need</dt><dd><b>Three access details.</b> Two from Rakuten's developer portal, plus your account ID.</dd></div>
+          <div><dt>Current</dt><dd><b>Fetched again every night.</b> There is no file to upload.</dd></div>
+          <div><dt>Plan</dt><dd><span class="pill paid">Pro</span> and higher.</dd></div>
+        </dl>
+        <p class="ov-x"><a class="more" href="#in-rakuten">Start with step 1</a><a class="more" href="#questions">Questions</a></p>
+      </aside>
+    </section>
+  </div>
+</div>
+
+<section class="band board" id="before" aria-labelledby="h-before">
+  <div class="wrap">
+    <div class="head">
+      <h2 id="h-before">Before you start</h2>
+      <p>A feed pays off when you want many products from one shop, with picture and price. For two or three, a normal Rakuten link in your text is enough. <a class="more" href="/articles/import-product-feed-wordpress/" data-cta="quiet-guide">How a shop's product feed gets into WordPress</a> explains the idea.</p>
+    </div>
+    <ul class="need">
+      <li><b>The shop has approved you</b>MyFeeds lists the advertisers you have an active partnership with. Advertiser is Rakuten's word for a shop.</li>
+      <li><b>MyFeeds Pro is in your WordPress</b>The direct connection is part of Pro and higher. Paid plans are a plugin of their own, covered in the <a href="/install/">install guide</a>.</li>
+      <li><b>You can open Rakuten's developer portal</b>A site of its own, next to your publisher dashboard. Two of your three access details come from there.</li>
+    </ul>
+  </div>
+</section>
+
+<section class="band paper" id="in-rakuten" aria-labelledby="h-in-rakuten">
+  <div class="wrap chap">
+    <div class="head">
+      <p class="kick">Step 1 of 2</p>
+      <h2 id="h-in-rakuten">Get your access details from Rakuten</h2>
+      <div class="meta">
+        <span class="goal"><b>Goal</b>Three values, copied and ready to paste.</span>
+      </div>
+    </div>
+    <div class="col">
+      <ol class="sub">
+        <li>
+          <h3>Open Rakuten's developer portal</h3>
+          <p>Sign in to <a href="https://developers.rakutenadvertising.com/" rel="noopener">Rakuten's developer portal</a>. The MyFeeds dialog in step 2 repeats these steps and links to the portal.</p>
+          <p class="note"><b>Menus move.</b> Rakuten's own walkthrough for this step: <a href="https://developers.rakutenadvertising.com/guides/access_tokens" rel="noopener">Access Tokens</a>.</p>
+        </li>
+        <li>
+          <h3>Add an application</h3>
+          <p>On the <span class="ui">Applications</span> page, click <span class="ui">Add Application</span>. An application is the portal's word for a connection like this one, and it comes with a Client ID and a Client Secret. Copy both, and treat the secret like a password.</p>
+        </li>
+        <li>
+          <h3>Note your SID</h3>
+          <p>The SID is your publisher account ID from the Rakuten dashboard: Rakuten's walkthrough says account ID. It is not the ID of the application you just added.</p>
+          <div class="viz">
+            <p class="k">What you take to WordPress</p>
+            <dl class="kv">
+              <div><dt>Client ID</dt><dd>from the developer portal</dd></div>
+              <div><dt>Client Secret</dt><dd>from the developer portal, private</dd></div>
+              <div><dt>SID</dt><dd>your publisher account ID</dd></div>
+            </dl>
+            <p class="cap">MyFeeds keeps all three on your own site.</p>
+          </div>
+        </li>
+      </ol>
+      <p class="done">You have the three values. <a href="#in-wordpress">On to step 2</a></p>
+    </div>
+  </div>
+</section>
+
+<section class="band ink" id="in-wordpress" aria-labelledby="h-in-wordpress">
+  <div class="wrap">
+    <div class="head">
+      <p class="kick">Step 2 of 2</p>
+      <h2 id="h-in-wordpress">Connect Rakuten to your WordPress</h2>
+    </div>
+    <div class="duo">
+      <div class="card lit pick">
+        <span class="tag">From Pro</span>
+        <h3>Connect Rakuten directly</h3>
+        <ol class="nums">
+          <li>In WordPress, open <span class="ui">MyFeeds</span> and click <span class="ui">+&nbsp;Add API source</span>. Paste the three values and click <span class="ui">Save and test</span>.</li>
+          <li>Pick the advertiser. Take everything it lists, or only some categories or keywords.</li>
+          <li>Name the feed after the shop and click <span class="ui">Create feed</span>. One feed holds one shop. For the next shop, the button reads <span class="ui">+&nbsp;Rakuten feed</span>.</li>
+        </ol>
+        <ul class="yn">
+          <li class="y">MyFeeds fetches the products again every night. You never handle a file.</li>
+        </ul>
+      </div>
+      <div class="card">
+        <span class="k">Without Pro</span>
+        <h3>Rakuten's file route</h3>
+        <p>Rakuten's Product Catalog puts a file for each shop on an SFTP server. Rakuten says it is meant for publishers with technical resources and does not suit all. Its support sets up the account, then you apply to each shop under <span class="ui">Links</span>, <span class="ui">Product Feeds</span>.</p>
+        <ul class="yn">
+          <li class="n">MyFeeds cannot log in to SFTP, and we have not confirmed that it reads a Rakuten file you fetch and upload. Try one shop first.</li>
+        </ul>
+      </div>
+    </div>
+    <p class="done">The shop's products are in. <a href="/install/#step-4">Publish your first cards</a></p>
+  </div>
+</section>
+
+<section class="band paper" id="contains" aria-labelledby="h-contains">
+  <div class="wrap">
+    <div class="head">
+      <h2 id="h-contains">What MyFeeds gets from Rakuten</h2>
+      <p>Rakuten's product search answers with a short list of fields.</p>
+    </div>
+    <div class="side">
+      <div class="cmp-wrap" tabindex="0" role="region" aria-labelledby="col-cap">
+        <table class="cmp slim">
+          <caption class="vh" id="col-cap">Fields from Rakuten's product search and what a card shows from them</caption>
+          <thead>
+            <tr><th scope="col">Field from Rakuten</th><th scope="col">What your card shows</th></tr>
+          </thead>
+          <tbody>
+            <tr><th scope="row">productname</th><td>The product's name</td></tr>
+            <tr><th scope="row">price, saleprice</th><td>The price, and the old price crossed out when the shop has reduced it</td></tr>
+            <tr><th scope="row">imageurl</th><td>The picture</td></tr>
+            <tr><th scope="row">linkurl</th><td>Where a tap leads: the product in the shop, through your affiliate link</td></tr>
+          </tbody>
+        </table>
+      </div>
+      <div class="aside">
+        <p class="note"><b>No stock field, no brand field.</b> MyFeeds reads the brand from the product name where it can. It cannot tell from this source that a product is sold out.</p>
+        <p class="note"><b>5,000 products for each query.</b> That is Rakuten's limit (as of October 2026). MyFeeds fetches a larger shop in slices and shows how much it reached. For a very large shop that can be part of the range: choose the categories or keywords you write about.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="band board" id="questions" aria-labelledby="h-questions">
+  <div class="wrap chap">
+    <div class="head">
+      <h2 id="h-questions">Questions about Rakuten products</h2>
+      <p>For anything else, <a class="more" href="mailto:support@myfeeds.site?subject=Rakuten%20feed%20question" data-cta="ask-support">write to us</a>.</p>
+    </div>
+    <div class="col">
+      <div class="qa">
+        <div>
+          <h3>Why does the advertiser show zero products?</h3>
+          <p>Rakuten's product search returned nothing for it.</p>
+          <p>MyFeeds can only fetch what that search returns: Rakuten describes it as the product data of the advertisers you partner with. If the advertiser sells products and still shows zero, ask it, or Rakuten's support, whether its product data is open to you.</p>
+        </div>
+        <div>
+          <h3>Does the free plugin work with Rakuten?</h3>
+          <p>Not for the direct connection: that is part of Pro.</p>
+          <p>The free plugin takes an uploaded file, but Rakuten's text files have no row of column names, which MyFeeds needs to tell the columns apart. We expect them not to import, and the XML version is untested.</p>
+        </div>
+      </div>
+
+      <div>
+        <h3 class="sub-h">More questions</h3>
+        <div class="faq">
+          <details name="faq">
+            <summary>Rakuten rejected my details</summary>
+            <div class="a"><p>Check the Client ID, the Client Secret and the SID. The SID is your publisher account ID, not the ID of the application.</p></div>
+          </details>
+          <details name="faq">
+            <summary>Can I get fresh prices before tonight?</summary>
+            <div class="a"><p>Yes. On the feed's row, click <span class="ui">Refresh now</span>. MyFeeds fetches the shop's products from Rakuten again.</p></div>
+          </details>
+          <details name="faq">
+            <summary>Can I see which post and product a click came from?</summary>
+            <div class="a"><p><span class="where">Pro</span>Yes: clicks on your cards are counted by post and product. MyFeeds also adds a click ID in <code>u1</code>, a field Rakuten reports back.</p><p>Rakuten's help says you can add <code>u1</code> once your account is enabled for its Signature option. It then appears in the Signature Orders Report as Member ID.</p></div>
+          </details>
+        </div>
+      </div>
+
+      <div class="sources">
+        <p class="k">Sources, read in October 2026</p>
+        <ol>
+          <li><a href="https://pubhelp.rakutenadvertising.com/hc/en-us/articles/4412243602189-Product-Catalog-Overview" rel="noopener">Product Catalog Overview (Rakuten Advertising help)</a> <span>Who it is meant for.</span></li>
+          <li><a href="https://pubhelp.rakutenadvertising.com/hc/en-us/articles/11258487715981-Product-Catalog-Data-Feed-Implementation-Guidelines" rel="noopener">Product Catalog Data Feed Implementation Guidelines (Rakuten Advertising help)</a> <span>SFTP, the approvals, the layout of the files.</span></li>
+          <li><a href="https://developers.rakutenadvertising.com/guides/product_search" rel="noopener">Product Search (Rakuten Advertising developer portal)</a> <span>Fields and limits.</span></li>
+          <li><a href="https://developers.rakutenadvertising.com/guides/access_tokens" rel="noopener">Access Tokens (Rakuten Advertising developer portal)</a> <span>Applications, Client ID and Client Secret, the account ID.</span></li>
+          <li><a href="https://pubhelp.rakutenadvertising.com/hc/en-us/articles/11459139039373-Create-Deep-Links-Manually" rel="noopener">Create Deep Links Manually (Rakuten Advertising help)</a> <span>u1 and Signature.</span></li>
+          <li><a href="https://pubhelp.rakutenadvertising.com/hc/en-us/articles/4403173481613-Signature-Orders-Report" rel="noopener">Signature Orders Report (Rakuten Advertising help)</a> <span>Where Member ID shows.</span></li>
+        </ol>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="band vio" id="networks" aria-labelledby="h-networks">
+  <div class="wrap">
+    <div class="head">
+      <p class="kick">Other networks</p>
+      <h2 id="h-networks">The same guide for your other networks.</h2>
+      <p>Each network hands over a shop's products in its own way.</p>
+    </div>
+    <nav class="nets" aria-label="Feed link guides by network">
+      <a href="/networks/awin/">AWIN</a>
+      <a href="/networks/cj/">CJ</a>
+      <a href="/networks/tradedoubler/">Tradedoubler</a>
+      <a href="/networks/impact/">Impact</a>
+      <a href="/networks/webgains/">Webgains</a>
+      <a href="/networks/admitad/">Admitad</a>
+      <a href="/networks/pepperjam/">Pepperjam</a>
+      <a href="/networks/partnerize/">Partnerize</a>
+      <a href="/networks/flexoffers/">FlexOffers</a>
+      <a href="/networks/sovrn/">Sovrn</a>
+      <a class="all" href="/networks/">All networks</a>
+    </nav>
+  </div>
+</section>
+
+<section class="close" id="end" aria-labelledby="h-end">
+  <div class="wrap close-in">
+    <div>
+      <h2 id="h-end">Products from your Rakuten shops, as cards in your next post.</h2>
+      <div class="go">
+        <a class="cta" data-cta="final" href="https://checkout.freemius.com/plugin/21336/plan/35610/?trial=paid&amp;billing_cycle=monthly" rel="noopener">Start my 7-day Pro trial</a>
+        <p class="calm">7 days free, then $19 a month. Cancel before the trial ends and you pay nothing.</p>
+        <p class="calm">Shops on other networks too? <a class="more" data-cta="final-free" href="/install/">Start with the free plugin</a>.</p>
+      </div>
+      <p class="go"><a class="more" href="/#pricing" data-cta="final-plans">Compare the plans</a></p>
+    </div>
+    <div class="myfeeds-product-grid row3" aria-hidden="true">
+      <div class="myfeeds-product-card"><div class="myfeeds-product-image"><img src="/assets/home/hoodie-heather-grey.webp" width="400" height="400" alt="" loading="lazy"></div><div class="myfeeds-product-details"><div class="myfeeds-product-brand">Halden</div><div class="myfeeds-product-title">Heavyweight Hoodie Heather Grey</div><div class="myfeeds-product-price"><span class="myfeeds-current-price">$58.00</span></div><div class="myfeeds-shipping-info">Free Shipping</div><div class="myfeeds-merchant">Northside Supply</div></div></div>
+      <div class="myfeeds-product-card"><div class="myfeeds-product-image"><div class="myfeeds-discount-badge">-26%</div><img src="/assets/home/sneaker-black-hightop.webp" width="400" height="400" alt="" loading="lazy"></div><div class="myfeeds-product-details"><div class="myfeeds-product-brand">Arlo &amp; Finch</div><div class="myfeeds-product-title">Court High-Top Leather Black</div><div class="myfeeds-product-price"><span class="myfeeds-old-price">$129.00</span> <span class="myfeeds-current-price has-discount">$96.00</span></div><div class="myfeeds-shipping-info">Free Shipping</div><div class="myfeeds-merchant">Kicks Corner</div></div></div>
+      <div class="myfeeds-product-card"><div class="myfeeds-product-image"><img src="/assets/home/backpack-trail.webp" width="400" height="400" alt="" loading="lazy"></div><div class="myfeeds-product-details"><div class="myfeeds-product-brand">Fieldmade</div><div class="myfeeds-product-title">Trail Pack 28 L Sage</div><div class="myfeeds-product-price"><span class="myfeeds-current-price">$74.00</span></div><div class="myfeeds-shipping-info">Shipping costs may apply</div><div class="myfeeds-merchant">Basecamp Outfitters</div></div></div>
+    </div>
+  </div>
+</section>
+</main>
+
+<footer>
+  <div class="wrap">
+    <div class="brand"><b translate="no">MyFeeds</b><span>Affiliate product feeds for WordPress</span></div>
+    <nav aria-label="Site">
+      <a href="/ecommerce/">E-commerce</a>
+      <a href="/install/">Install guide</a>
+      <a href="/networks/">Affiliate networks</a>
+      <a href="/articles/">Guides</a>
+      <a href="/affiliates/">Become an affiliate</a>
+      <a href="https://wordpress.org/plugins/myfeeds-affiliate-feed-manager/" rel="noopener">Free plugin on WordPress.org</a>
+      <a href="/imprint/">Imprint</a>
+      <a href="/privacy/">Privacy</a>
+      <a href="/terms/">Terms</a>
+      <a href="/refund/">Refund policy</a>
+    </nav>
+    <span>© 2026 MyFeeds. All rights reserved.</span>
+  </div>
+</footer>
+
+<script src="/assets/site.js" defer></script>
+<script src="/assets/back-to-top.js" defer></script>
+<script src="/assets/consent.js" defer></script>
+</body>
+</html>

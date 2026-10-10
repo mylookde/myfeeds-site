@@ -1,0 +1,380 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="p:domain_verify" content="0f13dbb87c7b78ab08817667740c2df2"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+<title>Get your Admitad product feed into WordPress - Step by step</title>
+<meta name="description" content="Where Admitad's product feed form is, what to choose in each field, and how to add the link it generates to WordPress with the MyFeeds plugin.">
+<!-- Preview: lives under /pin/lab/v3/ until it goes live. Going live = move the file and delete the next line. -->
+<meta name="robots" content="noindex, follow">
+<link rel="canonical" href="https://myfeeds.site/networks/admitad/">
+<meta name="theme-color" content="#FC9000">
+<meta property="og:type" content="article">
+<meta property="og:site_name" content="MyFeeds">
+<meta property="og:url" content="https://myfeeds.site/networks/admitad/">
+<meta property="og:title" content="Get your Admitad product feed into WordPress - Step by step">
+<meta property="og:description" content="Where Admitad's product feed form is, what to choose in each field, and how to add the generated link to WordPress.">
+<meta property="og:image" content="https://myfeeds.site/assets/og-image.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="628">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:url" content="https://myfeeds.site/networks/admitad/">
+<meta name="twitter:title" content="Get your Admitad product feed into WordPress - Step by step">
+<meta name="twitter:description" content="Where Admitad's product feed form is, what to choose in each field, and how to add the generated link to WordPress.">
+<meta name="twitter:image" content="https://myfeeds.site/assets/og-image.png">
+<link rel="icon" type="image/png" href="/favicon.png">
+<link rel="icon" type="image/x-icon" href="/favicon.ico">
+<link rel="apple-touch-icon" href="/apple-touch-icon.png">
+<link rel="preload" href="/assets/fonts/bricolage-latin.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="stylesheet" href="/assets/site.css">
+<script>
+/* Motion gate, before first paint. Nothing on this page waits for script:
+   without "mo" (no JS, reduced motion) there are simply no transitions. */
+!function(d){d.classList.add('js');try{if(matchMedia('(prefers-reduced-motion: no-preference)').matches)d.classList.add('mo')}catch(e){}}(document.documentElement);
+</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "Article",
+      "headline": "Get your Admitad product feed into WordPress",
+      "description": "Where Admitad's product feed form is, what to choose in each field, and how to add the link it generates to WordPress with the MyFeeds plugin.",
+      "mainEntityOfPage": "https://myfeeds.site/networks/admitad/",
+      "image": "https://myfeeds.site/assets/og-image.png",
+      "author": {
+        "@type": "Organization",
+        "name": "MyFeeds",
+        "url": "https://myfeeds.site/"
+      },
+      "publisher": {
+        "@type": "Organization",
+        "name": "MyFeeds",
+        "url": "https://myfeeds.site/"
+      }
+    },
+    {
+      "@type": "FAQPage",
+      "mainEntity": [
+        {
+          "@type": "Question",
+          "name": "CSV, XML or Google Merchant: which format?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "CSV or XML: MyFeeds knows Admitad's column names in both. Google Merchant is Google's own layout, which MyFeeds reads too. Look at your first cards. If a picture or a price is missing, the Mapping Editor in MyFeeds lets you point that field at the right column."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Can I see which sales came from my cards?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "In Admitad, yes, with a SubID: a label of your own. Under Product Feeds, open Export templates, add a template with a SubID such as blog, and choose it in the form before you generate. Admitad puts the label on all product links in the feed and shows it under Reports, on SubID. MyFeeds leaves the links as they are. From the Pro plan, MyFeeds also counts the clicks on your cards, by post and product. What a click earned stays in Admitad's reports."
+          }
+        }
+      ]
+    }
+  ]
+}
+</script>
+</head>
+<body data-page="networks/admitad/">
+<a class="skip" href="#main">Skip to the guide</a>
+<div class="open-top">
+  <div class="wrap">
+    <header class="top">
+      <a class="mark" href="/" translate="no" aria-label="MyFeeds home"><span><img src="/assets/home/logo-52.webp" alt="" width="22" height="22"></span>MyFeeds</a>
+      <nav class="nav" aria-label="Main">
+        <a href="/#how">How it works</a>
+        <a href="/#pricing" data-cta="nav-pricing">Pricing</a>
+        <a href="/ecommerce/">E-commerce</a>
+        <a href="/networks/" aria-current="page">Networks</a>
+        <a href="/articles/">Guides</a>
+        <a href="/install/">Install</a>
+        <a href="/#faq">FAQ</a>
+      </nav>
+      <div class="top-r">
+        <button type="button" class="menu-btn" id="menu-btn" aria-expanded="false" aria-controls="menu"><i aria-hidden="true"></i>Menu</button>
+        <a class="cta cta-sm" data-cta="header" href="/#pricing">Get started</a>
+      </div>
+      <div class="menu" id="menu" hidden>
+        <a href="/#how">How it works</a>
+        <a href="/#pricing">Plans and prices</a>
+        <a href="/ecommerce/">E-commerce</a>
+        <a href="/networks/" aria-current="page">Affiliate networks</a>
+        <a href="/articles/">Guides</a>
+        <a href="/install/">Install guide</a>
+        <a href="/#faq">Questions</a>
+      </div>
+    </header>
+  </div>
+</div>
+
+<main id="main">
+<div class="open">
+  <div class="wrap">
+    <section class="hero long" aria-labelledby="h-hero">
+      <div>
+        <p class="eyebrow"><a href="/networks/">Feed link guides</a> · Admitad</p>
+        <h1 id="h-hero">Get your Admitad product feed into WordPress.</h1>
+        <p class="lede">In Admitad you build the feed link yourself, in a short form: your ad space, the shop, the feed. Paste the link into MyFeeds, our WordPress plugin, and pick products for your posts in the editor.</p>
+        <div class="go">
+          <a class="cta" data-cta="hero" id="hero-cta" href="/install/">Get the free plugin</a>
+          <p class="calm">Free on WordPress.org for one shop's feed. Paid plans each start with a free trial.</p>
+        </div>
+      </div>
+
+      <aside class="pinned" aria-labelledby="gl-k">
+        <p class="ov-k" id="gl-k"><span>At a glance</span><span>Admitad</span></p>
+        <dl class="glance">
+          <div><dt>In Admitad</dt><dd><b>Product Feeds, then Original.</b> A form builds your link.</dd></div>
+          <div><dt>You get</dt><dd><b>A link you generate.</b> One for each shop and feed.</dd></div>
+          <div><dt>Still open</dt><dd><b>How long the link lasts.</b> Admitad does not say. The fallback is a file you upload.</dd></div>
+          <div><dt>Plan</dt><dd><span class="pill free">Free</span> for one shop's feed. Any number of shops from Starter.</dd></div>
+        </dl>
+        <p class="ov-x"><a class="more" href="#in-admitad">Start with step 1</a><a class="more" href="#questions">Questions</a></p>
+      </aside>
+    </section>
+  </div>
+</div>
+
+<section class="band board" id="before" aria-labelledby="h-before">
+  <div class="wrap">
+    <div class="head">
+      <h2 id="h-before">Before you start</h2>
+      <p><a class="more" href="/articles/import-product-feed-wordpress/" data-cta="quiet-guide">A shop's product feed</a> pays off when you show many of its products, with picture and price. For two or three, a link from Admitad's <span class="ui">Deeplink Generator</span> is enough.</p>
+    </div>
+    <ul class="need">
+      <li><b>An ad space for your blog</b>Admitad's name for the site your links appear on. You cannot join a programme without one.</li>
+      <li><b>A shop that has a feed</b>Only programmes in Admitad's Online stores category have feeds, and only if the shop supplied one. Join the programme with your ad space first.</li>
+      <li><b>MyFeeds in your WordPress</b>Our plugin for the block editor. The <a href="/install/">install guide</a> takes you through it.</li>
+    </ul>
+  </div>
+</section>
+
+<section class="band paper" id="in-admitad" aria-labelledby="h-in-admitad">
+  <div class="wrap chap">
+    <div class="head">
+      <p class="kick">Step 1 of 2</p>
+      <h2 id="h-in-admitad">Generate the feed link in Admitad</h2>
+      <div class="meta">
+        <span class="goal"><b>Goal</b>One link to the shop's product feed, ready to paste.</span>
+      </div>
+    </div>
+    <div class="col">
+      <ol class="sub">
+        <li>
+          <h3>Open Admitad's feed form</h3>
+          <p>It turns a shop's product feed into a download link. Admitad currently calls this part of your account <span class="ui">Product Feeds</span> and keeps the form under <span class="ui">Original</span>.</p>
+          <p class="note"><b>Menus move.</b> If it is gone, <a href="https://admitad.useresponse.com/knowledge-base/article/product-feed-what-it-is-and-how-to-export-it-for-your-website_4" rel="noopener">Admitad's own walkthrough</a> shows where it is now.</p>
+        </li>
+        <li>
+          <h3>Fill in the form</h3>
+          <figure>
+            <div class="cmp-wrap" tabindex="0" role="region" aria-labelledby="form-cap">
+              <table class="cmp slim txt">
+                <caption class="vh" id="form-cap">Admitad's feed form, field by field</caption>
+                <thead>
+                  <tr><th scope="col">Field in the form</th><th scope="col">What to choose</th></tr>
+                </thead>
+                <tbody>
+                  <tr><th scope="row">Ad space</th><td>The site your cards will appear on. A shop may decline sales from links on an ad space it has not approved.</td></tr>
+                  <tr><th scope="row">Advertiser</th><td>Admitad's word for the shop. Only shops with a feed are listed.</td></tr>
+                  <tr><th scope="row">Feed</th><td>The names show country, currency or category. Take the one your readers shop in.</td></tr>
+                  <tr><th scope="row">Currency</th><td>The one the shop charges your readers in.</td></tr>
+                  <tr><th scope="row">Catalog format</th><td>CSV or XML.</td></tr>
+                  <tr><th scope="row">Discounted products only</th><td>Leave unticked.</td></tr>
+                  <tr><th scope="row">Date and time of last import</th><td>Leave empty.</td></tr>
+                </tbody>
+              </table>
+            </div>
+          </figure>
+          <p class="note warn"><b>Leave the last two alone.</b> Each shortens the feed: to sale items, or to changes since a date. MyFeeds treats a product missing from the feed as removed, and its card leaves your posts.</p>
+        </li>
+        <li>
+          <h3>Generate, then copy the link</h3>
+          <p>Click <span class="ui">Generate</span>. The link appears in the field <span class="ui">Generated Link</span>. Copy all of it.</p>
+        </li>
+      </ol>
+      <p class="done">You have the link copied. <a href="#in-wordpress">On to step 2</a></p>
+    </div>
+  </div>
+</section>
+
+<section class="band ink" id="in-wordpress" aria-labelledby="h-in-wordpress">
+  <div class="wrap">
+    <div class="head">
+      <p class="kick">Step 2 of 2</p>
+      <h2 id="h-in-wordpress">Add the link in WordPress</h2>
+      <div class="meta">
+        <span class="goal"><b>Goal</b>The shop's products in WordPress, ready to search in the editor.</span>
+      </div>
+    </div>
+    <div class="duo">
+      <div class="card lit pick">
+        <span class="tag">Try this first</span>
+        <h3>Paste the link</h3>
+        <ol class="nums">
+          <li>In WordPress, open <span class="ui">MyFeeds</span> and click <span class="ui">Add your first feed</span>.</li>
+          <li>Name the feed after the shop: readers see that name on your cards. Keep <span class="ui">At a URL</span>, paste the link and click <span class="ui">Create Feed</span>.</li>
+          <li>Let it import. When it is done, the feed's row shows the number of products.</li>
+        </ol>
+        <ul class="yn">
+          <li class="y">MyFeeds reads a link again every night.</li>
+          <li class="n">Admitad does not say how long a generated link keeps working.</li>
+        </ul>
+      </div>
+      <div class="card">
+        <span class="k">If MyFeeds shows an error for the link</span>
+        <h3>Upload the file</h3>
+        <ol class="nums">
+          <li>Paste the generated link into your browser. Admitad sends the feed as a file.</li>
+          <li>In the same MyFeeds dialog, choose <span class="ui">Upload a file</span>.</li>
+        </ol>
+        <ul class="yn">
+          <li class="n">A file stays as it was on upload day. Prices and stock freeze until you upload a newer one.</li>
+        </ul>
+        <p>Send us the error message, and we help you get the link working: <a href="mailto:support@myfeeds.site?subject=Admitad%20feed%20link%20error" data-cta="error-support">support@myfeeds.site</a>.</p>
+      </div>
+    </div>
+    <p class="done">The shop's products are in. <a href="/install/#step-4">Publish your first cards</a></p>
+  </div>
+</section>
+
+<section class="band paper" id="feed" aria-labelledby="h-feed">
+  <div class="wrap">
+    <div class="head">
+      <h2 id="h-feed">What Admitad's feed gives you</h2>
+      <p>One row for each product, with the link that pays you already in it.</p>
+    </div>
+    <div class="side">
+      <figure>
+        <div class="viz">
+          <p class="k">Before the feed reaches you</p>
+          <ol class="flow" aria-label="How a product list gets from the shop through Admitad to your blog">
+            <li><b>The shop</b><span>builds a list of its products.</span></li>
+            <li><b>Admitad</b><span>adds its tracking to the product links.</span></li>
+            <li class="dest"><b>Your link</b><span>brings the list into WordPress.</span></li>
+          </ol>
+        </div>
+      </figure>
+      <div class="aside">
+        <p class="note"><b>Every night, MyFeeds reads the link again</b> and updates price, crossed-out price, stock, picture and link of the products in your published posts. Once a week it reads the whole feed, and new products become searchable.</p>      </div>
+    </div>
+  </div>
+</section>
+
+<section class="band board" id="questions" aria-labelledby="h-questions">
+  <div class="wrap chap">
+    <div class="head">
+      <h2 id="h-questions">Questions about Admitad feeds</h2>
+      <p>For anything else, <a class="more" href="mailto:support@myfeeds.site?subject=Admitad%20feed%20question" data-cta="ask-support">write to us</a>.</p>
+    </div>
+    <div class="col">
+      <div class="qa">
+        <div>
+          <h3>Does the generated link keep working?</h3>
+          <p>Admitad's help does not say, and we could not confirm it: MyFeeds is not yet tested against a live Admitad account.</p>
+          <p>If the feed's row in MyFeeds shows an error, generate a fresh link, click <span class="ui">Edit</span> on that row, swap the link, click <span class="ui">Save Changes</span> and then <span class="ui">Reimport</span>. If that fails too, upload the file.</p>
+        </div>
+        <div>
+          <h3>The import fails on a large shop</h3>
+          <p>The download probably took too long. Admitad says a large feed can take a few minutes, and MyFeeds stops waiting after two.</p>
+          <p>Take a smaller feed if the shop offers several, or download the file in your browser and upload it.</p>
+        </div>
+      </div>
+
+      <div>
+        <h3 class="sub-h">More questions</h3>
+        <div class="faq">
+          <details name="faq">
+            <summary>CSV, XML or Google Merchant: which format?</summary>
+            <div class="a"><p>CSV or XML: MyFeeds knows Admitad's column names in both. Google Merchant is Google's own layout, which MyFeeds reads too.</p><p>Look at your first cards. If a picture or a price is missing, the <span class="ui">Mapping Editor</span> in MyFeeds lets you point that field at the right column.</p></div>
+          </details>
+          <details name="faq">
+            <summary>Can I see which sales came from my cards?</summary>
+            <div class="a"><p>In Admitad, yes, with a SubID: a label of your own. Under <span class="ui">Product Feeds</span>, open <span class="ui">Export templates</span>, add a template with a SubID such as <code>blog</code>, and choose it in the form before you generate.</p><p>Admitad puts the label on all product links in the feed and shows it under <span class="ui">Reports</span>, on SubID. MyFeeds leaves the links as they are.</p><p><span class="where">Pro</span>From the Pro plan, MyFeeds also counts the clicks on your cards, by post and product. What a click earned stays in Admitad's reports.</p></div>
+          </details>
+        </div>
+      </div>
+
+      <div class="sources">
+        <p class="k">Sources, read in October 2026</p>
+        <ol>
+          <li><a href="https://admitad.useresponse.com/knowledge-base/article/product-feed-what-it-is-and-how-to-export-it-for-your-website_4" rel="noopener">Product feed: what it is and how to export it for your website (Admitad)</a> <span>The form, the formats, templates and SubID.</span></li>
+          <li><a href="https://admitad.useresponse.com/knowledge-base/article/product-feed-what-it-is-and-how-to-upload-it-to-affiliate-program_3" rel="noopener">Product feed: what it is and how to upload it to affiliate program (Admitad)</a> <span>Online stores only, tracking on the links.</span></li>
+          <li><a href="https://admitad.useresponse.com/knowledge-base/article/publishers-ad-space-the-basics_1" rel="noopener">Publisher's ad space: the basics (Admitad)</a> <span>What an ad space is, and links on one that is not approved.</span></li>
+          <li><a href="https://admitad.useresponse.com/knowledge-base/article/subid-in-affiliate-links-what-it-is-and-how-to-use-it_16" rel="noopener">SubID in affiliate links: what it is and how to use it (Admitad)</a> <span>The SubID report.</span></li>
+          <li><a href="https://admitad.useresponse.com/knowledge-base/article/deeplink_20" rel="noopener">Deeplink for publishers (Admitad)</a> <span>Links to single pages.</span></li>
+        </ol>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="band vio" id="networks" aria-labelledby="h-networks">
+  <div class="wrap">
+    <div class="head">
+      <p class="kick">Other networks</p>
+      <h2 id="h-networks">The same guide for your other networks.</h2>
+    </div>
+    <nav class="nets" aria-label="Feed link guides by network">
+      <a href="/networks/awin/">AWIN</a>
+      <a href="/networks/cj/">CJ</a>
+      <a href="/networks/tradedoubler/">Tradedoubler</a>
+      <a href="/networks/impact/">Impact</a>
+      <a href="/networks/rakuten/">Rakuten</a>
+      <a href="/networks/webgains/">Webgains</a>
+      <a href="/networks/pepperjam/">Pepperjam</a>
+      <a href="/networks/partnerize/">Partnerize</a>
+      <a href="/networks/flexoffers/">FlexOffers</a>
+      <a href="/networks/sovrn/">Sovrn</a>
+      <a class="all" href="/networks/">All networks</a>
+    </nav>
+  </div>
+</section>
+
+<section class="close" id="end" aria-labelledby="h-end">
+  <div class="wrap close-in">
+    <div>
+      <h2 id="h-end">Products from your Admitad shops, as cards in your next post.</h2>
+      <div class="go">
+        <a class="cta" data-cta="final" href="/install/">Install MyFeeds for free</a>
+        <p class="calm">Free on WordPress.org for one shop's feed. Paid plans each start with a free trial.</p>
+      </div>
+      <p class="go"><a class="more" href="/#pricing" data-cta="final-plans">Compare the plans</a></p>
+    </div>
+    <div class="myfeeds-product-grid row3" aria-hidden="true">
+      <div class="myfeeds-product-card"><div class="myfeeds-product-image"><img src="/assets/home/hoodie-heather-grey.webp" width="400" height="400" alt="" loading="lazy"></div><div class="myfeeds-product-details"><div class="myfeeds-product-brand">Halden</div><div class="myfeeds-product-title">Heavyweight Hoodie Heather Grey</div><div class="myfeeds-product-price"><span class="myfeeds-current-price">$58.00</span></div><div class="myfeeds-shipping-info">Free Shipping</div><div class="myfeeds-merchant">Northside Supply</div></div></div>
+      <div class="myfeeds-product-card"><div class="myfeeds-product-image"><div class="myfeeds-discount-badge">-26%</div><img src="/assets/home/sneaker-black-hightop.webp" width="400" height="400" alt="" loading="lazy"></div><div class="myfeeds-product-details"><div class="myfeeds-product-brand">Arlo &amp; Finch</div><div class="myfeeds-product-title">Court High-Top Leather Black</div><div class="myfeeds-product-price"><span class="myfeeds-old-price">$129.00</span> <span class="myfeeds-current-price has-discount">$96.00</span></div><div class="myfeeds-shipping-info">Free Shipping</div><div class="myfeeds-merchant">Kicks Corner</div></div></div>
+      <div class="myfeeds-product-card"><div class="myfeeds-product-image"><img src="/assets/home/backpack-trail.webp" width="400" height="400" alt="" loading="lazy"></div><div class="myfeeds-product-details"><div class="myfeeds-product-brand">Fieldmade</div><div class="myfeeds-product-title">Trail Pack 28 L Sage</div><div class="myfeeds-product-price"><span class="myfeeds-current-price">$74.00</span></div><div class="myfeeds-shipping-info">Shipping costs may apply</div><div class="myfeeds-merchant">Basecamp Outfitters</div></div></div>
+    </div>
+  </div>
+</section>
+</main>
+
+<footer>
+  <div class="wrap">
+    <div class="brand"><b translate="no">MyFeeds</b><span>Affiliate product feeds for WordPress</span></div>
+    <nav aria-label="Site">
+      <a href="/ecommerce/">E-commerce</a>
+      <a href="/install/">Install guide</a>
+      <a href="/networks/">Affiliate networks</a>
+      <a href="/articles/">Guides</a>
+      <a href="/affiliates/">Become an affiliate</a>
+      <a href="https://wordpress.org/plugins/myfeeds-affiliate-feed-manager/" rel="noopener">Free plugin on WordPress.org</a>
+      <a href="/imprint/">Imprint</a>
+      <a href="/privacy/">Privacy</a>
+      <a href="/terms/">Terms</a>
+      <a href="/refund/">Refund policy</a>
+    </nav>
+    <span>© 2026 MyFeeds. All rights reserved.</span>
+  </div>
+</footer>
+
+<script src="/assets/site.js" defer></script>
+<script src="/assets/back-to-top.js" defer></script>
+<script src="/assets/consent.js" defer></script>
+</body>
+</html>

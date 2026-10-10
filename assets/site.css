@@ -746,6 +746,8 @@ details.sources>summary{display:flex;align-items:center;justify-content:space-be
 details.sources>summary::-webkit-details-marker{display:none}
 details.sources>summary::after{content:"+";flex:none;width:30px;height:30px;border-radius:50%;background:var(--tint);color:var(--fg);font:500 20px/29px var(--sans);text-align:center}
 details.sources[open]>summary::after{transform:rotate(45deg)}
+/* a table or a checklist right after a paragraph, inside an answer or a step */
+.qa .cmp-wrap,.sub>li>.check,.sub>li>.cmp-wrap,.prose>.cmp-wrap{margin-top:14px}
 /* on a phone the contents note in the hero keeps its titles and drops the second lines */
 @media (max-width:899px){.hero .ov-g{display:none}.hero .ov a{padding:10px 2px;align-items:center}.hero .ov .n{grid-row:auto}}
 

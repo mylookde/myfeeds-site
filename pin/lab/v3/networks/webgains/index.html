@@ -1,0 +1,400 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="p:domain_verify" content="0f13dbb87c7b78ab08817667740c2df2"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+<title>Get your Webgains product feed into WordPress - Step by step</title>
+<meta name="description" content="Where Webgains keeps the feeds of the shops you have joined, which format to pick, how to check your tracking link, and how to add the feed to WordPress.">
+<!-- Preview: lives under /pin/lab/v3/ until it goes live. Going live = move the file and delete the next line. -->
+<meta name="robots" content="noindex, follow">
+<link rel="canonical" href="https://myfeeds.site/networks/webgains/">
+<meta name="theme-color" content="#FC9000">
+<meta property="og:type" content="article">
+<meta property="og:site_name" content="MyFeeds">
+<meta property="og:url" content="https://myfeeds.site/networks/webgains/">
+<meta property="og:title" content="Get your Webgains product feed into WordPress - Step by step">
+<meta property="og:description" content="Where Webgains keeps the feeds of the shops you have joined, which format to pick, and how to add the feed to WordPress.">
+<meta property="og:image" content="https://myfeeds.site/assets/og-image.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="628">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:url" content="https://myfeeds.site/networks/webgains/">
+<meta name="twitter:title" content="Get your Webgains product feed into WordPress - Step by step">
+<meta name="twitter:description" content="Where Webgains keeps the feeds of the shops you have joined, which format to pick, and how to add the feed to WordPress.">
+<meta name="twitter:image" content="https://myfeeds.site/assets/og-image.png">
+<link rel="icon" type="image/png" href="/favicon.png">
+<link rel="icon" type="image/x-icon" href="/favicon.ico">
+<link rel="apple-touch-icon" href="/apple-touch-icon.png">
+<link rel="preload" href="/assets/fonts/bricolage-latin.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="stylesheet" href="/assets/site.css">
+<script>
+/* Motion gate, before first paint. Nothing on this page waits for script:
+   without "mo" (no JS, reduced motion) there are simply no transitions. */
+!function(d){d.classList.add('js');try{if(matchMedia('(prefers-reduced-motion: no-preference)').matches)d.classList.add('mo')}catch(e){}}(document.documentElement);
+</script>
+<style>
+/* this page only: air above a table that follows a paragraph inside a question */
+.wg-gap{margin-top:14px}
+</style>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "Article",
+      "headline": "Get your Webgains product feed into WordPress",
+      "description": "Where Webgains keeps the feeds of the shops you have joined, which format to pick, how to check your tracking link, and how to add the feed to WordPress.",
+      "mainEntityOfPage": "https://myfeeds.site/networks/webgains/",
+      "image": "https://myfeeds.site/assets/og-image.png",
+      "author": {
+        "@type": "Organization",
+        "name": "MyFeeds",
+        "url": "https://myfeeds.site/"
+      },
+      "publisher": {
+        "@type": "Organization",
+        "name": "MyFeeds",
+        "url": "https://myfeeds.site/"
+      }
+    },
+    {
+      "@type": "FAQPage",
+      "mainEntity": [
+        {
+          "@type": "Question",
+          "name": "A sale I referred was not tracked. Why?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Webgains names the usual reasons: the buyer clicked another site's link last, declined or deleted cookies, or bought after the cookie window, 30 days by default. Sometimes the shop's own tracking is broken. If you are sure the sale came through your link, raise a Transaction Enquiry with the programme (as of October 2026)."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Can I see which post and product a click came from?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "From the Pro plan, yes: clicks on your cards are counted by post and product. MyFeeds adds no click ID to a Webgains link. Sales and commissions you read in your Webgains reports, as before."
+          }
+        }
+      ]
+    }
+  ]
+}
+</script>
+</head>
+<body data-page="networks/webgains/">
+<a class="skip" href="#main">Skip to the guide</a>
+<div class="open-top">
+  <div class="wrap">
+    <header class="top">
+      <a class="mark" href="/" translate="no" aria-label="MyFeeds home"><span><img src="/assets/home/logo-52.webp" alt="" width="22" height="22"></span>MyFeeds</a>
+      <nav class="nav" aria-label="Main">
+        <a href="/#how">How it works</a>
+        <a href="/#pricing" data-cta="nav-pricing">Pricing</a>
+        <a href="/ecommerce/">E-commerce</a>
+        <a href="/networks/" aria-current="page">Networks</a>
+        <a href="/articles/">Guides</a>
+        <a href="/install/">Install</a>
+        <a href="/#faq">FAQ</a>
+      </nav>
+      <div class="top-r">
+        <button type="button" class="menu-btn" id="menu-btn" aria-expanded="false" aria-controls="menu"><i aria-hidden="true"></i>Menu</button>
+        <a class="cta cta-sm" data-cta="header" href="/#pricing">Get started</a>
+      </div>
+      <div class="menu" id="menu" hidden>
+        <a href="/#how">How it works</a>
+        <a href="/#pricing">Plans and prices</a>
+        <a href="/ecommerce/">E-commerce</a>
+        <a href="/networks/" aria-current="page">Affiliate networks</a>
+        <a href="/articles/">Guides</a>
+        <a href="/install/">Install guide</a>
+        <a href="/#faq">Questions</a>
+      </div>
+    </header>
+  </div>
+</div>
+
+<main id="main">
+<div class="open">
+  <div class="wrap">
+    <section class="hero long" aria-labelledby="h-hero">
+      <div>
+        <p class="eyebrow"><a href="/networks/">Feed link guides</a> · Webgains</p>
+        <h1 id="h-hero">Get your Webgains product feed into WordPress.</h1>
+        <p class="lede">Webgains keeps the product feeds of the shops you have joined in one menu, all in the layout Google Shopping uses. Choose a format, copy the link and paste it into MyFeeds, our WordPress plugin.</p>
+        <div class="go">
+          <a class="cta" data-cta="hero" id="hero-cta" href="/install/">Get the free plugin</a>
+          <p class="calm">Free on WordPress.org for one shop's feed. Paid plans each start with a free trial.</p>
+        </div>
+      </div>
+
+      <aside class="pinned" aria-labelledby="gl-k">
+        <p class="ov-k" id="gl-k"><span>At a glance</span><span>Webgains</span></p>
+        <dl class="glance">
+          <div><dt>In Webgains</dt><dd><b>Open Product Feeds.</b> The shop's programme has to say Joined.</dd></div>
+          <div><dt>You get</dt><dd><b>A link or a file.</b> CSV, XML or TSV, in the Google Shopping layout.</dd></div>
+          <div><dt>WordPress</dt><dd><b>Paste the link.</b> If MyFeeds can't read it, upload the file.</dd></div>
+          <div><dt>Plan</dt><dd><span class="pill free">Free</span> for one shop's feed. Any number of shops from Starter.</dd></div>
+        </dl>
+        <p class="ov-x"><a class="more" href="#in-webgains">Start with step 1</a><a class="more" href="#questions">Questions</a></p>
+      </aside>
+    </section>
+  </div>
+</div>
+
+<section class="band board" id="before" aria-labelledby="h-before">
+  <div class="wrap">
+    <div class="head">
+      <h2 id="h-before">Before you start</h2>
+      <p><a class="more" href="/articles/import-product-feed-wordpress/" data-cta="quiet-guide">A shop's product feed</a> pays off when you show many of its products, with picture and price. For two or three, a link from Webgains' Deep Link Creator is enough.</p>
+    </div>
+    <ul class="need">
+      <li><b>The programme says Joined</b>Webgains lists a feed only for programmes you have joined. An application alone is not enough.</li>
+      <li><b>You are in the shop's country network</b>For a shop from another country, apply to that country's Webgains network first.</li>
+      <li><b>MyFeeds is in your WordPress</b>Our plugin for the WordPress block editor. The <a href="/install/">install guide</a> takes you through setting it up.</li>
+    </ul>
+  </div>
+</section>
+
+<section class="band paper" id="in-webgains" aria-labelledby="h-in-webgains">
+  <div class="wrap chap">
+    <div class="head">
+      <p class="kick">Step 1 of 2</p>
+      <h2 id="h-in-webgains">Get the feed link in Webgains</h2>
+      <div class="meta">
+        <span class="goal"><b>Goal</b>One link to the shop's product feed, checked and ready to paste, whatever you paste it into.</span>
+      </div>
+    </div>
+    <div class="col">
+      <ol class="sub">
+        <li>
+          <h3>Find the shop's feed</h3>
+          <p>Open the menu that lists the product feeds of your programmes. Webgains currently calls it <span class="ui">Product Feeds</span>. Use its filters to find the shop.</p>
+          <p class="note"><b>Menus move.</b> If it is gone, see <a href="https://knowledgehub.webgains.com/home/product-feeds-for-publishers" rel="noopener">Webgains' own guide to exporting feeds</a>.</p>
+        </li>
+        <li>
+          <h3>Select categories and columns</h3>
+          <p>Select the product categories you write about, or all of them. Tick the optional columns the shop has added: a card can only show what the feed carries.</p>
+        </li>
+        <li>
+          <h3>Choose CSV</h3>
+          <p>Webgains offers CSV, XML and TSV. Take CSV: it opens in any spreadsheet, which you need for the check below.</p>
+        </li>
+        <li>
+          <h3>Copy the link and check it once</h3>
+          <p>Webgains now offers to copy or download the URL. Copy it.</p>
+          <p>Webgains says it turns shop addresses into tracking links when it processes a feed. We could not confirm that, so look once. A plain shop address would earn you nothing: if you find one, ask Webgains first.</p>
+          <figure>
+            <fieldset class="check">
+              <legend class="k">Before you paste the link</legend>
+              <ul>
+                <li><label><input type="checkbox"><span>It opens in a private browser window, where you are not logged in to Webgains, and the feed loads.</span></label></li>
+                <li><label><input type="checkbox"><span>In the file, the addresses in the column <code>link</code> contain <code>wgcampaignid</code> and <code>wgprogramid</code>. That marks a Webgains tracking link.</span></label></li>
+              </ul>
+              <p class="cap">The ticks are only for you.</p>
+            </fieldset>
+          </figure>
+        </li>
+      </ol>
+      <p class="done">The link checks out. <a href="#in-wordpress">On to step 2</a></p>
+    </div>
+  </div>
+</section>
+
+<section class="band ink" id="in-wordpress" aria-labelledby="h-in-wordpress">
+  <div class="wrap">
+    <div class="head">
+      <p class="kick">Step 2 of 2</p>
+      <h2 id="h-in-wordpress">Add the link in WordPress</h2>
+      <div class="meta">
+        <span class="goal"><b>Goal</b>The shop's products in WordPress, ready to search in the editor.</span>
+      </div>
+    </div>
+    <div class="duo">
+      <div class="card lit pick">
+        <span class="tag">Try this first</span>
+        <h3>Paste the link</h3>
+        <ol class="nums">
+          <li>In WordPress, open <span class="ui">MyFeeds</span> and click <span class="ui">Add your first feed</span>. On a paid plan, later feeds go through <span class="ui">+ Add Feed</span>.</li>
+          <li>Name the feed after the shop: readers see that name on your cards. Keep <span class="ui">At a URL</span>, paste the link and click <span class="ui">Create Feed</span>.</li>
+          <li>Let it import in the background while you keep working. When it is done, the feed's row shows the number of products.</li>
+        </ol>
+        <ul class="yn">
+          <li class="y">MyFeeds reads a link again every night.</li>
+        </ul>
+      </div>
+      <div class="card">
+        <span class="k">If the link asks for a login or fails</span>
+        <h3>Upload the file</h3>
+        <ol class="nums">
+          <li>In Webgains, download the file instead.</li>
+          <li>In the same MyFeeds dialog, choose <span class="ui">Upload a file</span>.</li>
+        </ol>
+        <ul class="yn">
+          <li class="n">A file stays as it was on upload day. Prices and stock freeze until you upload a newer one.</li>
+        </ul>
+      </div>
+    </div>
+    <p class="done">The shop's products are in. <a href="/install/#step-4">Publish your first cards</a></p>
+  </div>
+</section>
+
+<section class="band paper" id="contains" aria-labelledby="h-contains">
+  <div class="wrap">
+    <div class="head">
+      <h2 id="h-contains">What a Webgains feed contains</h2>
+      <p>Webgains asks every shop for the same columns.</p>
+    </div>
+    <div class="side">
+      <div class="cmp-wrap" tabindex="0" role="region" aria-labelledby="col-cap">
+        <table class="cmp slim">
+          <caption class="vh" id="col-cap">Columns of a Webgains feed and what a product card shows from them</caption>
+          <thead>
+            <tr><th scope="col">Column in the feed</th><th scope="col">What your card shows</th></tr>
+          </thead>
+          <tbody>
+            <tr><th scope="row">title</th><td>The product's name</td></tr>
+            <tr><th scope="row">brand</th><td>The brand, above the name</td></tr>
+            <tr><th scope="row">price</th><td>The price</td></tr>
+            <tr><th scope="row">sale_price</th><td>The price during a sale, with <code>price</code> crossed out beside it</td></tr>
+            <tr><th scope="row">image_link</th><td>The picture</td></tr>
+            <tr><th scope="row">link</th><td>Where a tap leads: the product in the shop, through your tracking link</td></tr>
+          </tbody>
+        </table>
+      </div>
+      <div class="aside">
+        <p class="note warn"><b>Check your first card.</b> We could not test this with a live Webgains account. Look for the price, the picture, and a tap that opens the product.</p>
+        <p class="note"><b>How it stays current.</b> Every night MyFeeds refreshes the products in your published posts: price, stock, picture, link. Once a week it reads the whole feed: new products become searchable, removed ones leave your posts. Shops update their Webgains feed daily at most.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="band board" id="questions" aria-labelledby="h-questions">
+  <div class="wrap chap">
+    <div class="head">
+      <h2 id="h-questions">Questions about Webgains feeds</h2>
+      <p>For anything else, <a class="more" href="mailto:support@myfeeds.site?subject=Webgains%20feed%20question" data-cta="ask-support">write to us</a>.</p>
+    </div>
+    <div class="col">
+      <div class="qa">
+        <div>
+          <h3>Why is there no feed for the shop I applied to?</h3>
+          <p>Look up the programme's status in your <span class="ui">Programs</span> list.</p>
+          <div class="cmp-wrap wg-gap" tabindex="0" role="region" aria-labelledby="st-cap">
+            <table class="cmp slim txt">
+              <caption class="vh" id="st-cap">Webgains programme statuses and what to do with each</caption>
+              <thead>
+                <tr><th scope="col">Status</th><th scope="col">What to do</th></tr>
+              </thead>
+              <tbody>
+                <tr><th scope="row">Pending</th><td>Wait. The shop has not decided yet.</td></tr>
+                <tr><th scope="row">Not joined</th><td>Apply. Some shops approve at once.</td></tr>
+                <tr><th scope="row">Rejected</th><td>Wait 90 days, then use <span class="ui">Rejoin</span> (as of October 2026).</td></tr>
+                <tr><th scope="row">Suspended</th><td>Contact the shop or your Webgains contact.</td></tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+        <div>
+          <h3>Will the link I copied keep working?</h3>
+          <p>Webgains' help does not say, and we could not confirm it.</p>
+          <p>If an import fails one day, copy a fresh link in Webgains. In MyFeeds, click <span class="ui">Edit</span> on the feed's row, swap the link and click <span class="ui">Save Changes</span>, then <span class="ui">Reimport</span>. If that fails too, upload the file.</p>
+        </div>
+      </div>
+
+      <div>
+        <h3 class="sub-h">More questions</h3>
+        <div class="faq">
+          <details name="faq">
+            <summary>A sale I referred was not tracked. Why?</summary>
+            <div class="a"><p>Webgains names the usual reasons: the buyer clicked another site's link last, declined or deleted cookies, or bought after the cookie window, 30 days by default. Sometimes the shop's own tracking is broken.</p><p>If you are sure the sale came through your link, raise a Transaction Enquiry with the programme (as of October 2026).</p></div>
+          </details>
+          <details name="faq">
+            <summary>Can I see which post and product a click came from?</summary>
+            <div class="a"><p><span class="where">Pro</span>From the Pro plan, yes: clicks on your cards are counted by post and product. MyFeeds adds no click ID to a Webgains link. Sales and commissions you read in your Webgains reports, as before.</p></div>
+          </details>
+        </div>
+      </div>
+
+      <div class="sources">
+        <p class="k">Sources, read in October 2026</p>
+        <ol>
+          <li><a href="https://knowledgehub.webgains.com/home/product-feeds-for-publishers" rel="noopener">Exporting product feeds and feed specifications, for publishers</a> (Webgains)</li>
+          <li><a href="https://knowledgehub.webgains.com/home/product-feed" rel="noopener">Product feed specification, for advertisers</a> (Webgains)</li>
+          <li><a href="https://knowledgehub.webgains.com/home/tracking-link-parameters" rel="noopener">Tracking link parameters</a> (Webgains)</li>
+          <li><a href="https://knowledgehub.webgains.com/home/what-do-the-different-program-statuses-mean" rel="noopener">What do the different program statuses mean?</a> (Webgains)</li>
+          <li><a href="https://knowledgehub.webgains.com/home/how-do-i-access-programs-from-other-countries" rel="noopener">How do I access programs from other countries?</a> (Webgains)</li>
+          <li><a href="https://knowledgehub.webgains.com/home/why-has-my-referred-sale-not-tracked" rel="noopener">Why has my referred sale not tracked?</a> (Webgains)</li>
+        </ol>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="band vio" id="networks" aria-labelledby="h-networks">
+  <div class="wrap">
+    <div class="head">
+      <p class="kick">Other networks</p>
+      <h2 id="h-networks">The same guide for your other networks.</h2>
+    </div>
+    <nav class="nets" aria-label="Feed link guides by network">
+      <a href="/networks/awin/">AWIN</a>
+      <a href="/networks/cj/">CJ</a>
+      <a href="/networks/tradedoubler/">Tradedoubler</a>
+      <a href="/networks/impact/">Impact</a>
+      <a href="/networks/rakuten/">Rakuten</a>
+      <a href="/networks/admitad/">Admitad</a>
+      <a href="/networks/pepperjam/">Pepperjam</a>
+      <a href="/networks/partnerize/">Partnerize</a>
+      <a href="/networks/flexoffers/">FlexOffers</a>
+      <a href="/networks/sovrn/">Sovrn</a>
+      <a class="all" href="/networks/">All networks</a>
+    </nav>
+  </div>
+</section>
+
+<section class="close" id="end" aria-labelledby="h-end">
+  <div class="wrap close-in">
+    <div>
+      <h2 id="h-end">Webgains products, as cards in your next post.</h2>
+      <div class="go">
+        <a class="cta" data-cta="final" href="/install/">Install MyFeeds for free</a>
+        <p class="calm">Free on WordPress.org for one shop's feed. Paid plans each start with a free trial.</p>
+      </div>
+      <p class="go"><a class="more" href="/#pricing" data-cta="final-plans">Compare the plans</a></p>
+    </div>
+    <div class="myfeeds-product-grid row3" aria-hidden="true">
+      <div class="myfeeds-product-card"><div class="myfeeds-product-image"><img src="/assets/home/hoodie-heather-grey.webp" width="400" height="400" alt="" loading="lazy"></div><div class="myfeeds-product-details"><div class="myfeeds-product-brand">Halden</div><div class="myfeeds-product-title">Heavyweight Hoodie Heather Grey</div><div class="myfeeds-product-price"><span class="myfeeds-current-price">$58.00</span></div><div class="myfeeds-shipping-info">Free Shipping</div><div class="myfeeds-merchant">Northside Supply</div></div></div>
+      <div class="myfeeds-product-card"><div class="myfeeds-product-image"><div class="myfeeds-discount-badge">-26%</div><img src="/assets/home/sneaker-black-hightop.webp" width="400" height="400" alt="" loading="lazy"></div><div class="myfeeds-product-details"><div class="myfeeds-product-brand">Arlo &amp; Finch</div><div class="myfeeds-product-title">Court High-Top Leather Black</div><div class="myfeeds-product-price"><span class="myfeeds-old-price">$129.00</span> <span class="myfeeds-current-price has-discount">$96.00</span></div><div class="myfeeds-shipping-info">Free Shipping</div><div class="myfeeds-merchant">Kicks Corner</div></div></div>
+      <div class="myfeeds-product-card"><div class="myfeeds-product-image"><img src="/assets/home/backpack-trail.webp" width="400" height="400" alt="" loading="lazy"></div><div class="myfeeds-product-details"><div class="myfeeds-product-brand">Fieldmade</div><div class="myfeeds-product-title">Trail Pack 28 L Sage</div><div class="myfeeds-product-price"><span class="myfeeds-current-price">$74.00</span></div><div class="myfeeds-shipping-info">Shipping costs may apply</div><div class="myfeeds-merchant">Basecamp Outfitters</div></div></div>
+    </div>
+  </div>
+</section>
+</main>
+
+<footer>
+  <div class="wrap">
+    <div class="brand"><b translate="no">MyFeeds</b><span>Affiliate product feeds for WordPress</span></div>
+    <nav aria-label="Site">
+      <a href="/ecommerce/">E-commerce</a>
+      <a href="/install/">Install guide</a>
+      <a href="/networks/">Affiliate networks</a>
+      <a href="/articles/">Guides</a>
+      <a href="/affiliates/">Become an affiliate</a>
+      <a href="https://wordpress.org/plugins/myfeeds-affiliate-feed-manager/" rel="noopener">Free plugin on WordPress.org</a>
+      <a href="/imprint/">Imprint</a>
+      <a href="/privacy/">Privacy</a>
+      <a href="/terms/">Terms</a>
+      <a href="/refund/">Refund policy</a>
+    </nav>
+    <span>© 2026 MyFeeds. All rights reserved.</span>
+  </div>
+</footer>
+
+<script src="/assets/site.js" defer></script>
+<script src="/assets/back-to-top.js" defer></script>
+<script src="/assets/consent.js" defer></script>
+</body>
+</html>
