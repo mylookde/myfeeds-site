@@ -3,142 +3,701 @@
 <head>
 <meta charset="UTF-8">
 <meta name="p:domain_verify" content="0f13dbb87c7b78ab08817667740c2df2"/>
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>How to Import a Merchant Product Feed into WordPress | MyFeeds</title>
-<meta name="description" content="A step-by-step guide: find the product feed URL in your affiliate network, import it into WordPress, place products in a post, and keep prices current automatically.">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+<title>How to import a shop's affiliate product feed into WordPress</title>
+<meta name="description" content="For bloggers with affiliate links, not shop owners: what a product feed is, when you can skip it, where your network keeps it and how it gets into WordPress.">
 <link rel="canonical" href="https://myfeeds.site/articles/import-product-feed-wordpress/">
+<meta name="theme-color" content="#FC9000">
 <meta property="og:type" content="article">
 <meta property="og:site_name" content="MyFeeds">
-<meta property="og:title" content="How to Import a Merchant Product Feed into WordPress | MyFeeds">
-<meta property="og:description" content="A step-by-step guide: find the product feed URL in your affiliate network, import it into WordPress, place products in a post, and keep prices current automatically.">
+<meta property="og:url" content="https://myfeeds.site/articles/import-product-feed-wordpress/">
+<meta property="og:title" content="How to import a shop's affiliate product feed into WordPress">
+<meta property="og:description" content="What a product feed is, when you can skip it, where your affiliate network keeps it and how it gets into WordPress.">
 <meta property="og:image" content="https://myfeeds.site/assets/og-image.png">
 <meta property="og:image:width" content="1200">
 <meta property="og:image:height" content="628">
-<meta property="og:url" content="https://myfeeds.site/articles/import-product-feed-wordpress/">
-<meta property="article:author" content="MyFeeds">
 <meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:title" content="How to Import a Merchant Product Feed into WordPress | MyFeeds">
-<meta name="twitter:description" content="A step-by-step guide: find the product feed URL in your affiliate network, import it into WordPress, place products in a post, and keep prices current automatically.">
+<meta name="twitter:url" content="https://myfeeds.site/articles/import-product-feed-wordpress/">
+<meta name="twitter:title" content="How to import a shop's affiliate product feed into WordPress">
+<meta name="twitter:description" content="What a product feed is, when you can skip it, where your affiliate network keeps it and how it gets into WordPress.">
 <meta name="twitter:image" content="https://myfeeds.site/assets/og-image.png">
 <link rel="icon" type="image/png" href="/favicon.png">
 <link rel="icon" type="image/x-icon" href="/favicon.ico">
 <link rel="apple-touch-icon" href="/apple-touch-icon.png">
-<link rel="stylesheet" href="/assets/fonts.css">
-<link rel="stylesheet" href="/assets/article.css">
-</head>
-<body>
-<nav><div class="container">
-  <a href="/" class="nav-logo"><img src="/logo.png" alt="MyFeeds"><span>MyFeeds</span></a>
-  <button class="hamburger" id="hamburger-btn" aria-label="Menu"><svg viewBox="0 0 24 24"><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="18" x2="21" y2="18"/></svg></button>
-  <div class="nav-links">
-    <a href="/#pricing">Pricing</a>
-    <a href="/articles/">Guides</a>
-    <a href="/ecommerce/">E-commerce</a>
-    <a href="/#pricing" class="nav-cta">Get Started</a>
-  </div>
-</div></nav>
-<article>
-  <header class="article-header">
-    <div class="article-eyebrow"><span class="dot"></span> Guide</div>
-    <h1>How to import a merchant product feed into WordPress</h1>
-  </header>
-  <div class="article-body">
-    <p>Your affiliate network holds a file listing every product your merchants sell &mdash; the title, the current price, the image, the stock status and your tracking link, all of it kept up to date by the merchant. That file is a product feed, and almost nobody uses it. Most affiliate posts are still built by opening the merchant's website, copying a link, and pasting it into a paragraph.</p>
-
-    <p>This guide covers getting that file into WordPress: where to find it, how to import it, how to place products in a post, and the part most guides skip &mdash; keeping it current afterwards.</p>
-
-    <h2>What a product feed actually is</h2>
-
-    <p>A product feed is a spreadsheet your merchant maintains for you. It arrives as CSV, TSV, XML or JSON, usually behind a URL your network generates, and it is regenerated on the merchant's schedule &mdash; daily for most, hourly for some. A feed for a mid-sized fashion retailer holds twenty to eighty thousand rows.</p>
-
-    <p>Networks call it different things. AWIN says <em>datafeed</em>, CJ Affiliate says <em>product catalog</em>, Impact says <em>product catalog</em> too, Tradedoubler says <em>product feed</em>. It is the same object each time.</p>
-
-    <h2>Step 1: Get the feed URL from your network</h2>
-
-    <p>You need a URL, not a downloaded file. A downloaded file is a snapshot that starts going stale the moment you save it; the URL is the live version, and it is what lets prices update on their own later.</p>
-
-    <p>In every network the path is roughly the same:</p>
-
-    <ol>
-      <li>Log in and find the section named <em>Product feeds</em>, <em>Datafeeds</em>, or <em>Product catalog</em>.</li>
-      <li>Pick the merchant whose products you want. You need an approved partnership with them first &mdash; a pending application will not show a feed.</li>
-      <li>Choose a format if you are offered one. CSV is the safest default.</li>
-      <li>Copy the generated URL. It will contain your publisher ID, which is what stamps your commission onto the links inside it.</li>
-    </ol>
-
-    <p>Two things to check before you leave the page. Make sure the feed includes the <em>deep link</em> or <em>tracking link</em> column &mdash; some networks let you build a feed without it, and a feed without tracking links earns nothing. And if the network offers a compressed version, take it; a 60&nbsp;MB file downloads considerably faster as a 6&nbsp;MB one.</p>
-
-    <p>Per-network specifics are on the <a href="/networks/?utm_source=article&amp;utm_medium=guide&amp;utm_campaign=import-feed">supported networks page</a>.</p>
-
-    <h2>Step 2: Import the feed into WordPress</h2>
-
-    <p>WordPress cannot read a product feed on its own; it has no concept of a product outside of a shop plugin. You need something that fetches the file, works out which column means what, and stores the result.</p>
-
-    <p>With <a href="https://wordpress.org/plugins/myfeeds-affiliate-feed-manager/">MyFeeds</a> that is three fields: open <strong>MyFeeds &rarr; Feeds</strong>, paste the URL, and click Import. The plugin downloads the file, detects the format, maps the columns and writes every product into your own database. A 30,000-product feed takes two to five minutes and runs in the background, so you can close the tab.</p>
-
-    <p>The column mapping is the part that goes wrong most often, because no two networks name their fields the same way. One calls the price <code>search_price</code>, another <code>product_price</code>, a third <code>price_amount</code>. A good importer recognises the common patterns automatically and gives you a mapping editor for the rest. If your product titles import but your prices come through empty, that is a mapping problem, not a broken feed.</p>
-
-    <h2>Step 3: Put the products in a post</h2>
-
-    <p>Once the catalogue is in your database, it is searchable. Open any post, add the product block, and search by name, brand, colour or category the way you would search a shop. Pick the products you want and they land in the post as cards with the image, the price and your tracking link already attached.</p>
-
-    <p>This is the real change. You are no longer looking for products on the merchant's website and copying links; you are picking from a list you already own, and the link is correct by construction.</p>
-
-    <h2>Step 4: Keep it current &mdash; the part that matters most</h2>
-
-    <p>An import is a snapshot. Left alone, that snapshot is what makes affiliate posts rot: a price you quoted in March is wrong by June, a product that sold out still shows Buy Now, and a merchant that left the network takes your links with them. None of that announces itself. Your traffic stays flat and your earnings drift down.</p>
-
-    <p>So the import needs to repeat. MyFeeds re-reads every feed nightly and refreshes the cards already sitting in your posts, with a fuller import weekly to catch products added or withdrawn since. Prices in old posts correct themselves; sold-out items get flagged; and when a product disappears from the feed entirely, you get a list of every post that still points at it, so you can replace it instead of finding out from a reader.</p>
-
-    <h2>Common problems</h2>
-
-    <h3>Some products did not import</h3>
-    <p>Most importers skip rows missing something essential &mdash; no title, no price, no image, or no tracking link. That is usually correct behaviour: a card without a price is not a card you want published. Check the feed itself for incomplete rows before assuming the import failed.</p>
-
-    <h3>The feed URL returns an error</h3>
-    <p>Nearly always one of three things: the merchant partnership is not approved yet, the feed URL has an expiry the network did not mention, or the file is behind HTTP authentication that needs a username and password alongside the URL.</p>
-
-    <h3>The format is unusual</h3>
-    <p>Smaller merchants sometimes publish something idiosyncratic &mdash; a semicolon-delimited CSV with a byte-order mark, or XML with an unconventional structure. That is what a manual mapping editor is for: you tell it once which column is which, and it remembers.</p>
-
-    <h2>Is this worth it for a small site?</h2>
-
-    <p>There are two reasons to work from a feed, and only one of them is about volume.</p>
-
-    <p><strong>If you publish a lot,</strong> the saving is obvious. Past thirty or forty posts you stop being able to remember which posts hold which products, and manual maintenance quietly stops happening &mdash; not because you decided to stop, but because checking them all takes an afternoon you never have. A feed keeps them current whether you get to it or not.</p>
-
-    <p><strong>If you publish selectively,</strong> the saving is different but real. A feed turns your merchants' whole range into something you can search in the editor, so choosing the right product means comparing what is actually available rather than reconstructing it from memory of the merchant's website. You still pick every product yourself, deliberately; you just pick from a complete list instead of hunting for one. And the handful you did choose stay correct on their own &mdash; if you place six products a year and stand behind each one, six wrong prices matter more than sixty would on a site nobody reads closely.</p>
-
-    <p>Where it genuinely adds nothing is a post or two with a single link each, changed once and never revisited. That is a job for copy and paste.</p>
-  </div>
-  <div class="cta-block">
-    <h3>Import your first feed</h3>
-    <a href="https://wordpress.org/plugins/myfeeds-affiliate-feed-manager/" target="_blank" rel="noopener">Get MyFeeds free on WordPress.org &rarr;</a>
-    <a href="/install/?utm_source=article&amp;utm_medium=guide&amp;utm_campaign=import-feed">Read the full setup guide &rarr;</a>
-  </div>
-  <a href="/articles/" class="article-back-link">&larr; All guides</a>
-</article>
-<footer><div class="container">
-  <div class="footer-brand"><img src="/logo.png" alt="">MyFeeds</div>
-  <p class="footer-tag">Affiliate product feeds for WordPress</p>
-  <div class="footer-links">
-    <a href="/">Home</a>
-    <a href="/ecommerce/">E-commerce</a>
-    <a href="/install/">Install Guide</a>
-    <a href="/networks/">Affiliate Networks</a>
-    <a href="/articles/">Guides</a>
-    <a href="/affiliates/">Become an Affiliate</a>
-    <a href="/imprint/">Imprint</a>
-    <a href="/privacy/">Privacy Policy</a>
-    <a href="/terms/">Terms of Service</a>
-    <a href="/refund/">Refund Policy</a>
-  </div>
-  <div class="footer-copy">&copy; 2026 MyFeeds. All rights reserved.</div>
-</div></footer>
+<link rel="preload" href="/assets/fonts/bricolage-latin.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="stylesheet" href="/assets/site.css">
 <script>
-var h=document.getElementById('hamburger-btn'),n=document.querySelector('.nav-links');
-if(h){h.addEventListener('click',function(){n.classList.toggle('open')});document.addEventListener('click',function(e){if(!h.contains(e.target)&&!n.contains(e.target))n.classList.remove('open')})}
+/* Motion gate, before first paint. Nothing on this page waits for script:
+   without "mo" (no JS, reduced motion) there are simply no transitions. */
+!function(d){d.classList.add('js');try{if(matchMedia('(prefers-reduced-motion: no-preference)').matches)d.classList.add('mo')}catch(e){}}(document.documentElement);
 </script>
+<!--JSONLD-->
+<script type="application/ld+json">
+{
+ "@context": "https://schema.org",
+ "@type": "Article",
+ "headline": "How to get a shop's product feed into WordPress",
+ "description": "For bloggers with affiliate links, not shop owners: what a product feed is, when you can skip it, where your network keeps it and how it gets into WordPress.",
+ "mainEntityOfPage": "https://myfeeds.site/articles/import-product-feed-wordpress/",
+ "image": "https://myfeeds.site/assets/og-image.png",
+ "inLanguage": "en",
+ "author": {
+  "@type": "Organization",
+  "name": "MyFeeds",
+  "url": "https://myfeeds.site/"
+ },
+ "publisher": {
+  "@type": "Organization",
+  "name": "MyFeeds",
+  "url": "https://myfeeds.site/",
+  "logo": {
+   "@type": "ImageObject",
+   "url": "https://myfeeds.site/logo.png"
+  }
+ }
+}
+</script>
+<script type="application/ld+json">
+{
+ "@context": "https://schema.org",
+ "@type": "FAQPage",
+ "mainEntity": [
+  {
+   "@type": "Question",
+   "name": "Do I need WooCommerce to show affiliate products?",
+   "acceptedAnswer": {
+    "@type": "Answer",
+    "text": "Not for products inside posts. You need it only if your plugin turns the rows of a feed into WooCommerce products, as some shop builders do."
+   }
+  },
+  {
+   "@type": "Question",
+   "name": "Does Amazon have a product feed?",
+   "acceptedAnswer": {
+    "@type": "Answer",
+    "text": "No. Amazon does not offer its associates a product feed file. Product data comes through its Creators API, which Amazon opens to associates with ten qualifying sales in the past 30 days (as of October 2026)."
+   }
+  },
+  {
+   "@type": "Question",
+   "name": "Can I add my own margin to the prices in a feed?",
+   "acceptedAnswer": {
+    "@type": "Answer",
+    "text": "No. As an affiliate you do not sell anything. The shop sets the price and makes the sale, and you earn a commission on it."
+   }
+  },
+  {
+   "@type": "Question",
+   "name": "I can download the feed of a shop I never joined. Does a sale still count?",
+   "acceptedAnswer": {
+    "@type": "Answer",
+    "text": "With AWIN, sometimes. For selected shops that accept affiliates automatically, sales made through the feed are credited before you have joined. That does not apply to all shops, so joining properly is the safe way."
+   }
+  }
+ ]
+}
+</script>
+<!--/JSONLD-->
+</head>
+<body data-page="articles/import-product-feed-wordpress/">
+<a class="skip" href="#main">Skip to the guide</a>
+<div class="open-top">
+  <div class="wrap">
+    <header class="top">
+      <a class="mark" href="/" translate="no" aria-label="MyFeeds home"><span><img src="/assets/home/logo-52.webp" alt="" width="22" height="22"></span>MyFeeds</a>
+      <nav class="nav" aria-label="Main">
+        <a href="/#how">How it works</a>
+        <a href="/#pricing" data-cta="nav-pricing">Pricing</a>
+        <a href="/ecommerce/">E-commerce</a>
+        <a href="/networks/">Networks</a>
+        <a href="/articles/" aria-current="page">Guides</a>
+        <a href="/install/">Install</a>
+        <a href="/#faq">FAQ</a>
+      </nav>
+      <div class="top-r">
+        <button type="button" class="menu-btn" id="menu-btn" aria-expanded="false" aria-controls="menu"><i aria-hidden="true"></i>Menu</button>
+        <a class="cta cta-sm" data-cta="header" href="/#pricing">Get started</a>
+      </div>
+      <div class="menu" id="menu" hidden>
+        <a href="/#how">How it works</a>
+        <a href="/#pricing">Plans and prices</a>
+        <a href="/ecommerce/">E-commerce</a>
+        <a href="/networks/">Affiliate networks</a>
+        <a href="/articles/" aria-current="page">Guides</a>
+        <a href="/install/">Install guide</a>
+        <a href="/#faq">Questions</a>
+      </div>
+    </header>
+  </div>
+</div>
+
+<main id="main">
+<div class="open">
+  <div class="wrap">
+    <section class="hero long" aria-labelledby="h-hero">
+      <div>
+        <p class="eyebrow"><a href="/articles/">Guides</a> · Product feeds</p>
+        <h1 id="h-hero">How to get a shop's product feed into WordPress.</h1>
+        <p class="lede">For bloggers with affiliate links: your affiliate network gives you the product list of a shop you're an affiliate for, as a link or a file. A plugin reads it, and you pick products from it inside WordPress.</p>
+        <p class="facts"><span>12 minute read</span><span>For affiliates, not shop owners</span><span>Sources at the end</span></p>
+      </div>
+
+      <nav class="pinned" aria-labelledby="ov-k">
+        <p class="ov-k" id="ov-k"><span>In this guide</span><span>8 parts</span></p>
+        <ol class="ov">
+          <li><a href="#need"><span class="n" aria-hidden="true">1</span><span class="ov-t">Do you need a feed at all?</span></a></li>
+          <li><a href="#inside"><span class="n" aria-hidden="true">2</span><span class="ov-t">What is in one</span></a></li>
+          <li><a href="#find"><span class="n" aria-hidden="true">3</span><span class="ov-t">Where you find yours</span></a></li>
+          <li><a href="#link-or-file"><span class="n" aria-hidden="true">4</span><span class="ov-t">A link or a file</span></a></li>
+          <li><a href="#wordpress"><span class="n" aria-hidden="true">5</span><span class="ov-t">Getting it into WordPress</span></a></li>
+          <li><a href="#thin"><span class="n" aria-hidden="true">6</span><span class="ov-t">Staying out of trouble with Google</span></a></li>
+          <li><a href="#current"><span class="n" aria-hidden="true">7</span><span class="ov-t">Keeping prices right after you publish</span></a></li>
+          <li><a href="#breaks"><span class="n" aria-hidden="true">8</span><span class="ov-t">When something breaks</span></a></li>
+        </ol>
+        <p class="ov-x"><a class="more" href="#questions">Questions people ask</a><a class="more" href="#next">Where to go next</a></p>
+      </nav>
+    </section>
+  </div>
+</div>
+
+<section class="band board" id="short" aria-labelledby="h-short">
+  <div class="wrap split">
+    <div>
+      <div class="head">
+        <h2 id="h-short">The short version</h2>
+      </div>
+      <div class="prose">
+        <ol aria-label="The three steps">
+          <li><b>Get the feed link.</b> Your affiliate network has it, for each shop that has accepted you. <a href="#find">Part 3</a> shows where.</li>
+          <li><b>Give it to a plugin.</b> WordPress cannot read a feed by itself. <a href="#wordpress">Part 5</a> helps you choose.</li>
+          <li><b>Pick products in a post.</b> Your readers see them with picture and price.</li>
+        </ol>
+      </div>
+    </div>
+    <div class="sheet">
+      <p class="k">In short</p>
+      <ul>
+        <li><b>A product feed is a shop's whole range as one list.</b> <span>One row per product: name, price, picture and your affiliate link.</span></li>
+        <li><b>You need one when a post shows products.</b> <span>For a link inside a sentence, copy it from your network.</span></li>
+        <li><b>Take the link when you can get one.</b> <span>A link can be read again later. A file stays as it was on the day you saved it.</span></li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<section class="band paper" id="need" aria-labelledby="h-need">
+  <div class="wrap chap">
+    <div class="head">
+      <p class="kick">Part 1 of 8</p>
+      <h2 id="h-need">Do you need a product feed at all?</h2>
+      <p>Often, no. Here is how to tell before you spend an evening on it.</p>
+    </div>
+    <div class="col">
+      <div class="prose">
+        <p>A shop has accepted you into its affiliate programme, and somewhere in your network's menu you have seen the words “product feed”. It sounds useful. It also sounds like work.</p>
+      </div>
+
+      <div class="duo">
+        <div class="card">
+          <span class="k">A feed helps</span>
+          <h3>When the post shows products</h3>
+          <ul class="yn">
+            <li class="y"><b>A roundup or gift guide with prices.</b> A price typed by hand has to be checked again. A feed carries the shop's current price.</li>
+            <li class="y"><b>Many posts, the same few shops.</b> Past a few dozen posts, checking them all by hand stops happening.</li>
+          </ul>
+        </div>
+        <div class="card">
+          <span class="k">You can skip it</span>
+          <h3>When a link will do</h3>
+          <ul class="yn">
+            <li class="n"><b>One or two links in a post.</b> Copy the link from your network and paste it.</li>
+            <li class="n"><b>You hope it brings new readers.</b> It gives you products to show the readers you have.</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="prose">
+        <h3>Is it worth it for a small site?</h3>
+        <p>AWIN, one of the large networks, says feeds are mainly used by price comparison sites, shopping portals, review sites and deal platforms, but that any publisher may use them. A blog uses a small part of the list, the handful of products it would have linked anyway.</p>
+        <p>So the size of your site does not decide it. If you recommend six products a year and stand behind each one, a wrong price on any of them costs you a reader's trust.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="band board" id="inside" aria-labelledby="h-inside">
+  <div class="wrap chap">
+    <div class="head">
+      <p class="kick">Part 2 of 8</p>
+      <h2 id="h-inside">What is in a product feed?</h2>
+      <p>One row for each product, one column for each thing the shop knows about it.</p>
+    </div>
+    <div class="col">
+      <div class="prose">
+        <p>Think of a very long spreadsheet. Here is one row, turned on its side so it fits your screen.</p>
+      </div>
+
+      <div>
+        <div class="cmp-wrap" tabindex="0" role="region" aria-labelledby="cap-row">
+          <table class="cmp slim">
+            <caption class="vh" id="cap-row">One example row of a product feed, column by column</caption>
+            <thead>
+              <tr><th scope="col">Column in this feed</th><th scope="col">What this row says</th></tr>
+            </thead>
+            <tbody>
+              <tr><th scope="row">aw_<wbr>product_<wbr>id</th><td><b>Which product:</b> 31415926</td></tr>
+              <tr><th scope="row">product_<wbr>name</th><td><b>Name:</b> Court High-Top Leather Black</td></tr>
+              <tr><th scope="row">search_<wbr>price</th><td><b>Price today:</b> 96.00</td></tr>
+              <tr><th scope="row">product_<wbr>price_<wbr>old</th><td><b>Old price:</b> 129.00</td></tr>
+              <tr><th scope="row">merchant_<wbr>image_<wbr>url</th><td><b>Picture:</b> https://…/court-high-top.jpg</td></tr>
+              <tr><th scope="row">aw_<wbr>deep_<wbr>link</th><td><b>Your link:</b> https://… to this exact product</td></tr>
+              <tr><th scope="row">in_<wbr>stock</th><td><b>In stock:</b> 1</td></tr>
+              <tr><th scope="row">merchant_<wbr>name</th><td><b>Shop:</b> Kicks Corner</td></tr>
+            </tbody>
+          </table>
+        </div>
+        <p class="cap">An invented row with the column names of AWIN's classic format. Example product, sample prices.</p>
+      </div>
+
+      <div class="prose">
+        <h3>What one row teaches you</h3>
+        <ul>
+          <li><strong>Names differ.</strong> This feed calls the price <code>search_price</code>, a feed in Google's shopping format calls it <code>price</code>. Matching them up is called mapping, and your plugin does it.</li>
+          <li><strong>One column pays you.</strong> <code>aw_deep_link</code> is your affiliate link for exactly this product. Its neighbour <code>merchant_deep_link</code> is the shop's plain address, which credits nobody.</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="band paper" id="find" aria-labelledby="h-find">
+  <div class="wrap chap">
+    <div class="head">
+      <p class="kick">Part 3 of 8</p>
+      <h2 id="h-find">Where do you find yours?</h2>
+      <p>One worked example, then what the other networks give you.</p>
+    </div>
+    <div class="col">
+      <div class="prose">
+        <p>Look for the part of your account where you choose a shop's product feed and get a download address for it. Networks call it a product feed, a data feed or a product catalog, and they rename their menus.</p>
+        <p>Two things have to be true first. The shop has accepted you, and it offers a feed at all. Not every shop does.</p>
+        <h3>A worked example: AWIN</h3>
+        <p>As of October 2026 AWIN calls the tool Create-a-Feed. It sits in the Toolbox menu, under Links &amp; Tools.</p>
+      </div>
+
+      <ol class="sub">
+        <li>
+          <h3>Choose the language first</h3>
+          <p>Create-a-Feed only lists feeds in the language you pick. If a shop seems to be missing, set it to <span class="ui">Any</span>.</p>
+        </li>
+        <li>
+          <h3>Pick the shop's feed</h3>
+          <p>Most shops have one, called Default. Some have one for each part of their range.</p>
+        </li>
+        <li>
+          <h3>Tick the columns</h3>
+          <p>Choose <span class="ui">Select All</span>, or at least make sure the tracked link, <code>aw_deep_link</code>, is among them.</p>
+        </li>
+        <li>
+          <h3>Copy the address</h3>
+          <p>AWIN calls this a reusable download link. Copy it.</p>
+        </li>
+      </ol>
+
+      <div class="prose">
+        <p>Our <a href="/networks/awin/">AWIN feed guide</a> has every click.</p>
+        <h3>What the other networks hand you</h3>
+        <p>This is what each network's own help describes, as of October 2026.</p>
+      </div>
+
+      <div>
+        <div class="cmp-wrap" tabindex="0" role="region" aria-labelledby="cap-nets">
+          <table class="cmp slim">
+            <caption class="vh" id="cap-nets">What ten affiliate networks hand you when you ask for a product feed, in three groups</caption>
+            <thead>
+              <tr><th scope="col">What you get</th><th scope="col">From these networks</th></tr>
+            </thead>
+            <tbody>
+              <tr><td><b>A link to the feed</b></td><td><a href="/networks/awin/">AWIN</a>, <a href="/networks/partnerize/">Partnerize</a>, <a href="/networks/webgains/">Webgains</a> and <a href="/networks/admitad/">Admitad</a></td></tr>
+              <tr><td><b>A file you download or are sent</b></td><td><a href="/networks/cj/">CJ</a>, <a href="/networks/impact/">Impact</a>, <a href="/networks/rakuten/">Rakuten</a>, <a href="/networks/pepperjam/">Ascend</a> and <a href="/networks/flexoffers/">FlexOffers</a></td></tr>
+              <tr><td><b>Only a connection for programs, called an API</b></td><td><a href="/networks/tradedoubler/">Tradedoubler</a>, as far as its public pages show</td></tr>
+            </tbody>
+          </table>
+        </div>
+        <p class="cap">ShareASale is not listed. AWIN announced in March 2025 that it would close the platform by the end of that year and move its shops to AWIN.</p>
+      </div>
+
+      <nav class="nets" aria-label="All network guides">
+        <a class="all" href="/networks/">All networks</a>
+      </nav>
+    </div>
+  </div>
+</section>
+
+<section class="band ink" id="link-or-file" aria-labelledby="h-link">
+  <div class="wrap">
+    <div class="head">
+      <p class="kick">Part 4 of 8</p>
+      <h2 id="h-link">A link or a file? <span class="tone">Take the link when you can get one.</span></h2>
+      <p>Both hold the same rows on the day you get them. The difference shows a month later.</p>
+    </div>
+    <div class="col">
+      <div class="prose">
+        <p>A link is a web address your plugin reads the feed from. It often carries a personal key, so treat it like a password. A file is the same list, saved on one day.</p>
+      </div>
+
+      <div class="duo">
+        <figure>
+          <div class="viz">
+            <p class="k">The shop lowers a price, and you have a link</p>
+            <ol class="flow" aria-label="What happens after a price change when your plugin reads a link">
+              <li><b>The shop</b><span>lowers a price.</span></li>
+              <li><b>Your site</b><span>reads the link again.</span></li>
+              <li class="dest"><b>Your card</b><span>shows the new price.</span></li>
+            </ol>
+          </div>
+        </figure>
+        <figure>
+          <div class="viz">
+            <p class="k">The shop lowers a price, and you have a file</p>
+            <ol class="flow" aria-label="What happens after a price change when you uploaded a file">
+              <li><b>The shop</b><span>lowers a price.</span></li>
+              <li><b>Your file</b><span>is still the one you saved.</span></li>
+              <li><b>Your card</b><span>shows the old price, until you upload a new file.</span></li>
+            </ol>
+          </div>
+        </figure>
+      </div>
+
+      <div class="prose">
+        <h3>If your network only sends files</h3>
+        <p>Then the file is your feed, and keeping it fresh is a job you do by hand. Upload a new one whenever prices matter to a post, for example before a sale or once a month.</p>
+        <p>If that is too much, some plugins get the products through an API instead. Datafeedr and Content Egg in part 5 work that way, for the networks on their lists.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="band paper" id="wordpress" aria-labelledby="h-wordpress">
+  <div class="wrap chap">
+    <div class="head">
+      <p class="kick">Part 5 of 8</p>
+      <h2 id="h-wordpress">How does it get into WordPress?</h2>
+      <p>Through a plugin. Which kind depends on what you want your readers to see.</p>
+    </div>
+    <div class="col">
+      <div class="prose">
+        <h3>An import is not a page yet</h3>
+        <p>In <a href="https://wordpress.org/support/topic/awin-datafeed-plugin/" rel="noopener">one WordPress support thread</a>, someone imports three products, the plugin confirms they are in its data store, and they cannot work out how to get them onto the site.</p>
+        <p>The likely explanation is a common one: an import only fills a table in your database. Products appear once a second step puts them in a post or on shop pages. So decide where you want them first.</p>
+        <p>A feed is not a shop. A shop of your own is a bigger project, with its own guide: <a href="/articles/affiliate-shop-wordpress/">how to build an affiliate shop in WordPress</a>.</p>
+        <h3>Three kinds of plugin, by the job they do</h3>
+        <p class="swipe">Swipe the table sideways to see all three.</p>
+      </div>
+
+      <div>
+        <div class="cmp-wrap" tabindex="0" role="region" aria-labelledby="cap-tools">
+          <table class="cmp">
+            <caption class="vh" id="cap-tools">Three kinds of WordPress plugin for product feeds, compared by the job they do</caption>
+            <thead>
+              <tr><th scope="col"><span class="vh">Question</span></th><th scope="col">A shop builder</th><th scope="col" class="own">Cards in posts</th><th scope="col">A general importer</th></tr>
+            </thead>
+            <tbody>
+              <tr><th scope="row">The job</th><td>Searches its own product database, drawn from many shops and networks, and turns your picks into WooCommerce products</td><td class="own">Puts the products you pick into a post, as cards</td><td>Moves any CSV or XML file into posts or WooCommerce products. You decide where every column goes</td></tr>
+              <tr><th scope="row">Examples</th><td>Datafeedr, with its WooCommerce importer</td><td class="own">MyFeeds (our own plugin), Content Egg, AWIN's plugin with its widgets</td><td>WP All Import, WP Ultimate CSV Importer</td></tr>
+              <tr><th scope="row">Not built for</th><td>The feed link your network gave you</td><td class="own">A whole shop, unless the plugin has a shop mode. MyFeeds has one on its E-commerce plan, Content Egg can create WooCommerce products</td><td>Affiliate networks in particular</td></tr>
+              <tr><th scope="row">Readers can filter and browse</th><td class="y">Yes, on WooCommerce's shop pages</td><td class="own n">Not inside a post</td><td>Depends on your theme or shop plugin</td></tr>
+              <tr><th scope="row">Watch the cost</th><td>Datafeedr needs a paid subscription. Check the price first</td><td class="own">MyFeeds is free for one shop's feed. More shops: from $9 a month</td><td>WP All Import's scheduling service is $19 a month, as of October 2026</td></tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+
+      <div class="prose">
+        <p>Before you build on any plugin, open its page on WordPress.org. Look at when it was last updated and whether support questions get answers.</p>
+        <h3>What cards in a post look like</h3>
+      </div>
+
+      <figure>
+        <div class="myfeeds-product-grid row3">
+          <div class="myfeeds-product-card"><div class="myfeeds-product-image"><img src="/assets/home/hoodie-heather-grey.webp" width="400" height="400" alt="Heather grey hoodie" loading="lazy"></div><div class="myfeeds-product-details"><div class="myfeeds-product-brand">Halden</div><div class="myfeeds-product-title">Heavyweight Hoodie Heather Grey</div><div class="myfeeds-product-price"><span class="myfeeds-current-price">$58.00</span></div><div class="myfeeds-shipping-info">Free Shipping</div><div class="myfeeds-merchant">Northside Supply</div></div></div>
+          <div class="myfeeds-product-card"><div class="myfeeds-product-image"><div class="myfeeds-discount-badge">-26%</div><img src="/assets/home/sneaker-black-hightop.webp" width="400" height="400" alt="Black leather high-top sneaker" loading="lazy"></div><div class="myfeeds-product-details"><div class="myfeeds-product-brand">Arlo &amp; Finch</div><div class="myfeeds-product-title">Court High-Top Leather Black</div><div class="myfeeds-product-price"><span class="myfeeds-old-price">$129.00</span> <span class="myfeeds-current-price has-discount">$96.00</span></div><div class="myfeeds-shipping-info">Free Shipping</div><div class="myfeeds-merchant">Kicks Corner</div></div></div>
+          <div class="myfeeds-product-card"><div class="myfeeds-product-image"><img src="/assets/home/backpack-trail.webp" width="400" height="400" alt="Sage green trail backpack" loading="lazy"></div><div class="myfeeds-product-details"><div class="myfeeds-product-brand">Fieldmade</div><div class="myfeeds-product-title">Trail Pack 28 L Sage</div><div class="myfeeds-product-price"><span class="myfeeds-current-price">$74.00</span></div><div class="myfeeds-shipping-info">Shipping costs may apply</div><div class="myfeeds-merchant">Basecamp Outfitters</div></div></div>
+        </div>
+        <figcaption>Product cards in a post. The sneaker is the row from part 2. Example products, sample prices: clothing here, tools and seeds on a garden blog.</figcaption>
+      </figure>
+
+      <div class="prose">
+        <h3>With our own plugin, for example</h3>
+        <p>MyFeeds is the plugin we make. You give it the feed link or the file, then search the shop's products inside the editor and pick.</p>
+        <p>Its limits, so you can rule it out quickly. It works in the WordPress block editor only. The free plugin holds one shop's feed. It can only keep a feed current if you gave it a link.</p>
+      </div>
+
+      <aside class="pitch" aria-labelledby="p-mid">
+        <h3 id="p-mid">Pick products in the editor instead of copying links.</h3>
+        <p>Where you would have pasted links, your readers see products with picture and price. You choose them. The plugin keeps price and link current.</p>
+        <a class="cta" data-cta="mid" href="/#pricing">Add product cards to my posts</a>
+        <p class="calm">Free plugin to start. Paid plans from $9 a month, each with a free trial.</p>
+      </aside>
+    </div>
+  </div>
+</section>
+
+<section class="band board" id="thin" aria-labelledby="h-thin">
+  <div class="wrap chap">
+    <div class="head">
+      <p class="kick">Part 6 of 8</p>
+      <h2 id="h-thin">How do you use a feed without trouble from Google?</h2>
+      <p>A feed makes it easy to publish a thousand products. Google has a name for sites that do only that.</p>
+    </div>
+    <div class="col">
+      <div class="prose">
+        <p><a href="https://developers.google.com/search/docs/essentials/spam-policies" rel="noopener">Google's spam policies</a> call it thin affiliation. They mean pages with affiliate links whose descriptions and reviews are copied from the shop, with nothing of your own added.</p>
+        <p>The same policies say that taking part in an affiliate programme does not make a site thin. What counts is what you add.</p>
+      </div>
+
+      <figure>
+        <div class="duo">
+          <div class="card">
+            <span class="k">Google's spam policies warn about</span>
+            <h3>Copied and multiplied</h3>
+            <ul class="yn">
+              <li class="n">Descriptions and reviews taken straight from the shop.</li>
+              <li class="n">The same content other affiliates of the programme publish too.</li>
+              <li class="n">Many pages made from a feed, with little on each of them.</li>
+            </ul>
+          </div>
+          <div class="card pick">
+            <span class="k">Google names these as adding value</span>
+            <h3>Chosen and explained</h3>
+            <ul class="yn">
+              <li class="y">Your own review of the product.</li>
+              <li class="y">Testing and ratings.</li>
+              <li class="y">Comparisons between products.</li>
+              <li class="y">Extra information about the price.</li>
+              <li class="y">A way to browse products or categories.</li>
+            </ul>
+          </div>
+        </div>
+        <figcaption>After Google's spam policies, last updated in August 2026. Our wording, not Google's.</figcaption>
+      </figure>
+
+      <div class="prose">
+        <h3>What that means for one post</h3>
+        <ul>
+          <li><strong>Pick a handful.</strong> The feed is a list to choose from. Nobody needs a page for every row.</li>
+          <li><strong>Say why, in your own words.</strong> A short review, with a comparison where it helps.</li>
+        </ul>
+        <p>Even then, nobody can promise how Google rates a single page.</p>
+        <h3>And are you allowed to show all of it?</h3>
+        <p>Mostly yes, with three things to do first.</p>
+        <ol>
+          <li><strong>Say that you earn a commission.</strong> The <a href="https://www.ftc.gov/business-guidance/resources/ftcs-endorsement-guides-what-people-are-asking" rel="noopener">US Federal Trade Commission</a> wants that close to the recommendation, and says the words “affiliate link” alone, or a “buy now” button, are not enough. Outside the US, check your own regulator.</li>
+          <li><strong>Mark your affiliate links as paid.</strong> Google prefers <code>rel="sponsored"</code> and still accepts <code>rel="nofollow"</code>. Links a plugin creates should carry the mark already.</li>
+          <li><strong>Read the programme terms on pictures and texts.</strong> The shop and its network set what you may do with them, and we could not confirm one rule that covers them all.</li>
+        </ol>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="band paper" id="current" aria-labelledby="h-current">
+  <div class="wrap chap">
+    <div class="head">
+      <p class="kick">Part 7 of 8</p>
+      <h2 id="h-current">How do prices stay right after you publish?</h2>
+      <p>A new price reaches your page in four steps.</p>
+    </div>
+    <div class="col">
+      <div class="prose">
+        <p>Shops change prices, sell out and drop products, and a post that was right in March can be wrong by June.</p>
+      </div>
+
+      <figure>
+        <div class="viz">
+          <p class="k">From the shop's price tag to your page</p>
+          <ol class="flow" aria-label="The four places a price change passes through before a reader sees it">
+            <li><b>The shop</b><span>updates its feed. How often is its choice.</span></li>
+            <li><b>The network</b><span>picks up the new version.</span></li>
+            <li><b>Your site</b><span>reads the feed again, if your plugin does that.</span></li>
+            <li class="dest"><b>Your page</b><span>shows it, once any saved copy of the page is renewed.</span></li>
+          </ol>
+        </div>
+        <figcaption>A price on your page is as fresh as the slowest of the four.</figcaption>
+      </figure>
+
+      <div class="prose">
+        <h3>The shop and the network</h3>
+        <p>AWIN lets shops refresh a feed up to four times a day or once a week, and recommends at least every 24 hours. In its Create-a-Feed tool, the column <span class="ui">Last Update</span> shows when a shop last refreshed its feed. If that is weeks ago, its help sends you to the shop's account manager.</p>
+        <h3>Your site</h3>
+        <p>A link is only read again if your plugin goes back for it on a schedule. AWIN's own WordPress plugin, for one, does not. Its help says files have to be uploaded by hand.</p>
+        <p>WordPress looks for due tasks only when somebody loads a page, so on a quiet site a nightly job can run late. If that matters, ask your host to run WordPress's scheduled tasks on a timer. Hosts call that a server cron job.</p>
+        <h3>Your page</h3>
+        <p>If a caching plugin or your host saves copies of your pages, visitors see the saved copy until it is renewed. If a price looks old, clear the cache and look again.</p>
+        <h3>Products that disappear</h3>
+        <p>Harder than a new price is a product that leaves the shop for good. The feed stops listing it, and what happens next depends on your plugin.</p>
+        <blockquote class="pull">Every dead link is a commission you earned and never received.</blockquote>
+        <p>What that costs an old post is its own guide: <a href="/articles/why-affiliate-posts-stop-earning/">why affiliate posts stop earning</a>.</p>
+        <h3>How our own plugin does it</h3>
+        <p>Every night, MyFeeds reads a feed link again and updates price, old price, stock, picture and link for the products in your published posts. Once a week it reads each whole feed. That is when new products become searchable and products that have left the feed are noticed.</p>
+        <p>When a product has left the feed, its card is left out of the post. Until the next weekly run, the card can stay up with its last price. All of this runs on WordPress's own schedule, so on a quiet site it can run late.</p>
+        <p>You can try this on one post with the free plugin. <a class="more" data-cta="quiet-install" href="/install/">See the install guide</a>.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="band board" id="breaks" aria-labelledby="h-breaks">
+  <div class="wrap chap">
+    <div class="head">
+      <p class="kick">Part 8 of 8</p>
+      <h2 id="h-breaks">What if it breaks?</h2>
+      <p>Four symptoms from public support threads, each with the first thing to try. Not every thread found its cause.</p>
+    </div>
+    <div class="col">
+      <div>
+        <div class="cmp-wrap" tabindex="0" role="region" aria-labelledby="cap-errors">
+          <table class="cmp slim txt">
+            <caption class="vh" id="cap-errors">Four import problems and the first thing to try for each</caption>
+            <thead>
+              <tr><th scope="col">What you see</th><th scope="col">What to do</th></tr>
+            </thead>
+            <tbody>
+              <tr><th scope="row">“Invalid csv file”</th><td>AWIN offers plain CSV and “CSV for Excel”. Try plain CSV with a comma as separator.</td></tr>
+              <tr><th scope="row">No pictures or descriptions</th><td>Build the feed again with every column ticked. Still empty? Only the shop can supply them.</td></tr>
+              <tr><th scope="row">“Premature end of data”</th><td>Fetch it again. If it keeps happening, ask the network whether the feed is complete.</td></tr>
+              <tr><th scope="row">Stops halfway on a big feed</th><td>Import fewer records in each run, or build a smaller feed, for example limited to certain brands.</td></tr>
+            </tbody>
+          </table>
+        </div>
+        <p class="cap">The threads behind the rows: <a href="https://wordpress.org/support/topic/invalid-csv-file-3/" rel="noopener">the CSV error</a>, <a href="https://wordpress.org/support/topic/unable-to-display-products/" rel="noopener">missing pictures</a>, <a href="https://wordpress.org/support/topic/error-by-import-an-xml-feed-fehler-beim-import-eines-xml-feeds-cannot-load-xml-2/" rel="noopener">the XML error</a> and <a href="https://wordpress.org/support/topic/i-have-over-100000-posts-to-import-can-this-plugin-handle-it/" rel="noopener">a very large import</a>.</p>
+      </div>
+
+      <div class="prose">
+        <h3>Start small</h3>
+        <p>One network, one shop, one post. Put three products from a feed into a post you would have written anyway, and look at it again in a month. If the prices still match the shop, add the second shop.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="band paper" id="questions" aria-labelledby="h-questions">
+  <div class="wrap chap">
+    <div class="head">
+      <h2 id="h-questions">Questions people ask</h2>
+      <p>From WordPress support forums and the networks' own help.</p>
+    </div>
+    <div class="col">
+      <div class="qa">
+        <div>
+          <h3>Do I need WooCommerce to show affiliate products?</h3>
+          <p>Not for products inside posts. You need it only if your plugin turns the rows of a feed into WooCommerce products, as some shop builders do.</p>
+        </div>
+        <div>
+          <h3>Does Amazon have a product feed?</h3>
+          <p>No. Amazon does not offer its associates a product feed file. Product data comes through its Creators API, which Amazon opens to associates with ten qualifying sales in the past 30 days (as of October 2026).</p>
+        </div>
+      </div>
+
+      <div>
+        <h3 class="sub-h">And two shorter ones</h3>
+        <div class="faq">
+          <details name="faq">
+            <summary>Can I add my own margin to the prices in a feed?</summary>
+            <div class="a"><p>No. As an affiliate you do not sell anything. The shop sets the price and makes the sale, and you earn a commission on it.</p></div>
+          </details>
+          <details name="faq">
+            <summary>I can download the feed of a shop I never joined. Does a sale still count?</summary>
+            <div class="a"><p>With AWIN, sometimes. For selected shops that accept affiliates automatically, sales made through the feed are credited before you have joined. That does not apply to all shops, so joining properly is the safe way.</p></div>
+          </details>
+        </div>
+      </div>
+
+      <details class="sources">
+        <summary>Sources (23)</summary>
+        <ol>
+          <li><a href="https://success.awin.com/articles/en_US/Knowledge/Product-Data-Feed-FAQ" rel="noopener">Product data feeds: troubleshooting and FAQs</a> Awin. Who uses feeds, missing data, the Last Update column, AWIN's own plugin.</li>
+          <li><a href="https://help.awin.com/developers/docs/downloading-feeds-using-create-a-feed" rel="noopener">Downloading feeds using Create-a-Feed</a> Awin help centre. Language first, columns, CSV variants.</li>
+          <li><a href="https://success.awin.com/articles/en_US/Knowledge/How-can-I-access-a-Product-Feed" rel="noopener">How can I access a product feed?</a> Awin. Where the tool sits in the menu.</li>
+          <li><a href="https://help.awin.com/developers/docs/faqs-for-publishers" rel="noopener">FAQs for publishers</a> Awin help centre. An outdated feed, sales before joining.</li>
+          <li><a href="https://help.awin.com/developers/docs/managing-your-feed" rel="noopener">Managing your feed</a> Awin help centre. How often shops refresh a feed.</li>
+          <li><a href="https://www.awin.com/us/news-and-events/awin-news/shareasale-to-awin-upgrade" rel="noopener">Your ShareASale future starts on Awin</a> Awin, 10 March 2025. The closing of ShareASale.</li>
+          <li><a href="https://api-docs.partnerize.com/partner/" rel="noopener">Partners API</a> Partnerize. Search the page for “List all available feeds”.</li>
+          <li><a href="https://knowledgehub.webgains.com/home/product-feeds-for-publishers" rel="noopener">Exporting product feeds and feed specifications (for publishers)</a> Webgains. A link to copy, or a file.</li>
+          <li><a href="https://admitad.useresponse.com/knowledge-base/article/product-feed-what-it-is-and-how-to-export-it-for-your-website_4" rel="noopener">Product feed: what it is and how to export it for your website</a> Admitad. The generated link.</li>
+          <li><a href="https://junction.cj.com/article/making-most-cjs-shopping-feed-format" rel="noopener">Making the most of CJ's shopping feed format</a> CJ, 17 April 2018. An export you subscribe to. The current help is behind the login.</li>
+          <li><a href="https://help.impact.com/partner/what-would-you-like-to-learn-about/platform-features/marketing-content/product-marketplace-and-catalogs/download-product-catalogs-as-a-partner" rel="noopener">Download product catalogs as a partner</a> impact.com. Three ways to get the file.</li>
+          <li><a href="https://pubhelp.rakutenadvertising.com/hc/en-us/articles/4412243602189-Product-Catalog-Overview" rel="noopener">Product catalog overview</a> Rakuten Advertising. Files, after two approvals.</li>
+          <li><a href="https://ascendpartner.zendesk.com/hc/en-gb/articles/13220232547613-Where-do-I-locate-product-feeds" rel="noopener">Where do I locate product feeds?</a> Ascend by Partnerize. The Download Feed button.</li>
+          <li><a href="https://supportbeta.flexoffers.com/knowledge/data-feeds-subscriptions" rel="noopener">Data feeds: subscriptions</a> FlexOffers. Files after you subscribe.</li>
+          <li><a href="https://dev.tradedoubler.com/products/publisher/" rel="noopener">Products API for publishers</a> Tradedoubler. The API and its personal key.</li>
+          <li><a href="https://wordpress.org/plugins/datafeedr-api/" rel="noopener">Datafeedr API</a> WordPress.org plugin page. Its product database and the subscription.</li>
+          <li><a href="https://wordpress.org/plugins/content-egg/" rel="noopener">Content Egg</a> WordPress.org plugin page. Posts, price comparison, WooCommerce products.</li>
+          <li><a href="https://developers.google.com/search/docs/essentials/spam-policies" rel="noopener">Spam policies for Google web search</a> Google, last updated 28 August 2026. Thin affiliation and scaled content abuse.</li>
+          <li><a href="https://developers.google.com/search/docs/crawling-indexing/qualify-outbound-links" rel="noopener">Qualify your outbound links to Google</a> Google. How to mark paid links.</li>
+          <li><a href="https://www.ftc.gov/business-guidance/resources/ftcs-endorsement-guides-what-people-are-asking" rel="noopener">FTC's Endorsement Guides: what people are asking</a> US Federal Trade Commission. Disclosing affiliate links.</li>
+          <li><a href="https://developer.wordpress.org/plugins/cron/" rel="noopener">Cron</a> WordPress plugin handbook. When scheduled tasks run.</li>
+          <li><a href="https://www.wpallimport.com/documentation/schedule-wordpress-imports/" rel="noopener">Schedule WordPress imports</a> WP All Import. The price, as shown in October 2026.</li>
+          <li><a href="https://affiliate-program.amazon.com/creatorsapi/docs/en-us/introduction" rel="noopener">Creators API, introduction</a> Amazon Associates. The ten qualifying sales.</li>
+        </ol>
+      </details>
+    </div>
+  </div>
+</section>
+
+<section class="band vio" id="next" aria-labelledby="h-next">
+  <div class="wrap">
+    <div class="head">
+      <p class="kick">Where to go next</p>
+      <h2 id="h-next">Pick your next step.</h2>
+    </div>
+    <div class="help">
+      <a class="h" href="/networks/" data-cta="next-networks"><b>Find your feed link</b><span>Where each affiliate network keeps the feed, and what to copy.</span><u>See the network guides</u></a>
+      <a class="h" href="/articles/affiliate-shop-wordpress/" data-cta="next-shop"><b>Thinking of a whole shop?</b><span>What it takes, and when it is worth it.</span><u>Read the shop guide</u></a>
+      <a class="h" href="/articles/why-affiliate-posts-stop-earning/" data-cta="next-stop-earning"><b>Keep old posts earning</b><span>Prices move and products sell out. What that does to a post you wrote last year.</span><u>Read the guide</u></a>
+    </div>
+  </div>
+</section>
+
+<section class="close" id="end" aria-labelledby="h-end">
+  <div class="wrap close-in">
+    <div>
+      <h2 id="h-end">Start with one shop and one post.</h2>
+      <div class="go">
+        <a class="cta" data-cta="final" href="/install/">Get the free plugin</a>
+        <p class="calm">Free on WordPress.org for one shop's feed. Paid plans each start with a free trial.</p>
+        <p class="calm">Want to see the plans first? <a class="more" data-cta="final-plans" href="/#pricing">Compare the plans</a>.</p>
+      </div>
+    </div>
+    <div class="myfeeds-product-grid row3" aria-hidden="true">
+      <div class="myfeeds-product-card"><div class="myfeeds-product-image"><img src="/assets/home/tee-boxy-offwhite.webp" width="400" height="400" alt="" loading="lazy"></div><div class="myfeeds-product-details"><div class="myfeeds-product-brand">Common Thread</div><div class="myfeeds-product-title">Boxy Heavy Tee Off-White</div><div class="myfeeds-product-price"><span class="myfeeds-current-price">$32.00</span></div><div class="myfeeds-shipping-info">Free Shipping</div><div class="myfeeds-merchant">Northside Supply</div></div></div>
+      <div class="myfeeds-product-card"><div class="myfeeds-product-image"><div class="myfeeds-discount-badge">-20%</div><img src="/assets/home/sneaker-white-lowtop.webp" width="400" height="400" alt="" loading="lazy"></div><div class="myfeeds-product-details"><div class="myfeeds-product-brand">Arlo &amp; Finch</div><div class="myfeeds-product-title">Court Low-Top Leather White</div><div class="myfeeds-product-price"><span class="myfeeds-old-price">$110.00</span> <span class="myfeeds-current-price has-discount">$88.00</span></div><div class="myfeeds-shipping-info">Free Shipping</div><div class="myfeeds-merchant">Kicks Corner</div></div></div>
+      <div class="myfeeds-product-card"><div class="myfeeds-product-image"><img src="/assets/home/beanie-knit-navy.webp" width="400" height="400" alt="" loading="lazy"></div><div class="myfeeds-product-details"><div class="myfeeds-product-brand">Fieldmade</div><div class="myfeeds-product-title">Ribbed Merino Beanie Navy</div><div class="myfeeds-product-price"><span class="myfeeds-current-price">$28.00</span></div><div class="myfeeds-shipping-info">Shipping costs may apply</div><div class="myfeeds-merchant">Basecamp Outfitters</div></div></div>
+    </div>
+  </div>
+</section>
+</main>
+
+<footer>
+  <div class="wrap">
+    <div class="brand"><b translate="no">MyFeeds</b><span>Affiliate product feeds for WordPress</span></div>
+    <nav aria-label="Site">
+      <a href="/ecommerce/">E-commerce</a>
+      <a href="/install/">Install guide</a>
+      <a href="/networks/">Affiliate networks</a>
+      <a href="/articles/">Guides</a>
+      <a href="/affiliates/">Become an affiliate</a>
+      <a href="https://wordpress.org/plugins/myfeeds-affiliate-feed-manager/" rel="noopener">Free plugin on WordPress.org</a>
+      <a href="/imprint/">Imprint</a>
+      <a href="/privacy/">Privacy</a>
+      <a href="/terms/">Terms</a>
+      <a href="/refund/">Refund policy</a>
+    </nav>
+    <span>© 2026 MyFeeds. All rights reserved.</span>
+  </div>
+</footer>
+
+<script src="/assets/site.js" defer></script>
 <script src="/assets/back-to-top.js" defer></script>
 <script src="/assets/consent.js" defer></script>
 </body>
