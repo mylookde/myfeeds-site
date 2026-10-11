@@ -3,156 +3,370 @@
 <head>
 <meta charset="UTF-8">
 <meta name="p:domain_verify" content="0f13dbb87c7b78ab08817667740c2df2"/>
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Partnerize product feed for WordPress - import, display, auto-update | MyFeeds</title>
-<meta name="description" content="Turn your Partnerize product feeds into live, searchable product cards inside the WordPress block editor. Prices and stock update themselves nightly.">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+<title>Get your Partnerize product feed into WordPress - Step by step</title>
+<meta name="description" content="Where a shop's product feed link is in Partnerize, what to do when a campaign has none, and how to add the link to WordPress with the MyFeeds plugin.">
 <link rel="canonical" href="https://myfeeds.site/networks/partnerize/">
-<meta property="og:type" content="website">
+<meta name="theme-color" content="#FC9000">
+<meta property="og:type" content="article">
 <meta property="og:site_name" content="MyFeeds">
 <meta property="og:url" content="https://myfeeds.site/networks/partnerize/">
-<meta property="og:title" content="Partnerize product feed for WordPress - import, display, auto-update | MyFeeds">
-<meta property="og:description" content="Turn your Partnerize product feeds into live, searchable product cards inside the WordPress block editor. Prices and stock update themselves nightly.">
+<meta property="og:title" content="Get your Partnerize product feed into WordPress - Step by step">
+<meta property="og:description" content="Where a shop's product feed link is in Partnerize, and how to add it to WordPress.">
 <meta property="og:image" content="https://myfeeds.site/assets/og-image.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="628">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:url" content="https://myfeeds.site/networks/partnerize/">
+<meta name="twitter:title" content="Get your Partnerize product feed into WordPress - Step by step">
+<meta name="twitter:description" content="Where a shop's product feed link is in Partnerize, and how to add it to WordPress.">
+<meta name="twitter:image" content="https://myfeeds.site/assets/og-image.png">
 <link rel="icon" type="image/png" href="/favicon.png">
+<link rel="icon" type="image/x-icon" href="/favicon.ico">
 <link rel="apple-touch-icon" href="/apple-touch-icon.png">
-<link rel="stylesheet" href="/assets/fonts.css">
-<script type="application/ld+json">{"@context": "https://schema.org", "@type": "FAQPage", "mainEntity": [{"@type": "Question", "name": "Does MyFeeds work with Partnerize?", "acceptedAnswer": {"@type": "Answer", "text": "Yes. Partnerize hosts a product feed for every campaign you are approved on, one per market, as a plain HTTPS link that needs no login to read. Paste that link into MyFeeds and it maps the fields automatically and turns the catalogue into a searchable list inside the WordPress block editor."}}, {"@type": "Question", "name": "Is Partnerize the same as Pepperjam or Ascend?", "acceptedAnswer": {"@type": "Answer", "text": "No. Ascend is the Pepperjam platform, which belongs to the Partnerize company but runs as a separate console with its own keys and its own feed format. If you log in at console.partnerize.com and your links go through prf.hn, this is your page. If your links go through pjtra or pntra, see the Pepperjam page."}}, {"@type": "Question", "name": "Which details does MyFeeds need to pull my commissions?", "acceptedAnswer": {"@type": "Answer", "text": "Three values from the Partnerize console: the User application key and the User API key from your account settings, and your Publisher ID from the publisher settings. The user id shown next to your name is a different number and will not work."}}, {"@type": "Question", "name": "Do I have to pay to get started?", "acceptedAnswer": {"@type": "Answer", "text": "No. The free version lives on WordPress.org and covers one feed, the smart search, the grid layout, manual plus nightly sync. Upgrade only when you outgrow it."}}, {"@type": "Question", "name": "Where does my data live?", "acceptedAnswer": {"@type": "Answer", "text": "On your own WordPress site, in your own database. The plugin doesn't proxy product images, doesn't ping a third-party server when a page loads, and doesn't send anything about your visitors anywhere."}}]}</script>
-<style>*,*::before,*::after{margin:0;padding:0;box-sizing:border-box}
-:root{--bg:#FAF8F4;--card:#FFFFFF;--line:#E8E4DB;--txt:#1A1720;--soft:#57515F;--mute:#8F8A99;--a1:#6C54B4;--a2:#5A4499;--tint:#F1EEFA;--green:#1E9E6A;--grad:linear-gradient(135deg,#6C54B4,#5A4499);--serif:'Fraunces',Georgia,serif;--sans:'Inter',-apple-system,BlinkMacSystemFont,sans-serif}
-html{background:var(--bg);color:var(--txt);font-family:var(--sans);scroll-behavior:smooth}
-body{line-height:1.6;overflow-x:hidden}
-.wrap{max-width:860px;margin:0 auto;padding:0 24px}
-nav{position:fixed;top:0;left:0;right:0;z-index:50;padding:14px 0;backdrop-filter:blur(18px);background:rgba(250,248,244,.88);border-bottom:1px solid var(--line)}
-nav .wrap{display:flex;align-items:center;justify-content:space-between;max-width:1200px}
-.logo{display:flex;align-items:center;gap:10px;text-decoration:none;color:var(--txt);font-weight:700;font-size:1.05rem}
-.logo img{width:30px;height:30px;border-radius:7px}
-.nav-r{display:flex;gap:22px;align-items:center}
-.nav-r a{color:var(--soft);text-decoration:none;font-size:.88rem;font-weight:500}
-.nav-r a:hover{color:var(--txt)}
-.nav-r a.cta{background:var(--grad);color:#fff;padding:8px 18px;border-radius:9px;font-weight:600}
-header{padding:130px 0 30px}
-.crumb{font-size:.78rem;color:var(--mute);margin-bottom:18px}
-.crumb a{color:var(--mute);text-decoration:none}
-.crumb a:hover{color:var(--soft)}
-.badge{display:inline-flex;align-items:center;gap:8px;padding:6px 14px;border-radius:999px;background:var(--card);border:1px solid var(--line);font-size:.78rem;color:var(--soft);margin-bottom:20px}
-.badge i{width:6px;height:6px;border-radius:50%;background:var(--green)}
-h1{font-size:clamp(1.9rem,4.6vw,2.9rem);font-weight:800;letter-spacing:-.03em;line-height:1.12;margin-bottom:18px}
-.lede{color:var(--soft);font-size:1.06rem;max-width:640px}
-main{padding:26px 0 60px}
-h2{font-size:1.45rem;font-weight:700;letter-spacing:-.02em;margin:44px 0 14px}
-p{color:var(--soft);margin-bottom:14px;font-size:.97rem}
-.steps{counter-reset:s;display:grid;gap:14px;margin:20px 0 8px}
-.step{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:20px 22px 18px;position:relative}
-.step::before{counter-increment:s;content:counter(s,decimal-leading-zero);font-size:.78rem;font-weight:700;color:var(--a1);letter-spacing:.08em}
-.step h3{font-size:1.02rem;font-weight:700;margin:6px 0 6px;color:var(--txt)}
-.step p{margin:0;font-size:.92rem}
-.facts{background:var(--tint);border:1px solid rgba(108,84,180,.22);border-radius:14px;padding:22px 24px;margin:24px 0}
-.facts h2{margin:0 0 12px;font-size:1.05rem}
-.facts ul{list-style:none}
-.facts li{padding:7px 0;color:var(--soft);font-size:.93rem;display:flex;gap:10px;align-items:flex-start;border-bottom:1px solid rgba(255,255,255,.05)}
-.facts li:last-child{border:none}
-.facts li b{color:var(--green);font-weight:700;flex-shrink:0}
-.faq details{background:var(--card);border:1px solid var(--line);border-radius:11px;margin-bottom:10px}
-.faq summary{padding:15px 18px;cursor:pointer;font-weight:600;font-size:.95rem;list-style:none;display:flex;justify-content:space-between;gap:14px}
-.faq summary::-webkit-details-marker{display:none}
-.faq summary::after{content:'+';color:var(--mute);font-weight:300;font-size:1.3rem;line-height:1}
-.faq details[open] summary::after{content:'-'}
-.faq details p{padding:0 18px 16px;margin:0;font-size:.91rem}
-.cta-box{background:var(--grad);border-radius:16px;padding:36px 30px;text-align:center;margin:52px 0 0}
-.cta-box h2{margin:0 0 8px;color:#fff}
-.cta-box p{color:rgba(255,255,255,.85);max-width:460px;margin:0 auto 20px}
-.btn{display:inline-block;background:#fff;color:#1c1633;font-weight:700;padding:13px 28px;border-radius:999px;text-decoration:none;font-size:.95rem}
-.btn:hover{opacity:.93}
-.cta-sub{display:block;margin-top:12px;font-size:.8rem;color:rgba(255,255,255,.7)}
-.cta-sub a{color:#fff}
-footer{border-top:1px solid var(--line);padding:36px 0;text-align:center;margin-top:70px}
-footer .links{display:flex;gap:20px;justify-content:center;flex-wrap:wrap;margin-bottom:14px}
-footer a{color:var(--soft);text-decoration:none;font-size:.84rem}
-footer a:hover{color:var(--txt)}
-footer .copy{color:var(--mute);font-size:.76rem}
-.netgrid{display:grid;grid-template-columns:repeat(auto-fill,minmax(200px,1fr));gap:14px;margin:26px 0}
-.netcard{display:block;background:var(--card);border:1px solid var(--line);border-radius:13px;padding:20px;text-decoration:none;transition:border-color .2s,transform .2s}
-.netcard:hover{border-color:rgba(108,84,180,.4);transform:translateY(-2px)}
-.netcard b{color:var(--txt);font-size:1rem;display:block;margin-bottom:4px}
-.netcard span{color:var(--mute);font-size:.8rem}
-/* Jedes Sprungziel muss unter der festen Navigation durchpassen. Vorher
-   hatten das nur die Preistabelle und die Plan-Karten, weil ich beim
-   Bauen nur dorthin gesehen habe - #faq, #how, #storefront, #curator und
-   #control landeten alle hinter der Leiste. Eine Regel fuer alle. */
-[id]{scroll-margin-top:84px}
-
-.nav-logo span,.footer-brand{font-family:var(--serif) !important;font-weight:600 !important;letter-spacing:-.012em !important}
-h1,h2{font-family:var(--serif);font-weight:500;letter-spacing:-.012em}
-</style>
-<script data-goatcounter="https://myfeeds.goatcounter.com/count" async src="//gc.zgo.at/count.js"></script>
+<link rel="preload" href="/assets/fonts/bricolage-latin.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="stylesheet" href="/assets/site.css">
+<script>
+/* Motion gate, before first paint. Nothing on this page waits for script:
+   without "mo" (no JS, reduced motion) there are simply no transitions. */
+!function(d){d.classList.add('js');try{if(matchMedia('(prefers-reduced-motion: no-preference)').matches)d.classList.add('mo')}catch(e){}}(document.documentElement);
+</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "Article",
+      "headline": "Get your Partnerize product feed into WordPress",
+      "description": "Where a shop's product feed link is in Partnerize, what to do when a campaign has none, and how to add the link to WordPress with the MyFeeds plugin.",
+      "mainEntityOfPage": "https://myfeeds.site/networks/partnerize/",
+      "image": "https://myfeeds.site/assets/og-image.png",
+      "author": {
+        "@type": "Organization",
+        "name": "MyFeeds",
+        "url": "https://myfeeds.site/"
+      },
+      "publisher": {
+        "@type": "Organization",
+        "name": "MyFeeds",
+        "url": "https://myfeeds.site/"
+      }
+    },
+    {
+      "@type": "FAQPage",
+      "mainEntity": [
+        {
+          "@type": "Question",
+          "name": "Does the feed link expire?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "We found no expiry in Partnerize's documentation, and no promise either. The feed links we have seen stay the same and open without a login. If MyFeeds ever shows an error for it, copy the link again in Partnerize. In MyFeeds, click Edit on the feed's row, swap the link, then click Reimport."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Can I see which post and product a click came from?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "From the Pro plan, yes: clicks on your cards are counted by post and product. MyFeeds also adds a click ID to each Partnerize link, as pubref, the publisher reference Partnerize reports back."
+          }
+        }
+      ]
+    }
+  ]
+}
+</script>
 </head>
-<body>
-<nav><div class="wrap">
-  <a href="/" class="logo"><img src="/logo.png" alt="MyFeeds">MyFeeds</a>
-  <div class="nav-r">
-    <a href="/networks/">Networks</a>
-    <a href="/#pricing">Pricing</a>
-    <a href="/#pricing" class="cta">Get Started</a>
+<body data-page="networks/partnerize/">
+<a class="skip" href="#main">Skip to the guide</a>
+<div class="open-top">
+  <div class="wrap">
+    <header class="top">
+      <a class="mark" href="/" translate="no" aria-label="MyFeeds home"><span><img src="/assets/home/logo-52.webp" alt="" width="22" height="22"></span>MyFeeds</a>
+      <nav class="nav" aria-label="Main">
+        <a href="/#how">How it works</a>
+        <a href="/#pricing" data-cta="nav-pricing">Pricing</a>
+        <a href="/ecommerce/">E-commerce</a>
+        <a href="/networks/" aria-current="page">Networks</a>
+        <a href="/articles/">Guides</a>
+        <a href="/install/">Install</a>
+        <a href="/#faq">FAQ</a>
+      </nav>
+      <div class="top-r">
+        <button type="button" class="menu-btn" id="menu-btn" aria-expanded="false" aria-controls="menu"><i aria-hidden="true"></i>Menu</button>
+        <a class="cta cta-sm" data-cta="header" href="/#pricing">Get started</a>
+      </div>
+      <div class="menu" id="menu" hidden>
+        <a href="/#how">How it works</a>
+        <a href="/#pricing">Plans and prices</a>
+        <a href="/ecommerce/">E-commerce</a>
+        <a href="/networks/" aria-current="page">Affiliate networks</a>
+        <a href="/articles/">Guides</a>
+        <a href="/install/">Install guide</a>
+        <a href="/#faq">Questions</a>
+      </div>
+    </header>
   </div>
-</div></nav>
-<header><div class="wrap">
-  <div class="crumb"><a href="/">MyFeeds</a> / <a href="/networks/">Networks</a> / Partnerize</div>
-  <div class="badge"><i></i> Works with Partnerize</div>
-  <h1>Your Partnerize products, live inside your WordPress posts</h1>
-  <p class="lede">You are approved on the campaigns, the feeds are sitting in the console, and your posts still link to products by hand. MyFeeds turns those feeds into live product cards inside the WordPress block editor; you pick, you publish, and price and stock stay current on their own.</p>
-</div></header>
-<main><div class="wrap">
+</div>
 
-  <h2>From feed to published post, in three steps</h2>
-  <div class="steps">
-    <div class="step"><h3>Copy your feed link</h3><p>Partnerize hosts a product feed for every campaign you are approved on, and usually one per market, so a brand shows up as "Pieces - FR" next to "Pieces - BE (NL)". Open the campaign, find its product feeds and copy the link of the market you sell to. It is a plain HTTPS address ending in .xml, readable without a login.</p></div>
-    <div class="step"><h3>Paste it into MyFeeds</h3><p>The importer reads the feed straight from that address, sniffs the structure and maps the fields on its own. A few minutes later your products are searchable inside WordPress, and the tracking links come through exactly as Partnerize wrote them.</p></div>
-    <div class="step"><h3>Pick products in the editor and publish</h3><p>Search your catalogue right inside the post, click, and the card is in. A nightly sync keeps every card on every post current; products that disappear from the feed get flagged so old posts stop pointing at 404s.</p></div>
+<main id="main">
+<div class="open">
+  <div class="wrap">
+    <section class="hero long" aria-labelledby="h-hero">
+      <div>
+        <p class="eyebrow"><a href="/networks/">Feed link guides</a> · Partnerize</p>
+        <h1 id="h-hero">Get your Partnerize product feed into WordPress.</h1>
+        <p class="lede">For each product feed a shop shares with you, Partnerize gives you one plain link, with your tracking already inside. Paste it into MyFeeds, our WordPress plugin, and pick products for your posts in the editor.</p>
+        <div class="go">
+          <a class="cta" data-cta="hero" id="hero-cta" href="/install/">Get the free plugin</a>
+          <p class="calm">Free on WordPress.org for one shop's feed. Paid plans each start with a free trial.</p>
+        </div>
+      </div>
+
+      <aside class="pinned" aria-labelledby="gl-k">
+        <p class="ov-k" id="gl-k"><span>At a glance</span><span>Partnerize</span></p>
+        <dl class="glance">
+          <div><dt>You get</dt><dd><b>A link that stays the same.</b> MyFeeds reads it every night.</dd></div>
+          <div><dt>In Partnerize</dt><dd><b>Copy the feed's link.</b> Often one feed for each country.</dd></div>
+          <div><dt>WordPress</dt><dd><b>Paste the link.</b> In MyFeeds, under Add your first feed.</dd></div>
+          <div><dt>Plan</dt><dd><span class="pill free">Free</span> for one feed. Any number from Starter.</dd></div>
+        </dl>
+        <p class="ov-x"><a class="more" href="#in-partnerize">Start with step 1</a><a class="more" href="#questions">Questions</a></p>
+      </aside>
+    </section>
   </div>
+</div>
 
-  <div class="facts">
-    <h2>What MyFeeds handles for Partnerize feeds</h2>
-    <ul>
-      <li><b>&#10003;</b> Reads the hosted XML feed links Partnerize publishes per campaign and market; unusual columns are matched by the smart mapper</li>
-      <li><b>&#10003;</b> Your prf.hn tracking links are used exactly as the feed delivers them; camref and creative reference stay intact</li>
-      <li><b>&#10003;</b> Every click carries an id in the pubref segment of the link, so commissions can be matched back to the exact post and product in the MyFeeds analytics dashboard (Pro)</li>
-      <li><b>&#10003;</b> Nightly sync updates price, stock and sale badges on every published card</li>
-      <li><b>&#10003;</b> Everything is stored in your own WordPress database, fully self-hosted</li>
+<section class="band board" id="before" aria-labelledby="h-before">
+  <div class="wrap">
+    <div class="head">
+      <h2 id="h-before">Before you start</h2>
+      <p>A feed pays off when you show many products from one shop, with picture and price. For two or three, a normal Partnerize link in your text does the job. <a class="more" href="/articles/import-product-feed-wordpress/" data-cta="quiet-guide">How a shop's product feed gets into WordPress</a> explains the idea.</p>
+    </div>
+    <ul class="need">
+      <li><b>The shop has accepted you</b>Partnerize calls a shop a brand and its programme a campaign.</li>
+      <li><b>The shop shares a product feed</b>That is each shop's choice, so a campaign without a feed is normal.</li>
+      <li><b>MyFeeds is in your WordPress</b>Our plugin for the WordPress block editor. If it is not installed yet, the <a href="/install/">install guide</a> takes you through it.</li>
     </ul>
   </div>
+</section>
 
-  <h2>Clicks and commissions</h2>
-  <p>On paid plans, MyFeeds writes a publisher reference into every outgoing click, the pubref that Partnerize reports back with each sale, and pulls your commissions into WordPress through the Partnerize API. You see which post and which product actually earned. Clicks are counted server-side; ad blockers don't punch holes into your numbers.</p>
-  <p>Connecting takes three values from your Partnerize console: the User application key, the User API key, and your Publisher ID. The first two sit in your account settings, the third in the publisher settings.</p>
-
-  <h2>Common questions</h2>
-  <div class="faq">
-    <details><summary>Does MyFeeds work with Partnerize?</summary><p>Yes. Partnerize hosts a product feed for every campaign you are approved on, one per market, as a plain HTTPS link that needs no login to read. Paste that link into MyFeeds and it maps the fields automatically and turns the catalogue into a searchable list inside the WordPress block editor.</p></details>
-    <details><summary>Is Partnerize the same as Pepperjam or Ascend?</summary><p>No. Ascend is the Pepperjam platform, which belongs to the Partnerize company but runs as a separate console with its own keys and its own feed format. If you log in at console.partnerize.com and your links go through prf.hn, this is your page. If your links go through pjtra or pntra, see the Pepperjam page.</p></details>
-    <details><summary>Which details does MyFeeds need to pull my commissions?</summary><p>Three values from the Partnerize console: the User application key and the User API key from your account settings, and your Publisher ID from the publisher settings. The user id shown next to your name is a different number and will not work.</p></details>
-    <details><summary>Do I have to pay to get started?</summary><p>No. The free version lives on WordPress.org and covers one feed, the smart search, the grid layout, manual plus nightly sync. Upgrade only when you outgrow it.</p></details>
-    <details><summary>Where does my data live?</summary><p>On your own WordPress site, in your own database. The plugin doesn&#x27;t proxy product images, doesn&#x27;t ping a third-party server when a page loads, and doesn&#x27;t send anything about your visitors anywhere.</p></details>
+<section class="band paper" id="in-partnerize" aria-labelledby="h-in-partnerize">
+  <div class="wrap chap">
+    <div class="head">
+      <p class="kick">Step 1 of 2</p>
+      <h2 id="h-in-partnerize">Copy the feed link in Partnerize</h2>
+      <div class="meta">
+        <span class="goal"><b>Goal</b>One link to the shop's product feed, ready to paste.</span>
+      </div>
+    </div>
+    <div class="col">
+      <ol class="sub">
+        <li>
+          <h3>Open your feed list</h3>
+          <p>Partnerize documents one address that lists the product feeds shops have shared with you. Open it in your browser.</p>
+          <div class="viz">
+            <p class="k">The address of your feed list</p>
+            <p class="url">https://api.partnerize.com/<wbr>user/publisher/<wbr><b>YOUR-PUBLISHER-ID</b><wbr>/feed.json</p>
+            <ul class="url-key">
+              <li><b>YOUR-PUBLISHER-ID</b> is your publisher ID, not the user ID on your account page. A 2023 walkthrough (source 4) places it under <span class="ui">Partner settings</span>.</li>
+              <li>Your browser asks for a username and a password: your User application key and your User API key, both from <span class="ui">Account settings</span>. Treat them like passwords.</li>
+              <li>The answer is raw text. In it, each feed has a <code>name</code> and a <code>location</code>. The location is the link.</li>
+            </ul>
+            <p class="cap">From Partnerize's API documentation, source 1.</p>
+          </div>
+          <p class="note"><b>There may be a screen for this too.</b> We could not confirm where the Partnerize console lists product feeds, or what it calls them. The address above is the documented way.</p>
+        </li>
+        <li>
+          <h3>Pick the feed for your readers' country</h3>
+          <p>A shop often has one feed for each country it sells in, named after the country. Take the one most of your readers shop in. Your cards show that feed's prices: MyFeeds converts nothing.</p>
+        </li>
+        <li>
+          <h3>Copy the link</h3>
+          <p>Copy the whole link. In the feed list, <code>location_compressed</code> is the same feed, compressed. Either works.</p>
+        </li>
+      </ol>
+      <p class="done">You have the link copied. <a href="#in-wordpress">On to step 2</a></p>
+    </div>
   </div>
+</section>
 
-  <div class="cta-box">
-    <h2>Try it with your own Partnerize feed</h2>
-    <p>The free plugin covers your first feed. Setup lands in five to ten minutes.</p>
-    <a class="btn" href="/#pricing">Add live product cards to my posts &rarr;</a>
-    <span class="cta-sub">Need more feeds or the analytics dashboard? <a href="/#pricing">See the plans</a></span>
+<section class="band ink" id="in-wordpress" aria-labelledby="h-in-wordpress">
+  <div class="wrap">
+    <div class="head">
+      <p class="kick">Step 2 of 2</p>
+      <h2 id="h-in-wordpress">Add the link in WordPress</h2>
+      <div class="meta">
+        <span class="goal"><b>Goal</b>The shop's products in WordPress, ready to search in the editor.</span>
+      </div>
+    </div>
+    <div class="duo">
+      <div class="card lit pick">
+        <span class="tag">Recommended</span>
+        <h3>Paste the link</h3>
+        <ol class="nums">
+          <li>In WordPress, open <span class="ui">MyFeeds</span> and click <span class="ui">Add your first feed</span>. On a paid plan, later feeds go through <span class="ui">+ Add Feed</span>.</li>
+          <li>Name the feed after the shop: readers see that name on your cards. Keep <span class="ui">At a URL</span>, paste the link and click <span class="ui">Create Feed</span>.</li>
+          <li>Let it import. It runs in the background while you keep working.</li>
+        </ol>
+        <ul class="yn">
+          <li class="y">A link is read again every night, so the cards in your published posts follow the feed's prices.</li>
+        </ul>
+      </div>
+      <div class="card">
+        <span class="k">If MyFeeds shows an error for the link</span>
+        <h3>Upload the file</h3>
+        <ol class="nums">
+          <li>Open the feed link in your browser and save the file.</li>
+          <li>In the same MyFeeds dialog, choose <span class="ui">Upload a file</span>.</li>
+        </ol>
+        <ul class="yn">
+          <li class="n">A file stays as it was on upload day, until you upload a newer one.</li>
+        </ul>
+      </div>
+    </div>
+    <p class="done">The shop's products are in. <a href="/install/#step-4">Publish your first cards</a></p>
   </div>
+</section>
 
-</div></main>
-<footer><div class="wrap">
-  <div class="links">
-    <a href="/">Home</a>
-    <a href="/networks/">Supported networks</a>
-    <a href="/install/">Install Guide</a>
-    <a href="/affiliates/">Become an Affiliate</a>
-    <a href="/privacy/">Privacy Policy</a>
-    <a href="/imprint/">Imprint</a>
+<section class="band paper" id="contains" aria-labelledby="h-contains">
+  <div class="wrap">
+    <div class="head">
+      <h2 id="h-contains">What a Partnerize feed gives you</h2>
+      <p>The shop builds the feed and decides what is in it. Partnerize hosts it.</p>
+    </div>
+    <div class="side">
+      <div class="cmp-wrap" tabindex="0" role="region" aria-labelledby="col-cap">
+        <table class="cmp slim txt">
+          <caption class="vh" id="col-cap">What a Partnerize product feed contains</caption>
+          <thead>
+            <tr><th scope="col">In the feed</th><th scope="col">On Partnerize</th></tr>
+          </thead>
+          <tbody>
+            <tr><th scope="row">Product links</th><td>Already your tracking links. Partnerize puts each partner's tracking into the feed.</td></tr>
+            <tr><th scope="row">Format and columns</th><td>The shop's choice. MyFeeds reads CSV, XML and JSON, compressed or not, and matches the columns itself. If a field stays empty on your cards, set it in the <span class="ui">Mapping Editor</span>.</td></tr>
+            <tr><th scope="row">How fresh</th><td>The shop sets how often Partnerize fetches its products. Your cards can only be as current as that.</td></tr>
+          </tbody>
+        </table>
+      </div>
+      <div class="aside">
+        <p class="note warn"><b>Use the feed from your own account.</b> The links in it are tracked for you. In a feed someone else passes on, the commission is theirs.</p>
+        <p class="note"><b>Once a week, the whole feed.</b> New products become searchable then, and products the shop has removed leave your posts.</p>
+      </div>
+    </div>
   </div>
-  <div class="copy">&copy; 2026 MyFeeds. All rights reserved.</div>
-</div></footer>
+</section>
+
+<section class="band board" id="questions" aria-labelledby="h-questions">
+  <div class="wrap chap">
+    <div class="head">
+      <h2 id="h-questions">Questions about Partnerize feeds</h2>
+      <p>For anything else, <a class="more" href="mailto:support@myfeeds.site?subject=Partnerize%20feed%20question" data-cta="ask-support">write to us</a>.</p>
+    </div>
+    <div class="col">
+      <div class="qa">
+        <div>
+          <h3>My campaign shows no product feed. What now?</h3>
+          <p>Then the shop has not shared one. Partnerize leaves that to each shop.</p>
+          <p>Ask the shop, or your contact at Partnerize, whether one is planned. Until then, link to its products by hand.</p>
+        </div>
+        <div>
+          <h3>Is Partnerize the same as Pepperjam or Ascend?</h3>
+          <p>No. Ascend, the former Pepperjam network, belongs to Partnerize but hands out its feeds differently.</p>
+          <p>Look at one of your affiliate links. If it runs through <code>prf.hn</code>, you are on Partnerize. If it runs through <code>pntra.com</code>, you are on Ascend: see the <a href="/networks/pepperjam/">Pepperjam guide</a>.</p>
+        </div>
+      </div>
+
+      <div>
+        <h3 class="sub-h">More questions</h3>
+        <div class="faq">
+          <details name="faq">
+            <summary>Does the feed link expire?</summary>
+            <div class="a"><p>We found no expiry in Partnerize's documentation, and no promise either. The feed links we have seen stay the same and open without a login.</p><p>If MyFeeds ever shows an error for it, copy the link again in Partnerize. In MyFeeds, click <span class="ui">Edit</span> on the feed's row, swap the link, then click <span class="ui">Reimport</span>.</p></div>
+          </details>
+          <details name="faq">
+            <summary>Can I see which post and product a click came from?</summary>
+            <div class="a"><p><span class="where">Pro</span>From the Pro plan, yes: clicks on your cards are counted by post and product. MyFeeds also adds a click ID to each Partnerize link, as <code>pubref</code>, the publisher reference Partnerize reports back.</p></div>
+          </details>
+        </div>
+      </div>
+
+      <div class="sources">
+        <p class="k">Sources, read in October 2026</p>
+        <ol>
+          <li><a href="https://api-docs.partnerize.com/partner/" rel="noopener">Partnerize Partners API</a> (Partnerize). The feed list, the two keys, pubref.</li>
+          <li><a href="https://api-docs.partnerize.com/brand/" rel="noopener">Partnerize Brands API, Product Feeds</a> (Partnerize). Feeds are the shop's choice, formats, tracking for each partner.</li>
+          <li><a href="https://partnerize.com/pepperjam-ascend-by-partnerize" rel="noopener">Pepperjam Affiliate Network is now Ascend by Partnerize</a> (Partnerize). The two names.</li>
+          <li><a href="https://resources.affiliate.com/article/71-find-your-partnerize-publisher-id-and-api-keys" rel="noopener">Find your Partnerize publisher ID and API keys</a> (affiliate.com, 2023). Where the publisher ID is.</li>
+          <li><a href="https://ascendpartner.zendesk.com/hc/en-gb/articles/13220249761821-Flash-Creatives" rel="noopener">Flash Creatives</a> (Ascend). An Ascend link through pntra.com.</li>
+        </ol>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="band vio" id="networks" aria-labelledby="h-networks">
+  <div class="wrap">
+    <div class="head">
+      <p class="kick">Other networks</p>
+      <h2 id="h-networks">Shops on another network too?</h2>
+      <p>Some networks give you a link, others a file. Each guide says which.</p>
+    </div>
+    <nav class="nets" aria-label="Feed link guides by network">
+      <a href="/networks/awin/">AWIN</a>
+      <a href="/networks/cj/">CJ</a>
+      <a href="/networks/tradedoubler/">Tradedoubler</a>
+      <a href="/networks/impact/">Impact</a>
+      <a href="/networks/rakuten/">Rakuten</a>
+      <a href="/networks/webgains/">Webgains</a>
+      <a href="/networks/admitad/">Admitad</a>
+      <a href="/networks/pepperjam/">Pepperjam</a>
+      <a href="/networks/flexoffers/">FlexOffers</a>
+      <a href="/networks/sovrn/">Sovrn</a>
+      <a class="all" href="/networks/">All networks</a>
+    </nav>
+  </div>
+</section>
+
+<section class="close" id="end" aria-labelledby="h-end">
+  <div class="wrap close-in">
+    <div>
+      <h2 id="h-end">One link from Partnerize. Product cards in your next post.</h2>
+      <div class="go">
+        <a class="cta" data-cta="final" href="/install/">Install MyFeeds for free</a>
+        <p class="calm">Free on WordPress.org for one shop's feed. Paid plans each start with a free trial.</p>
+      </div>
+      <p class="go"><a class="more" href="/#pricing" data-cta="final-plans">Compare the plans</a></p>
+    </div>
+    <div class="myfeeds-product-grid row3" aria-hidden="true">
+      <div class="myfeeds-product-card"><div class="myfeeds-product-image"><img src="/assets/home/hoodie-heather-grey.webp" width="400" height="400" alt="" loading="lazy"></div><div class="myfeeds-product-details"><div class="myfeeds-product-brand">Halden</div><div class="myfeeds-product-title">Heavyweight Hoodie Heather Grey</div><div class="myfeeds-product-price"><span class="myfeeds-current-price">$58.00</span></div><div class="myfeeds-shipping-info">Free Shipping</div><div class="myfeeds-merchant">Northside Supply</div></div></div>
+      <div class="myfeeds-product-card"><div class="myfeeds-product-image"><div class="myfeeds-discount-badge">-26%</div><img src="/assets/home/sneaker-black-hightop.webp" width="400" height="400" alt="" loading="lazy"></div><div class="myfeeds-product-details"><div class="myfeeds-product-brand">Arlo &amp; Finch</div><div class="myfeeds-product-title">Court High-Top Leather Black</div><div class="myfeeds-product-price"><span class="myfeeds-old-price">$129.00</span> <span class="myfeeds-current-price has-discount">$96.00</span></div><div class="myfeeds-shipping-info">Free Shipping</div><div class="myfeeds-merchant">Kicks Corner</div></div></div>
+      <div class="myfeeds-product-card"><div class="myfeeds-product-image"><img src="/assets/home/backpack-trail.webp" width="400" height="400" alt="" loading="lazy"></div><div class="myfeeds-product-details"><div class="myfeeds-product-brand">Fieldmade</div><div class="myfeeds-product-title">Trail Pack 28 L Sage</div><div class="myfeeds-product-price"><span class="myfeeds-current-price">$74.00</span></div><div class="myfeeds-shipping-info">Shipping costs may apply</div><div class="myfeeds-merchant">Basecamp Outfitters</div></div></div>
+    </div>
+  </div>
+</section>
+</main>
+
+<footer>
+  <div class="wrap">
+    <div class="brand"><b translate="no">MyFeeds</b><span>Affiliate product feeds for WordPress</span></div>
+    <nav aria-label="Site">
+      <a href="/ecommerce/">E-commerce</a>
+      <a href="/install/">Install guide</a>
+      <a href="/networks/">Affiliate networks</a>
+      <a href="/articles/">Guides</a>
+      <a href="/affiliates/">Become an affiliate</a>
+      <a href="https://wordpress.org/plugins/myfeeds-affiliate-feed-manager/" rel="noopener">Free plugin on WordPress.org</a>
+      <a href="/imprint/">Imprint</a>
+      <a href="/privacy/">Privacy</a>
+      <a href="/terms/">Terms</a>
+      <a href="/refund/">Refund policy</a>
+    </nav>
+    <span>© 2026 MyFeeds. All rights reserved.</span>
+  </div>
+</footer>
+
+<script src="/assets/site.js" defer></script>
 <script src="/assets/back-to-top.js" defer></script>
 <script src="/assets/consent.js" defer></script>
 </body>

@@ -3,154 +3,385 @@
 <head>
 <meta charset="UTF-8">
 <meta name="p:domain_verify" content="0f13dbb87c7b78ab08817667740c2df2"/>
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>CJ Affiliate product feed for WordPress - import, display, auto-update | MyFeeds</title>
-<meta name="description" content="Turn your CJ Affiliate product feed into live, searchable product cards inside the WordPress block editor. Prices and stock update themselves nightly.">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+<title>Get a CJ Affiliate product feed into WordPress - Step by step</title>
+<meta name="description" content="CJ sends a shop's product feed as a file, to your inbox or by FTP. How to subscribe, what to check before the upload, and how current your cards stay.">
 <link rel="canonical" href="https://myfeeds.site/networks/cj/">
-<meta property="og:type" content="website">
+<meta name="theme-color" content="#FC9000">
+<meta property="og:type" content="article">
 <meta property="og:site_name" content="MyFeeds">
 <meta property="og:url" content="https://myfeeds.site/networks/cj/">
-<meta property="og:title" content="CJ Affiliate product feed for WordPress - import, display, auto-update | MyFeeds">
-<meta property="og:description" content="Turn your CJ Affiliate product feed into live, searchable product cards inside the WordPress block editor. Prices and stock update themselves nightly.">
+<meta property="og:title" content="Get a CJ Affiliate product feed into WordPress - Step by step">
+<meta property="og:description" content="CJ sends a shop's product feed as a file, to your inbox or by FTP. How to get it, what to check, and how to upload it to WordPress.">
 <meta property="og:image" content="https://myfeeds.site/assets/og-image.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="628">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:url" content="https://myfeeds.site/networks/cj/">
+<meta name="twitter:title" content="Get a CJ Affiliate product feed into WordPress - Step by step">
+<meta name="twitter:description" content="CJ sends a shop's product feed as a file, to your inbox or by FTP. How to get it, what to check, and how to upload it to WordPress.">
+<meta name="twitter:image" content="https://myfeeds.site/assets/og-image.png">
 <link rel="icon" type="image/png" href="/favicon.png">
+<link rel="icon" type="image/x-icon" href="/favicon.ico">
 <link rel="apple-touch-icon" href="/apple-touch-icon.png">
-<link rel="stylesheet" href="/assets/fonts.css">
-<script type="application/ld+json">{"@context": "https://schema.org", "@type": "FAQPage", "mainEntity": [{"@type": "Question", "name": "Does MyFeeds work with CJ Affiliate?", "acceptedAnswer": {"@type": "Answer", "text": "Yes. If CJ Affiliate gives you a product feed file or URL for a program you have joined, MyFeeds imports it, maps the fields automatically and turns it into a searchable catalogue inside the WordPress block editor."}}, {"@type": "Question", "name": "Do CJ product catalogs need manual field mapping?", "acceptedAnswer": {"@type": "Answer", "text": "Usually not. The smart mapper reads the header row, recognises common CJ column names and picks the price, image and deep link columns on its own. You can override any single field afterwards."}}, {"@type": "Question", "name": "Do I have to pay to get started?", "acceptedAnswer": {"@type": "Answer", "text": "No. The free version lives on WordPress.org and covers one feed, the smart search, the grid layout, manual plus nightly sync. Upgrade only when you outgrow it."}}, {"@type": "Question", "name": "Where does my data live?", "acceptedAnswer": {"@type": "Answer", "text": "On your own WordPress site, in your own database. The plugin doesn't proxy product images, doesn't ping a third-party server when a page loads, and doesn't send anything about your visitors anywhere."}}]}</script>
-<style>*,*::before,*::after{margin:0;padding:0;box-sizing:border-box}
-:root{--bg:#FAF8F4;--card:#FFFFFF;--line:#E8E4DB;--txt:#1A1720;--soft:#57515F;--mute:#8F8A99;--a1:#6C54B4;--a2:#5A4499;--tint:#F1EEFA;--green:#1E9E6A;--grad:linear-gradient(135deg,#6C54B4,#5A4499);--serif:'Fraunces',Georgia,serif;--sans:'Inter',-apple-system,BlinkMacSystemFont,sans-serif}
-html{background:var(--bg);color:var(--txt);font-family:var(--sans);scroll-behavior:smooth}
-body{line-height:1.6;overflow-x:hidden}
-.wrap{max-width:860px;margin:0 auto;padding:0 24px}
-nav{position:fixed;top:0;left:0;right:0;z-index:50;padding:14px 0;backdrop-filter:blur(18px);background:rgba(250,248,244,.88);border-bottom:1px solid var(--line)}
-nav .wrap{display:flex;align-items:center;justify-content:space-between;max-width:1200px}
-.logo{display:flex;align-items:center;gap:10px;text-decoration:none;color:var(--txt);font-weight:700;font-size:1.05rem}
-.logo img{width:30px;height:30px;border-radius:7px}
-.nav-r{display:flex;gap:22px;align-items:center}
-.nav-r a{color:var(--soft);text-decoration:none;font-size:.88rem;font-weight:500}
-.nav-r a:hover{color:var(--txt)}
-.nav-r a.cta{background:var(--grad);color:#fff;padding:8px 18px;border-radius:9px;font-weight:600}
-header{padding:130px 0 30px}
-.crumb{font-size:.78rem;color:var(--mute);margin-bottom:18px}
-.crumb a{color:var(--mute);text-decoration:none}
-.crumb a:hover{color:var(--soft)}
-.badge{display:inline-flex;align-items:center;gap:8px;padding:6px 14px;border-radius:999px;background:var(--card);border:1px solid var(--line);font-size:.78rem;color:var(--soft);margin-bottom:20px}
-.badge i{width:6px;height:6px;border-radius:50%;background:var(--green)}
-h1{font-size:clamp(1.9rem,4.6vw,2.9rem);font-weight:800;letter-spacing:-.03em;line-height:1.12;margin-bottom:18px}
-.lede{color:var(--soft);font-size:1.06rem;max-width:640px}
-main{padding:26px 0 60px}
-h2{font-size:1.45rem;font-weight:700;letter-spacing:-.02em;margin:44px 0 14px}
-p{color:var(--soft);margin-bottom:14px;font-size:.97rem}
-.steps{counter-reset:s;display:grid;gap:14px;margin:20px 0 8px}
-.step{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:20px 22px 18px;position:relative}
-.step::before{counter-increment:s;content:counter(s,decimal-leading-zero);font-size:.78rem;font-weight:700;color:var(--a1);letter-spacing:.08em}
-.step h3{font-size:1.02rem;font-weight:700;margin:6px 0 6px;color:var(--txt)}
-.step p{margin:0;font-size:.92rem}
-.facts{background:var(--tint);border:1px solid rgba(108,84,180,.22);border-radius:14px;padding:22px 24px;margin:24px 0}
-.facts h2{margin:0 0 12px;font-size:1.05rem}
-.facts ul{list-style:none}
-.facts li{padding:7px 0;color:var(--soft);font-size:.93rem;display:flex;gap:10px;align-items:flex-start;border-bottom:1px solid rgba(255,255,255,.05)}
-.facts li:last-child{border:none}
-.facts li b{color:var(--green);font-weight:700;flex-shrink:0}
-.faq details{background:var(--card);border:1px solid var(--line);border-radius:11px;margin-bottom:10px}
-.faq summary{padding:15px 18px;cursor:pointer;font-weight:600;font-size:.95rem;list-style:none;display:flex;justify-content:space-between;gap:14px}
-.faq summary::-webkit-details-marker{display:none}
-.faq summary::after{content:'+';color:var(--mute);font-weight:300;font-size:1.3rem;line-height:1}
-.faq details[open] summary::after{content:'-'}
-.faq details p{padding:0 18px 16px;margin:0;font-size:.91rem}
-.cta-box{background:var(--grad);border-radius:16px;padding:36px 30px;text-align:center;margin:52px 0 0}
-.cta-box h2{margin:0 0 8px;color:#fff}
-.cta-box p{color:rgba(255,255,255,.85);max-width:460px;margin:0 auto 20px}
-.btn{display:inline-block;background:#fff;color:#1c1633;font-weight:700;padding:13px 28px;border-radius:999px;text-decoration:none;font-size:.95rem}
-.btn:hover{opacity:.93}
-.cta-sub{display:block;margin-top:12px;font-size:.8rem;color:rgba(255,255,255,.7)}
-.cta-sub a{color:#fff}
-footer{border-top:1px solid var(--line);padding:36px 0;text-align:center;margin-top:70px}
-footer .links{display:flex;gap:20px;justify-content:center;flex-wrap:wrap;margin-bottom:14px}
-footer a{color:var(--soft);text-decoration:none;font-size:.84rem}
-footer a:hover{color:var(--txt)}
-footer .copy{color:var(--mute);font-size:.76rem}
-.netgrid{display:grid;grid-template-columns:repeat(auto-fill,minmax(200px,1fr));gap:14px;margin:26px 0}
-.netcard{display:block;background:var(--card);border:1px solid var(--line);border-radius:13px;padding:20px;text-decoration:none;transition:border-color .2s,transform .2s}
-.netcard:hover{border-color:rgba(108,84,180,.4);transform:translateY(-2px)}
-.netcard b{color:var(--txt);font-size:1rem;display:block;margin-bottom:4px}
-.netcard span{color:var(--mute);font-size:.8rem}
-/* Jedes Sprungziel muss unter der festen Navigation durchpassen. Vorher
-   hatten das nur die Preistabelle und die Plan-Karten, weil ich beim
-   Bauen nur dorthin gesehen habe - #faq, #how, #storefront, #curator und
-   #control landeten alle hinter der Leiste. Eine Regel fuer alle. */
-[id]{scroll-margin-top:84px}
-
-.nav-logo span,.footer-brand{font-family:var(--serif) !important;font-weight:600 !important;letter-spacing:-.012em !important}
-h1,h2{font-family:var(--serif);font-weight:500;letter-spacing:-.012em}
-</style>
-<script data-goatcounter="https://myfeeds.goatcounter.com/count" async src="//gc.zgo.at/count.js"></script>
+<link rel="preload" href="/assets/fonts/bricolage-latin.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="stylesheet" href="/assets/site.css">
+<script>
+/* Motion gate, before first paint. Nothing on this page waits for script:
+   without "mo" (no JS, reduced motion) there are simply no transitions. */
+!function(d){d.classList.add('js');try{if(matchMedia('(prefers-reduced-motion: no-preference)').matches)d.classList.add('mo')}catch(e){}}(document.documentElement);
+</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "Article",
+      "headline": "Get a CJ product feed into WordPress",
+      "description": "CJ sends a shop's product feed as a file, to your inbox or by FTP. How to subscribe, what to check before the upload, and how current your cards stay.",
+      "mainEntityOfPage": "https://myfeeds.site/networks/cj/",
+      "image": "https://myfeeds.site/assets/og-image.png",
+      "author": {
+        "@type": "Organization",
+        "name": "MyFeeds",
+        "url": "https://myfeeds.site/"
+      },
+      "publisher": {
+        "@type": "Organization",
+        "name": "MyFeeds",
+        "url": "https://myfeeds.site/"
+      }
+    },
+    {
+      "@type": "FAQPage",
+      "mainEntity": [
+        {
+          "@type": "Question",
+          "name": "The file is a .zip or a .gz. Can I upload it like that?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Yes. MyFeeds opens both by itself, and reads CSV, tab- or pipe-separated text and XML. An upload can be up to 500 MB, or less if your server allows less."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Why is a sold-out product still in the file?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "CJ keeps sold-out products in its exports. Only the availability field changes (as of October 2026)."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Can I see which post and product a click came from?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "From the Pro plan, MyFeeds counts every click on a card, by post and product. What a click earned is in your CJ reports."
+          }
+        }
+      ]
+    }
+  ]
+}
+</script>
 </head>
-<body>
-<nav><div class="wrap">
-  <a href="/" class="logo"><img src="/logo.png" alt="MyFeeds">MyFeeds</a>
-  <div class="nav-r">
-    <a href="/networks/">Networks</a>
-    <a href="/#pricing">Pricing</a>
-    <a href="/#pricing" class="cta">Get Started</a>
+<body data-page="networks/cj/">
+<a class="skip" href="#main">Skip to the guide</a>
+<div class="open-top">
+  <div class="wrap">
+    <header class="top">
+      <a class="mark" href="/" translate="no" aria-label="MyFeeds home"><span><img src="/assets/home/logo-52.webp" alt="" width="22" height="22"></span>MyFeeds</a>
+      <nav class="nav" aria-label="Main">
+        <a href="/#how">How it works</a>
+        <a href="/#pricing" data-cta="nav-pricing">Pricing</a>
+        <a href="/ecommerce/">E-commerce</a>
+        <a href="/networks/" aria-current="page">Networks</a>
+        <a href="/articles/">Guides</a>
+        <a href="/install/">Install</a>
+        <a href="/#faq">FAQ</a>
+      </nav>
+      <div class="top-r">
+        <button type="button" class="menu-btn" id="menu-btn" aria-expanded="false" aria-controls="menu"><i aria-hidden="true"></i>Menu</button>
+        <a class="cta cta-sm" data-cta="header" href="/#pricing">Get started</a>
+      </div>
+      <div class="menu" id="menu" hidden>
+        <a href="/#how">How it works</a>
+        <a href="/#pricing">Plans and prices</a>
+        <a href="/ecommerce/">E-commerce</a>
+        <a href="/networks/" aria-current="page">Affiliate networks</a>
+        <a href="/articles/">Guides</a>
+        <a href="/install/">Install guide</a>
+        <a href="/#faq">Questions</a>
+      </div>
+    </header>
   </div>
-</div></nav>
-<header><div class="wrap">
-  <div class="crumb"><a href="/">MyFeeds</a> / <a href="/networks/">Networks</a> / CJ Affiliate</div>
-  <div class="badge"><i></i> Works with CJ Affiliate</div>
-  <h1>Your CJ Affiliate products, live inside your WordPress posts</h1>
-  <p class="lede">Your CJ Affiliate catalogs hold more products than you could ever place by hand, and most of them never make it into a post. MyFeeds makes the catalog searchable inside the WordPress block editor: pick a product, publish, and the card keeps its price and stock current on its own.</p>
-</div></header>
-<main><div class="wrap">
+</div>
 
-  <h2>From feed to published post, in three steps</h2>
-  <div class="steps">
-    <div class="step"><h3>Get your feed link</h3><p>In your CJ account manager, under Account, open the area that manages data-transfer subscriptions &mdash; depending on your account it is labelled Services or Subscriptions &mdash; and use Create Product Export. Pick one of the delivery methods whose name starts with CJ: those leave the file at a CJ address you can fetch, while the FTP and email routes only push a file to you. CJ mails you the password that belongs to that address. If your export arrives as a .zip, unpack it and host the file yourself &mdash; MyFeeds reads plain and gzip-compressed feeds.</p></div>
-    <div class="step"><h3>Paste it into MyFeeds</h3><p>The importer reads CSV, tab- or pipe-delimited and XML exports, usually gzip-compressed, sniffs the structure and maps the fields on its own. A few minutes later your products are searchable inside WordPress.</p></div>
-    <div class="step"><h3>Pick products in the editor and publish</h3><p>Search your catalogue right inside the post, click, and the card is in. A nightly sync keeps every card on every post current; products that disappear from the feed get flagged so old posts stop pointing at 404s.</p></div>
+<main id="main">
+<div class="open">
+  <div class="wrap">
+    <section class="hero long" aria-labelledby="h-hero">
+      <div>
+        <p class="eyebrow"><a href="/networks/">Feed link guides</a> · CJ</p>
+        <h1 id="h-hero">Get a CJ product feed into WordPress.</h1>
+        <p class="lede">CJ sends you a shop's product feed as a file, to your inbox or an FTP account. We found no link that stays current, so you upload the file to MyFeeds, our WordPress plugin, and pick products for your posts in the editor.</p>
+        <div class="go">
+          <a class="cta" data-cta="hero" id="hero-cta" href="/install/">Get the free plugin</a>
+          <p class="calm">Free on WordPress.org for one shop's feed. Paid plans each start with a free trial.</p>
+        </div>
+      </div>
+
+      <aside class="pinned" aria-labelledby="gl-k">
+        <p class="ov-k" id="gl-k"><span>At a glance</span><span>CJ</span></p>
+        <dl class="glance">
+          <div><dt>You get</dt><dd><b>A file.</b> To your inbox or by FTP.</dd></div>
+          <div><dt>In CJ</dt><dd><b>Subscribe to the shop's feed.</b> Under Account.</dd></div>
+          <div><dt>WordPress</dt><dd><b>Upload the file.</b> In MyFeeds.</dd></div>
+          <div><dt>Current</dt><dd><b>As of upload day.</b> Until you upload again.</dd></div>
+          <div><dt>Plan</dt><dd><span class="pill free">Free</span> for one shop's feed.</dd></div>
+        </dl>
+        <p class="ov-x"><a class="more" href="#in-cj">Start with step 1</a><a class="more" href="#questions">Questions</a></p>
+      </aside>
+    </section>
   </div>
+</div>
 
-  <div class="facts">
-    <h2>What MyFeeds handles for CJ Affiliate feeds</h2>
-    <ul>
-      <li><b>&#10003;</b> Reads CSV, tab- or pipe-delimited and XML exports, usually gzip-compressed; unusual columns are matched by the smart mapper</li>
-      <li><b>&#10003;</b> Affiliate deep links are used exactly as your feed delivers them; your tracking stays intact</li>
-      <li><b>&#10003;</b> Every click carries an id via CJ's sid parameter, so commissions can be matched back to the exact post and product in the MyFeeds analytics dashboard (Pro)</li>
-      <li><b>&#10003;</b> Nightly sync updates price, stock and sale badges on every published card</li>
-      <li><b>&#10003;</b> Everything is stored in your own WordPress database, fully self-hosted</li>
+<section class="band board" id="before" aria-labelledby="h-before">
+  <div class="wrap">
+    <div class="head">
+      <h2 id="h-before">Before you start</h2>
+      <p>A feed pays off when you want many products from one shop, with picture and price. For two or three, a normal CJ link in your text is enough. <a class="more" href="/articles/import-product-feed-wordpress/" data-cta="quiet-guide">How a shop's product feed gets into WordPress</a> explains the idea.</p>
+    </div>
+    <ul class="need">
+      <li><b>You have joined the shop</b>Only joined publishers can subscribe to a shop's full feed. CJ's word for a shop is advertiser.</li>
+      <li><b>The shop shares its feed with you</b>Not every shop keeps a feed at CJ, and some limit who gets it.</li>
+      <li><b>MyFeeds is in your WordPress</b>Not installed yet? The <a href="/install/">install guide</a> takes you through it.</li>
     </ul>
   </div>
+</section>
 
-  <h2>Clicks and commissions</h2>
-  <p>On paid plans, MyFeeds tags every outgoing click through CJ's sid parameter and pulls your commissions back into WordPress, so you see which post and which product actually earned. Clicks are counted server-side; ad blockers don't punch holes into your numbers.</p>
-
-  <h2>Common questions</h2>
-  <div class="faq">
-    <details><summary>Does MyFeeds work with CJ Affiliate?</summary><p>Yes. If CJ Affiliate gives you a product feed file or URL for a program you have joined, MyFeeds imports it, maps the fields automatically and turns it into a searchable catalogue inside the WordPress block editor.</p></details>
-    <details><summary>Do CJ product catalogs need manual field mapping?</summary><p>Usually not. The smart mapper reads the header row, recognises common CJ column names and picks the price, image and deep link columns on its own. You can override any single field afterwards.</p></details>
-    <details><summary>Do I have to pay to get started?</summary><p>No. The free version lives on WordPress.org and covers one feed, the smart search, the grid layout, manual plus nightly sync. Upgrade only when you outgrow it.</p></details>
-    <details><summary>Where does my data live?</summary><p>On your own WordPress site, in your own database. The plugin doesn&#x27;t proxy product images, doesn&#x27;t ping a third-party server when a page loads, and doesn&#x27;t send anything about your visitors anywhere.</p></details>
+<section class="band paper" id="in-cj" aria-labelledby="h-in-cj">
+  <div class="wrap chap">
+    <div class="head">
+      <p class="kick">Step 1 of 2</p>
+      <h2 id="h-in-cj">Get the file from CJ</h2>
+      <div class="meta">
+        <span class="goal"><b>Goal</b>The shop's product feed as a file on your computer.</span>
+      </div>
+    </div>
+    <div class="col">
+      <ol class="sub">
+        <li>
+          <h3>Find your subscriptions</h3>
+          <p>Look for the part of your CJ account that sends you a shop's product feed. CJ's own pages list it under <span class="ui">Account</span>, as <span class="ui">Subscriptions</span>.</p>
+          <p class="note"><b>We could not read CJ's walkthrough for publishers.</b> It sits behind your login, so a button may be named differently in your account: <a href="https://www.cj.com/support" rel="noopener">CJ support</a>.</p>
+        </li>
+        <li>
+          <h3>Subscribe to the shop's feed</h3>
+          <p>Create a product export for the shop you joined. If the shop keeps several feeds, each for one country, currency and language, take the country most of your readers shop in.</p>
+        </li>
+        <li>
+          <h3>Choose where CJ sends it</h3>
+          <p>CJ's blog names two destinations: your inbox, or an FTP service, a file server you log in to. Your account may list more. MyFeeds cannot log in anywhere, so you need the file on your computer.</p>
+        </li>
+        <li>
+          <h3>Read one link before you upload</h3>
+          <p class="note warn"><b>It may not be your tracking link.</b> In CJ's feed format, the column <code>link</code> is the shop's own address, and a sale through it is not credited to you. We could not confirm which link CJ's export carries, so look at one row of the file. If it holds the shop's own address, ask CJ how to get your tracking links before you publish cards.</p>
+          <div class="viz">
+            <p class="k">Two kinds of link a row can hold</p>
+            <p class="url">https://www.<b>example-shop.com</b>/court-high-top/<br>https://www.<b>kqzyfj.com</b>/…</p>
+            <ul class="url-key">
+              <li><b>example-shop.com</b> stands for the shop's own address. Not tracked.</li>
+              <li><b>kqzyfj.com</b> is the address in CJ's own example. Tracked. Yours may differ.</li>
+            </ul>
+            <p class="cap">Shortened examples.</p>
+          </div>
+        </li>
+      </ol>
+      <p class="done">You have the file. <a href="#in-wordpress">On to step 2</a></p>
+    </div>
   </div>
+</section>
 
-  <div class="cta-box">
-    <h2>Try it with your own CJ Affiliate feed</h2>
-    <p>The free plugin covers your first feed. Setup lands in five to ten minutes.</p>
-    <a class="btn" href="/#pricing">Add live product cards to my posts &rarr;</a>
-    <span class="cta-sub">Need more feeds or the analytics dashboard? <a href="/#pricing">See the plans</a></span>
+<section class="band ink" id="in-wordpress" aria-labelledby="h-in-wordpress">
+  <div class="wrap">
+    <div class="head">
+      <p class="kick">Step 2 of 2</p>
+      <h2 id="h-in-wordpress">Upload the file in WordPress</h2>
+    </div>
+    <div class="duo">
+      <div class="card lit pick">
+        <span class="tag">The first time</span>
+        <h3>Upload the file</h3>
+        <ol class="nums">
+          <li>In WordPress, open <span class="ui">MyFeeds</span> and click <span class="ui">Add your first feed</span>.</li>
+          <li>Name the feed after the shop: readers see that name on your cards. Choose <span class="ui">Upload a file</span> and select CJ's file.</li>
+          <li>Click <span class="ui">Create Feed</span> and let it import in the background. The feed's row shows the number of products.</li>
+        </ol>
+        <ul class="yn">
+          <li class="n">Prices and stock freeze on upload day, until you upload a newer file.</li>
+        </ul>
+      </div>
+      <div class="card">
+        <span class="k">When CJ sends a newer file</span>
+        <h3>Upload it again</h3>
+        <ol class="nums">
+          <li>On the feed's row, click <span class="ui">Edit</span> and select the newer file.</li>
+          <li>Click <span class="ui">Save Changes</span>, then <span class="ui">Reimport</span>.</li>
+        </ol>
+        <ul class="yn">
+          <li class="y">Your published cards follow the newer file. You don't edit the posts.</li>
+        </ul>
+      </div>
+    </div>
+    <p class="note"><b>Check the first import.</b> We have not tested a current CJ export from end to end. Search for a product in the editor and check picture, price and link. If a column landed in the wrong place, correct it in the <span class="ui">Mapping Editor</span>.</p>
+    <p class="done">The shop's products are in. <a href="/install/#step-4">Publish your first cards</a></p>
   </div>
+</section>
 
-</div></main>
-<footer><div class="wrap">
-  <div class="links">
-    <a href="/">Home</a>
-    <a href="/networks/">Supported networks</a>
-    <a href="/install/">Install Guide</a>
-    <a href="/affiliates/">Become an Affiliate</a>
-    <a href="/privacy/">Privacy Policy</a>
-    <a href="/imprint/">Imprint</a>
+<section class="band paper" id="current" aria-labelledby="h-current">
+  <div class="wrap chap">
+    <div class="head">
+      <h2 id="h-current">How current your cards are</h2>
+      <p>With a file, nothing repeats by itself. An example week.</p>
+    </div>
+    <div class="col">
+      <figure>
+        <div class="viz">
+          <ol class="flow" aria-label="An example week with an uploaded file">
+            <li><b>Monday</b><span>You upload CJ's file. Your cards show Monday's prices.</span></li>
+            <li><b>Wednesday</b><span>The shop cuts a price. Your card still shows Monday's.</span></li>
+            <li class="dest"><b>Friday</b><span>You upload the newer file. Your cards follow.</span></li>
+          </ol>
+        </div>
+      </figure>
+      <div class="duo">
+        <div class="card">
+          <h3>What changes at CJ</h3>
+          <p>A shop sends CJ its products whenever it likes, or CJ collects them once a day. CJ says you may get a new copy each time.</p>
+        </div>
+        <div class="card">
+          <h3>If the shop is on another network too</h3>
+          <p><a href="/networks/awin/">AWIN</a> and <a href="/networks/partnerize/">Partnerize</a>, among others, hand out a link. MyFeeds reads a link again every night, so the uploads fall away.</p>
+        </div>
+      </div>
+    </div>
   </div>
-  <div class="copy">&copy; 2026 MyFeeds. All rights reserved.</div>
-</div></footer>
+</section>
+
+<section class="band board" id="questions" aria-labelledby="h-questions">
+  <div class="wrap chap">
+    <div class="head">
+      <h2 id="h-questions">Questions about CJ feeds</h2>
+      <p>For anything else, <a class="more" href="mailto:support@myfeeds.site?subject=CJ%20feed%20question" data-cta="ask-support">write to us</a>.</p>
+    </div>
+    <div class="col">
+      <div class="qa">
+        <div>
+          <h3>I joined the shop. Why can't I subscribe to its feed?</h3>
+          <p>Either the shop keeps no product feed at CJ, or it has limited who may export it.</p>
+          <p>Ask the shop, or your contact at CJ, to open the feed for you.</p>
+        </div>
+        <div>
+          <h3>Can my cards update without a new upload?</h3>
+          <p>Only if each new file lands at an https address that opens without a login.</p>
+          <p>MyFeeds reads such an address every night: choose <span class="ui">At a URL</span>. Getting each file there takes a script on your own server, outside the plugin. CJ's product API is closed to MyFeeds too: it asks for a personal token.</p>
+        </div>
+      </div>
+
+      <div>
+        <h3 class="sub-h">More questions</h3>
+        <div class="faq">
+          <details name="faq">
+            <summary>The file is a .zip or a .gz. Can I upload it like that?</summary>
+            <div class="a"><p>Yes. MyFeeds opens both by itself, and reads CSV, tab- or pipe-separated text and XML. An upload can be up to 500 MB, or less if your server allows less.</p></div>
+          </details>
+          <details name="faq">
+            <summary>Why is a sold-out product still in the file?</summary>
+            <div class="a"><p>CJ keeps sold-out products in its exports. Only the availability field changes (as of October 2026).</p></div>
+          </details>
+          <details name="faq">
+            <summary>Can I see which post and product a click came from?</summary>
+            <div class="a"><p><span class="where">Pro</span>From the Pro plan, MyFeeds counts every click on a card, by post and product. What a click earned is in your CJ reports.</p></div>
+          </details>
+        </div>
+      </div>
+
+      <div class="sources">
+        <p class="k">Sources, read in October 2026</p>
+        <ol>
+          <li><a href="https://developers.cj.com/docs/data-imports/product-feeds" rel="noopener">Product Feeds (CJ Developer Portal)</a> <span>Who can subscribe, the link column, sold-out products, the daily collection, Subscriptions under Account.</span></li>
+          <li><a href="https://junction.cj.com/article/making-most-cjs-shopping-feed-format" rel="noopener">Making the Most of CJ's Shopping Feed Format (CJ blog, April 2018)</a> <span>Inbox or FTP as the two destinations.</span></li>
+          <li><a href="https://developers.cj.com/graphql/reference/Product%20Feed" rel="noopener">Product Feed API Reference (CJ Developer Portal)</a> <span>The product API, its token, the example tracking link.</span></li>
+          <li><a href="https://www.cj.com/support" rel="noopener">Support (CJ)</a> <span>The Support Center, which opens after login.</span></li>
+        </ol>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="band vio" id="networks" aria-labelledby="h-networks">
+  <div class="wrap">
+    <div class="head">
+      <p class="kick">Other networks</p>
+      <h2 id="h-networks">The same guide for your other networks.</h2>
+      <p>Each network hands over a shop's products in its own way.</p>
+    </div>
+    <nav class="nets" aria-label="Feed link guides by network">
+      <a href="/networks/awin/">AWIN</a>
+      <a href="/networks/tradedoubler/">Tradedoubler</a>
+      <a href="/networks/impact/">Impact</a>
+      <a href="/networks/rakuten/">Rakuten</a>
+      <a href="/networks/webgains/">Webgains</a>
+      <a href="/networks/admitad/">Admitad</a>
+      <a href="/networks/pepperjam/">Pepperjam</a>
+      <a href="/networks/partnerize/">Partnerize</a>
+      <a href="/networks/flexoffers/">FlexOffers</a>
+      <a href="/networks/sovrn/">Sovrn</a>
+      <a class="all" href="/networks/">All networks</a>
+    </nav>
+  </div>
+</section>
+
+<section class="close" id="end" aria-labelledby="h-end">
+  <div class="wrap close-in">
+    <div>
+      <h2 id="h-end">Products from your CJ shops, as cards in your next post.</h2>
+      <div class="go">
+        <a class="cta" data-cta="final" href="/install/">Install MyFeeds for free</a>
+        <p class="calm">Free on WordPress.org for one shop's feed. Paid plans each start with a free trial.</p>
+      </div>
+      <p class="go"><a class="more" href="/#pricing" data-cta="final-plans">Compare the plans</a></p>
+    </div>
+    <div class="myfeeds-product-grid row3" aria-hidden="true">
+      <div class="myfeeds-product-card"><div class="myfeeds-product-image"><img src="/assets/home/hoodie-heather-grey.webp" width="400" height="400" alt="" loading="lazy"></div><div class="myfeeds-product-details"><div class="myfeeds-product-brand">Halden</div><div class="myfeeds-product-title">Heavyweight Hoodie Heather Grey</div><div class="myfeeds-product-price"><span class="myfeeds-current-price">$58.00</span></div><div class="myfeeds-shipping-info">Free Shipping</div><div class="myfeeds-merchant">Northside Supply</div></div></div>
+      <div class="myfeeds-product-card"><div class="myfeeds-product-image"><div class="myfeeds-discount-badge">-26%</div><img src="/assets/home/sneaker-black-hightop.webp" width="400" height="400" alt="" loading="lazy"></div><div class="myfeeds-product-details"><div class="myfeeds-product-brand">Arlo &amp; Finch</div><div class="myfeeds-product-title">Court High-Top Leather Black</div><div class="myfeeds-product-price"><span class="myfeeds-old-price">$129.00</span> <span class="myfeeds-current-price has-discount">$96.00</span></div><div class="myfeeds-shipping-info">Free Shipping</div><div class="myfeeds-merchant">Kicks Corner</div></div></div>
+      <div class="myfeeds-product-card"><div class="myfeeds-product-image"><img src="/assets/home/backpack-trail.webp" width="400" height="400" alt="" loading="lazy"></div><div class="myfeeds-product-details"><div class="myfeeds-product-brand">Fieldmade</div><div class="myfeeds-product-title">Trail Pack 28 L Sage</div><div class="myfeeds-product-price"><span class="myfeeds-current-price">$74.00</span></div><div class="myfeeds-shipping-info">Shipping costs may apply</div><div class="myfeeds-merchant">Basecamp Outfitters</div></div></div>
+    </div>
+  </div>
+</section>
+</main>
+
+<footer>
+  <div class="wrap">
+    <div class="brand"><b translate="no">MyFeeds</b><span>Affiliate product feeds for WordPress</span></div>
+    <nav aria-label="Site">
+      <a href="/ecommerce/">E-commerce</a>
+      <a href="/install/">Install guide</a>
+      <a href="/networks/">Affiliate networks</a>
+      <a href="/articles/">Guides</a>
+      <a href="/affiliates/">Become an affiliate</a>
+      <a href="https://wordpress.org/plugins/myfeeds-affiliate-feed-manager/" rel="noopener">Free plugin on WordPress.org</a>
+      <a href="/imprint/">Imprint</a>
+      <a href="/privacy/">Privacy</a>
+      <a href="/terms/">Terms</a>
+      <a href="/refund/">Refund policy</a>
+    </nav>
+    <span>© 2026 MyFeeds. All rights reserved.</span>
+  </div>
+</footer>
+
+<script src="/assets/site.js" defer></script>
 <script src="/assets/back-to-top.js" defer></script>
 <script src="/assets/consent.js" defer></script>
 </body>

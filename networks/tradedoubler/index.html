@@ -3,154 +3,376 @@
 <head>
 <meta charset="UTF-8">
 <meta name="p:domain_verify" content="0f13dbb87c7b78ab08817667740c2df2"/>
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>TradeDoubler product feed for WordPress - import, display, auto-update | MyFeeds</title>
-<meta name="description" content="Turn your TradeDoubler product feed into live, searchable product cards inside the WordPress block editor. Prices and stock update themselves nightly.">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+<title>Get a Tradedoubler product feed into WordPress - Step by step</title>
+<meta name="description" content="With Tradedoubler you build the feed address yourself: a token plus the shop's feed number. Where to find both, the 1,000-product limit, and the WordPress part.">
 <link rel="canonical" href="https://myfeeds.site/networks/tradedoubler/">
-<meta property="og:type" content="website">
+<meta name="theme-color" content="#FC9000">
+<meta property="og:type" content="article">
 <meta property="og:site_name" content="MyFeeds">
 <meta property="og:url" content="https://myfeeds.site/networks/tradedoubler/">
-<meta property="og:title" content="TradeDoubler product feed for WordPress - import, display, auto-update | MyFeeds">
-<meta property="og:description" content="Turn your TradeDoubler product feed into live, searchable product cards inside the WordPress block editor. Prices and stock update themselves nightly.">
+<meta property="og:title" content="Get a Tradedoubler product feed into WordPress - Step by step">
+<meta property="og:description" content="Build the feed address from your products token and the shop's feed number, mind the 1,000-product limit, and add it to WordPress.">
 <meta property="og:image" content="https://myfeeds.site/assets/og-image.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="628">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:url" content="https://myfeeds.site/networks/tradedoubler/">
+<meta name="twitter:title" content="Get a Tradedoubler product feed into WordPress - Step by step">
+<meta name="twitter:description" content="Build the feed address from your products token and the shop's feed number, mind the 1,000-product limit, and add it to WordPress.">
+<meta name="twitter:image" content="https://myfeeds.site/assets/og-image.png">
 <link rel="icon" type="image/png" href="/favicon.png">
+<link rel="icon" type="image/x-icon" href="/favicon.ico">
 <link rel="apple-touch-icon" href="/apple-touch-icon.png">
-<link rel="stylesheet" href="/assets/fonts.css">
-<script type="application/ld+json">{"@context": "https://schema.org", "@type": "FAQPage", "mainEntity": [{"@type": "Question", "name": "Does MyFeeds work with TradeDoubler?", "acceptedAnswer": {"@type": "Answer", "text": "Yes. If TradeDoubler gives you a product feed file or URL for a program you have joined, MyFeeds imports it, maps the fields automatically and turns it into a searchable catalogue inside the WordPress block editor."}}, {"@type": "Question", "name": "Does click tracking survive TradeDoubler's redirect links?", "acceptedAnswer": {"@type": "Answer", "text": "Yes. MyFeeds appends its click id to the epi parameter of the tracking URL, so the click arrives at TradeDoubler fully attributed and can be matched back to the exact post and product later."}}, {"@type": "Question", "name": "Do I have to pay to get started?", "acceptedAnswer": {"@type": "Answer", "text": "No. The free version lives on WordPress.org and covers one feed, the smart search, the grid layout, manual plus nightly sync. Upgrade only when you outgrow it."}}, {"@type": "Question", "name": "Where does my data live?", "acceptedAnswer": {"@type": "Answer", "text": "On your own WordPress site, in your own database. The plugin doesn't proxy product images, doesn't ping a third-party server when a page loads, and doesn't send anything about your visitors anywhere."}}]}</script>
-<style>*,*::before,*::after{margin:0;padding:0;box-sizing:border-box}
-:root{--bg:#FAF8F4;--card:#FFFFFF;--line:#E8E4DB;--txt:#1A1720;--soft:#57515F;--mute:#8F8A99;--a1:#6C54B4;--a2:#5A4499;--tint:#F1EEFA;--green:#1E9E6A;--grad:linear-gradient(135deg,#6C54B4,#5A4499);--serif:'Fraunces',Georgia,serif;--sans:'Inter',-apple-system,BlinkMacSystemFont,sans-serif}
-html{background:var(--bg);color:var(--txt);font-family:var(--sans);scroll-behavior:smooth}
-body{line-height:1.6;overflow-x:hidden}
-.wrap{max-width:860px;margin:0 auto;padding:0 24px}
-nav{position:fixed;top:0;left:0;right:0;z-index:50;padding:14px 0;backdrop-filter:blur(18px);background:rgba(250,248,244,.88);border-bottom:1px solid var(--line)}
-nav .wrap{display:flex;align-items:center;justify-content:space-between;max-width:1200px}
-.logo{display:flex;align-items:center;gap:10px;text-decoration:none;color:var(--txt);font-weight:700;font-size:1.05rem}
-.logo img{width:30px;height:30px;border-radius:7px}
-.nav-r{display:flex;gap:22px;align-items:center}
-.nav-r a{color:var(--soft);text-decoration:none;font-size:.88rem;font-weight:500}
-.nav-r a:hover{color:var(--txt)}
-.nav-r a.cta{background:var(--grad);color:#fff;padding:8px 18px;border-radius:9px;font-weight:600}
-header{padding:130px 0 30px}
-.crumb{font-size:.78rem;color:var(--mute);margin-bottom:18px}
-.crumb a{color:var(--mute);text-decoration:none}
-.crumb a:hover{color:var(--soft)}
-.badge{display:inline-flex;align-items:center;gap:8px;padding:6px 14px;border-radius:999px;background:var(--card);border:1px solid var(--line);font-size:.78rem;color:var(--soft);margin-bottom:20px}
-.badge i{width:6px;height:6px;border-radius:50%;background:var(--green)}
-h1{font-size:clamp(1.9rem,4.6vw,2.9rem);font-weight:800;letter-spacing:-.03em;line-height:1.12;margin-bottom:18px}
-.lede{color:var(--soft);font-size:1.06rem;max-width:640px}
-main{padding:26px 0 60px}
-h2{font-size:1.45rem;font-weight:700;letter-spacing:-.02em;margin:44px 0 14px}
-p{color:var(--soft);margin-bottom:14px;font-size:.97rem}
-.steps{counter-reset:s;display:grid;gap:14px;margin:20px 0 8px}
-.step{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:20px 22px 18px;position:relative}
-.step::before{counter-increment:s;content:counter(s,decimal-leading-zero);font-size:.78rem;font-weight:700;color:var(--a1);letter-spacing:.08em}
-.step h3{font-size:1.02rem;font-weight:700;margin:6px 0 6px;color:var(--txt)}
-.step p{margin:0;font-size:.92rem}
-.facts{background:var(--tint);border:1px solid rgba(108,84,180,.22);border-radius:14px;padding:22px 24px;margin:24px 0}
-.facts h2{margin:0 0 12px;font-size:1.05rem}
-.facts ul{list-style:none}
-.facts li{padding:7px 0;color:var(--soft);font-size:.93rem;display:flex;gap:10px;align-items:flex-start;border-bottom:1px solid rgba(255,255,255,.05)}
-.facts li:last-child{border:none}
-.facts li b{color:var(--green);font-weight:700;flex-shrink:0}
-.faq details{background:var(--card);border:1px solid var(--line);border-radius:11px;margin-bottom:10px}
-.faq summary{padding:15px 18px;cursor:pointer;font-weight:600;font-size:.95rem;list-style:none;display:flex;justify-content:space-between;gap:14px}
-.faq summary::-webkit-details-marker{display:none}
-.faq summary::after{content:'+';color:var(--mute);font-weight:300;font-size:1.3rem;line-height:1}
-.faq details[open] summary::after{content:'-'}
-.faq details p{padding:0 18px 16px;margin:0;font-size:.91rem}
-.cta-box{background:var(--grad);border-radius:16px;padding:36px 30px;text-align:center;margin:52px 0 0}
-.cta-box h2{margin:0 0 8px;color:#fff}
-.cta-box p{color:rgba(255,255,255,.85);max-width:460px;margin:0 auto 20px}
-.btn{display:inline-block;background:#fff;color:#1c1633;font-weight:700;padding:13px 28px;border-radius:999px;text-decoration:none;font-size:.95rem}
-.btn:hover{opacity:.93}
-.cta-sub{display:block;margin-top:12px;font-size:.8rem;color:rgba(255,255,255,.7)}
-.cta-sub a{color:#fff}
-footer{border-top:1px solid var(--line);padding:36px 0;text-align:center;margin-top:70px}
-footer .links{display:flex;gap:20px;justify-content:center;flex-wrap:wrap;margin-bottom:14px}
-footer a{color:var(--soft);text-decoration:none;font-size:.84rem}
-footer a:hover{color:var(--txt)}
-footer .copy{color:var(--mute);font-size:.76rem}
-.netgrid{display:grid;grid-template-columns:repeat(auto-fill,minmax(200px,1fr));gap:14px;margin:26px 0}
-.netcard{display:block;background:var(--card);border:1px solid var(--line);border-radius:13px;padding:20px;text-decoration:none;transition:border-color .2s,transform .2s}
-.netcard:hover{border-color:rgba(108,84,180,.4);transform:translateY(-2px)}
-.netcard b{color:var(--txt);font-size:1rem;display:block;margin-bottom:4px}
-.netcard span{color:var(--mute);font-size:.8rem}
-/* Jedes Sprungziel muss unter der festen Navigation durchpassen. Vorher
-   hatten das nur die Preistabelle und die Plan-Karten, weil ich beim
-   Bauen nur dorthin gesehen habe - #faq, #how, #storefront, #curator und
-   #control landeten alle hinter der Leiste. Eine Regel fuer alle. */
-[id]{scroll-margin-top:84px}
-
-.nav-logo span,.footer-brand{font-family:var(--serif) !important;font-weight:600 !important;letter-spacing:-.012em !important}
-h1,h2{font-family:var(--serif);font-weight:500;letter-spacing:-.012em}
-</style>
-<script data-goatcounter="https://myfeeds.goatcounter.com/count" async src="//gc.zgo.at/count.js"></script>
+<link rel="preload" href="/assets/fonts/bricolage-latin.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="stylesheet" href="/assets/site.css">
+<script>
+/* Motion gate, before first paint. Nothing on this page waits for script:
+   without "mo" (no JS, reduced motion) there are simply no transitions. */
+!function(d){d.classList.add('js');try{if(matchMedia('(prefers-reduced-motion: no-preference)').matches)d.classList.add('mo')}catch(e){}}(document.documentElement);
+</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "Article",
+      "headline": "Get a Tradedoubler product feed into WordPress",
+      "description": "With Tradedoubler you build the feed address yourself: a token plus the shop's feed number. Where to find both, the 1,000-product limit, and the WordPress part.",
+      "mainEntityOfPage": "https://myfeeds.site/networks/tradedoubler/",
+      "image": "https://myfeeds.site/assets/og-image.png",
+      "author": {
+        "@type": "Organization",
+        "name": "MyFeeds",
+        "url": "https://myfeeds.site/"
+      },
+      "publisher": {
+        "@type": "Organization",
+        "name": "MyFeeds",
+        "url": "https://myfeeds.site/"
+      }
+    },
+    {
+      "@type": "FAQPage",
+      "mainEntity": [
+        {
+          "@type": "Question",
+          "name": "Tradedoubler says my token is invalid",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "You have most likely copied the token of another service. Take the one in the row PRODUCTS. With “Token not found”, the end of the address is missing. It has to finish with ?token= and your token."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "The import brought far fewer products than the feed has",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Tradedoubler's guide does not say how many products a search returns by default. Its keys for the amount are pageSize and limit. In MyFeeds, click Edit on the feed's row, add ;pageSize=1000;limit=1000 after the feed number and click Save Changes, then Reimport. We could not test this."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Can I see which post and product a click came from?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "From the Pro plan, yes: clicks on your cards are counted by post and product. Sales and commissions you read in your Tradedoubler reports, as before."
+          }
+        }
+      ]
+    }
+  ]
+}
+</script>
 </head>
-<body>
-<nav><div class="wrap">
-  <a href="/" class="logo"><img src="/logo.png" alt="MyFeeds">MyFeeds</a>
-  <div class="nav-r">
-    <a href="/networks/">Networks</a>
-    <a href="/#pricing">Pricing</a>
-    <a href="/#pricing" class="cta">Get Started</a>
+<body data-page="networks/tradedoubler/">
+<a class="skip" href="#main">Skip to the guide</a>
+<div class="open-top">
+  <div class="wrap">
+    <header class="top">
+      <a class="mark" href="/" translate="no" aria-label="MyFeeds home"><span><img src="/assets/home/logo-52.webp" alt="" width="22" height="22"></span>MyFeeds</a>
+      <nav class="nav" aria-label="Main">
+        <a href="/#how">How it works</a>
+        <a href="/#pricing" data-cta="nav-pricing">Pricing</a>
+        <a href="/ecommerce/">E-commerce</a>
+        <a href="/networks/" aria-current="page">Networks</a>
+        <a href="/articles/">Guides</a>
+        <a href="/install/">Install</a>
+        <a href="/#faq">FAQ</a>
+      </nav>
+      <div class="top-r">
+        <button type="button" class="menu-btn" id="menu-btn" aria-expanded="false" aria-controls="menu"><i aria-hidden="true"></i>Menu</button>
+        <a class="cta cta-sm" data-cta="header" href="/#pricing">Get started</a>
+      </div>
+      <div class="menu" id="menu" hidden>
+        <a href="/#how">How it works</a>
+        <a href="/#pricing">Plans and prices</a>
+        <a href="/ecommerce/">E-commerce</a>
+        <a href="/networks/" aria-current="page">Affiliate networks</a>
+        <a href="/articles/">Guides</a>
+        <a href="/install/">Install guide</a>
+        <a href="/#faq">Questions</a>
+      </div>
+    </header>
   </div>
-</div></nav>
-<header><div class="wrap">
-  <div class="crumb"><a href="/">MyFeeds</a> / <a href="/networks/">Networks</a> / TradeDoubler</div>
-  <div class="badge"><i></i> Works with TradeDoubler</div>
-  <h1>Your TradeDoubler products, live inside your WordPress posts</h1>
-  <p class="lede">TradeDoubler programs ship complete product feeds, yet most publishers still copy tracking links one at a time. MyFeeds imports the feed once and turns it into a searchable catalogue inside the WordPress block editor; every card you publish keeps its price and stock current on its own.</p>
-</div></header>
-<main><div class="wrap">
+</div>
 
-  <h2>From feed to published post, in three steps</h2>
-  <div class="steps">
-    <div class="step"><h3>Get your feed link</h3><p>Tradedoubler delivers product data through its Products API. In your publisher account open Account, then Manage tokens, and copy the token listed under PRODUCTS. The feed address is built from that token plus the id of the feed you want, in the shape api.tradedoubler.com/1.0/products;fid=&lt;feed&gt;?token=&lt;token&gt;. It is an ordinary HTTPS address, so MyFeeds can refetch it on its own.</p></div>
-    <div class="step"><h3>Paste it into MyFeeds</h3><p>The importer reads CSV, XML and JSON output from the Products API, sniffs the structure and maps the fields on its own. A few minutes later your products are searchable inside WordPress.</p></div>
-    <div class="step"><h3>Pick products in the editor and publish</h3><p>Search your catalogue right inside the post, click, and the card is in. A nightly sync keeps every card on every post current; products that disappear from the feed get flagged so old posts stop pointing at 404s.</p></div>
+<main id="main">
+<div class="open">
+  <div class="wrap">
+    <section class="hero long" aria-labelledby="h-hero">
+      <div>
+        <p class="eyebrow"><a href="/networks/">Feed link guides</a> · Tradedoubler</p>
+        <h1 id="h-hero">Get a Tradedoubler product feed into WordPress.</h1>
+        <p class="lede">With Tradedoubler you build the feed address yourself: a token from your account plus the number of the shop's feed. Then you paste it into MyFeeds, our WordPress plugin, and check your first card.</p>
+        <div class="go">
+          <a class="cta" data-cta="hero" id="hero-cta" href="/install/">Get the free plugin</a>
+          <p class="calm">Free on WordPress.org for one shop's feed. Paid plans each start with a free trial.</p>
+        </div>
+      </div>
+
+      <aside class="pinned" aria-labelledby="gl-k">
+        <p class="ov-k" id="gl-k"><span>At a glance</span><span>Tradedoubler</span></p>
+        <dl class="glance">
+          <div><dt>You get</dt><dd><b>An address you build.</b> Your products token plus the shop's feed number.</dd></div>
+          <div><dt>Limit</dt><dd><b>1,000 products.</b> The standard address stops there. The whole feed has its own address.</dd></div>
+          <div><dt>WordPress</dt><dd><b>Paste it, then check a card.</b> Untested with a live Tradedoubler account.</dd></div>
+          <div><dt>Plan</dt><dd><span class="pill free">Free</span> for one shop's feed. Any number of shops from Starter.</dd></div>
+        </dl>
+        <p class="ov-x"><a class="more" href="#in-tradedoubler">Start with step 1</a><a class="more" href="#questions">Questions</a></p>
+      </aside>
+    </section>
   </div>
+</div>
 
-  <div class="facts">
-    <h2>What MyFeeds handles for TradeDoubler feeds</h2>
-    <ul>
-      <li><b>&#10003;</b> Reads CSV, XML and JSON output from the Products API; unusual columns are matched by the smart mapper</li>
-      <li><b>&#10003;</b> Affiliate deep links are used exactly as your feed delivers them; your tracking stays intact</li>
-      <li><b>&#10003;</b> Every click carries an id via TradeDoubler's epi parameter, so commissions can be matched back to the exact post and product in the MyFeeds analytics dashboard (Pro)</li>
-      <li><b>&#10003;</b> Nightly sync updates price, stock and sale badges on every published card</li>
-      <li><b>&#10003;</b> Everything is stored in your own WordPress database, fully self-hosted</li>
+<section class="band board" id="before" aria-labelledby="h-before">
+  <div class="wrap">
+    <div class="head">
+      <h2 id="h-before">Before you start</h2>
+      <p><a class="more" href="/articles/import-product-feed-wordpress/" data-cta="quiet-guide">A shop's product feed</a> pays off when you show many of its products, with picture and price. For two or three, a normal Tradedoubler link in your text is enough. The WordPress part is untested with a live Tradedoubler account: start with one shop.</p>
+    </div>
+    <ul class="need">
+      <li><b>The shop has accepted you</b>Tradedoubler opens a shop's products once you are connected to its programme. Otherwise the address answers with error <code>PF_392</code>.</li>
+      <li><b>The shop shares its products</b>Step 1 lists the feeds your account can read. A shop missing there has nothing to import.</li>
+      <li><b>MyFeeds is in your WordPress</b>Our plugin for the WordPress block editor. The <a href="/install/">install guide</a> takes you through setting it up.</li>
     </ul>
   </div>
+</section>
 
-  <h2>Clicks and commissions</h2>
-  <p>On paid plans, MyFeeds tags every outgoing click through TradeDoubler's epi parameter and pulls your commissions back into WordPress, so you see which post and which product actually earned. Clicks are counted server-side; ad blockers don't punch holes into your numbers.</p>
-
-  <h2>Common questions</h2>
-  <div class="faq">
-    <details><summary>Does MyFeeds work with TradeDoubler?</summary><p>Yes. If TradeDoubler gives you a product feed file or URL for a program you have joined, MyFeeds imports it, maps the fields automatically and turns it into a searchable catalogue inside the WordPress block editor.</p></details>
-    <details><summary>Does click tracking survive TradeDoubler&#x27;s redirect links?</summary><p>Yes. MyFeeds appends its click id to the epi parameter of the tracking URL, so the click arrives at TradeDoubler fully attributed and can be matched back to the exact post and product later.</p></details>
-    <details><summary>Do I have to pay to get started?</summary><p>No. The free version lives on WordPress.org and covers one feed, the smart search, the grid layout, manual plus nightly sync. Upgrade only when you outgrow it.</p></details>
-    <details><summary>Where does my data live?</summary><p>On your own WordPress site, in your own database. The plugin doesn&#x27;t proxy product images, doesn&#x27;t ping a third-party server when a page loads, and doesn&#x27;t send anything about your visitors anywhere.</p></details>
+<section class="band paper" id="in-tradedoubler" aria-labelledby="h-in-tradedoubler">
+  <div class="wrap chap">
+    <div class="head">
+      <p class="kick">Step 1 of 2</p>
+      <h2 id="h-in-tradedoubler">Build the feed address in Tradedoubler</h2>
+      <div class="meta">
+        <span class="goal"><b>Goal</b>One address that returns the shop's products, your tracking links included, whatever you paste it into.</span>
+      </div>
+    </div>
+    <div class="col">
+      <ol class="sub">
+        <li>
+          <h3>Copy your products token</h3>
+          <p>A token is a long key that lets an address read data in your name. Tradedoubler's guide currently puts your tokens under <span class="ui">Account</span>, then <span class="ui">Manage tokens</span>.</p>
+          <p>Copy the token in the row <span class="ui">PRODUCTS</span>. The other rows belong to other services.</p>
+          <p class="note"><b>Menus move.</b> Another Tradedoubler page says <span class="ui">Settings</span>, then <span class="ui">Tokens</span>. If you find neither, see Tradedoubler's <a href="https://dev.tradedoubler.com/products/publisher/" rel="noopener">Products API guide for publishers</a>.</p>
+        </li>
+        <li>
+          <h3>Look up the shop's feed number</h3>
+          <p>Open the address below in your browser, with your token at the end. Plain data opens, not a web page.</p>
+          <div class="viz">
+            <p class="k">The list of feeds your account can read</p>
+            <p class="url">https://api.tradedoubler.com/1.0/productFeeds?token=<b>YOUR-TOKEN</b></p>
+            <dl class="kv">
+              <div><dt>name</dt><dd>Kicks Corner</dd></div>
+              <div><dt>feedId</dt><dd>12345</dd></div>
+              <div><dt>numberOfProducts</dt><dd>2840</dd></div>
+            </dl>
+            <p class="cap">Find the shop and note its two numbers. An invented example.</p>
+          </div>
+        </li>
+        <li>
+          <h3>Put the address together</h3>
+          <div class="viz">
+            <p class="k">The address you paste into WordPress</p>
+            <p class="url">https://api.tradedoubler.com/1.0/<b>products</b>;fid=<b>FEED-ID</b>?token=<b>YOUR-TOKEN</b></p>
+            <ul class="url-key">
+              <li><b>products</b> is a search, capped at 1,000 products. If <code>numberOfProducts</code> is higher, write <b>productsUnlimited</b> instead: that returns the whole feed.</li>
+              <li><b>FEED-ID</b> is the <code>feedId</code> you noted. Mind the semicolon before <code>fid</code> and the question mark after the number.</li>
+              <li><b>YOUR-TOKEN</b> is personal. Treat the address like a password: keep it out of screenshots and forum posts.</li>
+            </ul>
+          </div>
+        </li>
+      </ol>
+      <p class="done">You have the address. <a href="#in-wordpress">On to step 2</a></p>
+    </div>
   </div>
+</section>
 
-  <div class="cta-box">
-    <h2>Try it with your own TradeDoubler feed</h2>
-    <p>The free plugin covers your first feed. Setup lands in five to ten minutes.</p>
-    <a class="btn" href="/#pricing">Add live product cards to my posts &rarr;</a>
-    <span class="cta-sub">Need more feeds or the analytics dashboard? <a href="/#pricing">See the plans</a></span>
+<section class="band ink" id="in-wordpress" aria-labelledby="h-in-wordpress">
+  <div class="wrap">
+    <div class="head">
+      <p class="kick">Step 2 of 2</p>
+      <h2 id="h-in-wordpress">Add the address in WordPress</h2>
+      <div class="meta">
+        <span class="goal"><b>Goal</b>The shop's products in WordPress, and one card checked.</span>
+      </div>
+    </div>
+    <div class="duo">
+      <div class="card lit">
+        <h3>Paste the address</h3>
+        <ol class="nums">
+          <li>In WordPress, open <span class="ui">MyFeeds</span> and click <span class="ui">Add your first feed</span>. On a paid plan, later feeds go through <span class="ui">+ Add Feed</span>.</li>
+          <li>Name the feed after the shop: readers see that name on your cards. Keep <span class="ui">At a URL</span>, paste the address and click <span class="ui">Create Feed</span>.</li>
+          <li>Let it import in the background while you keep working. When it is done, the feed's row shows the number of products. If it is far below <code>numberOfProducts</code>, see the questions below.</li>
+        </ol>
+      </div>
+      <div class="card">
+        <span class="k">Untested with a live Tradedoubler account</span>
+        <h3>Check one card before you publish</h3>
+        <p>Put one product into a draft and look at the card.</p>
+        <ul class="yn">
+          <li class="y">It shows a price and a picture.</li>
+          <li class="y">A tap opens that product in the shop.</li>
+        </ul>
+        <p>In Tradedoubler's own example, a product's ID, price and tracking link sit one level down, under <code>offers</code>. We could not confirm that MyFeeds finds them there, so the import may show 0 products.</p>
+        <p>If it does, or a card lacks its price or link, don't publish. Tell us the shop and what you see: <a href="mailto:support@myfeeds.site?subject=Tradedoubler%20feed%20check" data-cta="error-support">support@myfeeds.site</a>.</p>
+      </div>
+    </div>
+    <p class="done">One card checks out. <a href="/install/#step-4">Publish your first cards</a></p>
   </div>
+</section>
 
-</div></main>
-<footer><div class="wrap">
-  <div class="links">
-    <a href="/">Home</a>
-    <a href="/networks/">Supported networks</a>
-    <a href="/install/">Install Guide</a>
-    <a href="/affiliates/">Become an Affiliate</a>
-    <a href="/privacy/">Privacy Policy</a>
-    <a href="/imprint/">Imprint</a>
+<section class="band paper" id="current" aria-labelledby="h-current">
+  <div class="wrap chap">
+    <div class="head">
+      <h2 id="h-current">How your cards stay current</h2>
+    </div>
+    <div class="col">
+      <div class="duo">
+        <div class="card">
+          <h3>Every night</h3>
+          <p>Price, crossed-out price, stock, picture and link of the products in your published posts.</p>
+        </div>
+        <div class="card">
+          <h3>Once a week</h3>
+          <p>The whole feed. New products become searchable. A product the shop has removed disappears from your posts.</p>
+        </div>
+      </div>
+      <p class="note warn"><b>The whole-feed address has a download limit.</b> Three downloads of the same file version in 24 hours (as of October 2026). Adding the feed, each <span class="ui">Reimport</span> and the nightly read all count, so click <span class="ui">Reimport</span> once a day at most.</p>
+    </div>
   </div>
-  <div class="copy">&copy; 2026 MyFeeds. All rights reserved.</div>
-</div></footer>
+</section>
+
+<section class="band board" id="questions" aria-labelledby="h-questions">
+  <div class="wrap chap">
+    <div class="head">
+      <h2 id="h-questions">Questions about Tradedoubler feeds</h2>
+      <p>For anything else, <a class="more" href="mailto:support@myfeeds.site?subject=Tradedoubler%20feed%20question" data-cta="ask-support">write to us</a>.</p>
+    </div>
+    <div class="col">
+      <div class="qa">
+        <div>
+          <h3>Why do I never get more than 1,000 products?</h3>
+          <p>Because the address says <code>products</code>. Tradedoubler stops that search at 1,000, and a second page returns nothing (as of October 2026).</p>
+          <p>Write <code>productsUnlimited</code> instead, as in step 1. Or narrow the search: Tradedoubler's guide lists keys for a keyword, a brand and a price.</p>
+        </div>
+        <div>
+          <h3>The whole-feed address answers with error 429</h3>
+          <p>Wait 24 hours, then click <span class="ui">Reimport</span> once.</p>
+          <p>The download limit is used up. Tradedoubler lifts it as soon as the shop's feed changes, and it does not apply in your first five days with a feed.</p>
+        </div>
+      </div>
+
+      <div>
+        <h3 class="sub-h">More questions</h3>
+        <div class="faq">
+          <details name="faq">
+            <summary>Tradedoubler says my token is invalid</summary>
+            <div class="a"><p>You have most likely copied the token of another service. Take the one in the row <span class="ui">PRODUCTS</span>.</p><p>With “Token not found”, the end of the address is missing. It has to finish with <code>?token=</code> and your token.</p></div>
+          </details>
+          <details name="faq">
+            <summary>The import brought far fewer products than the feed has</summary>
+            <div class="a"><p>Tradedoubler's guide does not say how many products a search returns by default. Its keys for the amount are <code>pageSize</code> and <code>limit</code>. In MyFeeds, click <span class="ui">Edit</span> on the feed's row, add <code>;pageSize=1000;limit=1000</code> after the feed number and click <span class="ui">Save Changes</span>, then <span class="ui">Reimport</span>. We could not test this.</p></div>
+          </details>
+          <details name="faq">
+            <summary>Can I see which post and product a click came from?</summary>
+            <div class="a"><p><span class="where">Pro</span>From the Pro plan, yes: clicks on your cards are counted by post and product. Sales and commissions you read in your Tradedoubler reports, as before.</p></div>
+          </details>
+        </div>
+      </div>
+
+      <div class="sources">
+        <p class="k">Sources, read in October 2026</p>
+        <ol>
+          <li><a href="https://dev.tradedoubler.com/products/publisher/" rel="noopener">Products API for publishers</a> (Tradedoubler). The token, the feed list, both addresses, the limits and the error codes.</li>
+          <li><a href="https://dev.tradedoubler.com/conversions/publisher/" rel="noopener">Conversions API for publishers</a> (Tradedoubler). The second name for the token menu.</li>
+        </ol>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="band vio" id="networks" aria-labelledby="h-networks">
+  <div class="wrap">
+    <div class="head">
+      <p class="kick">Other networks</p>
+      <h2 id="h-networks">The same guide for your other networks.</h2>
+    </div>
+    <nav class="nets" aria-label="Feed link guides by network">
+      <a href="/networks/awin/">AWIN</a>
+      <a href="/networks/cj/">CJ</a>
+      <a href="/networks/impact/">Impact</a>
+      <a href="/networks/rakuten/">Rakuten</a>
+      <a href="/networks/webgains/">Webgains</a>
+      <a href="/networks/admitad/">Admitad</a>
+      <a href="/networks/pepperjam/">Pepperjam</a>
+      <a href="/networks/partnerize/">Partnerize</a>
+      <a href="/networks/flexoffers/">FlexOffers</a>
+      <a href="/networks/sovrn/">Sovrn</a>
+      <a class="all" href="/networks/">All networks</a>
+    </nav>
+  </div>
+</section>
+
+<section class="close" id="end" aria-labelledby="h-end">
+  <div class="wrap close-in">
+    <div>
+      <h2 id="h-end">Start with one shop and one card.</h2>
+      <div class="go">
+        <a class="cta" data-cta="final" href="/install/">Install MyFeeds for free</a>
+        <p class="calm">Free on WordPress.org for one shop's feed. Paid plans each start with a free trial.</p>
+      </div>
+      <p class="go"><a class="more" href="/#pricing" data-cta="final-plans">Compare the plans</a></p>
+    </div>
+    <div class="myfeeds-product-grid row3" aria-hidden="true">
+      <div class="myfeeds-product-card"><div class="myfeeds-product-image"><img src="/assets/home/hoodie-heather-grey.webp" width="400" height="400" alt="" loading="lazy"></div><div class="myfeeds-product-details"><div class="myfeeds-product-brand">Halden</div><div class="myfeeds-product-title">Heavyweight Hoodie Heather Grey</div><div class="myfeeds-product-price"><span class="myfeeds-current-price">$58.00</span></div><div class="myfeeds-shipping-info">Free Shipping</div><div class="myfeeds-merchant">Northside Supply</div></div></div>
+      <div class="myfeeds-product-card"><div class="myfeeds-product-image"><div class="myfeeds-discount-badge">-26%</div><img src="/assets/home/sneaker-black-hightop.webp" width="400" height="400" alt="" loading="lazy"></div><div class="myfeeds-product-details"><div class="myfeeds-product-brand">Arlo &amp; Finch</div><div class="myfeeds-product-title">Court High-Top Leather Black</div><div class="myfeeds-product-price"><span class="myfeeds-old-price">$129.00</span> <span class="myfeeds-current-price has-discount">$96.00</span></div><div class="myfeeds-shipping-info">Free Shipping</div><div class="myfeeds-merchant">Kicks Corner</div></div></div>
+      <div class="myfeeds-product-card"><div class="myfeeds-product-image"><img src="/assets/home/backpack-trail.webp" width="400" height="400" alt="" loading="lazy"></div><div class="myfeeds-product-details"><div class="myfeeds-product-brand">Fieldmade</div><div class="myfeeds-product-title">Trail Pack 28 L Sage</div><div class="myfeeds-product-price"><span class="myfeeds-current-price">$74.00</span></div><div class="myfeeds-shipping-info">Shipping costs may apply</div><div class="myfeeds-merchant">Basecamp Outfitters</div></div></div>
+    </div>
+  </div>
+</section>
+</main>
+
+<footer>
+  <div class="wrap">
+    <div class="brand"><b translate="no">MyFeeds</b><span>Affiliate product feeds for WordPress</span></div>
+    <nav aria-label="Site">
+      <a href="/ecommerce/">E-commerce</a>
+      <a href="/install/">Install guide</a>
+      <a href="/networks/">Affiliate networks</a>
+      <a href="/articles/">Guides</a>
+      <a href="/affiliates/">Become an affiliate</a>
+      <a href="https://wordpress.org/plugins/myfeeds-affiliate-feed-manager/" rel="noopener">Free plugin on WordPress.org</a>
+      <a href="/imprint/">Imprint</a>
+      <a href="/privacy/">Privacy</a>
+      <a href="/terms/">Terms</a>
+      <a href="/refund/">Refund policy</a>
+    </nav>
+    <span>© 2026 MyFeeds. All rights reserved.</span>
+  </div>
+</footer>
+
+<script src="/assets/site.js" defer></script>
 <script src="/assets/back-to-top.js" defer></script>
 <script src="/assets/consent.js" defer></script>
 </body>

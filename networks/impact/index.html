@@ -3,154 +3,368 @@
 <head>
 <meta charset="UTF-8">
 <meta name="p:domain_verify" content="0f13dbb87c7b78ab08817667740c2df2"/>
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Impact product feed for WordPress - import, display, auto-update | MyFeeds</title>
-<meta name="description" content="Turn your Impact product feed into live, searchable product cards inside the WordPress block editor. Prices and stock update themselves nightly.">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+<title>Get an Impact product catalog into WordPress - Step by step</title>
+<meta name="description" content="Impact gives you a shop's product catalog as a download, not as a link. Which format to pick, what to keep private, and how to upload the file to WordPress.">
 <link rel="canonical" href="https://myfeeds.site/networks/impact/">
-<meta property="og:type" content="website">
+<meta name="theme-color" content="#FC9000">
+<meta property="og:type" content="article">
 <meta property="og:site_name" content="MyFeeds">
 <meta property="og:url" content="https://myfeeds.site/networks/impact/">
-<meta property="og:title" content="Impact product feed for WordPress - import, display, auto-update | MyFeeds">
-<meta property="og:description" content="Turn your Impact product feed into live, searchable product cards inside the WordPress block editor. Prices and stock update themselves nightly.">
+<meta property="og:title" content="Get an Impact product catalog into WordPress - Step by step">
+<meta property="og:description" content="Impact gives you a shop's product catalog as a download, not as a link. Which format to pick and how to upload it to WordPress.">
 <meta property="og:image" content="https://myfeeds.site/assets/og-image.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="628">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:url" content="https://myfeeds.site/networks/impact/">
+<meta name="twitter:title" content="Get an Impact product catalog into WordPress - Step by step">
+<meta name="twitter:description" content="Impact gives you a shop's product catalog as a download, not as a link. Which format to pick and how to upload it to WordPress.">
+<meta name="twitter:image" content="https://myfeeds.site/assets/og-image.png">
 <link rel="icon" type="image/png" href="/favicon.png">
+<link rel="icon" type="image/x-icon" href="/favicon.ico">
 <link rel="apple-touch-icon" href="/apple-touch-icon.png">
-<link rel="stylesheet" href="/assets/fonts.css">
-<script type="application/ld+json">{"@context": "https://schema.org", "@type": "FAQPage", "mainEntity": [{"@type": "Question", "name": "Does MyFeeds work with Impact?", "acceptedAnswer": {"@type": "Answer", "text": "Yes. Impact hands you the catalogue as a file rather than a link, so host it where your own site can serve it over HTTPS and give MyFeeds that address — the plugin imports from a URL, it has no file upload. From there it maps the fields automatically and turns the catalogue into a searchable list inside the WordPress block editor."}}, {"@type": "Question", "name": "Does this replace Impact's own link tools?", "acceptedAnswer": {"@type": "Answer", "text": "No, it builds on them. Your Impact tracking links stay exactly as the catalog delivers them; MyFeeds renders the cards, keeps prices current and adds a click id so you can see which post earned the commission."}}, {"@type": "Question", "name": "Do I have to pay to get started?", "acceptedAnswer": {"@type": "Answer", "text": "No. The free version lives on WordPress.org and covers one feed, the smart search, the grid layout, manual plus nightly sync. Upgrade only when you outgrow it."}}, {"@type": "Question", "name": "Where does my data live?", "acceptedAnswer": {"@type": "Answer", "text": "On your own WordPress site, in your own database. The plugin doesn't proxy product images, doesn't ping a third-party server when a page loads, and doesn't send anything about your visitors anywhere."}}]}</script>
-<style>*,*::before,*::after{margin:0;padding:0;box-sizing:border-box}
-:root{--bg:#FAF8F4;--card:#FFFFFF;--line:#E8E4DB;--txt:#1A1720;--soft:#57515F;--mute:#8F8A99;--a1:#6C54B4;--a2:#5A4499;--tint:#F1EEFA;--green:#1E9E6A;--grad:linear-gradient(135deg,#6C54B4,#5A4499);--serif:'Fraunces',Georgia,serif;--sans:'Inter',-apple-system,BlinkMacSystemFont,sans-serif}
-html{background:var(--bg);color:var(--txt);font-family:var(--sans);scroll-behavior:smooth}
-body{line-height:1.6;overflow-x:hidden}
-.wrap{max-width:860px;margin:0 auto;padding:0 24px}
-nav{position:fixed;top:0;left:0;right:0;z-index:50;padding:14px 0;backdrop-filter:blur(18px);background:rgba(250,248,244,.88);border-bottom:1px solid var(--line)}
-nav .wrap{display:flex;align-items:center;justify-content:space-between;max-width:1200px}
-.logo{display:flex;align-items:center;gap:10px;text-decoration:none;color:var(--txt);font-weight:700;font-size:1.05rem}
-.logo img{width:30px;height:30px;border-radius:7px}
-.nav-r{display:flex;gap:22px;align-items:center}
-.nav-r a{color:var(--soft);text-decoration:none;font-size:.88rem;font-weight:500}
-.nav-r a:hover{color:var(--txt)}
-.nav-r a.cta{background:var(--grad);color:#fff;padding:8px 18px;border-radius:9px;font-weight:600}
-header{padding:130px 0 30px}
-.crumb{font-size:.78rem;color:var(--mute);margin-bottom:18px}
-.crumb a{color:var(--mute);text-decoration:none}
-.crumb a:hover{color:var(--soft)}
-.badge{display:inline-flex;align-items:center;gap:8px;padding:6px 14px;border-radius:999px;background:var(--card);border:1px solid var(--line);font-size:.78rem;color:var(--soft);margin-bottom:20px}
-.badge i{width:6px;height:6px;border-radius:50%;background:var(--green)}
-h1{font-size:clamp(1.9rem,4.6vw,2.9rem);font-weight:800;letter-spacing:-.03em;line-height:1.12;margin-bottom:18px}
-.lede{color:var(--soft);font-size:1.06rem;max-width:640px}
-main{padding:26px 0 60px}
-h2{font-size:1.45rem;font-weight:700;letter-spacing:-.02em;margin:44px 0 14px}
-p{color:var(--soft);margin-bottom:14px;font-size:.97rem}
-.steps{counter-reset:s;display:grid;gap:14px;margin:20px 0 8px}
-.step{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:20px 22px 18px;position:relative}
-.step::before{counter-increment:s;content:counter(s,decimal-leading-zero);font-size:.78rem;font-weight:700;color:var(--a1);letter-spacing:.08em}
-.step h3{font-size:1.02rem;font-weight:700;margin:6px 0 6px;color:var(--txt)}
-.step p{margin:0;font-size:.92rem}
-.facts{background:var(--tint);border:1px solid rgba(108,84,180,.22);border-radius:14px;padding:22px 24px;margin:24px 0}
-.facts h2{margin:0 0 12px;font-size:1.05rem}
-.facts ul{list-style:none}
-.facts li{padding:7px 0;color:var(--soft);font-size:.93rem;display:flex;gap:10px;align-items:flex-start;border-bottom:1px solid rgba(255,255,255,.05)}
-.facts li:last-child{border:none}
-.facts li b{color:var(--green);font-weight:700;flex-shrink:0}
-.faq details{background:var(--card);border:1px solid var(--line);border-radius:11px;margin-bottom:10px}
-.faq summary{padding:15px 18px;cursor:pointer;font-weight:600;font-size:.95rem;list-style:none;display:flex;justify-content:space-between;gap:14px}
-.faq summary::-webkit-details-marker{display:none}
-.faq summary::after{content:'+';color:var(--mute);font-weight:300;font-size:1.3rem;line-height:1}
-.faq details[open] summary::after{content:'-'}
-.faq details p{padding:0 18px 16px;margin:0;font-size:.91rem}
-.cta-box{background:var(--grad);border-radius:16px;padding:36px 30px;text-align:center;margin:52px 0 0}
-.cta-box h2{margin:0 0 8px;color:#fff}
-.cta-box p{color:rgba(255,255,255,.85);max-width:460px;margin:0 auto 20px}
-.btn{display:inline-block;background:#fff;color:#1c1633;font-weight:700;padding:13px 28px;border-radius:999px;text-decoration:none;font-size:.95rem}
-.btn:hover{opacity:.93}
-.cta-sub{display:block;margin-top:12px;font-size:.8rem;color:rgba(255,255,255,.7)}
-.cta-sub a{color:#fff}
-footer{border-top:1px solid var(--line);padding:36px 0;text-align:center;margin-top:70px}
-footer .links{display:flex;gap:20px;justify-content:center;flex-wrap:wrap;margin-bottom:14px}
-footer a{color:var(--soft);text-decoration:none;font-size:.84rem}
-footer a:hover{color:var(--txt)}
-footer .copy{color:var(--mute);font-size:.76rem}
-.netgrid{display:grid;grid-template-columns:repeat(auto-fill,minmax(200px,1fr));gap:14px;margin:26px 0}
-.netcard{display:block;background:var(--card);border:1px solid var(--line);border-radius:13px;padding:20px;text-decoration:none;transition:border-color .2s,transform .2s}
-.netcard:hover{border-color:rgba(108,84,180,.4);transform:translateY(-2px)}
-.netcard b{color:var(--txt);font-size:1rem;display:block;margin-bottom:4px}
-.netcard span{color:var(--mute);font-size:.8rem}
-/* Jedes Sprungziel muss unter der festen Navigation durchpassen. Vorher
-   hatten das nur die Preistabelle und die Plan-Karten, weil ich beim
-   Bauen nur dorthin gesehen habe - #faq, #how, #storefront, #curator und
-   #control landeten alle hinter der Leiste. Eine Regel fuer alle. */
-[id]{scroll-margin-top:84px}
-
-.nav-logo span,.footer-brand{font-family:var(--serif) !important;font-weight:600 !important;letter-spacing:-.012em !important}
-h1,h2{font-family:var(--serif);font-weight:500;letter-spacing:-.012em}
-</style>
-<script data-goatcounter="https://myfeeds.goatcounter.com/count" async src="//gc.zgo.at/count.js"></script>
+<link rel="preload" href="/assets/fonts/bricolage-latin.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="stylesheet" href="/assets/site.css">
+<script>
+/* Motion gate, before first paint. Nothing on this page waits for script:
+   without "mo" (no JS, reduced motion) there are simply no transitions. */
+!function(d){d.classList.add('js');try{if(matchMedia('(prefers-reduced-motion: no-preference)').matches)d.classList.add('mo')}catch(e){}}(document.documentElement);
+</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "Article",
+      "headline": "Get an Impact product feed into WordPress",
+      "description": "Impact gives you a shop's product catalog as a download, not as a link. Which format to pick, what to keep private, and how to upload the file to WordPress.",
+      "mainEntityOfPage": "https://myfeeds.site/networks/impact/",
+      "image": "https://myfeeds.site/assets/og-image.png",
+      "author": {
+        "@type": "Organization",
+        "name": "MyFeeds",
+        "url": "https://myfeeds.site/"
+      },
+      "publisher": {
+        "@type": "Organization",
+        "name": "MyFeeds",
+        "url": "https://myfeeds.site/"
+      }
+    },
+    {
+      "@type": "FAQPage",
+      "mainEntity": [
+        {
+          "@type": "Question",
+          "name": "How often does a catalog change?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Impact asks brands to update their catalog daily. Last Updated shows when a shop last did."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Can I see which post and product a click came from?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "From the Pro plan, yes: clicks on your cards are counted by post and product. In the feed dialog, under Advanced Options, set Network Hint to Impact.com, when you add the feed or later through Edit. Your affiliate links then also get a click ID in subId1, a field Impact reports back. Impact shows it under Reports, More Reports, in Performance by Sub ID and Shared ID. Its help says only you see Sub IDs, not the shop."
+          }
+        }
+      ]
+    }
+  ]
+}
+</script>
 </head>
-<body>
-<nav><div class="wrap">
-  <a href="/" class="logo"><img src="/logo.png" alt="MyFeeds">MyFeeds</a>
-  <div class="nav-r">
-    <a href="/networks/">Networks</a>
-    <a href="/#pricing">Pricing</a>
-    <a href="/#pricing" class="cta">Get Started</a>
+<body data-page="networks/impact/">
+<a class="skip" href="#main">Skip to the guide</a>
+<div class="open-top">
+  <div class="wrap">
+    <header class="top">
+      <a class="mark" href="/" translate="no" aria-label="MyFeeds home"><span><img src="/assets/home/logo-52.webp" alt="" width="22" height="22"></span>MyFeeds</a>
+      <nav class="nav" aria-label="Main">
+        <a href="/#how">How it works</a>
+        <a href="/#pricing" data-cta="nav-pricing">Pricing</a>
+        <a href="/ecommerce/">E-commerce</a>
+        <a href="/networks/" aria-current="page">Networks</a>
+        <a href="/articles/">Guides</a>
+        <a href="/install/">Install</a>
+        <a href="/#faq">FAQ</a>
+      </nav>
+      <div class="top-r">
+        <button type="button" class="menu-btn" id="menu-btn" aria-expanded="false" aria-controls="menu"><i aria-hidden="true"></i>Menu</button>
+        <a class="cta cta-sm" data-cta="header" href="/#pricing">Get started</a>
+      </div>
+      <div class="menu" id="menu" hidden>
+        <a href="/#how">How it works</a>
+        <a href="/#pricing">Plans and prices</a>
+        <a href="/ecommerce/">E-commerce</a>
+        <a href="/networks/" aria-current="page">Affiliate networks</a>
+        <a href="/articles/">Guides</a>
+        <a href="/install/">Install guide</a>
+        <a href="/#faq">Questions</a>
+      </div>
+    </header>
   </div>
-</div></nav>
-<header><div class="wrap">
-  <div class="crumb"><a href="/">MyFeeds</a> / <a href="/networks/">Networks</a> / Impact</div>
-  <div class="badge"><i></i> Works with Impact</div>
-  <h1>Your Impact products, live inside your WordPress posts</h1>
-  <p class="lede">The brands you partner with on Impact publish full product catalogs, and almost all of that data sits unused. MyFeeds brings the catalog into the WordPress block editor: search it, drop a card into the post, and the price and stock stay current without you touching it again.</p>
-</div></header>
-<main><div class="wrap">
+</div>
 
-  <h2>From feed to published post, in three steps</h2>
-  <div class="steps">
-    <div class="step"><h3>Get your feed link</h3><p>In Impact, open Content, then Product Catalogs, and download the catalog for your brand partnership. Impact does not give publishers a permanent link: there is a download button, FTP for catalogs too large to download, and an API &mdash; but no hosted URL. So put the downloaded file somewhere your own site can serve it over HTTPS, your uploads folder is enough, and give MyFeeds that address.</p></div>
-    <div class="step"><h3>Paste it into MyFeeds</h3><p>The importer reads CSV, XML and tab- or pipe-delimited catalogs, often gzip-compressed, sniffs the structure and maps the fields on its own. A few minutes later your products are searchable inside WordPress.</p></div>
-    <div class="step"><h3>Pick products in the editor and publish</h3><p>Search your catalogue right inside the post, click, and the card is in. A nightly sync keeps every card on every post current; products that disappear from the feed get flagged so old posts stop pointing at 404s.</p></div>
+<main id="main">
+<div class="open">
+  <div class="wrap">
+    <section class="hero long" aria-labelledby="h-hero">
+      <div>
+        <p class="eyebrow"><a href="/networks/">Feed link guides</a> · Impact</p>
+        <h1 id="h-hero">Get an Impact product feed into WordPress.</h1>
+        <p class="lede">Impact gives you a shop's products as a file to download, and not as a link that stays current. Upload the file to MyFeeds, our WordPress plugin, and pick products for your posts in the editor.</p>
+        <div class="go">
+          <a class="cta" data-cta="hero" id="hero-cta" href="/install/">Get the free plugin</a>
+          <p class="calm">Free on WordPress.org for one shop's feed. Paid plans each start with a free trial.</p>
+        </div>
+      </div>
+
+      <aside class="pinned" aria-labelledby="gl-k">
+        <p class="ov-k" id="gl-k"><span>At a glance</span><span>Impact</span></p>
+        <dl class="glance">
+          <div><dt>You get</dt><dd><b>A download, not a link.</b> Impact calls it a product catalog.</dd></div>
+          <div><dt>In Impact</dt><dd><b>Open Product Catalogs.</b> In the Content menu.</dd></div>
+          <div><dt>Choose</dt><dd><b>Impact Format.</b> The same fields for every shop.</dd></div>
+          <div><dt>WordPress</dt><dd><b>Upload the file.</b> Current as of upload day.</dd></div>
+          <div><dt>Plan</dt><dd><span class="pill free">Free</span> for one shop's feed.</dd></div>
+        </dl>
+        <p class="ov-x"><a class="more" href="#in-impact">Start with step 1</a><a class="more" href="#questions">Questions</a></p>
+      </aside>
+    </section>
   </div>
+</div>
 
-  <div class="facts">
-    <h2>What MyFeeds handles for Impact feeds</h2>
-    <ul>
-      <li><b>&#10003;</b> Reads CSV, XML and tab- or pipe-delimited catalogs, often gzip-compressed; unusual columns are matched by the smart mapper</li>
-      <li><b>&#10003;</b> Affiliate deep links are used exactly as your feed delivers them; your tracking stays intact</li>
-      <li><b>&#10003;</b> Every click carries an id via Impact's subId1 parameter, so commissions can be matched back to the exact post and product in the MyFeeds analytics dashboard (Pro)</li>
-      <li><b>&#10003;</b> Nightly sync updates price, stock and sale badges on every published card</li>
-      <li><b>&#10003;</b> Everything is stored in your own WordPress database, fully self-hosted</li>
+<section class="band board" id="before" aria-labelledby="h-before">
+  <div class="wrap">
+    <div class="head">
+      <h2 id="h-before">Before you start</h2>
+      <p>A feed pays off when you want many products from one shop, with picture and price. For two or three, a normal Impact link in your text is enough. <a class="more" href="/articles/import-product-feed-wordpress/" data-cta="quiet-guide">How a shop's product feed gets into WordPress</a> explains the idea.</p>
+    </div>
+    <ul class="need">
+      <li><b>You work with the shop</b>Impact lists product catalogs only for brands you partner with. Brand is Impact's word for a shop.</li>
+      <li><b>The shop has opened its catalog</b>Each brand decides whether you see a catalog, and how you may fetch it.</li>
+      <li><b>MyFeeds is in your WordPress</b>Not installed yet? The <a href="/install/">install guide</a> takes you through it.</li>
     </ul>
   </div>
+</section>
 
-  <h2>Clicks and commissions</h2>
-  <p>On paid plans, MyFeeds tags every outgoing click through Impact's subId1 parameter and pulls your commissions back into WordPress, so you see which post and which product actually earned. Clicks are counted server-side; ad blockers don't punch holes into your numbers.</p>
-
-  <h2>Common questions</h2>
-  <div class="faq">
-    <details><summary>Does MyFeeds work with Impact?</summary><p>Yes. Impact hands you the catalogue as a file rather than a link, so host it where your own site can serve it over HTTPS and give MyFeeds that address &mdash; the plugin imports from a URL, it has no file upload. From there it maps the fields automatically and turns the catalogue into a searchable list inside the WordPress block editor.</p></details>
-    <details><summary>Does this replace Impact&#x27;s own link tools?</summary><p>No, it builds on them. Your Impact tracking links stay exactly as the catalog delivers them; MyFeeds renders the cards, keeps prices current and adds a click id so you can see which post earned the commission.</p></details>
-    <details><summary>Do I have to pay to get started?</summary><p>No. The free version lives on WordPress.org and covers one feed, the smart search, the grid layout, manual plus nightly sync. Upgrade only when you outgrow it.</p></details>
-    <details><summary>Where does my data live?</summary><p>On your own WordPress site, in your own database. The plugin doesn&#x27;t proxy product images, doesn&#x27;t ping a third-party server when a page loads, and doesn&#x27;t send anything about your visitors anywhere.</p></details>
+<section class="band paper" id="in-impact" aria-labelledby="h-in-impact">
+  <div class="wrap chap">
+    <div class="head">
+      <p class="kick">Step 1 of 2</p>
+      <h2 id="h-in-impact">Download the file in Impact</h2>
+      <div class="meta">
+        <span class="goal"><b>Goal</b>The shop's products as one file on your computer, in Impact Format.</span>
+      </div>
+    </div>
+    <div class="col">
+      <ol class="sub">
+        <li>
+          <h3>Set the file type once</h3>
+          <p>Impact currently keeps it behind your profile icon: <span class="ui">Settings</span>, then <span class="ui">Data Feeds</span> in the Technical section, then <span class="ui">Edit</span> next to <span class="ui">Product Feed</span>.</p>
+          <p>Choose CSV, the type a spreadsheet can open if you ever want to check a row.</p>
+        </li>
+        <li>
+          <h3>Open the shop's product catalog</h3>
+          <p>Impact currently lists catalogs under <span class="ui">Content</span>, then <span class="ui">Product Catalogs</span>.</p>
+          <p class="note"><b>Menus move.</b> If it is gone, see Impact's own walkthrough: <a href="https://help.impact.com/partner/what-would-you-like-to-learn-about/platform-features/marketing-content/product-marketplace-and-catalogs/download-product-catalogs-as-a-partner" rel="noopener">Download product catalogs as a partner</a>.</p>
+        </li>
+        <li>
+          <h3>Download it in Impact Format</h3>
+          <p>Impact offers two versions. Advertiser Format is the file as the shop uploaded it, with fields that differ from shop to shop. Impact Format has the same fields every time. Take that one.</p>
+          <p>The download ends in .gz. Upload it as it is: MyFeeds opens it, up to 500 MB.</p>
+        </li>
+        <li>
+          <h3>Keep the file to yourself</h3>
+          <p class="note warn"><b>It shows what you earn.</b> The file holds your tracking links and a field called <code>ProductBid</code>: what a sale of each product pays you. Don't share it or store it in a public folder. MyFeeds keeps your upload on your own site, under a random file name.</p>
+        </li>
+      </ol>
+      <p class="done">You have the file. <a href="#in-wordpress">On to step 2</a></p>
+    </div>
   </div>
+</section>
 
-  <div class="cta-box">
-    <h2>Try it with your own Impact feed</h2>
-    <p>The free plugin covers your first feed. Setup lands in five to ten minutes.</p>
-    <a class="btn" href="/#pricing">Add live product cards to my posts &rarr;</a>
-    <span class="cta-sub">Need more feeds or the analytics dashboard? <a href="/#pricing">See the plans</a></span>
+<section class="band ink" id="in-wordpress" aria-labelledby="h-in-wordpress">
+  <div class="wrap">
+    <div class="head">
+      <p class="kick">Step 2 of 2</p>
+      <h2 id="h-in-wordpress">Upload the file in WordPress</h2>
+    </div>
+    <div class="duo">
+      <div class="card lit pick">
+        <span class="tag">The first time</span>
+        <h3>Upload the file</h3>
+        <ol class="nums">
+          <li>In WordPress, open <span class="ui">MyFeeds</span> and click <span class="ui">Add your first feed</span>.</li>
+          <li>Name the feed after the shop: readers see that name on your cards. Choose <span class="ui">Upload a file</span> and select the file you downloaded.</li>
+          <li>Click <span class="ui">Create Feed</span> and let it import in the background. The feed's row shows the number of products.</li>
+        </ol>
+        <ul class="yn">
+          <li class="n">Prices and stock freeze on upload day, until you upload a newer file.</li>
+        </ul>
+      </div>
+      <div class="card">
+        <span class="k">When the shop's prices have moved</span>
+        <h3>Upload a newer file</h3>
+        <ol class="nums">
+          <li>Download the catalog again in Impact.</li>
+          <li>On the feed's row in MyFeeds, click <span class="ui">Edit</span> and select the new file.</li>
+          <li>Click <span class="ui">Save Changes</span>, then <span class="ui">Reimport</span>.</li>
+        </ol>
+        <ul class="yn">
+          <li class="y">Your published cards follow the newer file. You don't edit the posts.</li>
+        </ul>
+      </div>
+    </div>
+    <p class="note"><b>Check the first import.</b> We have not tested a current Impact file from end to end. Search for a product in the editor and check picture, price and link. If a column landed in the wrong place, correct it in the <span class="ui">Mapping Editor</span>.</p>
+    <p class="done">The shop's products are in. <a href="/install/#step-4">Publish your first cards</a></p>
   </div>
+</section>
 
-</div></main>
-<footer><div class="wrap">
-  <div class="links">
-    <a href="/">Home</a>
-    <a href="/networks/">Supported networks</a>
-    <a href="/install/">Install Guide</a>
-    <a href="/affiliates/">Become an Affiliate</a>
-    <a href="/privacy/">Privacy Policy</a>
-    <a href="/imprint/">Imprint</a>
+<section class="band paper" id="contains" aria-labelledby="h-contains">
+  <div class="wrap">
+    <div class="head">
+      <h2 id="h-contains">What the file contains</h2>
+      <p>Five fields worth knowing, as Impact's help names them.</p>
+    </div>
+    <div class="side">
+      <div class="cmp-wrap" tabindex="0" role="region" aria-labelledby="col-cap">
+        <table class="cmp slim">
+          <caption class="vh" id="col-cap">Fields of an Impact Format file and what they are</caption>
+          <thead>
+            <tr><th scope="col">Field in the file</th><th scope="col">What it is</th></tr>
+          </thead>
+          <tbody>
+            <tr><th scope="row">Current Price</th><td>What a customer pays now</td></tr>
+            <tr><th scope="row">Original Price</th><td>The price before a reduction</td></tr>
+            <tr><th scope="row">Stock Availability</th><td>Whether the shop has it in stock</td></tr>
+            <tr><th scope="row">Product URL</th><td>Your tracking link to the product</td></tr>
+            <tr><th scope="row">ProductBid</th><td>What you get for a sale. Keep it private.</td></tr>
+          </tbody>
+        </table>
+      </div>
+      <div class="aside">
+        <p class="note"><b>Names can differ.</b> The first row of your file may spell these fields another way.</p>
+        <p class="note"><b>A file from someone else earns for them.</b> The tracking links belong to the account that downloaded the file.</p>
+      </div>
+    </div>
   </div>
-  <div class="copy">&copy; 2026 MyFeeds. All rights reserved.</div>
-</div></footer>
+</section>
+
+<section class="band board" id="questions" aria-labelledby="h-questions">
+  <div class="wrap chap">
+    <div class="head">
+      <h2 id="h-questions">Questions about Impact catalogs</h2>
+      <p>For anything else, <a class="more" href="mailto:support@myfeeds.site?subject=Impact%20feed%20question" data-cta="ask-support">write to us</a>.</p>
+    </div>
+    <div class="col">
+      <div class="qa">
+        <div>
+          <h3>Why is there no catalog for a shop I work with?</h3>
+          <p>The shop has not switched catalogs on, has limited them to certain partners, or offers no download in the browser.</p>
+          <p>All three are the shop's choice, Impact's help says. Ask the shop to open the catalog for you.</p>
+        </div>
+        <div>
+          <h3>Is there a link in place of the download?</h3>
+          <p>Not one MyFeeds can read. Impact documents three ways to get a catalog: the download in your browser, FTP and an API for programmers (as of October 2026). The last two ask for a login, which MyFeeds cannot give.</p>
+          <p>If each new file lands at an https address on your own server, MyFeeds reads that address every night. Anyone who has the address can read the file too, and it shows what you earn.</p>
+        </div>
+      </div>
+
+      <div>
+        <h3 class="sub-h">More questions</h3>
+        <div class="faq">
+          <details name="faq">
+            <summary>How often does a catalog change?</summary>
+            <div class="a"><p>Impact asks brands to update their catalog daily. <span class="ui">Last Updated</span> shows when a shop last did.</p></div>
+          </details>
+          <details name="faq">
+            <summary>Can I see which post and product a click came from?</summary>
+            <div class="a"><p><span class="where">Pro</span>From the Pro plan, yes: clicks on your cards are counted by post and product. In the feed dialog, under <span class="ui">Advanced Options</span>, set <span class="ui">Network Hint</span> to Impact.com, when you add the feed or later through <span class="ui">Edit</span>. Your affiliate links then also get a click ID in <code>subId1</code>, a field Impact reports back.</p><p>Impact shows it under <span class="ui">Reports</span>, <span class="ui">More Reports</span>, in Performance by Sub ID and Shared ID. Its help says only you see Sub IDs, not the shop.</p></div>
+          </details>
+        </div>
+      </div>
+
+      <div class="sources">
+        <p class="k">Sources, read in October 2026</p>
+        <ol>
+          <li><a href="https://help.impact.com/partner/what-would-you-like-to-learn-about/platform-features/marketing-content/product-marketplace-and-catalogs/download-product-catalogs-as-a-partner" rel="noopener">Download Product Catalogs as a Partner (Impact help)</a> <span>Menus, the two formats, the .gz download, the fields, Last Updated.</span></li>
+          <li><a href="https://help.impact.com/partner/what-would-you-like-to-learn-about/platform-features/marketing-content/product-marketplace-and-catalogs/set-product-catalog-feed-preferences-as-a-partner" rel="noopener">Set Product Catalog Preferences as a Partner (Impact help)</a> <span>File type and compression.</span></li>
+          <li><a href="https://help.impact.com/brand/what-would-you-like-to-learn-about/platform-features/product-catalogs/add-product-catalogs-as-a-brand" rel="noopener">Add Product Catalogs as a Brand (Impact help)</a> <span>What the shop decides.</span></li>
+          <li><a href="https://help.impact.com/partner/what-would-you-like-to-learn-about/platform-features/tracking/tracking-links/link-parameters/sub-id-and-shared-id-parameters-explained-for-partners" rel="noopener">Sub ID &amp; Shared ID Parameters Explained for Partners (Impact help)</a> <span>subId1, and who sees it.</span></li>
+          <li><a href="https://help.impact.com/partner/what-would-you-like-to-learn-about/platform-features/tracking/tracking-links/link-parameters/view-reports-on-sub-ids-and-shared-ids-for-partners" rel="noopener">View Reports on Sub IDs &amp; Shared IDs for Partners (Impact help)</a> <span>The report.</span></li>
+        </ol>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="band vio" id="networks" aria-labelledby="h-networks">
+  <div class="wrap">
+    <div class="head">
+      <p class="kick">Other networks</p>
+      <h2 id="h-networks">The same guide for your other networks.</h2>
+      <p>Each network hands over a shop's products in its own way.</p>
+    </div>
+    <nav class="nets" aria-label="Feed link guides by network">
+      <a href="/networks/awin/">AWIN</a>
+      <a href="/networks/cj/">CJ</a>
+      <a href="/networks/tradedoubler/">Tradedoubler</a>
+      <a href="/networks/rakuten/">Rakuten</a>
+      <a href="/networks/webgains/">Webgains</a>
+      <a href="/networks/admitad/">Admitad</a>
+      <a href="/networks/pepperjam/">Pepperjam</a>
+      <a href="/networks/partnerize/">Partnerize</a>
+      <a href="/networks/flexoffers/">FlexOffers</a>
+      <a href="/networks/sovrn/">Sovrn</a>
+      <a class="all" href="/networks/">All networks</a>
+    </nav>
+  </div>
+</section>
+
+<section class="close" id="end" aria-labelledby="h-end">
+  <div class="wrap close-in">
+    <div>
+      <h2 id="h-end">Products from your Impact shops, as cards in your next post.</h2>
+      <div class="go">
+        <a class="cta" data-cta="final" href="/install/">Install MyFeeds for free</a>
+        <p class="calm">Free on WordPress.org for one shop's feed. Paid plans each start with a free trial.</p>
+      </div>
+      <p class="go"><a class="more" href="/#pricing" data-cta="final-plans">Compare the plans</a></p>
+    </div>
+    <div class="myfeeds-product-grid row3" aria-hidden="true">
+      <div class="myfeeds-product-card"><div class="myfeeds-product-image"><img src="/assets/home/hoodie-heather-grey.webp" width="400" height="400" alt="" loading="lazy"></div><div class="myfeeds-product-details"><div class="myfeeds-product-brand">Halden</div><div class="myfeeds-product-title">Heavyweight Hoodie Heather Grey</div><div class="myfeeds-product-price"><span class="myfeeds-current-price">$58.00</span></div><div class="myfeeds-shipping-info">Free Shipping</div><div class="myfeeds-merchant">Northside Supply</div></div></div>
+      <div class="myfeeds-product-card"><div class="myfeeds-product-image"><div class="myfeeds-discount-badge">-26%</div><img src="/assets/home/sneaker-black-hightop.webp" width="400" height="400" alt="" loading="lazy"></div><div class="myfeeds-product-details"><div class="myfeeds-product-brand">Arlo &amp; Finch</div><div class="myfeeds-product-title">Court High-Top Leather Black</div><div class="myfeeds-product-price"><span class="myfeeds-old-price">$129.00</span> <span class="myfeeds-current-price has-discount">$96.00</span></div><div class="myfeeds-shipping-info">Free Shipping</div><div class="myfeeds-merchant">Kicks Corner</div></div></div>
+      <div class="myfeeds-product-card"><div class="myfeeds-product-image"><img src="/assets/home/backpack-trail.webp" width="400" height="400" alt="" loading="lazy"></div><div class="myfeeds-product-details"><div class="myfeeds-product-brand">Fieldmade</div><div class="myfeeds-product-title">Trail Pack 28 L Sage</div><div class="myfeeds-product-price"><span class="myfeeds-current-price">$74.00</span></div><div class="myfeeds-shipping-info">Shipping costs may apply</div><div class="myfeeds-merchant">Basecamp Outfitters</div></div></div>
+    </div>
+  </div>
+</section>
+</main>
+
+<footer>
+  <div class="wrap">
+    <div class="brand"><b translate="no">MyFeeds</b><span>Affiliate product feeds for WordPress</span></div>
+    <nav aria-label="Site">
+      <a href="/ecommerce/">E-commerce</a>
+      <a href="/install/">Install guide</a>
+      <a href="/networks/">Affiliate networks</a>
+      <a href="/articles/">Guides</a>
+      <a href="/affiliates/">Become an affiliate</a>
+      <a href="https://wordpress.org/plugins/myfeeds-affiliate-feed-manager/" rel="noopener">Free plugin on WordPress.org</a>
+      <a href="/imprint/">Imprint</a>
+      <a href="/privacy/">Privacy</a>
+      <a href="/terms/">Terms</a>
+      <a href="/refund/">Refund policy</a>
+    </nav>
+    <span>© 2026 MyFeeds. All rights reserved.</span>
+  </div>
+</footer>
+
+<script src="/assets/site.js" defer></script>
 <script src="/assets/back-to-top.js" defer></script>
 <script src="/assets/consent.js" defer></script>
 </body>
