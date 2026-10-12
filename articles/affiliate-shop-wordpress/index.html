@@ -3,162 +3,750 @@
 <head>
 <meta charset="UTF-8">
 <meta name="p:domain_verify" content="0f13dbb87c7b78ab08817667740c2df2"/>
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>How to Build an Affiliate Shop on WordPress (Without WooCommerce) | MyFeeds</title>
-<meta name="description" content="A real storefront on your own domain, stocked from your affiliate feeds and kept current on its own. How that compares to WooCommerce and the affiliate shop plugins, and what running one costs you in time.">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+<title>Affiliate shop on WordPress: do you need one, and how to build it</title>
+<meta name="description" content="For bloggers who recommend other shops' products: a five-question test, four ways to build an affiliate shop on WordPress, and how to keep its prices right.">
 <link rel="canonical" href="https://myfeeds.site/articles/affiliate-shop-wordpress/">
+<meta name="theme-color" content="#FC9000">
 <meta property="og:type" content="article">
 <meta property="og:site_name" content="MyFeeds">
-<meta property="og:title" content="How to Build an Affiliate Shop on WordPress (Without WooCommerce) | MyFeeds">
-<meta property="og:description" content="A real storefront on your own domain, stocked from your affiliate feeds and kept current on its own. How that compares to WooCommerce and the affiliate shop plugins, and what running one costs you in time.">
+<meta property="og:url" content="https://myfeeds.site/articles/affiliate-shop-wordpress/">
+<meta property="og:title" content="Affiliate shop on WordPress: do you need one, and how to build it">
+<meta property="og:description" content="A five-question test, four ways to build an affiliate shop on WordPress, with or without WooCommerce, and how to keep its prices right.">
 <meta property="og:image" content="https://myfeeds.site/assets/og-image.png">
 <meta property="og:image:width" content="1200">
 <meta property="og:image:height" content="628">
-<meta property="og:url" content="https://myfeeds.site/articles/affiliate-shop-wordpress/">
-<meta property="article:author" content="MyFeeds">
 <meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:title" content="How to Build an Affiliate Shop on WordPress (Without WooCommerce) | MyFeeds">
-<meta name="twitter:description" content="A real storefront on your own domain, stocked from your affiliate feeds and kept current on its own. How that compares to WooCommerce and the affiliate shop plugins, and what running one costs you in time.">
+<meta name="twitter:url" content="https://myfeeds.site/articles/affiliate-shop-wordpress/">
+<meta name="twitter:title" content="Affiliate shop on WordPress: do you need one, and how to build it">
+<meta name="twitter:description" content="A five-question test, four ways to build an affiliate shop on WordPress, with or without WooCommerce, and how to keep its prices right.">
 <meta name="twitter:image" content="https://myfeeds.site/assets/og-image.png">
 <link rel="icon" type="image/png" href="/favicon.png">
 <link rel="icon" type="image/x-icon" href="/favicon.ico">
 <link rel="apple-touch-icon" href="/apple-touch-icon.png">
-<link rel="stylesheet" href="/assets/fonts.css">
-<link rel="stylesheet" href="/assets/article.css">
+<link rel="preload" href="/assets/fonts/bricolage-latin.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="stylesheet" href="/assets/site.css">
+<script>
+/* Motion gate, before first paint. Nothing on this page waits for script:
+   without "mo" (no JS, reduced motion) there are simply no transitions. */
+!function(d){d.classList.add('js');try{if(matchMedia('(prefers-reduced-motion: no-preference)').matches)d.classList.add('mo')}catch(e){}}(document.documentElement);
+</script>
+<style>
+/* Only on this page. The four-way comparison has its options as rows: our own
+   row is tinted, and below 900px each row becomes a block with labelled lines
+   instead of a table with five narrow columns. */
+.cmp tr.asw-own>*{background:var(--tint)}
+.cmp tr.asw-own>th{padding-left:14px}
+.cmp.asw-stack tbody th small{display:block;margin-top:3px;font:400 13.5px/1.4 var(--sans);letter-spacing:0;color:var(--fg-3)}
+@media (max-width:899px){
+  .cmp.asw-stack{display:block;min-width:0}
+  .cmp.asw-stack thead{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0)}
+  .cmp.asw-stack tbody,.cmp.asw-stack tr{display:block}
+  .cmp.asw-stack tr{padding:16px 0 18px;border-bottom:1px solid var(--rule)}
+  .cmp.asw-stack tbody th,.cmp.asw-stack td{display:block;position:static;width:auto;min-width:0;padding:0;border:0;box-shadow:none;background:none}
+  .cmp.asw-stack tbody th{font:800 1.2rem/1.15 var(--display);letter-spacing:-.015em}
+  .cmp.asw-stack td{margin-top:10px}
+  .cmp.asw-stack td::before{content:attr(data-l);display:block;margin-bottom:1px;font-size:12px;font-weight:600;letter-spacing:.07em;text-transform:uppercase;color:var(--fg-3)}
+  .cmp.asw-stack tr.asw-own{background:var(--tint);margin-inline:calc(-1 * var(--gut));padding-inline:var(--gut)}
+}
+/* on a tablet the labelled lines of a row sit in two columns */
+@media (min-width:600px) and (max-width:899px){
+  .cmp.asw-stack tr{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));column-gap:28px}
+  .cmp.asw-stack tbody th{grid-column:1/-1}
+}
+/* the comparison runs the full width of the band; what follows it sits below */
+.asw-after{margin-top:40px}
+</style>
+<!--JSONLD-->
+<script type="application/ld+json">
+{
+ "@context": "https://schema.org",
+ "@type": "Article",
+ "headline": "Affiliate shop on WordPress: do you need one, and how to build it",
+ "description": "For bloggers who recommend other shops' products: a five-question test, four ways to build an affiliate shop on WordPress, and how to keep its prices right.",
+ "mainEntityOfPage": "https://myfeeds.site/articles/affiliate-shop-wordpress/",
+ "image": "https://myfeeds.site/assets/og-image.png",
+ "inLanguage": "en",
+ "author": {
+  "@type": "Organization",
+  "name": "MyFeeds",
+  "url": "https://myfeeds.site/"
+ },
+ "publisher": {
+  "@type": "Organization",
+  "name": "MyFeeds",
+  "url": "https://myfeeds.site/",
+  "logo": {
+   "@type": "ImageObject",
+   "url": "https://myfeeds.site/logo.png"
+  }
+ }
+}
+</script>
+<script type="application/ld+json">
+{
+ "@context": "https://schema.org",
+ "@type": "FAQPage",
+ "mainEntity": [
+  {
+   "@type": "Question",
+   "name": "Can readers buy without leaving my site?",
+   "acceptedAnswer": {
+    "@type": "Answer",
+    "text": "No. The purchase happens at the shop you link to, and the click that takes the reader there is what credits the sale to you."
+   }
+  },
+  {
+   "@type": "Question",
+   "name": "Can I copy product pictures and prices from Amazon?",
+   "acceptedAnswer": {
+    "@type": "Answer",
+    "text": "No. Amazon's policies hand you its pictures through its API only, and forbid saving them on your server. Prices need the API or a link that Amazon serves, so a price you type yourself is out."
+   }
+  },
+  {
+   "@type": "Question",
+   "name": "How many products can I import?",
+   "acceptedAnswer": {
+    "@type": "Answer",
+    "text": "None of the sources we read names a fixed limit. Your hosting sets one, and long before that, the number of products you can honestly vouch for."
+   }
+  },
+  {
+   "@type": "Question",
+   "name": "Can one page mix products from several shops and networks?",
+   "acceptedAnswer": {
+    "@type": "Answer",
+    "text": "Yes. Every product keeps its own affiliate link, so each sale is credited through the right network."
+   }
+  }
+ ]
+}
+</script>
+<!--/JSONLD-->
 </head>
-<body>
-<nav><div class="container">
-  <a href="/" class="nav-logo"><img src="/logo.png" alt="MyFeeds"><span>MyFeeds</span></a>
-  <button class="hamburger" id="hamburger-btn" aria-label="Menu"><svg viewBox="0 0 24 24"><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="18" x2="21" y2="18"/></svg></button>
-  <div class="nav-links">
-    <a href="/#pricing">Pricing</a>
-    <a href="/articles/">Guides</a>
-    <a href="/ecommerce/">E-commerce</a>
-    <a href="/#pricing" class="nav-cta">Get Started</a>
+<body data-page="articles/affiliate-shop-wordpress/">
+<a class="skip" href="#main">Skip to the guide</a>
+<div class="open-top">
+  <div class="wrap">
+    <header class="top">
+      <a class="mark" href="/" translate="no" aria-label="MyFeeds home"><span><img src="/assets/home/logo-52.webp" alt="" width="22" height="22"></span>MyFeeds</a>
+      <nav class="nav" aria-label="Main">
+        <a href="/#how">How it works</a>
+        <a href="/#pricing" data-cta="nav-pricing">Pricing</a>
+        <a href="/ecommerce/">E-commerce</a>
+        <a href="/networks/">Networks</a>
+        <a href="/articles/" aria-current="page">Guides</a>
+        <a href="/install/">Install</a>
+        <a href="/#faq">FAQ</a>
+      </nav>
+      <div class="top-r">
+        <button type="button" class="menu-btn" id="menu-btn" aria-expanded="false" aria-controls="menu"><i aria-hidden="true"></i>Menu</button>
+        <a class="cta cta-sm" data-cta="header" href="/#pricing">Get started</a>
+      </div>
+      <div class="menu" id="menu" hidden>
+        <a href="/#how">How it works</a>
+        <a href="/#pricing">Plans and prices</a>
+        <a href="/ecommerce/">E-commerce</a>
+        <a href="/networks/">Affiliate networks</a>
+        <a href="/articles/" aria-current="page">Guides</a>
+        <a href="/install/">Install guide</a>
+        <a href="/#faq">Questions</a>
+      </div>
+    </header>
   </div>
-</div></nav>
-<article>
-  <header class="article-header">
-    <div class="article-eyebrow"><span class="dot"></span> Guide</div>
-    <h1>How to build an affiliate shop on WordPress, without WooCommerce</h1>
-  </header>
-  <div class="article-body">
-    <p>An affiliate shop is a storefront on your own domain that sells nothing. Visitors browse categories, filter by brand, colour and price, sort by what is cheapest or most discounted, and land on a product page &mdash; and then the Buy button hands them to the merchant, with your tracking link attached. You never hold stock, take a payment, or post a parcel.</p>
+</div>
 
-    <p>It is a good business precisely because the hard parts of retail are somebody else's. The catch is that the easy parts are not free either, and that is where most affiliate shops quietly die.</p>
+<main id="main">
+<div class="open">
+  <div class="wrap">
+    <section class="hero long" aria-labelledby="h-hero">
+      <div>
+        <p class="eyebrow"><a href="/articles/">Guides</a> · Affiliate shops</p>
+        <h1 id="h-hero">Affiliate shop on WordPress: do you need one?</h1>
+        <p class="lede">An affiliate shop is a page on your blog where readers browse the products you recommend and buy them at the shops you link to. You need one when readers come to browse, and you can start small: 50 products you already write about, with or without WooCommerce.</p>
+        <p class="facts"><span>12 minute read</span><span>For affiliates, not for running your own programme</span><span>Sources at the end</span></p>
+      </div>
 
-    <h2>Where MyFeeds differs from WooCommerce and the shop plugins</h2>
+      <nav class="pinned" aria-labelledby="ov-k">
+        <p class="ov-k" id="ov-k"><span>In this guide</span><span>9 parts</span></p>
+        <ol class="ov">
+          <li><a href="#what"><span class="n" aria-hidden="true">1</span><span class="ov-t">What an affiliate shop is</span></a></li>
+          <li><a href="#need"><span class="n" aria-hidden="true">2</span><span class="ov-t">Do you need one at all?</span></a></li>
+          <li><a href="#ways"><span class="n" aria-hidden="true">3</span><span class="ov-t">Four ways to build it</span></a></li>
+          <li><a href="#fill"><span class="n" aria-hidden="true">4</span><span class="ov-t">Getting the products in</span></a></li>
+          <li><a href="#google"><span class="n" aria-hidden="true">5</span><span class="ov-t">What Google makes of it</span></a></li>
+          <li><a href="#upkeep"><span class="n" aria-hidden="true">6</span><span class="ov-t">Who keeps the prices right</span></a></li>
+          <li><a href="#rules"><span class="n" aria-hidden="true">7</span><span class="ov-t">The rules to follow</span></a></li>
+          <li><a href="#start"><span class="n" aria-hidden="true">8</span><span class="ov-t">Start with 50 and measure</span></a></li>
+          <li><a href="#route"><span class="n" aria-hidden="true">9</span><span class="ov-t">Pick your route</span></a></li>
+        </ol>
+        <p class="ov-x"><a class="more" href="#questions">Questions people ask</a><a class="more" href="#next">Where to go next</a></p>
+      </nav>
+    </section>
+  </div>
+</div>
 
-    <p>WooCommerce is a genuinely excellent piece of software, and if you were selling your own products it would be the right answer without much thought. It takes payments, tracks stock, calculates tax and shipping, handles refunds and prints invoices. Millions of real shops run on it.</p>
+<section class="band board" id="short" aria-labelledby="h-short">
+  <div class="wrap split">
+    <div>
+      <div class="head">
+        <h2 id="h-short">The short answer</h2>
+        <p>In case that is all you came for.</p>
+      </div>
+      <div class="prose">
+        <p>Yes, if readers come to you to browse: for ideas, for what is new, for everything you recommend in one place.</p>
+        <p>If they arrive at one post, read it and click, product cards inside that post do the job with far less work.</p>
+      </div>
+    </div>
+    <div class="sheet">
+      <p class="k">In short</p>
+      <ul>
+        <li><b>You can start with 50 products.</b> <span>The ones you already recommend, in a few categories.</span></li>
+        <li><b>You do not need WooCommerce.</b> <span>It is one of four ways, compared in part 3.</span></li>
+        <li><b>Filling the shop is the smaller job.</b> <span>Prices, stock and links have to stay right for as long as the page is up.</span></li>
+        <li><b>Affiliate links do not make a site spam.</b> <span>Google's spam policies name pages that copy a shop's descriptions and add nothing of their own.</span></li>
+      </ul>
+    </div>
+  </div>
+</section>
 
-    <p>An affiliate shop needs almost none of that. You are not taking payment, holding stock or shipping anything &mdash; the merchant does all of it. What you need is the catalogue, and the catalogue is the one part WooCommerce expects you to supply. Every product becomes a post you create by hand: title, description, image upload, price typed in, affiliate link into a custom field. Three minutes each if you are quick, so four hundred products is around twenty hours before a single visitor arrives. And when the merchant changes a price, nothing in your shop knows.</p>
+<section class="band paper" id="what" aria-labelledby="h-what">
+  <div class="wrap chap">
+    <div class="head">
+      <p class="kick">Part 1 of 9</p>
+      <h2 id="h-what">What is an affiliate shop, and what is it not?</h2>
+      <p>It looks like a shop. The selling happens somewhere else.</p>
+    </div>
+    <div class="col">
+      <div class="prose">
+        <p>To a reader it looks like any online shop: categories, a search box, filters, products with picture and price. The difference is the last step. A click on a product opens the shop that sells it, through your affiliate link.</p>
+      </div>
 
-    <p>The plugins built specifically for affiliate shops &mdash; Shop Page WP and others &mdash; are a better fit than WooCommerce for exactly this reason. They skip the checkout machinery you will never switch on, they are lighter, and they set up in minutes. If you want a small, hand-picked shop page, they do that job well and cost nothing.</p>
+      <figure>
+        <div class="browser">
+          <div class="bbar" aria-hidden="true"><i></i><i></i><i></i><span>yourblog.com/shop</span></div>
+          <picture>
+            <source media="(min-width:700px)" srcset="/assets/home/shop-desktop-800.webp 800w, /assets/home/shop-desktop-1400.webp 1400w" sizes="(min-width:1000px) 760px, calc(100vw - 32px)" width="1400" height="691">
+            <img src="/assets/home/shop-mobile-569.webp" width="569" height="734" loading="lazy" alt="An affiliate shop page: categories and filters to narrow things down, and a grid of products, each with its brand, name, price and the shop that sells it.">
+          </picture>
+        </div>
+        <figcaption>A shop page made with MyFeeds, the plugin we make. Clothing in this example; a garden blog would show tools and seeds.</figcaption>
+      </figure>
 
-    <p>What they share with WooCommerce is where the catalogue comes from: you. They give you a good place to put products; putting them there, and keeping them right, stays manual.</p>
+      <figure>
+        <div class="viz">
+          <p class="k">Who does what</p>
+          <ol class="flow" aria-label="Who does what when a reader buys through an affiliate shop">
+            <li><b>Your reader</b><span>browses your shop page and clicks a product.</span></li>
+            <li><b>The shop you link to</b><span>takes the payment, sends the parcel and deals with returns.</span></li>
+            <li class="dest"><b>You</b><span>are paid a commission on the sale.</span></li>
+          </ol>
+        </div>
+        <figcaption>You hold no stock and set no prices.</figcaption>
+      </figure>
 
-    <p>That is the line MyFeeds sits on the other side of. Not "shop software, but better" &mdash; a different starting point. Your affiliate network already maintains the catalogue, so the shop is stocked from the feed instead of from your keyboard, and the same connection that fills it keeps it correct afterwards.</p>
+      <div class="prose">
+        <p class="note"><b>Two things share this name.</b> An “affiliate store” can also mean a shop that pays other people a commission for selling its products. That takes different software. In this guide, you recommend and another shop sells.</p>
+      </div>
+    </div>
+  </div>
+</section>
 
-    <ul>
-      <li><strong>Stocking it:</strong> WooCommerce and the shop plugins &mdash; you enter each product. MyFeeds &mdash; the feed brings all of them, and you choose which to show.</li>
-      <li><strong>Prices:</strong> manual, until you notice they are wrong. MyFeeds &mdash; re-read from the merchant every night.</li>
-      <li><strong>Sold out:</strong> you find out from a reader. MyFeeds &mdash; marked from the feed's stock field.</li>
-      <li><strong>New arrivals:</strong> another evening of typing. MyFeeds &mdash; they appear on their own, waiting for your approval.</li>
-      <li><strong>Setup for 400 products:</strong> about twenty hours. MyFeeds &mdash; an afternoon, most of it deciding your categories.</li>
-    </ul>
+<section class="band board" id="need" aria-labelledby="h-need">
+  <div class="wrap chap">
+    <div class="head">
+      <p class="kick">Part 2 of 9</p>
+      <h2 id="h-need">Do you need a shop at all?</h2>
+      <p>Five questions and a rule of thumb.</p>
+    </div>
+    <div class="col">
+      <div class="prose">
+        <p>People open a post to read it. They open a shop page to look around. So the test is whether your readers would come to browse.</p>
+      </div>
 
-    <p>None of that makes WooCommerce a bad plugin. It makes it a plugin for a different job.</p>
+      <fieldset class="check">
+        <legend class="k">Tick what is true for you</legend>
+        <ul>
+          <li><label><input type="checkbox"><span>Readers come to you for ideas, and would look through a whole category.</span></label></li>
+          <li><label><input type="checkbox"><span>You recommend more products than your posts can show.</span></label></li>
+          <li><label><input type="checkbox"><span>Readers come back to see what is new.</span></label></li>
+          <li><label><input type="checkbox"><span>You send people from Pinterest, Instagram or email, and want one place for all your picks.</span></label></li>
+          <li><label><input type="checkbox"><span>A visitor who lands there with no article to read would find enough to keep clicking.</span></label></li>
+        </ul>
+        <p class="cap">The ticks are only for you. Nothing is saved.</p>
+      </fieldset>
 
-    <h2>The part nobody costs in: maintenance</h2>
+      <div class="duo">
+        <div class="card">
+          <span class="k">Three ticks or more</span>
+          <h3>A shop fits</h3>
+          <p>A follower taps the link in your profile, opens a category and finds everything you would pick.</p>
+        </div>
+        <div class="card">
+          <span class="k">Two or fewer</span>
+          <h3>Cards in your posts are enough</h3>
+          <p>If readers arrive at a handful of posts, read and click, show the products inside those posts. <a href="/articles/import-product-feed-wordpress/">The feed guide</a> shows how. Add a shop the day readers ask where to find everything.</p>
+        </div>
+      </div>
 
-    <p>A manually built affiliate shop is not a project you finish. It is a subscription you pay in evenings.</p>
+      <div class="prose">
+        <h3>Does a shop earn more than posts?</h3>
+        <p>We found no independent comparison of the two. The figures in circulation come from companies that sell shop software, so start small and let your own readers decide.</p>
+      </div>
+    </div>
+  </div>
+</section>
 
-    <ul>
-      <li>Prices drift. A merchant discounts on Friday and your shop quotes last month's price until you notice.</li>
-      <li>Products sell out. Your Buy button still says Buy, and the reader who clicks it lands on a sold-out page and leaves.</li>
-      <li>Merchants leave the network. Their links stop paying &mdash; not break, just stop paying &mdash; and nothing about the page looks different.</li>
-      <li>New products appear. Your competitor's shop has this season's range; yours has last season's, because adding it is another twenty hours.</li>
-    </ul>
-
-    <p>At 50 products you can stay on top of it. At 400 you cannot, and the shop starts to age in public. This is the actual reason most affiliate storefronts look abandoned: not that the owner lost interest, but that keeping it current was a second job nobody quoted them for.</p>
-
-    <h2>What the feed actually gives you</h2>
-
-    <p>The file your network publishes is not a one-off export. It holds every product the merchant sells, with the current price, the current stock status, the image and your tracking link &mdash; and the merchant regenerates it daily, because their own systems depend on it being right.</p>
-
-    <p>So the shop can be built the other way round: instead of you entering products, the feed stocks it, and keeps stocking it.</p>
-
-    <p>That is what <a href="/ecommerce/?utm_source=article&amp;utm_medium=guide&amp;utm_campaign=affiliate-shop">MyFeeds E-commerce</a> does. You connect your feeds once and get a storefront on your own domain &mdash; categories, filters for brand, colour, size and price, sorting including biggest discount, product pages, and a search that reads your whole catalogue. From then on:</p>
-
-    <ul>
-      <li>Prices update every night, across the whole shop, without being asked.</li>
-      <li>Products that sell out are marked as such; products that leave the feed leave the shop.</li>
-      <li>New products from your merchants arrive on their own.</li>
-      <li>Every outbound click carries your tracking link, and clicks are counted so you can see what your shop actually sells.</li>
-    </ul>
-
-    <p>The work you keep is the work that is genuinely yours: deciding what categories your shop should have, and which products belong in them. You name the sections &mdash; Men, Women, Shoes &mdash; and either place products yourself or let the plugin propose them by keyword, brand and feed for you to tick off. Nothing is filed automatically unless you switch rules on, and even then the matches wait for your approval.</p>
-
-    <blockquote>The distinction that matters: automate the maintenance, not the curation. What to sell is a judgement call and should stay yours. Whether the price is right today is not a judgement call, and you should never have to think about it.</blockquote>
-
-    <h2>What it takes to set up</h2>
-
-    <ol>
-      <li><strong>Get your feed URLs.</strong> One per merchant, from your affiliate network's product feed section. Covered step by step in <a href="/articles/import-product-feed-wordpress/">the feed import guide</a>.</li>
-      <li><strong>Import them.</strong> Each feed takes a few minutes and runs in the background. A large merchant can bring 40,000 products in one go.</li>
-      <li><strong>Name your categories.</strong> The tree your shop will have. Ten minutes of thinking, and you can change it later &mdash; renamed categories keep their old URLs working with a redirect.</li>
-      <li><strong>Fill them.</strong> Search your catalogue and tick what belongs, or let the plugin propose matches and approve the ones that fit.</li>
-      <li><strong>Pick where it lives.</strong> The storefront gets a path on your own domain, <code>/shop/</code> by default, and inherits your theme's typography unless you style it in the design editor.</li>
-    </ol>
-
-    <p>An afternoon, rather than the twenty hours &mdash; and, more to the point, no recurring evenings afterwards.</p>
-
-    <h2>Is a shop the right move at all?</h2>
-
-    <p>Not always, and it is worth being clear about that before you build one.</p>
-
-    <p>If your traffic comes from a handful of well-ranked review posts, a shop probably will not add much. Your readers arrive at an article, read it, and click. Product cards inside those posts serve them better than a storefront they never visit, and that needs no shop at all.</p>
-
-    <p>A shop earns its keep when people arrive wanting to browse rather than to read: a niche where the selection itself is the reason to visit, an audience that comes back for what is new, or a social following you send somewhere other than a blog post. Then a storefront gives them somewhere to go that a list of articles cannot.</p>
-
-    <div class="callout-shop">
-      <p><strong>The honest test:</strong> would a visitor who lands on your shop page, with no article to read, find enough there to keep clicking? If yes, build it. If not, put the products in your posts first and build the shop when the audience asks for one.</p>
+<section class="band paper" id="ways" aria-labelledby="h-ways">
+  <div class="wrap">
+    <div class="head">
+      <p class="kick">Part 3 of 9</p>
+      <h2 id="h-ways">Do you need WooCommerce? <span class="tone">It is one of four ways.</span></h2>
+      <p>WooCommerce can list products that another shop sells. Three other ways do without it.</p>
     </div>
 
-    <h2>What it costs</h2>
+    <div>
+      <div class="cmp-wrap" tabindex="0" role="region" aria-labelledby="cap-ways">
+        <table class="cmp asw-stack">
+          <caption class="vh" id="cap-ways">Four ways to show affiliate products on a WordPress site, compared</caption>
+          <thead>
+            <tr><th scope="col">The way</th><th scope="col">Best for</th><th scope="col">What it costs</th><th scope="col">Who keeps prices right</th><th scope="col">Where it stops</th></tr>
+          </thead>
+          <tbody>
+            <tr>
+              <th scope="row">Product cards in posts, no shop</th>
+              <td data-l="Best for">Readers who arrive at single posts</td>
+              <td data-l="What it costs">Nothing by hand, or a plugin for cards</td>
+              <td data-l="Who keeps prices right">You, or a card plugin that reads the shop's feed again</td>
+              <td data-l="Where it stops">Nothing to browse</td>
+            </tr>
+            <tr>
+              <th scope="row">A shop page plugin <small>such as Shop Page WP</small></th>
+              <td data-l="Best for">A few dozen hand-picked products, with any affiliate link, Amazon included</td>
+              <td data-l="What it costs">Free on WordPress.org</td>
+              <td data-l="Who keeps prices right">Nobody has to: it has no price field. The links are yours to check</td>
+              <td data-l="Where it stops">Every product is added by hand</td>
+            </tr>
+            <tr>
+              <th scope="row">WooCommerce with external products</th>
+              <td data-l="Best for">Sites that already run WooCommerce, or want its themes and add-ons</td>
+              <td data-l="What it costs">WooCommerce is free. A paid service that fills and updates it, such as Datafeedr, lists $49 to $249 a month</td>
+              <td data-l="Who keeps prices right">You, each time you run its importer again. A paid service, on a schedule</td>
+              <td data-l="Where it stops">A cart and a checkout you will not use, and a page for each product to look after (part 5)</td>
+            </tr>
+            <tr class="asw-own">
+              <th scope="row">A shop built from the shops' feeds <small>MyFeeds E-commerce, our own plugin</small></th>
+              <td data-l="Best for">Hundreds of products from shops that share a product feed</td>
+              <td data-l="What it costs">$49 a month after a 14-day free trial. The checkout asks for a card or PayPal</td>
+              <td data-l="Who keeps prices right">The plugin, every night, for feeds that came as a link. An uploaded file stays as it was</td>
+              <td data-l="Where it stops">Needs each shop's product feed, so no Amazon products on the shop page. A click opens the shop: your site has no page for each product. Sizes are not among its filters. You sort products into categories yourself</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+      <p class="cap">Prices as each provider listed them in October 2026.</p>
+    </div>
 
-    <p>WooCommerce and the affiliate shop plugins are free, and so is the hosting you already pay for. The cost there is your time &mdash; once to build, and then a little every month to keep it honest.</p>
+    <div class="side asw-after">
+      <div class="prose">
+        <h3>If you take the WooCommerce way</h3>
+        <p>WooCommerce has a product type for this, called <span class="ui">External/Affiliate product</span>. Its button leads to the shop that sells the product.</p>
+        <p>The importer under <span class="ui">Products</span>, <span class="ui">All Products</span>, <span class="ui">Import</span> creates such products from a CSV file. Run it again with <span class="ui">Update existing products</span> ticked and it overwrites the rows it finds by ID or SKU, so give every product an SKU.</p>
+      </div>
+      <div class="aside">
+        <p class="note"><b>Check any plugin before you build on it.</b> Its WordPress.org page shows when it was last updated and whether support questions get answers.</p>
+      </div>
+    </div>
+  </div>
+</section>
 
-    <p>MyFeeds E-commerce is $49 a month for one site, and spends money instead of time. Which way round suits you depends on how many products you carry and what an evening is worth to you. Under fifty hand-picked products, the free route is perfectly reasonable and you should take it. At four hundred, the monthly upkeep is the larger bill.</p>
+<section class="band board" id="fill" aria-labelledby="h-fill">
+  <div class="wrap chap">
+    <div class="head">
+      <p class="kick">Part 4 of 9</p>
+      <h2 id="h-fill">How do 400 products get in without typing them?</h2>
+      <p>From the shops' own product lists, in four steps.</p>
+    </div>
+    <div class="col">
+      <div class="prose">
+        <p>A shop you're an affiliate for keeps a list of everything it sells: name, price, picture, stock and your affiliate link for each product. That is its product feed, and your affiliate network passes it on as a link or a file. Not every shop offers one.</p>
+      </div>
+
+      <ol class="sub">
+        <li>
+          <h3>Get each shop's product feed</h3>
+          <p>Take the link if there is one. A link can be read again later, and a file stays as it was. <a href="/articles/import-product-feed-wordpress/">The feed guide</a> shows where each network keeps it.</p>
+        </li>
+        <li>
+          <h3>Give it to the tool from part 3</h3>
+          <p>A feed plugin takes the link or the file. WooCommerce's importer takes a CSV file in which <code>Type</code> says <code>external</code>, <code>External URL</code> holds your affiliate link and <code>Button text</code> the words on the button.</p>
+          <p>A feed plugin's import only fills a list to choose from. Nothing shows until you put products on a page.</p>
+        </li>
+        <li>
+          <h3>Name your categories</h3>
+          <p>Use the words a reader would look for. Clothing in this example: Jackets, Shoes, Bags. A garden blog would say Tools, Seeds, Pots.</p>
+        </li>
+        <li>
+          <h3>Choose what goes in</h3>
+          <p>A feed holds the shop's whole range. Start with the products your posts already link to, then add only what you would recommend.</p>
+        </li>
+      </ol>
+
+      <div class="prose">
+        <p class="note"><b>Amazon is the exception.</b> It hands out a product feed only with written approval. Its product data comes through the Creators API, open to associates with ten qualifying sales in the past 30 days (as of October 2026).</p>
+      </div>
+    </div>
   </div>
-  <div class="cta-block">
-    <h3>See what an automated storefront looks like</h3>
-    <a href="/ecommerce/?utm_source=article&amp;utm_medium=guide&amp;utm_campaign=affiliate-shop-cta">MyFeeds E-commerce &mdash; features, screenshots and pricing &rarr;</a>
-    <a href="https://wordpress.org/plugins/myfeeds-affiliate-feed-manager/" target="_blank" rel="noopener">Start free with product cards in your posts &rarr;</a>
+</section>
+
+<section class="band ink" id="google" aria-labelledby="h-google">
+  <div class="wrap">
+    <div class="head">
+      <p class="kick">Part 5 of 9</p>
+      <h2 id="h-google">Will Google punish a shop built from a feed? <span class="tone">That depends on what you add.</span></h2>
+    </div>
+    <div class="col">
+      <div class="side">
+        <div class="prose">
+          <p><a href="https://developers.google.com/search/docs/essentials/spam-policies" rel="noopener">Google's spam policies</a>, last updated in August 2026, name two things a feed makes easy.</p>
+          <ul>
+            <li><strong>Thin affiliation.</strong> Pages with affiliate links where descriptions and reviews are copied from the shop and nothing of your own is added.</li>
+            <li><strong>Scaled content abuse.</strong> Many pages made mainly to rank. One of Google's examples: pages generated from feeds in bulk, with little on them for the reader.</li>
+          </ul>
+          <p>The same page says that not every site in an affiliate programme is thin.</p>
+        </div>
+        <div class="aside">
+          <div class="card">
+            <span class="k">Google's examples, in our words</span>
+            <h3>What a good affiliate site adds</h3>
+            <ul class="yn">
+              <li class="y">Its own product reviews.</li>
+              <li class="y">Testing and ratings.</li>
+              <li class="y">Product comparisons.</li>
+              <li class="y">Extra information about prices.</li>
+              <li class="y">A way to browse products or categories.</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+
+      <div class="prose">
+        <p>A shop that helps readers browse by category is on that list. A thousand pages that each repeat one row of a feed are what the two policies describe.</p>
+        <p>After Google's spam update of August 2026, the consultant Glenn Gabe described an Amazon affiliate site built entirely from Amazon's product data. By his count, it lost its place for more than 14,000 search terms.</p>
+        <h3>What belongs in Google's index?</h3>
+        <p>Our suggestion, by kind of page. Where Google has advice of its own, the row says so.</p>
+      </div>
+
+      <div>
+        <div class="cmp-wrap" tabindex="0" role="region" aria-labelledby="cap-pages">
+          <table class="cmp slim txt">
+            <caption class="vh" id="cap-pages">Kinds of page in an affiliate shop, and whether to let Google index them</caption>
+            <thead>
+              <tr><th scope="col">Kind of page</th><th scope="col">What we would do</th></tr>
+            </thead>
+            <tbody>
+              <tr><th scope="row">Shop front, categories and hand-picked collections</th><td><b>Index.</b> Add a few sentences of your own: what is in here, how you chose it.</td></tr>
+              <tr><th scope="row">Page 2 and onward of a category</th><td><b>Leave open.</b> <a href="https://developers.google.com/search/docs/specialty/ecommerce/pagination-and-incremental-page-loading" rel="noopener">Google's advice</a>: each page keeps its own address and is not pointed back at page 1.</td></tr>
+              <tr><th scope="row">Filtered, sorted and search views</th><td><b>Keep out.</b> The same products in endless combinations. Google names two ways: a noindex tag, or a robots.txt rule.</td></tr>
+              <tr><th scope="row">One page for each product, with the shop's description</th><td><b>Noindex, or go without.</b> This is the page the thin affiliation wording describes.</td></tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+
+      <div class="prose">
+        <p class="note"><b>One way for each page, not both.</b> A noindex tag belongs in the head of the page, and Google reads it only if it may crawl that page. Block the page in robots.txt and the tag is never seen.</p>
+        <p>Nobody can promise how Google rates a single page. What you control is whether your category page says something the shop's own page does not.</p>
+      </div>
+    </div>
   </div>
-  <a href="/articles/" class="article-back-link">&larr; All guides</a>
-</article>
-<footer><div class="container">
-  <div class="footer-brand"><img src="/logo.png" alt="">MyFeeds</div>
-  <p class="footer-tag">Affiliate product feeds for WordPress</p>
-  <div class="footer-links">
-    <a href="/">Home</a>
-    <a href="/ecommerce/">E-commerce</a>
-    <a href="/install/">Install Guide</a>
-    <a href="/networks/">Affiliate Networks</a>
-    <a href="/articles/">Guides</a>
-    <a href="/affiliates/">Become an Affiliate</a>
-    <a href="/imprint/">Imprint</a>
-    <a href="/privacy/">Privacy Policy</a>
-    <a href="/terms/">Terms of Service</a>
-    <a href="/refund/">Refund Policy</a>
+</section>
+
+<section class="band paper" id="upkeep" aria-labelledby="h-upkeep">
+  <div class="wrap chap">
+    <div class="head">
+      <p class="kick">Part 6 of 9</p>
+      <h2 id="h-upkeep">Who keeps the prices right after launch?</h2>
+      <p>A page with prices can be wrong in a way a text link cannot.</p>
+    </div>
+    <div class="col">
+      <div class="prose">
+        <p>The shops you link to change prices, sell out and add products all the time. AWIN, one of the large networks, says its shops often update their feeds several times a day.</p>
+        <p>Your page only follows if the feed is read again: by you, each time you repeat an import, or by a tool on a schedule. The table in <a href="#ways">part 3</a> says which.</p>
+      </div>
+
+      <figure>
+        <div class="viz">
+          <p class="k">Six months of a shop page nobody updates</p>
+          <ol class="flow" aria-label="What can happen to an affiliate shop page over six months without upkeep">
+            <li><b>Week 1</b><span>A shop starts a sale. Your page shows last week's price.</span></li>
+            <li><b>Month 1</b><span>A product sells out. Your page still offers it.</span></li>
+            <li><b>Month 3</b><span>The new season is in the shops. Your page shows the old one.</span></li>
+            <li class="dest"><b>Month 6</b><span>A shop ends its affiliate programme. Its links earn nothing.</span></li>
+          </ol>
+        </div>
+        <figcaption>An example, not a measurement.</figcaption>
+      </figure>
+
+      <div class="prose">
+        <blockquote class="pull">What to recommend is your judgement. Whether today's price is right should not be your job.</blockquote>
+        <p>WordPress looks for due tasks only when somebody loads a page, so on a quiet site a nightly update can run late. If that matters, ask your host for a server cron job, which runs them on a timer.</p>
+      </div>
+
+      <fieldset class="check">
+        <legend class="k">Once a month</legend>
+        <ul>
+          <li><label><input type="checkbox"><span>Click five products. Does each land on the right product, in stock, at the price your page shows?</span></label></li>
+          <li><label><input type="checkbox"><span>Look at when each feed or import last ran.</span></label></li>
+          <li><label><input type="checkbox"><span>In your affiliate network, check that every shop's programme still runs.</span></label></li>
+          <li><label><input type="checkbox"><span>Take out what is gone. Add what is new and worth recommending.</span></label></li>
+        </ul>
+      </fieldset>
+
+      <div class="prose">
+        <p>What a dead link costs, and how to find one: <a href="/articles/why-affiliate-posts-stop-earning/">why affiliate posts stop earning</a>.</p>
+      </div>
+    </div>
   </div>
-  <div class="footer-copy">&copy; 2026 MyFeeds. All rights reserved.</div>
-</div></footer>
-<script>
-var h=document.getElementById('hamburger-btn'),n=document.querySelector('.nav-links');
-if(h){h.addEventListener('click',function(){n.classList.toggle('open')});document.addEventListener('click',function(e){if(!h.contains(e.target)&&!n.contains(e.target))n.classList.remove('open')})}
-</script>
+</section>
+
+<section class="band board" id="rules" aria-labelledby="h-rules">
+  <div class="wrap chap">
+    <div class="head">
+      <p class="kick">Part 7 of 9</p>
+      <h2 id="h-rules">Are you allowed to show other shops' products?</h2>
+      <p>Yes, with four things in place. As of October 2026.</p>
+    </div>
+    <div class="col">
+      <div>
+        <div class="cmp-wrap" tabindex="0" role="region" aria-labelledby="cap-rules">
+          <table class="cmp slim txt">
+            <caption class="vh" id="cap-rules">Four rules for an affiliate shop page</caption>
+            <thead>
+              <tr><th scope="col">The rule</th><th scope="col">What to do</th></tr>
+            </thead>
+            <tbody>
+              <tr><th scope="row">Say that you earn a commission</th><td>The <a href="https://www.ftc.gov/business-guidance/resources/ftcs-endorsement-guides-what-people-are-asking" rel="noopener">US Federal Trade Commission</a> wants that clear and close to the recommendation. “Affiliate link” alone, or a “buy now” button, does not do it. Our reading for a shop page: a sentence above the products, such as “I earn a commission when you buy through the links on this page.”</td></tr>
+              <tr><th scope="row">Add Amazon's sentence</th><td>If you link to Amazon, its operating agreement asks for this, clearly and prominently: “As an Amazon Associate I earn from qualifying purchases.”</td></tr>
+              <tr><th scope="row">Mark affiliate links as paid</th><td>Google prefers <code>rel="sponsored"</code> and accepts <code>rel="nofollow"</code>. To see what your plugin sets, right-click a product link on a computer and choose <span class="ui">Inspect</span>.</td></tr>
+              <tr><th scope="row">Use pictures and prices as the programme allows</th><td>Amazon: prices only through its API or in a link Amazon serves. Pictures through the API, never saved on your server. Other shops: each programme's terms decide. We could not confirm one rule that covers them all.</td></tr>
+            </tbody>
+          </table>
+        </div>
+        <p class="cap">Outside the US, check your own regulator.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="band paper" id="start" aria-labelledby="h-start">
+  <div class="wrap chap">
+    <div class="head">
+      <p class="kick">Part 8 of 9</p>
+      <h2 id="h-start">How do you start, and how do you know it works?</h2>
+      <p>With 50 products and four weeks.</p>
+    </div>
+    <div class="col">
+      <ol class="sub">
+        <li>
+          <h3>Week 1: choose 50 products</h3>
+          <p>Take the ones you already recommend and sort them into three to five categories. Write two or three sentences of your own for each category.</p>
+        </li>
+        <li>
+          <h3>Week 2: publish and link it</h3>
+          <p>Put the shop page in your menu and the commission sentence above the products. Link to it from your most-read posts.</p>
+        </li>
+        <li>
+          <h3>Week 3: send readers there</h3>
+          <p>One email, a few pins, the link in your profile. Do not wait for search to find the page.</p>
+        </li>
+        <li>
+          <h3>Week 4: read three numbers</h3>
+          <p>Visits to the shop page, from your analytics. Clicks and commission for each shop, from your affiliate network. And in Search Console, whether your category pages are indexed or wait under <span class="ui">Crawled - currently not indexed</span>.</p>
+          <p>Your network counts posts and shop page together, so compare with the month before.</p>
+        </li>
+      </ol>
+
+      <figure class="calc">
+        <figcaption>What one month can tell you</figcaption>
+        <table>
+          <tbody>
+            <tr><th scope="row">Visits to the shop page</th><td>600</td></tr>
+            <tr><th scope="row">Clicks at your shops <span>more than the month before</span></th><td>90</td></tr>
+            <tr><th scope="row">Commission <span>more than the month before</span></th><td>$18.00</td></tr>
+          </tbody>
+          <tfoot><tr><th scope="row">Commission for each extra click</th><td>$0.20</td></tr></tfoot>
+        </table>
+        <p class="cap">An example, not a measurement. Put in your own numbers.</p>
+      </figure>
+
+      <div class="prose">
+        <h3>Then decide</h3>
+        <p>If readers visit, click and come back, add the next 50. If almost nobody visits, your readers prefer posts. Keep the shop small and put your effort there.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="band board" id="route" aria-labelledby="h-route">
+  <div class="wrap chap">
+    <div class="head">
+      <p class="kick">Part 9 of 9</p>
+      <h2 id="h-route">Which route is yours?</h2>
+      <p>Go by how your readers arrive and how many products you carry.</p>
+    </div>
+    <div class="col">
+      <div class="duo">
+        <div class="card">
+          <span class="k">Readers arrive at single posts</span>
+          <h3>Stay with cards in posts</h3>
+          <p>Show the products where people already read.</p>
+        </div>
+        <div class="card">
+          <span class="k">A few dozen picks, many on Amazon</span>
+          <h3>A shop page plugin</h3>
+          <p>Free and quick. You check the links yourself.</p>
+        </div>
+        <div class="card">
+          <span class="k">You already run WooCommerce</span>
+          <h3>External products</h3>
+          <p>Import by CSV and repeat it, or pay a service to do it.</p>
+        </div>
+        <div class="card">
+          <span class="k">Hundreds of products from shops with a feed</span>
+          <h3>A shop built from feeds</h3>
+          <p>The updating runs on a schedule. You still choose what goes in.</p>
+        </div>
+      </div>
+
+      <div class="prose">
+        <p>The free routes cost you time every month, the paid ones money.</p>
+        <h3>With our own plugin, for example</h3>
+        <p>MyFeeds is the plugin we make, and its E-commerce plan is the fourth route. You name the categories and choose the products. Every night it reads the shops' feed links again and updates price, old price, stock, picture and link for the products in your shop.</p>
+        <p>A product that sells out is hidden until it is back, unless you switch that off. A product the shop has dropped is noticed by a weekly run and then leaves your shop page. Both runs follow WordPress's own schedule. The limits are in the table in <a href="#ways">part 3</a>.</p>
+      </div>
+
+      <aside class="pitch" aria-labelledby="p-mid">
+        <h3 id="p-mid">A shop on your blog, with prices that follow the shops.</h3>
+        <p>Readers browse, filter and search on your site, and buy at the shop you link to.</p>
+        <a class="cta" data-cta="mid" href="/ecommerce/">Open my shop for 14 days, free</a>
+        <p class="calm">Then $49 a month. Cancel from your dashboard before the trial ends and you pay nothing.</p>
+        <p class="calm">The checkout asks for a card or PayPal to start the trial.</p>
+      </aside>
+    </div>
+  </div>
+</section>
+
+<section class="band paper" id="questions" aria-labelledby="h-questions">
+  <div class="wrap chap">
+    <div class="head">
+      <h2 id="h-questions">Questions people ask</h2>
+      <p>From comments under shop tutorials and WordPress support forums.</p>
+    </div>
+    <div class="col">
+      <div class="qa">
+        <div>
+          <h3>Can readers buy without leaving my site?</h3>
+          <p>No. The purchase happens at the shop you link to, and the click that takes the reader there is what credits the sale to you.</p>
+        </div>
+        <div>
+          <h3>Can I copy product pictures and prices from Amazon?</h3>
+          <p>No. Amazon's policies hand you its pictures through its API only, and forbid saving them on your server. Prices need the API or a link that Amazon serves, so a price you type yourself is out.</p>
+        </div>
+      </div>
+
+      <div>
+        <h3 class="sub-h">And two shorter ones</h3>
+        <div class="faq">
+          <details name="faq">
+            <summary>How many products can I import?</summary>
+            <div class="a"><p>None of the sources we read names a fixed limit. Your hosting sets one, and long before that, the number of products you can honestly vouch for.</p></div>
+          </details>
+          <details name="faq">
+            <summary>Can one page mix products from several shops and networks?</summary>
+            <div class="a"><p>Yes. Every product keeps its own affiliate link, so each sale is credited through the right network.</p></div>
+          </details>
+        </div>
+      </div>
+
+      <details class="sources">
+        <summary>Sources (15)</summary>
+        <ol>
+          <li><a href="https://developers.google.com/search/docs/essentials/spam-policies" rel="noopener">Spam policies for Google web search, Google</a> <span>Last updated 28 August 2026. Thin affiliation, scaled content abuse, what good affiliate sites add.</span></li>
+          <li><a href="https://developers.google.com/search/docs/crawling-indexing/block-indexing" rel="noopener">Block Search indexing with noindex, Google</a> <span>Last updated 10 December 2025. The meta tag, and why robots.txt must not block the page.</span></li>
+          <li><a href="https://developers.google.com/search/docs/specialty/ecommerce/pagination-and-incremental-page-loading" rel="noopener">Pagination, incremental page loading, and their impact on Google Search, Google</a> <span>Last updated 10 December 2025. Page 2 and onward, filtered and sorted views.</span></li>
+          <li><a href="https://developers.google.com/search/docs/crawling-indexing/qualify-outbound-links" rel="noopener">Qualify your outbound links to Google, Google</a> <span>Last updated 10 December 2025. Sponsored is preferred, nofollow still accepted.</span></li>
+          <li><a href="https://support.google.com/webmasters/answer/7440203" rel="noopener">Page indexing report, Google Search Console help</a> <span>What “Crawled - currently not indexed” means.</span></li>
+          <li><a href="https://gsqi.com/marketing-blog/august-2026-google-spam-update-case-studies/" rel="noopener">Google's August 2026 spam update: case studies, Glenn Gabe, G-Squared Interactive</a> <span>31 August 2026. One consultant's reading of sites he tracks, not a statement by Google.</span></li>
+          <li><a href="https://www.ftc.gov/business-guidance/resources/ftcs-endorsement-guides-what-people-are-asking" rel="noopener">FTC's Endorsement Guides: what people are asking, US Federal Trade Commission</a> <span>Disclosing affiliate links.</span></li>
+          <li><a href="https://affiliate-program.amazon.com/help/operating/agreement" rel="noopener">Associates Program operating agreement, Amazon</a> <span>Updated 15 October 2025. The sentence in section 5.</span></li>
+          <li><a href="https://affiliate-program.amazon.com/help/operating/policies" rel="noopener">Associates Program policies, Amazon</a> <span>Updated 14 April 2026. Prices, pictures, data feeds.</span></li>
+          <li><a href="https://affiliate-program.amazon.com/creatorsapi/docs/en-us/introduction" rel="noopener">Creators API, introduction, Amazon Associates</a> <span>The ten qualifying sales.</span></li>
+          <li><a href="https://woocommerce.com/document/product-csv-importer-exporter/" rel="noopener">Product CSV importer and exporter, WooCommerce documentation</a> <span>External products, the three columns, updating existing products.</span></li>
+          <li><a href="https://wordpress.org/plugins/shop-page-wp/" rel="noopener">Shop Page WP, WordPress.org plugin page</a> <span>What a product holds, as shown in October 2026.</span></li>
+          <li><a href="https://www.datafeedr.com/" rel="noopener">Datafeedr, the provider's own site</a> <span>Its plans, as listed in October 2026.</span></li>
+          <li><a href="https://success.awin.com/articles/en_US/Knowledge/Product-Data-Feed-FAQ" rel="noopener">Product data feeds: troubleshooting and FAQs, Awin</a> <span>How often shops update their feeds.</span></li>
+          <li><a href="https://developer.wordpress.org/plugins/cron/" rel="noopener">Cron, WordPress plugin handbook</a> <span>When scheduled tasks run.</span></li>
+        </ol>
+      </details>
+    </div>
+  </div>
+</section>
+
+<section class="band vio" id="next" aria-labelledby="h-next">
+  <div class="wrap">
+    <div class="head">
+      <p class="kick">Where to go next</p>
+      <h2 id="h-next">Pick your next step.</h2>
+    </div>
+    <div class="help">
+      <a class="h" href="/articles/import-product-feed-wordpress/" data-cta="next-import"><b>Get the shops' product feeds</b><span>Where each affiliate network keeps them, and how they get into WordPress.</span><u>Read the feed guide</u></a>
+      <a class="h" href="/articles/why-affiliate-posts-stop-earning/" data-cta="next-stop-earning"><b>Keep old links earning</b><span>What price changes and sold-out products do to a page from last year.</span><u>Read the guide</u></a>
+      <a class="h" href="/articles/make-money-blogging/" data-cta="next-blogging"><b>See how a blog earns in 2026</b><span>Four ways a blog makes money, with numbers and their sources.</span><u>Read the guide</u></a>
+    </div>
+  </div>
+</section>
+
+<section class="close" id="end" aria-labelledby="h-end">
+  <div class="wrap close-in">
+    <div>
+      <h2 id="h-end">Start smaller if you like: product cards in one post.</h2>
+      <div class="go">
+        <a class="cta" data-cta="final" href="/install/">Get the free plugin</a>
+        <p class="calm">Free on WordPress.org for one shop's feed. Paid plans each start with a free trial.</p>
+        <p class="calm">Set on the shop? <a class="more" data-cta="final-shop" href="/ecommerce/">See the E-commerce plan</a>.</p>
+      </div>
+    </div>
+    <div class="myfeeds-product-grid row3" aria-hidden="true">
+      <div class="myfeeds-product-card"><div class="myfeeds-product-image"><img src="/assets/home/hoodie-heather-grey.webp" width="400" height="400" alt="" loading="lazy"></div><div class="myfeeds-product-details"><div class="myfeeds-product-brand">Halden</div><div class="myfeeds-product-title">Heavyweight Hoodie Heather Grey</div><div class="myfeeds-product-price"><span class="myfeeds-current-price">$58.00</span></div><div class="myfeeds-shipping-info">Free Shipping</div><div class="myfeeds-merchant">Northside Supply</div></div></div>
+      <div class="myfeeds-product-card"><div class="myfeeds-product-image"><div class="myfeeds-discount-badge">-20%</div><img src="/assets/home/sneaker-white-lowtop.webp" width="400" height="400" alt="" loading="lazy"></div><div class="myfeeds-product-details"><div class="myfeeds-product-brand">Arlo &amp; Finch</div><div class="myfeeds-product-title">Court Low-Top Leather White</div><div class="myfeeds-product-price"><span class="myfeeds-old-price">$110.00</span> <span class="myfeeds-current-price has-discount">$88.00</span></div><div class="myfeeds-shipping-info">Free Shipping</div><div class="myfeeds-merchant">Kicks Corner</div></div></div>
+      <div class="myfeeds-product-card"><div class="myfeeds-product-image"><img src="/assets/home/backpack-trail.webp" width="400" height="400" alt="" loading="lazy"></div><div class="myfeeds-product-details"><div class="myfeeds-product-brand">Fieldmade</div><div class="myfeeds-product-title">Trail Pack 28 L Sage</div><div class="myfeeds-product-price"><span class="myfeeds-current-price">$74.00</span></div><div class="myfeeds-shipping-info">Shipping costs may apply</div><div class="myfeeds-merchant">Basecamp Outfitters</div></div></div>
+    </div>
+  </div>
+</section>
+</main>
+
+<footer>
+  <div class="wrap">
+    <div class="brand"><b translate="no">MyFeeds</b><span>Affiliate product feeds for WordPress</span></div>
+    <nav aria-label="Site">
+      <a href="/ecommerce/">E-commerce</a>
+      <a href="/install/">Install guide</a>
+      <a href="/networks/">Affiliate networks</a>
+      <a href="/articles/">Guides</a>
+      <a href="/affiliates/">Become an affiliate</a>
+      <a href="https://wordpress.org/plugins/myfeeds-affiliate-feed-manager/" rel="noopener">Free plugin on WordPress.org</a>
+      <a href="/imprint/">Imprint</a>
+      <a href="/privacy/">Privacy</a>
+      <a href="/terms/">Terms</a>
+      <a href="/refund/">Refund policy</a>
+    </nav>
+    <span>© 2026 MyFeeds. All rights reserved.</span>
+  </div>
+</footer>
+
+<script src="/assets/site.js" defer></script>
 <script src="/assets/back-to-top.js" defer></script>
 <script src="/assets/consent.js" defer></script>
 </body>

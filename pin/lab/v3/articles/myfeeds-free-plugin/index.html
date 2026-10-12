@@ -1,0 +1,406 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="p:domain_verify" content="0f13dbb87c7b78ab08817667740c2df2"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+<title>The free MyFeeds plugin - What you get and where it stops</title>
+<meta name="description" content="What the free MyFeeds plugin for WordPress does, step by step, where it stops, and how to tell whether a paid plan would add anything for you.">
+<!-- Preview: lives under /pin/lab/v3/ until it goes live. Going live = move the file and delete the next line. -->
+<meta name="robots" content="noindex, follow">
+<link rel="canonical" href="https://myfeeds.site/articles/myfeeds-free-plugin/">
+<meta name="theme-color" content="#FC9000">
+<meta property="og:type" content="article">
+<meta property="og:site_name" content="MyFeeds">
+<meta property="og:url" content="https://myfeeds.site/articles/myfeeds-free-plugin/">
+<meta property="og:title" content="The free MyFeeds plugin - What you get and where it stops">
+<meta property="og:description" content="What the free MyFeeds plugin does, where it stops, and how to tell whether a paid plan would add anything for you.">
+<meta property="og:image" content="https://myfeeds.site/assets/og-image.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="628">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:url" content="https://myfeeds.site/articles/myfeeds-free-plugin/">
+<meta name="twitter:title" content="The free MyFeeds plugin - What you get and where it stops">
+<meta name="twitter:description" content="What the free MyFeeds plugin does, where it stops, and how to tell whether a paid plan would add anything for you.">
+<meta name="twitter:image" content="https://myfeeds.site/assets/og-image.png">
+<link rel="icon" type="image/png" href="/favicon.png">
+<link rel="icon" type="image/x-icon" href="/favicon.ico">
+<link rel="apple-touch-icon" href="/apple-touch-icon.png">
+<link rel="preload" href="/assets/fonts/bricolage-latin.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="stylesheet" href="/assets/site.css">
+<script>
+/* Motion gate, before first paint. Nothing on this page waits for script:
+   without "mo" (no JS, reduced motion) there are simply no transitions. */
+!function(d){d.classList.add('js');try{if(matchMedia('(prefers-reduced-motion: no-preference)').matches)d.classList.add('mo')}catch(e){}}(document.documentElement);
+</script>
+<style>
+/* Page-local, own class only. The plan table has longer row names than a comparison table's
+   first column allows for on a phone, so this one table gets a wider first column there. */
+@media (max-width:699px){.fp-plans.fp-plans tbody th,.fp-plans.fp-plans thead th:first-child{width:136px;min-width:136px}}
+</style>
+<!--JSONLD-->
+<script type="application/ld+json">
+{
+ "@context": "https://schema.org",
+ "@type": "Article",
+ "headline": "Is the free MyFeeds plugin enough?",
+ "description": "What the free MyFeeds plugin for WordPress does, step by step, where it stops, and how to tell whether a paid plan would add anything for you.",
+ "mainEntityOfPage": "https://myfeeds.site/articles/myfeeds-free-plugin/",
+ "image": "https://myfeeds.site/assets/og-image.png",
+ "inLanguage": "en",
+ "author": {
+  "@type": "Organization",
+  "name": "MyFeeds",
+  "url": "https://myfeeds.site/"
+ },
+ "publisher": {
+  "@type": "Organization",
+  "name": "MyFeeds",
+  "url": "https://myfeeds.site/",
+  "logo": {
+   "@type": "ImageObject",
+   "url": "https://myfeeds.site/logo.png"
+  }
+ }
+}
+</script>
+<script type="application/ld+json">
+{
+ "@context": "https://schema.org",
+ "@type": "FAQPage",
+ "mainEntity": [
+  {
+   "@type": "Question",
+   "name": "Does the free plugin really cost nothing?",
+   "acceptedAnswer": {
+    "@type": "Answer",
+    "text": "Yes. It is $0 on WordPress.org, needs no licence key or account with us, and does not expire. Its menu has three entries with a plan badge: Shop, Design and Analytics. They are pages that describe the paid plans."
+   }
+  },
+  {
+   "@type": "Question",
+   "name": "What happens to my cards if I upgrade later, or go back?",
+   "acceptedAnswer": {
+    "@type": "Answer",
+    "text": "They stay. The paid plans are a second plugin, MyFeeds Pro, which replaces the free one and takes over its feed, its settings and the cards in your posts. Deactivate the free plugin first: the two cannot run together. If a trial or a plan ends, MyFeeds Pro falls back to the free tier. Feeds, posts and settings stay."
+   }
+  },
+  {
+   "@type": "Question",
+   "name": "Do I need an affiliate network?",
+   "acceptedAnswer": {
+    "@type": "Answer",
+    "text": "Almost always. The plugin needs a shop's product feed, and shops usually share theirs through an affiliate network. The sample products need no account."
+   }
+  },
+  {
+   "@type": "Question",
+   "name": "Can I look at it without installing anything?",
+   "acceptedAnswer": {
+    "@type": "Answer",
+    "text": "Yes. On the plugin's page on WordPress.org, click Live Preview. It opens a WordPress site that runs in your browser, with the free plugin and its sample products in a post. You can open the editor and search them. A real shop's feed needs the plugin on your own site."
+   }
+  }
+ ]
+}
+</script>
+<!--/JSONLD-->
+</head>
+<body data-page="articles/myfeeds-free-plugin/">
+<a class="skip" href="#main">Skip to the guide</a>
+<div class="open-top">
+  <div class="wrap">
+    <header class="top">
+      <a class="mark" href="/" translate="no" aria-label="MyFeeds home"><span><img src="/assets/home/logo-52.webp" alt="" width="22" height="22"></span>MyFeeds</a>
+      <nav class="nav" aria-label="Main">
+        <a href="/#how">How it works</a>
+        <a href="/#pricing" data-cta="nav-pricing">Pricing</a>
+        <a href="/ecommerce/">E-commerce</a>
+        <a href="/networks/">Networks</a>
+        <a href="/articles/" aria-current="page">Guides</a>
+        <a href="/install/">Install</a>
+        <a href="/#faq">FAQ</a>
+      </nav>
+      <div class="top-r">
+        <button type="button" class="menu-btn" id="menu-btn" aria-expanded="false" aria-controls="menu"><i aria-hidden="true"></i>Menu</button>
+        <a class="cta cta-sm" data-cta="header" href="/#pricing">Get started</a>
+      </div>
+      <div class="menu" id="menu" hidden>
+        <a href="/#how">How it works</a>
+        <a href="/#pricing">Plans and prices</a>
+        <a href="/ecommerce/">E-commerce</a>
+        <a href="/networks/">Affiliate networks</a>
+        <a href="/articles/" aria-current="page">Guides</a>
+        <a href="/install/">Install guide</a>
+        <a href="/#faq">Questions</a>
+      </div>
+    </header>
+  </div>
+</div>
+
+<main id="main">
+<div class="open">
+  <div class="wrap">
+    <section class="hero long" aria-labelledby="h-hero">
+      <div>
+        <p class="eyebrow"><a href="/articles/">Guides</a> · MyFeeds</p>
+        <h1 id="h-hero">Is the free MyFeeds plugin enough?</h1>
+        <p class="lede">For one shop, yes. Your posts show that shop's products as cards with picture and price, and the prices are read again every night.</p>
+        <p class="facts"><span>6 minute read</span><span>Free on WordPress.org</span><span>Block editor only</span></p>
+      </div>
+      <figure>
+        <div class="myfeeds-product-grid row3">
+          <div class="myfeeds-product-card"><div class="myfeeds-product-image"><img src="/assets/home/hoodie-heather-grey.webp" width="400" height="400" alt="Heather grey hoodie"></div><div class="myfeeds-product-details"><div class="myfeeds-product-brand">Halden</div><div class="myfeeds-product-title">Heavyweight Hoodie Heather Grey</div><div class="myfeeds-product-price"><span class="myfeeds-current-price">$58.00</span></div><div class="myfeeds-shipping-info">Free Shipping</div><div class="myfeeds-merchant">Northside Supply</div></div></div>
+          <div class="myfeeds-product-card"><div class="myfeeds-product-image"><div class="myfeeds-discount-badge">-26%</div><img src="/assets/home/sneaker-black-hightop.webp" width="400" height="400" alt="Black leather high-top sneaker"></div><div class="myfeeds-product-details"><div class="myfeeds-product-brand">Arlo &amp; Finch</div><div class="myfeeds-product-title">Court High-Top Leather Black</div><div class="myfeeds-product-price"><span class="myfeeds-old-price">$129.00</span> <span class="myfeeds-current-price has-discount">$96.00</span></div><div class="myfeeds-shipping-info">Free Shipping</div><div class="myfeeds-merchant">Kicks Corner</div></div></div>
+          <div class="myfeeds-product-card"><div class="myfeeds-product-image"><img src="/assets/home/backpack-trail.webp" width="400" height="400" alt="Sage green trail backpack"></div><div class="myfeeds-product-details"><div class="myfeeds-product-brand">Fieldmade</div><div class="myfeeds-product-title">Trail Pack 28 L Sage</div><div class="myfeeds-product-price"><span class="myfeeds-current-price">$74.00</span></div><div class="myfeeds-shipping-info">Shipping costs may apply</div><div class="myfeeds-merchant">Basecamp Outfitters</div></div></div>
+        </div>
+        <figcaption>Cards as the free plugin shows them. Example products, sample prices: clothing here, tools and seeds on a garden blog.</figcaption>
+      </figure>
+    </section>
+  </div>
+</div>
+
+<section class="band board" id="short" aria-labelledby="h-short">
+  <div class="wrap split">
+    <div class="head">
+      <h2 id="h-short">The short version</h2>
+    </div>
+    <div class="sheet">
+      <p class="k">In short</p>
+      <ul>
+        <li><b>It is free for one shop's product feed.</b> <span>Show as many of that shop's products as you like, in as many posts as you like.</span></li>
+        <li><b>You pick the products, the plugin keeps them current.</b> <span>With a feed link, price, stock and picture are read again every night.</span></li>
+        <li><b>You can try it before you have a feed.</b> <span>Seven sample products come with it, and a live preview runs in your browser.</span></li>
+        <li><b>It stops at one shop and one layout.</b> <span>More shops, a carousel and your own card design start at $9 a month. Click numbers and a shop of your own cost more.</span></li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<section class="band paper" id="does" aria-labelledby="h-does">
+  <div class="wrap chap">
+    <div class="head">
+      <p class="kick">Part 1 of 3</p>
+      <h2 id="h-does">What do you get for free?</h2>
+      <p>Five steps, in the order you meet them.</p>
+    </div>
+    <div class="col">
+      <ol class="sub">
+        <li>
+          <h3>Install it like any other plugin</h3>
+          <p>In WordPress, open <span class="ui">Plugins</span>, then <span class="ui">Add New Plugin</span>, and search for <code>MyFeeds</code>. Click <span class="ui">Install Now</span>, then <span class="ui">Activate</span>.</p>
+        </li>
+        <li>
+          <h3>Try it with seven sample products</h3>
+          <p>On the empty MyFeeds screen, click <span class="ui">Load 7 sample products</span>, then <span class="ui">Open a draft with the block ready</span>, and search for <code>sneaker</code>.</p>
+          <p>The brands and prices are invented, and a sample card links to a page that says so.</p>
+        </li>
+        <li>
+          <h3>Connect one shop's product feed</h3>
+          <p>A product feed is a shop's whole range as one list, with prices, pictures and your affiliate links. Your affiliate network gives you a link to it once the shop has accepted you. Our <a href="/networks/">network guides</a> show where.</p>
+          <p>Click <span class="ui">Add your first feed</span> and name it after the shop, because readers see that name on the cards. Paste the link and click <span class="ui">Create Feed</span>. Your first real feed replaces the samples.</p>
+          <p class="note"><b>If you only have a file,</b> upload it instead. Its prices stay as they were that day, until you upload a newer one.</p>
+        </li>
+        <li>
+          <h3>Search and pick inside the editor</h3>
+          <p>In a post, type <code>/myfeeds</code> and choose <span class="ui">MyFeeds – Product Picker</span>. Search, narrow the results by brand, colour, category or price, and click the products you want.</p>
+          <p>Each one becomes a card that leads to the product in the shop, through your affiliate link.</p>
+          <figure class="shot">
+            <img src="/assets/install-v2/picker-760.webp" srcset="/assets/install-v2/picker-760.webp 760w, /assets/install-v2/picker-1140.webp 1140w" sizes="(min-width:1000px) 700px, calc(100vw - 80px)" width="1140" height="507" loading="lazy" alt="The product picker window: four cargo trousers found, filtered by the colour green, three of them selected, and the Use 3 Products button at the bottom.">
+            <figcaption>The picker, with three products chosen. Recorded on an example post.</figcaption>
+          </figure>
+        </li>
+        <li>
+          <h3>Your cards keep up with the shop</h3>
+          <p>If the feed came as a link, MyFeeds reads it again every night and updates price, stock, picture and link for the products in your published posts. A sale shows as a struck-through old price and a discount badge.</p>
+          <p>Once a week it reads the whole feed. That is when new products become searchable, and when a product the shop has dropped disappears from your post. The MyFeeds screen then lists up to ten of the posts it was in.</p>
+          <p>Two limits: a sold-out product keeps its card in the free plugin, and the schedule is WordPress's own, so on a quiet site a run can be late.</p>
+        </li>
+      </ol>
+
+      <div class="prose">
+        <p class="note"><b>One thing it leaves to you.</b> The links are marked as <code>sponsored</code> for search engines. The sentence that tells your readers you earn a commission is yours to write. <a href="/articles/import-product-feed-wordpress/#thin">Our feed guide says what the US regulator expects</a>.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="band ink" id="stops" aria-labelledby="h-stops">
+  <div class="wrap">
+    <div class="head">
+      <p class="kick">Part 2 of 3</p>
+      <h2 id="h-stops">Where does it stop? <span class="tone">At one shop and one layout.</span></h2>
+      <p>Each paid plan includes everything to its left.</p>
+    </div>
+    <div class="col">
+      <div>
+        <p class="swipe top">Swipe the table sideways to see the paid plans.</p>
+        <div class="cmp-wrap" tabindex="0" role="region" aria-labelledby="cap-plans">
+          <table class="cmp fp-plans">
+            <caption class="vh" id="cap-plans">The free plugin next to the three paid plans</caption>
+            <thead>
+              <tr><th scope="col"><span class="vh">What you want</span></th><th scope="col" class="own">Free<br>$0</th><th scope="col">Starter<br>$9 a month</th><th scope="col">Pro<br>$19 a month</th><th scope="col">E-commerce<br>$49 a month</th></tr>
+            </thead>
+            <tbody>
+              <tr><th scope="row">Shops you can show</th><td class="own">One</td><td>Unlimited</td><td>Unlimited</td><td>Unlimited</td></tr>
+              <tr><th scope="row">A carousel</th><td class="own n">No</td><td class="y">Yes</td><td class="y">Yes</td><td class="y">Yes</td></tr>
+              <tr><th scope="row">Cards in your colours and fonts</th><td class="own n">No</td><td class="y">Yes</td><td class="y">Yes</td><td class="y">Yes</td></tr>
+              <!-- PLAN: this row is the only place on the page that says which plan carries Shop the look. -->
+              <tr><th scope="row"><a href="/shop-the-look/">Shop the look</a>: the shops' products on your own photo</th><td class="own n">No</td><td class="y">Yes</td><td class="y">Yes</td><td class="y">Yes</td></tr>
+              <tr><th scope="row">See what gets clicked</th><td class="own n">No</td><td class="n">No</td><td class="y">Yes</td><td class="y">Yes</td></tr>
+              <tr><th scope="row">Jump to posts with a dropped product</th><td class="own n">No</td><td class="n">No</td><td class="y">Yes</td><td class="y">Yes</td></tr>
+              <!-- PLAN: this row is the only place on the page that says which plan carries Amazon. -->
+              <tr><th scope="row">Amazon products, see the note</th><td class="own n">No</td><td class="n">No</td><td class="y">Yes</td><td class="y">Yes</td></tr>
+              <tr><th scope="row">A shop page on your site</th><td class="own n">No</td><td class="n">No</td><td class="n">No</td><td class="y">Yes</td></tr>
+            </tbody>
+          </table>
+        </div>
+        <p class="cap">Prices for one site, paid monthly, in USD without VAT.</p>
+      </div>
+
+      <div class="side">
+        <div class="prose">
+          <h3>When the free plugin is enough</h3>
+          <p>When you are an affiliate for one shop, or one shop carries most of what you recommend. The free plugin sets no limit on products or posts, so you can stay for good.</p>
+          <p>It gets tight once you want products from a second shop.</p>
+          <h3>When you need no plugin at all</h3>
+          <p>For a link or two inside a sentence, copy the link from your network. Cards are for posts that show products.</p>
+        </div>
+        <div class="aside">
+          <p class="note"><b>The note on Amazon.</b> Amazon has no product feed. You add a product by its Amazon link and your Associates tag. Its card shows the name you give it, without picture or price. Those two need Amazon's Creators API, open to associates with ten qualifying sales in the past 30 days (as of October 2026).</p>
+          <p class="note"><b>The same in every column.</b> MyFeeds works in the WordPress block editor, not in the Classic Editor.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="band paper" id="which" aria-labelledby="h-which">
+  <div class="wrap chap">
+    <div class="head">
+      <p class="kick">Part 3 of 3</p>
+      <h2 id="h-which">Which one are you?</h2>
+      <p>Find the line that sounds like you.</p>
+    </div>
+    <div class="col">
+      <div>
+        <div class="cmp-wrap" tabindex="0" role="region" aria-labelledby="cap-which">
+          <table class="cmp slim txt">
+            <caption class="vh" id="cap-which">Which plan to start with</caption>
+            <thead>
+              <tr><th scope="col">If you say</th><th scope="col">Start with</th></tr>
+            </thead>
+            <tbody>
+              <tr><th scope="row">“I recommend products from one shop.”</th><td><b>Free, $0.</b> Everything in part 1, for as long as you like.</td></tr>
+              <tr><th scope="row">“I recommend from several shops, or I want the cards to match my site.”</th><td><b>Starter, $9 a month.</b> More shops, a carousel, and cards in your colours and fonts.</td></tr>
+              <tr><th scope="row">“I want to know which posts and products my readers click.”</th><td><b>Pro, $19 a month.</b> Clicks counted for every post and product.</td></tr>
+              <tr><th scope="row">“I want a shop on my own site that readers can browse.”</th><td><b>E-commerce, $49 a month.</b> <a href="/ecommerce/">A shop page</a> with categories and filters.</td></tr>
+            </tbody>
+          </table>
+        </div>
+        <p class="cap">For Shop the look and for Amazon, <a href="#stops">the table in part 2</a> names the plan.</p>
+      </div>
+
+      <div class="prose">
+        <h3>If you are between two lines</h3>
+        <p>Start with the lower one. Nothing is lost when you move up later.</p>
+        <p>Starter and Pro start with a 7-day free trial, E-commerce with 14 days. The checkout asks for a card or PayPal. Cancel before the trial ends and you are not charged.</p>
+        <p class="go"><a class="more" data-cta="quiet-plans" href="/#pricing">Compare the plans</a></p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="band board" id="questions" aria-labelledby="h-questions">
+  <div class="wrap chap">
+    <div class="head">
+      <h2 id="h-questions">Questions people ask</h2>
+    </div>
+    <div class="col">
+      <div class="faq">
+        <details name="faq" open>
+          <summary>Does the free plugin really cost nothing?</summary>
+          <div class="a"><p>Yes. It is $0 on WordPress.org, needs no licence key or account with us, and does not expire. Its menu has three entries with a plan badge: Shop, Design and Analytics. They are pages that describe the paid plans.</p></div>
+        </details>
+        <details name="faq">
+          <summary>What happens to my cards if I upgrade later, or go back?</summary>
+          <div class="a"><p>They stay. The paid plans are a second plugin, MyFeeds Pro, which replaces the free one and takes over its feed, its settings and the cards in your posts. Deactivate the free plugin first: the two cannot run together. If a trial or a plan ends, MyFeeds Pro falls back to the free tier. Feeds, posts and settings stay.</p></div>
+        </details>
+        <details name="faq">
+          <summary>Do I need an affiliate network?</summary>
+          <div class="a"><p>Almost always. The plugin needs a shop's product feed, and shops usually share theirs through an affiliate network. The sample products need no account.</p></div>
+        </details>
+        <details name="faq">
+          <summary>Can I look at it without installing anything?</summary>
+          <div class="a"><p>Yes. On <a href="https://wordpress.org/plugins/myfeeds-affiliate-feed-manager/" rel="noopener">the plugin's page on WordPress.org</a>, click Live Preview. It opens a WordPress site that runs in your browser, with the free plugin and its sample products in a post. You can open the editor and search them. A real shop's feed needs the plugin on your own site.</p></div>
+        </details>
+      </div>
+
+      <div class="sources">
+        <p class="k">Sources</p>
+        <ol>
+          <li><a href="https://wordpress.org/plugins/myfeeds-affiliate-feed-manager/" rel="noopener">MyFeeds in the WordPress.org plugin directory</a> <span>The Live Preview button, and what the plugin needs to run.</span></li>
+          <li><a href="https://developer.wordpress.org/plugins/cron/" rel="noopener">Cron, WordPress plugin handbook</a> <span>Scheduled tasks are only checked when somebody loads a page.</span></li>
+          <li><a href="https://developers.google.com/search/docs/crawling-indexing/qualify-outbound-links" rel="noopener">Qualify your outbound links to Google, Google Search Central</a> <span>The sponsored mark for paid links.</span></li>
+          <li><a href="https://affiliate-program.amazon.com/creatorsapi/docs/en-us/introduction" rel="noopener">Creators API introduction, Amazon Associates</a> <span>The ten qualifying sales in the past 30 days.</span></li>
+        </ol>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="band vio" id="next" aria-labelledby="h-next">
+  <div class="wrap">
+    <div class="head">
+      <p class="kick">Where to go next</p>
+      <h2 id="h-next">Pick your next step.</h2>
+    </div>
+    <div class="help">
+      <a class="h" href="/networks/" data-cta="next-networks"><b>Find your feed link</b><span>Where each affiliate network keeps a shop's product feed.</span><u>See the network guides</u></a>
+      <a class="h" href="/articles/import-product-feed-wordpress/" data-cta="next-import"><b>New to product feeds?</b><span>What a feed is, and when you can skip it.</span><u>Read the guide</u></a>
+      <a class="h" href="/articles/make-money-blogging/" data-cta="next-blogging"><b>Earning with a blog</b><span>The ways a blog makes money, and where affiliate links fit.</span><u>Read the guide</u></a>
+    </div>
+  </div>
+</section>
+
+<section class="close" id="end" aria-labelledby="h-end">
+  <div class="wrap close-in">
+    <div>
+      <h2 id="h-end">Try it on one post.</h2>
+      <div class="go">
+        <a class="cta" data-cta="final" href="/install/">Get the free plugin</a>
+        <p class="calm">Free on WordPress.org for one shop's feed. Paid plans each start with a free trial.</p>
+      </div>
+    </div>
+    <figure class="pinned pic">
+      <img src="/assets/install-v2/post-with-cards-720.webp" width="720" height="460" loading="lazy" alt="A published blog post: a paragraph of text and below it three product cards for cargo trousers, two of them with a discount badge and the old price struck through.">
+      <figcaption>A published post with three product cards. Recorded on an example post.</figcaption>
+    </figure>
+  </div>
+</section>
+</main>
+
+<footer>
+  <div class="wrap">
+    <div class="brand"><b translate="no">MyFeeds</b><span>Affiliate product feeds for WordPress</span></div>
+    <nav aria-label="Site">
+      <a href="/ecommerce/">E-commerce</a>
+      <a href="/install/">Install guide</a>
+      <a href="/networks/">Affiliate networks</a>
+      <a href="/articles/">Guides</a>
+      <a href="/affiliates/">Become an affiliate</a>
+      <a href="https://wordpress.org/plugins/myfeeds-affiliate-feed-manager/" rel="noopener">Free plugin on WordPress.org</a>
+      <a href="/imprint/">Imprint</a>
+      <a href="/privacy/">Privacy</a>
+      <a href="/terms/">Terms</a>
+      <a href="/refund/">Refund policy</a>
+    </nav>
+    <span>© 2026 MyFeeds. All rights reserved.</span>
+  </div>
+</footer>
+
+<script src="/assets/site.js" defer></script>
+<script src="/assets/back-to-top.js" defer></script>
+<script src="/assets/consent.js" defer></script>
+</body>
+</html>
