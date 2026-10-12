@@ -309,7 +309,7 @@ figure figcaption{margin-top:14px;font-size:13px;color:var(--ink-3)}
   .look .myfeeds-product-card{width:240px}
 }
 
-/* ===== Pro: shop the look + what it earns =====
+/* ===== Shop the look (Starter and up) + what it earns (Pro) =====
    The Look block's own markup and CSS (Pro includes/class-look-block.php,
    render_point() and css_once()), as on /pin/look-like-a-shop/: <details name>
    points that open one card at a time, a numbered list underneath. Only
@@ -319,6 +319,8 @@ figure figcaption{margin-top:14px;font-size:13px;color:var(--ink-3)}
 .pro h3{font-size:1.45rem;line-height:1.1;letter-spacing:-.015em;margin-bottom:6px}
 .pro-t p{color:var(--ink-2);max-width:46ch}
 .pro-t{margin-bottom:20px}
+.pro-t .ticks+.calm{margin-top:14px}
+.pro-t .calm .more{white-space:nowrap}
 .lk-frame{position:relative;background:var(--paper);padding:10px 10px 16px;border-radius:3px;box-shadow:var(--shadow);max-width:520px;transform:rotate(-.6deg)}
 .lk-frame::before{content:"";position:absolute;top:-9px;left:50%;width:84px;height:20px;margin-left:-42px;background:var(--tape);transform:rotate(-3deg);z-index:4}
 .lk-hint{display:flex;align-items:center;gap:8px;font-size:13.5px;font-weight:600;color:var(--ink-2);margin:2px 2px 10px}
@@ -694,7 +696,7 @@ footer a{color:#fff;text-underline-offset:3px}
 <section class="band" id="pro" aria-labelledby="h-pro">
   <div class="wrap">
     <div class="head">
-      <p class="kick">Pro plan · what it adds</p>
+      <p class="kick">Starter and Pro · what they add</p>
       <h2 id="h-pro">Your photos sell. <span class="tone">You see what earns.</span></h2>
       <p>Turn your own photos into something readers can shop, and find out which posts and products bring the money in.</p>
     </div>
@@ -704,9 +706,10 @@ footer a{color:#fff;text-underline-offset:3px}
           <h3>Shop the look</h3>
           <ul class="ticks">
             <li>Pick a photo from your WordPress media library or paste an image link. Use your own photos or ones you have the right to use.</li>
-            <li>Each dot is a product from a shop you're an affiliate for. Amazon works too.</li>
+            <li>Each dot is a product from a shop you're an affiliate for, or an Amazon product you add by link or ASIN.</li>
             <li>When a shop's product sells out or is gone, its dot leaves the photo on its own.</li>
           </ul>
+          <p class="calm">Part of every paid plan, from Starter at $9 a month. <a class="more" href="/shop-the-look/" data-cta="quiet-look">See shop the look</a>.</p>
         </div>
         <figure>
           <div class="lk-frame">
@@ -733,7 +736,7 @@ footer a{color:#fff;text-underline-offset:3px}
       <div>
         <div class="pro-t">
           <h3>What it earns</h3>
-          <p>Every click on a card is counted. See clicks, visitors and earnings for each post, product and brand, and write more of what works.</p>
+          <p>With Pro, every click on a card is counted. See clicks, visitors and earnings for each post, product and brand, and write more of what works.</p>
         </div>
         <figure class="shot">
           <img src="/assets/home/analytics-dashboard-800.webp" srcset="/assets/home/analytics-dashboard-800.webp 800w, /assets/home/analytics-dashboard-1400.webp 1400w" sizes="(min-width:1240px) 600px, (min-width:900px) 52vw, 100vw" width="1400" height="690" loading="lazy" alt="The MyFeeds Pro dashboard in WordPress: total clicks, earnings, earnings per click and unique visitors for the last 30 days, a daily chart of clicks and earnings, and tabs for posts, products, brands and networks.">
@@ -896,6 +899,8 @@ footer a{color:#fff;text-underline-offset:3px}
         <ul class="feats">
           <li>Unlimited feeds</li>
           <li>Grid + Carousel layouts</li>
+          <li>Shop the look: shoppable points on your own photos</li>
+          <li>Amazon products by link or ASIN, with your partner tag</li>
           <li>Card design editor</li>
           <li>Google Fonts + custom font upload</li>
           <li>Email support</li>
@@ -913,13 +918,12 @@ footer a{color:#fff;text-underline-offset:3px}
         <p class="inc">Everything in Starter, plus</p>
         <ul class="feats">
           <li>See what every post and product earns</li>
-          <li>Shop the look: shoppable points on your own photos</li>
           <li>Discontinued products flagged, with the posts listed</li>
-          <li>Amazon products, live from Amazon <span class="fn" aria-hidden="true">*</span><span class="vh">(see note)</span></li>
+          <li>Amazon with picture and price, live from Amazon's API <span class="fn" aria-hidden="true">*</span><span class="vh">(see note)</span></li>
           <li>Your clicks in Google Analytics 4</li>
           <li>Priority support</li>
         </ul>
-        <p class="fnote"><span class="fn" aria-hidden="true">*</span> Amazon has no feed file, so its products come live from Amazon's own Creators API. Amazon opens that access to associates with ten qualified sales in thirty days.</p>
+        <p class="fnote"><span class="fn" aria-hidden="true">*</span> Amazon has no feed file, so picture and price come live from Amazon's own Creators API. Amazon opens that access to associates with ten qualified sales in thirty days.</p>
         <a class="side" href="/install/#pro">Step-by-step install guide</a>
         <a class="cta plan-checkout" data-cta="plan-pro" href="https://checkout.freemius.com/plugin/21336/plan/35610/?trial=paid" data-checkout-base="https://checkout.freemius.com/plugin/21336/plan/35610">Try every Pro feature free for 7 days</a>
         <p class="refund">14-day money-back guarantee · Cancel from your dashboard</p>
@@ -979,7 +983,7 @@ footer a{color:#fff;text-underline-offset:3px}
     <div class="faq">
       <details name="faq">
         <summary>Does this work with my affiliate network?</summary>
-        <p>If your network gives you a shop's product feed link, MyFeeds reads it. AWIN, CJ, TradeDoubler, Impact, Rakuten, Webgains, Admitad, Pepperjam, Partnerize, FlexOffers and Sovrn are recognised out of the box, and other CSV, TSV, XML and JSON feeds work too. Amazon has no feed file, so on Pro and up its products come live from Amazon's own Creators API; Amazon opens that access to associates with ten qualified sales in thirty days. <a href="/networks/">How to get a feed link from your network</a>.</p>
+        <p>If your network gives you a shop's product feed link, MyFeeds reads it. AWIN, CJ, TradeDoubler, Impact, Rakuten, Webgains, Admitad, Pepperjam, Partnerize, FlexOffers and Sovrn are recognised out of the box, and other CSV, TSV, XML and JSON feeds work too. Amazon has no feed file. On Starter and up, you add an Amazon product by link or ASIN with your own partner tag: it shows the name you give it and links to Amazon, without picture or price. On Pro and up, the product cards in your posts show Amazon's picture and price, live from Amazon's own Creators API; Amazon opens that access to associates with ten qualified sales in thirty days. <a href="/networks/">How to get a feed link from your network</a>.</p>
         <p>MyFeeds keeps growing, so that every affiliate can bring in the product feeds of the shops they work with. Is your platform missing? We can connect more platforms on request: write to <a href="mailto:support@myfeeds.site" data-cta="faq-network-request">support@myfeeds.site</a>.</p>
       </details>
       <details name="faq">

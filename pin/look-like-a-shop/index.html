@@ -491,7 +491,7 @@ footer a{color:#fff;text-underline-offset:3px}
 <section class="band" aria-labelledby="h-look">
   <div class="wrap lk">
     <div class="head">
-      <p class="kick">Shop the look · included in Pro</p>
+      <p class="kick">Shop the look · in every paid plan</p>
       <h2 id="h-look">Your own photo, <span class="tone">ready to shop.</span></h2>
     </div>
     <figure class="lk-fig">
@@ -515,7 +515,7 @@ footer a{color:#fff;text-underline-offset:3px}
           </ol>
         </div>
       </div>
-      <figcaption>An example look made from sample products. Dot 5 is from Amazon: you type its name and it links there with your tag. Amazon's own photos and prices come through its Creators API, which Amazon opens to associates with ten qualified sales in thirty days.</figcaption>
+      <figcaption>An example look made from sample products. Dot 5 is from Amazon: you type its name and it links there with your tag. An Amazon dot shows no photo and no price.</figcaption>
     </figure>
     <div class="lk-body">
       <ul class="ticks">
@@ -525,8 +525,8 @@ footer a{color:#fff;text-underline-offset:3px}
         <li>When a shop's product sells out or is gone, its dot leaves the photo on its own.</li>
       </ul>
       <div class="go">
-        <a class="cta" data-cta="look" href="https://checkout.freemius.com/plugin/21336/plan/35610/?trial=paid&amp;billing_cycle=monthly">Make my photos shoppable</a>
-        <p class="calm">Free for 7 days, then $19 a month.</p>
+        <a class="cta" data-cta="look" href="https://checkout.freemius.com/plugin/21336/plan/60599/?trial=paid&amp;billing_cycle=monthly">Make my photos shoppable</a>
+        <p class="calm">The Starter trial: 7 days free, then $9 a month.</p>
       </div>
     </div>
   </div>
@@ -584,7 +584,7 @@ footer a{color:#fff;text-underline-offset:3px}
     <div class="faq">
       <details name="faq">
         <summary>Do I need an affiliate network?</summary>
-        <p>Yes, or a program that gives you a product feed. MyFeeds reads the feeds from AWIN, Rakuten Advertising, CJ, Impact, Partnerize, Webgains, Tradedoubler, Admitad, FlexOffers, Sovrn and Pepperjam. If your program publishes a feed file you can download, MyFeeds will almost certainly import it. Amazon has no feed file, so on Pro its products come live from Amazon's own Creators API. Amazon opens that access to associates with ten qualified sales in thirty days.</p>
+        <p>Yes, or a program that gives you a product feed. MyFeeds reads the feeds from AWIN, Rakuten Advertising, CJ, Impact, Partnerize, Webgains, Tradedoubler, Admitad, FlexOffers, Sovrn and Pepperjam. If your program publishes a feed file you can download, MyFeeds will almost certainly import it. Amazon has no feed file: you add its products by link or ASIN with your own partner tag, and each shows the name you give it and links to Amazon. On Pro, the product cards in your posts also show Amazon's picture and price, live from Amazon's own Creators API. Amazon opens that access to associates with ten qualified sales in thirty days.</p>
         <p>MyFeeds keeps growing, so that every affiliate can bring in the product feeds of the shops they work with. Is your platform missing? We can connect more platforms on request: write to <a href="mailto:support@myfeeds.site">support@myfeeds.site</a>.</p>
       </details>
       <details name="faq">
@@ -651,7 +651,7 @@ footer a{color:#fff;text-underline-offset:3px}
   }
   window.mfCount = count;
   document.querySelectorAll('[data-cta]').forEach(function (a) {
-    a.addEventListener('click', function () { count('click/pro-trial'); count('pin/look-like-a-shop/cta-' + a.getAttribute('data-cta')); });
+    a.addEventListener('click', function () { count((a.getAttribute('href') || '').indexOf('/plan/60599') > -1 ? 'click/starter-trial' : 'click/pro-trial'); count('pin/look-like-a-shop/cta-' + a.getAttribute('data-cta')); });
   });
   var free = document.querySelector('[data-free]');
 
