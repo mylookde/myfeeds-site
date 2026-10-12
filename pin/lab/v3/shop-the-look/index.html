@@ -7,7 +7,8 @@
 <title>Shop the look WordPress plugin for your own photos - MyFeeds</title>
 <meta name="description" content="A WordPress plugin that turns your photo into a shoppable look. Numbered dots lead readers to each product, at a shop or on Amazon, through your affiliate link.">
 <!-- Preview: lives under /pin/lab/v3/ until it goes live. Going live = move the file and delete the next line.
-     Do not go live before MyFeeds Pro 1.6.5 is shipped: this page sells the look on Starter and direct Amazon links. -->
+     Do not go live before MyFeeds Pro 1.6.5 is shipped: this page sells the look and Amazon links (by link or ASIN)
+     on Starter, and Amazon links that go straight to Amazon. -->
 <meta name="robots" content="noindex, follow">
 <link rel="canonical" href="https://myfeeds.site/shop-the-look/">
 <meta name="theme-color" content="#FC9000">
@@ -89,7 +90,7 @@
 /* where each dot sits, in percent of its photo (o outfit, r room, k kitchen, d desk, p packing list) */
 .stl-o1{left:33%;top:31%}.stl-o2{left:72%;top:30%}.stl-o3{left:77%;top:54%}.stl-o4{left:77%;top:90%}.stl-o5{left:25%;top:90%}
 .stl-r1{left:42%;top:67%}.stl-r2{left:15.5%;top:33%}.stl-r3{left:80%;top:82%}
-.stl-k1{left:40%;top:70%}.stl-k2{left:60%;top:72%}
+.stl-k1{left:40%;top:70%}.stl-k2{left:60%;top:72%}.stl-k3{left:70.6%;top:63%}.stl-k4{left:19.4%;top:61%}
 .stl-d1{left:70.4%;top:22.4%}.stl-d2{left:47%;top:70%}.stl-d3{left:71.3%;top:68%}
 .stl-p1{left:27%;top:30%}.stl-p2{left:57%;top:36%}.stl-p3{left:27%;top:73%}.stl-p4{left:78%;top:66%}
 
@@ -156,8 +157,8 @@
 .stl-strip{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:10px;max-width:440px}
 .stl-strip .stl-mute{aspect-ratio:1;border-radius:6px;overflow:hidden;background:var(--paper-2);box-shadow:0 0 0 1px var(--line)}
 .stl-strip img{width:100%;height:100%;object-fit:cover}
-/* the last photo of the page wears its dots too */
-.stl-end i{width:22px;height:22px;margin:-11px 0 0 -11px;box-shadow:0 2px 8px rgba(0,0,0,.35)}
+/* the two large photos without cards (kitchen, packing list) wear their dots too */
+.stl-big i,.stl-end i{width:22px;height:22px;margin:-11px 0 0 -11px;box-shadow:0 2px 8px rgba(0,0,0,.35)}
 
 /* the line Amazon asks for, and the two sentences around it */
 .stl-line{display:grid;gap:12px;max-width:58ch}
@@ -192,7 +193,7 @@
    "name": "Can I try it first?",
    "acceptedAnswer": {
     "@type": "Answer",
-    "text": "Tap the examples on this page. To build your own, start the 7-day Starter trial; the checkout asks for a card or PayPal. The free plugin has product cards (shop products shown in your posts), not the look."
+    "text": "Yes, with the 7-day Starter trial. The checkout asks for a card or PayPal. Cancel before the trial ends and you are not charged. The free plugin has product cards (shop products shown in your posts), not the look."
    }
   },
   {
@@ -200,7 +201,7 @@
    "name": "Which plan do I need?",
    "acceptedAnswer": {
     "@type": "Answer",
-    "text": "Starter, $9 a month, for looks with shop products. Pro, $19 a month, once a dot should lead to Amazon. Only Amazon? Then Pro, and you need no feed."
+    "text": "Starter, $9 a month, for looks with shop products, Amazon links, or both. Pro, $19 a month, adds click counts per post and product. Once Amazon opens its API to you (ten qualifying sales in the past 30 days, as of October 2026), Pro also shows Amazon's photo and price on product cards in your posts, not on dots."
    }
   },
   {
@@ -208,7 +209,7 @@
    "name": "Is this allowed by Amazon and Pinterest?",
    "acceptedAnswer": {
     "@type": "Answer",
-    "text": "Links on your own site are what Amazon's programme is made for. The disclosures stay your job: MyFeeds adds none. A Pin that leads to your post carries no affiliate link itself; our guide to affiliate links on Pinterest has the rest. This is not legal advice."
+    "text": "Amazon's programme is made for links on your own site. The disclosures stay your job: MyFeeds adds none. A Pin that leads to your post carries no affiliate link itself; our guide to affiliate links on Pinterest has the rest. This is not legal advice."
    }
   }
  ]
@@ -254,11 +255,11 @@
       <div>
         <p class="eyebrow">A WordPress plugin for blogs with affiliate links</p>
         <h1 id="h-hero">Shop the look, on your own site.</h1>
-        <p class="lede">Your own photo becomes the shop. Put a numbered dot on each item, and a tap leads your reader to it, at the shop or on Amazon, through your affiliate link.</p>
+        <p class="lede">Your own photo becomes the shop. Put a numbered dot on each item, and a tap takes your reader to it, at the shop that sells it or on Amazon, through your affiliate link.</p>
         <div class="go">
           <a class="cta" data-cta="hero" id="hero-cta" rel="noopener" href="https://checkout.freemius.com/plugin/21336/plan/60599/?trial=paid&amp;billing_cycle=monthly">Make my photos shoppable</a>
-          <p class="calm">7-day free trial, then $9 a month. The checkout asks for a card or PayPal. Cancel before the trial ends and you are not charged.</p>
-          <a class="more" href="#amazon" data-cta="hero-amazon">How it works with Amazon</a>
+          <p class="calm">7-day free trial, then $9 a month, Amazon links included. The checkout asks for a card or PayPal. Cancel before the trial ends and you are not charged.</p>
+          <a class="more" href="#amazon" data-cta="hero-amazon">How Amazon links work</a>
         </div>
       </div>
       <figure class="stl-tall">
@@ -286,7 +287,7 @@
     <div>
       <div class="head">
         <h2 id="h-why">“Where did you get that?”</h2>
-        <p>Your photo is why readers want the lamp. Getting to it should be as easy as looking at it.</p>
+        <p>Your photo is why readers want the lamp. Then they have to find it.</p>
       </div>
       <ul class="yn">
         <li class="n"><b>A list under the photo.</b> Your reader works out which link is the lamp.</li>
@@ -338,7 +339,7 @@
     <div class="stl-body">
       <ul class="ticks">
         <li>The list under the photo is easy to tap on a phone.</li>
-        <li>The look is part of your post, not a widget loaded from a platform.</li>
+        <li>The look is part of your post, not a widget from a platform.</li>
         <li>When a shop's product sells out or is gone, its dot leaves the photo on its own.</li>
       </ul>
     </div>
@@ -350,7 +351,7 @@
     <div class="head">
       <h2 id="h-steps">Four steps in the WordPress block editor.</h2>
     </div>
-    <p class="note stl-need"><b>For shop products you need the shop's product feed:</b> its product list, with your affiliate links in it. Most affiliate networks offer one. <a href="/networks/" data-cta="quiet-networks">See which networks</a>. Amazon dots need no feed.</p>
+    <p class="note stl-need"><b>For shop products you need the shop's product feed:</b> its product list, with your affiliate links in it. Your affiliate network has it, if the shop shares one. <a href="/networks/" data-cta="quiet-networks">See which networks</a>. Amazon dots need no feed.</p>
     <ol class="stl-steps">
       <li>
         <div class="stl-g" aria-hidden="true"><img src="/assets/look/room-700.webp" width="700" height="470" alt="" loading="lazy"></div>
@@ -365,12 +366,12 @@
       <li>
         <div class="stl-g" aria-hidden="true"><b>floor lamp</b></div>
         <h3>Fill one field per dot</h3>
-        <p>Type a product's name to search the shops' feeds, or paste the link to its page at the shop. The Pro plan takes Amazon links too.</p>
+        <p>Type a product's name to search the shops' feeds, or paste the link to its page at the shop or on Amazon.</p>
       </li>
       <li>
         <div class="stl-g" aria-hidden="true"><img src="/assets/look/room-700.webp" width="700" height="470" alt="" loading="lazy"><i class="stl-r1"></i><i class="stl-r2 stl-on"></i><i class="stl-r3"></i><u></u></div>
         <h3>Publish</h3>
-        <p>Readers reach each shop through your own affiliate link.</p>
+        <p>Readers reach each shop through your affiliate link.</p>
       </li>
     </ol>
     <div class="go">
@@ -387,15 +388,8 @@
     </div>
     <figure>
       <div class="frame">
-        <div class="myfeeds-look">
-          <div class="myfeeds-look__stage">
-            <img class="myfeeds-look__img" src="/assets/look/kitchen-700.webp" srcset="/assets/look/kitchen-700.webp 700w, /assets/look/kitchen-1200.webp 1200w" sizes="(min-width:900px) 480px, calc(100vw - 52px)" width="1200" height="805" loading="lazy" alt="A kitchen counter: a sage green casserole, a steel kettle, a pepper mill, storage jars and an oak chopping board with a knife.">
-            <details class="myfeeds-look__pt is-up stl-k1" name="lk-kitchen"><summary class="myfeeds-look__dot" aria-label="1. Halden Cast Iron Casserole"><span aria-hidden="true">1</span></summary><span class="myfeeds-look__card"><span class="myfeeds-look__brand">Halden</span><span class="myfeeds-look__name">Cast Iron Casserole</span><span class="myfeeds-look__price"><span class="myfeeds-look__now">$96.00</span></span><span class="myfeeds-look__go">View at Northside Supply</span></span></details>
-            <details class="myfeeds-look__pt is-up stl-k2" name="lk-kitchen"><summary class="myfeeds-look__dot" aria-label="2. Fieldmade Stovetop Kettle"><span aria-hidden="true">2</span></summary><span class="myfeeds-look__card"><span class="myfeeds-look__brand">Fieldmade</span><span class="myfeeds-look__name">Stovetop Kettle</span><span class="myfeeds-look__price"><span class="myfeeds-look__now">$48.00</span></span><span class="myfeeds-look__go">View at Basecamp Outfitters</span></span></details>
-          </div>
-        </div>
+        <span class="stl-mute stl-big"><img src="/assets/look/kitchen-700.webp" srcset="/assets/look/kitchen-700.webp 700w, /assets/look/kitchen-1200.webp 1200w" sizes="(min-width:900px) 480px, calc(100vw - 52px)" width="1200" height="805" loading="lazy" alt="A kitchen counter: a knife block, a sage green casserole, a steel kettle, a pepper mill, storage jars and an oak chopping board with a knife."><i class="stl-k4"></i><i class="stl-k1"></i><i class="stl-k2"></i><i class="stl-k3"></i></span>
       </div>
-      <figcaption>Example products, sample prices.</figcaption>
     </figure>
     <div class="stl-body">
       <div class="stl-strip" aria-hidden="true">
@@ -410,9 +404,9 @@
 <section class="band paper" id="amazon" aria-labelledby="h-amazon">
   <div class="wrap stl-trio stl-amz">
     <div class="head">
-      <p class="kick">On Pro, $19 a month</p>
+      <p class="kick">Included in Starter</p>
       <h2 id="h-amazon">Your photo is the picture. <span class="tone">Amazon is the link.</span></h2>
-      <p>A dot can also lead to an Amazon product. Paste its full address (not an amzn.to short link) or its ASIN, Amazon's product number, and type a name.</p>
+      <p>For an Amazon dot, paste the product's full address (not an amzn.to short link) or its ASIN, Amazon's product number, and type a name.</p>
     </div>
     <figure>
       <div class="frame">
@@ -430,13 +424,13 @@
     <div class="stl-body">
       <ul class="yn">
         <li class="y">The dot shows the name you typed, your note and a link to the Amazon site your tag belongs to.</li>
-        <li class="y">Your own Associates tag is enough, without access to Amazon's product data (the API).</li>
-        <li class="n">The dot never shows Amazon's photo or price. Amazon's rules don't let a site store its photos, and prices must come from Amazon's API.</li>
-        <li class="n">MyFeeds cannot see when an Amazon product is gone. Check those dots yourself now and then.</li>
+        <li class="y">You need your tag from Amazon Associates, Amazon's affiliate programme, but no access to its product data (the API).</li>
+        <li class="n">The dot never shows Amazon's photo or price. Amazon's rules don't let a site store its photos, or show a price Amazon did not supply.</li>
+        <li class="n">MyFeeds cannot see when an Amazon product is gone. Check those dots now and then.</li>
       </ul>
       <div class="go">
-        <a class="cta" data-cta="amazon" rel="noopener" href="https://checkout.freemius.com/plugin/21336/plan/35610/?trial=paid&amp;billing_cycle=monthly">Start my 7-day Pro trial</a>
-        <p class="calm">7 days free, then $19 a month. Cancel before the trial ends and you pay nothing.</p>
+        <a class="cta" data-cta="amazon" rel="noopener" href="https://checkout.freemius.com/plugin/21336/plan/60599/?trial=paid&amp;billing_cycle=monthly">Make my photos shoppable</a>
+        <p class="calm">The Starter trial: 7 days free, then $9 a month.</p>
       </div>
     </div>
     <div class="stl-line">
@@ -459,10 +453,11 @@
         <table class="cmp slim txt">
           <tbody>
             <tr><th scope="row">LTK</th><td>You apply. LTK expects over 5,000 followers on at least one platform.</td></tr>
-            <tr><th scope="row">ShopMy</th><td>Keeps 18% of each commission unless the brand pays its fee. Amazon products earn through your own Associates tag.</td></tr>
+            <tr><th scope="row">ShopMy</th><td>Keeps 18% of each commission unless the brand pays its fee.</td></tr>
             <tr><th scope="row">Amazon storefront</th><td>A page on Amazon, through its Influencer Program. You apply with a social account.</td></tr>
             <tr><th scope="row">Hotspot plugins</th><td>Free ones exist, and a dot can link to any page. The better choice if that is all you need.</td></tr>
-            <tr><th scope="row" class="own">MyFeeds</th><td class="own">No application, no follower minimum. The links are your own, and MyFeeds takes no share of your commission. $9 a month, $19 with Amazon dots. WordPress block editor only. A dot links to a feed product or Amazon, not to any page. Fixed dot design, no Pinterest save button.</td></tr>
+            <tr><th scope="row" class="own">MyFeeds</th><td class="own">No application, no follower minimum. The links are your own, and MyFeeds takes no share of your commission. $9 a month.</td></tr>
+            <tr><th scope="row" class="own">Its limits</th><td class="own">WordPress block editor only. A dot links to a product from a shop's feed or to Amazon, not to any page. Fixed dot design, no Pinterest save button.</td></tr>
           </tbody>
         </table>
       </div>
@@ -479,15 +474,15 @@
       <div class="faq">
         <details name="faq">
           <summary>Can I try it first?</summary>
-          <div class="a"><p>Tap the examples on this page. To build your own, start the 7-day Starter trial; the checkout asks for a card or PayPal. The free plugin has product cards (shop products shown in your posts), not the look.</p></div>
+          <div class="a"><p>Yes, with the 7-day Starter trial. The checkout asks for a card or PayPal. Cancel before the trial ends and you are not charged. The free plugin has product cards (shop products shown in your posts), not the look.</p></div>
         </details>
         <details name="faq">
           <summary>Which plan do I need?</summary>
-          <div class="a"><p>Starter, $9 a month, for looks with shop products. Pro, $19 a month, once a dot should lead to Amazon. Only Amazon? Then Pro, and you need no feed.</p></div>
+          <div class="a"><p>Starter, $9 a month, for looks with shop products, Amazon links, or both. Pro, $19 a month, adds click counts per post and product. Once Amazon opens its API to you (ten qualifying sales in the past 30 days, as of October 2026), Pro also shows Amazon's photo and price on product cards in your posts, not on dots.</p></div>
         </details>
         <details name="faq">
           <summary>Is this allowed by Amazon and Pinterest?</summary>
-          <div class="a"><p>Links on your own site are what Amazon's programme is made for. The disclosures stay your job: MyFeeds adds none. A Pin that leads to your post carries no affiliate link itself; our guide to <a href="/articles/pinterest-affiliate-links/">affiliate links on Pinterest</a> has the rest. This is not legal advice.</p></div>
+          <div class="a"><p>Amazon's programme is made for links on your own site. The disclosures stay your job: MyFeeds adds none. A Pin that leads to your post carries no affiliate link itself; our guide to <a href="/articles/pinterest-affiliate-links/">affiliate links on Pinterest</a> has the rest. This is not legal advice.</p></div>
         </details>
       </div>
       <details class="sources">
@@ -495,12 +490,12 @@
         <ol>
           <li><a href="https://affiliate-program.amazon.com/help/operating/agreement" rel="noopener">Associates Program Operating Agreement, Amazon</a> <span>Section 5 has the disclosure line. Updated 15 October 2025.</span></li>
           <li><a href="https://affiliate-program.amazon.com/help/operating/policies" rel="noopener">Associates Program Policies, Amazon</a> <span>On storing images and showing prices. Updated 14 April 2026.</span></li>
+          <li><a href="https://affiliate-program.amazon.com/creatorsapi/docs/en-us/introduction" rel="noopener">Creators API documentation, Amazon</a> <span>Its prerequisites name the ten qualifying sales in the past 30 days.</span></li>
           <li><a href="https://company.shopltk.com/creatorapplication_expectations" rel="noopener">Creator application expectations, LTK</a> <span>The follower figure.</span></li>
           <li><a href="https://shopmy.helpkit.so/earning-commission/3ViMaZXyQ1eDm8uT5tQWeC/how-does-shopmy-make-money-from-transactions-/3ViMaZXyQ2dBGoH26xz7we" rel="noopener">How does ShopMy make money from transactions?, ShopMy</a> <span>Last updated 29 March 2026.</span></li>
-          <li><a href="https://shopmy.helpkit.so/building-your-shop/43V9gf7Co5VBrmboNBWQ1S/can-i-add-amazon-products-to-my-shop/43V9gf7Co83hoiLajKXQKX" rel="noopener">Can I add Amazon products to my shop?, ShopMy</a> <span>Amazon commissions are paid by Amazon, through your own Associates account.</span></li>
           <li><a href="https://www.aboutamazon.com/news/retail/how-amazon-influencer-program-works" rel="noopener">How the Amazon Influencer Program works, Amazon</a> <span>Who can apply.</span></li>
           <li><a href="https://wordpress.org/plugins/draw-attention/" rel="noopener">Draw Attention, WordPress.org plugin directory</a> <span>20,000+ active installations on WordPress.org. A hotspot can link to any URL.</span></li>
-          <li><a href="https://wordpress.org/plugins/mabel-shoppable-images-lite/" rel="noopener">Shoppable Images (Lookbook), WordPress.org plugin directory</a> <span>A hotspot can link to any page.</span></li>
+          <li><a href="https://wordpress.org/plugins/mabel-shoppable-images-lite/" rel="noopener">Shoppable Images (Lookbook) for WooCommerce, WordPress.org plugin directory</a> <span>A hotspot can link to any page.</span></li>
           <li><a href="https://app.collectivevoice.com/" rel="noopener">Collective Voice</a> <span>Its own site says it is closed.</span></li>
           <li><a href="https://www.netinfluencer.com/creator-marketing-platform-collective-voice-announces-closure/" rel="noopener">Collective Voice announces closure, Net Influencer</a> <span>The closure, and the former name.</span></li>
         </ol>
@@ -567,20 +562,6 @@
     open.open = false;
     if (back) open.querySelector('summary').focus();
   });
-})();
-/* The phone bar offers the Starter trial. Amazon dots are on Pro, so while
-   the Amazon band fills the middle of the screen the bar offers the Pro
-   trial instead: the same button and address as the one in that band. */
-(function () {
-  var d = document, bar = d.querySelector('#dock .cta'), band = d.getElementById('amazon'), pro = d.querySelector('#amazon .cta');
-  if (!bar || !band || !pro || !('IntersectionObserver' in window)) return;
-  var was = { href: bar.getAttribute('href'), text: bar.textContent, cta: bar.getAttribute('data-cta') };
-  new IntersectionObserver(function (e) {
-    var on = e[0].isIntersecting;
-    bar.setAttribute('href', on ? pro.getAttribute('href') : was.href);
-    bar.textContent = on ? pro.textContent : was.text;
-    bar.setAttribute('data-cta', on ? 'sticky-amazon' : was.cta);
-  }, { rootMargin: '-45% 0px -45% 0px' }).observe(band);
 })();
 </script>
 <script src="/assets/site.js" defer></script>
