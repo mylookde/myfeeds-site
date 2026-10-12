@@ -556,7 +556,7 @@ footer a{color:#fff;text-underline-offset:3px}
   <div class="wrap plan">
     <div>
       <div class="head">
-        <h2 id="h-plan">What your 7 days include</h2>
+        <h2 id="h-plan">What your 7-day Pro trial includes</h2>
         <p>Everything in Pro, on one site. $19 a month after the trial.</p>
       </div>
       <div class="go">
@@ -602,7 +602,7 @@ footer a{color:#fff;text-underline-offset:3px}
       </details>
       <details name="faq">
         <summary>What happens after the 7 days?</summary>
-        <p>If you keep Pro, it continues at $19 a month. Cancel from your dashboard before the trial ends and you are not charged. The checkout asks for a card or PayPal to start the trial.</p>
+        <p>If you keep your plan, it continues: Pro at $19 a month, Starter at $9 a month. Cancel from your dashboard before the trial ends and you are not charged. The checkout asks for a card or PayPal to start the trial.</p>
       </details>
       <details name="faq">
         <summary>Can I start with the free version?</summary>
@@ -745,12 +745,17 @@ footer a{color:#fff;text-underline-offset:3px}
 
   // Phone only: once the hero button has scrolled away, the same button
   // waits at the bottom; it steps aside when the closing button is in view.
+  // It also steps aside while the Shop the look button is on screen: that
+  // one starts the Starter trial and the dock the Pro trial, and two
+  // different offers never share a screen.
   var dock = document.getElementById('dock'), hero = document.getElementById('hero-cta'), end = document.getElementById('end');
   if (dock && hero && end && 'IntersectionObserver' in window) {
-    var heroGone = false, endSeen = false;
-    var sync = function () { dock.classList.toggle('on', heroGone && !endSeen); };
+    var heroGone = false, endSeen = false, lookSeen = false;
+    var sync = function () { dock.classList.toggle('on', heroGone && !endSeen && !lookSeen); };
     new IntersectionObserver(function (e) { heroGone = !e[0].isIntersecting && e[0].boundingClientRect.top < 0; sync(); }).observe(hero);
     new IntersectionObserver(function (e) { endSeen = e[0].isIntersecting; sync(); }).observe(end);
+    var lookCta = document.querySelector('[data-cta="look"]'), lookGo = lookCta && (lookCta.closest('.go') || lookCta);
+    if (lookGo) new IntersectionObserver(function (e) { lookSeen = e[e.length - 1].isIntersecting; sync(); }).observe(lookGo);
   }
 })();
 
