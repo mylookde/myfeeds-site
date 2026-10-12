@@ -536,6 +536,8 @@ footer a{color:#fff;text-underline-offset:3px}
   .close{padding-block:96px 104px}
 }
 @media (max-width:420px){.hero .cta{width:100%}.top .cta-sm{padding:9px 13px}}
+/* narrowest phones: logo, Menu and the header button do not fit side by side; the hero button is right below (same rule as assets/site.css and install/) */
+@media (max-width:359px){.top .cta-sm{display:none}}
 @media (prefers-reduced-motion:reduce){*,*::before,*::after{transition:none!important;animation:none!important}html{scroll-behavior:auto}}
 </style>
 <script data-goatcounter="https://myfeeds.goatcounter.com/count" async src="//gc.zgo.at/count.js"></script>
