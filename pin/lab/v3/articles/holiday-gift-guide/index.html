@@ -1,0 +1,700 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="p:domain_verify" content="0f13dbb87c7b78ab08817667740c2df2"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+<title>How to make a holiday gift guide that lasts to Christmas</title>
+<meta name="description" content="How to plan, build and disclose a holiday or Christmas gift guide that earns commission, and keep prices and stock right through Black Friday.">
+<!-- Preview: lives under /pin/lab/v3/ until it goes live. Going live = move the file and delete the next line. -->
+<meta name="robots" content="noindex, follow">
+<link rel="canonical" href="https://myfeeds.site/articles/holiday-gift-guide/">
+<meta name="theme-color" content="#FC9000">
+<meta property="og:type" content="article">
+<meta property="og:site_name" content="MyFeeds">
+<meta property="og:url" content="https://myfeeds.site/articles/holiday-gift-guide/">
+<meta property="og:title" content="How to make a holiday gift guide that lasts to Christmas">
+<meta property="og:description" content="Plan, build and disclose a Christmas gift guide, and keep prices and stock right through Black Friday.">
+<meta property="og:image" content="https://myfeeds.site/assets/og-image.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="628">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:url" content="https://myfeeds.site/articles/holiday-gift-guide/">
+<meta name="twitter:title" content="How to make a holiday gift guide that lasts to Christmas">
+<meta name="twitter:description" content="Plan, build and disclose a Christmas gift guide, and keep prices and stock right through Black Friday.">
+<meta name="twitter:image" content="https://myfeeds.site/assets/og-image.png">
+<link rel="icon" type="image/png" href="/favicon.png">
+<link rel="icon" type="image/x-icon" href="/favicon.ico">
+<link rel="apple-touch-icon" href="/apple-touch-icon.png">
+<link rel="preload" href="/assets/fonts/bricolage-latin.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="stylesheet" href="/assets/site.css">
+<script>
+/* Motion gate, before first paint. Nothing on this page waits for script:
+   without "mo" (no JS, reduced motion) there are simply no transitions. */
+!function(d){d.classList.add('js');try{if(matchMedia('(prefers-reduced-motion: no-preference)').matches)d.classList.add('mo')}catch(e){}}(document.documentElement);
+</script>
+<style>
+/* Only on this page (prefix hg-). */
+/* wording to copy: a label, then the line in a box (as on the Pinterest guide) */
+.hg-copy .url{color:var(--ink)}
+.hg-copy .url+.k{margin-top:16px}
+/* a gift and its backup, three side by side */
+.hg-pairs{display:grid;gap:12px}
+.hg-pairs .goal{max-width:none}
+@media (min-width:700px){.hg-pairs{grid-template-columns:repeat(3,minmax(0,1fr))}}
+/* the sample gift guide: disclosure line, jump labels, section heading, backup line */
+.hg-disc{font-size:13.5px;font-style:italic;margin-bottom:8px}
+.hg-jump{display:flex;flex-wrap:wrap;gap:6px;margin-top:14px}
+.hg-sec{font:700 1.15rem/1.2 Georgia,'Times New Roman',serif;margin-top:22px}
+.hg-backup{margin-top:4px;font-size:14.5px}
+/* one gift written out: its name, the "best for" line, the reason */
+.hg-gift{font:700 1.05rem/1.25 Georgia,'Times New Roman',serif;margin-top:14px}
+.hg-gift+.post-p{margin-top:4px}
+.hg-why{margin-top:6px}
+/* the season as one column of boxes at every width: five in a row would be too narrow beside the heading */
+@media (min-width:640px){
+  .hg-season .flow{grid-auto-flow:row;grid-auto-columns:auto;gap:34px}
+  .hg-season .flow li{grid-template-columns:minmax(0,15em) minmax(0,1fr);align-items:baseline;gap:2px 16px}
+  .hg-season .flow li+li::before{left:50%;top:-30px;width:2px;height:24px;margin:0 0 0 -1px}
+  .hg-season .flow li+li::after{left:50%;top:-16px;margin:0 0 0 -4.5px;transform:rotate(45deg)}
+}
+/* room between the before-and-after and the table under it */
+.hg-after{margin-top:64px}
+/* the comparison of three ways stacks on a phone instead of sliding sideways */
+@media (max-width:699px){
+  .cmp.hg-stack{display:block;min-width:0}
+  .cmp.hg-stack thead{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0)}
+  .cmp.hg-stack tbody,.cmp.hg-stack tr{display:block}
+  .cmp.hg-stack tr{padding:16px 0 18px;border-bottom:1px solid var(--rule)}
+  .cmp.hg-stack tbody th,.cmp.hg-stack td,.cmp.hg-stack td.y,.cmp.hg-stack td.n{display:block;position:static;width:auto;min-width:0;padding:0;border:0;box-shadow:none;background:none}
+  .cmp.hg-stack tbody th{font:800 1.2rem/1.15 var(--display);letter-spacing:-.015em}
+  .cmp.hg-stack td{margin-top:10px}
+  .cmp.hg-stack td::before{content:attr(data-l);position:static;display:block;width:auto;height:auto;margin-bottom:1px;border:0;background:none;transform:none;font-size:12px;font-weight:600;letter-spacing:.07em;text-transform:uppercase;color:var(--fg-3)}
+  .cmp.hg-stack td::after{content:none}
+}
+</style>
+<!--JSONLD-->
+<script type="application/ld+json">
+{
+ "@context": "https://schema.org",
+ "@type": "Article",
+ "headline": "How to make a holiday gift guide for your blog",
+ "description": "How to plan, build and disclose a holiday or Christmas gift guide that earns commission, and keep prices and stock right through Black Friday.",
+ "mainEntityOfPage": "https://myfeeds.site/articles/holiday-gift-guide/",
+ "image": "https://myfeeds.site/assets/og-image.png",
+ "inLanguage": "en",
+ "author": {
+  "@type": "Organization",
+  "name": "MyFeeds",
+  "url": "https://myfeeds.site/"
+ },
+ "publisher": {
+  "@type": "Organization",
+  "name": "MyFeeds",
+  "url": "https://myfeeds.site/",
+  "logo": {
+   "@type": "ImageObject",
+   "url": "https://myfeeds.site/logo.png"
+  }
+ }
+}
+</script>
+<script type="application/ld+json">
+{
+ "@context": "https://schema.org",
+ "@type": "FAQPage",
+ "mainEntity": [
+  {
+   "@type": "Question",
+   "name": "Can I include gifts I haven't tried?",
+   "acceptedAnswer": {
+    "@type": "Answer",
+    "text": "Yes, as long as you don't claim you have. The FTC's guidance is plain: you can't talk about your experience with a product you haven't tried. Awin calls gift guides suggestions, not necessarily recommendations. Write them that way: “a good pick for a new runner”, and “I wear these every day” only where it is true."
+   }
+  },
+  {
+   "@type": "Question",
+   "name": "Does Amazon allow gift guide collages?",
+   "acceptedAnswer": {
+    "@type": "Answer",
+    "text": "Not made from Amazon's own pictures, in our reading. Amazon's licence says you may not store its product images, and its policies forbid changing its content. A collage does both. If you have the gifts at hand, lay them out and take one photo of your own. With the Starter plan, MyFeeds' Shop the look puts numbered dots on such a photo and links each one to a product. An Amazon dot shows only the name you give it, your note and the link."
+   }
+  },
+  {
+   "@type": "Question",
+   "name": "Can I offer a printable version with Amazon links?",
+   "acceptedAnswer": {
+    "@type": "Answer",
+    "text": "Not with your Amazon links in it. Amazon's policies rule out promotion in any offline manner, and name printed material and ebooks. For a printable list, leave the links out and point readers back to the post."
+   }
+  },
+  {
+   "@type": "Question",
+   "name": "Should I use the same URL every year?",
+   "acceptedAnswer": {
+    "@type": "Answer",
+    "text": "Yes. Keep one address and update the page each autumn. Put the year in the title if you like, never in the address: pins and links from past seasons then lead to this year's guide."
+   }
+  },
+  {
+   "@type": "Question",
+   "name": "Does a gift guide work if I only work with one brand?",
+   "acceptedAnswer": {
+    "@type": "Answer",
+    "text": "It can. Simple Pin Media's advice to a reader in that spot was to add products from other brands that go well with it, so readers still get a choice."
+   }
+  },
+  {
+   "@type": "Question",
+   "name": "Can I put Amazon links straight on my pins?",
+   "acceptedAnswer": {
+    "@type": "Answer",
+    "text": "Pinterest's team has said affiliate links can go straight into a pin's link field. Whether Amazon counts your Pinterest account as one of your sites, its public terms do not say. Our Pinterest guide has the details."
+   }
+  },
+  {
+   "@type": "Question",
+   "name": "How do I see which gifts sell?",
+   "acceptedAnswer": {
+    "@type": "Answer",
+    "text": "Simple Pin Media suggests a separate Amazon tracking ID for each gift guide, so its sales show apart from your other posts. For what to change next autumn, Google Search Console shows which searches brought readers to the guide."
+   }
+  }
+ ]
+}
+</script>
+<!--/JSONLD-->
+</head>
+<body data-page="articles/holiday-gift-guide/">
+<a class="skip" href="#main">Skip to the guide</a>
+<div class="open-top">
+  <div class="wrap">
+    <header class="top">
+      <a class="mark" href="/" translate="no" aria-label="MyFeeds home"><span><img src="/assets/home/logo-52.webp" alt="" width="22" height="22"></span>MyFeeds</a>
+      <nav class="nav" aria-label="Main">
+        <a href="/#how">How it works</a>
+        <a href="/#pricing" data-cta="nav-pricing">Pricing</a>
+        <a href="/ecommerce/">E-commerce</a>
+        <a href="/networks/">Networks</a>
+        <a href="/articles/" aria-current="page">Guides</a>
+        <a href="/install/">Install</a>
+        <a href="/#faq">FAQ</a>
+      </nav>
+      <div class="top-r">
+        <button type="button" class="menu-btn" id="menu-btn" aria-expanded="false" aria-controls="menu"><i aria-hidden="true"></i>Menu</button>
+        <a class="cta cta-sm" data-cta="header" href="/#pricing">Get started</a>
+      </div>
+      <div class="menu" id="menu" hidden>
+        <a href="/#how">How it works</a>
+        <a href="/#pricing">Plans and prices</a>
+        <a href="/ecommerce/">E-commerce</a>
+        <a href="/networks/">Affiliate networks</a>
+        <a href="/articles/" aria-current="page">Guides</a>
+        <a href="/install/">Install guide</a>
+        <a href="/#faq">Questions</a>
+      </div>
+    </header>
+  </div>
+</div>
+
+<main id="main">
+<div class="open">
+  <div class="wrap">
+    <section class="hero long" aria-labelledby="h-hero">
+      <div>
+        <p class="eyebrow"><a href="/articles/">Guides</a> · Seasonal posts</p>
+        <h1 id="h-hero">How to make a holiday gift guide for your blog.</h1>
+        <p class="lede">A gift guide you publish this autumn still has the December rush ahead: Pinterest says gift searches run from October to December, and searches for gifts for others surge in the final month. Here is how to build one readers can buy from right up to Christmas, with gifts still in stock at the price you show.</p>
+        <p class="facts"><span>12 minute read</span><span>Every rule with its source</span></p>
+      </div>
+
+      <nav class="pinned" aria-labelledby="ov-k">
+        <p class="ov-k" id="ov-k"><span>In this guide</span><span>7 parts</span></p>
+        <ol class="ov">
+          <li><a href="#when"><span class="n" aria-hidden="true">1</span><span class="ov-t">When to publish and pin</span></a></li>
+          <li><a href="#gifts"><span class="n" aria-hidden="true">2</span><span class="ov-t">Which gifts, and how many</span></a></li>
+          <li><a href="#look"><span class="n" aria-hidden="true">3</span><span class="ov-t">The layout to copy</span></a></li>
+          <li><a href="#disclose"><span class="n" aria-hidden="true">4</span><span class="ov-t">Saying that you earn</span></a></li>
+          <li><a href="#amazon"><span class="n" aria-hidden="true">5</span><span class="ov-t">Gifts from Amazon</span></a></li>
+          <li><a href="#black-friday"><span class="n" aria-hidden="true">6</span><span class="ov-t">What Black Friday week changes</span></a></li>
+          <li><a href="#keep"><span class="n" aria-hidden="true">7</span><span class="ov-t">Keeping it right until Christmas</span></a></li>
+        </ol>
+        <p class="ov-x"><a class="more" href="#questions">Questions people ask</a><a class="more" href="#next">Where to go next</a></p>
+      </nav>
+    </section>
+  </div>
+</div>
+
+<section class="band board" id="short" aria-labelledby="h-short">
+  <div class="wrap split">
+    <div class="head">
+      <h2 id="h-short">Is there still time for a gift guide?</h2>
+      <p>Yes. Pinterest's UK team says more than half of its monthly users are likely to create festive wishlists they revisit later. A guide someone saves in October can get a second visit in December. The whole guide in five lines:</p>
+    </div>
+    <div class="sheet">
+      <p class="k">In short</p>
+      <ul>
+        <li><b>Publish in October, pin until December.</b> <span>Make several pins, and keep the year out of the address.</span></li>
+        <li><b>Five to 15 gifts, sorted by person or budget.</b> <span>Each with one honest reason and a backup. <a href="#look">Part&nbsp;3</a> has the layout to copy.</span></li>
+        <li><b>Say that you earn, at the top.</b> <span>In plain words, before the first link, and on every pin that links straight to a shop.</span></li>
+        <li><b>Look daily from Black Friday to Cyber Monday.</b> <span>Prices move, deals end and gifts sell out.</span></li>
+        <li><b>Amazon gifts: no typed price, no copied picture.</b> <span>Amazon allows prices only in a link it serves, or from its API.</span></li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<section class="band paper" id="when" aria-labelledby="h-when">
+  <div class="wrap chap">
+    <div class="head">
+      <p class="kick">Part 1 of 7</p>
+      <h2 id="h-when">When should you publish and pin it?</h2>
+      <p>As early as you can. October is not late.</p>
+    </div>
+    <div class="col">
+      <div class="prose">
+        <p>Pinterest's guide for brands asks them to go live “as early as possible between September and November”, and its UK team says people's own wishlists peak in November. A guide that is live in October is in place for both.</p>
+      </div>
+
+      <figure>
+        <div class="viz hg-season">
+          <p class="k">One season, from the first pin to January</p>
+          <ol class="flow" aria-label="The gift guide season, month by month">
+            <li><b>October</b><span>Publish the guide, first pins.</span></li>
+            <li><b>November</b><span>More pins. A Black Friday section once shops name deals.</span></li>
+            <li><b>Black Friday to Cyber Monday</b><span>Check prices, deals and stock daily.</span></li>
+            <li><b>December</b><span>Gifts for others. Check stock, swap what sold out.</span></li>
+            <li class="dest"><b>January</b><span>Address kept, clicks noted for next autumn.</span></li>
+          </ol>
+        </div>
+      </figure>
+
+      <div class="prose">
+        <h3>Two things to do before the first pin</h3>
+        <ol>
+          <li><strong>Check your words in Pinterest Trends.</strong> The free tool shows when interest in a term rises; Pinterest's team points people there for holiday timing.</li>
+          <li><strong>Make several pins, each with its own picture.</strong> Simple Pin Media advises little text and a concrete title. Yours could read “Gifts for the home cook under $50”.</li>
+        </ol>
+        <p>Pinterest's own rules for affiliate pins are explained in <a href="/articles/pinterest-affiliate-links/">our Pinterest guide</a>.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="band board" id="gifts" aria-labelledby="h-gifts">
+  <div class="wrap chap">
+    <div class="head">
+      <p class="kick">Part 2 of 7</p>
+      <h2 id="h-gifts">Which gifts go in, and how many?</h2>
+      <p>About ten, and only ones you would recommend without the commission.</p>
+    </div>
+    <div class="col">
+      <div class="prose">
+        <p>Five to 15 is the usual range; Matt McWilliams puts the sweet spot at eight to ten. One filler pick makes readers doubt the rest, he warns.</p>
+        <p>For your sections, type “christmas gift ideas” into Pinterest's search and look at the suggestions it shows: mom, coworker, teacher, best friend. Keep the people your readers buy for.</p>
+        <p>Then fill them from the shops you're already an affiliate for. Awin, an affiliate network, suggests asking a shop's affiliate team which products sell best in the season, and what is new.</p>
+        <h3>Give every section a backup</h3>
+        <p>Some gifts will sell out before Christmas. Note a second product for every section, at about the same price and from another shop if you can. A sold-out gift then costs you one swap.</p>
+      </div>
+
+      <figure>
+        <div class="hg-pairs">
+          <p class="goal"><b>For the cook</b>Gift: a carbon-steel pan. Backup: a similar pan from a second shop.</p>
+          <p class="goal"><b>For the gardener</b>Gift: leather work gloves. Backup: a pair from another brand.</p>
+          <p class="goal"><b>Under $25</b>Gift: a set of pocket notebooks. Backup: another set at the same price.</p>
+        </div>
+        <figcaption>Examples from three kinds of blog.</figcaption>
+      </figure>
+    </div>
+  </div>
+</section>
+
+<section class="band paper" id="look" aria-labelledby="h-look">
+  <div class="wrap chap">
+    <div class="head">
+      <p class="kick">Part 3 of 7</p>
+      <h2 id="h-look">How should a Christmas gift guide look? <span class="tone">Like a shop, not a link list.</span></h2>
+      <p>Readers come to choose. Sort the gifts the way they shop: by who it is for, and by what it costs.</p>
+    </div>
+    <div class="col">
+      <div class="prose">
+        <p>For price sections, WP Tasty suggests bands such as under $25 and $25 to $50.</p>
+        <h3>The gift guide template, top to bottom</h3>
+        <ol>
+          <li><strong>A title that says who it is for.</strong></li>
+          <li><strong>Your disclosure,</strong> before the first link (part 4).</li>
+          <li><strong>Two sentences</strong> on who the guide is for and how you chose.</li>
+          <li><strong>Jump links</strong> to each section, by person and by budget.</li>
+          <li><strong>Each gift with its name as a heading,</strong> a “best for” line and three to five sentences on why. Top pick first.</li>
+          <li><strong>A backup</strong> for every section.</li>
+        </ol>
+      </div>
+
+      <figure>
+        <div class="pinned post">
+          <p class="post-k">Gift guide</p>
+          <p class="post-h">Gifts for the friend who lives outdoors</p>
+          <p class="post-p hg-disc">I get commissions for purchases made through links in this post.</p>
+          <p class="post-p">Ten gifts for anyone happiest outside. I picked ones that hold up in cold, wet weather.</p>
+          <p class="hg-jump"><span class="pill">For the hiker</span><span class="pill">For the runner</span><span class="pill">Under $50</span><span class="pill">Under $100</span></p>
+          <p class="hg-sec">Under $100</p>
+          <p class="hg-gift">Ribbed merino beanie</p>
+          <p class="post-p"><b>Best for:</b> the friend who is always cold on the trail.</p>
+          <p class="post-p hg-why">The double cuff folds down over the ears, and it packs flat into a jacket pocket. A safe first pick when you don't know their style.</p>
+          <div class="myfeeds-product-grid row3">
+            <div class="myfeeds-product-card"><div class="myfeeds-product-image"><img src="/assets/home/beanie-knit-navy.webp" width="400" height="400" alt="Ribbed knit beanie in navy" loading="lazy"></div><div class="myfeeds-product-details"><div class="myfeeds-product-brand">Fieldmade</div><div class="myfeeds-product-title">Ribbed Merino Beanie Navy</div><div class="myfeeds-product-price"><span class="myfeeds-current-price">$28.00</span></div><div class="myfeeds-shipping-info">Shipping costs may apply</div><div class="myfeeds-merchant">Basecamp Outfitters</div></div></div>
+            <div class="myfeeds-product-card"><div class="myfeeds-product-image"><div class="myfeeds-discount-badge">-30%</div><img src="/assets/home/sneaker-white-lowtop.webp" width="400" height="400" alt="White leather low-top sneaker" loading="lazy"></div><div class="myfeeds-product-details"><div class="myfeeds-product-brand">Arlo &amp; Finch</div><div class="myfeeds-product-title">Court Low-Top Leather White</div><div class="myfeeds-product-price"><span class="myfeeds-old-price">$110.00</span> <span class="myfeeds-current-price has-discount">$77.00</span></div><div class="myfeeds-shipping-info">Free Shipping</div><div class="myfeeds-merchant">Kicks Corner</div></div></div>
+            <div class="myfeeds-product-card"><div class="myfeeds-product-image"><img src="/assets/home/tee-boxy-offwhite.webp" width="400" height="400" alt="Boxy tee in off-white" loading="lazy"></div><div class="myfeeds-product-details"><div class="myfeeds-product-brand">Common Thread</div><div class="myfeeds-product-title">Boxy Heavy Tee Off-White</div><div class="myfeeds-product-price"><span class="myfeeds-current-price">$32.00</span></div><div class="myfeeds-shipping-info">Free Shipping</div><div class="myfeeds-merchant">Northside Supply</div></div></div>
+          </div>
+          <p class="post-p hg-backup">Backup for this section: Trail Pack 28 L Sage, Basecamp Outfitters.</p>
+        </div>
+        <figcaption>The template as readers see it in October, with one gift written out. Example products, sample prices. Clothing in this example; a kitchen blog would show knives and aprons.</figcaption>
+      </figure>
+
+      <div class="prose">
+        <p>The budget sections need a price with each gift, kept current. Parts 5 to 7 show how.</p>
+        <p>For pictures, use your own photos or the ones a shop gives its affiliates (a product feed carries one per product), not pictures cut from an image search or a shop's pages.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="band board" id="disclose" aria-labelledby="h-disclose">
+  <div class="wrap chap">
+    <div class="head">
+      <p class="kick">Part 4 of 7</p>
+      <h2 id="h-disclose">How do you say that you earn from it?</h2>
+      <p>At the top, in plain words, before the first link. A pin with an affiliate link needs its own.</p>
+    </div>
+    <div class="col">
+      <div class="prose">
+        <p>In the US, the FTC warns that readers may not understand “affiliate link” to mean you are paid. One disclosure on your home page is not enough, and one at the bottom of a post is easy to miss.</p>
+        <p>In the UK, the ASA's most straightforward route is “Ad” in the post's title; where only some links in a post pay you, “(Ad)” before those links. On Pinterest, “Ad” at the start of the description is likely to be acceptable.</p>
+      </div>
+
+      <div class="viz hg-copy">
+        <p class="k">At the top of the post, before the first link</p>
+        <p class="url">I get commissions for purchases made through links in this post.</p>
+        <p class="k">In the title, for readers in the UK</p>
+        <p class="url">Ad: Gifts for the friend who lives outdoors</p>
+        <p class="k">Before a link that pays you, when only some do</p>
+        <p class="url">(Ad)</p>
+        <p class="k">At the start of a pin with an affiliate link</p>
+        <p class="url">Ad: I earn a commission if you buy through this link.</p>
+        <p class="k">On your site, clearly, if you link to Amazon</p>
+        <p class="url">As an Amazon Associate I earn from qualifying purchases.</p>
+        <p class="cap">Wording to copy. The FTC's and Amazon's sentences are theirs, word for word; the others are examples. As of October 2026.</p>
+      </div>
+
+      <div class="prose">
+        <p>Elsewhere, look up your consumer authority: in Canada the Competition Bureau, in Australia the ACCC. The rules for pins are in <a href="/articles/pinterest-affiliate-links/#disclose">our Pinterest guide</a>.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="band paper" id="amazon" aria-labelledby="h-amazon">
+  <div class="wrap chap">
+    <div class="head">
+      <p class="kick">Part 5 of 7</p>
+      <h2 id="h-amazon">What about gifts from Amazon?</h2>
+      <p>They are welcome in a gift guide. Amazon has its own rules for prices, pictures and deals.</p>
+    </div>
+    <div class="col">
+      <div class="prose">
+        <p>The rules are in the Program Policies of Amazon Associates, Amazon's affiliate programme. For a gift guide, in our reading:</p>
+      </div>
+
+      <div class="duo">
+        <div class="card">
+          <span class="k">In your guide</span>
+          <h3>Allowed</h3>
+          <ul class="yn">
+            <li class="y">A text link with your own Associates tag.</li>
+            <li class="y">Your own name for the gift, and your own reasons for it.</li>
+            <li class="y">Price and availability, when Amazon serves the link that shows them, or they come from Amazon's API.</li>
+          </ul>
+        </div>
+        <div class="card">
+          <span class="k">In your guide</span>
+          <h3>Not allowed</h3>
+          <ul class="yn">
+            <li class="n">A price you typed yourself. Amazon did not serve it, and it did not come from the API.</li>
+            <li class="n">Amazon's product pictures saved, uploaded or edited into a collage.</li>
+            <li class="n">Deal words such as “Black Friday deal” once the deal has ended.</li>
+            <li class="n">A printed guide, or a PDF to print, with your Amazon links in it.</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="prose">
+        <p>Amazon leaves one point open: whether a section called “Under $25” with Amazon gifts in it counts as showing a price. The safe way: Amazon gifts go in the sections by person, and the budget sections come from shops whose product feed gives you the current price.</p>
+        <p>Amazon's API, which delivers price and picture, opens only to Associates with ten qualifying sales in the past 30 days. Until then, a text link and your own words do the job.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="band ink clip-x" id="black-friday" aria-labelledby="h-bf">
+  <div class="wrap">
+    <div class="head">
+      <p class="kick">Part 6 of 7</p>
+      <h2 id="h-bf">What changes in Black Friday week? <span class="tone">Prices, deals and stock.</span></h2>
+      <p>Prices move in the weeks around Black Friday. When the UK consumer group Which? checked the prices of 208 Black Friday deals from 2022 every day, only five were at their lowest on Black Friday itself.</p>
+    </div>
+    <div class="ba">
+      <figure class="links">
+        <div class="pinned">
+          <p class="post-k">Written in October</p>
+          <p class="post-h">Gifts under $100</p>
+          <p class="post-p">Three picks for the friend who lives outdoors:</p>
+          <ul class="linklist">
+            <li><span>Court Low-Top Leather White, 30% off</span></li>
+            <li><span>Ribbed Merino Beanie Navy, $28</span></li>
+            <li><span>Boxy Heavy Tee Off-White, $32</span></li>
+          </ul>
+          <svg class="brush brush-x" viewBox="0 0 200 200" aria-hidden="true" focusable="false"><defs><mask id="bx1-1" maskUnits="userSpaceOnUse" x="0" y="0" width="200" height="200"><path d="M25.8 43.1 28.3 46.1 30 50 31.5 54.2 33.3 58 35.6 61.3 38.3 64.2 41.2 66.9 43.9 69.8 46.8 72.6 49.8 75.2 52.9 77.8 55.7 80.7 58.4 83.7 61.3 86.6 64.5 89.1 67.9 91.5 71.2 94 74.2 96.9 77 99.9 80 102.8 83.2 105.6 86.2 108.5 89 111.7 91.7 115 94.6 118.2 97.8 121 101.2 123.7 104.5 126.5 107.6 129.5 110.8 132.5 114.3 135.1 118 137.7 121.6 140.2 125.1 143 128.6 145.7 132.2 148.4 136.6 150.3 141.3 152 145.4 154.2 150 156.1 153.3 159.2 157.2 161.8 162.9 162.6 166.3 165.7 166.6 170.7 166.2 167.7 172.1 171 168.9 165.1 173.3 166.4 171.8 162.2 174.3 162.1 174.5 157.5 170.8 154.6 168.5 150.4 164.9 147.5 161.1 144.9 159.5 140 156.7 136.3 155 131.6 151.9 128.3 149.4 124.4 147 120.5 144.4 116.7 141.7 113.2 138.4 110.2 134.8 107.5 131.3 104.8 128.1 101.9 125 98.8 121.7 95.9 118.4 93.2 115.1 90.3 112.3 87 109.7 83.6 106.9 80.4 103.7 77.5 100.4 74.9 97.2 72.1 94.3 69.1 91.5 66 88.5 63.1 85.3 60.4 82.3 57.6 79.7 54.4 77.2 51 74.5 47.9 71.4 45.3 68.2 42.8 65.1 40.2 62.2 37.5 58.6 35.6 54.2 34.5 49.4 34 44.9 33.2 41 31.6 37.9 29.2 35.3 28.2 32.3 28.9 29.3 29.1 26.8 31.4 25.7 34.4 24 37.4 24.7 40.3Z" fill="#fff"/><path d="M149.6 150 153.1 153 156.5 156 159.9 159.1 163.3 162.2 166.6 165.4 174.3 173.1" stroke="#000" stroke-width="1.3" stroke-linecap="round" fill="none"/><path d="M146 134.4 148.9 137.8 151.8 141.3 154.7 144.8 157.6 148.3 160.6 151.8 163.7 155.3 166.8 158.7 170 162 177.7 169.7" stroke="#000" stroke-width="1.0" stroke-linecap="round" fill="none"/></mask><mask id="bx2-1" maskUnits="userSpaceOnUse" x="0" y="0" width="200" height="200"><path d="M159.1 26.7 156.1 29.5 152.6 32 149 34.3 145.2 36.5 141.3 38.7 137.8 41.1 134.8 43.9 132.1 47.1 129.7 50.4 127.3 53.7 124.5 56.8 121.7 59.8 119 63 116.5 66.3 113.8 69.5 110.8 72.4 107.5 75 104.3 77.7 101.4 80.7 98.7 83.9 96 87.1 93 90.1 90.1 93.1 87.4 96.4 84.9 99.8 82.2 103.1 79.1 106 75.8 108.7 72.7 111.5 69.8 114.7 67.1 118 64.3 121.3 61.5 124.6 58.8 128 56.6 132 54.4 135.9 53 140.7 50.7 144.7 47.1 147.3 45.3 151.9 42.6 155.4 38.9 157.8 36.3 161.6 32.6 164.1 29.8 166.2 32.6 166.1 29.2 171.4 34.9 168.7 33.4 172.8 37.5 171.6 37.4 174 39.8 172.4 42.2 168.4 46.4 166.3 49.6 163.3 53.9 161.5 57 158.3 61.2 156.2 66.3 155.3 70.7 153.5 74.4 151 78.2 148.6 82.1 146.3 85.9 143.9 89.5 141.2 92.7 138.2 95.6 134.9 98.6 131.6 101.8 128.7 105.3 125.9 108.6 123 111.6 119.9 114.7 116.8 117.9 113.9 121.3 111 124.4 108 127.1 104.6 129.6 101 132.2 97.5 135.1 94.3 138.1 91.2 140.9 88 143.6 84.6 146.3 81.3 149.3 78.2 152.4 75.3 155.3 72.1 157.8 68.7 160.2 65.1 162.6 61.5 164.8 57.8 166.5 53.8 167.7 49.3 168.8 44.8 170.4 40.7 172.9 37.4 174.4 35 174.3 31.9 172.1 29.2 170.5 26.2 167.4 24.5 164.3 24.9 161 24.6Z" fill="#fff"/><path d="M56.8 144.9 53.7 148.1 50.7 151.2 47.6 154.4 44.5 157.5 41.3 160.6 38.1 163.6 34.7 166.5 27 173.2" stroke="#000" stroke-width="1.3" stroke-linecap="round" fill="none"/><path d="M58.8 153.7 55.3 156.3 51.7 159 48.1 161.6 44.6 164.4 41.2 167.2 37.8 170 30 176.7" stroke="#000" stroke-width="1.0" stroke-linecap="round" fill="none"/></mask></defs><g mask="url(#bx1-1)"><path class="rv" pathLength="1" d="M32 36Q96 92 168 164"/></g><g mask="url(#bx2-1)"><path class="rv rv2" pathLength="1" d="M166 32Q110 104 36 168"/></g></svg>
+        </div>
+        <figcaption>Typed in October. By Black Friday week the 30% deal has become 20% and the beanie has sold out.</figcaption>
+      </figure>
+      <figure>
+        <div class="pinned post">
+          <svg class="brush brush-ok" viewBox="0 0 200 200" aria-hidden="true" focusable="false"><defs><mask id="bck-2" maskUnits="userSpaceOnUse" x="0" y="0" width="200" height="200"><path d="M15.4 111.2 16.3 112.3 16.8 113.8 16.8 115.7 16.6 117.8 16.7 119.7 17.3 121.1 18.4 122.2 19.3 123.4 20.2 124.6 21.2 125.8 22.4 126.8 23.9 127.6 25.2 128.6 26.2 129.8 27.1 131.1 28.1 132.3 29.3 133.4 30.4 134.6 31.3 135.9 32.2 137.4 33.1 138.7 34.4 139.8 35.9 140.7 37.2 141.8 38.2 143.2 39.1 144.6 40.2 145.9 41.4 147.1 42.6 148.4 43.5 149.9 44.3 151.5 45.4 153 46.6 154.3 48.1 155.3 49.4 156.5 50.6 157.9 52 159 53.8 159.8 55.3 160.9 57.3 161.5 57.8 163.6 59.4 164.6 60 166.6 60.6 168.6 65.7 171 75.3 171.4 82.8 167.4 86.3 160.1 84 146.8 83.1 145.1 80.9 144.7 78.2 144.7 77.3 143 75.6 142.1 74.2 141 73.4 139.3 72.2 138 71.2 136.5 70.4 134.9 69.4 133.4 68.3 132.1 67 130.9 66 129.6 65 128.2 63.9 126.9 62.6 125.8 61.3 124.7 60.3 123.4 59.5 121.9 58.9 120.2 58 118.8 57 117.5 56 116.3 55.1 114.9 54.3 113.6 53.2 112.5 51.8 111.5 50.5 110.6 49.4 109.6 48.5 108.3 47.6 107.1 46.6 106 45.4 105 44.4 103.9 43.5 102.7 42.6 101.5 41.5 100.5 39.8 100 37.9 99.8 36 99.6 34.3 99.1 32.9 98.5 31.7 97.6 29 96 26 94.1 22.1 95.4 19 98 15.4 100.4 14.4 104.2 15.2 107.5Z" fill="#fff"/><path d="M75.3 168 77.8 165.2 80.5 162.5 83.2 159.8 85.6 156.8 88 153.9 90.6 151.1 93.3 148.3 95.8 145.3 97.9 142.1 100 138.8 102.4 135.6 105.1 132.8 108 130 110.6 127 113.1 123.8 115.7 120.8 118.5 117.9 121.4 115 124 111.8 126.2 108.3 128.3 104.6 130.6 101.2 133.3 97.9 135.9 94.7 138.4 91.3 141 87.8 143.7 84.6 146.8 81.6 149.9 78.6 152.6 75.2 155 71.5 157.3 67.7 159.6 63.8 162.1 60.1 164.2 56 166.5 52.1 167.8 47.1 170.1 43.1 173.8 40.3 176.8 36.8 180.1 33.6 182.2 29.2 184.4 24.9 189.1 22.9 189.6 19.1 187.1 19.4 189.7 14.6 184.9 17.3 185.9 13.6 182.5 14.9 182.3 12.9 177.3 11.5 175.9 16.7 172.1 19.5 167.7 21.7 162.7 23.4 159.5 26.8 157.3 31 153.3 33.6 149.5 36.3 145.5 38.8 141.8 41.5 138.5 44.6 135.2 47.7 132 50.8 128.6 53.8 125.6 57 123 60.6 120.6 64.4 118.1 67.9 115.2 71.2 112.1 74.3 109.1 77.3 106.2 80.6 103.3 83.7 100.1 86.6 96.8 89.3 93.8 92.3 91.2 95.5 88.8 99 86.2 102.3 83.5 105.4 80.7 108.4 78.1 111.6 75.8 115 73.3 118.2 70.6 121.2 67.8 124.1 65.2 127.2 63.2 130.6 61.4 134.2 59.5 137.8 57.5 141.2 55.6 144.6 53.9 148.2 52.3 151.8 49 155.5 50 160.8 53.6 165.4 56.6 170.5 62.2 172.7 67.5 172.2 73.3 172.6Z" fill="#fff"/><path d="M161.3 47.2 164.1 43.7 167 40.1 169.9 36.6 172.8 33 175.8 29.5 178.9 26 182 22.6 185.2 19.2 191.5 12.7" stroke="#000" stroke-width="1.3" stroke-linecap="round" fill="none"/><path d="M154.9 41.2 158.3 38.2 161.7 35.2 165.2 32.2 168.7 29.1 172.2 26 175.6 22.9 179 19.7 182.3 16.4 188.6 9.9" stroke="#000" stroke-width="1.0" stroke-linecap="round" fill="none"/></mask></defs><g mask="url(#bck-2)"><path class="rv" pathLength="1" d="M22 104Q44 128 70 161Q112 92 186 16"/></g></svg>
+          <p class="post-k">Black Friday week</p>
+          <p class="post-h">Gifts under $100</p>
+          <div class="myfeeds-product-grid row3">
+            <div class="myfeeds-product-card"><div class="myfeeds-product-image"><div class="myfeeds-discount-badge">-20%</div><img src="/assets/home/sneaker-white-lowtop.webp" width="400" height="400" alt="White leather low-top sneaker" loading="lazy"></div><div class="myfeeds-product-details"><div class="myfeeds-product-brand">Arlo &amp; Finch</div><div class="myfeeds-product-title">Court Low-Top Leather White</div><div class="myfeeds-product-price"><span class="myfeeds-old-price">$110.00</span> <span class="myfeeds-current-price has-discount">$88.00</span></div><div class="myfeeds-shipping-info">Free Shipping</div><div class="myfeeds-merchant">Kicks Corner</div></div></div>
+            <div class="myfeeds-product-card"><div class="myfeeds-product-image"><img src="/assets/home/backpack-trail.webp" width="400" height="400" alt="Sage green trail backpack" loading="lazy"></div><div class="myfeeds-product-details"><div class="myfeeds-product-brand">Fieldmade</div><div class="myfeeds-product-title">Trail Pack 28 L Sage</div><div class="myfeeds-product-price"><span class="myfeeds-current-price">$74.00</span></div><div class="myfeeds-shipping-info">Shipping costs may apply</div><div class="myfeeds-merchant">Basecamp Outfitters</div></div></div>
+            <div class="myfeeds-product-card"><div class="myfeeds-product-image"><img src="/assets/home/tee-boxy-offwhite.webp" width="400" height="400" alt="Boxy tee in off-white" loading="lazy"></div><div class="myfeeds-product-details"><div class="myfeeds-product-brand">Common Thread</div><div class="myfeeds-product-title">Boxy Heavy Tee Off-White</div><div class="myfeeds-product-price"><span class="myfeeds-current-price">$32.00</span></div><div class="myfeeds-shipping-info">Free Shipping</div><div class="myfeeds-merchant">Northside Supply</div></div></div>
+          </div>
+        </div>
+        <figcaption>The same section with today's prices, the sale as the shop states it, and the backup in place of the beanie. Example products, sample prices.</figcaption>
+      </figure>
+    </div>
+
+    <div class="side hg-after">
+      <div>
+        <div class="cmp-wrap" tabindex="0" role="region" aria-labelledby="cap-bf">
+          <table class="cmp slim txt">
+            <caption class="vh" id="cap-bf">What changes in a gift guide around Black Friday, and what you do about it</caption>
+            <thead>
+              <tr><th scope="col">What changes</th><th scope="col">What you do</th></tr>
+            </thead>
+            <tbody>
+              <tr><th scope="row">A price drops or rises</th><td>Correct it. Write “on sale”, never “lowest price”.</td></tr>
+              <tr><th scope="row">A deal ends</th><td>Take the deal words out that day. Amazon requires it for its own deals.</td></tr>
+              <tr><th scope="row">A gift sells out</th><td>Swap in the section's backup.</td></tr>
+              <tr><th scope="row">A product is relisted or dropped</th><td>Replace the link and check it shows the same product.</td></tr>
+              <tr><th scope="row">Shops announce new deals</th><td>Add a Black Friday section, and take it down after Cyber Monday.</td></tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+      <div class="aside">
+        <p class="note"><b>Deals arrive late.</b> Awin notes that some shops share their Black Friday details only shortly before the day.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="band paper" id="keep" aria-labelledby="h-keep">
+  <div class="wrap chap">
+    <div class="head">
+      <p class="kick">Part 7 of 7</p>
+      <h2 id="h-keep">How do you keep it right until Christmas?</h2>
+      <p>Two full checks, a daily look in Black Friday week, and tools that take part of the work.</p>
+    </div>
+    <div class="col">
+      <div class="prose">
+        <p>The goal: in December, readers find gifts that are in stock, at today's price, sorted by person and by budget.</p>
+        <p>Pinterest asks affiliates to check regularly for broken or outdated links. For a gift guide, plan two full checks, just before Black Friday and in early December. From Black Friday to Cyber Monday, add a quick daily look at prices, deals and stock.</p>
+      </div>
+
+      <fieldset class="check">
+        <legend class="k">The full check, before Black Friday and again in December</legend>
+        <ul>
+          <li><label><input type="checkbox"><span>Every link opens the right product in a private window.</span></label></li>
+          <li><label><input type="checkbox"><span>Every price matches the shop, or there is no typed price.</span></label></li>
+          <li><label><input type="checkbox"><span>Every gift can be bought, and each section has a backup.</span></label></li>
+          <li><label><input type="checkbox"><span>Deal words such as “30% off” appear only while the deal runs.</span></label></li>
+          <li><label><input type="checkbox"><span>The disclosure is at the top, before the first link.</span></label></li>
+          <li><label><input type="checkbox"><span>Amazon's sentence is on your site, if you link to Amazon.</span></label></li>
+          <li><label><input type="checkbox"><span>Every pin with an affiliate link has its own disclosure.</span></label></li>
+        </ul>
+        <p class="cap">The ticks are only for you. Nothing is saved.</p>
+      </fieldset>
+
+      <div class="prose">
+        <p>The private-window check is walked through in <a href="/articles/why-affiliate-posts-stop-earning/#audit">why affiliate posts stop earning</a>. Two kinds of tool can take part of it off you.</p>
+      </div>
+
+      <div>
+        <div class="cmp-wrap" tabindex="0" role="region" aria-labelledby="cap-ways">
+          <table class="cmp hg-stack">
+            <caption class="vh" id="cap-ways">Three ways to keep a gift guide right: by hand, with a link checker, or with cards from the shop's feed</caption>
+            <thead>
+              <tr><th scope="col"><span class="vh">Question</span></th><th scope="col">By hand</th><th scope="col">A link checker</th><th scope="col" class="own">Cards from the shop's feed</th></tr>
+            </thead>
+            <tbody>
+              <tr><th scope="row">Covers Amazon links</th><td class="y" data-l="By hand">Yes</td><td data-l="A link checker">Yes, with false alarms: Amazon can turn its checks away</td><td class="own n" data-l="Cards from the shop's feed">No. Amazon shares no product feed</td></tr>
+              <tr><th scope="row">Catches a new price</th><td data-l="By hand">When you look</td><td class="n" data-l="A link checker">No. It checks that pages load</td><td class="own y" data-l="Cards from the shop's feed">Yes, each time the feed is read again</td></tr>
+              <tr><th scope="row">Catches a sold-out gift</th><td data-l="By hand">When you look</td><td class="n" data-l="A link checker">No. A sold-out page still loads</td><td class="own y" data-l="Cards from the shop's feed">Yes, if the feed reports stock</td></tr>
+              <tr><th scope="row">Catches a page that is gone</th><td data-l="By hand">When you click</td><td class="y" data-l="A link checker">Yes, that is its job</td><td class="own" data-l="Cards from the shop's feed">When the product leaves the feed</td></tr>            </tbody>
+          </table>
+        </div>
+      </div>
+
+      <div class="prose">
+        <h3>What our own plugin does with a gift guide</h3>
+        <p>MyFeeds is the plugin we make, and it works the third way. In the editor you search a shop's products, filter by price, <span class="ui">On sale</span> and <span class="ui">In stock</span>, and sort with the largest discount first. Typing <code>scarf under 50</code> sets the price limit for you.</p>
+        <p>When the shop's feed lists an old price, the card shows it struck through, with the discount as a badge. Every night the plugin re-reads price, old price, stock, picture and link for the products in your published posts. When the sale ends and the feed drops the old price, the badge goes the next night.</p>
+        <p>From the Starter plan, a gift that sells out in every size leaves the post until it is back in stock; <a class="more" href="/articles/myfeeds-free-plugin/" data-cta="quiet-free-plugin">the free plugin</a> keeps showing it. On Pro you see the clicks for every post and every product.</p>
+        <h3>Where it stops</h3>
+        <ul class="yn">
+          <li class="n"><b>Nightly, not instantly.</b> A price changed at noon on Black Friday reaches the card after the next night, and a caching plugin can show an old price until its copy of the page is renewed.</li>
+          <li class="n"><b>Published posts only.</b> Drafts and scheduled posts are not updated each night, so publish the guide rather than schedule it.</li>
+          <li class="n"><b>New and dropped products wait for the weekly read</b> of the whole feed, or for a click on <span class="ui">Reimport</span>. Until then a dropped product keeps its last price.</li>
+          <li class="n"><b>Amazon gifts show your name, note and link.</b> From Starter, without picture or price, and never checked for stock; picture and price need Pro and Amazon's API.</li>
+        </ul>
+        <p>It needs the WordPress block editor and a shop's product feed as a link: an uploaded file stays as it was the day you uploaded it. You add the disclosure and Amazon's sentence yourself.</p>
+      </div>
+
+      <aside class="pitch" aria-labelledby="p-mid">
+        <h3 id="p-mid">Let the shop's feed keep prices and stock right.</h3>
+        <p>You choose the gifts inside the editor. The cards show picture and price from the shop's feed, read again every night.</p>
+        <a class="cta" data-cta="mid" href="/#pricing">Add product cards to my posts</a>
+        <p class="calm">Free plugin to start. Paid plans from $9 a month, each with a free trial.</p>
+      </aside>
+    </div>
+  </div>
+</section>
+
+<section class="band board" id="questions" aria-labelledby="h-questions">
+  <div class="wrap chap">
+    <div class="head">
+      <h2 id="h-questions">Questions people ask</h2>
+      <p>Asked under gift guide tutorials and in Pinterest's business community, or raised by the tutorials themselves.</p>
+    </div>
+    <div class="col">
+      <div class="qa">
+        <div>
+          <h3>Can I include gifts I haven't tried?</h3>
+          <p>Yes, as long as you don't claim you have. The FTC's guidance is plain: you can't talk about your experience with a product you haven't tried.</p>
+          <p>Awin calls gift guides suggestions, not necessarily recommendations. Write them that way: “a good pick for a new runner”, and “I wear these every day” only where it is true.</p>
+        </div>
+        <div>
+          <h3>Does Amazon allow gift guide collages?</h3>
+          <p>Not made from Amazon's own pictures, in our reading. Amazon's licence says you may not store its product images, and its policies forbid changing its content. A collage does both.</p>
+          <p>If you have the gifts at hand, lay them out and take one photo of your own. With the Starter plan, MyFeeds' <a class="more" href="/shop-the-look/" data-cta="quiet-look">Shop the look</a> puts numbered dots on such a photo and links each one to a product. An Amazon dot shows only the name you give it, your note and the link.</p>
+        </div>
+        <div>
+          <h3>Can I offer a printable version with Amazon links?</h3>
+          <p>Not with your Amazon links in it. Amazon's policies rule out promotion in any offline manner, and name printed material and ebooks.</p>
+          <p>For a printable list, leave the links out and point readers back to the post.</p>
+        </div>
+      </div>
+
+      <div>
+        <h3 class="sub-h">And four shorter ones</h3>
+        <div class="faq">
+          <details name="faq">
+            <summary>Should I use the same URL every year?</summary>
+            <div class="a"><p>Yes. Keep one address and update the page each autumn. Put the year in the title if you like, never in the address: pins and links from past seasons then lead to this year's guide.</p></div>
+          </details>
+          <details name="faq">
+            <summary>Does a gift guide work if I only work with one brand?</summary>
+            <div class="a"><p>It can. Simple Pin Media's advice to a reader in that spot was to add products from other brands that go well with it, so readers still get a choice.</p></div>
+          </details>
+          <details name="faq">
+            <summary>Can I put Amazon links straight on my pins?</summary>
+            <div class="a"><p>Pinterest's team has said affiliate links can go straight into a pin's link field. Whether Amazon counts your Pinterest account as one of your sites, its public terms do not say. <a href="/articles/pinterest-affiliate-links/#amazon">Our Pinterest guide</a> has the details.</p></div>
+          </details>
+          <details name="faq">
+            <summary>How do I see which gifts sell?</summary>
+            <div class="a"><p>Simple Pin Media suggests a separate Amazon tracking ID for each gift guide, so its sales show apart from your other posts. For what to change next autumn, Google Search Console shows which searches brought readers to the guide.</p></div>
+          </details>
+        </div>
+      </div>
+
+      <details class="sources">
+        <summary>Sources (16)</summary>
+        <ol>
+          <li><a href="https://affiliate-program.amazon.com/help/operating/policies" rel="noopener">Associates Program policies, Amazon (US)</a> <span>Updated 14 April 2026. Prices and availability only in a link Amazon serves or from its API, images, changing content, limited-time promotions, offline promotion.</span></li>
+          <li><a href="https://affiliate-program.amazon.com/help/operating/agreement" rel="noopener">Associates Program Operating Agreement, Amazon (US)</a> <span>Updated 15 October 2025. The sentence in section 5.</span></li>
+          <li><a href="https://affiliate-program.amazon.com/creatorsapi/docs/en-us/introduction" rel="noopener">Creators API introduction, Amazon Associates</a> <span>Ten qualifying sales in the past 30 days for access to the API.</span></li>
+          <li><a href="https://www.ftc.gov/business-guidance/resources/ftcs-endorsement-guides-what-people-are-asking" rel="noopener">FTC's Endorsement Guides: what people are asking, US Federal Trade Commission</a> <span>“Affiliate link” alone, the home page, the bottom of a post, the example sentence, products you haven't tried.</span></li>
+          <li><a href="https://www.asa.org.uk/advice-online/affiliate-marketing.html" rel="noopener">Affiliate marketing, Advertising Standards Authority and CAP</a> <span>22 March 2023. “Ad” in the title, at the start of a Pinterest description, and “(Ad)” before single links when only some pay.</span></li>
+          <li><a href="https://create.pinterest.com/blog/affiliate-marketing-link-basics/" rel="noopener">Getting started with affiliate links on Pinterest, Pinterest Create</a> <span>6 June 2025. Check regularly for broken or outdated links.</span></li>
+          <li><a href="https://business.pinterest.com/blog/holiday-2026-starts-now-a-pinterest-guide-to-success/" rel="noopener">The 2026 festive season starts now: a Pinterest guide to success, Pinterest Business</a> <span>30 July 2026. Go live as early as possible between September and November.</span></li>
+          <li><a href="https://business.pinterest.com/en-gb/blog/festive-gifting-pinterest/" rel="noopener">How to make your brand unmissable this gifting season, Pinterest Business (UK)</a> <span>8 September 2025. Gift searches from October to December, wishlists in November, gifts for others in December, wishlists people revisit later.</span></li>
+          <li><a href="https://community.pinterest.biz/t/when-should-i-pin-holiday-content-when-should-i-pin-fall-and-winter-travel-content/14652" rel="noopener">When should I pin holiday content?, Pinterest Business Community</a> <span>2 August 2024. Pinterest's team points to Pinterest Trends.</span></li>
+          <li><a href="https://community.pinterest.biz/t/can-i-use-amazon-affiliate-links-directly-in-my-pins-without-a-landing-page/31372" rel="noopener">Can I use Amazon affiliate links directly in my pins without a landing page?, Pinterest Business Community</a> <span>6 May 2025. Pinterest's team: the affiliate link may go straight into the pin's link field.</span></li>
+          <li><a href="https://www.which.co.uk/policy-and-insight/article/only-2-of-discounted-products-are-cheapest-on-black-friday-which-finds-as-it-reveals-most-deals-should-be-taken-with-a-pinch-of-salt-aQqFF8r2XcxV" rel="noopener">Only 2% of discounted products are cheapest on Black Friday, Which?</a> <span>24 November 2023. 208 deals from 2022, priced every day.</span></li>
+          <li><a href="https://www.awin.com/us/news-and-events/tips-and-tricks/use-gift-guides-to-generate-affiliate-sales-during-the-holidays" rel="noopener">Use gift guides to generate affiliate sales during the holidays, Awin</a> <span>30 October 2020. Asking shops for bestsellers, late Black Friday details, suggestions, not necessarily recommendations.</span></li>
+          <li><a href="https://www.mattmcwilliams.com/?p=398027" rel="noopener">How to write a gift guide or product roundup that earns commissions, Matt McWilliams</a> <span>20 August 2026. 5 to 15 products with a sweet spot of eight to ten, filler picks, the outline of each gift.</span></li>
+          <li><a href="https://www.wptasty.com/how-to-make-a-holiday-gift-guide-for-your-blog" rel="noopener">How to make a holiday gift guide for your blog, WP Tasty</a> <span>Updated 18 November 2025. Price bands.</span></li>
+          <li><a href="https://www.simplepinmedia.com/boost-pinterest-traffic-holiday-series/" rel="noopener">Boost your holiday traffic with gift guides, Simple Pin Media</a> <span>Several pins for each post with little text and a concrete title, the year in the title and not the address, a tracking ID for each guide, the one-brand question in the comments.</span></li>
+          <li><a href="https://jessieonajourney.com/blogging/how-to-create-a-gift-guide-for-your-blog" rel="noopener">How to create a gift guide for your blog, Jessie on a Journey</a> <span>Updated 27 December 2025. Search Console when you update a guide.</span></li>
+        </ol>
+      </details>
+    </div>
+  </div>
+</section>
+
+<section class="band vio" id="next" aria-labelledby="h-next">
+  <div class="wrap">
+    <div class="head">
+      <p class="kick">Where to go next</p>
+      <h2 id="h-next">Pick your next step.</h2>
+    </div>
+    <div class="help">
+      <a class="h" href="/articles/pinterest-affiliate-links/" data-cta="next-pinterest"><b>Pin it the right way</b><span>Pinterest's rules for affiliate links, and how to disclose on a pin.</span><u>Read the Pinterest guide</u></a>
+      <a class="h" href="/articles/why-affiliate-posts-stop-earning/" data-cta="next-stop-earning"><b>Keep older posts earning</b><span>What price changes and sold-out products do to older posts.</span><u>Read the guide</u></a>
+      <a class="h" href="/articles/make-money-blogging/" data-cta="next-make-money"><b>See the whole picture</b><span>How a blog earns today, and a plan for the first year.</span><u>Read the main guide</u></a>
+    </div>
+  </div>
+</section>
+
+<section class="close" id="end" aria-labelledby="h-end">
+  <div class="wrap close-in">
+    <div>
+      <h2 id="h-end">Spend December pinning your gift guide, not patching it.</h2>
+      <div class="go">
+        <a class="cta" data-cta="final" href="/install/">Get the free plugin</a>
+        <p class="calm">Free on WordPress.org for one shop's feed. Paid plans each start with a free trial.</p>
+        <p class="calm">Want to see the plans first? <a class="more" data-cta="final-plans" href="/#pricing">Compare the plans</a>.</p>
+      </div>
+    </div>
+    <div class="myfeeds-product-grid row3" aria-hidden="true">
+      <div class="myfeeds-product-card"><div class="myfeeds-product-image"><img src="/assets/home/hoodie-heather-grey.webp" width="400" height="400" alt="" loading="lazy"></div><div class="myfeeds-product-details"><div class="myfeeds-product-brand">Halden</div><div class="myfeeds-product-title">Heavyweight Hoodie Heather Grey</div><div class="myfeeds-product-price"><span class="myfeeds-current-price">$58.00</span></div><div class="myfeeds-shipping-info">Free Shipping</div><div class="myfeeds-merchant">Northside Supply</div></div></div>
+      <div class="myfeeds-product-card"><div class="myfeeds-product-image"><div class="myfeeds-discount-badge">-26%</div><img src="/assets/home/sneaker-black-hightop.webp" width="400" height="400" alt="" loading="lazy"></div><div class="myfeeds-product-details"><div class="myfeeds-product-brand">Arlo &amp; Finch</div><div class="myfeeds-product-title">Court High-Top Leather Black</div><div class="myfeeds-product-price"><span class="myfeeds-old-price">$129.00</span> <span class="myfeeds-current-price has-discount">$96.00</span></div><div class="myfeeds-shipping-info">Free Shipping</div><div class="myfeeds-merchant">Kicks Corner</div></div></div>
+      <div class="myfeeds-product-card"><div class="myfeeds-product-image"><img src="/assets/home/backpack-trail.webp" width="400" height="400" alt="" loading="lazy"></div><div class="myfeeds-product-details"><div class="myfeeds-product-brand">Fieldmade</div><div class="myfeeds-product-title">Trail Pack 28 L Sage</div><div class="myfeeds-product-price"><span class="myfeeds-current-price">$74.00</span></div><div class="myfeeds-shipping-info">Shipping costs may apply</div><div class="myfeeds-merchant">Basecamp Outfitters</div></div></div>
+    </div>
+  </div>
+</section>
+</main>
+
+<footer>
+  <div class="wrap">
+    <div class="brand"><b translate="no">MyFeeds</b><span>Affiliate product feeds for WordPress</span></div>
+    <nav aria-label="Site">
+      <a href="/ecommerce/">E-commerce</a>
+      <a href="/install/">Install guide</a>
+      <a href="/networks/">Affiliate networks</a>
+      <a href="/articles/">Guides</a>
+      <a href="/affiliates/">Become an affiliate</a>
+      <a href="https://wordpress.org/plugins/myfeeds-affiliate-feed-manager/" rel="noopener">Free plugin on WordPress.org</a>
+      <a href="/imprint/">Imprint</a>
+      <a href="/privacy/">Privacy</a>
+      <a href="/terms/">Terms</a>
+      <a href="/refund/">Refund policy</a>
+    </nav>
+    <span>© 2026 MyFeeds. All rights reserved.</span>
+  </div>
+</footer>
+
+<script src="/assets/site.js" defer></script>
+<script src="/assets/back-to-top.js" defer></script>
+<script src="/assets/consent.js" defer></script>
+</body>
+</html>
