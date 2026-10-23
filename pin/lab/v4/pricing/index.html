@@ -1,0 +1,467 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="p:domain_verify" content="0f13dbb87c7b78ab08817667740c2df2"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+<title>MyFeeds plans and prices - Free, Starter, Pro, E-commerce</title>
+<meta name="description" content="Pick the MyFeeds plan for where your blog is now: free for one store, Starter for $9 a month, Pro and E-commerce for more. Every paid plan has a free trial.">
+<!-- Preview: live path /pricing/ . Going live = move this file to /pricing/index.html and delete the two lines below plus the <div class="pv"> strip at the top of <body>. The second line keeps GoatCounter out of this preview: assets/site.js only knows /pin/lab/v3/ as a preview. If it stays on the live page, the live page counts nothing. -->
+<meta name="robots" content="noindex, follow">
+<script type="text/plain" data-goatcounter="preview-off"></script>
+<link rel="canonical" href="https://myfeeds.site/pricing/">
+<meta name="theme-color" content="#FC9000">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="MyFeeds">
+<meta property="og:url" content="https://myfeeds.site/pricing/">
+<meta property="og:title" content="MyFeeds plans and prices - Free, Starter, Pro, E-commerce">
+<meta property="og:description" content="Free for one store. Starter $9, Pro $19, E-commerce $49 a month; every paid plan starts with a free trial.">
+<meta property="og:image" content="https://myfeeds.site/assets/og-image.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="628">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:url" content="https://myfeeds.site/pricing/">
+<meta name="twitter:title" content="MyFeeds plans and prices - Free, Starter, Pro, E-commerce">
+<meta name="twitter:description" content="Free for one store. Starter $9, Pro $19, E-commerce $49 a month; every paid plan starts with a free trial.">
+<meta name="twitter:image" content="https://myfeeds.site/assets/og-image.png">
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"Product","@id":"https://myfeeds.site/pricing/#product","name":"MyFeeds","url":"https://myfeeds.site/pricing/","image":"https://myfeeds.site/logo.png","brand":{"@type":"Brand","name":"MyFeeds"},"description":"A WordPress plugin for affiliate blogs. You pick products from the stores you're an affiliate for, and they show up in your posts as cards with picture and price. Free for one store. Starter adds more stores and your own card design, Pro adds click and earnings reports, E-commerce adds a shop page on your site.","offers":[{"@type":"Offer","name":"Free","price":"0","priceCurrency":"USD","url":"https://myfeeds.site/pricing/#plan-free"},{"@type":"Offer","name":"Starter Monthly","price":"9","priceCurrency":"USD","url":"https://myfeeds.site/pricing/#plan-starter"},{"@type":"Offer","name":"Starter Annual","price":"89","priceCurrency":"USD","url":"https://myfeeds.site/pricing/#plan-starter"},{"@type":"Offer","name":"Pro Monthly","price":"19","priceCurrency":"USD","url":"https://myfeeds.site/pricing/#plan-pro"},{"@type":"Offer","name":"Pro Annual","price":"199","priceCurrency":"USD","url":"https://myfeeds.site/pricing/#plan-pro"},{"@type":"Offer","name":"E-commerce Monthly","price":"49","priceCurrency":"USD","url":"https://myfeeds.site/pricing/#plan-ecommerce"},{"@type":"Offer","name":"E-commerce Annual","price":"499","priceCurrency":"USD","url":"https://myfeeds.site/pricing/#plan-ecommerce"}]}</script>
+<link rel="icon" type="image/png" href="/favicon.png">
+<link rel="icon" type="image/x-icon" href="/favicon.ico">
+<link rel="apple-touch-icon" href="/apple-touch-icon.png">
+<link rel="preload" href="/assets/fonts/bricolage-latin.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="stylesheet" href="/assets/site.css">
+<script>
+/* Motion gate, before first paint. Nothing on this page waits for script:
+   without "mo" (no JS, reduced motion) there are simply no transitions. */
+!function(d){d.classList.add('js');try{if(matchMedia('(prefers-reduced-motion: no-preference)').matches)d.classList.add('mo')}catch(e){}}(document.documentElement);
+</script>
+<style>
+/* Pricing page only. Every class here starts with pp-; nothing in
+   site.css is restyled. The plan cards follow the homepage cards. */
+@media (max-width:459px){.top .cta-sm{display:none}}
+
+/* Hero: what it is, what a card looks like, what it costs. One column on a
+   phone in reading order; from 900px the cards sit on the right. */
+.hero.pp-hero{gap:0;padding-block:4px 34px}
+.pp-hero h1{margin-bottom:0}
+.pp-what{margin-top:14px;font-size:16px;line-height:1.5;max-width:46ch}
+.pp-ex{margin-top:24px;max-width:300px}
+.pp-ex .row3 .myfeeds-product-card{width:calc((100% - 2 * var(--myfeeds-grid-gap)) / 3)}
+.pp-ex .row3 .myfeeds-product-card:nth-child(3){display:flex}
+.pp-ex figcaption{margin-top:10px;font-size:13px}
+@media (min-width:600px) and (max-width:899px){.pp-ex{max-width:430px}}
+@media (max-width:899px){.pp-ex .row3{--myfeeds-grid-gap:8px;--myfeeds-details-py:8px;--myfeeds-details-px:7px}.pp-ex .myfeeds-shipping-info,.pp-ex .myfeeds-merchant,.pp-ex .myfeeds-old-price{display:none}.pp-ex .myfeeds-product-title{margin-bottom:4px}.pp-ex .myfeeds-product-price{margin-bottom:0}}
+.hero.pp-hero .lede{margin-top:20px;max-width:52ch}
+.pp-nw{white-space:nowrap}
+/* the four prices at a glance; each one jumps to its card */
+.pp-line{list-style:none;display:flex;gap:6px;margin-top:16px;max-width:520px}
+.pp-line li{flex:1 1 auto}
+.pp-line a{display:flex;flex-direction:column;align-items:flex-start;height:100%;padding:9px 10px 10px;border:1.5px solid var(--ink);border-radius:10px;color:var(--ink);text-decoration:none;line-height:1.15;white-space:nowrap}
+.pp-line a:hover{background:rgba(23,21,28,.08)}
+.pp-line span{font-size:13px;font-weight:600}
+.pp-line b{margin-top:3px;font:800 1.45rem/1 var(--display);letter-spacing:-.02em}
+.pp-line small{margin-top:3px;font-size:12px;font-weight:600}
+.pp-line .pick a{background:var(--ink);color:#fff}
+.pp-line .pick a:hover{background:#2b2833}
+@media (max-width:379px){.pp-line a{padding:8px 8px 9px}.pp-line span{font-size:12px}.pp-line small{font-size:11px}}
+@media (max-width:339px){.pp-line{display:grid;grid-template-columns:repeat(2,minmax(0,1fr))}}
+@media (min-width:900px){
+  .hero.pp-hero{grid-template-columns:minmax(0,1.08fr) minmax(0,.92fr);grid-template-areas:"h ex" "what ex" "lede ex" "line ex";grid-template-rows:auto auto auto 1fr;column-gap:52px;align-items:start;padding-block:20px 44px}
+  .pp-h{grid-area:h}.pp-what{grid-area:what}.pp-hero .lede{grid-area:lede}.pp-line{grid-area:line}
+  .pp-ex{grid-area:ex;align-self:center;max-width:540px;margin-top:0}
+}
+
+.pp-band{padding-block:34px 56px}
+@media (min-width:900px){.pp-band{padding-block:44px 84px}}
+.pp-cycle{display:flex;flex-wrap:wrap;align-items:center;gap:8px 12px}
+.pp-seg{display:none;background:#fff;border:1px solid var(--line);border-radius:999px;padding:4px}
+.js .pp-seg{display:inline-flex}
+.pp-seg button{min-height:44px;background:none;border:0;border-radius:999px;padding:0 20px;font:600 15px/1 var(--sans);color:var(--ink-2);cursor:pointer}
+.pp-seg button[aria-pressed="true"]{background:var(--ink);color:#fff}
+.pp-save{display:none;font-size:13.5px;font-weight:600;color:var(--ink-2)}
+.js .pp-save{display:inline}
+
+.pp-plans{display:grid;gap:22px;max-width:620px}
+.pp-plan{position:relative;display:flex;flex-direction:column;min-width:0;background:#fff;border:1.5px solid var(--line);border-radius:10px;padding:24px 20px 20px}
+.pp-plan.ink{background:var(--ink);color:#fff;border-color:var(--ink);box-shadow:0 30px 60px -30px rgba(23,21,28,.8)}
+/* The card carries the plan-x id, its name the short one: /pricing/#pro and
+   /pricing/#plan-pro both land on the card. */
+.pp-plan:target,.pp-plan:has(>h3:target){outline:3px solid var(--orange);outline-offset:4px}
+.pp-plan>h3{scroll-margin-top:52px}
+/* anchored at its foot: if the words take two lines, it grows up into the gap, never over the name */
+.pp-badge{position:absolute;bottom:calc(100% - 13px);left:18px;width:max-content;max-width:calc(100% - 36px);background:var(--orange);color:var(--ink);font:700 13px/1.2 var(--sans);padding:6px 12px;border-radius:14px}
+.pp-plan h3{font-size:1.65rem;line-height:1}
+.pp-for{margin-top:8px;font-size:15.5px;line-height:1.45;color:var(--fg-2)}
+.pp-price{margin-top:16px;display:flex;align-items:baseline;gap:7px;flex-wrap:wrap}
+.pp-price b{font:800 2.9rem/1 var(--display);letter-spacing:-.03em;color:var(--fg)}
+.pp-per{font-weight:600;color:var(--fg-2)}
+.pp-alt{margin-top:5px;font-size:14.5px;color:var(--fg-2)}
+.pp-sites{margin-top:2px;font-size:13.5px;line-height:1.45;color:var(--fg-3)}
+.pp-sites a{color:var(--fg);font-weight:600;text-underline-offset:3px}
+.pp-inc{margin-top:20px;font-size:12px;font-weight:600;letter-spacing:.07em;text-transform:uppercase;color:var(--fg-3)}
+.pp-feats{list-style:none;display:grid;gap:9px;margin-top:20px;font-size:15.5px;line-height:1.4;color:var(--fg-2)}
+.pp-inc+.pp-feats{margin-top:10px}
+.pp-feats li{position:relative;padding-left:26px}
+.pp-feats li::before{content:"";position:absolute;left:2px;top:.42em;width:12px;height:6px;border-left:2.5px solid var(--mark);border-bottom:2.5px solid var(--mark);transform:rotate(-45deg)}
+.pp-feats a{color:var(--fg);font-weight:600;text-underline-offset:3px}
+.pp-not{position:relative;margin-top:12px;padding-left:26px;font-size:14.5px;line-height:1.4;color:var(--fg-2)}
+.pp-not::before{content:"";position:absolute;left:3px;top:.68em;width:11px;height:2px;background:var(--fg-3)}
+.pp-go{margin-top:auto;padding-top:24px;display:grid;gap:9px}
+.pp-go .cta{white-space:normal;text-align:center;padding:15px 18px;font-size:16px}
+.pp-go .calm{max-width:none;text-align:center;font-size:13.5px}
+.pp-go .calm a{color:var(--fg);font-weight:600;text-underline-offset:3px}
+/* "every paid plan": a plain line on a phone, a bracket over the three paid cards from 1000px */
+.pp-all{padding-top:14px;border-top:2px solid var(--ink);font-size:14.5px;line-height:1.45;color:var(--ink-2)}
+.pp-all b{color:var(--ink)}
+.pp-cycle+.pp-plan{margin-top:10px}
+.pp-between{margin-top:28px;font-size:16px;color:var(--fg-2);max-width:62ch}
+.pp-between b{color:var(--fg)}
+.pp-notes{margin-top:10px;font-size:14px;line-height:1.5;color:var(--ink-2);max-width:78ch}
+@media (min-width:1000px){
+  .pp-plans{max-width:none;grid-template-columns:repeat(4,minmax(0,1fr));column-gap:16px;row-gap:0}
+  .pp-plan{grid-row:2}
+  #plan-free{grid-column:1}
+  .pp-all{position:relative;grid-column:2/5;grid-row:1;margin-bottom:30px;padding:12px 16px 0;text-align:center}
+  .pp-all::before,.pp-all::after{content:"";position:absolute;top:-2px;width:2px;height:12px;background:var(--ink)}
+  .pp-all::before{left:0}
+  .pp-all::after{right:0}
+  .pp-cycle{grid-column:1;grid-row:1;align-self:start;margin-bottom:30px}
+  .pp-cycle+.pp-plan{margin-top:0}
+  .pp-for{min-height:4.35em}
+  .pp-go .calm{min-height:2.9em}
+}
+@media (min-width:1000px) and (max-width:1179px){.pp-plan{padding:22px 16px 18px}.pp-price b{font-size:2.5rem}.pp-for{min-height:5.8em}.pp-badge{font-size:12px;padding:5px 10px}.pp-seg button{padding:0 16px}}
+
+.pp-cmp tbody th{width:28%}
+/* On a phone the table fits without swiping: short row names, the marks
+   alone (the words stay for screen readers), every plan column the same. */
+@media (max-width:699px){
+  .pp-cmp{min-width:320px;table-layout:fixed}
+  .pp-cmp th,.pp-cmp td{padding:11px 3px 11px 0;font-size:13.5px;line-height:1.35}
+  .cmp.pp-cmp tbody th,.cmp.pp-cmp thead th:first-child{width:31%;min-width:0;padding-right:8px;font-size:14px}
+  .pp-cmp thead th{font-size:12px;letter-spacing:0;text-transform:none;text-align:center;padding-inline:2px}
+  /* the E-commerce column gets the room its name needs */
+  .pp-cmp thead th:nth-child(2){width:15%}.pp-cmp thead th:nth-child(3),.pp-cmp thead th:nth-child(4){width:17%}.pp-cmp thead th:nth-child(5){width:20%}
+  .pp-cmp td{text-align:center}
+  .pp-cmp .own,.pp-cmp .y,.pp-cmp .n,.pp-cmp .own.y,.pp-cmp .own.n{padding-left:3px}
+  .pp-mo{display:none}
+  .pp-cmp .y>span,.pp-cmp .n>span{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap}
+  .pp-cmp .y::before,.pp-cmp .own.y::before{left:50%;margin-left:-6px;top:15px}
+  .pp-cmp .n::before,.pp-cmp .n::after,.pp-cmp .own.n::before,.pp-cmp .own.n::after{left:50%;margin-left:-6px;width:12px;top:19px}
+  /* the site-wide back-to-top button sits over the last column and the
+     buttons; it steps aside while they pass behind it (script below) */
+  html.pp-notop #to-top{opacity:0;visibility:hidden}
+}
+@media (min-width:360px){.pp-swipe{display:none}}
+.pp-after{margin-top:26px}
+@media (max-width:899px){.pp-close .myfeeds-product-grid{display:none}}
+</style>
+</head>
+<body data-page="pricing/">
+<a class="skip" href="#main">Skip to content</a>
+<div class="pv">Preview · not public yet · later at myfeeds.site/pricing/</div>
+<div class="open-top">
+  <div class="wrap">
+    <header class="top">
+      <a class="mark" href="/" translate="no" aria-label="MyFeeds home"><span><img src="/assets/home/logo-52.webp" alt="" width="22" height="22"></span>MyFeeds</a>
+      <nav class="nav" aria-label="Main">
+        <a href="/#how">How it works</a>
+        <a href="/shop-the-look/">Shop the look</a>
+        <a href="#main" aria-current="page">Plans</a>
+        <a href="/articles/">Guides</a>
+      </nav>
+      <div class="top-r">
+        <button type="button" class="menu-btn" id="menu-btn" aria-expanded="false" aria-controls="menu"><i aria-hidden="true"></i>Menu</button>
+        <a class="cta cta-sm" data-cta="header" rel="noopener" href="https://wordpress.org/plugins/myfeeds-affiliate-feed-manager/">Start free</a>
+      </div>
+      <div class="menu" id="menu" hidden>
+        <a href="/#how">How it works</a>
+        <a href="/shop-the-look/">Shop the look</a>
+        <a href="#main" aria-current="page">Plans and prices</a>
+        <a href="/articles/">Guides</a>
+      </div>
+    </header>
+  </div>
+</div>
+
+<main id="main">
+<div class="open">
+  <div class="wrap">
+    <section class="hero long pp-hero" aria-labelledby="h-hero">
+      <div class="pp-h">
+        <p class="eyebrow">Plans and prices</p>
+        <h1 id="h-hero">Pick the plan for where your blog is now.</h1>
+      </div>
+      <p class="pp-what">MyFeeds is a WordPress plugin for affiliate blogs. The products you pick from the stores you're an affiliate for show up in your posts as cards with picture and price, and the prices refresh every night.</p>
+      <p class="lede">Start free with one store, or try a paid plan free first. Starter adds more stores and your own look, Pro shows which posts earn, <span class="pp-nw">E-commerce</span> adds a shop of your own.</p>
+      <ul class="pp-line" aria-label="The four plans">
+        <li><a href="#plan-free" data-cta="hero-free"><span>Free</span> <b>$0</b> <small>no time limit</small></a></li>
+        <li class="pick"><a href="#plan-starter" data-cta="hero-starter"><span>Starter</span> <b>$9</b> <small>a month</small></a></li>
+        <li><a href="#plan-pro" data-cta="hero-pro"><span>Pro</span> <b>$19</b> <small>a month</small></a></li>
+        <li><a href="#plan-ecommerce" data-cta="hero-ecommerce"><span>E-commerce</span> <b>$49</b> <small>a month</small></a></li>
+      </ul>
+      <figure class="pp-ex">
+        <div class="myfeeds-product-grid row3">
+          <div class="myfeeds-product-card"><div class="myfeeds-product-image"><img src="/assets/home/hoodie-heather-grey.webp" width="400" height="400" alt="Heather grey hoodie"></div><div class="myfeeds-product-details"><div class="myfeeds-product-brand">Halden</div><div class="myfeeds-product-title">Heavyweight Hoodie Heather Grey</div><div class="myfeeds-product-price"><span class="myfeeds-current-price">$58.00</span></div><div class="myfeeds-shipping-info">Free Shipping</div><div class="myfeeds-merchant">Northside Supply</div></div></div>
+          <div class="myfeeds-product-card"><div class="myfeeds-product-image"><div class="myfeeds-discount-badge">-26%</div><img src="/assets/home/sneaker-black-hightop.webp" width="400" height="400" alt="Black leather high-top sneaker"></div><div class="myfeeds-product-details"><div class="myfeeds-product-brand">Arlo &amp; Finch</div><div class="myfeeds-product-title">Court High-Top Leather Black</div><div class="myfeeds-product-price"><span class="myfeeds-old-price">$129.00</span> <span class="myfeeds-current-price has-discount">$96.00</span></div><div class="myfeeds-shipping-info">Free Shipping</div><div class="myfeeds-merchant">Kicks Corner</div></div></div>
+          <div class="myfeeds-product-card"><div class="myfeeds-product-image"><img src="/assets/home/backpack-trail.webp" width="400" height="400" alt="Sage green trail backpack"></div><div class="myfeeds-product-details"><div class="myfeeds-product-brand">Fieldmade</div><div class="myfeeds-product-title">Trail Pack 28 L Sage</div><div class="myfeeds-product-price"><span class="myfeeds-current-price">$74.00</span></div><div class="myfeeds-shipping-info">Shipping costs may apply</div><div class="myfeeds-merchant">Basecamp Outfitters</div></div></div>
+        </div>
+        <figcaption>Example products, sample prices.</figcaption>
+      </figure>
+    </section>
+  </div>
+</div>
+
+<section class="band board pp-band" id="plans" aria-labelledby="h-plans">
+  <div class="wrap">
+    <h2 class="vh" id="h-plans">The four plans</h2>
+    <div class="pp-plans">
+      <article class="pp-plan" id="plan-free" aria-labelledby="free">
+        <h3 id="free">Free</h3>
+        <p class="pp-for">For you if your picks come from one store in an affiliate network like AWIN.</p>
+        <p class="pp-price"><b>$0</b></p>
+        <p class="pp-alt">No time limit</p>
+        <ul class="pp-feats">
+          <li>Products from one store</li>
+          <li>Pick them right in the WordPress editor</li>
+          <li>Prices in your posts refresh every night</li>
+          <li>Sample products to try it before you add a store</li>
+        </ul>
+        <p class="pp-not">Amazon links start with Starter.</p>
+        <div class="pp-go">
+          <a class="cta" data-cta="plan-free" href="https://wordpress.org/plugins/myfeeds-affiliate-feed-manager/" rel="noopener">Get the free plugin</a>
+          <p class="calm">From WordPress.org. <a href="https://wordpress.org/plugins/myfeeds-affiliate-feed-manager/?preview=1" data-cta="plan-free-preview" rel="noopener">Or try it in your browser first</a>, on a computer.</p>
+        </div>
+      </article>
+
+      <p class="pp-all"><b>Every paid plan</b> includes everything in Starter and starts with a free trial. The checkout asks for a card or PayPal.</p>
+      <div class="pp-cycle">
+        <div class="pp-seg" role="group" aria-label="Billing for the paid plans">
+          <button type="button" data-pp-cycle="monthly" data-cta="cycle-monthly" aria-pressed="true">Monthly</button>
+          <button type="button" data-pp-cycle="annual" data-cta="cycle-yearly" aria-pressed="false">Yearly</button>
+        </div>
+        <span class="pp-save">Yearly saves up to 17%</span>
+      </div>
+
+      <article class="pp-plan ink" id="plan-starter" aria-labelledby="starter" data-m="9" data-y="89" data-days="7">
+        <p class="pp-badge">For several stores or Amazon</p>
+        <h3 id="starter">Starter</h3>
+        <p class="pp-for">For you if you want cards that look like your blog.</p>
+        <p class="pp-price"><b>$<span class="pp-amt">9</span></b><span class="pp-per">a month</span></p>
+        <p class="pp-alt">or $89 a year</p>
+        <p class="pp-sites">For one site</p>
+        <ul class="pp-feats">
+          <li>Products from as many stores as you like</li>
+          <li>Cards in your colors and fonts, as a grid or a carousel</li>
+          <li><a href="/shop-the-look/" data-cta="plan-starter-look">Shop the look</a>: dots on your own photos that lead to the products</li>
+          <li>Amazon products by link: a card with your name for it and a button, no picture or price</li>
+        </ul>
+        <div class="pp-go">
+          <a class="cta pp-buy" data-cta="plan-starter" href="https://checkout.freemius.com/plugin/21336/plan/60599/?trial=paid&amp;billing_cycle=monthly" data-checkout-base="https://checkout.freemius.com/plugin/21336/plan/60599" rel="noopener">Try Starter free for 7 days</a>
+          <p class="calm pp-then">7 days free, then $9 a month.</p>
+        </div>
+      </article>
+
+      <article class="pp-plan" id="plan-pro" aria-labelledby="pro" data-m="19" data-y="199" data-days="7">
+        <h3 id="pro">Pro</h3>
+        <p class="pp-for">For you if you want to know which posts and products bring the money in.</p>
+        <p class="pp-price"><b>$<span class="pp-amt">19</span></b><span class="pp-per">a month</span></p>
+        <p class="pp-alt">or $199 a year</p>
+        <p class="pp-sites">For one site. <a class="pp-three" href="https://checkout.freemius.com/plugin/21336/plan/35610/licenses/3/?trial=paid&amp;billing_cycle=monthly" data-checkout-base="https://checkout.freemius.com/plugin/21336/plan/35610" data-m3="39" data-y3="399" data-cta="plan-pro-3" rel="noopener">Try it on three sites: $39 a month</a></p>
+        <p class="pp-inc">Everything in Starter, plus</p>
+        <ul class="pp-feats">
+          <li>Clicks counted for every post and product</li>
+          <li>Your commissions per post, from networks like AWIN and Rakuten</li>
+          <li>Posts with a product the store stopped selling, each one a click away</li>
+          <li>Amazon's picture and price on your cards, once you have 10 Amazon sales in 30 days (Amazon's rule)</li>
+          <li>Rakuten stores connect directly</li>
+        </ul>
+        <div class="pp-go">
+          <a class="cta pp-buy" data-cta="plan-pro" href="https://checkout.freemius.com/plugin/21336/plan/35610/?trial=paid&amp;billing_cycle=monthly" data-checkout-base="https://checkout.freemius.com/plugin/21336/plan/35610" rel="noopener">Try Pro free for 7 days</a>
+          <p class="calm pp-then">7 days free, then $19 a month.</p>
+        </div>
+      </article>
+
+      <article class="pp-plan" id="plan-ecommerce" aria-labelledby="ecommerce" data-m="49" data-y="499" data-days="14">
+        <h3 id="ecommerce">E-commerce</h3>
+        <p class="pp-for">For you if you want a shop on your own site that readers can browse.</p>
+        <p class="pp-price"><b>$<span class="pp-amt">49</span></b><span class="pp-per">a month</span></p>
+        <p class="pp-alt">or $499 a year</p>
+        <p class="pp-sites">For one site. <a class="pp-three" href="https://checkout.freemius.com/plugin/21336/plan/48994/licenses/3/?trial=paid&amp;billing_cycle=monthly" data-checkout-base="https://checkout.freemius.com/plugin/21336/plan/48994" data-m3="89" data-y3="899" data-cta="plan-ecommerce-3" rel="noopener">Try it on three sites: $89 a month</a></p>
+        <p class="pp-inc">Everything in Pro, plus</p>
+        <ul class="pp-feats">
+          <li><a href="/ecommerce/" data-cta="plan-ecommerce-shop">A shop page on your site</a>, at an address you choose</li>
+          <li>Categories you name, with filters like brand, color and price</li>
+          <li>The shop in your colors and fonts</li>
+          <li>Each category its own page, with a title and description for Google</li>
+          <li>Prices in the shop refresh every night</li>
+        </ul>
+        <div class="pp-go">
+          <a class="cta pp-buy" data-cta="plan-ecommerce" href="https://checkout.freemius.com/plugin/21336/plan/48994/?trial=paid&amp;billing_cycle=monthly" data-checkout-base="https://checkout.freemius.com/plugin/21336/plan/48994" rel="noopener">Try E-commerce free for 14 days</a>
+          <p class="calm pp-then">14 days free, then $49 a month.</p>
+        </div>
+      </article>
+    </div>
+
+    <p class="pp-between"><b>Between two?</b> Start with the lower one. Moving up later keeps your posts and settings.</p>
+    <p class="pp-notes">Prices in USD, without VAT. EU customers see local tax at checkout.</p>
+  </div>
+</section>
+
+<section class="band paper" id="compare" aria-labelledby="h-compare">
+  <div class="wrap">
+    <div class="head">
+      <h2 id="h-compare">What each plan does.</h2>
+      <p>Most stores in an affiliate network offer a list of all their products with picture, price and your link. It's called a product feed.</p>
+      <p>You add a store by pasting its feed link from your network. A downloaded file works too, but only a link refreshes every night. <a href="/install/" data-cta="compare-install">The install guide shows how</a>.</p>
+    </div>
+    <p class="swipe top pp-swipe">Swipe the table sideways to see all four plans.</p>
+    <div class="cmp-wrap" tabindex="0" role="region" aria-labelledby="cap-plans">
+      <table class="cmp pp-cmp">
+        <caption class="vh" id="cap-plans">The four MyFeeds plans side by side</caption>
+        <thead>
+          <tr><th scope="col"><span class="vh">What you get</span></th><th scope="col">Free<br>$0</th><th scope="col" class="own">Starter<br>$9<span class="pp-mo"> a month</span></th><th scope="col">Pro<br>$19<span class="pp-mo"> a month</span></th><th scope="col">E-commerce<br>$49<span class="pp-mo"> a month</span></th></tr>
+        </thead>
+        <tbody>
+          <tr><th scope="row">Free trial</th><td>–</td><td class="own">7 days</td><td>7 days</td><td>14 days</td></tr>
+          <tr><th scope="row">Stores you can add</th><td>One</td><td class="own">Any number</td><td>Any number</td><td>Any number</td></tr>
+          <tr><th scope="row">Product cards, prices updated every night</th><td class="y"><span>Yes</span></td><td class="own y"><span>Yes</span></td><td class="y"><span>Yes</span></td><td class="y"><span>Yes</span></td></tr>
+          <tr><th scope="row">Your colors, fonts and a carousel</th><td class="n"><span>No</span></td><td class="own y"><span>Yes</span></td><td class="y"><span>Yes</span></td><td class="y"><span>Yes</span></td></tr>
+          <tr><th scope="row">Shop the look</th><td class="n"><span>No</span></td><td class="own y"><span>Yes</span></td><td class="y"><span>Yes</span></td><td class="y"><span>Yes</span></td></tr>
+          <tr><th scope="row">Amazon products by link</th><td class="n"><span>No</span></td><td class="own y"><span>Yes</span></td><td class="y"><span>Yes</span></td><td class="y"><span>Yes</span></td></tr>
+          <tr><th scope="row">Clicks and earnings, post by post</th><td class="n"><span>No</span></td><td class="own n"><span>No</span></td><td class="y"><span>Yes</span></td><td class="y"><span>Yes</span></td></tr>
+          <tr><th scope="row">Posts with a product that's gone, a click away</th><td class="n"><span>No</span></td><td class="own n"><span>No</span></td><td class="y"><span>Yes</span></td><td class="y"><span>Yes</span></td></tr>
+          <tr><th scope="row">Amazon's picture and price</th><td class="n"><span>No</span></td><td class="own n"><span>No</span></td><td class="y"><span>Yes</span></td><td class="y"><span>Yes</span></td></tr>
+          <tr><th scope="row">Rakuten connects directly</th><td class="n"><span>No</span></td><td class="own n"><span>No</span></td><td class="y"><span>Yes</span></td><td class="y"><span>Yes</span></td></tr>
+          <tr><th scope="row">A shop page on your site</th><td class="n"><span>No</span></td><td class="own n"><span>No</span></td><td class="n"><span>No</span></td><td class="y"><span>Yes</span></td></tr>
+          <tr><th scope="row">Support</th><td>–</td><td class="own">Email</td><td>Priority</td><td>Priority</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <p class="cap">Prices for one site, paid monthly. Amazon's picture and price need 10 Amazon sales in 30 days (Amazon's rule).</p>
+    <div class="go pp-after">
+      <a class="cta" data-cta="compare-starter" href="https://checkout.freemius.com/plugin/21336/plan/60599/?trial=paid&amp;billing_cycle=monthly" rel="noopener">Try Starter free for 7 days</a>
+      <p class="calm">7 days free, then $9 a month.</p>
+      <a class="more" data-cta="compare-free" href="https://wordpress.org/plugins/myfeeds-affiliate-feed-manager/" rel="noopener">Get the free plugin</a>
+    </div>
+  </div>
+</section>
+
+<section class="band board" id="faq" aria-labelledby="h-faq">
+  <div class="wrap chap">
+    <div class="head">
+      <h2 id="h-faq">Questions about the plans</h2>
+    </div>
+    <div class="faq">
+      <details name="faq">
+        <summary>Can I switch plans later?</summary>
+        <div class="a"><p>Yes. To move from the free plugin to a paid plan, you install the paid plugin in its place. It is called MyFeeds Pro and serves Starter, Pro and E-commerce. It keeps your stores, posts and settings. Between paid plans, you switch from inside the plugin, in WordPress. <a href="/install/#pro" data-cta="faq-install">The install guide shows each step</a>.</p></div>
+      </details>
+      <details name="faq">
+        <summary>How do I cancel?</summary>
+        <div class="a"><p>Any time, from your WordPress dashboard, or by writing to <a href="mailto:support@myfeeds.site">support@myfeeds.site</a>. Cancel before the trial ends and you pay nothing. Once a paid period has started, the plan runs until that period ends.</p></div>
+      </details>
+      <details name="faq">
+        <summary>Can I get a refund?</summary>
+        <div class="a"><p>The trial is your time to decide: cancel before it ends and nothing is charged. In the EU you also have a 14-day right of withdrawal, with the limits the policy explains. Beyond that, we refund case by case, for example when the plugin does not work as described and we cannot fix it. <a href="/refund/" data-cta="faq-refund">Read the refund policy</a>.</p></div>
+      </details>
+      <details name="faq">
+        <summary>Which plan do I need for Amazon?</summary>
+        <div class="a"><p>Starter. Paste the product's full address from Amazon, not a short link like amzn.to, and give it a name. The card shows that name and a button to Amazon, with your Amazon affiliate tag in the link. It shows no picture or price.</p><p>Pro adds Amazon's picture and price to your cards once you have 10 qualified Amazon sales in 30 days. That is Amazon's rule, and Amazon can change it. Pro counts your Amazon clicks; your Amazon earnings stay in your Amazon account.</p></div>
+      </details>
+      <details name="faq">
+        <summary>I run several sites. What does that cost?</summary>
+        <div class="a"><p>Each plan covers one site. Pro and E-commerce also come for three sites: Pro $39 a month or $399 a year, E-commerce $89 a month or $899 a year. Starter is for one site. The free plugin goes on as many sites as you like.</p></div>
+      </details>
+      <details name="faq">
+        <summary>Does the free plugin stay free?</summary>
+        <div class="a"><p>Yes. It lives on WordPress.org, costs nothing and has no time limit. It sets no limit on products or posts, and nothing in it stops working. It reads one store's feed; more stores, your own design and Shop the look come with Starter.</p></div>
+      </details>
+    </div>
+  </div>
+</section>
+
+<section class="close pp-close" id="end" aria-labelledby="h-end">
+  <div class="wrap close-in">
+    <div>
+      <h2 id="h-end">Make your next post look like a shop.</h2>
+      <div class="go">
+        <a class="cta" data-cta="final" href="https://checkout.freemius.com/plugin/21336/plan/60599/?trial=paid&amp;billing_cycle=monthly" rel="noopener">Try Starter free for 7 days</a>
+        <p class="calm">7 days free, then $9 a month.</p>
+        <p class="calm">Not sure yet? <a class="more" data-cta="final-free" href="https://wordpress.org/plugins/myfeeds-affiliate-feed-manager/" rel="noopener">Start with the free plugin</a>.</p>
+      </div>
+    </div>
+    <div class="myfeeds-product-grid row3" aria-hidden="true">
+      <div class="myfeeds-product-card"><div class="myfeeds-product-image"><img src="/assets/home/hoodie-heather-grey.webp" width="400" height="400" alt="" loading="lazy"></div><div class="myfeeds-product-details"><div class="myfeeds-product-brand">Halden</div><div class="myfeeds-product-title">Heavyweight Hoodie Heather Grey</div><div class="myfeeds-product-price"><span class="myfeeds-current-price">$58.00</span></div><div class="myfeeds-shipping-info">Free Shipping</div><div class="myfeeds-merchant">Northside Supply</div></div></div>
+      <div class="myfeeds-product-card"><div class="myfeeds-product-image"><div class="myfeeds-discount-badge">-26%</div><img src="/assets/home/sneaker-black-hightop.webp" width="400" height="400" alt="" loading="lazy"></div><div class="myfeeds-product-details"><div class="myfeeds-product-brand">Arlo &amp; Finch</div><div class="myfeeds-product-title">Court High-Top Leather Black</div><div class="myfeeds-product-price"><span class="myfeeds-old-price">$129.00</span> <span class="myfeeds-current-price has-discount">$96.00</span></div><div class="myfeeds-shipping-info">Free Shipping</div><div class="myfeeds-merchant">Kicks Corner</div></div></div>
+      <div class="myfeeds-product-card"><div class="myfeeds-product-image"><img src="/assets/home/backpack-trail.webp" width="400" height="400" alt="" loading="lazy"></div><div class="myfeeds-product-details"><div class="myfeeds-product-brand">Fieldmade</div><div class="myfeeds-product-title">Trail Pack 28 L Sage</div><div class="myfeeds-product-price"><span class="myfeeds-current-price">$74.00</span></div><div class="myfeeds-shipping-info">Shipping costs may apply</div><div class="myfeeds-merchant">Basecamp Outfitters</div></div></div>
+    </div>
+  </div>
+</section>
+</main>
+
+<footer>
+  <div class="wrap">
+    <div class="brand"><b translate="no">MyFeeds</b><span>Affiliate product feeds for WordPress</span></div>
+    <nav aria-label="Site">
+      <a href="/ecommerce/">E-commerce</a>
+      <a href="/install/">Install guide</a>
+      <a href="/networks/">Affiliate networks</a>
+      <a href="/articles/">Guides</a>
+      <a href="/affiliates/">Become an affiliate</a>
+      <a href="https://wordpress.org/plugins/myfeeds-affiliate-feed-manager/" rel="noopener">Free plugin on WordPress.org</a>
+      <a href="/imprint/">Imprint</a>
+      <a href="/privacy/">Privacy</a>
+      <a href="/terms/">Terms</a>
+      <a href="/refund/">Refund policy</a>
+    </nav>
+    <span>© 2026 MyFeeds. All rights reserved.</span>
+  </div>
+</footer>
+
+<script>
+/* Monthly or yearly: one switch for all three paid cards. Without script
+   the cards show the monthly price with the yearly one beside it, and the
+   switch stays hidden (.js .pp-seg). Freemius reads billing_cycle from the
+   address; three sites go in as /licenses/3/ (the homepage does the same). */
+(function () {
+  var btns = document.querySelectorAll('[data-pp-cycle]'), cards = document.querySelectorAll('.pp-plan[data-m]');
+  function set(cycle) {
+    var yearly = cycle === 'annual';
+    Array.prototype.forEach.call(btns, function (b) { b.setAttribute('aria-pressed', b.getAttribute('data-pp-cycle') === cycle ? 'true' : 'false'); });
+    Array.prototype.forEach.call(cards, function (c) {
+      var m = c.getAttribute('data-m'), y = c.getAttribute('data-y'), days = c.getAttribute('data-days');
+      c.querySelector('.pp-amt').textContent = yearly ? y : m;
+      c.querySelector('.pp-per').textContent = yearly ? 'a year' : 'a month';
+      c.querySelector('.pp-alt').textContent = yearly ? 'instead of $' + (m * 12) + ' paid monthly' : 'or $' + y + ' a year';
+      c.querySelector('.pp-then').textContent = days + ' days free, then $' + (yearly ? y + ' a year.' : m + ' a month.');
+      var buy = c.querySelector('.pp-buy');
+      buy.setAttribute('href', buy.getAttribute('data-checkout-base') + '/?trial=paid&billing_cycle=' + cycle);
+      var three = c.querySelector('.pp-three');
+      if (three) {
+        three.textContent = 'Try it on three sites: $' + (yearly ? three.getAttribute('data-y3') + ' a year' : three.getAttribute('data-m3') + ' a month');
+        three.setAttribute('href', three.getAttribute('data-checkout-base') + '/licenses/3/?trial=paid&billing_cycle=' + cycle);
+      }
+    });
+  }
+  Array.prototype.forEach.call(btns, function (b) { b.addEventListener('click', function () { set(b.getAttribute('data-pp-cycle')); }); });
+})();
+/* On a phone the back-to-top button (assets/back-to-top.js) covers the
+   table's last column and the right end of the buttons. While one of them
+   passes through the bottom strip of the screen, the button steps aside
+   (html.pp-notop, CSS above, under 700px only). */
+(function () {
+  if (!('IntersectionObserver' in window)) return;
+  var on = [], root = document.documentElement;
+  var io = new IntersectionObserver(function (es) {
+    es.forEach(function (e) { var i = on.indexOf(e.target); if (e.isIntersecting && i < 0) on.push(e.target); if (!e.isIntersecting && i > -1) on.splice(i, 1); });
+    root.classList.toggle('pp-notop', on.length > 0);
+  }, { rootMargin: '-88% 0px 0px 0px' });
+  Array.prototype.forEach.call(document.querySelectorAll('.cmp-wrap, .pp-after, #end .go'), function (el) { io.observe(el); });
+})();
+</script>
+<script src="/assets/site.js" defer></script>
+<script src="/assets/back-to-top.js" defer></script>
+<script src="/assets/consent.js" defer></script>
+</body>
+</html>
