@@ -6,7 +6,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
 <title>MyFeeds - Make your blog shoppable</title>
 <meta name="description" content="Pick products from the stores you're an affiliate for, right in the WordPress editor. Readers get a little shop in your post. Free to start.">
-<!-- Preview: live path / . Going live, all in ONE commit together with the v4 plans page (this page links /pricing/ from the nav, the hero, the Pro tile, the plans and the footer; check that myfeeds-site/pricing/index.html exists and carries the anchors #pro, #plan-pro and #compare): (1) copy this file to /index.html, (2) delete this comment and the robots line below, (3) at the end of <body> set the consent script to /assets/consent.js and either put the new consent.js from this folder there (only together with the new wording of privacy policy 3.4, see the report) or keep the old file, (4) nothing else: the GoatCounter guard below only skips /pin/lab/, so "/" counts again by itself. -->
+<!-- Preview: live path / . Going live, all in ONE commit together with the v4 plans page (this page links /pricing/ from the nav, the hero, the Pro tile, the plans and the footer; check that myfeeds-site/pricing/index.html exists and carries the anchors #pro, #plan-pro and #compare): (1) copy this file to /index.html, (2) delete this comment and the robots line below, (3) at the end of <body> set the consent script back to /assets/consent.js and replace that file with /pin/lab/v4/assets/consent.js (the banner for every visitor, as now, in the slim phone layout; privacy policy 3.4 stays as it is), (4) unless it is live already, move /pin/lab/v4/refund/index.html to /refund/index.html in the same commit, following its own going-live note: the FAQ "What happens after the trial?" promises the 14-day money-back guarantee and links /refund/#money-back, and only that page has the guarantee (section 4, anchor #money-back); the old live /refund/ has no such anchor and says "case-by-case", (5) nothing else: the GoatCounter guard below only skips /pin/lab/, so "/" counts again by itself. -->
 <meta name="robots" content="noindex, follow">
 <link rel="canonical" href="https://myfeeds.site/">
 <meta name="theme-color" content="#FC9000">
@@ -23,7 +23,7 @@
 <meta name="twitter:title" content="MyFeeds - Make your blog shoppable">
 <meta name="twitter:description" content="Products from the stores you're an affiliate for, as a little shop in your post. A WordPress plugin, free to start.">
 <meta name="twitter:image" content="https://myfeeds.site/assets/og-image.png">
-<script type="application/ld+json">{"@context":"https://schema.org","@graph":[{"@type":"Organization","@id":"https://myfeeds.site/#organization","name":"MyFeeds","url":"https://myfeeds.site/","logo":{"@type":"ImageObject","url":"https://myfeeds.site/logo.png"}},{"@type":"WebSite","@id":"https://myfeeds.site/#website","url":"https://myfeeds.site/","name":"MyFeeds","publisher":{"@id":"https://myfeeds.site/#organization"}},{"@type":"SoftwareApplication","@id":"https://myfeeds.site/#software","name":"MyFeeds","url":"https://myfeeds.site/","image":"https://myfeeds.site/logo.png","operatingSystem":"WordPress","applicationCategory":"BusinessApplication","downloadUrl":"https://wordpress.org/plugins/myfeeds-affiliate-feed-manager/","description":"A free WordPress plugin for affiliate blogs. Pick products from the product feeds of the stores you're an affiliate for, right in the WordPress editor, and they appear as product cards in your post. Prices from a feed link refresh every night. Paid plans add products from more stores, your own card design, shoppable photos and Amazon products by link (Starter), click and earnings reports (Pro) and a shop page of your own (E-commerce).","publisher":{"@id":"https://myfeeds.site/#organization"},"offers":[{"@type":"Offer","name":"Free","price":"0","priceCurrency":"USD","url":"https://myfeeds.site/#plan-free"},{"@type":"Offer","name":"Starter Monthly","price":"9","priceCurrency":"USD","url":"https://myfeeds.site/#plan-starter"},{"@type":"Offer","name":"Starter Annual","price":"89","priceCurrency":"USD","url":"https://myfeeds.site/#plan-starter"},{"@type":"Offer","name":"Pro Monthly","price":"19","priceCurrency":"USD","url":"https://myfeeds.site/#plan-pro"},{"@type":"Offer","name":"Pro Annual","price":"199","priceCurrency":"USD","url":"https://myfeeds.site/#plan-pro"},{"@type":"Offer","name":"E-commerce Monthly","price":"49","priceCurrency":"USD","url":"https://myfeeds.site/#plan-ecommerce"},{"@type":"Offer","name":"E-commerce Annual","price":"499","priceCurrency":"USD","url":"https://myfeeds.site/#plan-ecommerce"}]},{"@type":"FAQPage","@id":"https://myfeeds.site/#faq","mainEntity":[{"@type":"Question","name":"Does it work with my Amazon links?","acceptedAnswer":{"@type":"Answer","text":"Yes, from Starter: paste the full Amazon address of a product (not an amzn.to link) and give it a name. The card shows that name and a button to Amazon with your own Associates tag, without picture or price. Pro adds Amazon's picture and price to your cards once Amazon opens that access to you, which takes ten qualified sales in thirty days."}},{"@type":"Question","name":"Does it work with my network?","acceptedAnswer":{"@type":"Answer","text":"Yes, if your network gives you a store's product feed. The network guides show how: a feed link refreshes every night, an uploaded file only when you upload it again. Network missing? Write to support@myfeeds.site."}},{"@type":"Question","name":"Do I need tech skills?","acceptedAnswer":{"@type":"Answer","text":"No. If you can install a plugin and paste a link, you can set it up. It works in the standard WordPress editor, the one with blocks."}},{"@type":"Question","name":"What does it cost to start?","acceptedAnswer":{"@type":"Answer","text":"Nothing: the free plugin on WordPress.org covers the products of one store. Paid plans start at $9 a month with a free trial and come as MyFeeds Pro, which replaces the free plugin and picks up everything it saved."}},{"@type":"Question","name":"What happens after the trial?","acceptedAnswer":{"@type":"Answer","text":"Every trial asks for a card or PayPal. Cancel on the Manage Plan page in your WordPress admin before it ends and you pay nothing. If you don't cancel, the plan continues at the price you chose. When a plan ends, MyFeeds falls back to the free features, and your posts and settings stay as they are."}},{"@type":"Question","name":"Will it slow my blog down?","acceptedAnswer":{"@type":"Answer","text":"The cards are built from products stored in your own WordPress, so your posts don't wait on a product service to answer. The one exception is Amazon with picture and price on Pro, which comes live from Amazon."}}]}]}</script>
+<script type="application/ld+json">{"@context":"https://schema.org","@graph":[{"@type":"Organization","@id":"https://myfeeds.site/#organization","name":"MyFeeds","url":"https://myfeeds.site/","logo":{"@type":"ImageObject","url":"https://myfeeds.site/logo.png"}},{"@type":"WebSite","@id":"https://myfeeds.site/#website","url":"https://myfeeds.site/","name":"MyFeeds","publisher":{"@id":"https://myfeeds.site/#organization"}},{"@type":"SoftwareApplication","@id":"https://myfeeds.site/#software","name":"MyFeeds","url":"https://myfeeds.site/","image":"https://myfeeds.site/logo.png","operatingSystem":"WordPress","applicationCategory":"BusinessApplication","downloadUrl":"https://wordpress.org/plugins/myfeeds-affiliate-feed-manager/","description":"A free WordPress plugin for affiliate blogs. Pick products from the product feeds of the stores you're an affiliate for, right in the WordPress editor, and they appear as product cards in your post. Prices from a feed link refresh every night. Paid plans add products from more stores, your own card design, shoppable photos and Amazon products by link (Starter), click and earnings reports (Pro) and a shop page of your own (E-commerce).","publisher":{"@id":"https://myfeeds.site/#organization"},"offers":[{"@type":"Offer","name":"Free","price":"0","priceCurrency":"USD","url":"https://myfeeds.site/#plan-free"},{"@type":"Offer","name":"Starter Monthly","price":"9","priceCurrency":"USD","url":"https://myfeeds.site/#plan-starter"},{"@type":"Offer","name":"Starter Annual","price":"89","priceCurrency":"USD","url":"https://myfeeds.site/#plan-starter"},{"@type":"Offer","name":"Pro Monthly","price":"19","priceCurrency":"USD","url":"https://myfeeds.site/#plan-pro"},{"@type":"Offer","name":"Pro Annual","price":"199","priceCurrency":"USD","url":"https://myfeeds.site/#plan-pro"},{"@type":"Offer","name":"E-commerce Monthly","price":"49","priceCurrency":"USD","url":"https://myfeeds.site/#plan-ecommerce"},{"@type":"Offer","name":"E-commerce Annual","price":"499","priceCurrency":"USD","url":"https://myfeeds.site/#plan-ecommerce"}]},{"@type":"FAQPage","@id":"https://myfeeds.site/#faq","mainEntity":[{"@type":"Question","name":"Does it work with my Amazon links?","acceptedAnswer":{"@type":"Answer","text":"Yes, from Starter: paste the full Amazon address of a product (not an amzn.to link) and give it a name. The card shows that name and a button to Amazon with your own Associates tag, without picture or price. Pro adds Amazon's picture and price to your cards once Amazon opens that access to you, which takes ten qualified sales in thirty days."}},{"@type":"Question","name":"Does it work with my network?","acceptedAnswer":{"@type":"Answer","text":"Yes, if your network gives you a store's product feed. The network guides show how: a feed link refreshes every night, an uploaded file only when you upload it again. Network missing? Write to support@myfeeds.site."}},{"@type":"Question","name":"Do I need tech skills?","acceptedAnswer":{"@type":"Answer","text":"No. If you can install a plugin and paste a link, you can set it up. It works in the standard WordPress editor, the one with blocks."}},{"@type":"Question","name":"What does it cost to start?","acceptedAnswer":{"@type":"Answer","text":"Nothing: the free plugin on WordPress.org covers the products of one store. Paid plans start at $9 a month with a free trial and come as MyFeeds Pro, which replaces the free plugin and picks up everything it saved."}},{"@type":"Question","name":"What happens after the trial?","acceptedAnswer":{"@type":"Answer","text":"Every trial asks for a card or PayPal. Cancel on the Manage Plan page in your WordPress admin before it ends and you pay nothing. If you don't cancel, the plan continues at the price you chose, with a 14-day money-back guarantee if a bug stops MyFeeds' main features from working and we can't fix it. When a plan ends, MyFeeds falls back to the free features, and your posts and settings stay as they are."}},{"@type":"Question","name":"Will it slow my blog down?","acceptedAnswer":{"@type":"Answer","text":"The cards are built from products stored in your own WordPress, so your posts don't wait on a product service to answer. The one exception is Amazon with picture and price on Pro, which comes live from Amazon."}}]}]}</script>
 <link rel="icon" type="image/png" href="/favicon.png">
 <link rel="icon" type="image/x-icon" href="/favicon.ico">
 <link rel="apple-touch-icon" href="/apple-touch-icon.png">
@@ -61,42 +61,67 @@
 .strike{position:absolute;left:-.04em;right:-.04em;top:.56em;height:.075em;margin-top:-.0375em;background:var(--ink);border-radius:2px;pointer-events:none;transform-origin:left center}
 .mx .strike{transform:scaleX(0)}
 
-/* before and after, each with its sign: a red X over the plain links, a
-   green tick over the cards. The links are faded and struck through, the
-   cards stay bright. */
-.hm-ba{position:relative;display:grid;gap:22px}
-.hm-before,.hm-after{display:grid;gap:10px;min-width:0}
-.hm-lab{display:flex;align-items:center;gap:10px;font-size:16px;font-weight:600;line-height:1.25;color:var(--ink)}
-.hm-lab b{font-weight:700}
-.hm-ic{position:relative;flex:none;width:26px;height:26px;border-radius:50%;box-shadow:0 0 0 2px #fff}
-.hm-ic.no{background:#D42A1E}
-.hm-ic.no::before,.hm-ic.no::after{content:"";position:absolute;left:50%;top:50%;width:13px;height:2.5px;margin:-1.25px 0 0 -6.5px;border-radius:2px;background:#fff;transform:rotate(45deg)}
-.hm-ic.no::after{transform:rotate(-45deg)}
-.hm-ic.yes{background:#1E7A52}
-.hm-ic.yes::before{content:"";position:absolute;left:7px;top:7px;width:11px;height:5.5px;border-left:2.5px solid #fff;border-bottom:2.5px solid #fff;transform:rotate(-45deg)}
-.hm-note{justify-self:start;width:min(100%,380px);background:rgba(255,255,255,.5);border-radius:4px;padding:10px 16px 11px}
-.hm-note .linklist{margin-top:0;gap:4px;font-size:14.5px;line-height:1.4}
-.hm-note .linklist li::before{background:rgba(23,21,28,.35)}
-.hm-note .linklist span{color:rgba(37,70,181,.62)}
-.hm-x span{position:relative}
-.hm-x span::after{content:"";position:absolute;left:-3px;right:-3px;top:56%;height:2px;margin-top:-1px;background:#E0352B;border-radius:2px;transform-origin:left center}
-.mo .hm-x span::after{transition:transform .3s cubic-bezier(.7,0,.2,1)}
-.mo .hm-x li:nth-child(2) span::after{transition-delay:.12s}
-.mo .hm-x li:nth-child(3) span::after{transition-delay:.24s}
-.mx:not(.s-x) .hm-x span::after{transform:scaleX(0)}
-.hm-ah{display:flex;justify-content:space-between;align-items:center;gap:12px}
-.hm-replay{font:500 13px/1.3 var(--sans);color:var(--ink);background:none;border:0;padding:12px 0;margin:-12px 0;text-decoration:underline;text-underline-offset:3px;cursor:pointer;white-space:nowrap}
+/* before and after, as on the old homepage: the plain links on a taped
+   note with a red X painted over its corner, the cards with a green tick
+   painted at theirs (site.css draws the brush marks; the opening sequence
+   below paints them in). The links are neither struck through nor faded.
+   Each mark stays in the free space beside the note or above the cards,
+   off the text and inside the page. The tick stands ON the card row: the
+   foot of its V just meets the top edge of the third card, so it never
+   covers a product photo (top = 1px - 0.86 x its size). On a phone the X
+   sits on the note's top-right corner, as the space under the note is
+   too short for both marks. */
+.hm-ba{position:relative;display:grid;gap:30px}
+.hm-note{justify-self:start;width:min(calc(100% - 64px),300px);margin:9px 0 0 2px;padding:14px 16px 10px;transform:rotate(-1.2deg)}
+.hm-note .linklist{margin-top:0;gap:2px;font-size:14px;line-height:1.38}
+.hm-note .linklist li{padding-left:15px}
+.hm-after{position:relative;display:grid;gap:4px;min-width:0}
+.hm-ba .brush-x{width:64px;height:64px;top:-13px;bottom:auto;right:-24px}
+.hm-ba .brush-ok{width:68px;height:68px;top:-57px;left:auto;right:-8px}
+/* replay: the X and the tick come off without being seen, then paint again */
+.hm-ba .brush.hm-still .rv{transition:none!important}
+.hm-replay{justify-self:end;font:500 13px/1.3 var(--sans);color:var(--ink);background:none;border:0;padding:12px 0;margin:-10px 0 -12px;text-decoration:underline;text-underline-offset:3px;cursor:pointer;white-space:nowrap}
 .hm-replay.off{visibility:hidden}
-@media (min-width:900px){
-  .hm-ba{gap:28px}
-  .hm-before,.hm-after{gap:12px}
-  .hm-note{width:min(80%,400px);padding:12px 18px 13px}
-  .hm-note .linklist{font-size:15.5px}
+/* on a phone the line it would need goes to the button below */
+@media (max-width:599px){.hm-replay{display:none}}
+/* small phones: smaller links and marks, so each link stays on one line
+   and the X stays clear of the text and of the tick */
+@media (max-width:374px){
+  .hm-note{width:calc(100% - 44px)}
+  .hm-note .linklist{font-size:12.5px}
+  .hm-ba .brush-x{width:60px;height:60px;top:-12px;right:-22px}
 }
-/* the three cards: on a phone all three, smaller, without the shipping line
-   (a setting of the card design editor) */
+/* from 600px the X is back on the note's bottom-right corner, as on the
+   old homepage */
+@media (min-width:600px){
+  .hm-note{width:min(66%,380px);padding:18px 20px 13px}
+  .hm-note .linklist{gap:4px;font-size:15.5px;line-height:1.45}
+  .hm-note .linklist li{padding-left:18px}
+  .hm-ba .brush-x{width:104px;height:104px;top:auto;bottom:-30px;right:-52px}
+  .hm-ba .brush-ok{width:104px;height:104px;top:-88px;right:-8px}
+}
+@media (min-width:900px){
+  .hm-ba{gap:44px}
+  .hm-ba .brush-x{width:116px;height:116px;bottom:-34px;right:-58px}
+  .hm-ba .brush-ok{width:118px;height:118px;top:-100px;right:calc(-1 * min(52px,var(--room)))}
+}
+/* small laptops: the picture column is narrow, so the note takes more of
+   it, the marks get smaller and the cards move down a little, which keeps
+   the X and the tick apart */
+@media (min-width:900px) and (max-width:1099px){
+  .hm-ba{gap:66px}
+  .hm-note{width:min(76%,380px)}
+  .hm-note .linklist{font-size:14.5px}
+  .hm-ba .brush-x{width:96px;height:96px;bottom:-28px;right:-48px}
+  .hm-ba .brush-ok{width:98px;height:98px;top:-83px}
+}
+/* the narrowest of them (900-939px): a little less space between old and
+   sale price, so "$96.00" is not cut to "$96..." */
+@media (min-width:900px) and (max-width:939px){.hm-row .myfeeds-product-price{gap:5px}.hm-row .myfeeds-old-price{margin-right:2px}}
+/* the three cards: on a phone all three, smaller, without the shipping
+   line and the brand line (settings of the card design editor) */
 @media (max-width:599px){
-  .hm-row{--myfeeds-grid-gap:8px;--myfeeds-shipping-display:none;--myfeeds-details-py:8px;--myfeeds-details-px:7px;--myfeeds-brand-size:10px;--myfeeds-title-size:11px;--myfeeds-price-size:12.5px;--myfeeds-old-price-size:11px;--myfeeds-merchant-size:8.5px;--myfeeds-badge-size:11px}
+  .hm-row{--myfeeds-grid-gap:8px;--myfeeds-shipping-display:none;--myfeeds-brand-display:none;--myfeeds-details-py:7px;--myfeeds-details-px:7px;--myfeeds-brand-size:10px;--myfeeds-title-size:11px;--myfeeds-price-size:12.5px;--myfeeds-old-price-size:11px;--myfeeds-merchant-size:8.5px;--myfeeds-badge-size:11px}
   .hm-row .myfeeds-product-card{width:calc((100% - 2 * var(--myfeeds-grid-gap)) / 3)}
   .hm-row .myfeeds-product-card:nth-child(3){display:flex}
   .hm-row .myfeeds-product-price{gap:4px}
@@ -104,26 +129,49 @@
   .hm-row .myfeeds-discount-badge{padding:4px 9px}
   .hm-row .mx-chip{left:5px;bottom:5px;gap:5px;padding:5px 8px 5px 6px;font-size:10px}
 }
-/* phones: the hero button and the sentence that says what it is fit on the
-   first screen, also with Safari's or Pinterest's bars (390 x 664) */
-@media (max-width:599px){
-  .hm-hero>h1{margin-bottom:12px}
-  .hm-hero>.lede{margin-top:14px}
-  .hm-hero>.go{margin-top:12px}
-  .hm-ba{gap:11px}
-  .hm-before,.hm-after{gap:6px}
-  .hm-lab{font-size:14.5px;gap:8px}
-  .hm-ic{width:22px;height:22px}
-  .hm-ic.no::before,.hm-ic.no::after{width:11px;margin-left:-5.5px}
-  .hm-ic.yes::before{left:6px;top:6px;width:9px;height:4.5px}
-  .hm-note{padding:6px 12px 7px}
-  .hm-note .linklist{gap:0;font-size:13px;line-height:1.38}
-  .hm-note .linklist li{padding-left:15px}
-  .hm-hero>.lede{max-width:none}
+/* phones and tablets: the hero button ends about 90px above the bottom of
+   the first screen, so the consent banner of a first visit (about 85px on
+   a phone, a card 106px off the bottom from 600px) leaves it free: 390x664
+   (Safari's or Pinterest's bars), 375x667, 360x640, 768x1024. For that the
+   card pictures are 80% as high as wide (the card design editor's lowest
+   aspect ratio; the products sit on white, nothing is cut), and on a phone
+   the brand line goes (the editor's switch), the space between note and
+   cards is smaller and the note itself a little tighter. */
+@media (max-width:899px){
+  .hm-row{--myfeeds-img-ratio:80%}
 }
-/* narrow phones: two cards, as the plugin itself lays them out, so the
-   sale price stays readable */
+@media (min-width:600px) and (max-width:899px){
+  .hm-hero>h1{margin-bottom:14px}
+  .hm-hero>.lede{margin-top:16px}
+}
+@media (max-width:599px){
+  .hm-hero>h1{margin-bottom:8px}
+  .hm-hero>.lede{margin-top:10px}
+  .hm-hero>.go{margin-top:10px}
+  .hm-hero>.lede{max-width:none}
+  .hm-ba{gap:16px}
+  .hm-note{padding:12px 14px 8px}
+  .hm-note .linklist{gap:1px;line-height:1.3}
+}
 @media (max-width:374px){
+  .hm-hero>h1{margin-top:3px}
+  .hm-hero>.lede{margin-top:8px}
+  .hm-ba{gap:12px}
+  .hm-ba .brush-ok{width:64px;height:64px;top:-54px}
+}
+/* the button and "See the plans" on one line; on a phone the button takes
+   what the link leaves (site.css would make it as wide as the screen) */
+.hm-hero>.go{display:flex;flex-wrap:wrap;align-items:center;gap:12px 26px}
+@media (max-width:420px){.hm-hero>.go{column-gap:20px}.hm-hero>.go .cta{width:auto;flex:1 1 auto}}
+/* 360 to 374px: still three cards (two would push the button under the
+   consent banner), with a little less room around the prices so the sale
+   price stays whole. Below 360px two cards, as the plugin itself lays them
+   out on a phone. */
+@media (min-width:360px) and (max-width:374px){
+  .hm-row{--myfeeds-grid-gap:6px;--myfeeds-details-px:5px;--myfeeds-old-price-size:10.5px}
+  .hm-row .mx-chip{left:4px;gap:4px;padding:5px 7px 5px 5px;font-size:9.5px}
+}
+@media (max-width:359px){
   .hm-row .myfeeds-product-card{width:calc((100% - var(--myfeeds-grid-gap)) / 2)}
   .hm-row .myfeeds-product-card:nth-child(3){display:none}
 }
@@ -350,22 +398,23 @@
       <p class="eyebrow">For WordPress affiliate blogs</p>
       <h1 id="h-hero">Look like a shop, not a <span class="ll">link list<span class="strike" aria-hidden="true"></span></span>.</h1>
 
-      <figure class="hm-ba" id="comparison" aria-label="Before: three product picks as plain links, struck through. With MyFeeds: the same three products as cards with picture, price and store. The sneaker's price drops from 129 to 96 dollars, its old price struck through and a minus 26 percent badge.">
-        <div class="hm-before">
-          <p class="hm-lab"><i class="hm-ic no" aria-hidden="true"></i><span><b>Before:</b> a list of links</span></p>
-          <div class="hm-note"><ul class="linklist hm-x">
+      <figure class="hm-ba" id="comparison" aria-label="Before: three product picks as plain links, marked with a red X. With MyFeeds: the same three products as cards with picture, price and store, marked with a green tick. The sneaker's price drops from 129 to 96 dollars, its old price struck through and a minus 26 percent badge.">
+        <div class="pinned hm-note">
+          <ul class="linklist">
             <li><span>Grey hoodie at Northside Supply</span></li>
             <li><span>Black high-tops at Kicks Corner</span></li>
             <li><span>Trail pack at Basecamp</span></li>
-          </ul></div>
+          </ul>
+          <svg class="brush brush-x" viewBox="0 0 200 200" aria-hidden="true" focusable="false"><defs><mask id="hx1" maskUnits="userSpaceOnUse" x="0" y="0" width="200" height="200"><path d="M25.8 43.1 28.3 46.1 30 50 31.5 54.2 33.3 58 35.6 61.3 38.3 64.2 41.2 66.9 43.9 69.8 46.8 72.6 49.8 75.2 52.9 77.8 55.7 80.7 58.4 83.7 61.3 86.6 64.5 89.1 67.9 91.5 71.2 94 74.2 96.9 77 99.9 80 102.8 83.2 105.6 86.2 108.5 89 111.7 91.7 115 94.6 118.2 97.8 121 101.2 123.7 104.5 126.5 107.6 129.5 110.8 132.5 114.3 135.1 118 137.7 121.6 140.2 125.1 143 128.6 145.7 132.2 148.4 136.6 150.3 141.3 152 145.4 154.2 150 156.1 153.3 159.2 157.2 161.8 162.9 162.6 166.3 165.7 166.6 170.7 166.2 167.7 172.1 171 168.9 165.1 173.3 166.4 171.8 162.2 174.3 162.1 174.5 157.5 170.8 154.6 168.5 150.4 164.9 147.5 161.1 144.9 159.5 140 156.7 136.3 155 131.6 151.9 128.3 149.4 124.4 147 120.5 144.4 116.7 141.7 113.2 138.4 110.2 134.8 107.5 131.3 104.8 128.1 101.9 125 98.8 121.7 95.9 118.4 93.2 115.1 90.3 112.3 87 109.7 83.6 106.9 80.4 103.7 77.5 100.4 74.9 97.2 72.1 94.3 69.1 91.5 66 88.5 63.1 85.3 60.4 82.3 57.6 79.7 54.4 77.2 51 74.5 47.9 71.4 45.3 68.2 42.8 65.1 40.2 62.2 37.5 58.6 35.6 54.2 34.5 49.4 34 44.9 33.2 41 31.6 37.9 29.2 35.3 28.2 32.3 28.9 29.3 29.1 26.8 31.4 25.7 34.4 24 37.4 24.7 40.3Z" fill="#fff"/><path d="M149.6 150 153.1 153 156.5 156 159.9 159.1 163.3 162.2 166.6 165.4 174.3 173.1" stroke="#000" stroke-width="1.3" stroke-linecap="round" fill="none"/><path d="M146 134.4 148.9 137.8 151.8 141.3 154.7 144.8 157.6 148.3 160.6 151.8 163.7 155.3 166.8 158.7 170 162 177.7 169.7" stroke="#000" stroke-width="1.0" stroke-linecap="round" fill="none"/></mask><mask id="hx2" maskUnits="userSpaceOnUse" x="0" y="0" width="200" height="200"><path d="M159.1 26.7 156.1 29.5 152.6 32 149 34.3 145.2 36.5 141.3 38.7 137.8 41.1 134.8 43.9 132.1 47.1 129.7 50.4 127.3 53.7 124.5 56.8 121.7 59.8 119 63 116.5 66.3 113.8 69.5 110.8 72.4 107.5 75 104.3 77.7 101.4 80.7 98.7 83.9 96 87.1 93 90.1 90.1 93.1 87.4 96.4 84.9 99.8 82.2 103.1 79.1 106 75.8 108.7 72.7 111.5 69.8 114.7 67.1 118 64.3 121.3 61.5 124.6 58.8 128 56.6 132 54.4 135.9 53 140.7 50.7 144.7 47.1 147.3 45.3 151.9 42.6 155.4 38.9 157.8 36.3 161.6 32.6 164.1 29.8 166.2 32.6 166.1 29.2 171.4 34.9 168.7 33.4 172.8 37.5 171.6 37.4 174 39.8 172.4 42.2 168.4 46.4 166.3 49.6 163.3 53.9 161.5 57 158.3 61.2 156.2 66.3 155.3 70.7 153.5 74.4 151 78.2 148.6 82.1 146.3 85.9 143.9 89.5 141.2 92.7 138.2 95.6 134.9 98.6 131.6 101.8 128.7 105.3 125.9 108.6 123 111.6 119.9 114.7 116.8 117.9 113.9 121.3 111 124.4 108 127.1 104.6 129.6 101 132.2 97.5 135.1 94.3 138.1 91.2 140.9 88 143.6 84.6 146.3 81.3 149.3 78.2 152.4 75.3 155.3 72.1 157.8 68.7 160.2 65.1 162.6 61.5 164.8 57.8 166.5 53.8 167.7 49.3 168.8 44.8 170.4 40.7 172.9 37.4 174.4 35 174.3 31.9 172.1 29.2 170.5 26.2 167.4 24.5 164.3 24.9 161 24.6Z" fill="#fff"/><path d="M56.8 144.9 53.7 148.1 50.7 151.2 47.6 154.4 44.5 157.5 41.3 160.6 38.1 163.6 34.7 166.5 27 173.2" stroke="#000" stroke-width="1.3" stroke-linecap="round" fill="none"/><path d="M58.8 153.7 55.3 156.3 51.7 159 48.1 161.6 44.6 164.4 41.2 167.2 37.8 170 30 176.7" stroke="#000" stroke-width="1.0" stroke-linecap="round" fill="none"/></mask></defs><g mask="url(#hx1)"><path class="rv" pathLength="1" d="M32 36Q96 92 168 164"/></g><g mask="url(#hx2)"><path class="rv rv2" pathLength="1" d="M166 32Q110 104 36 168"/></g></svg>
         </div>
         <div class="hm-after">
-          <div class="hm-ah"><p class="hm-lab"><i class="hm-ic yes" aria-hidden="true"></i><span><b>With MyFeeds:</b> product cards</span></p><button type="button" class="hm-replay off" id="replay">Play again</button></div>
+          <svg class="brush brush-ok" viewBox="0 0 200 200" aria-hidden="true" focusable="false"><defs><mask id="hck" maskUnits="userSpaceOnUse" x="0" y="0" width="200" height="200"><path d="M15.4 111.2 16.3 112.3 16.8 113.8 16.8 115.7 16.6 117.8 16.7 119.7 17.3 121.1 18.4 122.2 19.3 123.4 20.2 124.6 21.2 125.8 22.4 126.8 23.9 127.6 25.2 128.6 26.2 129.8 27.1 131.1 28.1 132.3 29.3 133.4 30.4 134.6 31.3 135.9 32.2 137.4 33.1 138.7 34.4 139.8 35.9 140.7 37.2 141.8 38.2 143.2 39.1 144.6 40.2 145.9 41.4 147.1 42.6 148.4 43.5 149.9 44.3 151.5 45.4 153 46.6 154.3 48.1 155.3 49.4 156.5 50.6 157.9 52 159 53.8 159.8 55.3 160.9 57.3 161.5 57.8 163.6 59.4 164.6 60 166.6 60.6 168.6 65.7 171 75.3 171.4 82.8 167.4 86.3 160.1 84 146.8 83.1 145.1 80.9 144.7 78.2 144.7 77.3 143 75.6 142.1 74.2 141 73.4 139.3 72.2 138 71.2 136.5 70.4 134.9 69.4 133.4 68.3 132.1 67 130.9 66 129.6 65 128.2 63.9 126.9 62.6 125.8 61.3 124.7 60.3 123.4 59.5 121.9 58.9 120.2 58 118.8 57 117.5 56 116.3 55.1 114.9 54.3 113.6 53.2 112.5 51.8 111.5 50.5 110.6 49.4 109.6 48.5 108.3 47.6 107.1 46.6 106 45.4 105 44.4 103.9 43.5 102.7 42.6 101.5 41.5 100.5 39.8 100 37.9 99.8 36 99.6 34.3 99.1 32.9 98.5 31.7 97.6 29 96 26 94.1 22.1 95.4 19 98 15.4 100.4 14.4 104.2 15.2 107.5Z" fill="#fff"/><path d="M75.3 168 77.8 165.2 80.5 162.5 83.2 159.8 85.6 156.8 88 153.9 90.6 151.1 93.3 148.3 95.8 145.3 97.9 142.1 100 138.8 102.4 135.6 105.1 132.8 108 130 110.6 127 113.1 123.8 115.7 120.8 118.5 117.9 121.4 115 124 111.8 126.2 108.3 128.3 104.6 130.6 101.2 133.3 97.9 135.9 94.7 138.4 91.3 141 87.8 143.7 84.6 146.8 81.6 149.9 78.6 152.6 75.2 155 71.5 157.3 67.7 159.6 63.8 162.1 60.1 164.2 56 166.5 52.1 167.8 47.1 170.1 43.1 173.8 40.3 176.8 36.8 180.1 33.6 182.2 29.2 184.4 24.9 189.1 22.9 189.6 19.1 187.1 19.4 189.7 14.6 184.9 17.3 185.9 13.6 182.5 14.9 182.3 12.9 177.3 11.5 175.9 16.7 172.1 19.5 167.7 21.7 162.7 23.4 159.5 26.8 157.3 31 153.3 33.6 149.5 36.3 145.5 38.8 141.8 41.5 138.5 44.6 135.2 47.7 132 50.8 128.6 53.8 125.6 57 123 60.6 120.6 64.4 118.1 67.9 115.2 71.2 112.1 74.3 109.1 77.3 106.2 80.6 103.3 83.7 100.1 86.6 96.8 89.3 93.8 92.3 91.2 95.5 88.8 99 86.2 102.3 83.5 105.4 80.7 108.4 78.1 111.6 75.8 115 73.3 118.2 70.6 121.2 67.8 124.1 65.2 127.2 63.2 130.6 61.4 134.2 59.5 137.8 57.5 141.2 55.6 144.6 53.9 148.2 52.3 151.8 49 155.5 50 160.8 53.6 165.4 56.6 170.5 62.2 172.7 67.5 172.2 73.3 172.6Z" fill="#fff"/><path d="M161.3 47.2 164.1 43.7 167 40.1 169.9 36.6 172.8 33 175.8 29.5 178.9 26 182 22.6 185.2 19.2 191.5 12.7" stroke="#000" stroke-width="1.3" stroke-linecap="round" fill="none"/><path d="M154.9 41.2 158.3 38.2 161.7 35.2 165.2 32.2 168.7 29.1 172.2 26 175.6 22.9 179 19.7 182.3 16.4 188.6 9.9" stroke="#000" stroke-width="1.0" stroke-linecap="round" fill="none"/></mask></defs><g mask="url(#hck)"><path class="rv" pathLength="1" d="M22 104Q44 128 70 161Q112 92 186 16"/></g></svg>
           <div class="myfeeds-product-grid row3 hm-row" id="cards">
             <div class="myfeeds-product-card"><span class="mx-edge" aria-hidden="true"></span><div class="myfeeds-product-image"><img src="/assets/home/hoodie-heather-grey.webp" width="400" height="400" alt="Grey hoodie"></div><div class="myfeeds-product-details"><div class="myfeeds-product-brand">Halden</div><div class="myfeeds-product-title">Grey Hoodie</div><div class="myfeeds-product-price"><span class="myfeeds-current-price">$58.00</span></div><div class="myfeeds-shipping-info">Free Shipping</div><div class="myfeeds-merchant">Northside Supply</div></div></div>
             <div class="myfeeds-product-card sale"><span class="mx-edge" aria-hidden="true"></span><div class="myfeeds-product-image"><div class="myfeeds-discount-badge">-26%</div><img src="/assets/home/sneaker-black-hightop.webp" width="400" height="400" alt="Black high-top sneakers"><span class="mx-scan" aria-hidden="true"></span><span class="mx-chip" aria-hidden="true"><span class="mx-ic"><i class="mx-spin"></i><i class="mx-tick"></i></span><span class="mx-tx"><span class="t-sync">Updating price</span><span class="t-done">Price updated</span></span></span></div><div class="myfeeds-product-details"><div class="myfeeds-product-brand">Arlo &amp; Finch</div><div class="myfeeds-product-title">Black High-Tops</div><div class="myfeeds-product-price"><span class="myfeeds-old-price">$129.00</span> <span class="myfeeds-current-price has-discount">$96.00</span></div><div class="myfeeds-shipping-info">Free Shipping</div><div class="myfeeds-merchant">Kicks Corner</div></div></div>
             <div class="myfeeds-product-card"><span class="mx-edge" aria-hidden="true"></span><div class="myfeeds-product-image"><img src="/assets/home/backpack-trail.webp" width="400" height="400" alt="Sage green trail pack"></div><div class="myfeeds-product-details"><div class="myfeeds-product-brand">Fieldmade</div><div class="myfeeds-product-title">Trail Pack</div><div class="myfeeds-product-price"><span class="myfeeds-current-price">$74.00</span></div><div class="myfeeds-shipping-info">Shipping costs may apply</div><div class="myfeeds-merchant">Basecamp</div></div></div>
           </div>
+          <button type="button" class="hm-replay off" id="replay">Play again</button>
         </div>
       </figure>
 
@@ -454,7 +503,7 @@
           <span><img src="/assets/home/beanie-knit-navy.webp" width="400" height="400" loading="lazy" alt=""><i class="b"></i><i></i><i class="p"></i></span>
         </div>
         <div class="hm-tile-b">
-          <span class="pill">Free</span>
+          <span class="pill free">Free</span>
           <h3>Product cards in your posts</h3>
           <span>Readers see the product, tap it and land in the store through your link.</span>
           <u>Set up your first cards</u>
@@ -569,7 +618,7 @@
       </details>
       <details name="faq">
         <summary>What happens after the trial?</summary>
-        <div class="a"><p>Every trial asks for a card or PayPal. Cancel on the Manage Plan page in your WordPress admin before it ends and you pay nothing. If you don't cancel, the plan continues at the price you chose. When a plan ends, MyFeeds falls back to the free features, and your posts and settings stay as they are.</p></div>
+        <div class="a"><p>Every trial asks for a card or PayPal. Cancel on the Manage Plan page in your WordPress admin before it ends and you pay nothing. If you don't cancel, the plan continues at the price you chose, with a <a href="/refund/#money-back" data-cta="faq-refund">14-day money-back guarantee</a> if a bug stops MyFeeds' main features from working and we can't fix it. When a plan ends, MyFeeds falls back to the free features, and your posts and settings stay as they are.</p></div>
       </details>
       <details name="faq">
         <summary>Will it slow my blog down?</summary>
@@ -732,9 +781,10 @@
   }
 
   // Preview only: pages that so far exist only as v4 previews (the plans
-  // page above all) are opened as previews. Live, this does nothing.
+  // page above all, and the refund policy with its money-back section) are
+  // opened as previews. Live, this does nothing.
   if (PREVIEW) {
-    ['/pricing/', '/shop-the-look/'].forEach(function (pth) {
+    ['/pricing/', '/shop-the-look/', '/refund/'].forEach(function (pth) {
       d.querySelectorAll('a[href^="' + pth + '"]').forEach(function (a) { a.setAttribute('href', '/pin/lab/v4' + a.getAttribute('href')); });
     });
   }
@@ -759,22 +809,27 @@
 
 (function () {
   // The one opening moment, from the old homepage. Everything is on screen
-  // from the first frame. A line goes through "link list", red lines go
-  // through the three plain links, an ink edge runs along the top of each
-  // card, then the nightly price update runs on the sneaker. Transform and
-  // opacity only. Without the "mx" class the CSS is the end state; any
-  // failure lands there.
+  // from the first frame. A line goes through "link list", the red X paints
+  // itself over the note with the plain links, an ink edge runs along the
+  // top of each card and the green tick paints itself at their corner, then
+  // the nightly price update runs on the sneaker. Transform, opacity and
+  // the brush strokes only. Without the "mx" class the CSS is the end
+  // state, and without "mo" (site.css) the two marks are simply there; any
+  // failure lands on the end state, marks painted.
   var root = document.documentElement;
   var strike = document.querySelector('.strike');
   var replay = document.getElementById('replay');
+  var markX = document.querySelector('.hm-ba .brush-x'), markOk = document.querySelector('.hm-ba .brush-ok');
   var anims = [], timers = [], running = false;
   function A(el, kf, opt) { var a = el.animate(kf, opt); anims.push(a); return a; }
   function later(fn, ms) { timers.push(setTimeout(fn, ms)); }
   function shown(el) { return el.getClientRects().length > 0; }
+  function paint(m) { if (m) m.classList.add('on'); }
   function finish() {
     timers.forEach(clearTimeout); timers = [];
-    root.classList.remove('mx', 's-x', 's-sync', 's-done', 's-fade');
+    root.classList.remove('mx', 's-sync', 's-done', 's-fade');
     anims.forEach(function (a) { try { a.cancel(); } catch (e) {} }); anims = [];
+    paint(markX); paint(markOk);
     running = false;
     if (replay && root.classList.contains('mo')) replay.classList.remove('off');
   }
@@ -786,7 +841,8 @@
     running = true;
     later(finish, 6500);
     A(strike, [{ transform: 'scaleX(0)' }, { transform: 'scaleX(1)' }], { duration: 440, easing: INOUT, fill: 'forwards' });
-    later(function () { root.classList.add('s-x'); }, 380);
+    later(function () { paint(markX); }, 420);
+    later(function () { paint(markOk); }, 1000);
     cards.forEach(function (card, i) {
       var e = card.querySelector('.mx-edge');
       A(e, [{ transform: 'scaleX(0)', opacity: 1 }, { transform: 'scaleX(1)', opacity: 1 }], { duration: 420, delay: 900 + i * 90, easing: EXPO, fill: 'forwards' });
@@ -801,6 +857,10 @@
     if (running) return;
     replay.classList.add('off');
     root.classList.add('mx');
+    // the marks come off at once (no stroke running backwards), then paint again
+    [markX, markOk].forEach(function (m) { if (m) { m.classList.add('hm-still'); m.classList.remove('on'); } });
+    void root.offsetWidth;
+    [markX, markOk].forEach(function (m) { if (m) m.classList.remove('hm-still'); });
     if (window.mfCount) window.mfCount('home/replay');
     later(run, 350);
   });
@@ -812,6 +872,6 @@
 })();
 </script>
 <script src="/assets/back-to-top.js" defer></script>
-<script src="/pin/lab/v4/home/consent.js" defer></script>
+<script src="/pin/lab/v4/assets/consent.js" defer></script>
 </body>
 </html>

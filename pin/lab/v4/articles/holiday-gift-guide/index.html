@@ -7,7 +7,8 @@
 <title>How to make a holiday gift guide that lasts to Christmas</title>
 <meta name="description" content="How to plan, build and disclose a holiday or Christmas gift guide that earns commission, and keep prices and stock right through Black Friday.">
 <!-- Preview: live path /articles/holiday-gift-guide/ -->
-<!-- Going live = move this file to /articles/holiday-gift-guide/index.html and delete the robots line below.
+<!-- Going live = move this file to /articles/holiday-gift-guide/index.html, delete the robots line below and set the
+     consent script at the end of <body> back to /assets/consent.js (replaced by /pin/lab/v4/assets/consent.js, see there).
      Only together with /pricing/ or after it: two links ("plans page", "compare the plans") point there.
      Going live before /pricing/ exists: change both to /#pricing first. -->
 <meta name="robots" content="noindex, follow">
@@ -52,30 +53,47 @@ if(location.pathname.indexOf('/pin/lab/')===0)!function(d){var s=d.createElement
 /* what you leave with, and the small picture of links against cards */
 .hg-leave{margin-top:14px;font-size:15.5px;line-height:1.45;max-width:40ch}
 .hg-leave a{font-weight:600;text-underline-offset:3px}
-.hg-vs-in{display:grid;grid-template-columns:minmax(0,.8fr) minmax(0,1.2fr);gap:12px;align-items:center}
+.hg-vs-in{display:grid;grid-template-columns:minmax(0,.8fr) minmax(0,1.2fr);gap:12px;align-items:start}
 .hg-vs .pinned{padding:17px 11px 11px}
 .hg-vs .pinned::before{width:56px;margin-left:-28px;height:16px;top:-7px}
 .hg-vs-links{transform:rotate(-1.4deg)}
-.hg-vs .linklist{margin-top:8px;gap:7px;font-size:13.5px;line-height:1.35}
+.hg-vs .linklist{margin-top:0;gap:7px;font-size:13.5px;line-height:1.35}
 .hg-vs .linklist li{padding-left:12px}
 .hg-vs .linklist li::before{left:0;width:5px;height:5px}
-.hg-vs .row3{margin-top:8px;--myfeeds-grid-gap:7px;--myfeeds-details-py:6px;--myfeeds-details-px:7px;--myfeeds-brand-size:10px;--myfeeds-title-size:10.5px;--myfeeds-price-size:12.5px;--myfeeds-old-price-size:11.5px;--myfeeds-badge-size:10.5px;--myfeeds-shipping-display:none;--myfeeds-merchant-display:none}
+.hg-vs .row3{margin-top:0;--myfeeds-grid-gap:7px;--myfeeds-details-py:6px;--myfeeds-details-px:7px;--myfeeds-brand-size:10px;--myfeeds-title-size:10.5px;--myfeeds-price-size:12.5px;--myfeeds-old-price-size:11.5px;--myfeeds-badge-size:10.5px;--myfeeds-shipping-display:none;--myfeeds-merchant-display:none}
 .hg-vs .row3 .myfeeds-product-price{margin-bottom:0}
 .hg-vs .row3{--myfeeds-title-display:none}
 .hg-vs .row3 .myfeeds-discount-badge{padding:4px 8px}
 .hg-vs figcaption{margin-top:12px}
-/* the same signs as on the homepage: a red X over the links, a green tick over the cards */
-.hg-lab{display:flex;align-items:center;gap:7px}
-.hg-ic{position:relative;flex:none;width:20px;height:20px;border-radius:50%}
-.hg-ic.no{background:#D42A1E}
-.hg-ic.no::before,.hg-ic.no::after{content:"";position:absolute;left:50%;top:50%;width:10px;height:2px;margin:-1px 0 0 -5px;border-radius:2px;background:#fff;transform:rotate(45deg)}
-.hg-ic.no::after{transform:rotate(-45deg)}
-.hg-ic.yes{background:var(--ok)}
-.hg-ic.yes::before{content:"";position:absolute;left:5.5px;top:5.5px;width:8.5px;height:4.25px;border-left:2px solid #fff;border-bottom:2px solid #fff;transform:rotate(-45deg)}
-/* where the link note is narrow (small phones, small laptops): smaller
-   signs, so "A link list" stays on one line */
-@media (max-width:389px),(min-width:900px) and (max-width:1019px){.hg-lab{gap:5px}.hg-ic{width:17px;height:17px}.hg-ic.no::before,.hg-ic.no::after{width:9px;margin-left:-4.5px}.hg-ic.yes::before{left:4.5px;top:4.75px;width:7.5px;height:3.75px}}
-@media (max-width:359px),(min-width:900px) and (max-width:1019px){.hg-lab{letter-spacing:.03em}.hg-vs .pinned.hg-vs-links{padding-inline:8px}}
+/* the brush marks of the homepage: a red X painted at the corner of the
+   links, a green tick at the corner of the cards (site.css draws them,
+   site.js paints them in). The links are not struck through. The X sits
+   in the free space under the short note, clear of the links and of the
+   cards beside it; the tick rises into the space above the cards. */
+.hg-vs .brush-x{width:64px;height:64px;bottom:-32px;right:-8px}
+.hg-vs .brush-ok{width:72px;height:72px;top:-40px;left:auto;right:-12px}
+@media (min-width:900px){
+  .hg-vs .brush-x{width:84px;height:84px;bottom:-44px;right:-14px}
+  .hg-vs .brush-ok{width:100px;height:100px;top:-54px;right:calc(-1 * min(44px,var(--room)))}
+}
+/* small phones and small laptops: the link note is narrow and its lines
+   may wrap, so the X hangs from its corner into the space below (and on a
+   small laptop the tick stays clear of the header button) */
+@media (max-width:379px){.hg-vs .brush-x{width:58px;height:58px;bottom:-46px;right:-6px}}
+/* below 360px: the links a little smaller, so "Shoes, 30% off" stays on
+   one line and the note (with its X) ends well above the caption; the tick
+   a little smaller and higher, so it stands on the card row right of the
+   sale badge instead of touching it */
+@media (max-width:359px){
+  .hg-vs .linklist{font-size:12.5px}
+  .hg-vs .brush-ok{width:64px;height:64px;top:-40px}
+}
+@media (min-width:900px) and (max-width:1139px){
+  .hg-vs .brush-x{width:66px;height:66px;bottom:-52px;right:-6px}
+  .hg-vs .brush-ok{width:84px;height:84px;top:-44px}
+}
+/* where the link note is narrow (small phones, small laptops) */
+@media (max-width:359px),(min-width:900px) and (max-width:1019px){.hg-vs .pinned.hg-vs-links{padding-inline:8px}}
 /* old and sale price side by side without cutting off the sale price on a phone */
 .hg-vs .row3 .myfeeds-product-price{gap:4px}
 .hg-vs .row3 .myfeeds-old-price{margin-right:0}
@@ -135,15 +153,6 @@ if(location.pathname.indexOf('/pin/lab/')===0)!function(d){var s=d.createElement
 /* the list of sources as wide as the questions above it, so the two plus signs line up */
 .hg-src{max-width:780px}
 .hg-src ol{max-width:66ch}
-/* The consent banner of /assets/consent.js, on a phone as one slim bar at the
-   bottom, so the first screen keeps the cards in view. Same words, the same
-   two buttons of equal size. Only looks; remove once consent.js does it. */
-@media (max-width:599px){
-  #mf-consent#mf-consent{left:0;right:0;bottom:0;max-width:none;border-radius:12px 12px 0 0;border-width:1px 0 0;padding:6px 14px calc(6px + env(safe-area-inset-bottom,0px));font-size:12px;line-height:1.32;box-shadow:0 -10px 24px -16px rgba(26,23,32,.4)}
-  #mf-consent#mf-consent p{display:inline;margin:0}
-  #mf-consent#mf-consent .mf-row{display:inline-flex;flex-wrap:nowrap;gap:6px;margin-left:6px;vertical-align:middle}
-  #mf-consent#mf-consent button{flex:none;min-width:0;padding:4px 13px;font-size:12px}
-}
 </style>
 <!--JSONLD-->
 <script type="application/ld+json">
@@ -259,15 +268,15 @@ if(location.pathname.indexOf('/pin/lab/')===0)!function(d){var s=d.createElement
       <figure class="hg-vs">
         <div class="hg-vs-in">
           <div class="pinned hg-vs-links">
-            <p class="k hg-lab"><i class="hg-ic no" aria-hidden="true"></i>A link list</p>
             <ul class="linklist">
               <li><span>Beanie, $28</span></li>
               <li><span>Shoes, 30% off</span></li>
               <li><span>Tee, $32</span></li>
             </ul>
+            <svg class="brush brush-x" viewBox="0 0 200 200" aria-hidden="true" focusable="false"><defs><mask id="gx1" maskUnits="userSpaceOnUse" x="0" y="0" width="200" height="200"><path d="M25.8 43.1 28.3 46.1 30 50 31.5 54.2 33.3 58 35.6 61.3 38.3 64.2 41.2 66.9 43.9 69.8 46.8 72.6 49.8 75.2 52.9 77.8 55.7 80.7 58.4 83.7 61.3 86.6 64.5 89.1 67.9 91.5 71.2 94 74.2 96.9 77 99.9 80 102.8 83.2 105.6 86.2 108.5 89 111.7 91.7 115 94.6 118.2 97.8 121 101.2 123.7 104.5 126.5 107.6 129.5 110.8 132.5 114.3 135.1 118 137.7 121.6 140.2 125.1 143 128.6 145.7 132.2 148.4 136.6 150.3 141.3 152 145.4 154.2 150 156.1 153.3 159.2 157.2 161.8 162.9 162.6 166.3 165.7 166.6 170.7 166.2 167.7 172.1 171 168.9 165.1 173.3 166.4 171.8 162.2 174.3 162.1 174.5 157.5 170.8 154.6 168.5 150.4 164.9 147.5 161.1 144.9 159.5 140 156.7 136.3 155 131.6 151.9 128.3 149.4 124.4 147 120.5 144.4 116.7 141.7 113.2 138.4 110.2 134.8 107.5 131.3 104.8 128.1 101.9 125 98.8 121.7 95.9 118.4 93.2 115.1 90.3 112.3 87 109.7 83.6 106.9 80.4 103.7 77.5 100.4 74.9 97.2 72.1 94.3 69.1 91.5 66 88.5 63.1 85.3 60.4 82.3 57.6 79.7 54.4 77.2 51 74.5 47.9 71.4 45.3 68.2 42.8 65.1 40.2 62.2 37.5 58.6 35.6 54.2 34.5 49.4 34 44.9 33.2 41 31.6 37.9 29.2 35.3 28.2 32.3 28.9 29.3 29.1 26.8 31.4 25.7 34.4 24 37.4 24.7 40.3Z" fill="#fff"/><path d="M149.6 150 153.1 153 156.5 156 159.9 159.1 163.3 162.2 166.6 165.4 174.3 173.1" stroke="#000" stroke-width="1.3" stroke-linecap="round" fill="none"/><path d="M146 134.4 148.9 137.8 151.8 141.3 154.7 144.8 157.6 148.3 160.6 151.8 163.7 155.3 166.8 158.7 170 162 177.7 169.7" stroke="#000" stroke-width="1.0" stroke-linecap="round" fill="none"/></mask><mask id="gx2" maskUnits="userSpaceOnUse" x="0" y="0" width="200" height="200"><path d="M159.1 26.7 156.1 29.5 152.6 32 149 34.3 145.2 36.5 141.3 38.7 137.8 41.1 134.8 43.9 132.1 47.1 129.7 50.4 127.3 53.7 124.5 56.8 121.7 59.8 119 63 116.5 66.3 113.8 69.5 110.8 72.4 107.5 75 104.3 77.7 101.4 80.7 98.7 83.9 96 87.1 93 90.1 90.1 93.1 87.4 96.4 84.9 99.8 82.2 103.1 79.1 106 75.8 108.7 72.7 111.5 69.8 114.7 67.1 118 64.3 121.3 61.5 124.6 58.8 128 56.6 132 54.4 135.9 53 140.7 50.7 144.7 47.1 147.3 45.3 151.9 42.6 155.4 38.9 157.8 36.3 161.6 32.6 164.1 29.8 166.2 32.6 166.1 29.2 171.4 34.9 168.7 33.4 172.8 37.5 171.6 37.4 174 39.8 172.4 42.2 168.4 46.4 166.3 49.6 163.3 53.9 161.5 57 158.3 61.2 156.2 66.3 155.3 70.7 153.5 74.4 151 78.2 148.6 82.1 146.3 85.9 143.9 89.5 141.2 92.7 138.2 95.6 134.9 98.6 131.6 101.8 128.7 105.3 125.9 108.6 123 111.6 119.9 114.7 116.8 117.9 113.9 121.3 111 124.4 108 127.1 104.6 129.6 101 132.2 97.5 135.1 94.3 138.1 91.2 140.9 88 143.6 84.6 146.3 81.3 149.3 78.2 152.4 75.3 155.3 72.1 157.8 68.7 160.2 65.1 162.6 61.5 164.8 57.8 166.5 53.8 167.7 49.3 168.8 44.8 170.4 40.7 172.9 37.4 174.4 35 174.3 31.9 172.1 29.2 170.5 26.2 167.4 24.5 164.3 24.9 161 24.6Z" fill="#fff"/><path d="M56.8 144.9 53.7 148.1 50.7 151.2 47.6 154.4 44.5 157.5 41.3 160.6 38.1 163.6 34.7 166.5 27 173.2" stroke="#000" stroke-width="1.3" stroke-linecap="round" fill="none"/><path d="M58.8 153.7 55.3 156.3 51.7 159 48.1 161.6 44.6 164.4 41.2 167.2 37.8 170 30 176.7" stroke="#000" stroke-width="1.0" stroke-linecap="round" fill="none"/></mask></defs><g mask="url(#gx1)"><path class="rv" pathLength="1" d="M32 36Q96 92 168 164"/></g><g mask="url(#gx2)"><path class="rv rv2" pathLength="1" d="M166 32Q110 104 36 168"/></g></svg>
           </div>
           <div class="pinned hg-vs-cards">
-            <p class="k hg-lab"><i class="hg-ic yes" aria-hidden="true"></i>Product cards</p>
+            <svg class="brush brush-ok" viewBox="0 0 200 200" aria-hidden="true" focusable="false"><defs><mask id="gck" maskUnits="userSpaceOnUse" x="0" y="0" width="200" height="200"><path d="M15.4 111.2 16.3 112.3 16.8 113.8 16.8 115.7 16.6 117.8 16.7 119.7 17.3 121.1 18.4 122.2 19.3 123.4 20.2 124.6 21.2 125.8 22.4 126.8 23.9 127.6 25.2 128.6 26.2 129.8 27.1 131.1 28.1 132.3 29.3 133.4 30.4 134.6 31.3 135.9 32.2 137.4 33.1 138.7 34.4 139.8 35.9 140.7 37.2 141.8 38.2 143.2 39.1 144.6 40.2 145.9 41.4 147.1 42.6 148.4 43.5 149.9 44.3 151.5 45.4 153 46.6 154.3 48.1 155.3 49.4 156.5 50.6 157.9 52 159 53.8 159.8 55.3 160.9 57.3 161.5 57.8 163.6 59.4 164.6 60 166.6 60.6 168.6 65.7 171 75.3 171.4 82.8 167.4 86.3 160.1 84 146.8 83.1 145.1 80.9 144.7 78.2 144.7 77.3 143 75.6 142.1 74.2 141 73.4 139.3 72.2 138 71.2 136.5 70.4 134.9 69.4 133.4 68.3 132.1 67 130.9 66 129.6 65 128.2 63.9 126.9 62.6 125.8 61.3 124.7 60.3 123.4 59.5 121.9 58.9 120.2 58 118.8 57 117.5 56 116.3 55.1 114.9 54.3 113.6 53.2 112.5 51.8 111.5 50.5 110.6 49.4 109.6 48.5 108.3 47.6 107.1 46.6 106 45.4 105 44.4 103.9 43.5 102.7 42.6 101.5 41.5 100.5 39.8 100 37.9 99.8 36 99.6 34.3 99.1 32.9 98.5 31.7 97.6 29 96 26 94.1 22.1 95.4 19 98 15.4 100.4 14.4 104.2 15.2 107.5Z" fill="#fff"/><path d="M75.3 168 77.8 165.2 80.5 162.5 83.2 159.8 85.6 156.8 88 153.9 90.6 151.1 93.3 148.3 95.8 145.3 97.9 142.1 100 138.8 102.4 135.6 105.1 132.8 108 130 110.6 127 113.1 123.8 115.7 120.8 118.5 117.9 121.4 115 124 111.8 126.2 108.3 128.3 104.6 130.6 101.2 133.3 97.9 135.9 94.7 138.4 91.3 141 87.8 143.7 84.6 146.8 81.6 149.9 78.6 152.6 75.2 155 71.5 157.3 67.7 159.6 63.8 162.1 60.1 164.2 56 166.5 52.1 167.8 47.1 170.1 43.1 173.8 40.3 176.8 36.8 180.1 33.6 182.2 29.2 184.4 24.9 189.1 22.9 189.6 19.1 187.1 19.4 189.7 14.6 184.9 17.3 185.9 13.6 182.5 14.9 182.3 12.9 177.3 11.5 175.9 16.7 172.1 19.5 167.7 21.7 162.7 23.4 159.5 26.8 157.3 31 153.3 33.6 149.5 36.3 145.5 38.8 141.8 41.5 138.5 44.6 135.2 47.7 132 50.8 128.6 53.8 125.6 57 123 60.6 120.6 64.4 118.1 67.9 115.2 71.2 112.1 74.3 109.1 77.3 106.2 80.6 103.3 83.7 100.1 86.6 96.8 89.3 93.8 92.3 91.2 95.5 88.8 99 86.2 102.3 83.5 105.4 80.7 108.4 78.1 111.6 75.8 115 73.3 118.2 70.6 121.2 67.8 124.1 65.2 127.2 63.2 130.6 61.4 134.2 59.5 137.8 57.5 141.2 55.6 144.6 53.9 148.2 52.3 151.8 49 155.5 50 160.8 53.6 165.4 56.6 170.5 62.2 172.7 67.5 172.2 73.3 172.6Z" fill="#fff"/><path d="M161.3 47.2 164.1 43.7 167 40.1 169.9 36.6 172.8 33 175.8 29.5 178.9 26 182 22.6 185.2 19.2 191.5 12.7" stroke="#000" stroke-width="1.3" stroke-linecap="round" fill="none"/><path d="M154.9 41.2 158.3 38.2 161.7 35.2 165.2 32.2 168.7 29.1 172.2 26 175.6 22.9 179 19.7 182.3 16.4 188.6 9.9" stroke="#000" stroke-width="1.0" stroke-linecap="round" fill="none"/></mask></defs><g mask="url(#gck)"><path class="rv" pathLength="1" d="M22 104Q44 128 70 161Q112 92 186 16"/></g></svg>
             <div class="myfeeds-product-grid row3">
               <div class="myfeeds-product-card"><div class="myfeeds-product-image"><img src="/assets/home/beanie-knit-navy.webp" width="400" height="400" alt="Ribbed knit beanie in navy"></div><div class="myfeeds-product-details"><div class="myfeeds-product-brand">Fieldmade</div><div class="myfeeds-product-title">Ribbed Merino Beanie Navy</div><div class="myfeeds-product-price"><span class="myfeeds-current-price">$28.00</span></div><div class="myfeeds-merchant">Basecamp Outfitters</div></div></div>
               <div class="myfeeds-product-card"><div class="myfeeds-product-image"><div class="myfeeds-discount-badge">-30%</div><img src="/assets/home/sneaker-white-lowtop.webp" width="400" height="400" alt="White leather low-top sneaker"></div><div class="myfeeds-product-details"><div class="myfeeds-product-brand">Arlo &amp; Finch</div><div class="myfeeds-product-title">Court Low-Top Leather White</div><div class="myfeeds-product-price"><span class="myfeeds-old-price">$110</span> <span class="myfeeds-current-price has-discount">$77.00</span></div><div class="myfeeds-merchant">Kicks Corner</div></div></div>
@@ -556,6 +565,6 @@ if(location.pathname.indexOf('/pin/lab/')===0)!function(d){var s=d.createElement
 </script>
 <script src="/assets/site.js" defer></script>
 <script src="/assets/back-to-top.js" defer></script>
-<script src="/assets/consent.js" defer></script>
+<script src="/pin/lab/v4/assets/consent.js" defer></script>
 </body>
 </html>

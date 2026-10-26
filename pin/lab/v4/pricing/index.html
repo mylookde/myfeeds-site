@@ -6,7 +6,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
 <title>MyFeeds plans and prices - Free, Starter, Pro, E-commerce</title>
 <meta name="description" content="Pick the MyFeeds plan for where your blog is now: free for one store, Starter for $9 a month, Pro and E-commerce for more. Every paid plan has a free trial.">
-<!-- Preview: live path /pricing/ . Going live, in the same commit as the v4 homepage: (1) move this file to /pricing/index.html, (2) delete the two lines below plus the <div class="pv"> strip at the top of <body>, (3) at the end of <body> set the consent script back to /assets/consent.js, exactly as the homepage's own going-live note says (the preview loads the homepage's preview copy, so both pages show the same banner rule). The second line below keeps GoatCounter out of this preview: assets/site.js only knows /pin/lab/v3/ as a preview. If it stays on the live page, the live page counts nothing. -->
+<!-- Preview: live path /pricing/ . Going live, in the same commit as the v4 homepage: (1) move this file to /pricing/index.html, (2) delete the two lines below plus the <div class="pv"> strip at the top of <body>, (3) at the end of <body> set the consent script back to /assets/consent.js, exactly as the homepage's own going-live note says (every v4 preview loads the preview copy /pin/lab/v4/assets/consent.js, so all pages show the same banner), (4) unless it is live already, move /pin/lab/v4/refund/index.html to /refund/index.html in the same commit, following its own going-live note: the FAQ "Can I get a refund?" links /refund/#money-back, and only that page has the 14-day money-back guarantee (section 4, anchor #money-back); the old live /refund/ has no such anchor and says "case-by-case". The little preview-only script at the end of <body> that points /refund/ links to the preview may stay; live it does nothing. The second line below keeps GoatCounter out of this preview: assets/site.js only knows /pin/lab/v3/ as a preview. If it stays on the live page, the live page counts nothing. -->
 <meta name="robots" content="noindex, follow">
 <script type="text/plain" data-goatcounter="preview-off"></script>
 <link rel="canonical" href="https://myfeeds.site/pricing/">
@@ -366,7 +366,7 @@
       </details>
       <details name="faq">
         <summary>Can I get a refund?</summary>
-        <div class="a"><p>The trial is your time to decide: cancel before it ends and nothing is charged. In the EU you also have a 14-day right of withdrawal, with the limits the policy explains. Beyond that, we refund case by case, for example when the plugin does not work as described and we cannot fix it. <a href="/refund/" data-cta="faq-refund">Read the refund policy</a>.</p></div>
+        <div class="a"><p>Yes: if a bug stops MyFeeds' main features from working in the 14 days after your first payment and we can't fix it, you get the full amount back. Missing features and conflicts with other plugins, themes or hosting are not covered; <a href="/refund/#money-back" data-cta="faq-refund">the refund policy</a> has the details.</p></div>
       </details>
       <details name="faq">
         <summary>Which plan do I need for Amazon?</summary>
@@ -473,9 +473,15 @@
   }, { rootMargin: '-88% 0px 0px 0px' });
   Array.prototype.forEach.call(document.querySelectorAll('.cmp-wrap, .pp-after, #end .go'), function (el) { io.observe(el); });
 })();
+/* Preview only: the refund policy with its money-back section (#money-back)
+   exists so far only as the v4 preview, so /refund/ links open that one.
+   Live, this does nothing. */
+if (/^\/pin\/lab\//.test(location.pathname)) {
+  Array.prototype.forEach.call(document.querySelectorAll('a[href^="/refund/"]'), function (a) { a.setAttribute('href', '/pin/lab/v4' + a.getAttribute('href')); });
+}
 </script>
 <script src="/assets/site.js" defer></script>
 <script src="/assets/back-to-top.js" defer></script>
-<script src="/pin/lab/v4/home/consent.js" defer></script>
+<script src="/pin/lab/v4/assets/consent.js" defer></script>
 </body>
 </html>

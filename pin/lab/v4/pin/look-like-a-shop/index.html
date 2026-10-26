@@ -6,7 +6,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
 <title>Look like a shop, not a link list - MyFeeds</title>
 <meta name="description" content="A WordPress plugin for affiliate bloggers: pick products from the stores you work with, and readers get a little shop in your post. 7 days free, then $9 a month.">
-<!-- Preview: live path /pin/look-like-a-shop/ -->
+<!-- Preview: live path /pin/look-like-a-shop/ . Going live: set the consent script at the end of <body> to /assets/consent.js (replaced by /pin/lab/v4/assets/consent.js, see there). The live page has no consent script yet; this one counts the link labels through it. -->
 <!-- Pinterest landing page, permanent address since 2026-10-03 (was the lab variant /pin/lab/mix/, which now redirects here; pins live for years, so this URL stays). Reachable for review and readers, kept out of search, also once live: an ad landing page. Not in the sitemap, not blocked in robots.txt (a blocked page cannot show its noindex). One offer on the whole page: the Starter trial. -->
 <meta name="robots" content="noindex, follow">
 <link rel="canonical" href="https://myfeeds.site/pin/look-like-a-shop/">
@@ -668,35 +668,19 @@ if (location.pathname.indexOf('/pin/lab/') !== 0) !function (d) { var g = d.crea
 
 <script>
 (function () {
-  // GoatCounter needs no consent (no cookie, nobody identified); the same
-  // labels as assets/consent.js, so these clicks add up with the rest of
-  // the site. The page itself is counted by count.js.
+  // GoatCounter needs no consent (no cookie, nobody identified). The page
+  // itself is counted by count.js. What the link is (click/starter-trial
+  // ...) and the 250 ms hold before the page is left come from the consent
+  // script at the end of <body>, as on every other page; this only adds
+  // which button it was (pin/look-like-a-shop/cta-hero ...). Its listener
+  // sits on the button, so the button name goes out first.
   function count(path) {
     try { if (window.goatcounter && window.goatcounter.count) window.goatcounter.count({ path: path, title: path, event: true }); } catch (e) {}
   }
   window.mfCount = count;
-  // Which link it is (click/starter-trial ...) and which button on this
-  // page (pin/look-like-a-shop/cta-hero ...). Every checkout link on this
-  // page is the Starter trial; the label still comes from the address.
-  function labelFor(href) {
-    if (href.indexOf('checkout.freemius.com') === -1) return null;
-    if (href.indexOf('/plan/60599') > -1) return 'click/starter-trial';
-    if (href.indexOf('/plan/35610') > -1) return 'click/pro-trial';
-    if (href.indexOf('/plan/48994') > -1) return 'click/ecommerce-trial';
-    return 'click/checkout';
-  }
   document.querySelectorAll('[data-cta]').forEach(function (a) {
-    a.addEventListener('click', function (e) {
-      var l = labelFor(a.getAttribute('href') || ''); if (l) count(l); count('pin/look-like-a-shop/cta-' + a.getAttribute('data-cta'));
-      // A jump within this page does not leave it: nothing to hold.
-      if ((a.getAttribute('href') || '').charAt(0) === '#') return;
-      // These links leave the page, and a browser drops requests that are
-      // still running when it does: hold the step for 250 ms, as
-      // assets/consent.js does on every other page. A link opened in a new
-      // tab on purpose is left alone.
-      if (a.tagName !== 'A' || e.defaultPrevented || e.button !== 0 || e.metaKey || e.ctrlKey || e.shiftKey || e.altKey || a.target === '_blank') return;
-      e.preventDefault();
-      setTimeout(function () { location.href = a.href; }, 250);
+    a.addEventListener('click', function () {
+      count('pin/look-like-a-shop/cta-' + a.getAttribute('data-cta'));
     });
   });
 
@@ -865,5 +849,6 @@ if (location.pathname.indexOf('/pin/lab/') !== 0) !function (d) { var g = d.crea
   document.addEventListener('visibilitychange', function () { if (document.hidden && running) finish(); });
 })();
 </script>
+<script src="/pin/lab/v4/assets/consent.js" defer></script>
 </body>
 </html>

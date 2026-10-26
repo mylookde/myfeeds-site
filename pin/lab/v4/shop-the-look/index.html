@@ -7,7 +7,7 @@
 <title>Shop the look WordPress plugin for your own photos - MyFeeds</title>
 <meta name="description" content="A WordPress plugin that turns your photo into a shoppable look. Numbered dots lead readers to each product, at a shop or on Amazon, through your affiliate link.">
 <!-- Preview: live path /shop-the-look/ -->
-<!-- Going live = move this file to /shop-the-look/index.html and delete the next line. Address, title, h1 and the question headings are the live page's (rule 20). -->
+<!-- Going live = move this file to /shop-the-look/index.html, delete the next line and set the consent script at the end of <body> back to /assets/consent.js (replaced by /pin/lab/v4/assets/consent.js, see there). Address, title, h1 and the question headings are the live page's (rule 20). -->
 <meta name="robots" content="noindex, follow">
 <link rel="canonical" href="https://myfeeds.site/shop-the-look/">
 <meta name="theme-color" content="#FC9000">
@@ -177,21 +177,6 @@ if(location.pathname.indexOf('/pin/lab/')===0)!function(d){var s=d.createElement
    fit next to the logo and the menu, the hero button and the phone bar carry it */
 @media (max-width:459px){.top .cta-sm{display:none}}
 
-/* The cookie question of /assets/consent.js (one Reddit ad cookie). Most
-   visitors arrive from a Pin, many straight at #amazon: here the question
-   waits until the visitor scrolls or types herself, so the first screen
-   keeps the photo, the price line and the button. On a phone it is a
-   compact strip that sits above the button bar instead of over it.
-   Nothing changes about the consent: no pixel before "Allow" either way.
-   "html body" outranks the rules consent.js adds later in the page. */
-html:not(.stl-moved) #mf-consent{display:none}
-@media (max-width:599px){
-  html body #mf-consent{left:8px;right:8px;bottom:8px;padding:10px 12px;border-radius:12px;font-size:12.5px;line-height:1.4}
-  html body #mf-consent p{margin:0 0 8px}
-  html body #mf-consent .mf-row{gap:8px;flex-wrap:nowrap}
-  html body #mf-consent button{flex:1 1 0;min-width:0;padding:8px 12px;font-size:13px}
-  html.dock-on body #mf-consent{bottom:calc(80px + env(safe-area-inset-bottom))}
-}
 </style>
 <script type="application/ld+json">
 {
@@ -599,17 +584,6 @@ html:not(.stl-moved) #mf-consent{display:none}
   });
 })();
 
-/* The cookie question waits for the visitor's own first scroll or key
-   (see the CSS above). A jump to #amazon from a Pin is no such move. */
-(function () {
-  var root = document.documentElement, evs = ['wheel', 'touchmove', 'keydown'];
-  function moved() {
-    root.classList.add('stl-moved');
-    evs.forEach(function (ev) { window.removeEventListener(ev, moved); });
-  }
-  evs.forEach(function (ev) { window.addEventListener(ev, moved, { passive: true }); });
-})();
-
 /* Most Pinterest visitors are on a phone, but the plugin is set up in
    WordPress on a computer: let them take the page along. The button is
    counted by site.js (shop-the-look/cta-hero-desk); the label below is
@@ -627,6 +601,6 @@ html:not(.stl-moved) #mf-consent{display:none}
 </script>
 <script src="/assets/site.js" defer></script>
 <script src="/assets/back-to-top.js" defer></script>
-<script src="/assets/consent.js" defer></script>
+<script src="/pin/lab/v4/assets/consent.js" defer></script>
 </body>
 </html>
