@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+<title>Thank you - MyFeeds</title>
+<meta name="robots" content="noindex, follow">
+<meta name="theme-color" content="#FC9000">
+<link rel="icon" type="image/png" href="/favicon.png">
+<link rel="icon" type="image/x-icon" href="/favicon.ico">
+<link rel="apple-touch-icon" href="/apple-touch-icon.png">
+<link rel="preload" href="/assets/fonts/bricolage-latin.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="stylesheet" href="/assets/site.css">
+<script>
+/* Motion gate, before first paint. Nothing on this page waits for script:
+   without "mo" (no JS, reduced motion) there are simply no transitions. */
+!function(d){d.classList.add('js');try{if(matchMedia('(prefers-reduced-motion: no-preference)').matches)d.classList.add('mo')}catch(e){}}(document.documentElement);
+</script>
+<style>
+.thanks-box{max-width:560px}
+.thanks-box p{font-size:1.05rem}
+</style>
+</head>
+<body data-page="thanks/">
+<a class="skip" href="#main">Skip to content</a>
+<div class="open-top">
+  <div class="wrap">
+    <header class="top">
+      <a class="mark" href="/" translate="no" aria-label="MyFeeds home"><span><img src="/assets/home/logo-52.webp" alt="" width="22" height="22"></span>MyFeeds</a>
+      <nav class="nav" aria-label="Main">
+        <a href="/#how">How it works</a>
+        <a href="/#pricing" data-cta="nav-pricing">Pricing</a>
+        <a href="/ecommerce/">E-commerce</a>
+        <a href="/networks/">Networks</a>
+        <a href="/articles/">Guides</a>
+        <a href="/install/">Install</a>
+        <a href="/#faq">FAQ</a>
+      </nav>
+      <div class="top-r">
+        <button type="button" class="menu-btn" id="menu-btn" aria-expanded="false" aria-controls="menu"><i aria-hidden="true"></i>Menu</button>
+        <a class="cta cta-sm" data-cta="header" href="/#pricing">Get started</a>
+      </div>
+      <div class="menu" id="menu" hidden>
+        <a href="/#how">How it works</a>
+        <a href="/#pricing">Plans and prices</a>
+        <a href="/ecommerce/">E-commerce</a>
+        <a href="/networks/">Affiliate networks</a>
+        <a href="/articles/">Guides</a>
+        <a href="/install/">Install guide</a>
+        <a href="/#faq">Questions</a>
+      </div>
+    </header>
+  </div>
+</div>
+
+<main id="main">
+<div class="open">
+  <div class="wrap">
+    <section class="hero plain thanks-box" aria-labelledby="h-hero">
+      <p class="eyebrow">MyFeeds</p>
+      <h1 id="h-hero">Thank you!</h1>
+      <p id="thanks-line">Your answer helps us make MyFeeds better. You can close this tab and go back to WordPress.</p>
+      <p>Want to tell us more? Write to <a href="mailto:support@myfeeds.site" data-cta="thanks-mail">support@myfeeds.site</a>. A person answers.</p>
+    </section>
+  </div>
+</div>
+</main>
+
+<script>
+/* One answer from the feedback notice inside the MyFeeds plugin. The plugin
+   itself sends nothing: the visitor clicked an answer, which opened this
+   page, and GoatCounter counts the answer as an event (no cookie, no name).
+   Only known values are counted, so a typed-in address cannot add noise. */
+(function () {
+  var q = new URLSearchParams(location.search);
+  var known = {
+    found: ['pinterest', 'google', 'wordpress-org', 'blog-video', 'other'],
+    held: ['too-expensive', 'missing-feature', 'too-complicated', 'no-time', 'other'],
+    from: ['free', 'pro-bought', 'trial-ended']
+  };
+  function pick(k) { var v = (q.get(k) || '').toLowerCase(); return known[k].indexOf(v) > -1 ? v : ''; }
+  var found = pick('found'), held = pick('held'), from = pick('from') || 'unknown';
+  if (held) {
+    document.getElementById('thanks-line').textContent = 'Thanks for telling us. It helps us make MyFeeds a better fit. You can close this tab.';
+  }
+  var events = [];
+  if (found) events.push('feedback/found-' + found + '/' + from);
+  if (held) events.push('feedback/held-' + held + '/' + from);
+  if (!events.length) return;
+  var tries = 0;
+  (function send() {
+    if (window.goatcounter && window.goatcounter.count) {
+      events.forEach(function (p) { try { window.goatcounter.count({ path: p, title: p, event: true }); } catch (e) {} });
+    } else if (++tries < 40) { setTimeout(send, 250); }
+  })();
+})();
+</script>
+<footer>
+  <div class="wrap">
+    <div class="brand"><b translate="no">MyFeeds</b><span>Affiliate product feeds for WordPress</span></div>
+    <nav aria-label="Site">
+      <a href="/ecommerce/">E-commerce</a>
+      <a href="/install/">Install guide</a>
+      <a href="/networks/">Affiliate networks</a>
+      <a href="/articles/">Guides</a>
+      <a href="/affiliates/">Become an affiliate</a>
+      <a href="https://wordpress.org/plugins/myfeeds-affiliate-feed-manager/" rel="noopener">Free plugin on WordPress.org</a>
+      <a href="/imprint/">Imprint</a>
+      <a href="/privacy/">Privacy</a>
+      <a href="/terms/">Terms</a>
+      <a href="/refund/">Refund policy</a>
+    </nav>
+    <span>© 2026 MyFeeds. All rights reserved.</span>
+  </div>
+</footer>
+
+<script src="/assets/site.js" defer></script>
+<script src="/assets/back-to-top.js" defer></script>
+<script src="/assets/consent.js" defer></script>
+</body>
+</html>
