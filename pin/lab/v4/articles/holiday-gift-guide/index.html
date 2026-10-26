@@ -64,17 +64,33 @@ if(location.pathname.indexOf('/pin/lab/')===0)!function(d){var s=d.createElement
 .hg-vs .row3{--myfeeds-title-display:none}
 .hg-vs .row3 .myfeeds-discount-badge{padding:4px 8px}
 .hg-vs figcaption{margin-top:12px}
+/* the same signs as on the homepage: a red X over the links, a green tick over the cards */
+.hg-lab{display:flex;align-items:center;gap:7px}
+.hg-ic{position:relative;flex:none;width:20px;height:20px;border-radius:50%}
+.hg-ic.no{background:#D42A1E}
+.hg-ic.no::before,.hg-ic.no::after{content:"";position:absolute;left:50%;top:50%;width:10px;height:2px;margin:-1px 0 0 -5px;border-radius:2px;background:#fff;transform:rotate(45deg)}
+.hg-ic.no::after{transform:rotate(-45deg)}
+.hg-ic.yes{background:var(--ok)}
+.hg-ic.yes::before{content:"";position:absolute;left:5.5px;top:5.5px;width:8.5px;height:4.25px;border-left:2px solid #fff;border-bottom:2px solid #fff;transform:rotate(-45deg)}
+/* where the link note is narrow (small phones, small laptops): smaller
+   signs, so "A link list" stays on one line */
+@media (max-width:389px),(min-width:900px) and (max-width:1019px){.hg-lab{gap:5px}.hg-ic{width:17px;height:17px}.hg-ic.no::before,.hg-ic.no::after{width:9px;margin-left:-4.5px}.hg-ic.yes::before{left:4.5px;top:4.75px;width:7.5px;height:3.75px}}
+@media (max-width:359px),(min-width:900px) and (max-width:1019px){.hg-lab{letter-spacing:.03em}.hg-vs .pinned.hg-vs-links{padding-inline:8px}}
 /* old and sale price side by side without cutting off the sale price on a phone */
 .hg-vs .row3 .myfeeds-product-price{gap:4px}
 .hg-vs .row3 .myfeeds-old-price{margin-right:0}
 @media (max-width:389px){.hg-vs .row3{--myfeeds-details-px:5px;--myfeeds-price-size:11.5px;--myfeeds-old-price-size:10.5px}}
-@media (max-width:339px){.hg-vs .row3{--myfeeds-details-px:3px;--myfeeds-price-size:10.5px;--myfeeds-old-price-size:9.5px}.hg-vs .row3 .myfeeds-product-price{gap:3px}}
+@media (max-width:359px){.hg-vs .row3{--myfeeds-details-px:3px;--myfeeds-price-size:10.5px;--myfeeds-old-price-size:9.5px}.hg-vs .row3 .myfeeds-product-price{gap:3px}}
 @media (min-width:900px){
   .hg-vs-in{grid-template-columns:minmax(0,.62fr) minmax(0,1.38fr);gap:18px}
   .hg-vs .pinned{padding:22px 14px 14px}
   .hg-vs .linklist{font-size:14.5px}
   .hg-vs .row3{--myfeeds-grid-gap:9px;--myfeeds-title-size:11.5px;--myfeeds-price-size:14px;--myfeeds-old-price-size:13px;--myfeeds-merchant-display:block;--myfeeds-merchant-size:9.5px}
 }
+/* small laptops: the card column is narrow, so the prices get a smaller size
+   instead of being cut off, and below 1040px two cards, as on a phone */
+@media (min-width:900px) and (max-width:1139px){.hg-vs .row3{--myfeeds-details-px:7px;--myfeeds-price-size:12px;--myfeeds-old-price-size:11px}.hg-vs .row3 .myfeeds-product-price{gap:4px}}
+@media (min-width:900px) and (max-width:1039px){.hg-vs .row3 .myfeeds-product-card{width:calc((100% - var(--myfeeds-grid-gap)) / 2)}.hg-vs .row3 .myfeeds-product-card:nth-child(3){display:none}}
 .hg-k{margin-bottom:16px}
 /* the season, month by month: a column of dots on a phone, a time line from 900px */
 .hg-when{margin-top:30px;max-width:1000px}
@@ -243,7 +259,7 @@ if(location.pathname.indexOf('/pin/lab/')===0)!function(d){var s=d.createElement
       <figure class="hg-vs">
         <div class="hg-vs-in">
           <div class="pinned hg-vs-links">
-            <p class="k">A link list</p>
+            <p class="k hg-lab"><i class="hg-ic no" aria-hidden="true"></i>A link list</p>
             <ul class="linklist">
               <li><span>Beanie, $28</span></li>
               <li><span>Shoes, 30% off</span></li>
@@ -251,7 +267,7 @@ if(location.pathname.indexOf('/pin/lab/')===0)!function(d){var s=d.createElement
             </ul>
           </div>
           <div class="pinned hg-vs-cards">
-            <p class="k">Product cards</p>
+            <p class="k hg-lab"><i class="hg-ic yes" aria-hidden="true"></i>Product cards</p>
             <div class="myfeeds-product-grid row3">
               <div class="myfeeds-product-card"><div class="myfeeds-product-image"><img src="/assets/home/beanie-knit-navy.webp" width="400" height="400" alt="Ribbed knit beanie in navy"></div><div class="myfeeds-product-details"><div class="myfeeds-product-brand">Fieldmade</div><div class="myfeeds-product-title">Ribbed Merino Beanie Navy</div><div class="myfeeds-product-price"><span class="myfeeds-current-price">$28.00</span></div><div class="myfeeds-merchant">Basecamp Outfitters</div></div></div>
               <div class="myfeeds-product-card"><div class="myfeeds-product-image"><div class="myfeeds-discount-badge">-30%</div><img src="/assets/home/sneaker-white-lowtop.webp" width="400" height="400" alt="White leather low-top sneaker"></div><div class="myfeeds-product-details"><div class="myfeeds-product-brand">Arlo &amp; Finch</div><div class="myfeeds-product-title">Court Low-Top Leather White</div><div class="myfeeds-product-price"><span class="myfeeds-old-price">$110</span> <span class="myfeeds-current-price has-discount">$77.00</span></div><div class="myfeeds-merchant">Kicks Corner</div></div></div>
@@ -259,7 +275,7 @@ if(location.pathname.indexOf('/pin/lab/')===0)!function(d){var s=d.createElement
             </div>
           </div>
         </div>
-        <figcaption>Made with MyFeeds, our WordPress plugin: the cards update their price every night. Sample products and prices.</figcaption>
+        <figcaption>Made with MyFeeds, our WordPress plugin: the cards update their price every night.</figcaption>
       </figure>
     </section>
   </div>
@@ -344,18 +360,18 @@ if(location.pathname.indexOf('/pin/lab/')===0)!function(d){var s=d.createElement
           <p class="hg-n">A backup for every section</p>
           <p class="post-p">Backup: a cable-knit beanie, about $28, from a second store.</p>
         </div>
-        <figcaption>Sample products. The title stops the right reader; a backup stands in for a sold-out gift.</figcaption>
+        <figcaption>The title stops the right reader; a backup stands in for a sold-out gift.</figcaption>
       </figure>
 
       <div class="prose">
-        <p>A price you type stays put while the store's price moves. MyFeeds shows your picks as product cards instead. Most stores in an affiliate network such as Awin offer a list of all their products with picture, price and your link. It's called a product feed.</p>
+        <p>A price you type stays put while the store's price moves. MyFeeds shows your picks as product cards instead. Most stores in an affiliate network such as Awin offer a list of all their products with picture, price and your affiliate link. It's called a product feed.</p>
       </div>
 
       <aside class="pitch" aria-labelledby="p-mid">
         <h3 id="p-mid">Your picks, as cards that keep up with the store.</h3>
         <p>You search those products in the WordPress editor and click your gifts. Once the guide is published, MyFeeds reads price, stock and any sale price from the product feed every night. A gift sold out in every size leaves the post until it is back.</p>
         <a class="cta" data-cta="mid" href="https://checkout.freemius.com/plugin/21336/plan/60599/?trial=paid&amp;billing_cycle=monthly" rel="noopener">Show my gifts as product cards</a>
-        <p class="calm">The Starter trial: 7 days free, then $9 a month. Card or PayPal at checkout; cancel before the trial ends and you pay nothing.</p>
+        <p class="calm">The Starter trial: 7 days free, then $9 a month.</p>
         <p class="calm">Mostly Amazon? <a class="more" href="#amazon-cards" data-cta="quiet-amazon">See how Amazon gifts look</a>.</p>
       </aside>
     </div>
@@ -492,7 +508,7 @@ if(location.pathname.indexOf('/pin/lab/')===0)!function(d){var s=d.createElement
       <h2 id="h-end">Spend December pinning your gift guide, not patching it.</h2>
       <div class="go">
         <a class="cta hg-wrap" data-cta="final" href="https://checkout.freemius.com/plugin/21336/plan/60599/?trial=paid&amp;billing_cycle=monthly" rel="noopener">Show my gifts as product cards</a>
-        <p class="calm">The Starter trial: 7 days free, then $9 a month. Card or PayPal at checkout; cancel before the trial ends and you pay nothing.</p>
+        <p class="calm">The Starter trial: 7 days free, then $9 a month. Cancel before it ends and you pay nothing.</p>
         <p class="calm">Gifts from one store, no Amazon links, and fine swapping sold-out ones yourself? <a class="more" data-cta="final-free" href="https://wordpress.org/plugins/myfeeds-affiliate-feed-manager/" rel="noopener">Start with the free plugin</a>, or <a class="more" data-cta="final-plans" href="/pricing/">compare the plans</a>.</p>
       </div>
     </div>

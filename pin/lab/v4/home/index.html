@@ -6,7 +6,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
 <title>MyFeeds - Make your blog shoppable</title>
 <meta name="description" content="Pick products from the stores you're an affiliate for, right in the WordPress editor. Readers get a little shop in your post. Free to start.">
-<!-- Preview: live path / . Going live, all in ONE commit together with the v4 plans page (this page links /pricing/ from the nav, the hero, the Pro tile, the plans and the footer; check that myfeeds-site/pricing/index.html exists and carries the anchors #pro and #plan-pro): (1) copy this file to /index.html, (2) delete this comment and the robots line below, (3) at the end of <body> set the consent script to /assets/consent.js and either put the new consent.js from this folder there (only together with the new wording of privacy policy 3.4, see the report) or keep the old file, (4) nothing else: the GoatCounter guard below only skips /pin/lab/, so "/" counts again by itself. -->
+<!-- Preview: live path / . Going live, all in ONE commit together with the v4 plans page (this page links /pricing/ from the nav, the hero, the Pro tile, the plans and the footer; check that myfeeds-site/pricing/index.html exists and carries the anchors #pro, #plan-pro and #compare): (1) copy this file to /index.html, (2) delete this comment and the robots line below, (3) at the end of <body> set the consent script to /assets/consent.js and either put the new consent.js from this folder there (only together with the new wording of privacy policy 3.4, see the report) or keep the old file, (4) nothing else: the GoatCounter guard below only skips /pin/lab/, so "/" counts again by itself. -->
 <meta name="robots" content="noindex, follow">
 <link rel="canonical" href="https://myfeeds.site/">
 <meta name="theme-color" content="#FC9000">
@@ -61,27 +61,37 @@
 .strike{position:absolute;left:-.04em;right:-.04em;top:.56em;height:.075em;margin-top:-.0375em;background:var(--ink);border-radius:2px;pointer-events:none;transform-origin:left center}
 .mx .strike{transform:scaleX(0)}
 
-/* before: the same three picks as plain links, struck through */
-.hm-ba{position:relative;display:grid;gap:14px}
-.hm-lab{font-size:12px;font-weight:600;letter-spacing:.08em;text-transform:uppercase;line-height:1.2}
-.hm-before{position:relative;justify-self:start;width:min(100%,380px);background:var(--paper);border-radius:3px;box-shadow:var(--shadow);padding:13px 16px 12px;transform:rotate(-1.2deg)}
-.hm-before::before{content:"";position:absolute;top:-8px;left:50%;width:70px;height:18px;margin-left:-35px;background:var(--tape);transform:rotate(-3deg)}
-.hm-before .hm-lab{color:var(--ink-3)}
-.hm-before .linklist{margin-top:7px;gap:5px;font-size:14.5px;line-height:1.4}
+/* before and after, each with its sign: a red X over the plain links, a
+   green tick over the cards. The links are faded and struck through, the
+   cards stay bright. */
+.hm-ba{position:relative;display:grid;gap:22px}
+.hm-before,.hm-after{display:grid;gap:10px;min-width:0}
+.hm-lab{display:flex;align-items:center;gap:10px;font-size:16px;font-weight:600;line-height:1.25;color:var(--ink)}
+.hm-lab b{font-weight:700}
+.hm-ic{position:relative;flex:none;width:26px;height:26px;border-radius:50%;box-shadow:0 0 0 2px #fff}
+.hm-ic.no{background:#D42A1E}
+.hm-ic.no::before,.hm-ic.no::after{content:"";position:absolute;left:50%;top:50%;width:13px;height:2.5px;margin:-1.25px 0 0 -6.5px;border-radius:2px;background:#fff;transform:rotate(45deg)}
+.hm-ic.no::after{transform:rotate(-45deg)}
+.hm-ic.yes{background:#1E7A52}
+.hm-ic.yes::before{content:"";position:absolute;left:7px;top:7px;width:11px;height:5.5px;border-left:2.5px solid #fff;border-bottom:2.5px solid #fff;transform:rotate(-45deg)}
+.hm-note{justify-self:start;width:min(100%,380px);background:rgba(255,255,255,.5);border-radius:4px;padding:10px 16px 11px}
+.hm-note .linklist{margin-top:0;gap:4px;font-size:14.5px;line-height:1.4}
+.hm-note .linklist li::before{background:rgba(23,21,28,.35)}
+.hm-note .linklist span{color:rgba(37,70,181,.62)}
 .hm-x span{position:relative}
 .hm-x span::after{content:"";position:absolute;left:-3px;right:-3px;top:56%;height:2px;margin-top:-1px;background:#E0352B;border-radius:2px;transform-origin:left center}
 .mo .hm-x span::after{transition:transform .3s cubic-bezier(.7,0,.2,1)}
 .mo .hm-x li:nth-child(2) span::after{transition-delay:.12s}
 .mo .hm-x li:nth-child(3) span::after{transition-delay:.24s}
 .mx:not(.s-x) .hm-x span::after{transform:scaleX(0)}
-.hm-ah{display:flex;justify-content:space-between;align-items:baseline;gap:12px;margin-bottom:8px}
-.hm-ba figcaption{margin-top:0;font-size:13px;color:var(--ink)}
+.hm-ah{display:flex;justify-content:space-between;align-items:center;gap:12px}
 .hm-replay{font:500 13px/1.3 var(--sans);color:var(--ink);background:none;border:0;padding:12px 0;margin:-12px 0;text-decoration:underline;text-underline-offset:3px;cursor:pointer;white-space:nowrap}
 .hm-replay.off{visibility:hidden}
 @media (min-width:900px){
-  .hm-ba{gap:18px}
-  .hm-before{width:min(78%,400px);padding:15px 20px 14px}
-  .hm-before .linklist{font-size:15.5px}
+  .hm-ba{gap:28px}
+  .hm-before,.hm-after{gap:12px}
+  .hm-note{width:min(80%,400px);padding:12px 18px 13px}
+  .hm-note .linklist{font-size:15.5px}
 }
 /* the three cards: on a phone all three, smaller, without the shipping line
    (a setting of the card design editor) */
@@ -100,16 +110,16 @@
   .hm-hero>h1{margin-bottom:12px}
   .hm-hero>.lede{margin-top:14px}
   .hm-hero>.go{margin-top:12px}
-  .hm-ba{gap:9px}
-  .hm-before{display:grid;grid-template-columns:auto minmax(0,1fr);column-gap:12px;align-items:start;padding:9px 13px 8px}
-  .hm-before::before{top:-7px;height:14px}
-  .hm-lab{font-size:11px}
-  .hm-before .hm-lab{padding-top:3px}
-  .hm-before .linklist{margin-top:0;gap:0;font-size:13px;line-height:1.38}
-  .hm-before .linklist li{padding-left:15px}
-  .hm-ah{margin-bottom:5px}
+  .hm-ba{gap:11px}
+  .hm-before,.hm-after{gap:6px}
+  .hm-lab{font-size:14.5px;gap:8px}
+  .hm-ic{width:22px;height:22px}
+  .hm-ic.no::before,.hm-ic.no::after{width:11px;margin-left:-5.5px}
+  .hm-ic.yes::before{left:6px;top:6px;width:9px;height:4.5px}
+  .hm-note{padding:6px 12px 7px}
+  .hm-note .linklist{gap:0;font-size:13px;line-height:1.38}
+  .hm-note .linklist li{padding-left:15px}
   .hm-hero>.lede{max-width:none}
-  .hm-ba figcaption{font-size:12.5px;line-height:1.35}
 }
 /* narrow phones: two cards, as the plugin itself lays them out, so the
    sale price stays readable */
@@ -186,10 +196,8 @@
 .hm-try>*{min-width:0}
 .hm-try-t p{color:var(--fg-2);max-width:40ch}
 .hm-try-t p b{color:var(--fg)}
-.hm-try-t .go{margin-top:14px}
 .hm-or{margin-top:12px;font-size:14.5px}
 .hm-or a{text-underline-offset:3px}
-.hm-uk{margin-top:18px}
 .hm-try .frame{margin:0}
 .hm-try .cap{margin-top:12px}
 @media (min-width:900px){.hm-try{grid-template-columns:minmax(0,4fr) minmax(0,7fr);gap:56px;margin-top:64px}}
@@ -227,7 +235,6 @@
 .hm-tile-b>span:not(.pill){font-size:15px;line-height:1.45;color:var(--ink-2)}
 .hm-tile u{font-weight:600;font-size:15px;text-underline-offset:3px;text-decoration-thickness:1.5px;margin-top:2px}
 .hm-tile:hover u{text-decoration-thickness:2.5px}
-.hm-cap{color:var(--on-violet)}
 .hm-p2{object-position:50% 30%}.hm-p3{object-position:0 0}.hm-p4{object-position:50% 100%}
 @media (min-width:600px){.hm-p4{object-position:0 0}}
 /* dots on the photo, decorative (the look itself lives on /shop-the-look/) */
@@ -235,7 +242,10 @@
 .hm-dot.d1{left:30%;top:31%}.hm-dot.d2{left:72%;top:22%}.hm-dot.d3{left:77%;top:60%}
 @media (min-width:600px){
   .hm-tiles{grid-template-columns:repeat(2,minmax(0,1fr));gap:16px}
-  .hm-tile{grid-template-columns:minmax(0,1fr);gap:14px;padding:0;overflow:hidden}
+  /* the picture row never takes the spare height of a shorter tile, so the
+     price label sits at the same height on all four; the link goes last */
+  .hm-tile{grid-template-columns:minmax(0,1fr);grid-template-rows:auto 1fr;gap:14px;padding:0;overflow:hidden}
+  .hm-tile-b{grid-template-rows:auto auto 1fr auto;align-self:stretch}
   .hm-tile-pic{aspect-ratio:4/3;border-radius:0}
   .hm-mini{gap:5%;padding:0 7%}
   .hm-mini>span:nth-child(3){display:grid}
@@ -249,12 +259,25 @@
 @media (min-width:1000px){.hm-tiles{grid-template-columns:repeat(4,minmax(0,1fr))}}
 
 /* ---- plans at a glance ---- */
+/* monthly or yearly, one site or three: the two switches over the cards.
+   Without script they stay hidden and every card shows its monthly price
+   for one site, with the yearly one as a link beside it. */
+.hm-bill{display:none;flex-wrap:wrap;gap:10px 12px;margin-bottom:26px}
+.js .hm-bill{display:flex}
+.hm-seg{display:inline-flex;background:#fff;border:1px solid var(--line);border-radius:999px;padding:4px}
+.hm-seg button{min-height:44px;background:none;border:0;border-radius:999px;padding:0 16px;font:600 15px/1 var(--sans);color:var(--ink-2);cursor:pointer;white-space:nowrap}
+.hm-seg button:hover{color:var(--ink)}
+.hm-seg button[aria-pressed="true"]{background:var(--ink);color:#fff}
+.hm-seg small{margin-left:3px;font-size:12.5px;font-weight:600;color:var(--violet)}
+.hm-seg button[aria-pressed="true"] small{color:#FFD08A}
+.hm-one{display:none}
+.hm-s3 .hm-one{display:inline}
 .hm-plans{display:grid;gap:12px}
 .hm-plan{position:relative;display:grid;grid-template-columns:minmax(0,1fr) auto;grid-template-areas:"n p" "a a" "f f" "b b";gap:2px 14px;align-content:start;background:#fff;border-radius:10px;padding:16px 18px;box-shadow:var(--shadow);scroll-margin-top:24px}
 .hm-plan h3{grid-area:n;font-size:1.45rem;line-height:1.1;align-self:center}
 .hm-price{grid-area:p;display:flex;align-items:baseline;gap:5px;justify-self:end}
 .hm-price b{font:800 2.1rem/1 var(--display);letter-spacing:-.03em}
-.hm-price span{font-size:14px;font-weight:600;color:var(--ink-2)}
+.hm-price>span{font-size:14px;font-weight:600;color:var(--ink-2)}
 .hm-alt{grid-area:a;font-size:13.5px;color:var(--ink-3);text-align:right}
 .hm-alt a{display:inline-block;padding-block:17px;margin-block:-17px;color:inherit;text-underline-offset:3px}
 .hm-alt a:hover{color:var(--ink)}
@@ -264,8 +287,12 @@
 .hm-plan .tag{position:absolute;top:-10px;left:18px}
 @keyframes hm-called{0%{box-shadow:0 0 0 0 rgba(252,144,0,0)}25%{box-shadow:0 0 0 6px var(--orange)}100%{box-shadow:0 0 0 0 rgba(252,144,0,0)}}
 .mo .hm-plan:target{animation:hm-called 1.6s ease-out .3s 1}
-.hm-pnote{display:grid;gap:6px;margin-top:24px;font-size:14.5px;line-height:1.5;color:var(--fg-2);max-width:72ch}
-.hm-pnote .go{margin-top:8px}
+/* one line under the row of cards, as wide as the row, and the way to
+   the full comparison as a second button */
+.hm-pnote{display:grid;justify-items:center;gap:22px;margin-top:26px;text-align:center;font-size:15px;line-height:1.5;color:var(--fg-2)}
+.hm-ghost{display:inline-flex;align-items:center;justify-content:center;min-height:54px;padding:14px 30px;border:2px solid var(--ink);border-radius:999px;background:transparent;color:var(--ink);font:600 17px/1.2 var(--sans);text-decoration:none}
+.hm-ghost:hover{background:var(--ink);color:#fff}
+@media (max-width:420px){.hm-ghost{width:100%}}
 @media (min-width:600px){
   .hm-plans{grid-template-columns:repeat(2,minmax(0,1fr));gap:16px}
   .hm-plan{grid-template-columns:minmax(0,1fr);grid-template-areas:"n" "p" "a" "f" "b";grid-template-rows:auto auto auto 1fr auto;padding:24px 20px 20px;gap:4px}
@@ -323,30 +350,28 @@
       <p class="eyebrow">For WordPress affiliate blogs</p>
       <h1 id="h-hero">Look like a shop, not a <span class="ll">link list<span class="strike" aria-hidden="true"></span></span>.</h1>
 
-      <figure class="hm-ba" id="comparison" aria-label="Before: three product picks as plain links, struck through. After: the same three products as MyFeeds cards with picture, price and store. During the nightly price update the sneaker drops from 129 to 96 dollars, its old price struck through and a minus 26 percent badge.">
+      <figure class="hm-ba" id="comparison" aria-label="Before: three product picks as plain links, struck through. With MyFeeds: the same three products as cards with picture, price and store. The sneaker's price drops from 129 to 96 dollars, its old price struck through and a minus 26 percent badge.">
         <div class="hm-before">
-          <p class="hm-lab">Before</p>
-          <ul class="linklist hm-x">
+          <p class="hm-lab"><i class="hm-ic no" aria-hidden="true"></i><span><b>Before:</b> a list of links</span></p>
+          <div class="hm-note"><ul class="linklist hm-x">
             <li><span>Grey hoodie at Northside Supply</span></li>
             <li><span>Black high-tops at Kicks Corner</span></li>
             <li><span>Trail pack at Basecamp</span></li>
-          </ul>
+          </ul></div>
         </div>
         <div class="hm-after">
-          <div class="hm-ah"><p class="hm-lab">With MyFeeds</p><button type="button" class="hm-replay off" id="replay">Play again</button></div>
+          <div class="hm-ah"><p class="hm-lab"><i class="hm-ic yes" aria-hidden="true"></i><span><b>With MyFeeds:</b> product cards</span></p><button type="button" class="hm-replay off" id="replay">Play again</button></div>
           <div class="myfeeds-product-grid row3 hm-row" id="cards">
             <div class="myfeeds-product-card"><span class="mx-edge" aria-hidden="true"></span><div class="myfeeds-product-image"><img src="/assets/home/hoodie-heather-grey.webp" width="400" height="400" alt="Grey hoodie"></div><div class="myfeeds-product-details"><div class="myfeeds-product-brand">Halden</div><div class="myfeeds-product-title">Grey Hoodie</div><div class="myfeeds-product-price"><span class="myfeeds-current-price">$58.00</span></div><div class="myfeeds-shipping-info">Free Shipping</div><div class="myfeeds-merchant">Northside Supply</div></div></div>
             <div class="myfeeds-product-card sale"><span class="mx-edge" aria-hidden="true"></span><div class="myfeeds-product-image"><div class="myfeeds-discount-badge">-26%</div><img src="/assets/home/sneaker-black-hightop.webp" width="400" height="400" alt="Black high-top sneakers"><span class="mx-scan" aria-hidden="true"></span><span class="mx-chip" aria-hidden="true"><span class="mx-ic"><i class="mx-spin"></i><i class="mx-tick"></i></span><span class="mx-tx"><span class="t-sync">Updating price</span><span class="t-done">Price updated</span></span></span></div><div class="myfeeds-product-details"><div class="myfeeds-product-brand">Arlo &amp; Finch</div><div class="myfeeds-product-title">Black High-Tops</div><div class="myfeeds-product-price"><span class="myfeeds-old-price">$129.00</span> <span class="myfeeds-current-price has-discount">$96.00</span></div><div class="myfeeds-shipping-info">Free Shipping</div><div class="myfeeds-merchant">Kicks Corner</div></div></div>
             <div class="myfeeds-product-card"><span class="mx-edge" aria-hidden="true"></span><div class="myfeeds-product-image"><img src="/assets/home/backpack-trail.webp" width="400" height="400" alt="Sage green trail pack"></div><div class="myfeeds-product-details"><div class="myfeeds-product-brand">Fieldmade</div><div class="myfeeds-product-title">Trail Pack</div><div class="myfeeds-product-price"><span class="myfeeds-current-price">$74.00</span></div><div class="myfeeds-shipping-info">Shipping costs may apply</div><div class="myfeeds-merchant">Basecamp</div></div></div>
           </div>
         </div>
-        <figcaption>Example: the price fell overnight and the card updated itself.</figcaption>
       </figure>
 
-      <p class="lede">A free WordPress plugin: product cards with picture, price and your link.</p>
+      <p class="lede">A free WordPress plugin: product cards with picture, price and your affiliate link.</p>
       <div class="go">
         <a rel="noopener" class="cta" data-cta="hero" id="hero-cta" href="https://wordpress.org/plugins/myfeeds-affiliate-feed-manager/">Start free</a>
-        <p class="calm">Opens WordPress.org. Or in WordPress: Plugins, then Add New Plugin, search “MyFeeds”. Paid plans from $9 a month.</p>
         <a class="more" href="/pricing/" data-cta="hero-plans">See the plans</a>
       </div>
     </section>
@@ -358,7 +383,7 @@
     <ul class="hm-facts">
       <li>Free on WordPress.org</li>
       <li>Works with AWIN (now with ShareASale), Partnerize, Webgains and more</li>
-      <li>Amazon links from Starter</li>
+      <li>Amazon links on every paid plan</li>
       <li>Prices from a feed link refresh every night</li>
     </ul>
   </div>
@@ -383,8 +408,7 @@
           </div>
         </div>
         <h3>Add a store's product list</h3>
-        <p>Most stores in an affiliate network offer a list of all their products with picture, price and your link. It's called a product feed. Paste its link into MyFeeds, or upload the file.</p>
-        <p><b>Only on Amazon?</b> Its products go in by link, from Starter.</p>
+        <p>Most stores in an affiliate network offer a list of all their products with picture, price and your affiliate link. It's called a product feed. Paste its link into MyFeeds, or upload the file.</p>
         <p class="go"><a class="more" href="/networks/" data-cta="how-networks">Find the feed in your network</a></p>
       </li>
       <li>
@@ -398,11 +422,9 @@
         <p>Every night MyFeeds reads each store's feed link again and updates price and stock in your posts.</p>
       </li>
     </ol>
-    <p class="cap hm-uk">Screenshots shown with a UK store.</p>
     <div class="hm-try">
       <div class="hm-try-t">
         <p><b>No feed yet? Try it with 7 sample products.</b> They come with the free plugin.</p>
-        <p class="go"><a class="more" href="/articles/holiday-gift-guide/#look" data-cta="how-example">See the cards in a gift guide</a></p>
         <p class="hm-or"><a rel="noopener" href="https://wordpress.org/plugins/myfeeds-affiliate-feed-manager/?preview=1" data-cta="how-preview">Or try the sample products in a live preview</a>, on a computer.</p>
       </div>
       <figure>
@@ -432,7 +454,7 @@
           <span><img src="/assets/home/beanie-knit-navy.webp" width="400" height="400" loading="lazy" alt=""><i class="b"></i><i></i><i class="p"></i></span>
         </div>
         <div class="hm-tile-b">
-          <span class="pill free">Free</span>
+          <span class="pill">Free</span>
           <h3>Product cards in your posts</h3>
           <span>Readers see the product, tap it and land in the store through your link.</span>
           <u>Set up your first cards</u>
@@ -450,23 +472,22 @@
       <a class="hm-tile" href="#plan-pro" data-cta="build-pro">
         <div class="hm-tile-pic"><img src="/assets/home/analytics-dashboard-800.webp" width="800" height="394" loading="lazy" alt="" class="hm-p3"></div>
         <div class="hm-tile-b">
-          <span class="pill">Pro · $19</span>
+          <span class="pill">From $19</span>
           <h3>See which posts earn</h3>
-          <span>Clicks for every post and product, plus earnings from the networks you connect (Amazon: clicks only).</span>
+          <span>Clicks for every post and product, earnings from the networks you connect. Dead links found for you, each post one click away.</span>
           <u>See the Pro plan</u>
         </div>
       </a>
       <a class="hm-tile" href="/ecommerce/" data-cta="build-shop">
         <div class="hm-tile-pic"><picture><source media="(max-width:599px)" srcset="/assets/home/shop-mobile-569.webp" width="569" height="734"><img src="/assets/home/shop-desktop-800.webp" width="800" height="395" loading="lazy" alt="" class="hm-p4"></picture></div>
         <div class="hm-tile-b">
-          <span class="pill">E-commerce · $49</span>
+          <span class="pill">From $49</span>
           <h3>A shop page of your own</h3>
           <span>Products you pick and sort into categories, on a shop page of your own with filters.</span>
           <u>See the shop page</u>
         </div>
       </a>
     </div>
-    <p class="cap hm-cap">The pictures show example products and example data.</p>
   </div>
 </section>
 
@@ -476,6 +497,16 @@
       <p class="kick">Plans</p>
       <h2 id="h-pricing">Start free. Add more <span class="tone">when you need it.</span></h2>
     </div>
+    <div class="hm-bill">
+      <div class="hm-seg" role="group" aria-label="Billing">
+        <button type="button" data-cycle="monthly" aria-pressed="true">Monthly</button>
+        <button type="button" data-cycle="annual" aria-pressed="false">Yearly <small>save up to 17%</small></button>
+      </div>
+      <div class="hm-seg" role="group" aria-label="Sites">
+        <button type="button" data-sites="1" aria-pressed="true">1 site</button>
+        <button type="button" data-sites="3" aria-pressed="false">3 sites</button>
+      </div>
+    </div>
     <div class="hm-plans">
       <article class="hm-plan" id="plan-free" aria-labelledby="n-free">
         <h3 id="n-free">Free</h3>
@@ -484,33 +515,32 @@
         <p class="hm-for">For you if your picks come from one store in a network like AWIN. Amazon starts with Starter.</p>
         <a rel="noopener" class="cta" data-cta="plan-free" href="https://wordpress.org/plugins/myfeeds-affiliate-feed-manager/">Start free</a>
       </article>
-      <article class="hm-plan hm-pick" id="plan-starter" aria-labelledby="n-starter">
+      <article class="hm-plan hm-pick" id="plan-starter" aria-labelledby="n-starter" data-plan="starter" data-checkout="https://checkout.freemius.com/plugin/21336/plan/60599" data-m1="9" data-y1="89">
         <span class="tag">For several stores or Amazon</span>
         <h3 id="n-starter">Starter</h3>
-        <p class="hm-price"><b>$9</b><span>a month</span></p>
-        <p class="hm-alt"><a rel="noopener" data-cta="plan-starter-year" href="https://checkout.freemius.com/plugin/21336/plan/60599/?trial=paid&amp;billing_cycle=annual">or $89 a year</a></p>
+        <p class="hm-price"><b>$<span class="hm-amt">9</span></b><span class="hm-per">a month</span></p>
+        <p class="hm-alt"><a rel="noopener" data-cta="plan-starter-year" href="https://checkout.freemius.com/plugin/21336/plan/60599/?trial=paid&amp;billing_cycle=annual">or $89 a year</a><span class="hm-one"> · 1 site only</span></p>
         <p class="hm-for">For you if you link to Amazon, or work with several stores and want cards in your own look.</p>
         <a rel="noopener" class="cta" data-cta="plan-starter" href="https://checkout.freemius.com/plugin/21336/plan/60599/?trial=paid&amp;billing_cycle=monthly">Start 7-day free trial<span class="vh"> of Starter</span></a>
       </article>
-      <article class="hm-plan" id="plan-pro" aria-labelledby="n-pro">
+      <article class="hm-plan" id="plan-pro" aria-labelledby="n-pro" data-plan="pro" data-checkout="https://checkout.freemius.com/plugin/21336/plan/35610" data-m1="19" data-y1="199" data-m3="39" data-y3="399">
         <h3 id="n-pro">Pro</h3>
-        <p class="hm-price"><b>$19</b><span>a month</span></p>
+        <p class="hm-price"><b>$<span class="hm-amt">19</span></b><span class="hm-per">a month</span></p>
         <p class="hm-alt"><a rel="noopener" data-cta="plan-pro-year" href="https://checkout.freemius.com/plugin/21336/plan/35610/?trial=paid&amp;billing_cycle=annual">or $199 a year</a></p>
-        <p class="hm-for">For you if you want to see which posts and products get the clicks, and what they earn.</p>
+        <p class="hm-for">For you if you want clicks and earnings for each post, and dead links marked for you.</p>
         <a rel="noopener" class="cta" data-cta="plan-pro" href="https://checkout.freemius.com/plugin/21336/plan/35610/?trial=paid&amp;billing_cycle=monthly">Start 7-day free trial<span class="vh"> of Pro</span></a>
       </article>
-      <article class="hm-plan" id="plan-ecommerce" aria-labelledby="n-ecom">
+      <article class="hm-plan" id="plan-ecommerce" aria-labelledby="n-ecom" data-plan="ecommerce" data-checkout="https://checkout.freemius.com/plugin/21336/plan/48994" data-m1="49" data-y1="499" data-m3="89" data-y3="899">
         <h3 id="n-ecom">E-commerce</h3>
-        <p class="hm-price"><b>$49</b><span>a month</span></p>
+        <p class="hm-price"><b>$<span class="hm-amt">49</span></b><span class="hm-per">a month</span></p>
         <p class="hm-alt"><a rel="noopener" data-cta="plan-ecommerce-year" href="https://checkout.freemius.com/plugin/21336/plan/48994/?trial=paid&amp;billing_cycle=annual">or $499 a year</a></p>
         <p class="hm-for">For you if your readers should browse your picks by category on a shop page of your own.</p>
         <a rel="noopener" class="cta" data-cta="plan-ecommerce" href="https://checkout.freemius.com/plugin/21336/plan/48994/?trial=paid&amp;billing_cycle=monthly">Start 14-day free trial<span class="vh"> of E-commerce</span></a>
       </article>
     </div>
     <div class="hm-pnote">
-      <p>Each plan includes everything in the one before it. Every trial asks for a card or PayPal. Cancel on the Manage Plan page in your WordPress admin before the trial ends and you pay nothing.</p>
-      <p>Amazon products by link from Starter, with your own Associates tag, without picture or price. Amazon's picture and price on your cards from Pro, once you have ten qualified Amazon sales in thirty days (Amazon's rule). Prices in USD, plus local tax where it applies.</p>
-      <p class="go"><a class="more" href="/pricing/" data-cta="plans-compare">Compare all features</a></p>
+      <p>Each plan includes everything in the one before it. Cancel before your trial ends and you pay nothing. Prices in USD, plus tax where it applies.</p>
+      <a class="hm-ghost" href="/pricing/#compare" data-cta="plans-compare">Compare all features</a>
     </div>
   </div>
 </section>
@@ -554,7 +584,6 @@
     <h2 id="h-end">Make your next post look like a shop.</h2>
     <div class="go">
       <a rel="noopener" class="cta" data-cta="final" href="https://wordpress.org/plugins/myfeeds-affiliate-feed-manager/">Start free</a>
-      <p class="calm">Opens WordPress.org. Paid plans from $9 a month, each with a free trial.</p>
     </div>
   </div>
 </section>
@@ -645,6 +674,41 @@
     });
   }
 
+  // Plans: monthly or yearly, one site or three, as on the live homepage.
+  // Price, the "or ..." link under it and the trial button follow both
+  // switches. Freemius takes three sites as /licenses/3/ in the address
+  // and refuses it for a plan without a three-site price, so Starter stays
+  // on its one-site prices and says "1 site only". Without script nothing
+  // changes: monthly on the button, yearly as the link.
+  var plans = d.querySelector('.hm-plans');
+  var cycBtns = d.querySelectorAll('[data-cycle]'), siteBtns = d.querySelectorAll('[data-sites]');
+  if (plans && cycBtns.length && siteBtns.length) {
+    var cycle = 'monthly', sites = 1;
+    var paid = plans.querySelectorAll('.hm-plan[data-checkout]');
+    var checkout = function (base, tier, c) { return base + (tier === 3 ? '/licenses/3/' : '/') + '?trial=paid&billing_cycle=' + c; };
+    var render = function () {
+      cycBtns.forEach(function (b) { b.setAttribute('aria-pressed', b.getAttribute('data-cycle') === cycle ? 'true' : 'false'); });
+      siteBtns.forEach(function (b) { b.setAttribute('aria-pressed', b.getAttribute('data-sites') === String(sites) ? 'true' : 'false'); });
+      plans.classList.toggle('hm-s3', sites === 3);
+      var yearly = cycle === 'annual';
+      paid.forEach(function (card) {
+        var tier = (sites === 3 && card.getAttribute('data-m3')) ? 3 : 1;
+        var m = card.getAttribute('data-m' + tier), y = card.getAttribute('data-y' + tier);
+        var base = card.getAttribute('data-checkout'), name = card.getAttribute('data-plan');
+        card.querySelector('.hm-amt').textContent = yearly ? y : m;
+        card.querySelector('.hm-per').textContent = yearly ? 'a year' : 'a month';
+        var alt = card.querySelector('.hm-alt a');
+        alt.textContent = yearly ? 'or $' + m + ' a month' : 'or $' + y + ' a year';
+        alt.setAttribute('href', checkout(base, tier, yearly ? 'monthly' : 'annual'));
+        alt.setAttribute('data-cta', 'plan-' + name + (yearly ? '-month' : '-year'));
+        card.querySelector('a.cta').setAttribute('href', checkout(base, tier, cycle));
+      });
+    };
+    cycBtns.forEach(function (b) { b.addEventListener('click', function () { cycle = b.getAttribute('data-cycle'); render(); count(P + 'cycle-' + cycle); }); });
+    siteBtns.forEach(function (b) { b.addEventListener('click', function () { sites = +b.getAttribute('data-sites') || 1; render(); count(P + 'sites-' + sites); }); });
+    render();
+  }
+
   // Phone only: once the hero button has scrolled away, the same button
   // waits at the bottom. It steps aside while the plans, the close or any
   // other button is on screen, so two never stack.
@@ -670,7 +734,7 @@
   // Preview only: pages that so far exist only as v4 previews (the plans
   // page above all) are opened as previews. Live, this does nothing.
   if (PREVIEW) {
-    ['/pricing/', '/shop-the-look/', '/articles/holiday-gift-guide/'].forEach(function (pth) {
+    ['/pricing/', '/shop-the-look/'].forEach(function (pth) {
       d.querySelectorAll('a[href^="' + pth + '"]').forEach(function (a) { a.setAttribute('href', '/pin/lab/v4' + a.getAttribute('href')); });
     });
   }
