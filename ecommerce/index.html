@@ -957,7 +957,7 @@ footer a{color:#fff;text-underline-offset:3px}
     </div>
     <div class="bill">
       <div class="seg" role="group" aria-label="Billing">
-        <button type="button" data-cycle="annual" aria-pressed="true">Yearly <small>Founding prices</small></button>
+        <button type="button" data-cycle="annual" aria-pressed="true">Yearly <template data-founding="business"><small>Founding prices</small></template></button>
         <button type="button" data-cycle="monthly" aria-pressed="false">Monthly</button>
       </div>
       <div class="seg" role="group" aria-label="Sites">
@@ -970,61 +970,50 @@ footer a{color:#fff;text-underline-offset:3px}
         <span class="chip-plan">14 DAYS FREE</span>
         <h3 id="n-ecom">Shop</h3>
         <p class="for">A shop of your own</p>
-        <p class="price"><b>$<span class="amt">149</span></b><span class="per">/year</span></p>
+        <p class="price"><b>$<span class="amt">329</span></b><span class="per">/year</span></p>
         <p class="alt"><span class="alt-tx">or $39 a month</span><span class="lic">One site</span></p>
-        <div class="found">
+        <template data-founding="business"><div class="found">
           <p class="found-h">Founding prices, yearly plan</p>
-          <ol>
-            <li aria-current="true"><span>Places 1–25<small>now</small></span><b>$149 a year</b></li>
-            <li><span>Places 26–50</span><b>$199 a year</b></li>
-            <li><span>Places 51–100</span><b>$249 a year</b></li>
-            <li><span>After that</span><b>$329 a year</b></li>
-          </ol>
-          <p class="found-n">Your price stays for as long as your subscription runs.</p>
-        </div>
+          <ol data-ladder="business"></ol>
+          <p class="found-n">Applies from your first payment and stays for as long as your subscription renews without interruption.</p>
+        </div></template>
         <p class="inc">Everything in Pro, plus</p>
         <ul class="feats">
-          <li>Full shop system + storefront</li>
+          <li>A shop page on your own site, with search + sorting</li>
           <li>Smart categories + filters</li>
           <li>Storefront design editor</li>
           <li>SEO engine + bulk SEO tools</li>
           <li>Auto-sitemap</li>
           <li>Curated collections</li>
-          <li>Yearly plan: an optional 30-minute start call, while slots last</li>
+          <li>Yearly plan: an optional 30-minute start call, as our calendar allows</li>
         </ul>
         <a class="cta plan-checkout" data-cta="plan-ecommerce" href="https://checkout.freemius.com/plugin/21336/plan/48994/?trial=true&amp;billing_cycle=annual">Start my 14-day Shop trial</a>
-        <p class="refund">14-day free trial<span class="nocard"> · No credit card needed</span></p>
+        <p class="refund">14-day free trial<span class="nocard"> · No payment details needed</span></p>
         <p class="refund">14-day money-back guarantee, no questions asked</p>
       </article>
       <div class="side-list">
         <div class="box">
           <h3>Also inside: everything in Pro</h3>
           <ul class="feats">
-            <li>Unlimited feeds</li>
-            <li>Grid + Carousel layouts</li>
+            <li>Unlimited feeds, plus Rakuten by API without a feed file</li>
+            <li>Grid + Carousel layouts, recommendation card + comparison table</li>
             <li>Shop the look: shoppable points on your own photos</li>
-            <li>Recommendation card + comparison table</li>
             <li>Card design editor, Google Fonts + custom fonts</li>
-            <li>Clicks for every post and product</li>
-            <li>Your clicks in Google Analytics 4</li>
-            <li>Discontinued products marked right in the editor</li>
-            <li>A warning when an affiliate program closes</li>
-            <li>Amazon products by link or ASIN, with your partner tag</li>
-            <li>Amazon with picture and price, live from Amazon's API <span class="fn" aria-hidden="true">*</span><span class="vh">(see note)</span></li>
-            <li>Rakuten by API, without a feed file</li>
+            <li>Clicks for every post and product, also in Google Analytics 4</li>
+            <li>Discontinued products marked in the editor, and a warning when an affiliate program closes</li>
+            <li>Amazon by link or ASIN with your partner tag; picture and price live from Amazon's API <span class="fn" aria-hidden="true">*</span><span class="vh">(see note)</span></li>
             <li>Email support</li>
           </ul>
           <p class="fnote"><span class="fn" aria-hidden="true">*</span> Amazon has no feed file, so picture and price come live from Amazon's own Creators API. Amazon opens that access to associates with ten qualified sales in thirty days. Amazon products show in your posts, not on the shop page.</p>
         </div>
         <div class="box others">
           <h3>Only want cards in your posts?</h3>
-          <p>Pro from $12 a month, with a 14-day free trial and its own founding prices. Or start with the free plugin.</p>
+          <p>Pro from $12 a month, with a 14-day free trial<template data-founding="pro"> and its own founding prices</template>. Or start with the free plugin.</p>
           <a class="more" href="/#pricing" data-cta="other-plans">Compare all plans</a>
         </div>
       </div>
     </div>
     <div class="pnotes">
-      <p>Founding prices are for the yearly plan on one site. Once the places at one price are taken, new subscribers start at the next step. The price you started at stays yours for as long as your subscription runs.</p>
       <p>If you don't continue after the 14 days, the shop page stops being reachable for visitors, and your posts, feeds and the free plugin keep working. Changed your mind after paying? Write to <a href="mailto:support@myfeeds.site">support@myfeeds.site</a> within 14 days of your first payment and you get your money back. <a href="/refund/">Refund policy</a>.</p>
       <p>Prices in USD, exclusive of VAT. EU customers see local tax at checkout. First time? The <a href="/install/">setup guide</a> walks you through it.</p>
     </div>
@@ -1049,7 +1038,7 @@ footer a{color:#fff;text-underline-offset:3px}
       </details>
       <details name="faq">
         <summary>Do I need technical skills?</summary>
-        <p>No code, no command line. If you can install a WordPress plugin and paste a link, you're set. The first time you open each screen, a short guided demo walks you through it. On the yearly plan you can also book an optional 30-minute start call, while slots last.</p>
+        <p>No code, no command line. If you can install a WordPress plugin and paste a link, you're set. The first time you open each screen, a short guided demo walks you through it. On the yearly plan you can also book an optional 30-minute start call, as our calendar allows.</p>
       </details>
       <details name="faq">
         <summary>Do I have to sort every product by hand?</summary>
@@ -1075,6 +1064,10 @@ footer a{color:#fff;text-underline-offset:3px}
         <summary>How long is the trial?</summary>
         <p>14 days with everything in it: the shop, the design editor, the SEO tools, the rules that sort your products and everything in Pro. You can end it from your dashboard at any time.</p>
       </details>
+      <template data-founding="business"><details name="faq" data-faq="founding">
+        <summary>What are founding prices?</summary>
+        <p>The first yearly subscribers of a plan pay less, in steps, on one site. When the places at one price are taken, the next step starts, up to the regular price. A founding price applies from your first payment, so after a free trial you get the step that is open when you first pay. It stays for as long as your subscription renews without interruption, also after the price goes up for others. The steps are on the plan's card above.</p>
+      </details></template>
       <details name="faq">
         <summary>Can I get my money back?</summary>
         <p>Yes. Write to <a href="mailto:support@myfeeds.site">support@myfeeds.site</a> within 14 days of your first payment and you get it back in full. You don't have to give a reason. The <a href="/refund/">refund policy</a> has the details.</p>
@@ -1162,12 +1155,15 @@ footer a{color:#fff;text-underline-offset:3px}
 
   // FAQ: one answer open at a time (name="faq" does it in current
   // browsers; this covers the ones that don't know the attribute yet).
-  var faqs = document.querySelectorAll('.faq details');
-  faqs.forEach(function (d, i) {
+  // The founding entry only exists while founding prices are on, so it is
+  // counted under its own name and the others keep their numbers.
+  var faqs = document.querySelectorAll('.faq details'), fn = 0;
+  faqs.forEach(function (d) {
+    var key = d.getAttribute('data-faq') || String(++fn);
     d.addEventListener('toggle', function () {
       if (!d.open) return;
       faqs.forEach(function (o) { if (o !== d && o.open) o.open = false; });
-      count(P + 'faq-' + (i + 1));
+      count(P + 'faq-' + key);
     });
   });
 
@@ -1251,24 +1247,15 @@ footer a{color:#fff;text-underline-offset:3px}
   }
 
   // The plan: billing cycle and site count. Prices, founding steps and the
-  // checkout link come from /assets/plans.js (same as the homepage); the
-  // HTML holds the yearly one-site figures for visitors without script.
-  // "All my sites" is a yearly plan only, so it switches the cycle to yearly.
+  // checkout link come from /assets/plans.js (same as the homepage), which
+  // has already put in the founding box if the plan has one; the HTML holds
+  // the regular yearly one-site figures for visitors without script.
+  // "All my sites" is a yearly plan only, so it switches the cycle to
+  // yearly, and founding prices never apply there.
   var MP = window.MyFeedsPlans, KEY = 'business', cycle = 'annual', sites = 1;
   var card = document.getElementById('plan-ecommerce');
   var cycBtns = document.querySelectorAll('[data-cycle]'), siteBtns = document.querySelectorAll('[data-sites]');
-  function ladder() {
-    var box = card.querySelector('.found');
-    var now = MP.step(KEY), from = 1, html = '';
-    box.hidden = !now || sites === 'all';
-    if (box.hidden) return;
-    MP.plans[KEY].founding.forEach(function (s) {
-      var cur = s === now;
-      html += '<li' + (cur ? ' aria-current="true"' : '') + '><span>Places ' + from + '–' + s.upTo + (cur ? '<small>now</small>' : '') + '</span><b>$' + s.price + ' a year</b></li>';
-      from = s.upTo + 1;
-    });
-    box.querySelector('ol').innerHTML = html + '<li><span>After that</span><b>$' + MP.plans[KEY].annual + ' a year</b></li>';
-  }
+  var foundTags = document.querySelectorAll('[data-cycle="annual"] small');
   function render() {
     var all = sites === 'all';
     if (all) cycle = 'annual';
@@ -1283,7 +1270,9 @@ footer a{color:#fff;text-underline-offset:3px}
     card.querySelector('.per').textContent = yearly ? '/year' : '/month';
     card.querySelector('.alt-tx').textContent = all ? 'Yearly only' : yearly ? 'or $' + p.monthly + ' a month' : 'or $' + MP.price(KEY, 'annual', 1) + ' a year';
     card.querySelector('.lic').textContent = all ? 'All your sites' : 'One site';
-    ladder();
+    foundTags.forEach(function (t) { t.hidden = all; });
+    var box = card.querySelector('.found');
+    if (box) box.hidden = all;
     card.querySelector('.plan-checkout').setAttribute('href', MP.checkout(KEY, cycle, sites));
   }
   if (MP && card) {
