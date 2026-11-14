@@ -21,7 +21,7 @@
 <meta name="twitter:title" content="MyFeeds - Make your blog shoppable">
 <meta name="twitter:description" content="Products from the shops you're an affiliate for, as a little shop in your post. Prices keep themselves current. A WordPress plugin, free to start.">
 <meta name="twitter:image" content="https://myfeeds.site/assets/og-image.png">
-<script type="application/ld+json">{"@context":"https://schema.org","@graph":[{"@type":"Organization","@id":"https://myfeeds.site/#organization","name":"MyFeeds","url":"https://myfeeds.site/","logo":{"@type":"ImageObject","url":"https://myfeeds.site/logo.png"}},{"@type":"WebSite","@id":"https://myfeeds.site/#website","url":"https://myfeeds.site/","name":"MyFeeds","publisher":{"@id":"https://myfeeds.site/#organization"}},{"@type":"SoftwareApplication","@id":"https://myfeeds.site/#software","name":"MyFeeds","url":"https://myfeeds.site/","image":"https://myfeeds.site/logo.png","operatingSystem":"WordPress","applicationCategory":"BusinessApplication","downloadUrl":"https://wordpress.org/plugins/myfeeds-affiliate-feed-manager/","description":"A WordPress plugin for affiliate sites. Pick products from the product feeds of the shops you're an affiliate for, right in the block editor, and they appear as product cards in your post. Prices refresh every night. Paid plans add a card design editor, click reports, shoppable photos and a shop of your own on your site.","publisher":{"@id":"https://myfeeds.site/#organization"},"offers":[{"@type":"Offer","name":"Free","price":"0","priceCurrency":"USD","url":"https://myfeeds.site/#plan-free"},{"@type":"Offer","name":"Pro Monthly","price":"12","priceCurrency":"USD","url":"https://myfeeds.site/#plan-pro"},{"@type":"Offer","name":"Pro Annual","price":"99","priceCurrency":"USD","url":"https://myfeeds.site/#plan-pro"},{"@type":"Offer","name":"Pro Annual, unlimited sites","price":"249","priceCurrency":"USD","url":"https://myfeeds.site/#plan-pro"},{"@type":"Offer","name":"Shop Monthly","price":"39","priceCurrency":"USD","url":"https://myfeeds.site/#plan-ecommerce"},{"@type":"Offer","name":"Shop Annual","price":"329","priceCurrency":"USD","url":"https://myfeeds.site/#plan-ecommerce"},{"@type":"Offer","name":"Shop Annual, unlimited sites","price":"799","priceCurrency":"USD","url":"https://myfeeds.site/#plan-ecommerce"}]}]}</script>
+<script type="application/ld+json">{"@context":"https://schema.org","@graph":[{"@type":"Organization","@id":"https://myfeeds.site/#organization","name":"MyFeeds","url":"https://myfeeds.site/","logo":{"@type":"ImageObject","url":"https://myfeeds.site/logo.png"}},{"@type":"WebSite","@id":"https://myfeeds.site/#website","url":"https://myfeeds.site/","name":"MyFeeds","publisher":{"@id":"https://myfeeds.site/#organization"}},{"@type":"SoftwareApplication","@id":"https://myfeeds.site/#software","name":"MyFeeds","url":"https://myfeeds.site/","image":"https://myfeeds.site/logo.png","operatingSystem":"WordPress","applicationCategory":"BusinessApplication","downloadUrl":"https://wordpress.org/plugins/myfeeds-affiliate-feed-manager/","description":"A WordPress plugin for affiliate sites. Pick products from the product feeds of the shops you're an affiliate for, right in the block editor, and they appear as product cards in your post. Prices refresh every night. Paid plans add every product source at once, a card design editor, click reports and a shop of your own on your site.","publisher":{"@id":"https://myfeeds.site/#organization"},"offers":[{"@type":"Offer","name":"Free","price":"0","priceCurrency":"USD","url":"https://myfeeds.site/#plan-free"},{"@type":"Offer","name":"Pro Monthly","price":"12","priceCurrency":"USD","url":"https://myfeeds.site/#plan-pro"},{"@type":"Offer","name":"Pro Annual","price":"99","priceCurrency":"USD","url":"https://myfeeds.site/#plan-pro"},{"@type":"Offer","name":"Pro Annual, unlimited sites","price":"249","priceCurrency":"USD","url":"https://myfeeds.site/#plan-pro"},{"@type":"Offer","name":"Shop Monthly","price":"39","priceCurrency":"USD","url":"https://myfeeds.site/#plan-ecommerce"},{"@type":"Offer","name":"Shop Annual","price":"329","priceCurrency":"USD","url":"https://myfeeds.site/#plan-ecommerce"},{"@type":"Offer","name":"Shop Annual, unlimited sites","price":"799","priceCurrency":"USD","url":"https://myfeeds.site/#plan-ecommerce"}]}]}</script>
 <link rel="icon" type="image/png" href="/favicon.png">
 <link rel="icon" type="image/x-icon" href="/favicon.ico">
 <link rel="apple-touch-icon" href="/apple-touch-icon.png">
@@ -475,7 +475,8 @@ figure figcaption{margin-top:14px;font-size:13px;color:var(--ink-3)}
 .feats li::before{content:"";position:absolute;left:2px;top:.42em;width:12px;height:6px;border-left:2.5px solid var(--ink);border-bottom:2.5px solid var(--ink);transform:rotate(-45deg)}
 .plan.feat .feats li::before{border-color:var(--orange)}
 .fn{color:var(--orange);font-weight:700}
-.fnote{font-size:13px;line-height:1.45;color:#A7A2B5;margin:-8px 0 18px}
+.fnote{font-size:13px;line-height:1.45;color:var(--ink-3);margin:-8px 0 18px}
+.plan.feat .fnote{color:#A7A2B5}
 .plan .side{font-size:14.5px;font-weight:600;margin-bottom:14px;text-underline-offset:3px}
 .plan .cta{margin-top:auto;white-space:normal;text-align:center;padding:15px 20px;font-size:16px}
 .plan.feat .cta{background:#fff;color:var(--ink);box-shadow:none}
@@ -711,7 +712,7 @@ footer a{color:#fff;text-underline-offset:3px}
 <section class="band" id="pro" aria-labelledby="h-pro">
   <div class="wrap">
     <div class="head">
-      <p class="kick">Pro · what it adds</p>
+      <p class="kick">Shop the look · and what Pro adds</p>
       <h2 id="h-pro">Your photos sell. <span class="tone">You see what readers click.</span></h2>
       <p>Turn your own photos into something readers can shop, and find out which posts and products your readers click.</p>
     </div>
@@ -724,7 +725,7 @@ footer a{color:#fff;text-underline-offset:3px}
             <li>Each dot is a product from a shop you're an affiliate for, or an Amazon product you add by link or ASIN.</li>
             <li>When a shop's product sells out or is gone, its dot leaves the photo on its own.</li>
           </ul>
-          <p class="calm">Part of every paid plan, from Pro at $12 a month. <a class="more" href="/shop-the-look/" data-cta="quiet-look">See shop the look</a>.</p>
+          <p class="calm">In the free plugin and in every paid plan. <a class="more" href="/shop-the-look/" data-cta="quiet-look">See shop the look</a>.</p>
         </div>
         <figure>
           <div class="lk-frame">
@@ -795,7 +796,7 @@ footer a{color:#fff;text-underline-offset:3px}
           <figcaption>Four of the insights, with example data. The dashboard has more, like posts that get no clicks and posts without any product cards.</figcaption>
         </figure>
         <div class="go">
-          <a class="cta" data-cta="pro" href="https://checkout.freemius.com/plugin/21336/plan/35610/?trial=true&amp;billing_cycle=monthly">Get both with Pro, free for 14 days</a>
+          <a class="cta" data-cta="pro" href="https://checkout.freemius.com/plugin/21336/plan/35610/?trial=true&amp;billing_cycle=monthly">Count my clicks with Pro, free for 14 days</a>
           <p class="calm">Then $12 a month, or less with a yearly plan. You can cancel from your dashboard.</p>
         </div>
       </div>
@@ -891,7 +892,7 @@ footer a{color:#fff;text-underline-offset:3px}
   <div class="wrap">
     <div class="head">
       <h2 id="h-pricing">Pick where you are right now</h2>
-      <p>The free plugin covers your first feed. When you want more, the upgrade happens inside your WordPress dashboard, and your posts, your settings and your data carry over.</p>
+      <p>The free plugin covers one product source: a feed, Rakuten or Amazon's API. When you want more, the upgrade happens inside your WordPress dashboard, and your posts, your settings and your data carry over.</p>
     </div>
     <div class="bill">
       <div class="seg" role="group" aria-label="Billing">
@@ -912,22 +913,23 @@ footer a{color:#fff;text-underline-offset:3px}
         <p class="alt"><span class="lic">From WordPress.org</span></p>
         <p class="inc">Includes</p>
         <ul class="feats">
-          <li>1 feed</li>
+          <li>One product source: a feed, Rakuten or Amazon's API <span class="fn" aria-hidden="true">*</span><span class="vh">(see note)</span></li>
           <li>Sample products to try it without one</li>
-          <li>Grid layout</li>
+          <li>Grid, carousel, recommendation card, comparison table and Look</li>
+          <li>Amazon products by link or ASIN</li>
           <li>Smart search</li>
           <li>Manual + nightly auto-sync</li>
           <li>A count of discontinued products, and the posts they were in</li>
-          <li>Multi-network support</li>
           <li>Help in the WordPress.org forum</li>
         </ul>
+        <p class="fnote"><span class="fn" aria-hidden="true">*</span> Amazon has no feed file, so picture and price come live from Amazon's own Creators API. Amazon opens that access to associates with ten qualified sales in thirty days.</p>
         <a class="ghost" data-cta="plan-free" href="https://wordpress.org/plugins/myfeeds-affiliate-feed-manager/">Get the free plugin</a>
       </article>
 
       <article class="plan feat" id="plan-pro" data-plan="pro" aria-labelledby="n-pro">
         <span class="chip-plan">RECOMMENDED</span>
         <h3 id="n-pro">Pro</h3>
-        <p class="for">As many shop feeds as you like, plus Amazon, in your design</p>
+        <p class="for">Every source at once: as many feeds as you like, Rakuten and Amazon's API side by side, in your design</p>
         <p class="price"><b>$<span class="amt">99</span></b><span class="per">/year</span></p>
         <p class="alt"><span class="alt-tx">or $12 a month</span><span class="lic">One site</span></p>
         <template data-founding="pro"><div class="found">
@@ -937,13 +939,11 @@ footer a{color:#fff;text-underline-offset:3px}
         </div></template>
         <p class="inc">Everything in Free, plus</p>
         <ul class="feats">
-          <li>Unlimited feeds, plus Rakuten by API without a feed file</li>
-          <li>Grid + Carousel layouts, recommendation card + comparison table</li>
-          <li>Shop the look: shoppable points on your own photos</li>
+          <li>Unlimited feeds, Rakuten and Amazon's API side by side <span class="fn" aria-hidden="true">*</span><span class="vh">(see note)</span></li>
           <li>Card design editor, Google Fonts + custom fonts</li>
+          <li>Carousel auto-play and arrow colour, comparison table with equal rows</li>
           <li>Clicks for every post and product, also in Google Analytics 4</li>
           <li>Discontinued products marked in the editor, and a warning when an affiliate program closes</li>
-          <li>Amazon by link or ASIN with your partner tag; picture and price live from Amazon's API <span class="fn" aria-hidden="true">*</span><span class="vh">(see note)</span></li>
           <li>Email support</li>
         </ul>
         <p class="fnote"><span class="fn" aria-hidden="true">*</span> Amazon has no feed file, so picture and price come live from Amazon's own Creators API. Amazon opens that access to associates with ten qualified sales in thirty days.</p>
@@ -981,7 +981,7 @@ footer a{color:#fff;text-underline-offset:3px}
     </div>
 
     <div class="pnotes">
-      <p>If you don't continue after the trial, the plugin falls back to the free version, and your feeds, posts and settings stay. Changed your mind after paying? Write to <a href="mailto:support@myfeeds.site">support@myfeeds.site</a> within 14 days of your first payment and you get your money back. <a href="/refund/">Refund policy</a>.</p>
+      <p>If you don't continue after the trial, your feeds, posts and settings stay, and the free plugin from WordPress.org keeps one product source up to date. Changed your mind after paying? Write to <a href="mailto:support@myfeeds.site">support@myfeeds.site</a> within 14 days of your first payment and you get your money back. <a href="/refund/">Refund policy</a>.</p>
       <p>Prices in USD, exclusive of VAT. EU customers see local tax at checkout. First time? The <a href="/install/">setup guide</a> walks you through it.</p>
     </div>
   </div>
@@ -996,7 +996,7 @@ footer a{color:#fff;text-underline-offset:3px}
     <div class="faq">
       <details name="faq">
         <summary>Does this work with my affiliate network?</summary>
-        <p>If your network gives you a shop's product feed link, MyFeeds reads it. AWIN, CJ, TradeDoubler, Impact, Rakuten, Webgains, Admitad, Pepperjam, Partnerize, FlexOffers and Sovrn are recognised out of the box, and other CSV, TSV, XML and JSON feeds work too. Amazon has no feed file. On Pro and Shop, you add an Amazon product by link or ASIN with your own partner tag: it shows the name you give it and links to Amazon, without picture or price. Once Amazon opens its own Creators API to you, the product cards in your posts show Amazon's picture and price, live; Amazon opens that access to associates with ten qualified sales in thirty days. <a href="/networks/">How to get a feed link from your network</a>.</p>
+        <p>If your network gives you a shop's product feed link, MyFeeds reads it. AWIN, CJ, TradeDoubler, Impact, Rakuten, Webgains, Admitad, Pepperjam, Partnerize, FlexOffers and Sovrn are recognised out of the box, and other CSV, TSV, XML and JSON feeds work too. Rakuten Advertising hands out no feed link: MyFeeds connects to its API instead. Amazon has no feed file. On every plan, the free plugin included, you add an Amazon product by link or ASIN with your own partner tag: it shows the name you give it and links to Amazon, without picture or price. Once Amazon opens its own Creators API to you, the product cards in your posts show Amazon's picture and price, live: in the free plugin as your one product source, in Pro beside your feeds. Amazon opens that access to associates with ten qualified sales in thirty days. <a href="/networks/">How to get a feed link from your network</a>.</p>
         <p>MyFeeds keeps growing, so that every affiliate can bring in the product feeds of the shops they work with. Is your platform missing? We can connect more platforms on request: write to <a href="mailto:support@myfeeds.site" data-cta="faq-network-request">support@myfeeds.site</a>.</p>
       </details>
       <details name="faq">
@@ -1005,11 +1005,11 @@ footer a{color:#fff;text-underline-offset:3px}
       </details>
       <details name="faq">
         <summary>Do I have to pay to get started?</summary>
-        <p>No. The free version lives on WordPress.org and covers one feed, the smart search, the grid layout, and manual plus nightly sync. Upgrade only when you outgrow it.</p>
+        <p>No. The free version lives on WordPress.org and covers one product source (a feed, Rakuten or Amazon's API), every display and the Look, Amazon products by link or ASIN, the smart search, and manual plus nightly sync. Upgrade only when you outgrow it.</p>
       </details>
       <details name="faq">
         <summary>What happens after the trial?</summary>
-        <p>Pro and Shop each start with a 14-day free trial, and you can end it from your dashboard at any time. If you don't continue, your plugin falls back to the free tier. Your existing feeds, posts and configuration stay intact.</p>
+        <p>Pro and Shop each start with a 14-day free trial, and you can end it from your dashboard at any time. If you don't continue, your feeds, posts and settings stay: MyFeeds Pro pauses its product updates, and your posts keep showing every product as it was, without prices after a week. Or switch to the free plugin from WordPress.org: it keeps one product source up to date and sets the others aside for when you come back.</p>
       </details>
       <template data-founding="any"><details name="faq" data-faq="founding">
         <summary>What are founding prices?</summary>
