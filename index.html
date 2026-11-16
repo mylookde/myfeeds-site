@@ -21,7 +21,7 @@
 <meta name="twitter:title" content="MyFeeds - Make your blog shoppable">
 <meta name="twitter:description" content="Products from the shops you're an affiliate for, as a little shop in your post. Prices keep themselves current. A WordPress plugin, free to start.">
 <meta name="twitter:image" content="https://myfeeds.site/assets/og-image.png">
-<script type="application/ld+json">{"@context":"https://schema.org","@graph":[{"@type":"Organization","@id":"https://myfeeds.site/#organization","name":"MyFeeds","url":"https://myfeeds.site/","logo":{"@type":"ImageObject","url":"https://myfeeds.site/logo.png"}},{"@type":"WebSite","@id":"https://myfeeds.site/#website","url":"https://myfeeds.site/","name":"MyFeeds","publisher":{"@id":"https://myfeeds.site/#organization"}},{"@type":"SoftwareApplication","@id":"https://myfeeds.site/#software","name":"MyFeeds","url":"https://myfeeds.site/","image":"https://myfeeds.site/logo.png","operatingSystem":"WordPress","applicationCategory":"BusinessApplication","downloadUrl":"https://wordpress.org/plugins/myfeeds-affiliate-feed-manager/","description":"A WordPress plugin for affiliate sites. Pick products from the product feeds of the shops you're an affiliate for, right in the block editor, and they appear as product cards in your post. Prices refresh every night. Paid plans add every product source at once, a card design editor, click reports and a shop of your own on your site.","publisher":{"@id":"https://myfeeds.site/#organization"},"offers":[{"@type":"Offer","name":"Free","price":"0","priceCurrency":"USD","url":"https://myfeeds.site/#plan-free"},{"@type":"Offer","name":"Pro Monthly","price":"12","priceCurrency":"USD","url":"https://myfeeds.site/#plan-pro"},{"@type":"Offer","name":"Pro Annual","price":"99","priceCurrency":"USD","url":"https://myfeeds.site/#plan-pro"},{"@type":"Offer","name":"Pro Annual, unlimited sites","price":"249","priceCurrency":"USD","url":"https://myfeeds.site/#plan-pro"},{"@type":"Offer","name":"Shop Monthly","price":"39","priceCurrency":"USD","url":"https://myfeeds.site/#plan-ecommerce"},{"@type":"Offer","name":"Shop Annual","price":"329","priceCurrency":"USD","url":"https://myfeeds.site/#plan-ecommerce"},{"@type":"Offer","name":"Shop Annual, unlimited sites","price":"799","priceCurrency":"USD","url":"https://myfeeds.site/#plan-ecommerce"}]}]}</script>
+<script type="application/ld+json">{"@context":"https://schema.org","@graph":[{"@type":"Organization","@id":"https://myfeeds.site/#organization","name":"MyFeeds","url":"https://myfeeds.site/","logo":{"@type":"ImageObject","url":"https://myfeeds.site/logo.png"}},{"@type":"WebSite","@id":"https://myfeeds.site/#website","url":"https://myfeeds.site/","name":"MyFeeds","publisher":{"@id":"https://myfeeds.site/#organization"}},{"@type":"SoftwareApplication","@id":"https://myfeeds.site/#software","name":"MyFeeds","url":"https://myfeeds.site/","image":"https://myfeeds.site/logo.png","operatingSystem":"WordPress","applicationCategory":"BusinessApplication","downloadUrl":"https://wordpress.org/plugins/myfeeds-affiliate-feed-manager/","description":"A WordPress plugin for affiliate sites. Pick products from the product feeds of the shops you're an affiliate for, right in the block editor, and they appear as product cards in your post. Prices refresh every night. Paid plans add every product source at once, a design editor, click reports and a shop of your own on your site.","publisher":{"@id":"https://myfeeds.site/#organization"},"offers":[{"@type":"Offer","name":"Free","price":"0","priceCurrency":"USD","url":"https://myfeeds.site/#plan-free"},{"@type":"Offer","name":"Pro Monthly","price":"12","priceCurrency":"USD","url":"https://myfeeds.site/#plan-pro"},{"@type":"Offer","name":"Pro Annual","price":"99","priceCurrency":"USD","url":"https://myfeeds.site/#plan-pro"},{"@type":"Offer","name":"Pro Annual, unlimited sites","price":"249","priceCurrency":"USD","url":"https://myfeeds.site/#plan-pro"},{"@type":"Offer","name":"Shop Monthly","price":"39","priceCurrency":"USD","url":"https://myfeeds.site/#plan-ecommerce"},{"@type":"Offer","name":"Shop Annual","price":"329","priceCurrency":"USD","url":"https://myfeeds.site/#plan-ecommerce"},{"@type":"Offer","name":"Shop Annual, unlimited sites","price":"799","priceCurrency":"USD","url":"https://myfeeds.site/#plan-ecommerce"}]}]}</script>
 <link rel="icon" type="image/png" href="/favicon.png">
 <link rel="icon" type="image/x-icon" href="/favicon.ico">
 <link rel="apple-touch-icon" href="/apple-touch-icon.png">
@@ -140,7 +140,7 @@ p{text-wrap:pretty}
 
 /* ===== the real MyFeeds card =====
    Markup and CSS copied from the Free plugin's frontend (the same block as
-   /pin/look-like-a-shop/). Every variable is one the card design editor writes. */
+   /pin/look-like-a-shop/). Every variable is one the design editor writes. */
 .myfeeds-product-grid{display:flex;flex-wrap:wrap;justify-content:center;gap:var(--myfeeds-grid-gap,16px);padding:var(--myfeeds-grid-padding-y,24px) 0}
 .myfeeds-product-card{position:relative;display:flex;flex-direction:column;text-decoration:none;color:inherit;font-family:var(--myfeeds-card-font,system-ui,-apple-system,"Segoe UI",Roboto,Helvetica,Arial,sans-serif);line-height:1.3;background:var(--myfeeds-card-bg,#fff);border-radius:var(--myfeeds-card-radius,0);overflow:hidden;transition:transform .25s ease,box-shadow .25s ease,border-radius .25s ease;box-shadow:var(--myfeeds-card-shadow,0 1px 3px rgba(0,0,0,.06));border:var(--myfeeds-card-border-width,0) solid var(--myfeeds-card-border-color,transparent);min-width:0}
 .myfeeds-product-image{position:relative;width:100%;padding-bottom:var(--myfeeds-img-ratio,125%);overflow:hidden;background:var(--myfeeds-img-bg,#f8f8f8)}
@@ -682,14 +682,14 @@ footer a{color:#fff;text-underline-offset:3px}
 <section class="band paper" id="card-editor" aria-labelledby="h-design">
   <div class="wrap">
     <div class="head">
-      <p class="kick">Card design editor · in every paid plan</p>
+      <p class="kick">Design editor · in every paid plan</p>
       <h2 id="h-design">Design your cards any way you like.</h2>
       <p>Pick the colours, corners and fonts once in WordPress. Every card in every post you have published follows, so the products feel like part of your site.</p>
     </div>
     <div class="design">
       <figure class="shot">
-        <img src="/assets/home/card-design-editor-800.webp" srcset="/assets/home/card-design-editor-800.webp 800w, /assets/home/card-design-editor-1400.webp 1400w" sizes="(min-width:1240px) 660px, (min-width:900px) 58vw, 100vw" width="1400" height="957" loading="lazy" alt="The MyFeeds card design editor in WordPress: colour swatches, sliders for border radius, border width, shadow and hover, and a live preview of a product card with a minus 22 percent badge.">
-        <figcaption>The card design editor in WordPress, with its live preview. Only some of the settings are shown.</figcaption>
+        <img src="/assets/home/card-design-editor-800.webp" srcset="/assets/home/card-design-editor-800.webp 800w, /assets/home/card-design-editor-1400.webp 1400w" sizes="(min-width:1240px) 660px, (min-width:900px) 58vw, 100vw" width="1400" height="957" loading="lazy" alt="The MyFeeds design editor in WordPress: colour swatches, sliders for border radius, border width, shadow and hover, and a live preview of a product card with a minus 22 percent badge.">
+        <figcaption>The design editor in WordPress, with its live preview. Only some of the settings are shown.</figcaption>
       </figure>
       <div class="try">
         <div class="chips" role="group" aria-label="Card style">
@@ -942,7 +942,7 @@ footer a{color:#fff;text-underline-offset:3px}
         <p class="inc">Everything in Free, plus</p>
         <ul class="feats">
           <li>Unlimited feeds, Rakuten and Amazon's API side by side <span class="fn" aria-hidden="true">*</span><span class="vh">(see note)</span></li>
-          <li>Card design editor, Google Fonts + custom fonts</li>
+          <li>Design editor, Google Fonts + custom fonts</li>
           <li>Carousel auto-play and arrow colour, comparison table with equal rows</li>
           <li>Clicks for every post and product, also in Google Analytics 4</li>
           <li>Discontinued products marked in the editor, and a warning when an affiliate program closes</li>
