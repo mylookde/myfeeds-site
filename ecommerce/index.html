@@ -574,7 +574,7 @@ footer a{color:#fff;text-underline-offset:3px}
         <h1 id="h-hero">Your own shop, <span class="tone">right on your blog.</span></h1>
         <p class="lede">Turn the product feeds of the shops you're an affiliate for into a real shop on your WordPress site. Readers browse, filter and search, and every buy goes through your affiliate link.</p>
         <div class="go">
-          <a class="cta" data-cta="hero" id="hero-cta" href="https://checkout.freemius.com/plugin/21336/plan/48994/?trial=true&amp;billing_cycle=monthly">Open my shop for 14 days, free</a>
+          <a class="cta" data-cta="hero" id="hero-cta" href="https://checkout.freemius.com/plugin/21336/plan/48994/?trial=true&amp;billing_cycle=monthly&amp;billing_cycle_selector=list">Open my shop for 14 days, free</a>
           <p class="calm">Then $39 a month, or less with a yearly plan. Cancel from your dashboard before the trial ends and you pay nothing.</p>
           <a class="more" href="#storefront" data-cta="hero-shop">See the shop your readers get</a>
         </div>
@@ -660,7 +660,7 @@ footer a{color:#fff;text-underline-offset:3px}
         </ol>
       </div>
       <div class="go inv front-go">
-        <a class="cta" data-cta="storefront" href="https://checkout.freemius.com/plugin/21336/plan/48994/?trial=true&amp;billing_cycle=monthly">Build my shop, free for 14 days</a>
+        <a class="cta" data-cta="storefront" href="https://checkout.freemius.com/plugin/21336/plan/48994/?trial=true&amp;billing_cycle=monthly&amp;billing_cycle_selector=list">Build my shop, free for 14 days</a>
         <p class="calm">The Shop trial, then $39 a month or less with a yearly plan.</p>
       </div>
     </div>
@@ -987,7 +987,7 @@ footer a{color:#fff;text-underline-offset:3px}
           <li>Curated collections</li>
           <li>Yearly plan: an optional 30-minute start call, as our calendar allows</li>
         </ul>
-        <a class="cta plan-checkout" data-cta="plan-ecommerce" href="https://checkout.freemius.com/plugin/21336/plan/48994/?trial=true&amp;billing_cycle=annual">Start my 14-day Shop trial</a>
+        <a class="cta plan-checkout" data-cta="plan-ecommerce" href="https://checkout.freemius.com/plugin/21336/plan/48994/?trial=true&amp;billing_cycle_selector=list">Start my 14-day Shop trial</a>
         <p class="refund">14-day free trial<span class="nocard"> · No payment details needed</span></p>
         <p class="refund">14-day money-back guarantee, no questions asked</p>
       </article>
@@ -1085,7 +1085,7 @@ footer a{color:#fff;text-underline-offset:3px}
     <div>
       <h2 id="h-end">Give your readers a whole shop to browse.</h2>
       <div class="go">
-        <a class="cta" data-cta="final" href="https://checkout.freemius.com/plugin/21336/plan/48994/?trial=true&amp;billing_cycle=monthly">Open my shop for 14 days, free</a>
+        <a class="cta" data-cta="final" href="https://checkout.freemius.com/plugin/21336/plan/48994/?trial=true&amp;billing_cycle=monthly&amp;billing_cycle_selector=list">Open my shop for 14 days, free</a>
         <p class="calm">14 days free, then $39 a month, or less with a yearly plan. If it doesn't fit, your feeds, posts and settings stay while MyFeeds Pro pauses its updates, and subscribing again brings the shop back the way you left it.</p>
         <p class="calm">Only need cards in your posts? <a class="more" data-cta="final-plans" href="/#pricing">Compare all plans</a>.</p>
       </div>
@@ -1253,6 +1253,13 @@ footer a{color:#fff;text-underline-offset:3px}
   // "All my sites" is a yearly plan only, so it switches the cycle to
   // yearly, and founding prices never apply there.
   var MP = window.MyFeedsPlans, KEY = 'business', cycle = 'annual', sites = 1;
+  // Back from the checkout (assets/checkout-return.js): the switches stand as
+  // the reader left them.
+  if (location.hash.indexOf('#back=') === 0) {
+    var back = new URLSearchParams(location.hash.slice(1));
+    if (back.get('cycle') === 'monthly') cycle = 'monthly';
+    if (back.get('sites') === 'all') sites = 'all';
+  }
   var card = document.getElementById('plan-ecommerce');
   var cycBtns = document.querySelectorAll('[data-cycle]'), siteBtns = document.querySelectorAll('[data-sites]');
   var foundTags = document.querySelectorAll('[data-cycle="annual"] small');
@@ -1317,5 +1324,6 @@ footer a{color:#fff;text-underline-offset:3px}
 </script>
 <script src="/assets/back-to-top.js" defer></script>
 <script src="/assets/consent.js" defer></script>
+<script src="/assets/checkout-return.js" defer></script>
 </body>
 </html>

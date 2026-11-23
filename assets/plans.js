@@ -94,8 +94,14 @@
     // trial=true starts the trial the way the plan is set up in Freemius
     // (with or without a payment method), the same value the Freemius SDK
     // sends. licenses/unlimited is not yet tested against the live checkout.
+    // The checkout lists monthly and yearly side by side only when the link
+    // asks for it (billing_cycle_selector). In a trial, a preselected yearly
+    // cycle hides the monthly line, so yearly is left to Freemius, which picks
+    // it on its own (checked 23.11.2026). "All my sites" is yearly only.
+    var cycles = all ? 'billing_cycle=annual' :
+      (cycle === 'monthly' ? 'billing_cycle=monthly&' : '') + 'billing_cycle_selector=list';
     return CHECKOUT + p.plan + (all ? '/licenses/unlimited/' : '/') +
-      '?trial=true&billing_cycle=' + (all ? 'annual' : cycle) +
+      '?trial=true&' + cycles +
       (s && s.coupon ? '&coupon=' + encodeURIComponent(s.coupon) : '');
   }
 

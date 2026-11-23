@@ -704,7 +704,7 @@ footer a{color:#fff;text-underline-offset:3px}
         <p>Three examples of how your card could look. You can change every part of it.</p>
       </div>
       <div class="go">
-        <a class="cta" data-cta="design" href="https://checkout.freemius.com/plugin/21336/plan/35610/?trial=true&amp;billing_cycle=monthly">Design my cards, free for 14 days</a>
+        <a class="cta" data-cta="design" href="https://checkout.freemius.com/plugin/21336/plan/35610/?trial=true&amp;billing_cycle=monthly&amp;billing_cycle_selector=list">Design my cards, free for 14 days</a>
         <p class="calm">The Pro trial: 14 days free, then $12 a month, or less with a yearly plan.</p>
       </div>
     </div>
@@ -798,7 +798,7 @@ footer a{color:#fff;text-underline-offset:3px}
           <figcaption>Four of the insights, with example data. The dashboard has more, like posts that get no clicks and posts without any product cards.</figcaption>
         </figure>
         <div class="go">
-          <a class="cta" data-cta="pro" href="https://checkout.freemius.com/plugin/21336/plan/35610/?trial=true&amp;billing_cycle=monthly">Count my clicks with Pro, free for 14 days</a>
+          <a class="cta" data-cta="pro" href="https://checkout.freemius.com/plugin/21336/plan/35610/?trial=true&amp;billing_cycle=monthly&amp;billing_cycle_selector=list">Count my clicks with Pro, free for 14 days</a>
           <p class="calm">Then $12 a month, or less with a yearly plan. You can cancel from your dashboard.</p>
         </div>
       </div>
@@ -950,7 +950,7 @@ footer a{color:#fff;text-underline-offset:3px}
         </ul>
         <p class="fnote"><span class="fn" aria-hidden="true">*</span> Amazon has no feed file, so picture and price come live from Amazon's own Creators API. Amazon opens that access to associates with ten qualified sales in thirty days.</p>
         <a class="side" href="/install/#pro">Step-by-step install guide</a>
-        <a class="cta plan-checkout" data-cta="plan-pro" href="https://checkout.freemius.com/plugin/21336/plan/35610/?trial=true&amp;billing_cycle=annual">Try every Pro feature free for 14 days</a>
+        <a class="cta plan-checkout" data-cta="plan-pro" href="https://checkout.freemius.com/plugin/21336/plan/35610/?trial=true&amp;billing_cycle_selector=list">Try every Pro feature free for 14 days</a>
         <p class="refund">14-day free trial<span class="nocard"> · No payment details needed</span></p>
         <p class="refund">14-day money-back guarantee, no questions asked</p>
       </article>
@@ -976,7 +976,7 @@ footer a{color:#fff;text-underline-offset:3px}
           <li>Yearly plan: an optional 30-minute start call, as our calendar allows</li>
         </ul>
         <a class="side" href="#storefront">See the storefront</a>
-        <a class="cta plan-checkout" data-cta="plan-ecommerce" href="https://checkout.freemius.com/plugin/21336/plan/48994/?trial=true&amp;billing_cycle=annual">Open my shop for 14 days, free</a>
+        <a class="cta plan-checkout" data-cta="plan-ecommerce" href="https://checkout.freemius.com/plugin/21336/plan/48994/?trial=true&amp;billing_cycle_selector=list">Open my shop for 14 days, free</a>
         <p class="refund">14-day free trial<span class="nocard"> · No payment details needed</span></p>
         <p class="refund">14-day money-back guarantee, no questions asked</p>
       </article>
@@ -1054,7 +1054,7 @@ footer a{color:#fff;text-underline-offset:3px}
     <div>
       <h2 id="h-end">Make your next post look like a shop.</h2>
       <div class="go">
-        <a class="cta" data-cta="final" href="https://checkout.freemius.com/plugin/21336/plan/35610/?trial=true&amp;billing_cycle=monthly">Start my 14-day Pro trial</a>
+        <a class="cta" data-cta="final" href="https://checkout.freemius.com/plugin/21336/plan/35610/?trial=true&amp;billing_cycle=monthly&amp;billing_cycle_selector=list">Start my 14-day Pro trial</a>
         <p class="calm">14 days free, then $12 a month, or less with a yearly plan. Cancel before the trial ends and you pay nothing.</p>
         <p class="calm">Not sure yet? <a class="more" data-cta="final-free" href="https://wordpress.org/plugins/myfeeds-affiliate-feed-manager/">Start with the free plugin</a>.</p>
       </div>
@@ -1258,6 +1258,13 @@ footer a{color:#fff;text-underline-offset:3px}
   // a yearly plan only, so it switches the cycle to yearly, and founding
   // prices never apply there.
   var MP = window.MyFeedsPlans, cycle = 'annual', sites = 1;
+  // Back from the checkout (assets/checkout-return.js): the switches stand as
+  // the reader left them.
+  if (location.hash.indexOf('#back=') === 0) {
+    var back = new URLSearchParams(location.hash.slice(1));
+    if (back.get('cycle') === 'monthly') cycle = 'monthly';
+    if (back.get('sites') === 'all') sites = 'all';
+  }
   var cards = document.querySelectorAll('.plan[data-plan]');
   var cycBtns = document.querySelectorAll('[data-cycle]'), siteBtns = document.querySelectorAll('[data-sites]');
   var foundTags = document.querySelectorAll('[data-cycle="annual"] small');
@@ -1378,5 +1385,6 @@ footer a{color:#fff;text-underline-offset:3px}
 </script>
 <script src="/assets/back-to-top.js" defer></script>
 <script src="/assets/consent.js" defer></script>
+<script src="/assets/checkout-return.js" defer></script>
 </body>
 </html>
