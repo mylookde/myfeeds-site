@@ -411,6 +411,12 @@ figure figcaption{margin-top:14px;font-size:13px;color:var(--ink-3)}
 .play b{display:grid;place-items:center;width:40px;height:40px;border-radius:50%;background:var(--orange)}
 .play b::before{content:"";margin-left:4px;border-style:solid;border-width:8px 0 8px 13px;border-color:transparent transparent transparent var(--ink)}
 .play:hover span{transform:scale(1.04)}
+/* the 40 s film right under the hero: same frame and play button, 16:9 */
+.film-band .head{margin-inline:auto;text-align:center;justify-items:center}
+.frame.film{max-width:1100px;margin-inline:auto}
+.frame.film video{aspect-ratio:16/9}
+.film .play{background:rgba(23,21,28,.12)}
+@media (min-width:700px){.film .play span{font-size:18px;padding:12px 26px 12px 12px}.film .play b{width:48px;height:48px}}
 .steps{list-style:none;display:grid;gap:18px;counter-reset:s;margin-top:40px;max-width:1000px}
 .steps li{position:relative;padding-left:46px;font-size:17px;color:var(--ink-2)}
 .steps li::before{counter-increment:s;content:counter(s);position:absolute;left:0;top:-2px;width:32px;height:32px;border-radius:50%;background:var(--orange);color:var(--ink);font:800 15px/32px var(--display);text-align:center}
@@ -616,6 +622,21 @@ footer a{color:#fff;text-underline-offset:3px}
     </section>
   </div>
 </div>
+
+<section class="band film-band" id="film" aria-labelledby="h-film">
+  <div class="wrap">
+    <div class="head">
+      <h2 id="h-film">Watch a blog post become a shop.</h2>
+      <p>Forty seconds, best with sound.</p>
+    </div>
+    <div class="frame vid film">
+      <video controls playsinline preload="none" width="1920" height="1080" poster="/assets/home/trailer-poster.webp" id="trailer">
+        <source src="/assets/home/myfeeds-trailer.mp4" type="video/mp4">
+      </video>
+      <button type="button" class="play" id="trailer-play" aria-label="Play the 40 second MyFeeds film"><span><b></b>Watch 40 s</span></button>
+    </div>
+  </div>
+</section>
 
 <section class="band clip-x" id="comparison" aria-labelledby="h-pain">
   <div class="wrap pain">
@@ -1138,19 +1159,22 @@ footer a{color:#fff;text-underline-offset:3px}
     });
   });
 
-  // The video: a clean cover with one play button; the native controls
-  // appear only once the visitor asked for it (no JS: plain controls).
-  var v = document.getElementById('demo'), play = document.getElementById('play');
-  if (v) v.addEventListener('play', function once() { count(P + 'video-play'); v.removeEventListener('play', once); });
-  if (v && play) {
-    v.controls = false;
-    play.addEventListener('click', function () {
-      play.classList.add('gone');
-      v.controls = true;
-      var p = v.play(); if (p && p.catch) p.catch(function () {});
-      v.focus();
-    });
-  }
+  // The videos (the film under the hero, the 30 s recording): a clean cover
+  // with one play button; the native controls appear only once the visitor
+  // asked for it (no JS: plain controls).
+  [['trailer', 'trailer-play', 'trailer-play'], ['demo', 'play', 'video-play']].forEach(function (d) {
+    var v = document.getElementById(d[0]), play = document.getElementById(d[1]);
+    if (v) v.addEventListener('play', function once() { count(P + d[2]); v.removeEventListener('play', once); });
+    if (v && play) {
+      v.controls = false;
+      play.addEventListener('click', function () {
+        play.classList.add('gone');
+        v.controls = true;
+        var p = v.play(); if (p && p.catch) p.catch(function () {});
+        v.focus();
+      });
+    }
+  });
 
   var mo = document.documentElement.classList.contains('mo');
 
