@@ -214,19 +214,35 @@ figure figcaption{margin-top:12px;font-size:13px;color:var(--ink-3)}
 .ink .ticks li{color:var(--on-ink)}
 .ink .ticks b{color:#fff}
 
-/* why a shop: a post against a shop */
-.cmp{display:grid;gap:16px;max-width:1000px}
-.cmp>div{border-radius:12px;padding:22px 20px 20px}
-.cmp h3{display:flex;align-items:baseline;justify-content:space-between;gap:12px;font-size:1.5rem;line-height:1.1;margin-bottom:14px}
-.cmp h3 span{font:600 13px/1 var(--sans);letter-spacing:0;color:var(--ink-3)}
-.cmp ul{list-style:none;display:grid;gap:12px}
-.cmp li{position:relative;padding-left:30px;font-size:16px;line-height:1.45}
-.cmp-a{background:transparent;border:1.5px dashed rgba(23,21,28,.28)}
-.cmp-a li{color:var(--ink-2)}
-.cmp-a li::before{content:"";position:absolute;left:4px;top:.66em;width:12px;height:2px;background:var(--ink-3)}
-.cmp-b{background:var(--paper);box-shadow:var(--shadow)}
-.cmp-b li::before{content:"";position:absolute;left:3px;top:.45em;width:13px;height:7px;border-left:2.5px solid var(--orange);border-bottom:2.5px solid var(--orange);transform:rotate(-45deg)}
-@media (min-width:760px){.cmp{grid-template-columns:repeat(2,minmax(0,1fr));gap:20px}.cmp>div{padding:28px 26px 26px}}
+/* why a shop: the same products, mostly out of sight in a post, all of
+   them in a shop */
+.vs{display:grid;gap:18px;align-items:center}
+.vs>*{min-width:0}
+.vs-k{font:700 13px/1 var(--sans);letter-spacing:.08em;text-transform:uppercase;color:var(--ink-3);margin-bottom:16px}
+.vs-b .vs-k{color:var(--violet)}
+.vs .pinned{padding:20px 16px 16px;transform:rotate(-.6deg)}
+.vs .post-h{margin:4px 0 10px}
+.bars{display:grid;gap:6px;margin-bottom:14px}
+.bars u{display:block;height:7px;border-radius:4px;background:rgba(23,21,28,.1);text-decoration:none}
+.bars u:last-child{width:62%}
+.vs .pinned .sg,.vs-b .sg{grid-template-columns:repeat(3,minmax(0,1fr))}
+.rest{position:relative;margin-top:22px}
+.ghosts{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:8px}
+.ghost{border:1.5px dashed rgba(23,21,28,.24);border-radius:8px;padding:6px 6px 9px;background:rgba(255,255,255,.3)}
+.ghost img{width:100%;aspect-ratio:1;object-fit:contain;filter:grayscale(1);opacity:.25;border-radius:4px}
+.ghost u{display:block;height:6px;border-radius:3px;background:rgba(23,21,28,.1);margin-top:8px;text-decoration:none}
+.ghost u+u{width:60%;margin-top:5px}
+.ghost.more{display:grid;place-items:center;font:800 2rem/1 var(--display);color:rgba(23,21,28,.28)}
+.off{position:absolute;left:50%;top:50%;transform:translate(-50%,-50%);display:inline-flex;align-items:center;gap:8px;background:var(--ink);color:#fff;font:600 14px/1 var(--sans);padding:10px 15px;border-radius:999px;white-space:nowrap;box-shadow:0 14px 28px -14px rgba(23,21,28,.8)}
+.off svg{width:17px;height:17px;flex:none}
+.vs figcaption{margin-top:14px;font-size:15px;line-height:1.45;color:var(--ink-2);max-width:46ch}
+.cats{display:flex;flex-wrap:wrap;gap:6px;margin-bottom:12px}
+.cats span{border:1px solid var(--line);border-radius:999px;padding:6px 11px;font:600 12px/1 var(--sans);color:var(--ink-2)}
+.cats span.on{background:var(--ink);border-color:var(--ink);color:#fff}
+.pager{display:flex;justify-content:center;gap:6px;margin-top:12px}
+.pager span{display:grid;place-items:center;min-width:28px;height:28px;padding:0 6px;border-radius:6px;border:1px solid var(--line);font:600 12.5px/1 var(--sans);color:var(--ink-2)}
+.pager span.on{background:var(--ink);border-color:var(--ink);color:#fff}
+@media (min-width:900px){.vs{grid-template-columns:minmax(0,5fr) 56px minmax(0,6fr);gap:20px}}
 
 /* what readers see: a shop to click through */
 .see{display:grid;gap:36px;align-items:start}
@@ -299,6 +315,10 @@ figure figcaption{margin-top:12px;font-size:13px;color:var(--ink-3)}
 .arrow svg{width:40px;height:40px;transform:rotate(90deg)}
 .p2s .browser .sg{grid-template-columns:repeat(3,minmax(0,1fr))}
 .p2s-note{margin-top:22px;font-size:15px;color:var(--ink-2);max-width:62ch}
+.picked{display:flex;flex-wrap:wrap;align-items:center;gap:6px;margin:-2px 0 12px;font-size:12px}
+.picked span{color:var(--ink-3);font-weight:600}
+.picked b{display:inline-flex;align-items:center;gap:6px;border:1.5px solid var(--ink);border-radius:999px;padding:5px 11px 5px 9px;font-weight:600}
+.picked b::before{content:"";width:9px;height:5px;margin-top:-3px;border-left:2px solid var(--orange);border-bottom:2px solid var(--orange);transform:rotate(-45deg)}
 @media (min-width:900px){
   .p2s{grid-template-columns:minmax(0,5fr) 56px minmax(0,6fr);gap:20px}
   .arrow svg{transform:none}
@@ -508,27 +528,52 @@ footer a{color:#fff;text-underline-offset:3px}
     <div class="head">
       <p class="kick">Why a shop</p>
       <h2 id="h-why">Your post shows three products. <span class="tone">Your shop shows the rest.</span></h2>
-      <p>The shops you work with sell thousands of things. A post has room for a few of them.</p>
+      <p>A post has room for a few products. A shop has room for all of them.</p>
     </div>
-    <div class="cmp">
-      <div class="cmp-a">
-        <h3>A post <span>today</span></h3>
-        <ul>
-          <li>A few products, picked for one article</li>
-          <li>Readers who want something else leave to look elsewhere</li>
-          <li>Found by people who search for that one article</li>
-          <li>Out of sight once the post gets older</li>
-        </ul>
-      </div>
-      <div class="cmp-b">
-        <h3>Your shop <span>with MyFeeds</span></h3>
-        <ul>
-          <li>Every product you want to show, from all your shops at once</li>
-          <li>Readers keep browsing, by category, brand, colour and price</li>
-          <li>Category pages Google can show to people looking for that kind of product</li>
-          <li>One place on your blog to come back to, next season too</li>
-        </ul>
-      </div>
+    <div class="vs">
+      <figure class="vs-a" aria-label="In a post, readers see three products. The other products these shops sell are greyed out: not on your blog.">
+        <p class="vs-k">In a post</p>
+        <div class="pinned">
+          <p class="post-k">Style notes</p>
+          <p class="post-h">Three things for the first cold week</p>
+          <div class="bars" aria-hidden="true"><u></u><u></u></div>
+          <div class="sg">
+            <div class="myfeeds-product-card"><div class="myfeeds-product-image"><img src="/assets/home/hoodie-heather-grey.webp" width="400" height="400" loading="lazy" alt="Heavyweight hoodie in heather grey"></div><div class="myfeeds-product-details"><div class="myfeeds-product-brand">Halden</div><div class="myfeeds-product-title">Heavyweight Hoodie Heather Grey</div><div class="myfeeds-product-price"><span class="myfeeds-current-price">$58.00</span></div><div class="myfeeds-merchant">Northside Supply</div></div></div>
+            <div class="myfeeds-product-card"><div class="myfeeds-product-image"><img src="/assets/home/beanie-knit-navy.webp" width="400" height="400" loading="lazy" alt="Ribbed merino beanie in navy"></div><div class="myfeeds-product-details"><div class="myfeeds-product-brand">Fieldmade</div><div class="myfeeds-product-title">Ribbed Merino Beanie Navy</div><div class="myfeeds-product-price"><span class="myfeeds-current-price">$28.00</span></div><div class="myfeeds-merchant">Basecamp Outfitters</div></div></div>
+            <div class="myfeeds-product-card"><div class="myfeeds-product-image"><div class="myfeeds-discount-badge">-26%</div><img src="/assets/home/sneaker-black-hightop.webp" width="400" height="400" loading="lazy" alt="Black leather high-top sneaker"></div><div class="myfeeds-product-details"><div class="myfeeds-product-brand">Arlo &amp; Finch</div><div class="myfeeds-product-title">Court High-Top Leather Black</div><div class="myfeeds-product-price"><span class="myfeeds-current-price has-discount">$96.00</span></div><div class="myfeeds-merchant">Kicks Corner</div></div></div>
+          </div>
+        </div>
+        <div class="rest" aria-hidden="true">
+          <div class="ghosts">
+            <div class="ghost"><img src="/assets/home/tee-boxy-offwhite.webp" width="400" height="400" loading="lazy" alt=""><u></u><u></u></div>
+            <div class="ghost"><img src="/assets/home/sneaker-white-lowtop.webp" width="400" height="400" loading="lazy" alt=""><u></u><u></u></div>
+            <div class="ghost"><img src="/assets/home/backpack-trail.webp" width="400" height="400" loading="lazy" alt=""><u></u><u></u></div>
+            <div class="ghost more"><span>+</span></div>
+          </div>
+          <span class="off"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 3l18 18"/><path d="M10.6 5.1A9.8 9.8 0 0 1 12 5c5 0 9 4.5 10 7a13.6 13.6 0 0 1-3.1 4.2M6.6 6.6C4.4 8 2.8 10.1 2 12c1 2.5 5 7 10 7a9.7 9.7 0 0 0 5.4-1.6"/><path d="M9.9 9.9a3 3 0 0 0 4.2 4.2"/></svg>Not on your blog</span>
+        </div>
+        <figcaption>Readers see three products. Everything else these shops sell never reaches your blog.</figcaption>
+      </figure>
+      <div class="arrow" aria-hidden="true"><svg viewBox="0 0 40 40" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M6 20h26M23 11l9 9-9 9"/></svg></div>
+      <figure class="vs-b" aria-label="In your shop, the same products and the rest sit in categories readers can browse, over several pages.">
+        <p class="vs-k">In your shop</p>
+        <div class="browser">
+          <div class="bbar"><i></i><i></i><i></i><span><b>yourblog.com</b>/shop/</span></div>
+          <div class="sf">
+            <div class="cats" aria-hidden="true"><span class="on">All products</span><span>Clothing</span><span>Shoes</span><span>Bags</span></div>
+            <div class="sg">
+              <div class="myfeeds-product-card"><div class="myfeeds-product-image"><img src="/assets/home/hoodie-heather-grey.webp" width="400" height="400" loading="lazy" alt="Heavyweight hoodie in heather grey"></div><div class="myfeeds-product-details"><div class="myfeeds-product-brand">Halden</div><div class="myfeeds-product-title">Heavyweight Hoodie Heather Grey</div><div class="myfeeds-product-price"><span class="myfeeds-current-price">$58.00</span></div><div class="myfeeds-merchant">Northside Supply</div></div></div>
+              <div class="myfeeds-product-card"><div class="myfeeds-product-image"><div class="myfeeds-discount-badge">-26%</div><img src="/assets/home/sneaker-black-hightop.webp" width="400" height="400" loading="lazy" alt="Black leather high-top sneaker"></div><div class="myfeeds-product-details"><div class="myfeeds-product-brand">Arlo &amp; Finch</div><div class="myfeeds-product-title">Court High-Top Leather Black</div><div class="myfeeds-product-price"><span class="myfeeds-old-price">$129</span> <span class="myfeeds-current-price has-discount">$96.00</span></div><div class="myfeeds-merchant">Kicks Corner</div></div></div>
+              <div class="myfeeds-product-card"><div class="myfeeds-product-image"><img src="/assets/home/backpack-trail.webp" width="400" height="400" loading="lazy" alt="Trail backpack in sage green"></div><div class="myfeeds-product-details"><div class="myfeeds-product-brand">Fieldmade</div><div class="myfeeds-product-title">Trail Pack 28 L Sage</div><div class="myfeeds-product-price"><span class="myfeeds-current-price">$74.00</span></div><div class="myfeeds-merchant">Basecamp Outfitters</div></div></div>
+              <div class="myfeeds-product-card"><div class="myfeeds-product-image"><img src="/assets/home/tee-boxy-offwhite.webp" width="400" height="400" loading="lazy" alt="Boxy T-shirt in off-white"></div><div class="myfeeds-product-details"><div class="myfeeds-product-brand">Common Thread</div><div class="myfeeds-product-title">Boxy Heavy Tee Off-White</div><div class="myfeeds-product-price"><span class="myfeeds-current-price">$32.00</span></div><div class="myfeeds-merchant">Northside Supply</div></div></div>
+              <div class="myfeeds-product-card"><div class="myfeeds-product-image"><div class="myfeeds-discount-badge">-20%</div><img src="/assets/home/sneaker-white-lowtop.webp" width="400" height="400" loading="lazy" alt="White leather low-top sneaker"></div><div class="myfeeds-product-details"><div class="myfeeds-product-brand">Arlo &amp; Finch</div><div class="myfeeds-product-title">Court Low-Top Leather White</div><div class="myfeeds-product-price"><span class="myfeeds-old-price">$110</span> <span class="myfeeds-current-price has-discount">$88.00</span></div><div class="myfeeds-merchant">Kicks Corner</div></div></div>
+              <div class="myfeeds-product-card"><div class="myfeeds-product-image"><img src="/assets/home/beanie-knit-navy.webp" width="400" height="400" loading="lazy" alt="Ribbed merino beanie in navy"></div><div class="myfeeds-product-details"><div class="myfeeds-product-brand">Fieldmade</div><div class="myfeeds-product-title">Ribbed Merino Beanie Navy</div><div class="myfeeds-product-price"><span class="myfeeds-current-price">$28.00</span></div><div class="myfeeds-merchant">Basecamp Outfitters</div></div></div>
+            </div>
+            <div class="pager" aria-hidden="true"><span class="on">1</span><span>2</span><span>3</span><span>…</span><span>→</span></div>
+          </div>
+        </div>
+        <figcaption>Readers browse all of it, category by category, and Google can find every category page.</figcaption>
+      </figure>
     </div>
   </div>
 </section>
@@ -629,7 +674,7 @@ footer a{color:#fff;text-underline-offset:3px}
     <div class="head">
       <p class="kick">From your posts into your shop</p>
       <h2 id="h-posts">Every post <span class="tone">leads into your shop.</span></h2>
-      <p>Show a shop category's products in any post. A More products button under them opens that category in your shop, not its front page.</p>
+      <p>Show the products of a shop category in any post, or only one of its collections, like Cold weather. A More products button under them opens that page of your shop, not its front page.</p>
     </div>
     <div class="p2s">
       <figure>
@@ -643,15 +688,16 @@ footer a{color:#fff;text-underline-offset:3px}
           </div>
           <span class="mbtn" aria-hidden="true">More products</span>
         </div>
-        <figcaption>A post with three products from the shop category Cold weather.</figcaption>
+        <figcaption>A post with three products from the collection Cold weather.</figcaption>
       </figure>
       <div class="arrow" aria-hidden="true"><svg viewBox="0 0 40 40" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M6 20h26M23 11l9 9-9 9"/></svg></div>
       <figure>
         <div class="browser">
-          <div class="bbar"><i></i><i></i><i></i><span><b>yourblog.com</b>/shop/cold-weather/</span></div>
+          <div class="bbar"><i></i><i></i><i></i><span><b>yourblog.com</b>/shop/men/?style=cold-weather</span></div>
           <div class="sf">
-            <span class="crumb">Shop › Cold weather</span>
-            <div class="sf-head"><b>Cold weather</b><span>6 products</span></div>
+            <span class="crumb">Shop › Men</span>
+            <div class="sf-head"><b>Men</b><span>6 products</span></div>
+            <p class="picked"><span>Season</span><b>Cold weather</b></p>
             <div class="sg">
               <div class="myfeeds-product-card"><div class="myfeeds-product-image"><img src="/assets/home/hoodie-heather-grey.webp" width="400" height="400" loading="lazy" alt="Heavyweight hoodie in heather grey"></div><div class="myfeeds-product-details"><div class="myfeeds-product-brand">Halden</div><div class="myfeeds-product-title">Heavyweight Hoodie Heather Grey</div><div class="myfeeds-product-price"><span class="myfeeds-current-price">$58.00</span></div><div class="myfeeds-merchant">Northside Supply</div></div></div>
               <div class="myfeeds-product-card"><div class="myfeeds-product-image"><img src="/assets/home/beanie-knit-navy.webp" width="400" height="400" loading="lazy" alt="Ribbed merino beanie in navy"></div><div class="myfeeds-product-details"><div class="myfeeds-product-brand">Fieldmade</div><div class="myfeeds-product-title">Ribbed Merino Beanie Navy</div><div class="myfeeds-product-price"><span class="myfeeds-current-price">$28.00</span></div><div class="myfeeds-merchant">Basecamp Outfitters</div></div></div>
@@ -662,10 +708,10 @@ footer a{color:#fff;text-underline-offset:3px}
             </div>
           </div>
         </div>
-        <figcaption>The category page the button opens. Simplified, example products.</figcaption>
+        <figcaption>The page the button opens: Men, with the collection Cold weather already picked. Simplified, example products.</figcaption>
       </figure>
     </div>
-    <p class="p2s-note">The cards come from the category, so when you change what's in it, the post follows.</p>
+    <p class="p2s-note">The cards come from the category or collection, so when you change what's in it, the post follows.</p>
   </div>
 </section>
 
