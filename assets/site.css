@@ -9,8 +9,9 @@
 @font-face{font-family:'Bricolage';font-style:normal;font-weight:800;font-display:swap;src:url(/assets/fonts/bricolage-latin.woff2) format('woff2');unicode-range:U+0000-00FF,U+0131,U+0152-0153,U+02BB-02BC,U+02C6,U+02DA,U+02DC,U+0304,U+0308,U+0329,U+2000-206F,U+20AC,U+2122,U+2191,U+2193,U+2212,U+2215,U+FEFF,U+FFFD}
 @font-face{font-family:'Instrument Sans';font-style:normal;font-weight:400 600;font-display:swap;src:url(/assets/fonts/instrument-sans-latin.woff2) format('woff2');unicode-range:U+0000-00FF,U+0131,U+0152-0153,U+02BB-02BC,U+02C6,U+02DA,U+02DC,U+0304,U+0308,U+0329,U+2000-206F,U+20AC,U+2122,U+2191,U+2193,U+2212,U+2215,U+FEFF,U+FFFD}
 
-/* Tones in order: orange (open, close), then board, paper, ink and at
-   most one violet band in between. One button colour: ink. */
+/* Tones in order: violet (open, close), then board, paper, ink and at
+   most one violet band in between. One button colour: ink, white on the
+   dark bands. Orange stays the accent: ticks, number circles, tape. */
 :root{
   --orange:#FC9000;
   --board:#E8E7EC;
@@ -50,10 +51,17 @@
   --btn:var(--ink);--btn-fg:#fff;--btn-hover:#2C2836;--btn-shadow:0 12px 24px -14px rgba(23,21,28,.8);
   --focus:var(--ink);--hl:rgba(252,144,0,.28);--bg:var(--board);
 }
-/* orange: ink is the only text colour that passes on it */
+/* violet opener and close (orange until 2026-11-26): white type, white
+   buttons, the ticks stay orange */
 .open-top,.open,.close{
-  --fg-2:var(--ink);--fg-3:var(--ink);--kick:var(--ink);--muted:var(--ink);--bar:var(--ink);
-  --rule:rgba(23,21,28,.3);--tint-line:transparent;--bg:var(--orange);
+  --fg:#fff;--fg-2:var(--on-violet);--fg-3:var(--on-violet);
+  --rule:rgba(255,255,255,.26);--edge:#fff;
+  --tint:rgba(23,21,28,.2);--tint-line:rgba(255,255,255,.22);
+  --raise:rgba(255,255,255,.1);--lift:inset 0 0 0 1px rgba(255,255,255,.18);--hover:rgba(255,255,255,.14);
+  --mark:var(--orange);--kick:#FFD08A;--muted:#CFC6F5;--bar:var(--orange);
+  --chip:var(--orange);--chip-fg:var(--ink);--pill:#fff;
+  --btn:#fff;--btn-fg:var(--ink);--btn-hover:#F1EFF5;--btn-shadow:none;
+  --focus:#fff;--hl:rgba(252,144,0,.5);--bg:var(--violet);
 }
 .ink,.pitch,footer{
   --fg:#fff;--fg-2:var(--on-ink);--fg-3:var(--on-ink);
@@ -140,17 +148,17 @@ figure figcaption{margin-top:14px;font-size:13px;color:var(--fg-3)}
 .go>.more,p.go>.more,.ov-x .more{display:inline-block;padding-block:11px;margin-block:-11px}
 
 /* ===== opener: header and hero ===== */
-.open-top{background:var(--orange);position:relative;z-index:30}
-.open{background:var(--orange)}
+.open-top{background:var(--violet);color:#fff;position:relative;z-index:30}
+.open{background:var(--violet);color:#fff}
 .top{position:relative;display:flex;align-items:center;justify-content:space-between;gap:12px;padding-block:12px}
 .mark{position:relative;display:flex;align-items:center;gap:8px;font:800 20px/1 var(--display);letter-spacing:-.02em;text-decoration:none}
 .mark span{display:grid;place-items:center;width:34px;height:34px;border-radius:50%;background:#fff}
 .mark img{width:22px;height:22px}
 .nav{display:none}
 .top-r{display:flex;align-items:center;gap:8px}
-.menu-btn{position:relative;display:inline-flex;align-items:center;gap:8px;background:none;border:1.5px solid var(--ink);border-radius:999px;padding:8px 14px;font:600 14px/1.2 var(--sans);cursor:pointer}
-.menu-btn i{position:relative;width:14px;height:2px;background:var(--ink);border-radius:2px}
-.menu-btn i::before,.menu-btn i::after{content:"";position:absolute;left:0;width:14px;height:2px;background:var(--ink);border-radius:2px}
+.menu-btn{position:relative;display:inline-flex;align-items:center;gap:8px;background:none;border:1.5px solid rgba(255,255,255,.7);border-radius:999px;padding:8px 14px;font:600 14px/1.2 var(--sans);cursor:pointer}
+.menu-btn i{position:relative;width:14px;height:2px;background:#fff;border-radius:2px}
+.menu-btn i::before,.menu-btn i::after{content:"";position:absolute;left:0;width:14px;height:2px;background:#fff;border-radius:2px}
 .menu-btn i::before{top:-5px}
 .menu-btn i::after{top:5px}
 /* the two header buttons and the mark look 35px high and take a 44px tap */
@@ -162,7 +170,7 @@ figure figcaption{margin-top:14px;font-size:13px;color:var(--fg-3)}
 @media (min-width:900px){
   .nav{display:flex;gap:24px;align-items:center;margin-left:auto;margin-right:12px;font-size:15px;font-weight:600}
   .nav a{text-decoration:none;padding:6px 0;border-bottom:2px solid transparent;white-space:nowrap}
-  .nav a:hover,.nav a[aria-current]{border-bottom-color:var(--ink)}
+  .nav a:hover,.nav a[aria-current]{border-bottom-color:#fff}
   .menu-btn,.menu{display:none!important}
 }
 @media (min-width:900px) and (max-width:1099px){.nav{gap:16px;font-size:14.5px;margin-right:4px}}
@@ -170,19 +178,19 @@ figure figcaption{margin-top:14px;font-size:13px;color:var(--fg-3)}
 .hero{display:grid;gap:30px;padding-block:10px 56px}
 .hero>*{min-width:0}
 /* the eyebrow doubles as the breadcrumb: "Guides · Affiliate basics" */
-.eyebrow{font-size:14px;font-weight:600}
+.eyebrow{font-size:14px;font-weight:600;color:var(--fg-2)}
 .eyebrow a{position:relative;text-underline-offset:3px;text-decoration-thickness:1.5px}
 .eyebrow a::after{content:"";position:absolute;left:-4px;right:-4px;top:50%;height:44px;margin-top:-22px}
 .hero h1{font-size:clamp(2.5rem,10.4vw,5rem);line-height:.96;margin-block:8px 16px}
 /* a headline of more than about 32 characters */
 .hero.long h1{font-size:clamp(2.1rem,8.6vw,3.6rem);line-height:.98}
-.lede{font-size:clamp(1.06rem,2.6vw,1.2rem);max-width:36ch}
+.lede{font-size:clamp(1.06rem,2.6vw,1.2rem);max-width:36ch;color:var(--fg-2)}
 .hero.long .lede{max-width:40ch}
 .hero .go{margin-top:22px}
 /* small facts under the lede: reading time, what you need */
 .facts{display:flex;flex-wrap:wrap;gap:6px 16px;font-size:14px;color:var(--fg-3)}
 .hero .facts{gap:8px;margin-top:20px}
-.hero .facts span{border:1.5px solid var(--ink);border-radius:999px;padding:5px 12px;font-weight:600;line-height:1.3}
+.hero .facts span{border:1.5px solid var(--edge);border-radius:999px;padding:5px 12px;font-weight:600;line-height:1.3}
 .hero figcaption{margin-top:12px}
 .hero .nets{margin-top:22px}
 @media (min-width:900px){
@@ -680,13 +688,15 @@ a.h:hover{background:var(--hover)}
 .solo .myfeeds-product-card{width:min(100%,220px);--myfeeds-card-shadow:0 0 5px 2px rgba(0,0,0,.06),0 14px 24px -16px rgba(23,21,28,.4)}
 
 /* ===== close ===== */
-.close{background:var(--orange);padding-block:60px 68px}
+.close{background:var(--violet);color:#fff;padding-block:60px 68px}
+/* a violet band right before the close: a hairline keeps them apart */
+.vio+.close{box-shadow:inset 0 1px 0 rgba(255,255,255,.22)}
 .close h2{font-size:clamp(2.1rem,8vw,3.9rem);max-width:15ch}
 .close-in{display:grid;gap:40px;align-items:center}
 .close-in>*{min-width:0}
 .next{list-style:none;display:grid;gap:8px;margin-top:22px;font-size:15.5px;max-width:46ch}
 .next li{position:relative;padding-left:26px}
-.next li::before{content:"";position:absolute;left:3px;top:.5em;width:12px;height:6px;border-left:2.5px solid var(--ink);border-bottom:2.5px solid var(--ink);transform:rotate(-45deg)}
+.next li::before{content:"";position:absolute;left:3px;top:.5em;width:12px;height:6px;border-left:2.5px solid var(--orange);border-bottom:2.5px solid var(--orange);transform:rotate(-45deg)}
 .next+.go{margin-top:14px}
 @media (min-width:900px){.close{padding-block:96px 104px}.close-in{grid-template-columns:minmax(0,1fr) minmax(0,1.1fr);gap:56px}}
 /* the narrow close of a legal page: one line, no offer */
