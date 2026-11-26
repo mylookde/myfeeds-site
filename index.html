@@ -329,8 +329,8 @@ figure figcaption{margin-top:14px;font-size:13px;color:var(--ink-3)}
 .pro-row{display:grid;align-items:start}
 .pro-an{display:grid}
 @media (min-width:900px){
-  .pro{gap:96px}
-  .pro-row{grid-template-columns:minmax(0,5fr) minmax(0,6fr);gap:64px}
+  .pro{gap:80px}
+  .pro-row{grid-template-columns:minmax(0,5fr) minmax(0,6fr);gap:64px;align-items:center}
   .pro-row .pro-t{margin-bottom:0}
   .pro-row>.pro-pic{width:100%;max-width:580px;justify-self:end;margin-top:6px}
   .pro-an{grid-template-columns:minmax(0,7fr) minmax(0,5fr);grid-template-rows:auto auto 1fr;grid-template-areas:"t t" "shot ins" "go ins";column-gap:40px;align-items:start}
@@ -339,6 +339,14 @@ figure figcaption{margin-top:14px;font-size:13px;color:var(--ink-3)}
   .pro-an>.go{grid-area:go;margin-top:26px}
   .pro-an>.ins-fig{grid-area:ins;margin-top:0}
   .pro-an .ins{grid-template-columns:minmax(0,1fr)}
+}
+/* wide screens: the room look at a fixed 520 px with more air beside the
+   text, the insight cards two by two next to the dashboard */
+@media (min-width:1100px){
+  .pro-row{grid-template-columns:minmax(0,1fr) minmax(0,520px);column-gap:clamp(80px,8vw,120px)}
+  .pro-row>.pro-pic{max-width:none;margin-top:0}
+  .pro-an{grid-template-columns:minmax(0,1fr) minmax(0,540px);column-gap:48px}
+  .pro-an .ins{grid-template-columns:repeat(2,minmax(0,1fr))}
 }
 .lk-frame{position:relative;background:var(--paper);padding:10px 10px 16px;border-radius:3px;box-shadow:var(--shadow);max-width:520px;transform:rotate(-.6deg)}
 .lk-frame::before{content:"";position:absolute;top:-9px;left:50%;width:84px;height:20px;margin-left:-42px;background:var(--tape);transform:rotate(-3deg);z-index:4}
@@ -800,7 +808,7 @@ footer a{color:#fff;text-underline-offset:3px}
             <p class="lk-hint" aria-hidden="true"><i>1</i>Tap or click a dot</p>
             <div class="myfeeds-look" id="lk-room">
               <div class="myfeeds-look__stage">
-                <img class="myfeeds-look__img" src="/assets/look/room-700.webp" srcset="/assets/look/room-700.webp 700w, /assets/look/room-1200.webp 1200w" sizes="(min-width:900px) 610px, calc(100vw - 52px)" width="1200" height="805" loading="lazy" alt="A living room: a pale two-seater sofa with a rust cushion, a black floor lamp beside it and an oak side table in front.">
+                <img class="myfeeds-look__img" src="/assets/look/room-700.webp" srcset="/assets/look/room-700.webp 700w, /assets/look/room-1200.webp 1200w" sizes="(min-width:1100px) 500px, (min-width:900px) 560px, calc(100vw - 52px)" width="1200" height="805" loading="lazy" alt="A living room: a pale two-seater sofa with a rust cushion, a black floor lamp beside it and an oak side table in front.">
                 <details class="myfeeds-look__pt is-up" name="lk-room" data-lk="sofa" style="left:42%;top:67%"><summary class="myfeeds-look__dot" aria-label="1. Halden Two-Seater Sofa, reduced"><span aria-hidden="true">1</span></summary><span class="myfeeds-look__card"><span class="myfeeds-look__brand">Halden</span><span class="myfeeds-look__name">Two-Seater Sofa</span><span class="myfeeds-look__price"><span class="myfeeds-look__now">$712.00</span> <s class="myfeeds-look__was">$890.00</s></span><span class="myfeeds-look__go">View at Northside Supply</span></span></details>
                 <details class="myfeeds-look__pt is-right" name="lk-room" data-lk="lamp" style="left:15.5%;top:33%"><summary class="myfeeds-look__dot" aria-label="2. Fieldmade Arc Floor Lamp"><span aria-hidden="true">2</span></summary><span class="myfeeds-look__card"><span class="myfeeds-look__brand">Fieldmade</span><span class="myfeeds-look__name">Arc Floor Lamp</span><span class="myfeeds-look__price"><span class="myfeeds-look__now">$129.00</span></span><span class="myfeeds-look__go">View at Basecamp Outfitters</span></span></details>
                 <details class="myfeeds-look__pt is-left is-up" name="lk-room" data-lk="table" style="left:80%;top:82%"><summary class="myfeeds-look__dot" aria-label="3. Fieldmade Oak Side Table"><span aria-hidden="true">3</span></summary><span class="myfeeds-look__card"><span class="myfeeds-look__brand">Fieldmade</span><span class="myfeeds-look__name">Oak Side Table</span><span class="myfeeds-look__price"><span class="myfeeds-look__now">$145.00</span></span><span class="myfeeds-look__go">View at Basecamp Outfitters</span></span></details>
@@ -821,7 +829,7 @@ footer a{color:#fff;text-underline-offset:3px}
           <p>With Pro, every click on a card is counted. See clicks and visitors for each post, product and brand, and write more of what works.</p>
         </div>
         <figure class="shot">
-          <img src="/assets/home/analytics-dashboard-800.webp" srcset="/assets/home/analytics-dashboard-800.webp 800w, /assets/home/analytics-dashboard-1400.webp 1400w" sizes="(min-width:1240px) 660px, (min-width:900px) 56vw, calc(100vw - 32px)" width="1400" height="690" loading="lazy" alt="The MyFeeds Pro dashboard in WordPress: total clicks, earnings, earnings per click and unique visitors for the last 30 days, a daily chart of clicks and earnings, and tabs for posts, products, brands and networks.">
+          <img src="/assets/home/analytics-dashboard-800.webp" srcset="/assets/home/analytics-dashboard-800.webp 800w, /assets/home/analytics-dashboard-1400.webp 1400w" sizes="(min-width:1240px) 572px, (min-width:1100px) 48vw, (min-width:900px) 56vw, calc(100vw - 32px)" width="1400" height="690" loading="lazy" alt="The MyFeeds Pro dashboard in WordPress: total clicks, earnings, earnings per click and unique visitors for the last 30 days, a daily chart of clicks and earnings, and tabs for posts, products, brands and networks.">
           <figcaption>The Pro dashboard in WordPress, with example data. Your numbers come from your own clicks.</figcaption>
         </figure>
         <figure class="ins-fig">
