@@ -517,6 +517,8 @@ figure figcaption{margin-top:14px;font-size:13px;color:var(--ink-3)}
 .plan.feat .price .per{color:var(--on-ink)}
 .alt{font-size:14.5px;color:var(--ink-2)}
 .plan.feat .alt{color:var(--on-ink)}
+.alt .save{font-weight:600;color:#047857}
+.plan.feat .alt .save{color:#34D399}
 .lic{display:block;margin-top:2px;font-size:13px;color:var(--ink-3)}
 .plan.feat .lic{color:#A7A2B5}
 .inc{margin:20px 0 10px;font-size:13px;font-weight:600;letter-spacing:.05em;text-transform:uppercase;color:var(--ink-3)}
@@ -1014,8 +1016,8 @@ footer a{color:#fff;text-underline-offset:3px}
         <span class="chip-plan">RECOMMENDED</span>
         <h3 id="n-pro">Pro</h3>
         <p class="for">Every source at once: as many feeds as you like, Rakuten and Amazon's API side by side, in your design</p>
-        <p class="price"><b>$<span class="amt">99</span></b><span class="per">/year</span></p>
-        <p class="alt"><span class="alt-tx">or $12 a month</span><span class="lic">One site</span></p>
+        <p class="price"><b>$<span class="amt">8</span></b><span class="per">/month</span></p>
+        <p class="alt"><span class="alt-tx">$99 billed annually</span><span class="lic">One site</span></p>
         <template data-founding="pro"><div class="found">
           <p class="found-h">Founding prices, yearly plan</p>
           <ol data-ladder="pro"></ol>
@@ -1040,8 +1042,8 @@ footer a{color:#fff;text-underline-offset:3px}
       <article class="plan" id="plan-ecommerce" data-plan="business" aria-labelledby="n-ecom">
         <h3 id="n-ecom">Shop</h3>
         <p class="for">A shop of your own</p>
-        <p class="price"><b>$<span class="amt">329</span></b><span class="per">/year</span></p>
-        <p class="alt"><span class="alt-tx">or $39 a month</span><span class="lic">One site</span></p>
+        <p class="price"><b>$<span class="amt">27</span></b><span class="per">/month</span></p>
+        <p class="alt"><span class="alt-tx">$329 billed annually</span><span class="lic">One site</span></p>
         <template data-founding="business"><div class="found">
           <p class="found-h">Founding prices, yearly plan</p>
           <ol data-ladder="business"></ol>
@@ -1360,6 +1362,18 @@ footer a{color:#fff;text-underline-offset:3px}
   var cards = document.querySelectorAll('.plan[data-plan]');
   var cycBtns = document.querySelectorAll('[data-cycle]'), siteBtns = document.querySelectorAll('[data-sites]');
   var foundTags = document.querySelectorAll('[data-cycle="annual"] small');
+  // Under the price: the yearly sum, or on the monthly plan what the yearly
+  // one saves, the percentage set off in green as the better deal.
+  function altLine(el, key, yearly, sites) {
+    el.textContent = '';
+    if (yearly) { el.textContent = '$' + MP.price(key, 'annual', sites) + ' billed annually'; return; }
+    var save = document.createElement('b');
+    save.className = 'save';
+    save.textContent = MP.yearlySaving(key) + '%';
+    el.appendChild(document.createTextNode('or save '));
+    el.appendChild(save);
+    el.appendChild(document.createTextNode(' with the yearly plan'));
+  }
   function render() {
     var all = sites === 'all';
     if (all) cycle = 'annual';
@@ -1372,10 +1386,10 @@ footer a{color:#fff;text-underline-offset:3px}
     siteBtns.forEach(function (b) { b.setAttribute('aria-pressed', b.getAttribute('data-sites') === String(sites) ? 'true' : 'false'); });
     foundTags.forEach(function (t) { t.hidden = all; });
     cards.forEach(function (card) {
-      var key = card.getAttribute('data-plan'), p = MP.plans[key];
-      card.querySelector('.amt').textContent = MP.price(key, cycle, sites);
-      card.querySelector('.per').textContent = yearly ? '/year' : '/month';
-      card.querySelector('.alt-tx').textContent = all ? 'Yearly only' : yearly ? 'or $' + p.monthly + ' a month' : 'or $' + MP.price(key, 'annual', 1) + ' a year';
+      var key = card.getAttribute('data-plan');
+      card.querySelector('.amt').textContent = yearly ? MP.perMonth(key, sites) : MP.price(key, cycle, sites);
+      card.querySelector('.per').textContent = '/month';
+      altLine(card.querySelector('.alt-tx'), key, yearly, sites);
       card.querySelector('.lic').textContent = all ? 'All your sites' : 'One site';
       var box = card.querySelector('.found');
       if (box) box.hidden = all;

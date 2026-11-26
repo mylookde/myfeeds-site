@@ -364,6 +364,7 @@ figure figcaption{margin-top:12px;font-size:13px;color:var(--ink-3)}
 .price b{font:800 3.2rem/1 var(--display);letter-spacing:-.03em}
 .price .per{font-weight:600;color:var(--on-ink)}
 .alt{font-size:14.5px;color:var(--on-ink)}
+.alt .save{font-weight:600;color:#34D399}
 .lic{display:block;margin-top:2px;font-size:13px;color:#A7A2B5}
 .inc{margin:20px 0 10px;font-size:13px;font-weight:600;letter-spacing:.05em;text-transform:uppercase;color:#A7A2B5}
 .feats{list-style:none;display:grid;gap:9px;font-size:15.5px;margin-bottom:22px}
@@ -743,8 +744,8 @@ footer a{color:#fff;text-underline-offset:3px}
         <span class="chip-plan">14 DAYS FREE</span>
         <h3 id="n-ecom">Shop</h3>
         <p class="for">A shop of your own</p>
-        <p class="price"><b>$<span class="amt">329</span></b><span class="per">/year</span></p>
-        <p class="alt"><span class="alt-tx">or $39 a month</span><span class="lic">One site</span></p>
+        <p class="price"><b>$<span class="amt">27</span></b><span class="per">/month</span></p>
+        <p class="alt"><span class="alt-tx">$329 billed annually</span><span class="lic">One site</span></p>
         <template data-founding="business"><div class="found">
           <p class="found-h">Founding prices, yearly plan</p>
           <ol data-ladder="business"></ol>
@@ -1020,19 +1021,31 @@ footer a{color:#fff;text-underline-offset:3px}
   var card = document.getElementById('plan-ecommerce');
   var cycBtns = document.querySelectorAll('[data-cycle]'), siteBtns = document.querySelectorAll('[data-sites]');
   var foundTags = document.querySelectorAll('[data-cycle="annual"] small');
+  // Under the price: the yearly sum, or on the monthly plan what the yearly
+  // one saves, the percentage set off in green as the better deal.
+  function altLine(el, yearly, sites) {
+    el.textContent = '';
+    if (yearly) { el.textContent = '$' + MP.price(KEY, 'annual', sites) + ' billed annually'; return; }
+    var save = document.createElement('b');
+    save.className = 'save';
+    save.textContent = MP.yearlySaving(KEY) + '%';
+    el.appendChild(document.createTextNode('or save '));
+    el.appendChild(save);
+    el.appendChild(document.createTextNode(' with the yearly plan'));
+  }
   function render() {
     var all = sites === 'all';
     if (all) cycle = 'annual';
-    var yearly = cycle === 'annual', p = MP.plans[KEY];
+    var yearly = cycle === 'annual';
     cycBtns.forEach(function (b) {
       var c = b.getAttribute('data-cycle');
       b.setAttribute('aria-pressed', c === cycle ? 'true' : 'false');
       b.disabled = all && c === 'monthly';
     });
     siteBtns.forEach(function (b) { b.setAttribute('aria-pressed', b.getAttribute('data-sites') === String(sites) ? 'true' : 'false'); });
-    card.querySelector('.amt').textContent = MP.price(KEY, cycle, sites);
-    card.querySelector('.per').textContent = yearly ? '/year' : '/month';
-    card.querySelector('.alt-tx').textContent = all ? 'Yearly only' : yearly ? 'or $' + p.monthly + ' a month' : 'or $' + MP.price(KEY, 'annual', 1) + ' a year';
+    card.querySelector('.amt').textContent = yearly ? MP.perMonth(KEY, sites) : MP.price(KEY, cycle, sites);
+    card.querySelector('.per').textContent = '/month';
+    altLine(card.querySelector('.alt-tx'), yearly, sites);
     card.querySelector('.lic').textContent = all ? 'All your sites' : 'One site';
     foundTags.forEach(function (t) { t.hidden = all; });
     var box = card.querySelector('.found');

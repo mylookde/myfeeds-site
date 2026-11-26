@@ -88,6 +88,19 @@
     return s ? s.price : p.annual;
   }
 
+  // A yearly plan shown as what it costs per month, in whole dollars. The
+  // cards lead with it and print the real yearly sum right under it.
+  function perMonth(key, sites) {
+    return Math.round(price(key, 'annual', sites) / 12);
+  }
+
+  // What the yearly plan saves against twelve monthly payments, rounded down
+  // like the "Save N%" the Freemius checkout prints, so both say the same.
+  function yearlySaving(key) {
+    var twelve = plans[key].monthly * 12;
+    return Math.floor((twelve - price(key, 'annual', 1)) * 100 / twelve);
+  }
+
   function checkout(key, cycle, sites) {
     var p = plans[key], all = sites === 'all';
     var s = !all && cycle === 'annual' ? step(key) : null;
@@ -130,7 +143,7 @@
     }
   }
 
-  window.MyFeedsPlans = { plans: plans, step: step, on: on, price: price, checkout: checkout, ladder: ladder };
+  window.MyFeedsPlans = { plans: plans, step: step, on: on, price: price, perMonth: perMonth, yearlySaving: yearlySaving, checkout: checkout, ladder: ladder };
 
   // The tag sits at the end of <body>, after every template it fills, and
   // before the page script that reads the result.
