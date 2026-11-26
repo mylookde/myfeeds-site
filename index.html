@@ -1231,6 +1231,24 @@ footer a{color:#fff;text-underline-offset:3px}
   // The videos (the film under the hero, the 30 s recording): a clean cover
   // with one play button; the native controls appear only once the visitor
   // asked for it (no JS: plain controls).
+  // Safari on iPhone and iPad: a video that has loaded nothing yet
+  // (preload="none") could take the tap without starting, and only a pause
+  // and a second play got it going. load() first lets the tap start it, and
+  // the native controls come in once it plays, so switching them on cannot
+  // swallow the tap. If the browser refuses, the cover comes back.
+  function start(v, play) {
+    var shown = false;
+    function show() {
+      if (shown) return;
+      shown = true;
+      v.controls = true;
+      try { v.focus({ preventScroll: true }); } catch (e) {}
+    }
+    v.addEventListener('playing', show, { once: true });
+    if (v.readyState === 0) v.load();
+    var p = v.play();
+    if (p && p.catch) p.catch(function () { show(); play.classList.remove('gone'); });
+  }
   [['trailer', 'trailer-play', 'trailer-play'], ['demo', 'play', 'video-play']].forEach(function (d) {
     var v = document.getElementById(d[0]), play = document.getElementById(d[1]);
     if (v) v.addEventListener('play', function once() { count(P + d[2]); v.removeEventListener('play', once); });
@@ -1238,9 +1256,7 @@ footer a{color:#fff;text-underline-offset:3px}
       v.controls = false;
       play.addEventListener('click', function () {
         play.classList.add('gone');
-        v.controls = true;
-        var p = v.play(); if (p && p.catch) p.catch(function () {});
-        v.focus();
+        start(v, play);
       });
     }
   });

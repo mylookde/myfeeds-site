@@ -706,11 +706,24 @@ footer a{color:#fff;text-underline-offset:3px}
   if (v) v.addEventListener('play', function once() { count('pin/look-like-a-shop/video-play'); v.removeEventListener('play', once); });
   if (v && play) {
     v.controls = false;
+    // Safari on iPhone and iPad: a video that has loaded nothing yet
+    // (preload="none") could take the tap without starting, and only a pause
+    // and a second play got it going. load() first lets the tap start it, and
+    // the native controls come in once it plays, so switching them on cannot
+    // swallow the tap. If the browser refuses, the cover comes back.
     play.addEventListener('click', function () {
+      var shown = false;
+      function show() {
+        if (shown) return;
+        shown = true;
+        v.controls = true;
+        try { v.focus({ preventScroll: true }); } catch (e) {}
+      }
       play.classList.add('gone');
-      v.controls = true;
-      var p = v.play(); if (p && p.catch) p.catch(function () {});
-      v.focus();
+      v.addEventListener('playing', show, { once: true });
+      if (v.readyState === 0) v.load();
+      var p = v.play();
+      if (p && p.catch) p.catch(function () { show(); play.classList.remove('gone'); });
     });
   }
 
