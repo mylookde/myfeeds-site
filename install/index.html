@@ -520,7 +520,11 @@ footer a{color:#fff;text-underline-offset:3px}
     if (location.hash === '#pro') {
       pick(document.getElementById('t-pro'));
       var s = document.getElementById('step-1');
-      setTimeout(function () { s.scrollIntoView({ block: 'start' }); }, 0);
+      var land = function () { s.scrollIntoView({ block: 'start', behavior: 'instant' }); };
+      // Once now, and again after load: the browser's own jump to the
+      // now visible #pro would otherwise hide the switch above it.
+      setTimeout(land, 0);
+      if (document.readyState !== 'complete') window.addEventListener('load', function () { setTimeout(land, 0); }, { once: true });
     }
   }
   fromHash();
