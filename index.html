@@ -455,6 +455,15 @@ figure figcaption{margin-top:14px;font-size:13px;color:var(--ink-3)}
 .steps b{font-weight:600;color:var(--ink)}
 .steps a{font-weight:600;color:var(--ink);text-underline-offset:3px}
 @media (min-width:900px){.steps{grid-template-columns:repeat(3,minmax(0,1fr));gap:32px}}
+/* how it works, centred like the film band: heading, recording, and on a
+   desktop each step under its number */
+#how .head{margin-inline:auto;text-align:center;justify-items:center}
+#how .frame{margin-inline:auto}
+#how .steps{margin-inline:auto}
+@media (min-width:900px){
+  #how .steps li{padding-left:0;padding-top:46px;text-align:center}
+  #how .steps li::before{left:50%;margin-left:-16px;top:0}
+}
 
 /* the shop: tabs with real screenshots */
 .room{background:var(--paper);color:var(--ink);border-radius:8px;box-shadow:0 30px 60px -30px rgba(20,10,50,.7);overflow:hidden}
