@@ -124,6 +124,8 @@ p{text-wrap:pretty}
 .ll{position:relative;display:inline-block;white-space:nowrap}
 .strike{position:absolute;left:-.04em;right:-.04em;top:.56em;height:.075em;margin-top:-.0375em;background:var(--ink);border-radius:2px;pointer-events:none;transform-origin:left center}
 .lede{font-size:clamp(1.06rem,2.6vw,1.22rem);max-width:35ch}
+.open .lede b{color:#fff;font-weight:600}
+.stage-k{font-size:14px;font-weight:600;color:var(--on-violet);margin-bottom:10px}
 .hero .calm{color:var(--ink)}
 .hero .go{margin-top:20px}
 .hero .go .more{font-size:15px}
@@ -660,9 +662,9 @@ footer a{color:#fff;text-underline-offset:3px}
   <div class="wrap">
     <section class="hero" aria-labelledby="h-hero">
       <div class="hero-copy">
-        <p class="eyebrow">For WordPress affiliate blogs</p>
+        <p class="eyebrow">For bloggers who earn with affiliate links</p>
         <h1 id="h-hero">Look like a shop, not a <span class="ll">link list<span class="strike" aria-hidden="true"></span></span>.</h1>
-        <p class="lede">Pick products from the shops you're an affiliate for, right in the WordPress editor. Your readers get a little shop in your post, click straight through to buy, and the prices keep themselves current.</p>
+        <p class="lede">Pick products from <b>the shops you're an affiliate for</b>, right in the WordPress editor. Your readers get a little shop in your post and buy at that shop through your link. The prices keep themselves current.</p>
         <div class="go">
           <a class="cta" data-cta="hero" id="hero-cta" href="#pricing">Add product cards to my posts</a>
           <p class="calm">Free plugin to start. Paid plans from $12 a month, each with a 14-day free trial.</p>
@@ -671,6 +673,7 @@ footer a{color:#fff;text-underline-offset:3px}
       </div>
 
       <figure class="stage" aria-label="Example MyFeeds product cards. During the nightly price sync, the sneaker drops from 129 to 96 dollars and its card shows the old price struck through and a minus 26 percent badge.">
+        <p class="stage-k">From the shops you're an affiliate for</p>
         <div class="myfeeds-product-grid row3" id="cards">
           <div class="myfeeds-product-card"><span class="mx-edge" aria-hidden="true"></span><div class="myfeeds-product-image"><img src="/assets/home/hoodie-heather-grey.webp" width="400" height="400" alt="Heavyweight hoodie in heather grey"></div><div class="myfeeds-product-details"><div class="myfeeds-product-brand">Halden</div><div class="myfeeds-product-title">Heavyweight Hoodie Heather Grey</div><div class="myfeeds-product-price"><span class="myfeeds-current-price">$58.00</span></div><div class="myfeeds-shipping-info">Free Shipping</div><div class="myfeeds-merchant">Northside Supply</div></div></div>
           <div class="myfeeds-product-card sale"><span class="mx-edge" aria-hidden="true"></span><div class="myfeeds-product-image"><div class="myfeeds-discount-badge">-26%</div><img src="/assets/home/sneaker-black-hightop.webp" width="400" height="400" alt="Black leather high-top sneaker"><span class="mx-scan" aria-hidden="true"></span><span class="mx-chip" aria-hidden="true"><span class="mx-ic"><i class="mx-spin"></i><i class="mx-tick"></i></span><span class="mx-tx"><span class="t-sync">Syncing prices</span><span class="t-done">Price updated</span></span></span></div><div class="myfeeds-product-details"><div class="myfeeds-product-brand">Arlo &amp; Finch</div><div class="myfeeds-product-title">Court High-Top Leather Black</div><div class="myfeeds-product-price"><span class="myfeeds-old-price">$129.00</span> <span class="myfeeds-current-price has-discount">$96.00</span></div><div class="myfeeds-shipping-info">Free Shipping</div><div class="myfeeds-merchant">Kicks Corner</div></div></div>
@@ -909,8 +912,8 @@ footer a{color:#fff;text-underline-offset:3px}
   <div class="wrap">
     <div class="head">
       <p class="kick">Shop plan · the next step</p>
-      <h2 id="h-shop">Want more than cards? Open a shop of your own.</h2>
-      <p>The same products get their own shop on your site, at a URL you choose, with categories, filters like brand, colour and price, a search box and sorting. Every product still links out to the merchant with your affiliate link. You are not selling or shipping anything.</p>
+      <h2 id="h-shop">Want more than cards? Open an affiliate shop on your blog.</h2>
+      <p>The products of the shops you work with get their own shop on your site, at a URL you choose, with categories, filters like brand, colour and price, a search box and sorting. Every product still links out to the merchant with your affiliate link. You are not selling or shipping anything.</p>
     </div>
     <div class="room">
       <div class="tabs" role="tablist" aria-label="The shop">
@@ -1075,6 +1078,10 @@ footer a{color:#fff;text-underline-offset:3px}
       <p>Still deciding? These are the ones people ask first.</p>
     </div>
     <div class="faq">
+      <details name="faq" data-faq="own-products">
+        <summary>Do I need products of my own?</summary>
+        <p>No. Every product comes from a shop you're an affiliate for. Readers buy at that shop, which takes the payment and sends the parcel, and you earn your usual commission through your link.</p>
+      </details>
       <details name="faq">
         <summary>Does this work with my affiliate network?</summary>
         <p>If your network gives you a shop's product feed link, MyFeeds reads it. AWIN, CJ, TradeDoubler, Impact, Rakuten, Webgains, Admitad, Pepperjam, Partnerize, FlexOffers and Sovrn are recognised out of the box, and other CSV, TSV, XML and JSON feeds work too. Rakuten Advertising hands out no feed link: MyFeeds connects to its API instead. Amazon has no feed file. On every plan, the free plugin included, you add an Amazon product by link or ASIN with your own partner tag: it shows the name you give it and links to Amazon, without picture or price. Once Amazon opens its own Creators API to you, the product cards in your posts show Amazon's picture and price, live: in the free plugin as your one product source, in Pro beside your feeds. Amazon opens that access to associates with ten qualified sales in thirty days. <a href="/networks/">How to get a feed link from your network</a>.</p>
