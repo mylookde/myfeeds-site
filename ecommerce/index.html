@@ -7,7 +7,7 @@
 <title>MyFeeds Shop plan - Start your own affiliate shop</title>
 <meta name="description" content="Turn the product feeds of the shops you're an affiliate for into a real shop on your own WordPress site: categories, filters, search, and pages Google reads as a shop. 14 days free.">
 <link rel="canonical" href="https://myfeeds.site/ecommerce/">
-<meta name="theme-color" content="#FC9000">
+<meta name="theme-color" content="#5B45A8">
 <meta property="og:type" content="website">
 <meta property="og:site_name" content="MyFeeds">
 <meta property="og:url" content="https://myfeeds.site/ecommerce/">
@@ -91,8 +91,8 @@ p{text-wrap:pretty}
 .more{font-weight:600;text-underline-offset:4px;text-decoration-thickness:1.5px}
 
 /* ===== opener ===== */
-.open-top{background:var(--orange);position:relative;z-index:30}
-.open{background:linear-gradient(var(--orange) 0 calc(100% - var(--spill,96px)),transparent 0)}
+.open-top{background:var(--violet);color:#fff;position:relative;z-index:30}
+.open{background:linear-gradient(var(--violet) 0 calc(100% - var(--spill,96px)),transparent 0);color:#fff}
 .top{position:relative;display:flex;align-items:center;justify-content:space-between;gap:12px;padding-block:12px}
 .mark{display:flex;align-items:center;gap:8px;font:800 20px/1 var(--display);letter-spacing:-.02em;text-decoration:none}
 .mark span{display:grid;place-items:center;width:34px;height:34px;border-radius:50%;background:#fff}
@@ -498,7 +498,7 @@ figure figcaption{margin-top:14px;font-size:13px;color:var(--ink-3)}
 @media (min-width:900px){.faq-grid{display:grid;grid-template-columns:minmax(0,4fr) minmax(0,7fr);gap:64px;align-items:start}.faq-grid .head{position:sticky;top:32px}}
 
 /* close */
-.close{background:var(--orange);padding-block:64px 72px}
+.close{background:var(--violet);color:#fff;padding-block:64px 72px}
 .close h2{font-size:clamp(2.2rem,8.4vw,4.2rem);max-width:14ch}
 .close .calm{color:var(--ink)}
 .close .go{margin-top:28px}
@@ -532,6 +532,25 @@ footer a{color:#fff;text-underline-offset:3px}
 /* narrowest phones: logo, Menu and the header button do not fit side by side; the hero button is right below (same rule as assets/site.css and install/) */
 @media (max-width:359px){.top .cta-sm{display:none}}
 @media (prefers-reduced-motion:reduce){*,*::before,*::after{transition:none!important;animation:none!important}html{scroll-behavior:auto}}
+
+/* ===== MyFeeds violet opener and close (2026-11-26, was orange) =====
+   White type and white buttons on the logo violet; ticks, numbers, tape
+   and the strike stay MyFeeds orange. */
+.open-top .menu-btn{border-color:rgba(255,255,255,.7)}
+.open-top .menu-btn i,.open-top .menu-btn i::before,.open-top .menu-btn i::after{background:#fff}
+.open-top .menu{color:var(--ink)}
+@media (min-width:900px){.open-top .nav a:hover,.open-top .nav a[aria-current]{border-bottom-color:#fff}}
+.open .eyebrow,.open .lede,.open .hero .calm,.close .calm,.open .desk{color:var(--on-violet)}
+.close .calm a{color:#fff}
+.open .tone,.close .tone{color:#CFC6F5}
+.open-top .cta,.open .top .cta,.open .hero .cta,.close .cta{background:#fff;color:var(--ink);box-shadow:none}
+.open-top .cta:hover,.open .top .cta:hover,.open .hero .cta:hover,.close .cta:hover{background:#F1EFF5}
+.open-top :focus-visible,.open .top :focus-visible,.open .hero :focus-visible,.close :focus-visible{outline-color:#fff}
+.open-top .menu :focus-visible{outline-color:var(--ink)}
+.strike,.open .under{background:var(--orange)}
+.close .next li::before,.close .ticks li::before{border-color:var(--orange)}
+.vio+.close{box-shadow:inset 0 1px 0 rgba(255,255,255,.22)}
+@media (min-width:900px){.open .stage figcaption,.open .stage .replay{color:var(--on-violet)}}
 </style>
 <script data-goatcounter="https://myfeeds.goatcounter.com/count" async src="//gc.zgo.at/count.js"></script>
 </head>
