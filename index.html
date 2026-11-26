@@ -323,24 +323,22 @@ figure figcaption{margin-top:14px;font-size:13px;color:var(--ink-3)}
 .pro-t{margin-bottom:20px}
 .pro-t .ticks+.calm{margin-top:14px}
 .pro-t .calm .more{white-space:nowrap}
-/* desktop: Shop the look beside the outfit photo, then the room with its
-   list, then the dashboard across the whole width */
-.pro-row{display:grid;align-items:center}
+/* desktop: the heading and Shop the look on the left, the room look with
+   its list on the right; below, the dashboard with the button under it and
+   the insight cards beside it */
+.pro-row{display:grid;align-items:start}
 .pro-an{display:grid}
 @media (min-width:900px){
   .pro{gap:96px}
   .pro-row{grid-template-columns:minmax(0,5fr) minmax(0,6fr);gap:64px}
-  .pro-row.flip{grid-template-columns:minmax(0,6fr) minmax(0,5fr)}
-  .pro-row.flip>.pro-t{order:2}
   .pro-row .pro-t{margin-bottom:0}
-  .pro-row>.pro-pic{width:100%;max-width:520px;justify-self:center}
-  .pro-row.flip>.pro-pic{max-width:640px}
-  .pro-an{grid-template-columns:minmax(0,1fr) auto;grid-template-areas:"t go" "shot shot" "ins ins";column-gap:48px;align-items:end}
-  .pro-an>.pro-t{grid-area:t;margin-bottom:28px}
-  .pro-an>.go{grid-area:go;margin:0 0 28px;justify-items:end;text-align:right}
-  .pro-an>.go .calm{max-width:34ch}
+  .pro-row>.pro-pic{width:100%;max-width:580px;justify-self:end;margin-top:6px}
+  .pro-an{grid-template-columns:minmax(0,7fr) minmax(0,5fr);grid-template-rows:auto auto 1fr;grid-template-areas:"t t" "shot ins" "go ins";column-gap:40px;align-items:start}
+  .pro-an>.pro-t{grid-area:t;margin-bottom:24px}
   .pro-an>.shot{grid-area:shot}
-  .pro-an>.ins-fig{grid-area:ins;margin-top:28px}
+  .pro-an>.go{grid-area:go;margin-top:26px}
+  .pro-an>.ins-fig{grid-area:ins;margin-top:0}
+  .pro-an .ins{grid-template-columns:minmax(0,1fr)}
 }
 .lk-frame{position:relative;background:var(--paper);padding:10px 10px 16px;border-radius:3px;box-shadow:var(--shadow);max-width:520px;transform:rotate(-.6deg)}
 .lk-frame::before{content:"";position:absolute;top:-9px;left:50%;width:84px;height:20px;margin-left:-42px;background:var(--tape);transform:rotate(-3deg);z-index:4}
@@ -422,7 +420,6 @@ figure figcaption{margin-top:14px;font-size:13px;color:var(--ink-3)}
 .in .up{color:#1f7a3d}
 .in .down{color:#b32d2e}
 @media (min-width:560px){.ins{grid-template-columns:repeat(2,minmax(0,1fr))}}
-@media (min-width:1100px){.ins{grid-template-columns:repeat(4,minmax(0,1fr))}}
 
 /* how it works: the 30 s recording and three steps */
 .frame{position:relative;background:var(--paper);padding:10px 10px 14px;border-radius:3px;box-shadow:var(--shadow);max-width:960px}
@@ -780,48 +777,30 @@ footer a{color:#fff;text-underline-offset:3px}
 
 <section class="band" id="pro" aria-labelledby="h-pro">
   <div class="wrap">
-    <div class="head">
-      <p class="kick">Shop the look · and what Pro adds</p>
-      <h2 id="h-pro">Your photos sell. <span class="tone">You see what readers click.</span></h2>
-      <p>Turn your own photos into something readers can shop, and find out which posts and products your readers click.</p>
-    </div>
     <div class="pro">
       <div class="pro-row">
-        <div class="pro-t">
-          <h3>Shop the look</h3>
-          <ul class="ticks">
-            <li>Pick a photo from your WordPress media library or paste an image link. Use your own photos or ones you have the right to use.</li>
-            <li>Each dot is a product from a shop you're an affiliate for, or an Amazon product you add by link or ASIN.</li>
-            <li>When a shop's product sells out or is gone, its dot leaves the photo on its own.</li>
-          </ul>
-          <p class="calm">In the free plugin and in every paid plan. <a class="more" href="/shop-the-look/" data-cta="quiet-look">See shop the look</a>.</p>
-        </div>
-        <figure class="pro-pic">
-          <div class="lk-frame">
-            <p class="lk-hint" aria-hidden="true"><i>1</i>Tap or click a dot</p>
-            <div class="myfeeds-look" id="lk">
-              <div class="myfeeds-look__stage">
-                <img class="myfeeds-look__img" src="/assets/home/look-flatlay-600.webp" srcset="/assets/home/look-flatlay-600.webp 600w, /assets/home/look-flatlay-1000.webp 1000w" sizes="(min-width:900px) 500px, calc(100vw - 52px)" width="1000" height="1250" loading="lazy" alt="A flat-lay of an outfit: grey hoodie, off-white tee, navy beanie, white sneakers and a canvas tote bag.">
-                <details class="myfeeds-look__pt is-right" name="lk" data-lk="hoodie" style="left:30%;top:31%"><summary class="myfeeds-look__dot" aria-label="1. Halden Heavyweight Hoodie Heather Grey"><span aria-hidden="true">1</span></summary><span class="myfeeds-look__card"><span class="myfeeds-look__brand">Halden</span><span class="myfeeds-look__name">Heavyweight Hoodie Heather Grey</span><span class="myfeeds-look__price"><span class="myfeeds-look__now">$58.00</span></span><span class="myfeeds-look__go">View at Northside Supply</span></span></details>
-                <details class="myfeeds-look__pt is-left" name="lk" data-lk="tee" style="left:72%;top:24%"><summary class="myfeeds-look__dot" aria-label="2. Common Thread Boxy Heavy Tee Off-White"><span aria-hidden="true">2</span></summary><span class="myfeeds-look__card"><span class="myfeeds-look__brand">Common Thread</span><span class="myfeeds-look__name">Boxy Heavy Tee Off-White</span><span class="myfeeds-look__price"><span class="myfeeds-look__now">$32.00</span></span><span class="myfeeds-look__go">View at Northside Supply</span></span></details>
-                <details class="myfeeds-look__pt is-left" name="lk" data-lk="beanie" style="left:77%;top:54%"><summary class="myfeeds-look__dot" aria-label="3. Fieldmade Ribbed Merino Beanie Navy"><span aria-hidden="true">3</span></summary><span class="myfeeds-look__card"><span class="myfeeds-look__brand">Fieldmade</span><span class="myfeeds-look__name">Ribbed Merino Beanie Navy</span><span class="myfeeds-look__price"><span class="myfeeds-look__now">$28.00</span></span><span class="myfeeds-look__go">View at Basecamp Outfitters</span></span></details>
-                <details class="myfeeds-look__pt is-left is-up" name="lk" data-lk="sneakers" style="left:76%;top:86%"><summary class="myfeeds-look__dot" aria-label="4. Arlo &amp; Finch Court Low-Top Leather White"><span aria-hidden="true">4</span></summary><span class="myfeeds-look__card"><span class="myfeeds-look__brand">Arlo &amp; Finch</span><span class="myfeeds-look__name">Court Low-Top Leather White</span><span class="myfeeds-look__price"><span class="myfeeds-look__now">$88.00</span></span><span class="myfeeds-look__note">Runs half a size small.</span><span class="myfeeds-look__go">View at Kicks Corner</span></span></details>
-              </div>
-            </div>
+        <div class="pro-l">
+          <div class="head">
+            <p class="kick">Shop the look · and what Pro adds</p>
+            <h2 id="h-pro">Your photos sell. <span class="tone">You see what readers click.</span></h2>
+            <p>Turn your own photos into something readers can shop, and find out which posts and products your readers click.</p>
           </div>
-          <figcaption>An example look made from sample products.</figcaption>
-        </figure>
-      </div>
-      <div class="pro-row flip">
-        <div class="pro-t">
-          <h3>A whole room, piece by piece</h3>
-          <p>Under the photo, the look lists every product with its picture and price. The list is easy to tap on a phone, and each row goes straight to the shop through your affiliate link.</p>
+          <div class="pro-t">
+            <h3>Shop the look</h3>
+            <ul class="ticks">
+              <li>Pick a photo from your WordPress media library or paste an image link. Use your own photos or ones you have the right to use.</li>
+              <li>Each dot is a product from a shop you're an affiliate for, or an Amazon product you add by link or ASIN.</li>
+              <li>When a shop's product sells out or is gone, its dot leaves the photo on its own.</li>
+            </ul>
+            <p class="calm">In the free plugin and in every paid plan. <a class="more" href="/shop-the-look/" data-cta="quiet-look">See shop the look</a>.</p>
+          </div>
         </div>
         <figure class="pro-pic">
           <div class="lk-frame room">
+            <p class="lk-hint" aria-hidden="true"><i>1</i>Tap or click a dot</p>
             <div class="myfeeds-look" id="lk-room">
               <div class="myfeeds-look__stage">
-                <img class="myfeeds-look__img" src="/assets/look/room-700.webp" srcset="/assets/look/room-700.webp 700w, /assets/look/room-1200.webp 1200w" sizes="(min-width:900px) 620px, calc(100vw - 52px)" width="1200" height="805" loading="lazy" alt="A living room: a pale two-seater sofa with a rust cushion, a black floor lamp beside it and an oak side table in front.">
+                <img class="myfeeds-look__img" src="/assets/look/room-700.webp" srcset="/assets/look/room-700.webp 700w, /assets/look/room-1200.webp 1200w" sizes="(min-width:900px) 610px, calc(100vw - 52px)" width="1200" height="805" loading="lazy" alt="A living room: a pale two-seater sofa with a rust cushion, a black floor lamp beside it and an oak side table in front.">
                 <details class="myfeeds-look__pt is-up" name="lk-room" data-lk="sofa" style="left:42%;top:67%"><summary class="myfeeds-look__dot" aria-label="1. Halden Two-Seater Sofa, reduced"><span aria-hidden="true">1</span></summary><span class="myfeeds-look__card"><span class="myfeeds-look__brand">Halden</span><span class="myfeeds-look__name">Two-Seater Sofa</span><span class="myfeeds-look__price"><span class="myfeeds-look__now">$712.00</span> <s class="myfeeds-look__was">$890.00</s></span><span class="myfeeds-look__go">View at Northside Supply</span></span></details>
                 <details class="myfeeds-look__pt is-right" name="lk-room" data-lk="lamp" style="left:15.5%;top:33%"><summary class="myfeeds-look__dot" aria-label="2. Fieldmade Arc Floor Lamp"><span aria-hidden="true">2</span></summary><span class="myfeeds-look__card"><span class="myfeeds-look__brand">Fieldmade</span><span class="myfeeds-look__name">Arc Floor Lamp</span><span class="myfeeds-look__price"><span class="myfeeds-look__now">$129.00</span></span><span class="myfeeds-look__go">View at Basecamp Outfitters</span></span></details>
                 <details class="myfeeds-look__pt is-left is-up" name="lk-room" data-lk="table" style="left:80%;top:82%"><summary class="myfeeds-look__dot" aria-label="3. Fieldmade Oak Side Table"><span aria-hidden="true">3</span></summary><span class="myfeeds-look__card"><span class="myfeeds-look__brand">Fieldmade</span><span class="myfeeds-look__name">Oak Side Table</span><span class="myfeeds-look__price"><span class="myfeeds-look__now">$145.00</span></span><span class="myfeeds-look__go">View at Basecamp Outfitters</span></span></details>
@@ -842,7 +821,7 @@ footer a{color:#fff;text-underline-offset:3px}
           <p>With Pro, every click on a card is counted. See clicks and visitors for each post, product and brand, and write more of what works.</p>
         </div>
         <figure class="shot">
-          <img src="/assets/home/analytics-dashboard-800.webp" srcset="/assets/home/analytics-dashboard-800.webp 800w, /assets/home/analytics-dashboard-1400.webp 1400w" sizes="(min-width:1240px) 1160px, calc(100vw - 80px)" width="1400" height="690" loading="lazy" alt="The MyFeeds Pro dashboard in WordPress: total clicks, earnings, earnings per click and unique visitors for the last 30 days, a daily chart of clicks and earnings, and tabs for posts, products, brands and networks.">
+          <img src="/assets/home/analytics-dashboard-800.webp" srcset="/assets/home/analytics-dashboard-800.webp 800w, /assets/home/analytics-dashboard-1400.webp 1400w" sizes="(min-width:1240px) 660px, (min-width:900px) 56vw, calc(100vw - 32px)" width="1400" height="690" loading="lazy" alt="The MyFeeds Pro dashboard in WordPress: total clicks, earnings, earnings per click and unique visitors for the last 30 days, a daily chart of clicks and earnings, and tabs for posts, products, brands and networks.">
           <figcaption>The Pro dashboard in WordPress, with example data. Your numbers come from your own clicks.</figcaption>
         </figure>
         <figure class="ins-fig">
