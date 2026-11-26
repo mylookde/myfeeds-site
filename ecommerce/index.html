@@ -214,36 +214,6 @@ figure figcaption{margin-top:12px;font-size:13px;color:var(--ink-3)}
 .ink .ticks li{color:var(--on-ink)}
 .ink .ticks b{color:#fff}
 
-/* why a shop: the same products, mostly out of sight in a post, all of
-   them in a shop */
-.vs{display:grid;gap:18px;align-items:center}
-.vs>*{min-width:0}
-.vs-k{font:700 13px/1 var(--sans);letter-spacing:.08em;text-transform:uppercase;color:var(--ink-3);margin-bottom:16px}
-.vs-b .vs-k{color:var(--violet)}
-.vs .pinned{padding:20px 16px 16px;transform:rotate(-.6deg)}
-.vs .post-h{margin:4px 0 10px}
-.bars{display:grid;gap:6px;margin-bottom:14px}
-.bars u{display:block;height:7px;border-radius:4px;background:rgba(23,21,28,.1);text-decoration:none}
-.bars u:last-child{width:62%}
-.vs .pinned .sg,.vs-b .sg{grid-template-columns:repeat(3,minmax(0,1fr))}
-.rest{position:relative;margin-top:22px}
-.ghosts{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:8px}
-.ghost{border:1.5px dashed rgba(23,21,28,.24);border-radius:8px;padding:6px 6px 9px;background:rgba(255,255,255,.3)}
-.ghost img{width:100%;aspect-ratio:1;object-fit:contain;filter:grayscale(1);opacity:.25;border-radius:4px}
-.ghost u{display:block;height:6px;border-radius:3px;background:rgba(23,21,28,.1);margin-top:8px;text-decoration:none}
-.ghost u+u{width:60%;margin-top:5px}
-.ghost.more{display:grid;place-items:center;font:800 2rem/1 var(--display);color:rgba(23,21,28,.28)}
-.off{position:absolute;left:50%;top:50%;transform:translate(-50%,-50%);display:inline-flex;align-items:center;gap:8px;background:var(--ink);color:#fff;font:600 14px/1 var(--sans);padding:10px 15px;border-radius:999px;white-space:nowrap;box-shadow:0 14px 28px -14px rgba(23,21,28,.8)}
-.off svg{width:17px;height:17px;flex:none}
-.vs figcaption{margin-top:14px;font-size:15px;line-height:1.45;color:var(--ink-2);max-width:46ch}
-.cats{display:flex;flex-wrap:wrap;gap:6px;margin-bottom:12px}
-.cats span{border:1px solid var(--line);border-radius:999px;padding:6px 11px;font:600 12px/1 var(--sans);color:var(--ink-2)}
-.cats span.on{background:var(--ink);border-color:var(--ink);color:#fff}
-.pager{display:flex;justify-content:center;gap:6px;margin-top:12px}
-.pager span{display:grid;place-items:center;min-width:28px;height:28px;padding:0 6px;border-radius:6px;border:1px solid var(--line);font:600 12.5px/1 var(--sans);color:var(--ink-2)}
-.pager span.on{background:var(--ink);border-color:var(--ink);color:#fff}
-@media (min-width:900px){.vs{grid-template-columns:minmax(0,5fr) 56px minmax(0,6fr);gap:20px}}
-
 /* what readers see: a shop to click through */
 .see{display:grid;gap:36px;align-items:start}
 .see>*{min-width:0}
@@ -315,6 +285,36 @@ figure figcaption{margin-top:12px;font-size:13px;color:var(--ink-3)}
 .arrow svg{width:40px;height:40px;transform:rotate(90deg)}
 .p2s .browser .sg{grid-template-columns:repeat(3,minmax(0,1fr))}
 .p2s-note{margin-top:22px;font-size:15px;color:var(--ink-2);max-width:62ch}
+/* the block's settings, simplified: the rows that decide what the post
+   shows and where its button leads are marked */
+.left{display:grid;gap:26px;min-width:0}
+.blk{background:#fff;border:1px solid var(--line);border-radius:10px;box-shadow:var(--shadow);padding:14px 14px 10px;font-size:13px;line-height:1.3;color:var(--ink)}
+.blk-k{font:600 11px/1 var(--sans);letter-spacing:.08em;text-transform:uppercase;color:var(--ink-3);margin-bottom:10px}
+.blk .sw{display:flex;background:var(--paper-2);border-radius:999px;padding:3px;margin-bottom:8px}
+.blk .sw span{flex:1;text-align:center;padding:7px 6px;border-radius:999px;font-weight:600;color:var(--ink-3);white-space:nowrap}
+.blk .sw span.on{background:var(--violet);color:#fff}
+.blk .row{display:flex;flex-wrap:wrap;align-items:center;gap:6px 8px;padding:8px 8px;border-radius:8px}
+.blk .row.hl{background:#FFF4E5;box-shadow:inset 3px 0 0 var(--orange)}
+.blk .lbl{flex:none;width:74px;font:600 10.5px/1.2 var(--sans);letter-spacing:.06em;text-transform:uppercase;color:var(--ink-3)}
+.blk .sel{flex:1;display:flex;justify-content:space-between;background:#fff;border:1px solid var(--line);border-radius:6px;padding:6px 10px;font-weight:600}
+.blk .sel::after{content:"";width:7px;height:7px;margin:3px 2px 0 0;border-right:2px solid var(--ink-3);border-bottom:2px solid var(--ink-3);transform:rotate(45deg)}
+.blk .chips-r{display:flex;flex-wrap:wrap;gap:4px;flex:1}
+.blk .chips-r span{background:#fff;border:1px solid var(--line);border-radius:999px;padding:3px 8px;font-size:12px}
+.blk .chips-r span.on{border-color:var(--violet);color:var(--violet);font-weight:600}
+.blk .col{flex:1;display:grid;gap:6px;justify-items:start;min-width:0}
+.blk .pick{display:inline-flex;align-items:center;gap:6px;background:#EFEBFA;color:var(--violet);border-radius:999px;padding:4px 10px;font-weight:600}
+.blk .pick::after{content:"\00d7";font-weight:500}
+.blk .num{display:inline-flex;align-items:center;background:#fff;border:1px solid var(--line);border-radius:6px}
+.blk .num i{font-style:normal;padding:4px 9px;color:var(--ink-3)}
+.blk .num b{padding:4px 6px;font-weight:700}
+.blk .tg{display:flex;align-items:center;gap:8px;font-weight:600}
+.blk .tg b{position:relative;width:30px;height:18px;border-radius:999px;background:var(--violet)}
+.blk .tg b::after{content:"";position:absolute;right:2px;top:2px;width:14px;height:14px;border-radius:50%;background:#fff}
+.mbtn{font-size:15px;padding:11px 22px}
+.mnote{display:flex;width:max-content;max-width:100%;margin:12px auto 0;align-items:center;gap:7px;background:var(--orange);color:var(--ink);font:700 13px/1.2 var(--sans);padding:7px 12px;border-radius:999px}
+.mnote::after{content:"\2192";font-size:15px}
+.mo .mbtn{animation:callbtn 2.4s ease-in-out infinite}
+@keyframes callbtn{0%,100%{box-shadow:0 0 0 3px var(--paper),0 0 0 6px var(--orange)}50%{box-shadow:0 0 0 3px var(--paper),0 0 0 11px rgba(252,144,0,.35)}}
 .picked{display:flex;flex-wrap:wrap;align-items:center;gap:6px;margin:-2px 0 12px;font-size:12px}
 .picked span{color:var(--ink-3);font-weight:600}
 .picked b{display:inline-flex;align-items:center;gap:6px;border:1.5px solid var(--ink);border-radius:999px;padding:5px 11px 5px 9px;font-weight:600}
@@ -525,56 +525,62 @@ footer a{color:#fff;text-underline-offset:3px}
 
 <section class="band" id="curator" aria-labelledby="h-why">
   <div class="wrap">
+    <span id="posts" aria-hidden="true"></span>
     <div class="head">
-      <p class="kick">Why a shop</p>
-      <h2 id="h-why">Your post shows three products. <span class="tone">Your shop shows the rest.</span></h2>
-      <p>A post has room for a few products. A shop has room for all of them.</p>
+      <p class="kick">From your posts into your shop</p>
+      <h2 id="h-why">Link products by category <span class="tone">or collection.</span></h2>
+      <p>In any post, pick a shop category or one collection inside it and choose how many products to show. The More products button under them opens that page of your shop.</p>
     </div>
-    <div class="vs">
-      <figure class="vs-a" aria-label="In a post, readers see three products. The other products these shops sell are greyed out: not on your blog.">
-        <p class="vs-k">In a post</p>
-        <div class="pinned">
+    <div class="p2s">
+      <div class="left">
+        <figure class="blk-fig">
+          <div class="blk" aria-label="The MyFeeds product block's settings in the WordPress editor: from shop category, category Men, refined to the collection Cold weather, 3 products, More products button on.">
+            <p class="blk-k">MyFeeds block · settings</p>
+            <div class="sw" aria-hidden="true"><span>Manual picker</span><span class="on">From shop category</span></div>
+            <div class="row hl" aria-hidden="true"><span class="lbl">Category</span><span class="sel">Men</span></div>
+            <div class="row hl" aria-hidden="true"><span class="lbl">Collection</span><span class="col"><span class="chips-r"><span>Brand</span><span>Colour</span><span>Merchant</span><span class="on">Season (1)</span></span><span class="pick">Cold weather</span></span></div>
+            <div class="row" aria-hidden="true"><span class="lbl">Products</span><span class="num"><i>−</i><b>3</b><i>+</i></span></div>
+            <div class="row hl" aria-hidden="true"><span class="tg"><b></b>Show "More products" button</span></div>
+          </div>
+          <figcaption>In the WordPress editor, simplified.</figcaption>
+        </figure>
+      <figure>
+        <div class="pinned post">
           <p class="post-k">Style notes</p>
           <p class="post-h">Three things for the first cold week</p>
-          <div class="bars" aria-hidden="true"><u></u><u></u></div>
           <div class="sg">
             <div class="myfeeds-product-card"><div class="myfeeds-product-image"><img src="/assets/home/hoodie-heather-grey.webp" width="400" height="400" loading="lazy" alt="Heavyweight hoodie in heather grey"></div><div class="myfeeds-product-details"><div class="myfeeds-product-brand">Halden</div><div class="myfeeds-product-title">Heavyweight Hoodie Heather Grey</div><div class="myfeeds-product-price"><span class="myfeeds-current-price">$58.00</span></div><div class="myfeeds-merchant">Northside Supply</div></div></div>
             <div class="myfeeds-product-card"><div class="myfeeds-product-image"><img src="/assets/home/beanie-knit-navy.webp" width="400" height="400" loading="lazy" alt="Ribbed merino beanie in navy"></div><div class="myfeeds-product-details"><div class="myfeeds-product-brand">Fieldmade</div><div class="myfeeds-product-title">Ribbed Merino Beanie Navy</div><div class="myfeeds-product-price"><span class="myfeeds-current-price">$28.00</span></div><div class="myfeeds-merchant">Basecamp Outfitters</div></div></div>
             <div class="myfeeds-product-card"><div class="myfeeds-product-image"><div class="myfeeds-discount-badge">-26%</div><img src="/assets/home/sneaker-black-hightop.webp" width="400" height="400" loading="lazy" alt="Black leather high-top sneaker"></div><div class="myfeeds-product-details"><div class="myfeeds-product-brand">Arlo &amp; Finch</div><div class="myfeeds-product-title">Court High-Top Leather Black</div><div class="myfeeds-product-price"><span class="myfeeds-current-price has-discount">$96.00</span></div><div class="myfeeds-merchant">Kicks Corner</div></div></div>
           </div>
+          <span class="mbtn" aria-hidden="true">More products</span>
+          <span class="mnote" aria-hidden="true">Opens Men · Cold weather in your shop</span>
         </div>
-        <div class="rest" aria-hidden="true">
-          <div class="ghosts">
-            <div class="ghost"><img src="/assets/home/tee-boxy-offwhite.webp" width="400" height="400" loading="lazy" alt=""><u></u><u></u></div>
-            <div class="ghost"><img src="/assets/home/sneaker-white-lowtop.webp" width="400" height="400" loading="lazy" alt=""><u></u><u></u></div>
-            <div class="ghost"><img src="/assets/home/backpack-trail.webp" width="400" height="400" loading="lazy" alt=""><u></u><u></u></div>
-            <div class="ghost more"><span>+</span></div>
-          </div>
-          <span class="off"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 3l18 18"/><path d="M10.6 5.1A9.8 9.8 0 0 1 12 5c5 0 9 4.5 10 7a13.6 13.6 0 0 1-3.1 4.2M6.6 6.6C4.4 8 2.8 10.1 2 12c1 2.5 5 7 10 7a9.7 9.7 0 0 0 5.4-1.6"/><path d="M9.9 9.9a3 3 0 0 0 4.2 4.2"/></svg>Not on your blog</span>
-        </div>
-        <figcaption>Readers see three products. Everything else these shops sell never reaches your blog.</figcaption>
+        <figcaption>The post shows three products from the collection, as set. The button leads to all of them.</figcaption>
       </figure>
+      </div>
       <div class="arrow" aria-hidden="true"><svg viewBox="0 0 40 40" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M6 20h26M23 11l9 9-9 9"/></svg></div>
-      <figure class="vs-b" aria-label="In your shop, the same products and the rest sit in categories readers can browse, over several pages.">
-        <p class="vs-k">In your shop</p>
+      <figure>
         <div class="browser">
-          <div class="bbar"><i></i><i></i><i></i><span><b>yourblog.com</b>/shop/</span></div>
+          <div class="bbar"><i></i><i></i><i></i><span><b>yourblog.com</b>/shop/men/?style=cold-weather</span></div>
           <div class="sf">
-            <div class="cats" aria-hidden="true"><span class="on">All products</span><span>Clothing</span><span>Shoes</span><span>Bags</span></div>
+            <span class="crumb">Shop › Men</span>
+            <div class="sf-head"><b>Men</b><span>6 products</span></div>
+            <p class="picked"><span>Season</span><b>Cold weather</b></p>
             <div class="sg">
               <div class="myfeeds-product-card"><div class="myfeeds-product-image"><img src="/assets/home/hoodie-heather-grey.webp" width="400" height="400" loading="lazy" alt="Heavyweight hoodie in heather grey"></div><div class="myfeeds-product-details"><div class="myfeeds-product-brand">Halden</div><div class="myfeeds-product-title">Heavyweight Hoodie Heather Grey</div><div class="myfeeds-product-price"><span class="myfeeds-current-price">$58.00</span></div><div class="myfeeds-merchant">Northside Supply</div></div></div>
-              <div class="myfeeds-product-card"><div class="myfeeds-product-image"><div class="myfeeds-discount-badge">-26%</div><img src="/assets/home/sneaker-black-hightop.webp" width="400" height="400" loading="lazy" alt="Black leather high-top sneaker"></div><div class="myfeeds-product-details"><div class="myfeeds-product-brand">Arlo &amp; Finch</div><div class="myfeeds-product-title">Court High-Top Leather Black</div><div class="myfeeds-product-price"><span class="myfeeds-old-price">$129</span> <span class="myfeeds-current-price has-discount">$96.00</span></div><div class="myfeeds-merchant">Kicks Corner</div></div></div>
+              <div class="myfeeds-product-card"><div class="myfeeds-product-image"><img src="/assets/home/beanie-knit-navy.webp" width="400" height="400" loading="lazy" alt="Ribbed merino beanie in navy"></div><div class="myfeeds-product-details"><div class="myfeeds-product-brand">Fieldmade</div><div class="myfeeds-product-title">Ribbed Merino Beanie Navy</div><div class="myfeeds-product-price"><span class="myfeeds-current-price">$28.00</span></div><div class="myfeeds-merchant">Basecamp Outfitters</div></div></div>
+              <div class="myfeeds-product-card"><div class="myfeeds-product-image"><div class="myfeeds-discount-badge">-26%</div><img src="/assets/home/sneaker-black-hightop.webp" width="400" height="400" loading="lazy" alt="Black leather high-top sneaker"></div><div class="myfeeds-product-details"><div class="myfeeds-product-brand">Arlo &amp; Finch</div><div class="myfeeds-product-title">Court High-Top Leather Black</div><div class="myfeeds-product-price"><span class="myfeeds-current-price has-discount">$96.00</span></div><div class="myfeeds-merchant">Kicks Corner</div></div></div>
               <div class="myfeeds-product-card"><div class="myfeeds-product-image"><img src="/assets/home/backpack-trail.webp" width="400" height="400" loading="lazy" alt="Trail backpack in sage green"></div><div class="myfeeds-product-details"><div class="myfeeds-product-brand">Fieldmade</div><div class="myfeeds-product-title">Trail Pack 28 L Sage</div><div class="myfeeds-product-price"><span class="myfeeds-current-price">$74.00</span></div><div class="myfeeds-merchant">Basecamp Outfitters</div></div></div>
               <div class="myfeeds-product-card"><div class="myfeeds-product-image"><img src="/assets/home/tee-boxy-offwhite.webp" width="400" height="400" loading="lazy" alt="Boxy T-shirt in off-white"></div><div class="myfeeds-product-details"><div class="myfeeds-product-brand">Common Thread</div><div class="myfeeds-product-title">Boxy Heavy Tee Off-White</div><div class="myfeeds-product-price"><span class="myfeeds-current-price">$32.00</span></div><div class="myfeeds-merchant">Northside Supply</div></div></div>
-              <div class="myfeeds-product-card"><div class="myfeeds-product-image"><div class="myfeeds-discount-badge">-20%</div><img src="/assets/home/sneaker-white-lowtop.webp" width="400" height="400" loading="lazy" alt="White leather low-top sneaker"></div><div class="myfeeds-product-details"><div class="myfeeds-product-brand">Arlo &amp; Finch</div><div class="myfeeds-product-title">Court Low-Top Leather White</div><div class="myfeeds-product-price"><span class="myfeeds-old-price">$110</span> <span class="myfeeds-current-price has-discount">$88.00</span></div><div class="myfeeds-merchant">Kicks Corner</div></div></div>
-              <div class="myfeeds-product-card"><div class="myfeeds-product-image"><img src="/assets/home/beanie-knit-navy.webp" width="400" height="400" loading="lazy" alt="Ribbed merino beanie in navy"></div><div class="myfeeds-product-details"><div class="myfeeds-product-brand">Fieldmade</div><div class="myfeeds-product-title">Ribbed Merino Beanie Navy</div><div class="myfeeds-product-price"><span class="myfeeds-current-price">$28.00</span></div><div class="myfeeds-merchant">Basecamp Outfitters</div></div></div>
+              <div class="myfeeds-product-card"><div class="myfeeds-product-image"><div class="myfeeds-discount-badge">-20%</div><img src="/assets/home/sneaker-white-lowtop.webp" width="400" height="400" loading="lazy" alt="White leather low-top sneaker"></div><div class="myfeeds-product-details"><div class="myfeeds-product-brand">Arlo &amp; Finch</div><div class="myfeeds-product-title">Court Low-Top Leather White</div><div class="myfeeds-product-price"><span class="myfeeds-current-price has-discount">$88.00</span></div><div class="myfeeds-merchant">Kicks Corner</div></div></div>
             </div>
-            <div class="pager" aria-hidden="true"><span class="on">1</span><span>2</span><span>3</span><span>…</span><span>→</span></div>
           </div>
         </div>
-        <figcaption>Readers browse all of it, category by category, and Google can find every category page.</figcaption>
+        <figcaption>The page the button opens: Men, with the collection Cold weather already picked. Simplified, example products.</figcaption>
       </figure>
     </div>
+    <p class="p2s-note">The cards come from the category or collection, so when you change what's in it, the post follows.</p>
   </div>
 </section>
 
@@ -666,52 +672,6 @@ footer a{color:#fff;text-underline-offset:3px}
         <li><h3>Every click counted</h3><p>See which posts, products and brands your readers click, in your WordPress admin.</p></li>
       </ul>
     </div>
-  </div>
-</section>
-
-<section class="band" id="posts" aria-labelledby="h-posts">
-  <div class="wrap">
-    <div class="head">
-      <p class="kick">From your posts into your shop</p>
-      <h2 id="h-posts">Every post <span class="tone">leads into your shop.</span></h2>
-      <p>Show the products of a shop category in any post, or only one of its collections, like Cold weather. A More products button under them opens that page of your shop, not its front page.</p>
-    </div>
-    <div class="p2s">
-      <figure>
-        <div class="pinned post">
-          <p class="post-k">Style notes</p>
-          <p class="post-h">Three things for the first cold week</p>
-          <div class="sg">
-            <div class="myfeeds-product-card"><div class="myfeeds-product-image"><img src="/assets/home/hoodie-heather-grey.webp" width="400" height="400" loading="lazy" alt="Heavyweight hoodie in heather grey"></div><div class="myfeeds-product-details"><div class="myfeeds-product-brand">Halden</div><div class="myfeeds-product-title">Heavyweight Hoodie Heather Grey</div><div class="myfeeds-product-price"><span class="myfeeds-current-price">$58.00</span></div><div class="myfeeds-merchant">Northside Supply</div></div></div>
-            <div class="myfeeds-product-card"><div class="myfeeds-product-image"><img src="/assets/home/beanie-knit-navy.webp" width="400" height="400" loading="lazy" alt="Ribbed merino beanie in navy"></div><div class="myfeeds-product-details"><div class="myfeeds-product-brand">Fieldmade</div><div class="myfeeds-product-title">Ribbed Merino Beanie Navy</div><div class="myfeeds-product-price"><span class="myfeeds-current-price">$28.00</span></div><div class="myfeeds-merchant">Basecamp Outfitters</div></div></div>
-            <div class="myfeeds-product-card"><div class="myfeeds-product-image"><div class="myfeeds-discount-badge">-26%</div><img src="/assets/home/sneaker-black-hightop.webp" width="400" height="400" loading="lazy" alt="Black leather high-top sneaker"></div><div class="myfeeds-product-details"><div class="myfeeds-product-brand">Arlo &amp; Finch</div><div class="myfeeds-product-title">Court High-Top Leather Black</div><div class="myfeeds-product-price"><span class="myfeeds-current-price has-discount">$96.00</span></div><div class="myfeeds-merchant">Kicks Corner</div></div></div>
-          </div>
-          <span class="mbtn" aria-hidden="true">More products</span>
-        </div>
-        <figcaption>A post with three products from the collection Cold weather.</figcaption>
-      </figure>
-      <div class="arrow" aria-hidden="true"><svg viewBox="0 0 40 40" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M6 20h26M23 11l9 9-9 9"/></svg></div>
-      <figure>
-        <div class="browser">
-          <div class="bbar"><i></i><i></i><i></i><span><b>yourblog.com</b>/shop/men/?style=cold-weather</span></div>
-          <div class="sf">
-            <span class="crumb">Shop › Men</span>
-            <div class="sf-head"><b>Men</b><span>6 products</span></div>
-            <p class="picked"><span>Season</span><b>Cold weather</b></p>
-            <div class="sg">
-              <div class="myfeeds-product-card"><div class="myfeeds-product-image"><img src="/assets/home/hoodie-heather-grey.webp" width="400" height="400" loading="lazy" alt="Heavyweight hoodie in heather grey"></div><div class="myfeeds-product-details"><div class="myfeeds-product-brand">Halden</div><div class="myfeeds-product-title">Heavyweight Hoodie Heather Grey</div><div class="myfeeds-product-price"><span class="myfeeds-current-price">$58.00</span></div><div class="myfeeds-merchant">Northside Supply</div></div></div>
-              <div class="myfeeds-product-card"><div class="myfeeds-product-image"><img src="/assets/home/beanie-knit-navy.webp" width="400" height="400" loading="lazy" alt="Ribbed merino beanie in navy"></div><div class="myfeeds-product-details"><div class="myfeeds-product-brand">Fieldmade</div><div class="myfeeds-product-title">Ribbed Merino Beanie Navy</div><div class="myfeeds-product-price"><span class="myfeeds-current-price">$28.00</span></div><div class="myfeeds-merchant">Basecamp Outfitters</div></div></div>
-              <div class="myfeeds-product-card"><div class="myfeeds-product-image"><div class="myfeeds-discount-badge">-26%</div><img src="/assets/home/sneaker-black-hightop.webp" width="400" height="400" loading="lazy" alt="Black leather high-top sneaker"></div><div class="myfeeds-product-details"><div class="myfeeds-product-brand">Arlo &amp; Finch</div><div class="myfeeds-product-title">Court High-Top Leather Black</div><div class="myfeeds-product-price"><span class="myfeeds-current-price has-discount">$96.00</span></div><div class="myfeeds-merchant">Kicks Corner</div></div></div>
-              <div class="myfeeds-product-card"><div class="myfeeds-product-image"><img src="/assets/home/backpack-trail.webp" width="400" height="400" loading="lazy" alt="Trail backpack in sage green"></div><div class="myfeeds-product-details"><div class="myfeeds-product-brand">Fieldmade</div><div class="myfeeds-product-title">Trail Pack 28 L Sage</div><div class="myfeeds-product-price"><span class="myfeeds-current-price">$74.00</span></div><div class="myfeeds-merchant">Basecamp Outfitters</div></div></div>
-              <div class="myfeeds-product-card"><div class="myfeeds-product-image"><img src="/assets/home/tee-boxy-offwhite.webp" width="400" height="400" loading="lazy" alt="Boxy T-shirt in off-white"></div><div class="myfeeds-product-details"><div class="myfeeds-product-brand">Common Thread</div><div class="myfeeds-product-title">Boxy Heavy Tee Off-White</div><div class="myfeeds-product-price"><span class="myfeeds-current-price">$32.00</span></div><div class="myfeeds-merchant">Northside Supply</div></div></div>
-              <div class="myfeeds-product-card"><div class="myfeeds-product-image"><div class="myfeeds-discount-badge">-20%</div><img src="/assets/home/sneaker-white-lowtop.webp" width="400" height="400" loading="lazy" alt="White leather low-top sneaker"></div><div class="myfeeds-product-details"><div class="myfeeds-product-brand">Arlo &amp; Finch</div><div class="myfeeds-product-title">Court Low-Top Leather White</div><div class="myfeeds-product-price"><span class="myfeeds-current-price has-discount">$88.00</span></div><div class="myfeeds-merchant">Kicks Corner</div></div></div>
-            </div>
-          </div>
-        </div>
-        <figcaption>The page the button opens: Men, with the collection Cold weather already picked. Simplified, example products.</figcaption>
-      </figure>
-    </div>
-    <p class="p2s-note">The cards come from the category or collection, so when you change what's in it, the post follows.</p>
   </div>
 </section>
 
